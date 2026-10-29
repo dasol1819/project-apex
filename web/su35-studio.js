@@ -1,5 +1,5 @@
 import * as T from './vendor/three.module.js';
-import {createSu35Model} from './su35-model.js';
+import {createSu35Model} from './su35-model.js?v=2';
 import {disposeObject} from './aircraft-catalog.js';
 
 const $=id=>document.getElementById(id),canvas=$('model-canvas'),status=$('model-status');
@@ -9,9 +9,9 @@ const PRESETS={
   front:{name:'정면',eye:[0,1.2,-33],at:[0,.4,-.2],number:'02 / FRONT',title:'좌우 대칭, 서로 다른 깊이.',copy:'중앙 동체 아래 두 흡입구가 열려 있습니다. 얇은 분리판과 입구의 경사, 오른쪽으로 치우친 IRST 센서를 살펴보세요.'},
   top:{name:'상면',eye:[0,34,.3],at:[0,0,.3],number:'03 / PLANFORM',title:'날개와 동체가 만나는 방식.',copy:'길게 이어지는 날개 뿌리와 후퇴익, 전동 수평미익을 표현했습니다. 청회색 위장과 패널 선은 기체 표면을 따라 이어집니다.'},
   rear:{name:'후면',eye:[21,9,29],at:[0,.7,1.0],number:'04 / AFT',title:'쌍발 Flanker의 뒷모습.',copy:'서로 떨어진 엔진과 가운데 테일 붐, 쌍미익을 확인하세요. 금속 배기부에는 열변색과 정비 패널의 경계를 표현했습니다.'},
-  intake:{name:'흡입구 상세',eye:[2.5,-.27,-11.0],at:[1.65,-.48,-3.75],number:'05 / INTAKE',title:'입구 뒤로, 약 4미터.',copy:'얇게 말린 입구 테두리에서 어두운 내부 덕트와 압축기까지 이어집니다. 램프를 움직이거나 회전해 내부 깊이와 분리판을 확인하세요.'},
-  nozzle:{name:'노즐 상세',eye:[4.4,1.1,15.2],at:[1.65,-.36,8.9],number:'06 / EXHAUST',title:'열을 견디는 금속의 표정.',copy:'겹쳐진 18개 노즐 페탈과 안쪽 배기 통로를 표현했습니다. 개방과 편향 슬라이더로 노즐 형상이 바뀌는 모습을 확인하세요.'},
-  cockpit:{name:'조종석 상세',eye:[4.5,3.3,-9.9],at:[0,.8,-5.8],number:'07 / COCKPIT',title:'단좌 캐노피 아래의 디테일.',copy:'고정 앞유리와 열리는 후드, 좌석·계기판·HUD를 구성했습니다. 앞유리 우측의 IRST 구체와 기수의 연결선도 살펴보세요.'}
+  intake:{name:'흡입구 상세',eye:[2.2,-.4,-8.6],at:[1.65,-.53,-3.8],number:'05 / INTAKE',title:'입구 뒤로, 약 4미터.',copy:'얇게 말린 입구 테두리에서 어두운 내부 덕트와 압축기까지 이어집니다. 램프를 움직이거나 회전해 내부 깊이와 분리판을 확인하세요.'},
+  nozzle:{name:'노즐 상세',eye:[2.4,.25,13.4],at:[1.65,-.36,9.25],number:'06 / EXHAUST',title:'열을 견디는 금속의 표정.',copy:'겹쳐진 24개 노즐 페탈과 안쪽 배기 통로를 표현했습니다. 개방과 편향 슬라이더로 노즐 형상이 바뀌는 모습을 확인하세요.'},
+  cockpit:{name:'조종석 상세',eye:[3.5,2.5,-7.5],at:[0,.72,-5.4],number:'07 / COCKPIT',title:'단좌 캐노피 아래의 디테일.',copy:'고정 앞유리와 열리는 후드, 좌석·계기판·HUD를 구성했습니다. 앞유리 우측의 IRST 구체와 기수의 연결선도 살펴보세요.'}
 };
 
 let renderer,scene,camera,model,env,floor,observer,raf=0,disposed=false,contextLost=false;
@@ -37,14 +37,14 @@ function setView(name,instant=false){
   dirty=true;
 }
 function studioEnvironment(){
-  const room=new T.Scene();room.background=new T.Color(0x738b9d);
+  const room=new T.Scene();room.background=new T.Color(0x7c8185);
   const panel=(color,intensity,size,pos,look)=>{
     const mesh=new T.Mesh(new T.PlaneGeometry(...size),new T.MeshBasicMaterial({color:new T.Color(color).multiplyScalar(intensity),side:T.DoubleSide}));
     mesh.position.set(...pos);mesh.lookAt(...look);room.add(mesh);
   };
-  panel(0xe1edff,4,[35,14],[-16,18,-7],[0,0,0]);
-  panel(0xb5dbe1,2.5,[30,6],[12,14,12],[0,0,0]);
-  panel(0xf5e4cc,1.3,[20,6],[5,4,-25],[0,0,0]);
+  panel(0xe1edff,2.5,[35,14],[-16,18,-7],[0,0,0]);
+  panel(0xb5dbe1,1.5,[30,6],[12,14,12],[0,0,0]);
+  panel(0xf5e4cc,.9,[20,6],[5,4,-25],[0,0,0]);
   const pmrem=new T.PMREMGenerator(renderer);const result=pmrem.fromScene(room,.04,.1,100);pmrem.dispose();disposeObject(room);return result;
 }
 function resize(){
@@ -121,17 +121,17 @@ const mix=T.MathUtils.lerp;
 async function boot(){
   try{
     renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,preserveDrawingBuffer:false,powerPreference:'high-performance'});
-    renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.90;
+    renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.94;
     renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
-    scene=new T.Scene();scene.background=new T.Color(0x192630);scene.fog=new T.FogExp2(0x192630,.009);
+    scene=new T.Scene();scene.background=new T.Color(0x1c2227);scene.fog=new T.FogExp2(0x1c2227,.009);
     camera=new T.PerspectiveCamera(38,1,.08,250);env=studioEnvironment();scene.environment=env.texture;
-    const key=new T.DirectionalLight(0xdcecff,3.2);key.position.set(-12,21,-12);key.castShadow=true;
+    const key=new T.DirectionalLight(0xf2f1ea,2.8);key.position.set(-12,21,-12);key.castShadow=true;
     key.shadow.mapSize.set(2048,2048);Object.assign(key.shadow.camera,{left:-18,right:18,top:18,bottom:-18,near:1,far:75});
     key.shadow.normalBias=.035;key.shadow.bias=-.00015;key.shadow.radius=3;scene.add(key);
-    const rim=new T.DirectionalLight(0xb7e7e3,2.2);rim.position.set(12,7,15);scene.add(rim);
-    const front=new T.DirectionalLight(0xf5e6d5,1.3);front.position.set(3,4,-20);scene.add(front);
-    scene.add(new T.HemisphereLight(0xc8e6f2,0x253039,1.1));
-    floor=new T.Mesh(new T.PlaneGeometry(400,400),new T.MeshStandardMaterial({color:0x1c2b35,roughness:.88,metalness:.15}));
+    const rim=new T.DirectionalLight(0xc8dee8,1.4);rim.position.set(12,7,15);scene.add(rim);
+    const front=new T.DirectionalLight(0xf5e6d5,.8);front.position.set(3,4,-20);scene.add(front);
+    scene.add(new T.HemisphereLight(0xc8d1d7,0x26282a,.55));
+    floor=new T.Mesh(new T.PlaneGeometry(400,400),new T.MeshStandardMaterial({color:0x282c2e,roughness:.88,metalness:.15}));
     floor.rotation.x=-Math.PI/2;floor.position.y=-2.115;floor.receiveShadow=true;scene.add(floor);
     const marks=new T.Group();marks.name='metre-scale studio ground markings';scene.add(marks);
     for(const radius of [11.5,15.0,19.0]){

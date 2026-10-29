@@ -37,7 +37,7 @@ export const TREE_SOURCES=Object.freeze({
 });
 const rows=[];
 // [suffix, designation, variant, BR, era, distinguishing note, native ID?]
-function add(nation,branch,family,nickname,source,variants){for(const [suffix,name,variant,br,era,note,simId=null]of variants)rows.push(Object.freeze({id:`${nation}-${family}-${suffix}`,nation,branch,family,nickname,source,name,variant,br,era,note,simId,implemented:Number.isInteger(simId),previewUrl:family==='su35'?'su35.html':null}));}
+function add(nation,branch,family,nickname,source,variants){for(const [suffix,name,variant,br,era,note,simId=null]of variants)rows.push(Object.freeze({id:`${nation}-${family}-${suffix}`,nation,branch,family,nickname,source,name,variant,br,era,note,simId,implemented:Number.isInteger(simId),previewUrl:family==='su35'?'su35.html?v=2':null}));}
 add('us','light','p40','Warhawk','ww2',[
  ['e','P-40E','기총 강화형',3,'prop','초기 Warhawk에서 기총 화력을 강화한 대표 E형.']]);
 add('us','light','p51','Mustang','ww2',[

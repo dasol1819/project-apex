@@ -17,7 +17,7 @@ aircraft.group.traverse(o=>{
   const p=o.geometry.attributes.position;
   assert.ok([...p.array].every(Number.isFinite),o.name+' has non-finite vertices');
   if(o.material.userData.airframeSurface)assert.equal(o.geometry.attributes.skinPosition?.count,p.count,'neutral paint coordinates');
-  for(let i=0;i<p.count;i++)bounds.expandByPoint(vertices.fromBufferAttribute(p,i).applyMatrix4(o.matrixWorld));
+  for(let i=0;i<p.count;i++)bounds.expandByPoint(o.getVertexPosition(i,vertices).applyMatrix4(o.matrixWorld));
   triangles+=(o.geometry.index?.count||p.count)/3;
 });
 const size=bounds.getSize(new T.Vector3());
@@ -41,9 +41,18 @@ const closedCrown=new T.Box3().setFromObject(canopy).max.y;
 aircraft.update({gear:0,canopy:.7,intakeRamp:.2,vectorPitch:.22,afterburner:1});
 assert.ok(nozzle.getWorldPosition(new T.Vector3()).distanceTo(before)>.1,'exhaust exit follows vectoring nozzle');
 assert.ok(new T.Box3().setFromObject(canopy).max.y>closedCrown+.5,'canopy lifts up above the cockpit');
+for(const aperture of [0,.3,1]){
+  aircraft.update({gear:1,afterburner:aperture,vectorPitch:0});
+  const nozzle=aircraft.group.getObjectByName('Su-35 24 overlapping profiled nozzle feathers');
+  for(let i=0;i<nozzle.geometry.attributes.position.count;i+=13){
+    nozzle.getVertexPosition(i,vertices).applyMatrix4(nozzle.matrixWorld);
+    assert.ok(vertices.z>=8.68&&vertices.z<=10.09,'opening feathers stay connected to the engine');
+    assert.ok(Math.hypot(vertices.x+1.65,vertices.y+.36)<.81,'opening feathers stay centred on the nozzle axis');
+  }
+}
 assert.equal(aircraft.definition.previewOnly,true);
 assert.equal(treeAircraft('ru-su35-s').simId,null,'preview does not claim a native Su-35 flight model');
-assert.equal(treeAircraft('ru-su35-s').previewUrl,'su35.html');
+assert.equal(treeAircraft('ru-su35-s').previewUrl.split('?')[0],'su35.html');
 
 // Shared-kit changes must preserve every existing aircraft and its fin visibility.
 for(let type=0;type<=12;type++){

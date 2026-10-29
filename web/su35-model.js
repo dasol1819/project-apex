@@ -1,7 +1,8 @@
 import * as T from './vendor/three.module.js';
 import {createAirframeKit} from './classic-airframe-kit.js';
-import {wingPanel,verticalFin,cockpit,stencil,geometry} from './fighter-exterior-tools.js';
-import {su35Material,SU35_PALETTE} from './su35-finish.js';
+import {wingPanel,verticalFin,geometry} from './fighter-exterior-tools.js';
+import {su35Material,SU35_PALETTE} from './su35-finish.js?v=2';
+import {blendedSkin,detailedCockpit,flankerNozzle,installStudioMarkings} from './su35-details.js?v=2';
 
 export const SU35 = Object.freeze({id:13,key:'su35',name:'Su-35S',nickname:'Flanker-E',
   length:21.9,span:15.3,engines:2,palette:SU35_PALETTE,previewOnly:true});
@@ -56,7 +57,7 @@ function inlet(k,side) {
   const duct=shell(k,ductRows,part,wall,'Su-35 uninterrupted recessed intake duct',true);
   const colors=[];
   for(let j=0;j<ductRows.length;j++){
-    const shade=mix(.17,.012,Math.pow(j/(ductRows.length-1),.45));
+    const shade=mix(.035,.0015,Math.pow(j/(ductRows.length-1),.45));
     for(let i=0;i<64;i++)colors.push(shade*.86,shade*.95,shade);
   }
   duct.geometry.setAttribute('color',new T.Float32BufferAttribute(colors,3));
@@ -92,20 +93,22 @@ function inlet(k,side) {
 export function createSu35Model() {
   const k=createAirframeKit(SU35),M=k.materials;
   M.skin=su35Material();M.radome=su35Material('radome');
-  for(const name of ['metal','titanium','nozzle'])M[name]=su35Material('metal');
+  for(const name of ['metal','titanium'])M[name]=su35Material('metal');M.nozzle=su35Material('nozzle');
   M.skinLight.color.set(0xa8bbc5);M.skinDark.color.set(0x657e8e);
-  M.frame.color.set(0x455c69);M.glass.color.set(0x8eacb0);M.glass.opacity=.48;M.glass.roughness=.075;
+  M.frame.color.set(0x52676f);M.glass.color.set(0x4c666d);M.glass.opacity=.67;M.glass.roughness=.065;M.glass.envMapIntensity=1.1;
   M.red.color.set(0xa33c35);M.white.color.set(0xd6dcdb);
   const body=[[-7.35,.59,.50,-.035],[-6.6,.72,.57,.015],[-5.5,.83,.63,.035],
     [-4.3,.87,.65,.065],[-2.6,.82,.60,.10],[0,.80,.53,.11],[2.5,.72,.45,.09],
     [5.0,.64,.36,.10],[7.5,.49,.27,.08],[9.1,.32,.19,.04],[10.6,.20,.14,0],[11.30,.025,.035,0]];
-  k.loft(body,0,M.skin,{segments:80,samples:6}).name='Su-35 smoothly lofted central fuselage and tail sting';
+  const lowerBody=k.loft(body,0,M.skin,{segments:80,samples:6});lowerBody.name='Su-35 forebody / real cockpit aperture / tail sting';
+  const position=lowerBody.geometry.attributes.position,index=lowerBody.geometry.index.array,kept=[];
+  for(let i=0;i<index.length;i+=3){let x=0,y=0,z=0;for(let j=0;j<3;j++){const n=index[i+j];x+=position.getX(n)/3;y+=position.getY(n)/3;z+=position.getZ(n)/3;}
+    if(z> -6.30&&z< -4.12&&y>.18&&Math.abs(x)<.57)continue;kept.push(index[i],index[i+1],index[i+2]);}
+  lowerBody.geometry.setIndex(kept);
+  const upperSkin=blendedSkin(k),exhaustFrames=[];
   k.loft([[-10.60,.008,.010,-.12],[-10.2,.115,.13,-.10],[-9.5,.27,.29,-.08],
     [-8.6,.43,.41,-.06],[-7.7,.55,.48,-.04],[-7.35,.59,.50,-.035]],10,M.radome,{segments:80,samples:6});
   for(const side of [-1,1]){
-    // Continuous upper shoulders and long LERX leave the lower inlet open.
-    wingPanel(k,[[side*.62,.31,-5.95,5.05,.13],[side*1.05,.28,-4.58,5.07,.17],
-      [side*1.58,.23,-3.05,5.10,.20],[side*2.10,.17,-1.80,5.12,.22]],side<0?1:2);
     const rows=WING.map(r=>[side*r[0],...r.slice(1)]),root=side<0?1:2,outer=side<0?12:13;
     wingPanel(k,rows.slice(0,3),root,{c0:.14,c1:.76});
     wingPanel(k,rows.slice(2),outer,{c0:.14,c1:.76});
@@ -129,16 +132,9 @@ export function createSu35Model() {
     k.navLight([side*7.61,.075,3.50],side<0?0xe64335:0x6cae88,outer);
     star(k,[side*5.3,.215,3.7],.51,outer);
     star(k,[side*2.13,2.23,8.33],.39,finPart,'side',side);
-    stencil(k,'01',[side*.78,.18,-6.65],.04,0,'side',side);
     k.loft([[5.70,.69,.65,-.36,side*1.65],[6.35,.68,.64,-.36,side*1.65],
       [7.5,.65,.63,-.36,side*1.65],[8.65,.64,.62,-.36,side*1.65]],side<0?7:8,M.metal,{segments:72,samples:5});
-    const frame=k.nozzle({x:side*1.65,y:-.36,z:9.60,radius:.62,enginePart:side<0?7:8,
-      nozzlePart:side<0?22:23,length:1.04,darkInterior:true});
-    frame.children.forEach(c=>c.userData.previewFlame=true);
-    const nozzles=k.parts[side<0?22:23],pivot=new T.Group();pivot.position.set(side*1.65,-.36,8.75);
-    pivot.name='Su-35 gimballed AL-41F1S nozzle';nozzles.add(pivot);k.group.updateMatrixWorld(true);
-    for(const child of [...nozzles.children])if(child!==pivot)pivot.attach(child);
-    k.animations.push(s=>{pivot.rotation.set(s.vectorPitch||0,side*(s.vectorYaw||0),0);for(const c of frame.children)c.visible=false;});
+    exhaustFrames.push(flankerNozzle(k,side));
     // Small engine maintenance fasteners and metal panel bands.
     for(const zz of [6.15,6.9,7.7,8.40]){
       const arc=Array.from({length:65},(_,i)=>{const a=i/64*Math.PI*2;return[side*1.65+Math.cos(a)*.66,-.36+Math.sin(a)*.64,zz];});
@@ -147,7 +143,7 @@ export function createSu35Model() {
   }
   const inlets=[inlet(k,-1),inlet(k,1)];
   // Single-seat cockpit: fixed windscreen, opening hood, K-36-like seat/HUD.
-  cockpit(k,{front:-6.28,rear:-4.10,base:.25,hudRise:.75,hudBase:.45,hudOffset:-.02,crew:false});
+  detailedCockpit(k);
   k.canopy([[-7.02,.10,.48,.025],[-6.73,.40,.54,.37],[-6.35,.53,.57,.71]],11,{frameStations:[-6.35]});
   const hood=new T.Group();hood.position.set(0,.62,-4.00);hood.userData.pivot=[0,.62,-4.00];
   hood.name='Su-35 hinged single-seat canopy';k.parts[11].add(hood);
@@ -161,8 +157,7 @@ export function createSu35Model() {
   k.ellipsoid([.22,.19,.23],[.41,.63,-6.95],0,M.skinDark,undefined,32);
   const sensor=new T.MeshPhysicalMaterial({color:0x243c39,roughness:.045,metalness:.36,clearcoat:1});
   k.ellipsoid([.153,.137,.10],[.41,.69,-7.11],0,sensor,undefined,32);
-  k.line([[0,.61,-7.08],[0,.99,-6.61],[0,1.29,-6.35]],11,M.frame,.020);
-  for(const side of [-1,1])k.line([[side*.12,.48,-7.0],[side*.40,.54,-6.73],[side*.53,.57,-6.35]],11,M.frame,.020);
+  for(const side of [-1,1])k.line([[side*.12,.48,-7.0],[side*.40,.54,-6.73],[side*.53,.57,-6.35]],11,M.frame,.032);
   // Gun fairing, vents, antennae and static discharge wicks.
   k.loft([[-4.70,.02,.025,.24,1.06],[-4.37,.15,.12,.25,1.11],[-3.23,.15,.11,.25,1.21],[-2.94,.03,.03,.24,1.28]],2,M.skin,{segments:28,samples:4});
   k.tube(.037,.045,.13,[1.10,.27,-4.53],2,M.dark,{open:true});
@@ -170,12 +165,14 @@ export function createSu35Model() {
   k.solid([[0,.51,-2.9],[0,.98,-2.50],[0,.92,-2.25],[0,.5,-2.1]],0,M.skinDark,.035);
   k.solid([[0,.37,3.9],[0,.69,4.19],[0,.60,4.45],[0,.34,4.6]],0,M.skinDark,.028);
   for(const side of [-1,1])for(const x of [3.3,4.5,5.8,6.8])k.line([[side*x,.02,5.17],[side*x,.015,5.40]],side<0?14:15,M.dark,.009);
-  k.gear({x:0,z:-5.05,topY:-.50,radius:.29});
-  for(const side of [-1,1])k.gear({x:side*1.47,z:2.30,part:side<0?25:26,main:true,topY:-.78,radius:.39});
-  const aircraft=k.finish({gunMount:[1.10,.27,-4.6],gunPart:2,wingTips:[[-7.65,.035,3.5],[7.65,.035,3.5]]});
-  aircraft.group.userData.modelRevision='su35-original-1';aircraft.group.userData.intakes=inlets;
+  const wheelGreen=new T.MeshStandardMaterial({color:0x46604a,roughness:.68,metalness:.26});
+  const strutPaint=new T.MeshStandardMaterial({color:0xa5ada8,roughness:.48,metalness:.27});
+  const gears=[k.gear({x:0,z:-5.05,topY:-.50,radius:.29}),...[-1,1].map(side=>k.gear({x:side*1.47,z:2.30,part:side<0?25:26,main:true,topY:-.78,radius:.39}))];
+  for(const gear of gears)gear.traverse(o=>{const r=o.geometry?.parameters?.radiusTop;if(r>.10)o.material=wheelGreen;else if(r>.045&&r<.09)o.material=strutPaint;});
+  const aircraft=k.finish({exhaustFrames,gunMount:[1.10,.27,-4.6],gunPart:2,wingTips:[[-7.65,.035,3.5],[7.65,.035,3.5]]});
+  aircraft.group.userData.modelRevision='su35-photo-study-2';aircraft.group.userData.intakes=inlets;
   aircraft.group.userData.previewOnly=true;
   const update=aircraft.update;
   aircraft.update=(state={},dt=1/60)=>update({gear:1,...state},dt);
-  aircraft.update();return aircraft;
+  installStudioMarkings(aircraft);aircraft.update();return aircraft;
 }

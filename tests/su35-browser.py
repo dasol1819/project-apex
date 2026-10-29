@@ -82,7 +82,7 @@ with sync_playwright() as p:
     assert page.locator('#tree-choose').is_disabled()
     assert page.locator('#tree-inspect-model').is_enabled()
     page.locator('#tree-inspect-model').click()
-    page.wait_for_url('**/su35.html')
+    page.wait_for_url('**/su35.html*')
     page.wait_for_selector('html[data-su35-ready=true]')
     assert not errors, errors
     context.close()

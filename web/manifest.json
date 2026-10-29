@@ -1,13 +1,14 @@
 {
   "version": 1,
   "files": {
-    "aircraft-tree-data.js": "8ad430e542a8d00802e419838493d49e75e59e406083dc5e0a42490e5de791d8",
+    "aircraft-tree-data.js": "702170b0b80fbf86a54a36c34044ad1ada881d8c6a4c9b235be77de7631ea64b",
     "aircraft-tree.js": "7aa9b34bbf8de0de4dc95250018b2af7f6829c0be28c590eacbe61ad1c0da07a",
     "classic-airframe-kit.js": "684088628debf4c0bbb040b2b566c346624d68445ecdb677f23d841d394656c2",
-    "su35-finish.js": "4e228267e2c08f8e5289fc55d8d54d6fb72dbad94cbad053fd256c74ca65b8eb",
-    "su35-model.js": "20a7add5bb6c649690bb12e72c5f1f2638d306bc7c20efa53398f2d462a9e565",
+    "su35-details.js": "26f020f88d5b28383d69cfa8a861c2ef112a94673db78dd37652913e837eb748",
+    "su35-finish.js": "67fcec2665e4a23b9f6dc56a2159024118f138f4e89d94beebbe08cd74f63719",
+    "su35-model.js": "74041974b7e22745784623d31f91c5d8162a16aa75e7b40510f0832eb3a8aa03",
     "su35-studio.css": "dfda129983fd1a9a5ab876135640f13f774fdabde4ce2e9fd76542a48fe92872",
-    "su35-studio.js": "005c1dcfcd06226ad0df18df32545c477b3a170b1e616f2e27ece2e29acc8ad5",
-    "su35.html": "d7a34f824dcb9bdb3fc288ec4923ef4bdf605ad2ece037467e576ef49927b2b8"
+    "su35-studio.js": "d954ec3bcec08bec94d14d9bff481bb440c7ac9bb03e0fc3bf87539c7e4586f0",
+    "su35.html": "0abab9ea6bb19a3418a3f4aab30bb3570491676fb78598cc3bcc98deb9032198"
   }
 }
