@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0c1218">
+  <link rel="icon" href="data:,">
+  <title>Su-35S · Airframe Studio — Project Apex</title>
+  <meta name="description" content="Project Apex의 Su-35S 3D 외형 스튜디오. 열린 흡입구와 내부 덕트, 조종석, 추력편향 노즐을 살펴보세요.">
+  <link rel="stylesheet" href="su35-studio.css">
+  <script type="module" src="su35-studio.js"></script>
+</head>
+<body>
+  <header class="masthead"><a class="brand" href="./">PROJECT<span>:</span> APEX <small>AIRFRAME STUDIO</small></a><a class="back" href="./?screen=tree">기체 트리로 돌아가기 <span>↗</span></a></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">RUSSIA / AIR SUPERIORITY / 001</p><h1>Su-35S <span>FLANKER-E</span></h1></div><p class="intro-note">실루엣부터, 공기가 지나는 안쪽까지.<br>새로 제작한 Su-35S를 자세히 살펴보세요.</p></div>
+    <div class="studio">
+      <section class="stage" aria-label="Su-35S 3D 외형">
+        <canvas id="model-canvas" tabindex="0" aria-label="Su-35S 3D 모델. 드래그 또는 방향키로 회전, 스크롤 또는 더하기·빼기 키로 확대·축소, Home으로 전체 보기."></canvas>
+        <div class="stage-heading"><span class="live-dot"></span><span id="view-name">전체 형상</span><span class="stage-unit">METRES / 1:1 MODEL</span></div>
+        <div class="loading" id="model-status" role="status">Su-35S 외형을 준비하는 중…</div>
+        <div class="view-hint" id="view-hint">드래그 회전 <span>·</span> 스크롤 확대 <span>·</span> Shift + 드래그 이동</div>
+        <div class="stage-bottom"><span class="preview-badge">3D 외형 미리보기</span><button id="save-view" type="button" disabled aria-label="현재 모델 화면을 PNG로 저장">화면 저장 ↓</button></div>
+      </section>
+      <aside class="inspector" aria-label="외형 보기 제어">
+        <div class="panel-header"><span class="eyebrow">EXPLORE THE AIRFRAME</span><h2>가까이, 더 자세히.</h2><p>보고 싶은 부위를 선택하세요.</p></div>
+        <div class="views" role="group" aria-label="카메라 시점">
+          <button data-view="overview" aria-pressed="true"><span>01</span>전체</button><button data-view="front" aria-pressed="false"><span>02</span>정면</button>
+          <button data-view="top" aria-pressed="false"><span>03</span>상면</button><button data-view="rear" aria-pressed="false"><span>04</span>후면</button>
+          <button data-view="intake" aria-pressed="false"><span>05</span>흡입구</button><button data-view="nozzle" aria-pressed="false"><span>06</span>노즐</button>
+          <button data-view="cockpit" aria-pressed="false" class="wide-view"><span>07</span>조종석 <i>IRST · CANOPY · K-36</i></button>
+        </div>
+        <section class="detail" aria-live="polite"><span class="detail-number" id="detail-number">01 / AIRFRAME</span><h3 id="detail-title">Flanker의 선을 따라.</h3><p id="detail-copy">긴 앞동체와 날개 뿌리의 연결, 떨어져 배치된 엔진과 쌍미익. 카나드가 없는 Su-35S의 실루엣을 표현했습니다.</p></section>
+        <section class="mechanisms"><h3>가동부 살펴보기 <span>VISUAL DEMO</span></h3>
+          <label class="switch"><span>착륙장치</span><input id="gear" type="checkbox" checked role="switch"><span class="switch-track" aria-hidden="true"></span></label>
+          <label class="switch"><span>캐노피 열기</span><input id="canopy" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></label>
+          <label class="range-label" for="ramp">흡입구 램프 <output id="ramp-value" for="ramp">0°</output></label><input id="ramp" type="range" min="0" max="12" value="0" step="1">
+          <label class="range-label" for="vector">노즐 편향 <output id="vector-value" for="vector">0°</output></label><input id="vector" type="range" min="-15" max="15" value="0" step="1">
+          <label class="range-label" for="aperture">노즐 개방 <output id="aperture-value" for="aperture">30%</output></label><input id="aperture" type="range" min="0" max="100" value="30" step="1">
+        </section>
+        <button class="reset" id="reset-view" type="button">전체 형상으로 초기화 <span>↺</span></button>
+      </aside>
+    </div>
+    <section class="spec-strip" aria-label="Su-35S 공개 제원 참고"><div><span>전장</span><strong>21.9 <small>m</small></strong></div><div><span>날개 폭</span><strong>15.3 <small>m</small></strong></div><div><span>엔진</span><strong>2 <small>× AL-41F1S</small></strong></div><div><span>형식</span><strong class="spec-text">단좌 · 쌍발 · 쌍미익</strong></div><div><span>현재 구현</span><strong class="spec-text accent">독립 3D 외형</strong></div></section>
+    <footer class="notes"><p>공개 치수와 형상 특징을 참고해 독립 제작한 게임용 모델입니다. 가동 범위와 내부 구조는 시각화용 근사입니다.<br>Su-35S 비행 물리·레이더·무장은 아직 연결되지 않았습니다.</p><a href="https://uacrussia.ru/en/aircraft/lineup/military/su-35/" target="_blank" rel="noopener noreferrer">UAC · 공개 기체 자료 ↗</a></footer>
+  </main>
+  <noscript><p class="noscript">3D 외형을 보려면 JavaScript를 켜 주세요. <a href="./?screen=tree">기체 트리로 돌아가기</a></p></noscript>
+</body>
+</html>

@@ -20,6 +20,11 @@ jobs:
       - uses: actions/checkout@v6
       - name: Restore and verify game files
         run: python3 .deployment/restore.py
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Check Su-35 exterior and existing aircraft
+        run: node tests/su35-geometry.mjs public
       - uses: actions/configure-pages@v5
         with:
           enablement: true
