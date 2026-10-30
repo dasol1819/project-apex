@@ -37,7 +37,7 @@ export const TREE_SOURCES=Object.freeze({
 });
 const rows=[];
 // [suffix, designation, variant, BR, era, distinguishing note, native ID?]
-function add(nation,branch,family,nickname,source,variants){for(const [suffix,name,variant,br,era,note,simId=null]of variants)rows.push(Object.freeze({id:`${nation}-${family}-${suffix}`,nation,branch,family,nickname,source,name,variant,br,era,note,simId,implemented:Number.isInteger(simId),previewUrl:family==='su35'?'su35.html?v=4':null}));}
+function add(nation,branch,family,nickname,source,variants){for(const [suffix,name,variant,br,era,note,simId=null]of variants)rows.push(Object.freeze({id:`${nation}-${family}-${suffix}`,nation,branch,family,nickname,source,name,variant,br,era,note,simId,implemented:Number.isInteger(simId),previewUrl:family==='su35'?'su35.html?v=5':null}));}
 add('us','light','p40','Warhawk','ww2',[
  ['e','P-40E','기총 강화형',3,'prop','초기 Warhawk에서 기총 화력을 강화한 대표 E형.']]);
 add('us','light','p51','Mustang','ww2',[
@@ -139,7 +139,7 @@ add('ru','heavy','mig31','Foxhound','uacmap',[
 add('ru','heavy','su27','Flanker','uacmap',[
  ['s','Su-27S','초기 제공형',15.5,'fourth','장거리 제공 임무의 초기 Flanker. 후속 Su-30·Su-35와 다른 구성.']]);
 add('ru','heavy','su35','Flanker-E','uac',[
- ['s','Su-35S','Irbis · 추력 편향',19,'modern','3D 외형 공개 · 열린 흡입구와 덕트, 캐노피·착륙장치·추력편향 노즐을 확인할 수 있습니다. 전용 비행 시험을 제공하며 전투 모드 연결은 준비 중입니다.']]);
+ ['s','Su-35S','Irbis · 추력 편향',19,'modern','AL-41F1S · 경사축 TVC · Irbis PESA/TWS · R-73 / R-77-1 외부 무장 · 전투·재출격 지원.',13]]);
 add('ru','heavy','su57','Felon','uac',[
  ['base','Su-57','초기 실전 구성',19.5,'modern','초기 양산형 AL-41F1 · 쌍발 경사축 TVC · 내부 무장창 · 공개되지 않은 성능은 게임 추정.',10]]);
 add('ru','multirole','mig23','Flogger','soviet',[

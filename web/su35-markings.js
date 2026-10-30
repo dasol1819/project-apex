@@ -20,7 +20,8 @@ export function paintSu35Markings(k,surfaces){
       const flat=outline(scale),points=flat.map(p=>plane==='wing'?cast([p[0],6,p[2]],[0,-1,0],lift):plane==='belly'?cast([p[0],-6,p[2]],[0,1,0],lift):cast([side*6,p[1],p[2]],[-side,0,0],lift));
       if(points.some(p=>!p))return;
       const uv=flat.map(p=>new T.Vector2(plane!=='fin'?p[0]:p[2],plane!=='fin'?p[2]:p[1]));
-      const indices=T.ShapeUtils.triangulateShape(uv,[]).flat();k.mesh(geometry(points.flat(),indices),material,0).name='Su-35 projected national marking';
+      const part=plane==='fin'?(side<0?5:6):(side<0?12:13);
+      const indices=T.ShapeUtils.triangulateShape(uv,[]).flat();k.mesh(geometry(points.flat(),indices),material,part).name='Su-35 projected national marking';
     }
   }
   for(const side of [-1,1]){star(side*5.5,.6,3.8,.43,'wing',side);star(side*5.5,.4,3.8,.43,'belly',side);star(side*2.20,2.28,6.25,.31,'fin',side);}
@@ -39,7 +40,7 @@ export function paintSu35Markings(k,surfaces){
       if(j<M&&i<N){const a=j*(N+1)+i,b=a+N+1;ix.push(a,a+1,b,a+1,b+1,b);}
     }
     const g=geometry(p,ix);g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));
-    k.mesh(g,new T.MeshStandardMaterial({map,transparent:true,roughness:.77,metalness:.02,depthWrite:false,side:T.DoubleSide,polygonOffset:true,polygonOffsetFactor:-1}),0).name='Su-35 projected identification';
+    k.mesh(g,new T.MeshStandardMaterial({map,transparent:true,roughness:.77,metalness:.02,depthWrite:false,side:T.DoubleSide,polygonOffset:true,polygonOffsetFactor:-1}),z0<0?10:(side<0?5:6)).name='Su-35 projected identification';
   }
   for(const side of [-1,1]){
     const flip=(a,b)=>side>0?[b,a]:[a,b];

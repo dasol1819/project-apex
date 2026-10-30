@@ -65,6 +65,31 @@ function displayTexture(kind){
   const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;t.anisotropy=8;return t;
 }
 
+function updateDisplay(texture,kind,s){
+  if(!texture)return;
+  const p=texture.image.getContext('2d'),w=1024,h=768;
+  p.fillStyle='#07120f';p.fillRect(0,0,w,h);p.fillStyle='#98ba86';p.strokeStyle='#6d966d';p.lineWidth=3;p.font='25px monospace';
+  const elapsed=Math.max(0,Math.floor(s.time||0)),timer=[Math.floor(elapsed/3600),Math.floor(elapsed/60)%60,elapsed%60].map(n=>String(n).padStart(2,'0')).join(':');
+  p.fillText(kind==='attitude'?'FLIGHT / LIVE':'N035 / TACTICAL',30,40);p.fillText(timer,820,40);
+  if(kind==='attitude'){
+    p.save();p.beginPath();p.rect(260,120,500,480);p.clip();p.translate(510,355);p.rotate(-(s.bank||0));p.translate(0,(s.pitchAngle||0)*300);
+    p.fillStyle='#294d57';p.fillRect(-600,-1200,1200,1200);p.fillStyle='#51402b';p.fillRect(-600,0,1200,1200);p.strokeStyle='#a8c292';p.beginPath();p.moveTo(-550,0);p.lineTo(550,0);p.stroke();
+    p.fillStyle='#a8c292';for(let n=-8;n<=8;n++){if(!n)continue;p.beginPath();p.moveTo(-65,-n*52);p.lineTo(65,-n*52);p.stroke();p.fillText(String(n*10),85,-n*52+8);}p.restore();
+    p.strokeStyle='#dfcf80';p.lineWidth=5;p.beginPath();p.moveTo(400,355);p.lineTo(480,355);p.lineTo(510,375);p.lineTo(540,355);p.lineTo(620,355);p.stroke();
+    p.fillStyle='#b7cf9c';p.font='36px monospace';p.fillText(Math.round((s.tas||0)*3.6)+' km/h',25,350);p.fillText(Math.round(s.altitude||0)+' m',785,350);
+    p.font='27px monospace';p.fillText('G '+(s.g??1).toFixed(1),40,630);p.fillText('AOA '+((s.alpha||0)*180/Math.PI).toFixed(1)+'°',40,674);p.fillText('FUEL '+Math.round(s.fuel??0)+' kg',610,650);
+  }else{
+    p.save();p.translate(510,355);p.strokeStyle='#46664a';for(const r of [80,155,230]){p.beginPath();p.arc(0,0,r,0,Math.PI*2);p.stroke();}
+    p.beginPath();p.moveTo(-230,0);p.lineTo(230,0);p.moveTo(0,-230);p.lineTo(0,230);p.stroke();
+    const radar=s.radar,range=radar?.[11]||40000;
+    if(radar?.[0]&&radar[5]){const a=radar[9]||0,r=Math.min(230,radar[8]/range*230),x=Math.sin(a)*r,y=-Math.cos(a)*r;p.strokeStyle='#b7d992';p.strokeRect(x-9,y-9,18,18);}
+    p.restore();p.fillStyle='#98ba86';p.fillText('RNG '+Math.round(range/1000)+' km',45,90);p.fillText(radar?.[0]?(radar[1]===3?'STT':'SEARCH / TWS'):'RADAR OFF',710,90);
+    p.fillText('R-73  '+(s.missiles?.[1]??0),50,650);p.fillText('R-77-1  '+(s.amraam?.[1]??0),570,650);p.fillText('HDG '+String(Math.round(((s.heading||0)*180/Math.PI+360)%360)).padStart(3,'0'),45,690);
+  }
+  p.fillStyle='#7e9f74';p.font='23px monospace';for(let i=0;i<8;i++)p.fillText(['SYS','NAV','MAP','FUEL','ENG','COMM','TEST','MENU'][i],30+i*125,738);
+  texture.needsUpdate=true;
+}
+
 export function modernSu35Cockpit(k){
   seat(k);
   const black=new T.MeshStandardMaterial({color:0x192022,roughness:.75,metalness:.1});
@@ -78,6 +103,7 @@ export function modernSu35Cockpit(k){
     const texture=displayTexture(kind),screen=new T.MeshStandardMaterial({color:texture?0xffffff:0x314e37,map:texture,
       emissive:texture?0x6a7562:0x10201b,emissiveMap:texture,emissiveIntensity:.20,roughness:.32,metalness:.02});
     k.box([.368,.274,.008],[side*.223,1.06,-5.792],part,screen);
+    let displayAge=1;k.animations.push((s,dt)=>{displayAge+=dt;if(displayAge<.25||s.altitude===undefined)return;displayAge=0;updateDisplay(texture,kind,s);});
     for(let i=0;i<8;i++)for(const y of [-1,1])k.box([.025,.014,.012],[side*.223+(i-3.5)*.049,1.06+y*.151,-5.784],part,keys);
     for(let i=0;i<6;i++)for(const x of [-1,1])k.box([.013,.024,.012],[side*.223+x*.199,.94+i*.048,-5.784],part,keys);
     k.ellipsoid([.024,.024,.015],[side*.223-.175,.925,-5.777],part,black,undefined,16);

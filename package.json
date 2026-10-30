@@ -1,0 +1,7 @@
+{
+  "name": "project-apex-web",
+  "private": true,
+  "type": "module",
+  "devDependencies": {"wabt": "1.0.39"},
+  "scripts": {"build:combat": "node scripts/native/build-su35.mjs"}
+}

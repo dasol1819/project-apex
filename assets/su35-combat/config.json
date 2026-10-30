@@ -1,0 +1,112 @@
+{
+  "id": 13,
+  "name": "Su-35S",
+  "airframeDoubles": {
+    "8": 19423.491151974,
+    "16": 31967.832312623,
+    "24": 62,
+    "32": 15.3,
+    "40": 4.2,
+    "48": 19000,
+    "56": 11500,
+    "64": 21.9,
+    "72": 9,
+    "80": -3,
+    "88": 45,
+    "96": 4.2,
+    "104": 180000,
+    "112": 270000,
+    "120": 40000,
+    "128": 25000,
+    "136": 0.023,
+    "144": 0.108,
+    "152": 4.6,
+    "160": 0.42,
+    "168": 0.85,
+    "176": 1.8,
+    "184": 1.02,
+    "192": 26500,
+    "200": 1.6,
+    "224": 30,
+    "232": 1.05,
+    "240": 0.73,
+    "248": -5.2,
+    "256": 1.271,
+    "264": 8.45,
+    "280": 34500
+  },
+  "airframeInts": {
+    "0": 2,
+    "208": 0,
+    "212": 6,
+    "216": 150,
+    "272": 2
+  },
+  "radar": {
+    "range": 200000,
+    "surfaceRange": 80000,
+    "revisit": 1.8,
+    "scanStepDegrees": 10,
+    "notch": 24,
+    "quality": 0.66,
+    "tws": 1,
+    "datalink": 1
+  },
+  "rcs": 3,
+  "loadouts": [
+    {
+      "id": 38,
+      "aircraft": 13,
+      "key": "su35-counterair",
+      "name": "제공 · R-77-1 / R-73",
+      "ir": 2,
+      "rfMask": 63,
+      "bomb": -1,
+      "bombs": 0,
+      "pod": 0,
+      "note": "R-73 ×2 + R-77-1 ×6 · 외부 장착"
+    },
+    {
+      "id": 39,
+      "aircraft": 13,
+      "key": "su35-precision",
+      "name": "정밀 타격 · KAB-250LG",
+      "ir": 2,
+      "rfMask": 51,
+      "bomb": 6,
+      "bombs": 2,
+      "pod": 5,
+      "note": "KAB-250LG-E ×2 + R-77-1 ×4 + R-73 ×2 · T220/E 포드 · 게임 추정 구성"
+    },
+    {
+      "id": 40,
+      "aircraft": 13,
+      "key": "su35-clean",
+      "name": "기관포 / 기본 비행",
+      "ir": 0,
+      "rfMask": 0,
+      "bomb": -1,
+      "bombs": 0,
+      "pod": 0,
+      "note": "GSh-30-1 · 30 mm · 150발 · 외부 무장 없음"
+    },
+    {
+      "id": 41,
+      "aircraft": 13,
+      "key": "su35-patrol",
+      "name": "초계 · 경량 제공",
+      "ir": 2,
+      "rfMask": 15,
+      "bomb": -1,
+      "bombs": 0,
+      "pod": 0,
+      "note": "R-73 ×2 + R-77-1 ×4 · 외부 장착"
+    }
+  ],
+  "pod": {
+    "id": 5,
+    "name": "T220/E · 게임 질량 추정",
+    "mass": 225
+  },
+  "assumptions": "Dimensions, mass and thrust from public Su-35 specifications; aerodynamic derivatives, inertia, sensor ranges/RCS, targeting-pod compatibility and weapon performance are explicit game estimates."
+}

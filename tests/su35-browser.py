@@ -71,15 +71,15 @@ with sync_playwright() as p:
     assert not errors, errors
     mobile.close()
 
-    # Follow the real tree entry point, with no native aircraft ID assigned.
+    # Follow the real tree entry point and its separate model studio.
     context = browser.new_context(viewport={'width': 1440, 'height': 1000}, reduced_motion='reduce')
     page = context.new_page()
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.goto(base + '/?screen=tree', wait_until='domcontentloaded')
     page.locator('[data-tree-nation=ru]').click()
     page.locator('[data-tree-aircraft=ru-su35-s]').click()
-    assert '외형' in page.locator('#tree-detail-status').inner_text()
-    assert page.locator('#tree-choose').is_disabled()
+    assert '구현' in page.locator('#tree-detail-status').inner_text()
+    assert page.locator('#tree-choose').is_enabled()
     assert page.locator('#tree-inspect-model').is_enabled()
     page.locator('#tree-inspect-model').click()
     page.wait_for_url('**/su35.html*')

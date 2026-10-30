@@ -7,11 +7,12 @@ const rgb=hex=>'vec3('+new T.Color(hex).toArray().map(n=>n.toFixed(6)).join(',')
 
 // Fixed, airframe-space paint boundaries, shared by the shell and its controls.
 // The existing atlas contributes only fine surface detail to the painted areas.
-export function applySu35Livery(material){
+export function applySu35Livery(material,integrity={value:1}){
   material.onBeforeCompile=shader=>{
+    shader.uniforms.su35Integrity=integrity;
     shader.vertexShader='attribute vec3 liveryPosition; varying vec3 vSu35Local; varying vec3 vSu35NeutralNormal;\n'+shader.vertexShader;
     shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvSu35Local=liveryPosition;vSu35NeutralNormal=normal;');
-    shader.fragmentShader=`varying vec3 vSu35Local;varying vec3 vSu35NeutralNormal;
+    shader.fragmentShader=`uniform float su35Integrity;varying vec3 vSu35Local;varying vec3 vSu35NeutralNormal;
       float paintOval(vec2 p,vec2 c,vec2 r,float a){float cs=cos(a),sn=sin(a);vec2 q=p-c;q=mat2(cs,-sn,sn,cs)*q/r;float edge=1.+.19*sin(q.x*3.1+q.y*2.5)+.13*cos(q.y*4.6-q.x*1.7)+.055*sin(q.x*7.3-q.y*5.2);return 1.-smoothstep(edge-.015,edge+.015,length(q));}
     `+shader.fragmentShader;
     shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
@@ -39,8 +40,10 @@ export function applySu35Livery(material){
       float metal=step(5.25,vSu35Local.z)*(1.-smoothstep(.62,.70,engineDistance));
       vec3 steel=mix(vec3(luma),original,.35)*vec3(.96,1.02,1.06);
       diffuseColor.rgb=mix(paint*surfaceDetail,steel,metal);
+      float scarring=(1.-su35Integrity)*smoothstep(.25,.72,fract(sin(dot(floor(vSu35Local*4.),vec3(12.98,78.23,37.71)))*43758.54));
+      diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.025,.029,.030),scarring*.85);
     `);
   };
-  material.customProgramCacheKey=()=> 'su35-52-reference-paint-4';
+  material.customProgramCacheKey=()=> 'su35-52-reference-paint-5';
   return material;
 }

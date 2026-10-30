@@ -1,5 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-only
 import * as T from './vendor/three.module.js';
+let cachedAsset,pendingAsset;
+export const cachedSu35Asset=()=>cachedAsset;
+export function preloadSu35Asset(onProgress){
+  if(cachedAsset)return Promise.resolve(cachedAsset);
+  return pendingAsset??=(loadSu35Asset(onProgress).then(asset=>cachedAsset=asset).catch(error=>{pendingAsset=undefined;throw error;}));
+}
 
 export function decodeSu35Asset(metadata,buffer){
   if(metadata.version!==3||!Array.isArray(metadata.meshes))throw new Error('Unsupported Su-35 model asset');

@@ -95,6 +95,9 @@ export function flankerNozzle(k,side){
   k.line(ring,part,holder,.012,root);
   for(let i=0;i<12;i++){const a=i/12*Math.PI*2;rod(k,[cx,cy,8.225],[cx+Math.cos(a)*.43,cy+Math.sin(a)*.43,8.225],.008,part,holder,root);}
   const frame=new T.Group();frame.name='Su-35 physical exhaust exit';frame.position.set(0,0,10.08-8.55);frame.userData.keepGroup=true;root.add(frame);
-  k.animations.push(s=>{root.rotation.set(s.vectorPitch||0,side*(s.vectorYaw||0),0);feathers.morphTargetInfluences[0]=s.afterburner??.3;inner.morphTargetInfluences[0]=s.afterburner??.3;});
+  k.animations.push(s=>{const angle=s[side<0?'leftNozzle':'rightNozzle'];
+    if(angle!==undefined)root.quaternion.setFromAxisAngle(V(Math.cos(32*Math.PI/180),side*Math.sin(32*Math.PI/180),0),T.MathUtils.clamp(angle,-Math.PI/12,Math.PI/12));
+    else root.rotation.set(s.vectorPitch||0,side*(s.vectorYaw||0),0);
+    feathers.morphTargetInfluences[0]=s.afterburner??.3;inner.morphTargetInfluences[0]=s.afterburner??.3;});
   k.batch(root);return frame;
 }

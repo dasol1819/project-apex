@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 /public/
 *.blend1
+node_modules/
+.native-build/

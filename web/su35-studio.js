@@ -1,6 +1,6 @@
 import * as T from './vendor/three.module.js';
-import {createSu35Model} from './su35-model.js?v=4';
-import {loadSu35Asset} from './su35-asset.js?v=4';
+import {createSu35Model} from './su35-model.js?v=5';
+import {loadSu35Asset} from './su35-asset.js?v=5';
 import {disposeObject} from './aircraft-catalog.js';
 
 const $=id=>document.getElementById(id),canvas=$('model-canvas'),status=$('model-status');

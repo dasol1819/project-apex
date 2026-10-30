@@ -23,8 +23,19 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
+      - name: Rebuild the native Su-35 combat module
+        run: |
+          npm ci
+          npm run build:combat
+          git diff --exit-code -- web/flight.wasm
+      - name: Check native combat and legacy flight regression
+        run: |
+          node tests/su35-combat-native.mjs public
+          node tests/su35-combat-systems.mjs public
       - name: Check Su-35 exterior and existing aircraft
         run: node tests/su35-geometry.mjs public
+      - name: Check Su-35 combat geometry, stations and wreckage
+        run: node tests/su35-combat-model.mjs public
       - name: Check Su-35 flight forces and integration
         run: node tests/su35-flight-physics.mjs public
       - uses: actions/configure-pages@v5

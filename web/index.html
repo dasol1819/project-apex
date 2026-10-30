@@ -1,0 +1,1502 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101720">
+<meta name="description" content="Project: Apex — Joint Air Dominance. 제공권을 다투는 공중전. 미국 46대·러시아 45대, 총 91개 형식의 기체 트리. BR 1.0–20.0과 주요 개량형을 비교하고 구현된 14종을 선택해 출격하세요.">
+<title>Project: Apex · Joint Air Dominance</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="aircraft-tree.css">
+<link rel="stylesheet" href="aircraft-tree-map.css">
+<link rel="stylesheet" href="academy.css">
+</head>
+<body class="preflight">
+<div class="icon-definitions" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+<symbol id="i-back" viewBox="0 0 24 24">
+<path d="m14 5-7 7 7 7">
+</path>
+</symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24">
+<path d="M4 12h16m-6-6 6 6-6 6">
+</path>
+</symbol>
+<symbol id="i-target-next" viewBox="0 0 24 24">
+<circle cx="8" cy="12" r="4"></circle>
+<path d="M8 5v3m0 8v3M1 12h3m8 0h10m-4-4 4 4-4 4"></path>
+</symbol>
+<symbol id="i-close" viewBox="0 0 24 24">
+<path d="m6 6 12 12M18 6 6 18">
+</path>
+</symbol>
+<symbol id="i-menu" viewBox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16">
+</path>
+</symbol>
+<symbol id="i-settings" viewBox="0 0 24 24">
+<path d="M4 7h16M4 17h16M8 4v6m8 4v6">
+</path>
+</symbol>
+<symbol id="i-sound" viewBox="0 0 24 24">
+<path d="m11 5-5 4H3v6h3l5 4V5Zm4 3a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14">
+</path>
+</symbol>
+<symbol id="i-help" viewBox="0 0 24 24">
+<path d="M9 8a3 3 0 1 1 5 2c-2 1-2 2-2 3m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0">
+</path>
+</symbol>
+<symbol id="i-expand" viewBox="0 0 24 24">
+<path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5">
+</path>
+</symbol>
+<symbol id="i-plane" viewBox="0 0 24 24">
+<path d="m12 2 2 7 7 6v2l-7-2v5l-2 2-2-2v-5l-7 2v-2l7-6 2-7Z">
+</path>
+</symbol>
+<symbol id="i-map" viewBox="0 0 24 24">
+<path d="m9 4-6 3v14l6-3 6 3 6-3V4l-6 3-6-3Zm0 0v14m6-11v14">
+</path>
+</symbol>
+<symbol id="i-radar" viewBox="0 0 24 24">
+<path d="M12 12 5.6 5.6M21 12a9 9 0 1 1-9-9m6 0v6h6M16 12a4 4 0 1 1-4-4">
+</path>
+</symbol>
+<symbol id="i-target" viewBox="0 0 24 24">
+<path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0">
+</path>
+</symbol>
+<symbol id="i-camera" viewBox="0 0 24 24">
+<path d="M3 7h13v10H3V7Zm13 3 5-3v10l-5-3">
+</path>
+</symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24">
+<path d="M14 6a5 5 0 0 0-6 6L3 17a3 3 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-4 3-3-3 3-4Z">
+</path>
+</symbol>
+<symbol id="i-eye" viewBox="0 0 24 24">
+<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Zm13 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0">
+</path>
+</symbol>
+<symbol id="i-gun" viewBox="0 0 24 24">
+<path d="m4 20 11-11m-8 8-3-3M14 4l6 6M12 6l6 6m-8-4 6 6M16 2l6 6">
+</path>
+</symbol>
+<symbol id="i-missile" viewBox="0 0 24 24">
+<path d="m7 17 10-10m-2-4 6-1-1 6M6 13l-4 1 4 4 4 4 1-4m3-11 3 3M3 21l3-3">
+</path>
+</symbol>
+<symbol id="i-bomb" viewBox="0 0 24 24">
+<path d="m15 3 6 6m-6-6-3 3 6 6 3-3M12 6l-7 7a5 5 0 0 0 7 7l7-7M4 4l2 2M3 8h3m2-5v3">
+</path>
+</symbol>
+<symbol id="i-shield" viewBox="0 0 24 24">
+<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Zm-4 9 3 3 5-6">
+</path>
+</symbol>
+<symbol id="i-play" viewBox="0 0 24 24">
+<path d="m8 4 12 8-12 8V4Z">
+</path>
+</symbol>
+<symbol id="i-restart" viewBox="0 0 24 24">
+<path d="M4 9a8 8 0 1 1 0 7M4 3v6h6">
+</path>
+</symbol>
+<symbol id="i-chart" viewBox="0 0 24 24">
+<path d="M4 3v17h17M8 16v-5m5 5V7m5 9v-9">
+</path>
+</symbol>
+<symbol id="i-download" viewBox="0 0 24 24">
+<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5">
+</path>
+</symbol>
+<symbol id="i-gear" viewBox="0 0 24 24">
+<path d="M9 4h6v9H9V4Zm3 9v4m-6 3a3 3 0 1 1 0-6 3 3 0 0 1 0 6m12 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6M6 17h12">
+</path>
+</symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24">
+<path d="m6 9 6 6 6-6">
+</path>
+</symbol>
+</defs>
+</svg>
+</div>
+ <main id="viewport" aria-label="3D 비행 화면">
+<canvas id="scene">
+</canvas>
+<button id="mouse-capture" class="mouse-capture-prompt" hidden=""><span class="capture-mouse-icon" aria-hidden="true">↗</span><span id="mouse-capture-note">클릭해서 마우스 고정 · Esc로 해제 / 일시정지</span></button>
+<canvas id="hud" aria-hidden="true">
+</canvas>
+<div class="vignette">
+</div>
+</main>
+ <header class="topbar">
+<a class="brand" href="#" id="brand" aria-label="비행 준비 화면">
+<svg viewBox="0 0 34 34" aria-hidden="true">
+<path d="M17 2 20 14 31 23 22 23 20 30 17 27 14 30 12 23 3 23 14 14Z">
+</path>
+</svg>
+<span>PROJECT: APEX<small>JOINT AIR DOMINANCE</small>
+</span>
+</a>
+<div class="session">
+<span class="statusdot">
+</span>
+<span id="session-label">격납고</span>
+<i>
+</i>
+<span id="clock">00:00</span>
+</div>
+<nav aria-label="프로그램 메뉴">
+<button type="button" class="academy-nav-button" data-open-missions aria-label="미션 열기">미션</button>
+<button type="button" id="pilot-account" class="icon-button"><span class="pilot-account-icon" aria-hidden="true">✦</span><span>로그인</span></button>
+<button id="sound" class="icon-button" title="소리" aria-label="엔진 소리 끄기">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-sound">
+</use>
+</svg>
+<span>ON</span>
+</button>
+<button id="help" class="icon-button" title="조작 안내" aria-label="조작 안내">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-help">
+</use>
+</svg>
+<span class="button-caption">안내</span>
+</button>
+<button id="settings" class="icon-button" title="설정" aria-label="설정">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-settings">
+</use>
+</svg>
+<span class="button-caption">설정</span>
+</button>
+<button id="fullscreen" class="icon-button" title="전체 화면" aria-label="전체 화면">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-expand">
+</use>
+</svg>
+</button>
+<button id="pause" class="icon-button" aria-label="일시정지 메뉴">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-menu">
+</use>
+</svg>
+</button>
+</nav>
+</header>
+ <section id="welcome" class="welcome">
+<div id="home-screen" class="hangar-screen">
+ <div class="hangar-heading">
+<span class="section-kicker">FIGHTER / 01</span>
+<h1>F-22A <span>RAPTOR</span>
+</h1>
+<p>차세대 제공 전투기</p>
+</div>
+ <section class="mission-entry" aria-label="보유 재화">
+<div data-wallet-mount></div><p data-wallet-note class="wallet-note">게스트 잔액 · 이 기기에 저장</p>
+<p class="battle-income-note">시작에서 미션 또는 전투를 선택하세요.</p>
+</section>
+ <div class="hangar-tools">
+
+<button data-open-dialog="help-dialog">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-help">
+</use>
+</svg>
+<span>비행 안내</span>
+</button>
+<a href="flight-model.html" target="_blank" rel="noopener">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-chart">
+</use>
+</svg>
+<span>기체·시뮬레이션</span>
+</a>
+<a href="https://raptor-flight-lab.ryanyc2357.chatgpt.site/downloads/" target="_blank" rel="noopener">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-download">
+</use>
+</svg>
+<span>앱 다운로드</span>
+</a>
+</div>
+ <div class="hangar-bottom">
+<div class="hangar-loadout">
+<div class="hangar-aircraft">
+<span class="aircraft-emblem">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-plane">
+</use>
+</svg>
+</span>
+<div>
+<small>선택 기체</small>
+<strong>F-22A RAPTOR</strong>
+<span>2 × F119 · 추력 편향</span>
+</div>
+<span id="current-aircraft-rating" class="ready-tag">BR 20.0</span>
+</div>
+<div class="store-strip" aria-label="기체 무장">
+<span>M61A2 <b>480</b>
+</span>
+<span>AIM-9X <b>×2</b>
+</span>
+<span>AIM-120 <b id="hangar-rf-count">×6</b>
+</span>
+<span id="hangar-bomb" hidden="">폭탄 <b>×0</b>
+</span>
+</div>
+</div>
+<div class="hangar-launch">
+<p id="hangar-sortie">블루워터 해역 · 통합 전장</p>
+<button id="start" class="primary" disabled="">
+<span>비행 환경 준비 중</span>
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-arrow">
+</use>
+</svg>
+</button>
+<button class="map-open-button" data-open-maps="">전장 선택 <span>BLUE WATER / STALINGRAD 1942</span></button>
+<div class="aircraft-entry-actions"><button id="aircraft-tree-open" class="tree-open" data-open-aircraft-tree disabled aria-label="기체 트리 · 미국과 러시아에서 기체 선택"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plane"></use></svg><span>기체 트리</span><small>미국 · 러시아</small></button><button id="hangar-open" class="hangar-open" disabled="" aria-label="격납고 · 기체 외형과 특성 보기"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plane"></use></svg><span>격납고</span><small>기체 외형 · 특성</small></button></div>
+</div>
+</div>
+</div>
+<section id="play-screen" class="menu-sheet play-screen" hidden aria-labelledby="play-title">
+ <header class="sheet-heading">
+  <button id="play-back" type="button" class="back-button" aria-label="시작 화면으로 돌아가기"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-back"></use></svg><span>뒤로</span></button>
+  <div><span class="section-kicker">PROJECT: APEX / PLAY</span><h2 id="play-title" tabindex="-1">플레이 선택</h2></div>
+ </header>
+ <div class="play-content">
+  <p class="play-intro">오늘의 출격을 선택하세요.</p>
+  <div class="play-options" role="group" aria-label="미션 또는 전투 선택">
+   <button id="play-missions" type="button" class="play-option play-option-missions" data-open-missions aria-labelledby="play-missions-title" aria-describedby="play-missions-description">
+    <span class="play-option-top"><span>01 / MISSIONS</span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-map"></use></svg></span>
+    <strong id="play-missions-title">미션</strong>
+    <span id="play-missions-description" class="play-option-description">첫 비행부터 마스터 작전까지.<br>목표를 달성하고 비행 실력을 쌓으세요.</span>
+    <span class="play-option-tags"><span>튜토리얼</span><span>등급별 도전</span><span>클리어 보상</span></span>
+    <span class="play-option-footer">미션 목록 열기<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"></use></svg></span>
+   </button>
+   <button id="play-battle" type="button" class="play-option play-option-battle" aria-labelledby="play-battle-title" aria-describedby="play-battle-description">
+    <span class="play-option-top"><span>02 / BATTLE</span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plane"></use></svg></span>
+    <strong id="play-battle-title">전투</strong>
+    <span id="play-battle-description" class="play-option-description">기체와 전장을 고르고 출격하세요.<br>편대와 함께 제공권을 장악하세요.</span>
+    <span class="play-option-tags"><span>기체·무장</span><span>출발 위치</span><span>편대 설정</span></span>
+    <span class="play-option-footer">전투 출격 준비<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"></use></svg></span>
+   </button>
+  </div>
+ </div>
+</section>
+<section id="aircraft-tree-screen" class="aircraft-tree" hidden aria-labelledby="aircraft-tree-title">
+<header class="tree-heading"><button id="tree-back" class="back-button" aria-label="이전 화면으로"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-back"></use></svg><span>뒤로</span></button><div><span class="section-kicker">PROJECT: APEX / AIRCRAFT TREE</span><h2 id="aircraft-tree-title">기체 트리</h2></div><button id="tree-current" class="tree-current" title="필터를 초기화하고 현재 선택 기체로 이동"><span><small>현재 선택 · 트리에서 찾기</small><strong id="tree-current-name">F-22A</strong></span><b id="tree-current-rating">BR 20.0</b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"></use></svg></button></header>
+<div id="tree-nations" class="tree-nations" role="tablist" aria-label="국가별 기체 트리"></div>
+<div class="tree-filters" role="search" aria-label="기체 검색과 필터">
+<label class="tree-search"><span class="sr-only">기체·개량형·블록 검색</span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"></circle><path d="m15 15 5 5"></path></svg><input id="tree-search" type="search" maxlength="80" placeholder="기체·개량형·블록 검색 · F-16, MiG-29…" autocomplete="off" spellcheck="false"><button id="tree-clear-search" aria-label="검색어 지우기" hidden>×</button></label>
+<button id="tree-filter-toggle" class="tree-filter-toggle" aria-expanded="false" aria-controls="tree-era tree-br-min tree-br-max">필터</button><label class="tree-era-filter"><span>시대</span><select id="tree-era" aria-label="기술 시대"><option value="all">모든 시대</option></select></label>
+<div class="tree-rating-filter"><span>BR</span><label><span class="sr-only">최소 레이팅</span><input id="tree-br-min" type="number" min="1" max="20" step="0.5" value="1.0" inputmode="decimal"></label><i>–</i><label><span class="sr-only">최대 레이팅</span><input id="tree-br-max" type="number" min="1" max="20" step="0.5" value="20.0" inputmode="decimal"></label></div><button id="tree-reset" class="tree-filter-reset" hidden>필터 초기화</button></div>
+<div class="tree-branch-bar"><div id="tree-branches" class="tree-branches" role="group" aria-label="병과 필터"></div><div class="tree-status-filter" role="group" aria-label="구현 여부"><button data-tree-status="all" aria-pressed="true">전체</button><button data-tree-status="implemented" aria-pressed="false">구현</button><button data-tree-status="unimplemented" aria-pressed="false">미구현</button></div></div>
+<div class="tree-info-row"><strong id="tree-results"></strong><span id="tree-russia-note" hidden>소련 시대 포함 · 기체별 구현 상태를 확인하세요.</span></div>
+<div id="tree-workspace" class="tree-workspace" role="tabpanel" aria-label="선택한 국가의 기체 트리">
+<div class="tree-board-area"><div id="tree-board-viewport" class="tree-board-viewport" tabindex="0" role="region" aria-label="공통 BR 눈금의 기체 트리 · 드래그 또는 스크롤 · 같은 BR은 같은 높이"><div id="tree-board" class="tree-board"></div></div>
+<div id="tree-empty" class="tree-empty" hidden><h3>조건에 맞는 기체가 없습니다</h3><p>검색어, 시대, 병과, 레이팅 또는 구현 여부를 바꿔보세요.</p><button id="tree-empty-reset">필터 초기화</button><button id="tree-other-nation" hidden></button></div></div>
+<aside id="tree-detail" class="tree-detail" aria-labelledby="tree-detail-title" hidden><div class="tree-detail-top"><span>VARIANT / AIRFRAME</span><button id="tree-detail-close" aria-label="기체 상세 닫고 트리로"><span>트리로</span>×</button></div><div class="tree-detail-scroll">
+<p id="tree-detail-kicker" class="tree-detail-kicker"></p><h3 id="tree-detail-title" class="tree-detail-title" tabindex="-1"></h3><p id="tree-detail-nickname" class="tree-detail-nickname"></p><p id="tree-detail-variant" class="tree-detail-variant"></p><div class="tree-detail-hero"><span id="tree-detail-symbol" class="tree-detail-symbol" aria-label="병과 기호 · 실제 기체 외형이 아닙니다"></span><strong id="tree-detail-rating" class="tree-detail-rating"></strong></div>
+<span id="tree-detail-status" class="tree-detail-status"></span><div id="tree-role-tags" class="tree-role-tags" aria-label="운용 역할"></div><dl id="tree-detail-properties"></dl>
+<h4>이 형식의 특징</h4><p id="tree-detail-note" class="tree-detail-note"></p><p id="tree-detail-availability" class="tree-detail-availability"></p><h4 id="tree-variant-heading"></h4><div id="tree-variants" class="tree-variants"></div>
+<p class="tree-detail-reference">공개 자료는 기체 계열의 참고 자료입니다. BR은 공중전·센서·타격 능력·생존성을 역할에 맞춰 평가한 게임 설계값이며, 공식 성능 순위가 아닙니다. 미구현 기체의 BR은 조정될 수 있습니다.</p><a id="tree-detail-source" class="tree-detail-source" target="_blank" rel="noopener noreferrer"></a></div>
+<div class="tree-detail-actions"><button id="tree-choose">이 기체 선택</button><button id="tree-inspect-model">격납고에서 외형·성능 보기</button><button id="tree-prepare" hidden>출격 준비 →</button><p id="tree-flight-readiness" class="tree-flight-readiness" hidden>기체 선택은 저장됩니다. 3D 비행 환경 준비 후 출격할 수 있습니다.</p></div></aside></div>
+<footer class="tree-footer"><p><span id="tree-navigation-hint">병과별 트리 탐색</span>BR 1.0–20.0 · 연결선은 게임 진행 경로 · 구현 기체는 해금 없이 선택 가능</p><div class="tree-map-tools"><label class="tree-jump-label"><span class="sr-only">BR 구간으로 이동</span><select id="tree-rating-jump" aria-label="BR 구간으로 이동"><option value="">BR 구간 이동</option></select></label><div class="tree-zoom" role="group" aria-label="트리 확대와 축소"><button id="tree-zoom-out" aria-label="트리 축소">−</button><output id="tree-zoom-value" aria-live="polite">80%</output><button id="tree-zoom-in" aria-label="트리 확대">+</button><button id="tree-fit" title="화면 폭에 트리 맞추기">전체 폭</button></div></div><div class="tree-pan"><button id="tree-pan-left" aria-label="트리를 왼쪽으로">←</button><button id="tree-pan-right" aria-label="트리를 오른쪽으로">→</button><button id="tree-top">처음부터 ↑</button></div></footer>
+<p id="tree-announcement" class="tree-announcement" aria-live="polite" role="status"></p></section>
+<section id="hangar-screen" class="aircraft-hangar" hidden="" aria-labelledby="hangar-title">
+ <header class="hangar-inspector-heading"><button id="hangar-back" class="back-button" aria-label="시작 화면으로"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-back"></use></svg><span>뒤로</span></button><div><span class="section-kicker">AIRCRAFT / HANGAR</span><h2 id="hangar-title">F-22A <span>RAPTOR</span></h2></div><button id="hangar-sortie-start" class="hangar-sortie-start">출격 준비<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"></use></svg></button></header>
+ <div class="hangar-aircraft-picker" role="group" aria-label="격납고 기체 전환"><button class="tree-shortcut" data-open-aircraft-tree disabled>기체 트리</button><button id="hangar-aircraft-prev" aria-label="이전 기체" title="이전 기체">‹</button><label class="hangar-selection-strip">기체 선택<select id="hangar-aircraft"><option value="0">F-22A · Raptor</option><option value="1">F-4E · Phantom II</option><option value="2">F-5E · Tiger II</option><option value="3">F-16C · Fighting Falcon</option><option value="4">F-14D · Tomcat</option><option value="5">F-15C · Eagle</option><option value="6">F-15E · Strike Eagle</option><option value="7">B-2A · Spirit</option><option value="9">P-26A Peashooter</option><option value="10">Su-57 · Felon</option><option value="11">F/A-18E · Super Hornet 단좌</option><option value="12">F/A-18F · Super Hornet 복좌</option>
+<option value="8">B-52H · Stratofortress</option><option value="13">Su-35S · Flanker-E</option></select></label><button id="hangar-aircraft-next" aria-label="다음 기체" title="다음 기체">›</button><span id="hangar-selection-position" aria-live="polite">1 / 6</span></div>
+ <div id="hangar-viewer" class="hangar-viewer" tabindex="0" role="region" aria-label="3D 기체 보기 · 드래그 또는 방향키로 회전, 휠 또는 두 손가락으로 확대"></div>
+
+ <div class="hangar-view-controls" aria-label="기체 관찰 도구"><div class="hangar-presets" role="group" aria-label="기체 보기 방향"><button data-hangar-view="overview" aria-pressed="true">전체</button><button data-hangar-view="front" aria-pressed="false">정면</button><button data-hangar-view="side" aria-pressed="false">측면</button><button data-hangar-view="rear" aria-pressed="false">후면</button><button data-hangar-view="top" aria-pressed="false">상부</button></div><div class="hangar-zoom"><button id="hangar-rotate" aria-label="자동 회전" aria-pressed="true"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8a8 8 0 1 0 1 8M19 3v5h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><button id="hangar-zoom-out" aria-label="기체 축소">−</button><button id="hangar-zoom-in" aria-label="기체 확대">+</button></div><p>드래그로 회전 · 휠 / 두 손가락으로 확대</p></div>
+ <aside class="hangar-spec-panel" aria-label="기체 특성"><div class="hangar-spec-identity"><span class="section-kicker">AIR SUPERIORITY FIGHTER</span><h3>기체 특성</h3><span id="hangar-aircraft-role" class="aircraft-role">스텔스 제공 전투기</span><p>쌍발 · 내부 무장창 · 피치 추력 편향</p></div>
+  <div class="hangar-tabs" role="tablist" aria-label="기체 정보"><button role="tab" data-hangar-tab="airframe" aria-selected="true" aria-controls="hangar-airframe">기체</button><button role="tab" data-hangar-tab="performance" aria-selected="false" aria-controls="hangar-performance">성능</button><button role="tab" data-hangar-tab="weapons" aria-selected="false" aria-controls="hangar-weapons">무장</button></div>
+  <section id="hangar-airframe" class="hangar-spec-page" data-hangar-panel="airframe" role="tabpanel"><dl><div><dt>엔진</dt><dd id="hangar-spec-engines">—</dd></div><div><dt>기체 길이</dt><dd id="hangar-spec-length">—</dd></div><div><dt>날개 폭</dt><dd id="hangar-spec-span">—</dd></div><div><dt>날개 면적</dt><dd id="hangar-spec-area">—</dd></div><div><dt>기본 기체 질량</dt><dd id="hangar-spec-empty">—</dd></div><div><dt>최대 내부 연료</dt><dd id="hangar-spec-fuel">—</dd></div><div hidden><dt>최대 이륙중량</dt><dd id="hangar-spec-mtow">—</dd></div><div><dt>구조강도</dt><dd id="hangar-spec-strength">—</dd></div></dl></section>
+  <section id="hangar-performance" class="hangar-spec-page" data-hangar-panel="performance" role="tabpanel" hidden=""><dl><div><dt>군용 추력 / 엔진</dt><dd id="hangar-spec-dry">—</dd></div><div><dt>A/B 추력 / 엔진</dt><dd id="hangar-spec-ab">—</dd></div><div><dt>총 최대 추력</dt><dd id="hangar-spec-total">—</dd></div><div><dt>기동 한계</dt><dd id="hangar-spec-limits">—</dd></div><div><dt>피치 TVC</dt><dd id="hangar-spec-tvc">—</dd></div></dl><section class="performance-section"><h4>하중 · 추진 · 조종</h4><dl id="performance-loading"></dl></section>
+<section class="performance-section"><h4>선회 성능 계산</h4><fieldset class="performance-conditions"><legend>계산 조건</legend><label>고도 m<input id="performance-altitude" type="number" min="0" max="15000" step="100" value="3000"></label><label>TAS m/s<input id="performance-speed" type="number" min="60" max="450" step="5" value="200"></label><label>연료 %<input id="performance-fuel" type="number" min="0" max="100" step="5" value="50"></label></fieldset><p id="performance-condition-note" class="catalog-note" aria-live="polite"></p><dl id="performance-turn"></dl><table class="performance-envelope"><caption>같은 고도·중량에서의 속도별 선회율</caption><thead><tr><th scope="col">TAS km/h</th><th scope="col">순간 °/s</th><th scope="col">지속 °/s</th></tr></thead><tbody id="performance-envelope"></tbody></table><p class="catalog-note">게임 공력·추력 모델로 계산한 수평 협조 선회 근사값입니다. 손상 없음, 기어·에어브레이크 수납, 최대 추력, 현재 무장 질량을 사용합니다. 순간은 양력·G 한계, 지속은 항력과 추력 균형을 함께 적용합니다. 조종 과도응답·연료 소모·전투 손상을 포함한 실측 선회율은 아닙니다.</p></section>
+<section class="performance-section"><h4>레이더 · 탐색</h4><dl id="performance-radar"></dl><p class="catalog-note">탐지거리·빔 폭·노치 수치는 게임 센서 설정입니다. 공대공 거리는 RCS 5m² 기준이며 고도·방위·클러터·차폐·기어·무장창에 따라 줄어듭니다. 기밀인 실제 탐지거리를 뜻하지 않습니다.</p></section>
+<section class="performance-section"><h4>공개 카탈로그 참고</h4><dl id="performance-public"></dl><p class="catalog-note">공개 자료의 탑재·비행 조건은 게임 구성과 다를 수 있습니다. 페리 항속거리는 전투행동반경이 아닙니다. 외부 연료탱크는 게임에 구현되지 않았습니다.</p><a id="performance-source" target="_blank" rel="noopener">군·제조사·박물관 제원 출처 ↗</a></section>
+<div id="hangar-bay-controls" class="hangar-presets" hidden><button id="hangar-bay-toggle" aria-pressed="false">폭탄창 보기</button></div>
+<div id="hangar-fold-controls" class="hangar-presets" hidden><button id="hangar-fold-toggle" aria-pressed="false">날개 접기 · 갑판 미리보기</button></div>
+<div id="hangar-wing-controls" class="hangar-presets" role="group" aria-label="F-14 날개 후퇴각 미리보기" hidden><button data-hangar-sweep="20" aria-pressed="true">날개 20°</button><button data-hangar-sweep="45" aria-pressed="false">45°</button><button data-hangar-sweep="68" aria-pressed="false">68°</button></div><p class="hangar-trait">FBW가 피치·롤·요를 함께 조절합니다. 추력 편향은 피치 방향으로 작동합니다.</p></section>
+  <section id="hangar-weapons" class="hangar-spec-page" data-hangar-panel="weapons" role="tabpanel" hidden><p class="loadout-eyebrow">무장 프리셋 · 선택 즉시 탑재</p><div data-loadout-picker class="loadout-grid" role="group" aria-label="격납고 무장 프리셋"></div><p data-loadout-summary class="loadout-summary" aria-live="polite"></p><p data-loadout-guidance class="loadout-instruction"></p><div id="loadout-stations"></div><p class="loadout-reference">해당 형식에서 확인한 무장으로 만든 대표 프리셋입니다. 모든 실전 조합·최대 탑재량을 뜻하지 않습니다. 폭장 질량은 랙·파일런을 제외한 근사값입니다. F-15E의 CFT는 기체·연료 질량에 포함됩니다.</p><a href="armament-reference.html" target="_blank" rel="noopener">무장 고증과 유도 방식 ↗</a></section>
+  <footer>현재 시뮬레이터 설정 기준</footer>
+ </aside>
+</section>
+<div id="map-screen" class="menu-sheet" hidden="">
+ <div class="sheet-heading">
+<button id="maps-back" class="back-button" aria-label="시작 화면으로">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-back">
+</use>
+</svg>
+<span>시작 화면</span>
+</button>
+<div>
+<span class="section-kicker">01 / OPERATION AREA</span>
+<h2>작전 해역 선택</h2>
+</div>
+<span class="step-indicator">
+<b>01</b>
+<i>
+</i>02</span>
+</div>
+ <div class="map-selection-body">
+<p class="section-description">비행할 지역을 선택하세요.</p>
+<div id="maps" role="group" aria-label="비행 맵 선택">
+<button class="map-option" data-map="stalingrad" aria-pressed="false"><span class="map-art map-art-stalingrad"><span>СТАЛИНГРАД</span><small>VOLGA FRONT · OCT 1942</small></span><span class="map-card-copy"><span class="card-code">STALINGRAD · 1942</span><b>스탈린그라드 전장</b><small>볼가 구릉 · 침식 계곡 · 강안 절벽 · 범람원 숲</small></span><span class="map-enter">선택 →</span></button>
+<button class="map-option selected" data-map="ocean" aria-pressed="true">
+<span class="map-art map-art-ocean">
+</span>
+<span class="map-card-copy">
+<span class="card-code">BLUE WATER</span>
+<b>블루워터 해역</b>
+<small>양 팀 섬 비행장 · 활주로 출격 · 해상전</small>
+</span>
+<span class="map-enter">선택 <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-arrow">
+</use>
+</svg>
+</span>
+</button>
+</div>
+<p id="map-description">양 팀 섬 비행장 · 대형 중앙 거점 · 통합 전장</p>
+</div>
+</div>
+<div id="spawn-screen" class="menu-sheet" hidden="">
+ <div class="sheet-heading">
+<button id="spawns-back" class="back-button" aria-label="미션 또는 전투 선택으로 돌아가기">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-back">
+</use>
+</svg>
+<span>플레이 선택</span>
+</button>
+<div>
+<span id="brief-map-name" class="section-kicker">BLUE WATER / UNIFIED BATTLEFIELD</span>
+<h2>출격 준비</h2>
+</div>
+<span class="step-indicator">UNIFIED BATTLEFIELD</span>
+</div>
+ <div class="brief-grid">
+<div class="mission-map">
+<button class="brief-map-change" data-open-maps="">전장 변경</button>
+<canvas id="spawn-map" width="600" height="460" aria-label="출발 위치 지도">
+</canvas>
+<p id="stalingrad-note" hidden>1942년 가을 전장 재구성 · 기존 기체로 비행<br><button id="theatre-preview" type="button">전장 둘러보기</button> · <a href="./stalingrad.html" target="_blank" rel="noopener">지형·주요 지점과 재현 범위 ↗</a></p>
+<p class="spawn-orientation">
+</p>
+<div class="map-legend">
+<span>아군 비행장</span>
+<span>적군 비행장</span>
+<small>선택 기체에 맞는 출발 위치</small>
+</div>
+</div>
+<div class="brief-config">
+<div class="brief-tabs" role="tablist" aria-label="출격 설정">
+<button role="tab" data-brief-tab="spawn" aria-selected="true" aria-controls="brief-spawn">출발 위치</button>
+<button role="tab" data-brief-tab="battle" aria-selected="false" aria-controls="brief-battle">전투·편대</button>
+<button role="tab" data-brief-tab="loadout" aria-selected="false" aria-controls="brief-loadout">무장</button>
+</div>
+<section id="brief-spawn" class="brief-page" role="tabpanel" data-brief-panel="spawn">
+<div id="spawn-options" role="group" aria-label="출발 위치 선택">
+    <button class="spawn-option selected" data-spawn="0" aria-pressed="true">
+<b>아군 공항</b>
+<small>활주로 대기 · 직접 이륙</small>
+<span>01</span>
+</button>
+    <button class="spawn-option" data-spawn="1" aria-pressed="false">
+<b>공항 상공</b>
+<small>아군 비행장 상공 · 중앙 방향</small>
+<span>02</span>
+</button>
+    <button class="spawn-option" data-spawn="2" aria-pressed="false">
+<b>폭격기 고고도 출발</b>
+<small>공항 뒤쪽 · <span data-height="5500">18,045 FT</span> AGL
+</small>
+<span>03</span>
+</button>
+    <button class="spawn-option" data-spawn="3" aria-pressed="false">
+<b>해역 좌후면</b>
+<small>아군 공항 기준 왼쪽 후방</small>
+<span>04</span>
+</button>
+    <button class="spawn-option" data-spawn="4" aria-pressed="false">
+<b>해역 우후면</b>
+<small>아군 공항 기준 오른쪽 후방</small>
+<span>05</span>
+</button>
+   </div>
+</section>
+<section id="brief-battle" class="brief-page" role="tabpanel" data-brief-panel="battle" hidden=""><div class="brief-tree-entry"><button class="tree-shortcut" data-open-aircraft-tree disabled>기체 트리에서 플레이어 기체 선택 →</button><span>아군·적군 편대에는 구현된 14종만 표시됩니다.</span></div><div class="aircraft-select-grid"><label>플레이어 기체<select id="player-aircraft"><option value="0">F-22A · Raptor</option><option value="1">F-4E · Phantom II</option><option value="2">F-5E · Tiger II</option><option value="3">F-16C · Fighting Falcon</option><option value="4">F-14D · Tomcat</option><option value="5">F-15C · Eagle</option><option value="6">F-15E · Strike Eagle</option><option value="7">B-2A · Spirit</option><option value="9">P-26A Peashooter</option><option value="10">Su-57 · Felon</option><option value="11">F/A-18E · Super Hornet 단좌</option><option value="12">F/A-18F · Super Hornet 복좌</option>
+<option value="8">B-52H · Stratofortress</option><option value="13">Su-35S · Flanker-E</option></select></label><label>아군 기체<select id="ally-aircraft"><option value="0">F-22A · Raptor</option><option value="1">F-4E · Phantom II</option><option value="2">F-5E · Tiger II</option><option value="3">F-16C · Fighting Falcon</option><option value="4">F-14D · Tomcat</option><option value="5">F-15C · Eagle</option><option value="6">F-15E · Strike Eagle</option><option value="7">B-2A · Spirit</option><option value="9">P-26A Peashooter</option><option value="10">Su-57 · Felon</option><option value="11">F/A-18E · Super Hornet 단좌</option><option value="12">F/A-18F · Super Hornet 복좌</option>
+<option value="8">B-52H · Stratofortress</option><option value="mixed">혼성 편대</option><option value="13">Su-35S · Flanker-E</option></select></label><label>적군 기체<select id="enemy-aircraft"><option value="0">F-22A · Raptor</option><option value="1">F-4E · Phantom II</option><option value="2">F-5E · Tiger II</option><option value="3">F-16C · Fighting Falcon</option><option value="4">F-14D · Tomcat</option><option value="5">F-15C · Eagle</option><option value="6">F-15E · Strike Eagle</option><option value="7">B-2A · Spirit</option><option value="9">P-26A Peashooter</option><option value="10">Su-57 · Felon</option><option value="11">F/A-18E · Super Hornet 단좌</option><option value="12">F/A-18F · Super Hornet 복좌</option>
+<option value="8">B-52H · Stratofortress</option><option value="mixed">혼성 편대</option><option value="13">Su-35S · Flanker-E</option></select></label></div><p id="aircraft-selection-note" class="sensor-help"></p><p id="loadout-mission-note" class="loadout-warning" aria-live="polite"></p>
+<div class="fleet-setup">
+<div class="eyebrow">03 / COMBAT FLIGHT</div>
+<h3>편대 설정</h3>
+<label class="fleet-count">전투 방식<select id="battle-mode">
+<option value="battlefield" selected="">통합 전장 · 2,400승점</option>
+</select>
+</label>
+<p id="battle-description">중앙 거점 +5승점/초 · 적기 격추 +30승점 · 최종 비행장 파괴 +2,400승점. 2,400점 선취.</p>
+    <label class="fleet-count">아군 AI <small>플레이어 별도</small>
+<select id="ally-count" aria-label="아군 AI 대수">
+<option value="0">0대</option>
+<option value="1" selected="">1대</option>
+<option value="2">2대</option>
+<option value="3">3대</option>
+<option value="4">4대</option>
+<option value="5">5대</option>
+</select>
+</label>
+    <label class="fleet-count">적군 AI<select id="enemy-count" aria-label="적군 AI 대수">
+<option value="0">0대</option>
+<option value="1">1대</option>
+<option value="2" selected="">2대</option>
+<option value="3">3대</option>
+<option value="4">4대</option>
+<option value="5">5대</option>
+</select>
+</label>
+    <label class="fleet-count">AI 수준<select id="ai-skill">
+<option value="0">입문</option>
+<option value="1" selected="">표준</option>
+<option value="2">숙련</option>
+</select>
+</label>
+    <label class="fleet-ai-toggle">
+<input id="combat-ai" type="checkbox" checked=""> 교전 AI 활성화 <small>끄면 순찰만 수행</small>
+</label>
+    <p id="fleet-rules">중앙 거점 점령과 공중전, 비행장 타격을 한 전장에서 진행합니다. 2,400승점 선취 · 재출격 5초 / 보호 3초.</p>
+   </div>
+</section>
+<section id="brief-loadout" class="brief-page" role="tabpanel" data-brief-panel="loadout" hidden="">
+<p class="section-description" id="loadout-mission-label">공중전 무장</p>
+<details class="brief-loadouts" open><summary>탑재 무장 선택 <span data-loadout-summary></span></summary><div data-loadout-picker class="loadout-grid" role="group" aria-label="출격 무장 프리셋"></div><p data-loadout-guidance class="loadout-instruction"></p></details>
+<div class="loadout-list">
+<div>
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-gun">
+</use>
+</svg>
+<span>
+<b>M61A2</b>
+<small>20 mm 기관포</small>
+</span>
+<strong>480발</strong>
+</div>
+<div>
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-missile">
+</use>
+</svg>
+<span>
+<b>AIM-9X</b>
+<small>적외선 추적 · 측면 무장창</small>
+</span>
+<strong>2발</strong>
+</div>
+<div>
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-missile">
+</use>
+</svg>
+<span>
+<b>AIM-120</b>
+<small>레이더 유도 · 복부 무장창</small>
+</span>
+<strong id="loadout-rf-count">6발</strong>
+</div>
+<div id="loadout-bomb-row" hidden="">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-bomb">
+</use>
+</svg>
+<span>
+<b>기체별 실제 폭탄</b>
+<small>기체별 탑재 구성</small>
+</span>
+<strong>2발</strong>
+</div>
+</div>
+<p class="quiet-note">위 아이콘으로 구성을 선택하세요. 임무가 바뀌어도 선택은 유지됩니다. 비행 중 M / 무장 버튼으로 전환합니다.</p>
+</section>
+</div>
+</div>
+ <div class="sortie-footer">
+<div>
+<b id="sortie-position">아군 공항</b>
+<span id="sortie-summary">통합 전장 · BLUE 2 / RED 2</span>
+</div>
+<button id="launch" class="primary">
+<span>출격</span>
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-arrow">
+</use>
+</svg>
+</button>
+</div>
+</div>
+<p class="start-note">
+<span class="statusdot">
+</span>
+<span id="load-status">기체와 지형을 준비하는 중</span>
+</p>
+</section>
+ <div class="airframe-caption">
+<div>F-22A RAPTOR</div>
+<strong>AIR SUPERIORITY</strong>
+<p>6 DOF FLIGHT SIMULATION</p>
+</div>
+ <div class="preflight-footer">
+<span id="map-caption">BLUE WATER / UNIFIED BATTLEFIELD</span>
+<span>드래그하여 기체 관찰 · 휠로 확대</span>
+</div>
+ <section class="flight-ui">
+  <div class="viewbar">
+<button id="camera-toggle" class="flight-button" aria-controls="camera-views" aria-expanded="false" aria-label="카메라 시점 선택">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-camera">
+</use>
+</svg>
+<span id="camera-label">추적</span>
+</button>
+<div class="view-tabs" role="group" aria-label="카메라 시점 선택" id="camera-views" hidden="">
+<button class="active" data-view="chase">추적 <kbd>1</kbd>
+</button>
+<button data-view="orbit">자유 시점 <kbd>2</kbd>
+</button>
+<button data-view="flyby">지상 관찰 <kbd>3</kbd>
+</button>
+<button data-view="pilot">1인칭 <kbd>4</kbd>
+</button>
+</div>
+</div>
+<button id="weapon-select" aria-pressed="false" title="M으로 탑재 무장 전환">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-missile">
+</use>
+</svg>
+<b id="weapon-name">M61A2</b>
+<span id="weapon-state">기관포 · M 전환</span>
+</button>
+<div id="flight-flags" aria-live="polite">
+</div>
+  <div id="alert" role="status">
+</div>
+
+
+  <div class="left-bottom">
+<div class="force-row extended-instruments">
+<div>
+<label>LOAD</label>
+<strong id="g">1.0 <small>G</small>
+</strong>
+</div>
+<div>
+<label>AOA</label>
+<strong id="aoa">1.2<small>°</small>
+</strong>
+</div>
+<div>
+<label>FUEL</label>
+<strong id="fuel">70<small>%</small>
+</strong>
+</div>
+</div>
+<div class="engine-block">
+<div class="engine-label">
+<label>추력</label>
+<strong id="throttle-value">32<span>%</span>
+</strong>
+<span id="engine-mode">MIL</span>
+</div>
+<input id="throttle" aria-label="엔진 스로틀" type="range" min="0" max="120" value="32">
+<div class="range-label">
+<span>IDLE</span>
+<span>100% MIL <i>│</i> A/B</span>
+</div>
+</div>
+<div class="switches">
+<button id="gear" aria-pressed="false">GEAR <b>UP</b>
+<kbd>G</kbd>
+</button>
+<button id="brake" aria-pressed="false">AIR BRAKE <b>OFF</b>
+<kbd>B</kbd>
+</button>
+<button id="tvc" class="on" aria-pressed="true">TVC <b>ON</b>
+<kbd>T</kbd>
+</button>
+<button id="wing-sweep" aria-pressed="true" hidden>WING <b>AUTO</b><kbd>⇧ G</kbd></button>
+<button id="fbw" class="on" aria-pressed="true">FBW <b>ON</b>
+<kbd>F</kbd>
+</button>
+</div>
+<div class="compact-actions">
+<button id="damage-toggle-mobile" aria-controls="damage-panel">기체 상태</button>
+<button id="data-toggle-mobile" aria-controls="telemetry">비행 데이터</button>
+</div>
+</div>
+  <div class="navcard">
+<button id="map-toggle" class="map-toggle" aria-expanded="true" aria-label="항법 지도 접기">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-map">
+</use>
+</svg>
+</button>
+<div>
+<label id="map-nav-title">NAVIGATION</label>
+<span id="runway-distance">RWY 36 · 3.0 NM</span>
+</div>
+<canvas id="map" width="220" height="156" aria-label="기체 위치와 활주로 지도">
+</canvas>
+<div class="nav-footer">
+<span id="wind-label">WIND CALM</span>
+<button id="damage-toggle">기체 상태 J</button>
+<button id="data-toggle">비행 데이터 ↗</button>
+</div>
+</div>
+  <div class="bottom-bar">
+<span id="control-hint">
+<kbd>↓ ↑</kbd> 피치 <kbd>A D</kbd> 롤 <kbd>Q E</kbd> 러더 <kbd>W S</kbd> 추력</span>
+<span class="keyboard-hint">
+<kbd>M</kbd> 무장 <i>·</i> <kbd>SPACE</kbd> 발사 <i>·</i> <kbd>SHIFT</kbd> 휠 브레이크 <i>·</i> <kbd>R</kbd> 재시작</span>
+</div>
+  <section id="flight-controls-panel" hidden="" aria-label="비행 제어">
+   <div class="telemetry-title">비행 제어 <button id="flight-controls-close" aria-label="비행 제어 닫기">×</button>
+</div>
+   <div class="flight-control-grid">
+    <button data-flight-action="gear" aria-pressed="false">착륙장치 <b>UP</b>
+</button>
+<button data-flight-action="brake" aria-pressed="false">에어브레이크 <b>OFF</b>
+</button>
+    <button data-flight-action="tvc" aria-pressed="true">추력 편향 <b>ON</b>
+</button>
+<button data-flight-action="fbw" aria-pressed="true">비행 보조 <b>ON</b>
+</button>
+    <button id="flight-data" aria-controls="telemetry">비행 데이터</button>
+<button id="flight-damage" aria-controls="damage-panel">기체 상태</button>
+   <button id="inspect-toggle" aria-pressed="false">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-eye">
+</use>
+</svg>
+<span>손상 강조</span>
+</button>
+<button id="systems-toggle" aria-controls="systems-panel">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-wrench">
+</use>
+</svg>
+<span>부품·계통</span>
+</button>
+</div>
+  </section>
+  <div id="telemetry" hidden="">
+<div class="telemetry-title">FLIGHT TELEMETRY <button id="data-close" aria-label="데이터 닫기">×</button>
+</div>
+<dl id="telemetry-values">
+</dl>
+<p>선택한 표시 단위 · 120 Hz physics</p>
+</div>
+  <section id="damage-panel" hidden="">
+<div class="telemetry-title">AIRFRAME / <span id="damage-status">정상</span>
+<button id="damage-close" aria-label="기체 상태 닫기">×</button>
+</div>
+<div id="damage-values">
+</div>
+<p id="damage-note">
+</p>
+</section>
+  <section id="radar-panel" hidden="" aria-label="레이더와 대응탄 제어">
+   <div class="telemetry-title">SENSORS / DEFENCE <button id="radar-close" aria-label="센서 패널 닫기">×</button>
+</div>
+   <div class="radar-heading">
+<b id="radar-phase">OFF</b>
+<span id="radar-track">NO CONTACT</span>
+</div>
+   <p class="radar-set-line"><b id="radar-set-name">AN/APG-77</b><span id="radar-contact-count">0 TRACKS</span></p><canvas id="radar-scope" width="320" height="192" aria-label="탐지 보고 기반 전술 PPI 레이더">
+</canvas>
+   <div class="sensor-controls">
+<button id="radar-power" aria-pressed="false">POWER OFF</button>
+<button id="radar-mode">MODE RWS</button>
+<button id="radar-range">RNG 40 KM</button>
+<button id="radar-lock">표적 추적</button>
+</div>
+   <label class="sensor-meter">RETURN <meter id="radar-quality" min="0" max="1" value="0">
+</meter>
+<span id="radar-signal">0%</span>
+</label>
+   <label class="sensor-meter">ACQUIRE <meter id="radar-acquire" min="0" max="1" value="0">
+</meter>
+</label>
+<p id="radar-performance" class="sensor-help">기종별 탐지 특성 · 공개 장비 세대에 근거한 게임 근사</p>
+<p id="radar-support">DATA LINK 없음</p>
+
+   <div class="fleet-status">
+<b id="battle-status">BLUE / RED</b>
+<div id="fleet-roster">
+</div>
+<p>아군은 비행 상태를 공유합니다. 적군 정보는 탐지 보고로만 표시합니다.</p>
+</div>
+   <div id="missile-warning" role="status">MISSILE WARNING · 대기</div>
+<p id="cm-inventory">FLARE 60 · CHAFF 60</p>
+   <div class="cm-controls">
+<button id="cm-auto" class="cm-auto" aria-pressed="true">자동 방어 ON</button>
+<select id="cm-program" aria-label="대응탄 프로그램">
+<option value="3">플레어 + 채프</option>
+<option value="1">플레어 · IR 대응</option>
+<option value="2">채프 · RF 대응</option>
+</select>
+<button id="cm-dispense">대응탄 살포</button>
+</div>
+   <p id="cm-auto-status" class="sensor-help">AUTO · 감지한 접근 미사일에 맞춰 플레어/채프를 선택합니다.</p>
+
+  <details class="panel-details">
+<summary>센서 안내·훈련</summary>
+<div class="radar-antenna"><button id="radar-scan">SCAN 130°</button><button id="radar-elev-down" aria-label="고각 감소">EL −</button><button id="radar-elev-reset">0°</button><button id="radar-elev-up" aria-label="고각 증가">EL +</button><span id="radar-elevation" hidden></span></div><p id="surface-guide-info" class="sensor-help" hidden="">SEA / GND · 다음 표적으로 탐지 표적을 선택하고 ‘지점 지정’을 누르세요. JDAM/SDB I는 저장 좌표, GBU-12는 포드의 레이저 조사로 유도됩니다. Mk 82는 예상 탄착점(CCIP)을 맞춰 투하하세요.</p>
+<p class="sensor-help">탐색 거리 눈금 10·20·40·80·160km는 화면 범위입니다. 표적 반사 면적·고도·방위·폭탄창·기어, 지평선, 차폐, 저고도 클러터와 노치에 따라 탐지가 달라집니다. B-2·B-52는 지상 탐색만 제공합니다. 정확한 실전 탐지 거리는 공개되지 않아 게임 기준값을 사용합니다.</p>
+<p class="sensor-help">전원 → 탐색 → 표적 추적 → AIM-120 READY 후 발사. TWS는 반복 탐지한 트랙에도 발사할 수 있습니다. 회색 LAST는 마지막 수신 위치입니다. 지상 표적은 마지막 탐지 좌표에 남으며, 재탐색 주기에 맞춰 정보가 만료됩니다. F-22·Su-57·B-2는 무장창·기어 전개 시 피탐지 가능성이 커집니다.</p>
+<p class="sensor-help">한 번 누르면 3회 살포합니다. 플레어는 열추적, 채프는 레이더 추적에 영향을 주며 성공을 보장하지 않습니다. CM 버튼으로도 즉시 살포합니다.</p>
+<label class="training-control">순찰 위협 훈련<select id="threat-training">
+<option value="0">OFF · 기관포 순찰</option>
+<option value="1">IR · AIM-9X</option>
+<option value="2">RF · AIM-120</option>
+</select>
+</label>
+<p class="sensor-help">교전 AI를 끈 연습 모드에서 훈련을 켜면 기존 적기가 순찰을 유지하며 탐지·발사 조건이 맞을 때만 미사일을 발사합니다. 경고는 감지한 위협에 한해 표시합니다.</p>
+</details>
+</section>
+  <section id="systems-panel" hidden="" aria-label="기체 고장 및 계통 제어">
+   <div class="telemetry-title">AIRFRAME CONTROL <button id="systems-close" aria-label="기체 제어 닫기">×</button>
+</div>
+   <p id="systems-summary">
+</p>
+   <div class="strength-label">구조 강도 <output id="strength-out">2× · 고정</output></div>
+   <div class="engine-switches">
+<label class="system-switch">
+<span>좌측 엔진<small id="engine-left-status">
+</small>
+</span>
+<input id="engine-left" type="checkbox" checked="">
+</label>
+<label class="system-switch">
+<span>우측 엔진<small id="engine-right-status">
+</small>
+</span>
+<input id="engine-right" type="checkbox" checked="">
+</label>
+</div>
+   <label class="system-switch">
+<span>연료 투하<small id="dump-rate">투하 중지</small>
+</span>
+<input id="fuel-dump" type="checkbox">
+</label>
+   <div class="part-control">
+<div class="part-selection-heading">
+<span>부품 다중 선택</span>
+<div>
+<button id="part-select-all" type="button">전체 선택</button>
+<button id="part-select-none" type="button">선택 해제</button>
+</div>
+</div>
+<div id="part-checklist" role="group" aria-label="제어할 부품 선택">
+</div>
+<p id="part-selection-summary" aria-live="polite">
+</p>
+<strong id="part-condition">
+</strong>
+<p id="part-load">
+</p>
+    <div class="part-actions">
+<button id="part-enable">선택 켜기</button>
+<button id="part-disable">선택 끄기</button>
+<button id="part-inspect">손상 위치 보기</button>
+<button id="part-damage">25% 손상</button>
+<button id="part-break" class="danger">부품 파괴</button>
+</div>
+<p id="damage-action-note">
+</p>
+   </div>
+<p class="systems-help">조종면을 중지하면 현재 각도에 멈춥니다. <kbd>P</kbd>로 정지하여 시험하고, <kbd>R</kbd>로 기체를 복구할 수 있습니다.</p>
+  </section>
+  <div id="touch-controls">
+<div id="stick" role="group" aria-label="직접 피치와 롤 조종">
+<span>
+</span>
+</div>
+<button id="touch-brake">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-gear">
+</use>
+</svg>
+<span>휠 브레이크</span>
+</button>
+<button id="fire-button" aria-label="누르고 기관포 발사">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-target">
+</use>
+</svg>
+<b>발사</b>
+<span id="gun-ammo-mobile">480</span>
+</button>
+</div>
+ <div class="flight-instruments">
+<div class="speed readout">
+<label>
+<b id="speed-kind">IAS</b> <span id="speed-unit">KT</span>
+</label>
+<strong id="airspeed">—</strong>
+<div id="fbw-mode">FBW · G COMMAND</div>
+<div id="compact-loads" aria-label="하중과 받음각">1.0 G · α 1.2°</div>
+</div>
+<div class="altitude readout">
+<label>ALTITUDE <span data-altitude-unit="">FT</span>
+</label>
+<strong id="alt">7,218</strong>
+<div>AGL <span id="agl">6,850</span>
+<span class="muted" data-altitude-unit="">FT</span>
+</div>
+<div class="vertical">V/S <span id="vs">+0</span> <span class="muted" id="vertical-unit">FT/MIN</span>
+</div>
+</div>
+</div>
+<div class="sensor-shortcuts">
+<button id="radar-toggle" aria-controls="radar-panel">RADAR OFF</button>
+<button id="target-next" class="target-next" aria-label="레이더 다음 표적" title="현재 자기 레이더가 탐지한 표적만 전환 · TAB"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target-next"></use></svg><span>다음 표적</span></button>
+<button id="radar-quick-lock" aria-label="레이더 표적 추적 또는 해제">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-target">
+</use>
+</svg>
+<span>표적 추적</span>
+</button>
+</div>
+<button id="match-hud" hidden="" aria-label="내 점수와 순위 · 전체 기체 기록 열기" class="team-ribbon" data-open-dialog="scoreboard-dialog" aria-controls="scoreboard-dialog" title="팀 승점 / 개인 전과와 전체 기체 기록">
+<span class="team-blue" id="player-score">전과 0점</span>
+<strong id="match-time">2400</strong>
+<span class="team-red" id="player-rank">1/2위</span>
+<span id="match-score">승점 B 0 / R 0</span>
+<span class="team-track">
+<i>
+</i>
+<i>
+</i>
+</span>
+<span id="capture-zones" class="capture-zone-strip" hidden="" aria-label="중앙 공중 거점 점령 상태"><span data-capture-zone="0" role="img" aria-label="A 중앙 중립 거점"><b>A</b><i></i></span></span>
+<span id="capture-hint" hidden=""></span>
+<span id="match-respawn">
+</span>
+</button>
+<button id="practice-score" class="practice-score" data-open-dialog="scoreboard-dialog" aria-controls="scoreboard-dialog" hidden>0점 · 1/2위 ≡</button>
+<div id="combat-feed" class="combat-feed" role="log" aria-live="polite" aria-relevant="additions" aria-label="전투 기록" hidden></div>
+<label id="bomb-salvo-control" class="bomb-salvo-control" hidden>연속 투하<select id="bomb-salvo" aria-label="폭격기 연속 투하 발수"><option value="1">1발</option><option value="4">4발</option><option value="8">8발</option><option value="16">16발</option></select></label>
+<button id="cm-button" aria-label="선택한 대응탄 살포" class="defence-button">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-shield">
+</use>
+</svg>
+<span id="cm-mode">CM AUTO</span> <b id="cm-count">60 / 60</b>
+</button>
+<button id="flight-controls-toggle" aria-controls="flight-controls-panel" aria-expanded="false" class="flight-button">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-settings">
+</use>
+</svg>
+<span>제어</span>
+</button>
+<div id="bomb-controls" role="group" aria-label="폭탄 표적 지정과 레이저" hidden><button id="bomb-designate" hidden><span>지점 지정</span> <b>COORD</b><kbd>⇧ L</kbd></button><button id="bomb-laser" aria-pressed="false" hidden><span>LASER</span> <b>OFF</b><kbd>⇧ K</kbd></button></div>
+<div id="weapon-rack" role="group" aria-label="무장 바로 선택">
+<button data-weapon="gun" aria-label="기관포 선택" aria-pressed="true">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-gun">
+</use>
+</svg>
+<span>M61</span>
+</button>
+<button data-weapon="missile" aria-label="AIM-9X 선택" aria-pressed="false">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-missile">
+</use>
+</svg>
+<span>9X</span>
+</button>
+<button data-weapon="amraam" aria-label="AIM-120 선택" aria-pressed="false">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-missile">
+</use>
+</svg>
+<span>120</span>
+</button>
+<button data-weapon="bomb" aria-label="탑재 폭탄 선택" aria-pressed="false" hidden="">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-bomb">
+</use>
+</svg>
+<span>BOMB</span>
+</button>
+</div>
+</section>
+ <section id="paused" hidden="">
+<div class="pause-card">
+<span class="section-kicker">FLIGHT PAUSED</span>
+<h2>일시정지</h2>
+<p>준비되면 비행을 계속하세요.</p>
+<button id="resume" class="primary">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-play">
+</use>
+</svg>
+<span>비행 계속</span>
+</button>
+<div class="pause-options">
+<button data-open-dialog="settings-dialog">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-settings">
+</use>
+</svg>설정</button>
+<button data-open-dialog="help-dialog">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-help">
+</use>
+</svg>조작 안내</button>
+<button id="restart-pause">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-restart">
+</use>
+</svg>현재 비행 재시작</button>
+<button id="exit-flight">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-back">
+</use>
+</svg>
+<span>격납고로</span>
+</button>
+</div>
+</div>
+</section>
+ <section id="match-result" hidden="" aria-labelledby="match-result-title">
+<div class="result-card">
+<div class="result-heading">
+<span id="match-result-mode" class="section-kicker">TEAM DEATHMATCH / FULL TIME</span>
+<h2 id="match-result-title">경기 종료</h2>
+<p id="match-result-score">
+</p>
+</div>
+<div class="result-tabs" role="tablist" aria-label="경기 결과">
+<button role="tab" data-result-tab="overview" aria-selected="true" aria-controls="result-overview">결과</button>
+<button role="tab" data-result-tab="squad" aria-selected="false" aria-controls="result-squad">편대 기록</button>
+</div>
+<section id="result-overview" data-result-panel="overview" role="tabpanel">
+<span class="result-insignia">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-plane">
+</use>
+</svg>
+</span>
+<p id="match-result-player">
+</p>
+<div id="battle-reward" class="reward-receipt" role="status" aria-live="polite"></div>
+<div class="result-facts">
+<div>
+<small>경과 시간</small>
+<strong id="result-duration">05:00</strong>
+</div>
+<div>
+<small id="result-blue-label">아군 격추</small>
+<strong id="result-blue-kills">0</strong>
+</div>
+<div>
+<small id="result-red-label">적군 격추</small>
+<strong id="result-red-kills">0</strong>
+</div>
+</div>
+</section>
+<section id="result-squad" data-result-panel="squad" role="tabpanel" hidden="">
+<div class="result-table-scroll">
+<table>
+<thead>
+<tr>
+<th>순위</th>
+<th>기체</th>
+<th>점수</th>
+<th>킬</th>
+<th>데스</th>
+<th>폭탄 명중</th>
+<th>지상 파괴</th>
+</tr>
+</thead>
+<tbody id="result-roster">
+</tbody>
+</table>
+</div>
+</section>
+<div class="result-actions">
+<button id="menu-match" class="secondary">격납고로</button>
+<button id="restart-match" class="primary">
+<span>같은 편대로 재경기</span>
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-restart">
+</use>
+</svg>
+</button>
+</div>
+</div>
+</section>
+ <section id="crash" hidden="">
+<div class="pause-card">
+<span class="section-kicker">AIRCRAFT LOST</span>
+<h2>기체 손실</h2>
+<p id="crash-info">출발 위치를 확인하고 다시 출격하세요.</p>
+<button id="restart-crash" class="primary">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-restart">
+</use>
+</svg>
+<span>다시 출격</span>
+</button>
+<button id="watch-wreckage" class="secondary">잔해 관찰</button>
+<button id="menu-crash" class="text-button">격납고로</button>
+</div>
+</section>
+ <dialog id="scoreboard-dialog" aria-labelledby="scoreboard-title">
+<div class="dialog-head"><button data-close="scoreboard-dialog" class="back-button" aria-label="전투 기록 닫기">← 돌아가기</button><div><span class="section-kicker">COMBAT RECORD</span><h2 id="scoreboard-title">전투 순위</h2></div></div>
+<div class="dialog-body scoreboard-body"><p id="scoreboard-summary">PLAYER · 0점</p><div class="scoreboard-scroll"><table class="scoreboard-table"><caption>전체 기체 기록 · 점수 순위</caption><thead><tr><th scope="col">순위</th><th scope="col">기체</th><th scope="col">점수</th><th scope="col">킬</th><th scope="col">데스</th><th scope="col">폭탄 명중</th><th scope="col">지상 파괴</th></tr></thead><tbody id="scoreboard-roster"></tbody></table></div><p class="scoreboard-rules">폭탄 명중 +50 · 경미 / 중간 / 심각 손상 +10 / +20 / +50 · 격추 +100<br>손상은 실제 부품 체력 감소로 판정하며, 적 기체 한 생명당 단계가 올라갈 때 각 1회 지급합니다. 큰 손상은 해당 단계만 지급합니다. 지상 표적 파괴는 마지막 명중 기체에 기록합니다.<br>동점 순서: 킬 → 폭탄 명중 → 지상 파괴 → 데스 적은 순 → 기체 번호. 개인 점수와 모드별 팀 승리 조건은 별도입니다.</p></div>
+<div class="dialog-foot"><span>BLUE 아군 · RED 적군 · 내 기체 강조</span><button class="secondary" data-close="scoreboard-dialog">닫기</button></div>
+</dialog>
+ <dialog id="help-dialog">
+<div class="dialog-head">
+<button data-close="help-dialog" class="back-button" aria-label="비행 안내 닫기">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-back">
+</use>
+</svg>
+<span>돌아가기</span>
+</button>
+<div>
+<span class="section-kicker">PILOT GUIDE</span>
+<h2>비행 안내</h2>
+</div>
+</div>
+<div class="guide-layout">
+<nav class="guide-nav" role="tablist" aria-label="안내 분류">
+<button role="tab" data-guide-tab="quick" aria-controls="guide-quick" aria-selected="true">빠른 시작</button>
+<button role="tab" data-guide-tab="controls" aria-controls="guide-controls" aria-selected="false">조작법</button>
+<button role="tab" data-guide-tab="weapons" aria-controls="guide-weapons" aria-selected="false">무장·센서</button>
+<button role="tab" data-guide-tab="modes" aria-controls="guide-modes" aria-selected="false">게임모드</button>
+<button role="tab" data-guide-tab="carrier" aria-controls="guide-carrier" aria-selected="false">출격·폭격</button>
+</nav>
+<div class="dialog-body">
+<section id="guide-quick" data-guide-panel="quick" role="tabpanel">
+<div class="guide-steps">
+<div>
+<b>01</b>
+<span>
+<strong>작전 해역 선택</strong>
+<p>격납고에서 기체와 무장을 고른 뒤 출격 준비를 누릅니다. 바다 통합 전장에서 출발 위치와 편대를 선택합니다.</p>
+</span>
+</div>
+<div>
+<b>02</b>
+<span>
+<strong>출발 위치·편대 설정</strong>
+<p>지도 또는 목록에서 출발 위치를 고르고, 전투·편대 탭에서 모드와 AI 대수를 설정합니다.</p>
+</span>
+</div>
+<div>
+<b>03</b>
+<span>
+<strong>출격</strong>
+<p>PC에서는 게임 화면을 클릭해 마우스를 고정하고 움직여 방향을 조준합니다. Esc는 마우스 해제와 일시정지, P나 계속 버튼은 재개입니다. 터치는 화면 드래그로 조준합니다. 키보드와 스틱은 입력하는 동안만 피치·롤을 직접 조종합니다. 스틱을 움직인 크기만큼 반응하며, 입력을 놓으면 현재 기수 방향에서 조준 보조가 이어집니다. 따로 전환할 필요가 없습니다.</p>
+</span>
+</div>
+</div>
+</section>
+<section id="guide-controls" data-guide-panel="controls" role="tabpanel" hidden=""><div class="shortcut-toolbar"><input id="pc-key-search" type="search" placeholder="기능 또는 키 검색" aria-label="단축키 검색"><button id="pc-keys-reset">기본 키 복원</button></div><p id="pc-key-note">키 버튼을 눌러 변경 · 조합 키는 Shift 사용 · 브라우저 기본 Ctrl/Alt 키는 유지됩니다.</p><div id="pc-shortcut-list" class="shortcut-list"></div><details class="legacy-control-guide"><summary>마우스 · 터치 · 게임패드 조작</summary>
+<div class="keygrid">
+<span>직접 피치 / 롤 조종</span>
+<span>키보드 / 화면 스틱 / 게임패드 왼쪽 스틱</span><span>방향 조준</span><span>마우스 이동 / 화면 드래그 · Home 복귀</span>
+<span>방향 조준 / 직접 조종</span>
+<span>
+<kbd>V</kbd> / 설정</span>
+<span>기수 올리기 / 내리기</span>
+<span>
+<kbd>↓</kbd> / <kbd>↑</kbd>
+</span>
+<span>왼쪽 / 오른쪽 롤</span>
+<span>
+<kbd>A</kbd> <kbd>D</kbd> 또는 <kbd>←</kbd> <kbd>→</kbd>
+</span>
+<span>좌우 러더 · 지상 조향</span>
+<span>
+<kbd>Q</kbd> <kbd>E</kbd>
+</span>
+<span>추력 증가 / 감소</span>
+<span>
+<kbd>W</kbd> / <kbd>S</kbd>
+</span>
+<span>착륙장치 / 에어브레이크</span>
+<span>
+<kbd>G</kbd> / <kbd>B</kbd>
+</span>
+<span>M61A2 / AIM-9X / AIM-120</span>
+<span>
+<kbd>M</kbd>
+</span>
+<span>레이더 탐지 표적 전환</span>
+<span>
+<kbd>TAB</kbd>
+</span>
+<span>레이더 전원 / 추적·해제</span>
+<span>
+<kbd>O</kbd> / <kbd>L</kbd>
+</span>
+<span>RWS·TWS / 거리 눈금</span>
+<span>
+<kbd>U</kbd> / <kbd>N</kbd>
+</span>
+<span>플레어 / 채프 / 혼합</span>
+<span>
+<kbd>C</kbd> / <kbd>X</kbd> / <kbd>Z</kbd>
+</span>
+<span>선택 무장 발사</span>
+<span>
+<kbd>SPACE</kbd> / 마우스 왼쪽</span>
+<span>휠 브레이크 (누르고 유지)</span>
+<span>
+<kbd>SHIFT</kbd>
+</span>
+<span>추력 편향 / 손상 상태</span>
+<span>
+<kbd>T</kbd> / <kbd>J</kbd>
+</span>
+<span>비행제어 보조 / HUD</span>
+<span>
+<kbd>F</kbd> / <kbd>H</kbd>
+</span>
+<span>시점 / 일시정지 / 재시작</span>
+<span>
+<kbd>1 2 3 4</kbd> / <kbd>P</kbd> / <kbd>R</kbd>
+</span>
+<span>손상 강조 / 기체 제어</span>
+<span>
+<kbd>F11</kbd> / <kbd>K</kbd>
+</span>
+</div>
+</details></section>
+<section id="guide-weapons" data-guide-panel="weapons" role="tabpanel" hidden=""><p class="sensor-help">격납고 또는 출격 설정 → 전투·편대에서 기체와 혼성 편대를 고릅니다. F-4E의 AIM-7은 STT를 유지해야 합니다. F-5E는 레이더 미사일이 없으며 AIM-9P는 후방 열원을 탐색합니다. 미사일은 작은 레이더 반사체이자 열원으로 탐지되며, IR만 잡히면 방위만 알 수 있습니다. `로 PPI, Tab / Shift+Tab으로 현재 탐지 표적을 전환합니다.</p>
+<div class="guide-cards">
+<article>
+<h3>기관포</h3>
+<p>기체 앞 조준선으로 조준하고 발사를 누릅니다. 480발을 탑재합니다.</p>
+</article>
+<article>
+<h3>AIM-9X</h3>
+<p>적외선 열원을 포착하면 빨간 원이 표시됩니다. 락온이 완료된 뒤 발사하세요. 레이더는 필요하지 않습니다.</p>
+</article>
+<article>
+<h3>AIM-120</h3>
+<p>레이더 전원 → 탐지 → 표적 추적 → READY 순서로 발사합니다. 탐지된 적은 마름모로 표시하고 추적 중인 적은 빨간색으로 강조합니다.</p>
+</article>
+<article>
+<h3>대응탄</h3>
+<p>CM 버튼으로 살포합니다. 센서 패널에서 플레어·채프·혼합과 자동 방어를 설정합니다. 무조건 회피되지는 않습니다.</p>
+</article>
+</div>
+</section>
+<section id="guide-modes" data-guide-panel="modes" role="tabpanel" hidden="">
+<div class="guide-cards">
+<article>
+<h3>통합 전장 · 2,400승점</h3>
+<p>바다맵 한 곳에서 점령전·공중전·비행장 타격을 함께 진행합니다. 제한시간 없이 먼저 2,400승점에 도달한 팀이 승리합니다. 적기 격추 +30승점, 적 최종 비행장 파괴 +2,400승점. 재출격 5초 / 보호 3초.</p>
+</article>
+<article>
+<h3>중앙 A 거점 · 초당 5승점</h3>
+<p>거점은 중앙에 하나입니다. 반경 4km, 고도 1,000–4,000m 안의 살아 있는 기체를 셉니다. 수적 우세를 유지하면 중립 거점은 15초에 점령합니다. 적 완전 점령 거점의 탈환은 최대 30초입니다. 동수·빈 구역은 게이지를 유지합니다.</p>
+<p>소유 팀은 초당 5승점을 얻습니다. 적이 수적 우세를 잡으면 소유권과 득점이 즉시 중단됩니다. 같은 편끼리 탐지 정보를 공유하며 각 팀 AI는 최대 5대입니다.</p>
+</article>
+<article>
+<h3>중폭장과 최종 비행장</h3>
+<p>적 전진기지 4곳(각 HP 3,000)을 파괴하면 최종 비행장(HP 18,000)이 해금됩니다. 비행장 파괴 시 2,400승점을 얻습니다. Mk 82 두 발은 기지 HP의 약 2.4%만 깎습니다. GBU-31은 직접 명중 1발당 950 피해를 주므로 중폭장 전폭기·폭격기를 활용하세요. 빗나간 폭발은 거리에 따라 피해가 줄어듭니다. 전진기지 파괴와 일반 피격은 팀 승점에 더하지 않습니다. 상단 전과와 순위는 개인 기록이며 팀 승점과 구분합니다.</p>
+</article>
+<article>
+<h3>해상 표적 유도폭탄</h3>
+<p>격납고와 출격 설정에서 기체별 무장 아이콘을 눌러 탑재 구성을 선택합니다. 선택은 기체별로 저장되고 임무 변경·재출격에도 유지됩니다. F-15C는 제공형이므로 폭탄이 없습니다. 타격 임무에서는 아군 타격기를 호위할 수 있습니다. F-15E는 CFT 폭장과 공대공 무장을 함께 선택합니다. B-2는 내부 폭탄만, B-52는 내부 8발과 외부 파일런을 사용하며, 1·4·8·16발 연속 투하를 선택할 수 있습니다. 투하 요청 뒤 폭탄창과 분리 장치가 준비되면 순서대로 투하합니다.</p>
+<p>Mk 82는 CCIP(예상 탄착점)를 맞춰 투하합니다. JDAM·SDB I는 SEA/GND에서 표적을 선택한 뒤 ‘지점 지정’(Shift+L)으로 좌표를 저장합니다. 투하 후 레이더를 꺼도 저장 좌표로 비행하며 이동 표적을 자동 추적하지 않습니다. GBU-12는 표적 지정과 ‘레이저’(Shift+K)가 필요하고, 명중까지 포드의 시야·조사를 유지해야 합니다. 차폐·포드 손상·레이저 OFF 시 유도를 잃습니다. 점선 보정 영역은 게임 내 유한한 조향 여유이며 실제 무장 투하 영역이 아닙니다.</p>
+<p>적 전진기지 4곳을 먼저 파괴해야 최종 비행장을 타격할 수 있습니다. 종류별 재고를 소모하면 20초 후 보충됩니다. 재장전은 손상을 수리하지 않습니다. <a href="armament-reference.html" target="_blank" rel="noopener">무장 구성과 고증 자료</a></p>
+</article>
+</div>
+</section>
+<section id="guide-carrier" data-guide-panel="carrier" role="tabpanel" hidden="">
+<div class="guide-cards">
+<article>
+<h3>전투기·전폭기 활주로 출격</h3>
+<p>F-22·F-4·F-5·F-16·F-14·F-15C·F-15E·Su-57은 4,200m 활주로에 기어를 내린 채 대기합니다. 브레이크를 풀고 추력을 높여 가속한 뒤 기수를 서서히 올리세요. 상승 후 기어를 접으세요. 재출격에도 같은 위치 규칙을 적용합니다.</p>
+</article>
+<article>
+<h3>B-2·B-52 고고도 출발</h3>
+<p>대형 폭격기는 아군 공항 뒤쪽 약 4.2km에서 공항 지면보다 5,500m 위에 비행 중 출발합니다. 착륙장치는 접혀 있고 B-2는 225m/s, B-52는 220m/s로 시작합니다. 폭격기는 후연과 공대공 무장이 없습니다.</p>
+</article>
+<article>
+<h3>폭격 효과와 피해</h3>
+<p>폭탄별 작약량을 바탕으로 섬광, 화염, 상승 연기, 지면 먼지, 탄도 파편, 충격파와 그을음을 구분합니다. 수면 명중에는 물기둥을 사용합니다. 폭음은 거리/음속만큼 늦게 들립니다. 시각 효과와 체력 수치는 게임용 근사이며 지형을 실제로 파내지는 않습니다.</p>
+</article>
+</div>
+</section>
+</div>
+</div>
+<div class="dialog-foot">
+<a href="flight-model.html" target="_blank" rel="noopener">기체·시뮬레이션 상세</a>
+<a href="https://raptor-flight-lab.ryanyc2357.chatgpt.site/downloads/" target="_blank" rel="noopener">앱 다운로드 <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-download">
+</use>
+</svg>
+</a>
+</div>
+</dialog>
+ <dialog id="settings-dialog">
+<div class="dialog-head">
+<button data-close="settings-dialog" class="back-button" aria-label="설정 닫기">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-back">
+</use>
+</svg>
+<span>돌아가기</span>
+</button>
+<div>
+<span class="section-kicker">PREFERENCES</span>
+<h2>설정</h2>
+</div>
+</div>
+<div class="settings-layout">
+<nav class="settings-nav" role="tablist" aria-label="설정 분류">
+<button role="tab" data-settings-tab="controls" aria-controls="settings-controls" aria-selected="true">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-settings">
+</use>
+</svg>
+<span>조작</span>
+</button>
+<button role="tab" data-settings-tab="display" aria-controls="settings-display" aria-selected="false">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-eye">
+</use>
+</svg>
+<span>화면·단위</span>
+</button>
+<button role="tab" data-settings-tab="graphics" aria-controls="settings-graphics" aria-selected="false">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-chart">
+</use>
+</svg>
+<span>그래픽·환경</span>
+</button>
+<button role="tab" data-settings-tab="audio" aria-controls="settings-audio" aria-selected="false">
+<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+<use href="#i-sound">
+</use>
+</svg>
+<span>소리</span>
+</button>
+</nav>
+<div class="dialog-body settings-body">
+<section id="settings-controls" role="tabpanel" data-settings-panel="controls">
+<h3>조작</h3>
+<label class="setting-row">
+<span class="setting-copy">
+<b>조작 방식</b>
+<small>방향 조준 또는 직접 조종 · V로 전환</small>
+</span>
+<span class="setting-control">
+<select id="control-mode">
+<option value="aim">방향 조준 · 마우스 / 터치</option>
+<option value="manual">직접 조종 · 키보드 / 스틱</option>
+</select>
+</span>
+</label>
+<label class="setting-row">
+<span class="setting-copy">
+<b>마우스·드래그 조준 감도</b>
+<small>직접 조종의 최대 조종량은 유지</small>
+</span>
+<span class="setting-control">
+<span class="range-field">
+<input type="range" id="sensitivity" min="30" max="100" value="70">
+<output id="sensitivity-out">70%</output>
+</span>
+</span>
+</label>
+<div class="setting-explanation">PC는 화면 클릭으로 마우스를 고정한 뒤 이동으로 방향을 지정합니다. Esc로 해제·일시정지합니다. 터치는 화면 드래그로 조준합니다. 키보드·터치 스틱·게임패드는 입력하는 동안만 기체 축에 직접 반영되며 스틱 입력 크기에 비례합니다. 놓으면 현재 기수 방향에서 조준 보조가 이어집니다. FBW를 끄면 수동 조종을 사용합니다.</div>
+</section>
+<section id="settings-display" role="tabpanel" data-settings-panel="display" hidden="">
+<h3>화면·단위</h3>
+<fieldset class="display-settings">
+<legend class="sr-only">표시 단위</legend>
+<label class="setting-row">
+<span class="setting-copy">
+<b>속도 표시</b>
+<small>HUD에 표시할 대기속도</small>
+</span>
+<span class="setting-control">
+<select id="display-speed-kind">
+<option value="IAS">IAS · 지시대기속도</option>
+<option value="CAS">CAS · 보정대기속도</option>
+<option value="TAS">TAS · 진대기속도</option>
+<option value="MACH">MACH · 마하수</option>
+</select>
+</span>
+</label>
+<label class="setting-row">
+<span class="setting-copy">
+<b>속도 단위</b>
+<small>마하수에는 단위를 사용하지 않습니다</small>
+</span>
+<span class="setting-control">
+<select id="display-speed-unit" aria-describedby="speed-unit-help">
+<option value="KT">KT · 노트</option>
+<option value="KM/H">KM/H · 킬로미터/시</option>
+<option value="M/S">M/S · 미터/초</option>
+</select>
+</span>
+</label>
+<label class="setting-row">
+<span class="setting-copy">
+<b>고도·지상고</b>
+<small>고도와 AGL에 함께 적용</small>
+</span>
+<span class="setting-control">
+<select id="display-altitude-unit">
+<option value="FT">FT · 피트</option>
+<option value="M">M · 미터</option>
+</select>
+</span>
+</label>
+<label class="setting-row">
+<span class="setting-copy">
+<b>상승·하강률</b>
+<small>수직 속도 표시 단위</small>
+</span>
+<span class="setting-control">
+<select id="display-vertical-unit">
+<option value="FT/MIN">FT/MIN · 피트/분</option>
+<option value="M/S">M/S · 미터/초</option>
+</select>
+</span>
+</label>
+<label class="setting-row">
+<span class="setting-copy">
+<b>항법 거리</b>
+<small>지도·거점·표적 거리</small>
+</span>
+<span class="setting-control">
+<select id="display-distance-unit">
+<option value="NM">NM · 해리</option>
+<option value="KM">KM · 킬로미터</option>
+</select>
+</span>
+</label>
+<p id="speed-unit-help" class="quiet-note">단위 설정은 기기에 저장됩니다. 현재 모델에서는 IAS와 CAS가 같고, TAS는 공기에 대한 실제 속도입니다.</p>
+</fieldset>
+<label class="setting-row">
+<span class="setting-copy">
+<b>HUD 정보량</b>
+<small>필수 정보는 항상 표시합니다</small>
+</span>
+<span class="setting-control">
+<select id="hud-detail">
+<option value="balanced">기본</option>
+<option value="minimal">간결하게</option>
+<option value="detailed">상세하게</option>
+</select>
+</span>
+</label>
+<label class="setting-row">
+<span class="setting-copy">
+<b>조작부 배경</b>
+<small>텍스트 선명도는 유지합니다</small>
+</span>
+<span class="setting-control">
+<span class="range-field">
+<input id="hud-opacity" type="range" min="30" max="90" value="55">
+<output id="hud-opacity-out">55%</output>
+</span>
+</span>
+</label>
+</section>
+<section id="settings-graphics" role="tabpanel" data-settings-panel="graphics" hidden="">
+<h3>그래픽·환경</h3>
+<label class="setting-row">
+<span class="setting-copy">
+<b>그래픽 품질</b>
+<small>해상도·그림자·오브젝트 거리·효과를 단계별로 조절합니다</small>
+</span><span class="setting-control"><select id="quality">
+<option value="minimum">최소</option><option value="low">낮음</option><option value="medium" selected>중간</option><option value="high">높음</option><option value="maximum">최대</option></select>
+</span>
+</label>
+<p id="graphics-profile-note" class="catalog-note"></p>
+<section class="graphics-test-card" aria-labelledby="graphics-test-title"><h4 id="graphics-test-title">내 기기 성능 검사</h4><p>선택한 맵과 실제 기체 모델, 독립된 5기 비행 물리로 5단계를 약 22초간 측정합니다. 출격 전 화면에서 실행하세요.</p><div class="graphics-test-actions"><label>목표<select id="graphics-target"><option value="60">60 FPS · 부드러운 조작</option><option value="30">30 FPS · 화질 우선</option></select></label><button id="graphics-test-start" class="secondary">성능 검사 시작</button></div><p id="graphics-test-message" role="status" aria-live="polite"></p><div id="graphics-test-result" hidden><strong id="graphics-recommendation"></strong><p id="graphics-test-summary"></p><table class="performance-envelope"><thead><tr><th scope="col">품질</th><th scope="col">평균 FPS</th><th scope="col">느린 프레임</th></tr></thead><tbody id="graphics-test-rows"></tbody></table><p id="graphics-measure-context" class="catalog-note"></p><button id="graphics-recommend-apply" class="secondary">추천 설정 적용</button></div><p class="catalog-note">결과는 현재 화면 크기·배율·맵 기준입니다. 전투 규모·폭발·기기 발열에 따라 실전 성능이 달라질 수 있습니다. 화면 전환이나 크기 변경 시 검사를 중단하며, 완료 전 설정은 유지됩니다.</p></section>
+<label class="setting-row">
+<span class="setting-copy">
+<b>바람</b>
+<small>비행 물리와 탄도에 적용</small>
+</span>
+<span class="setting-control">
+<select id="weather">
+<option value="0">잔잔함 · 0 KT</option>
+<option value="1">횡풍 · 16 KT</option>
+<option value="2">돌풍 · 27 KT + 난기류</option>
+</select>
+</span>
+</label>
+<label class="setting-row">
+<span class="setting-copy">
+<b>상대습도</b>
+<small>응결·비행운 생성과 지속에 영향</small>
+</span>
+<span class="setting-control">
+<span class="range-field">
+<input type="range" id="humidity" min="20" max="95" value="65">
+<output id="humidity-out">65%</output>
+</span>
+</span>
+</label>
+<div class="setting-explanation">품질을 낮춰도 비행 물리와 센서는 같은 규칙을 사용합니다. 게임이 숨겨지면 일시정지합니다.</div>
+</section>
+<section id="settings-audio" role="tabpanel" data-settings-panel="audio" hidden="">
+<h3>소리</h3>
+<label class="setting-row">
+<span class="setting-copy">
+<b>엔진·효과음</b>
+<small>기체·무장·경고음 크기</small>
+</span>
+<span class="setting-control">
+<span class="range-field">
+<input type="range" id="volume" min="0" max="100" value="35">
+<output id="volume-out">35%</output>
+</span>
+</span>
+</label>
+<div class="setting-explanation">상단 소리 버튼으로 빠르게 음소거할 수 있습니다.</div>
+</section>
+</div>
+</div>
+<div class="dialog-foot">
+<span>변경 사항은 즉시 적용됩니다.</span>
+<button class="secondary" data-close="settings-dialog">완료</button>
+</div>
+</dialog>
+ <div id="toast" role="status" aria-live="polite">
+</div>
+ <section id="theatre-tour" hidden aria-label="스탈린그라드 전장 둘러보기"><div><span id="theatre-tour-index">01 / 16</span><h2 id="theatre-tour-name">스탈린그라드</h2><p id="theatre-tour-note">1942년 가을</p></div><div class="theatre-tour-actions"><button id="theatre-tour-prev" aria-label="이전 지점">←</button><button id="theatre-tour-next" aria-label="다음 지점">→</button><button id="theatre-tour-close">출격 준비로 돌아가기</button></div></section>
+<script type="module" src="app.js?v=su35-combat-5">
+</script>
+
+<dialog id="graphics-test-dialog" class="graphics-test-overlay" aria-labelledby="graphics-test-heading"><div class="graphics-test-overlay-card"><p class="section-kicker">PROJECT: APEX / PERFORMANCE TRIAL</p><h2 id="graphics-test-heading">그래픽 성능 측정</h2><p id="graphics-test-stage" role="status" aria-live="polite">시험 편대 준비 중</p><progress id="graphics-test-progress" max="1" value="0" aria-label="그래픽 성능 검사 진행률"></progress><p>실제 렌더링과 비행 물리를 측정하고 있습니다.</p><button id="graphics-test-cancel" class="secondary">검사 취소</button></div></dialog></body>
+</html>

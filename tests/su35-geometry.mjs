@@ -84,7 +84,7 @@ for(const aperture of [0,.3,1]){
 }
 assert.ok(openRadius>closedRadius+.10,'aperture control changes the physical exit diameter');
 assert.equal(aircraft.definition.previewOnly,true);
-assert.equal(treeAircraft('ru-su35-s').simId,null,'preview does not claim a native Su-35 flight model');
+assert.equal(treeAircraft('ru-su35-s').simId,13,'combat model has a dedicated native identity');
 assert.equal(treeAircraft('ru-su35-s').previewUrl.split('?')[0],'su35.html');
 
 // Keep the shared kit compatible with the existing aircraft and both fins.
