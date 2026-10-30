@@ -25,6 +25,8 @@ jobs:
           node-version: '24'
       - name: Check Su-35 exterior and existing aircraft
         run: node tests/su35-geometry.mjs public
+      - name: Check Su-35 flight forces and integration
+        run: node tests/su35-flight-physics.mjs public
       - uses: actions/configure-pages@v5
         with:
           enablement: true

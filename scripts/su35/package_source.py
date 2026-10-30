@@ -34,10 +34,12 @@ def module(name):
         module(str((Path(name).parent / dep)))
 
 
-for name in ['su35-model.js', 'su35-studio.js', 'su35-asset.js']:
+for name in ['su35-model.js', 'su35-studio.js', 'su35-asset.js', 'su35-flight.js']:
     module(name)
-for name in ['su35.html', 'su35-studio.css']:
+for name in ['su35.html', 'su35-studio.css', 'su35-flight.html', 'su35-flight.css']:
     entries['web/' + name] = ROOT / 'web' / name
+for name in ['tests/su35-flight-physics.mjs', 'docs/su35-flight-model.md']:
+    entries[name] = ROOT / name
 
 out = ROOT / 'web/assets/su35/source.zip'
 with zipfile.ZipFile(out, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:

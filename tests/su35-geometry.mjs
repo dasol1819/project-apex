@@ -30,6 +30,21 @@ assert.ok(Math.abs(size.x-15.3)<.03,'15.3m wingspan');
 assert.ok(Math.abs(size.z-21.9)<.03,'21.9m length');
 assert.ok(Math.abs(size.y-5.9)<.05,'5.9m ground-to-fin height');
 assert.ok(triangles<200000,'bounded preview geometry');
+aircraft.update({gear:0});
+let undersideSamples=0;
+for(const z of [-.2,1,3,5,7])for(const x of [-1.27,1.27]){
+  const hits=new T.Raycaster(new T.Vector3(x,-4,z),new T.Vector3(0,1,0),0,5).intersectObject(aircraft.group,true).filter(h=>visible(h.object)&&!h.object.userData.visualEffect);
+  assert.ok(hits.length&&hits[0].point.y<-.40&&hits[0].point.y>-.75,'continuous lower nacelle skin at '+x+'/'+z);undersideSamples++;
+}
+for(const z of [-7,-5,-3,1,3,5,7]){
+  const hits=new T.Raycaster(new T.Vector3(0,-4,z),new T.Vector3(0,1,0),0,5).intersectObject(aircraft.group,true).filter(h=>visible(h.object)&&!h.object.userData.visualEffect);
+  assert.ok(hits.length&&hits[0].point.y<.35,'central lower fuselage skin at '+z);undersideSamples++;
+}
+aircraft.update({gear:0,pitchInput:.5,rollInput:.5,yawInput:.4});
+assert.ok(aircraft.group.getObjectByName('Su-35 tail-left').rotation.x<0,'tailplane follows pitch command');
+assert.ok(aircraft.group.getObjectByName('Su-35 flaperon-left').rotation.x>0&&aircraft.group.getObjectByName('Su-35 flaperon-right').rotation.x<0,'differential flaperons follow right roll');
+assert.ok(aircraft.group.getObjectByName('Su-35 rudder-right').rotation.y>0,'rudder follows yaw command');
+aircraft.update({gear:1});
 const combiner=aircraft.group.getObjectByName('Su-35 HUD combiner');
 const windshield=aircraft.group.getObjectByName('Su-35 adapted object.001');
 const hudPositions=combiner.geometry.attributes.position;
@@ -80,4 +95,4 @@ for(let type=0;type<=12;type++){
   if([4,5,6,10,11,12].includes(type))assert.equal(a.damageParts[6].visible,true,'right fin '+type);
   disposeObject(a.group);
 }
-console.log(JSON.stringify({result:'PASS',visibleDimensions:size.toArray(),triangles,intakeRaySamples:18,existingAircraft:13}));
+console.log(JSON.stringify({result:'PASS',visibleDimensions:size.toArray(),triangles,intakeRaySamples:18,undersideSamples,existingAircraft:13}));

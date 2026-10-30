@@ -21,7 +21,7 @@ with sync_playwright() as p:
     page.goto(base + '/su35.html', wait_until='networkidle')
     page.wait_for_selector('html[data-su35-ready=true]', timeout=90000)
     assert not errors and not shader_errors, (errors, shader_errors)
-    for name in ['front', 'top', 'rear', 'intake', 'nozzle', 'cockpit', 'overview']:
+    for name in ['front', 'top', 'bottom', 'rear', 'intake', 'nozzle', 'cockpit', 'overview']:
         page.locator(f'[data-view={name}]').click()
         assert page.locator(f'[data-view={name}]').get_attribute('aria-pressed') == 'true'
         assert page.evaluate('su35Studio.view') == name
@@ -87,6 +87,6 @@ with sync_playwright() as p:
     assert not errors, errors
     context.close()
     browser.close()
-    print(json.dumps({'result': 'PASS', 'views': 7, 'mechanisms': 5,
+    print(json.dumps({'result': 'PASS', 'views': 8, 'mechanisms': 5,
         'keyboardAndPointer': True, 'pngExport': export.stat().st_size,
         'mobileWidth': 390, 'treeNavigation': True, 'pageErrors': errors}, ensure_ascii=False))

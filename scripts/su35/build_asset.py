@@ -87,7 +87,7 @@ mats['glass'].node_tree.nodes.get('Principled BSDF').inputs['Transmission Weight
 records = []
 for source in read_ac(SOURCE / 'original.ac'):
     name = source['name']
-    if name in ['GLS_Canopy_Rear.001', 'EngineBlocks', 'SpeedbrakePushrod', 'HULL_Hull_Upper']:
+    if name in ['GLS_Canopy_Rear.001', 'EngineBlocks', 'SpeedbrakePushrod']:
         continue
     verts = [list(v) for v in source['vertices']]
     # Offset the original centreline optical turret for the Su-35S layout.
@@ -111,7 +111,7 @@ for source in read_ac(SOURCE / 'original.ac'):
                 if normal.length and abs(normal.normalized().x) > .90:
                     continue
             # Replace the old fixed exits with longer, separate TVC nozzles.
-            if center[0] > 18.31 and .65 < abs(center[2]) < 1.94 and center[1] < .65:
+            if center[0] > 18.31 and .65 < abs(center[2]) < 1.94 and center[1] < .65 and min(v[1] for v in vs) > -.80:
                 continue
             # Replace the thin tip launch rails with Su-35S equipment fairings.
             if abs(center[2]) > 7.48 and 13.7 < center[0] < 17.2:

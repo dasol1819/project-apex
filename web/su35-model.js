@@ -2,9 +2,10 @@
 import * as T from './vendor/three.module.js';
 import {createAirframeKit} from './classic-airframe-kit.js';
 import {geometry} from './fighter-exterior-tools.js';
-import {paintSu35Markings} from './su35-markings.js?v=3';
-import {modernSu35Cockpit} from './su35-cockpit.js?v=3';
-import {flankerNozzle} from './su35-details.js?v=3';
+import {paintSu35Markings} from './su35-markings.js?v=4';
+import {modernSu35Cockpit} from './su35-cockpit.js?v=4';
+import {flankerNozzle} from './su35-details.js?v=4';
+import {applySu35Livery} from './su35-livery.js?v=4';
 
 export const SU35=Object.freeze({id:13,key:'su35',name:'Su-35S',nickname:'Flanker-E',length:21.9,span:15.3,engines:2,
   palette:[0x9fb4c1,0x657f91,0x839eae,0xb9cbd4],previewOnly:true});
@@ -12,20 +13,8 @@ const V=(...p)=>new T.Vector3(...p),mix=T.MathUtils.lerp;
 
 function surfaceMaterials(textures={}){
   const skin=new T.MeshStandardMaterial({color:0xe4ebee,map:textures.albedo??null,roughness:.72,metalness:.08,envMapIntensity:.65,
-    aoMap:textures.ao??null,aoMapIntensity:.40,bumpMap:textures.albedo??null,bumpScale:.0008,side:T.DoubleSide});
-  skin.onBeforeCompile=shader=>{
-    shader.vertexShader='varying vec3 vSu35Local;\n'+shader.vertexShader;
-    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvSu35Local=position;');
-    shader.fragmentShader='varying vec3 vSu35Local;\n'+shader.fragmentShader;
-    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
-      vec3 base=diffuseColor.rgb;float luminance=dot(base,vec3(.2126,.7152,.0722));float chroma=max(base.r,max(base.g,base.b))-min(base.r,min(base.g,base.b));
-      float painted=smoothstep(.025,.075,luminance)*(1.-smoothstep(.14,.26,chroma));
-      float aftMetal=step(4.9,vSu35Local.z)*step(abs(vSu35Local.x),1.95)*step(.63,abs(vSu35Local.x))*(1.-smoothstep(.3,.65,vSu35Local.y));
-      vec3 graded=base*vec3(1.14,1.30,1.43)+vec3(.012,.018,.025);
-      diffuseColor.rgb=mix(base,graded,painted*(1.-aftMetal)*.80);
-    `);
-  };
-  skin.customProgramCacheKey=()=> 'su35-uv-physical-bluegray-3';
+    aoMap:textures.ao??null,aoMapIntensity:.32,bumpMap:textures.albedo??null,bumpScale:.00035,side:T.DoubleSide});
+  applySu35Livery(skin);
   return {
     skin,glass:new T.MeshPhysicalMaterial({color:0x748a8e,roughness:.055,metalness:.08,transparent:true,opacity:.48,depthWrite:false,
       clearcoat:1,clearcoatRoughness:.035,side:T.DoubleSide,envMapIntensity:1.1}),
@@ -67,7 +56,10 @@ export function createSu35Model(asset){
   if(!asset?.meshes)throw new Error('Su-35 model assets are required');
   const k=createAirframeKit(SU35),materials=surfaceMaterials(asset.textures),motions=new Map(),skinSurfaces=[];
   k.materials.metal=materials.metal;k.materials.nozzle=materials.nozzle;k.materials.titanium=materials.metal;
-  const pivots={canopy:[0,1.19,-4.0],'main-left':[-2.02,.33,2.90],'main-right':[2.02,.33,2.90],'nose-gear':[0,.60,-2.90]};
+  const pivots={canopy:[0,1.19,-4.0],'main-left':[-2.02,.33,2.90],'main-right':[2.02,.33,2.90],'nose-gear':[0,.60,-2.90],
+    'tail-left':[-2.65,.02,6.55],'tail-right':[2.65,.02,6.55],
+    'flaperon-left':[-3.85,.53,4.10],'flaperon-right':[3.85,.53,4.10],
+    'rudder-left':[-2.16,1.55,6.62],'rudder-right':[2.16,1.55,6.62]};
   const groupFor=(key,part)=>{
     if(!pivots[key])return k.parts[part];
     if(!motions.has(key)){const g=new T.Group();g.position.set(...pivots[key]);g.userData.pivot=pivots[key];g.userData.keepGroup=true;
@@ -77,6 +69,7 @@ export function createSu35Model(asset){
   for(const mesh of asset.meshes){
     if(mesh.material==='seat')continue;
     const g=new T.BufferGeometry();for(const [name,a]of Object.entries(mesh.attributes))g.setAttribute(name,a.clone());
+    g.setAttribute('liveryPosition',mesh.attributes.position.clone());
     g.setAttribute('uv1',mesh.attributes.uv.clone());
     const parent=groupFor(mesh.motion,mesh.part),m=k.mesh(g,materials[mesh.material]||materials.skin,mesh.part,parent);
     m.name='Su-35 adapted '+mesh.name;if(mesh.name==='HULL_Hull_Upper.001')skinSurfaces.push(m);
@@ -91,7 +84,7 @@ export function createSu35Model(asset){
     const x=side*7.50;
     k.loft([[3.22,.008,.009,.62,x],[3.48,.095,.105,.62,x],[3.95,.15,.15,.62,x],
       [5.62,.15,.15,.62,x],[6.0,.075,.085,.62,x],[6.15,.006,.008,.62,x]],side<0?12:13,
-      new T.MeshStandardMaterial({color:0x8e9ea6,roughness:.70,metalness:.12}),{segments:48,samples:5});
+      new T.MeshStandardMaterial({color:0xb0ccd8,roughness:.70,metalness:.08}),{segments:48,samples:5});
     k.navLight([side*7.62,.66,3.88],side<0?0xd84d3c:0x65a88d,side<0?12:13);
   }
   // Colour is confined to the wheel faces, leaving the struts metallic.
@@ -107,11 +100,15 @@ export function createSu35Model(asset){
       if(key==='canopy'){g.rotation.x=s.canopy||0;continue;}
       if(key==='nose-gear'){g.rotation.x=(1-gear)*1.55;g.visible=gear>.015;}
       if(key.startsWith('main-')){g.rotation.z=(key==='main-left'?-1:1)*(1-gear)*1.45;g.visible=gear>.015;}
+      const side=key.endsWith('left')?-1:1;
+      if(key.startsWith('tail-'))g.rotation.x=-.30*(s.pitchInput||0)+side*.07*(s.rollInput||0);
+      if(key.startsWith('flaperon-'))g.rotation.x=-side*.28*(s.rollInput||0)+.19*gear;
+      if(key.startsWith('rudder-'))g.rotation.y=.32*(s.yawInput||0)+side*.20*(s.airbrake||0);
     }
   });
   for(const group of motions.values())k.batch(group);
   const model=k.finish({exhaustFrames,gunMount:[1.0,.85,-4.0],gunPart:0,wingTips:[[-7.65,.62,4.0],[7.65,.62,4.0]]});
-  model.group.userData.modelRevision='su35-surface-study-3';model.group.userData.intakes=inlets;
+  model.group.userData.modelRevision='su35-surface-study-4';model.group.userData.intakes=inlets;
   model.group.userData.previewOnly=true;model.group.userData.source=asset.metadata?.source;
   const update=model.update;model.update=(s={},dt=1/60)=>update({gear:1,...s},dt);model.update();
   const bounds=new T.Box3();model.group.traverse(o=>{let live=true;for(let p=o;p;p=p.parent)if(!p.visible)live=false;if(!live||!o.isMesh||o.userData.visualEffect)return;o.geometry.computeBoundingBox();bounds.union(o.geometry.boundingBox.clone().applyMatrix4(o.matrixWorld));});

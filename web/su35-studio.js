@@ -1,6 +1,6 @@
 import * as T from './vendor/three.module.js';
-import {createSu35Model} from './su35-model.js?v=3';
-import {loadSu35Asset} from './su35-asset.js?v=3';
+import {createSu35Model} from './su35-model.js?v=4';
+import {loadSu35Asset} from './su35-asset.js?v=4';
 import {disposeObject} from './aircraft-catalog.js';
 
 const $=id=>document.getElementById(id),canvas=$('model-canvas'),status=$('model-status');
@@ -9,6 +9,7 @@ const PRESETS={
   overview:{name:'전체 형상',eye:[17,9,-21],at:[0,.3,.5],number:'01 / AIRFRAME',title:'Flanker의 선을 따라.',copy:'긴 앞동체와 날개 뿌리의 연결, 떨어져 배치된 엔진과 쌍미익. 카나드가 없는 Su-35S의 실루엣을 표현했습니다.'},
   front:{fov:28,name:'정면',eye:[0,1.2,-28],at:[0,.4,-.2],number:'02 / FRONT',title:'좌우 대칭, 서로 다른 깊이.',copy:'중앙 동체 아래 두 흡입구가 열려 있습니다. 얇은 분리판과 입구의 경사, 오른쪽으로 치우친 IRST 센서를 살펴보세요.'},
   top:{name:'상면',eye:[0,34,.3],at:[0,0,.3],number:'03 / PLANFORM',title:'날개와 동체가 만나는 방식.',copy:'길게 이어지는 날개 뿌리와 후퇴익, 전동 수평미익을 표현했습니다. 청회색 위장과 패널 선은 기체 표면을 따라 이어집니다.'},
+  bottom:{name:'하부 전체',eye:[0,-34,.3],at:[0,0,.3],number:'08 / UNDERSIDE',title:'하부 외피와 엔진 나셀.',copy:'중앙 하부 동체, 두 엔진 나셀과 복부 안정판을 확인하세요. 착륙장치를 접으면 덮개와 하부 외피의 연결을 더 자세히 살펴볼 수 있습니다.'},
   rear:{name:'후면',eye:[21,9,29],at:[0,.7,1.0],number:'04 / AFT',title:'쌍발 Flanker의 뒷모습.',copy:'서로 떨어진 엔진과 가운데 테일 붐, 쌍미익을 확인하세요. 금속 배기부에는 열변색과 정비 패널의 경계를 표현했습니다.'},
   intake:{name:'흡입구 상세',eye:[2.1,-.03,-5.2],at:[1.25,-.067,-.65],number:'05 / INTAKE',title:'입구 뒤로, 약 4미터.',copy:'얇게 말린 입구 테두리에서 어두운 내부 덕트와 압축기까지 이어집니다. 램프를 움직이거나 회전해 내부 깊이와 분리판을 확인하세요.'},
   nozzle:{name:'노즐 상세',eye:[2.0,.55,13.0],at:[1.271,.083,8.85],number:'06 / EXHAUST',title:'열을 견디는 금속의 표정.',copy:'겹쳐진 24개 노즐 페탈과 안쪽 배기 통로를 표현했습니다. 개방과 편향 슬라이더로 노즐 형상이 바뀌는 모습을 확인하세요.'},
@@ -31,7 +32,7 @@ function setView(name,instant=false){
   const p=PRESETS[name];if(!p)return;camera.fov=p.fov||38;camera.updateProjectionMatrix();current=name;targetGoal.set(...p.at);
   offset.set(...p.eye).sub(targetGoal);goal.setFromVector3(offset);
   // Portrait stages frame the complete airframe, rather than cropping the wings.
-  if(['overview','front','top','rear'].includes(name))goal.radius*=Math.max(1,.95/(width/height));
+  if(['overview','front','top','bottom','rear'].includes(name))goal.radius*=Math.max(1,.95/(width/height));
   if(instant||reduced.matches){spherical.copy(goal);target.copy(targetGoal);camera.position.setFromSpherical(spherical).add(target);camera.lookAt(target);}
   for(const b of document.querySelectorAll('[data-view]'))b.setAttribute('aria-pressed',String(b.dataset.view===name));
   $('view-name').textContent=p.name;$('detail-number').textContent=p.number;$('detail-title').textContent=p.title;$('detail-copy').textContent=p.copy;
@@ -115,7 +116,10 @@ function render(time){
   spherical.theta=mix(spherical.theta,goal.theta,alpha);spherical.phi=mix(spherical.phi,goal.phi,alpha);spherical.radius=mix(spherical.radius,goal.radius,alpha);target.lerp(targetGoal,alpha);
   for(const key of Object.keys(pose)){moving||=Math.abs(pose[key]-desired[key])>.0001;pose[key]=mix(pose[key],desired[key],alpha);}
   if(moving||dirty){
-    camera.position.setFromSpherical(spherical).add(target);camera.lookAt(target);model.update(pose,dt);renderer.render(scene,camera);dirty=false;
+    camera.position.setFromSpherical(spherical).add(target);camera.lookAt(target);
+    floor.visible=current!=='bottom'&&camera.position.y>-.5;
+    scene.getObjectByName('metre-scale studio ground markings').visible=floor.visible;
+    model.update(pose,dt);renderer.render(scene,camera);dirty=false;
   }
 }
 const mix=T.MathUtils.lerp;
@@ -132,6 +136,7 @@ async function boot(){
     const rim=new T.DirectionalLight(0xc8dee8,1.4);rim.position.set(12,7,15);scene.add(rim);
     const front=new T.DirectionalLight(0xf5e6d5,.8);front.position.set(3,4,-20);scene.add(front);
     scene.add(new T.HemisphereLight(0xc8d1d7,0x26282a,.70));
+    const undersideFill=new T.DirectionalLight(0xd3e3ec,.95);undersideFill.position.set(3,-12,-8);scene.add(undersideFill);
     floor=new T.Mesh(new T.PlaneGeometry(400,400),new T.MeshStandardMaterial({color:0x282c2e,roughness:.88,metalness:.15}));
     floor.rotation.x=-Math.PI/2;floor.position.y=-2.115;floor.receiveShadow=true;scene.add(floor);
     const marks=new T.Group();marks.name='metre-scale studio ground markings';scene.add(marks);
@@ -142,7 +147,7 @@ async function boot(){
     await new Promise(resolve=>requestAnimationFrame(resolve));const asset=await loadSu35Asset(message=>{status.textContent=message;});status.textContent='곡면과 재질을 준비하는 중…';await new Promise(resolve=>requestAnimationFrame(resolve));model=createSu35Model(asset);scene.add(model.group);
     resize();setView(new URLSearchParams(location.search).get('view')||'overview',true);
     // Compile the actual paint, glass and morph variants before dismissing loading.
-    model.update(pose);renderer.render(scene,camera);status.hidden=true;$('save-view').disabled=false;
+    model.update(pose);floor.visible=current!=='bottom';scene.getObjectByName('metre-scale studio ground markings').visible=floor.visible;renderer.render(scene,camera);status.hidden=true;$('save-view').disabled=false;
     observer=new ResizeObserver(()=>{const oldAspect=width/height;resize();if(Math.abs(oldAspect-width/height)>.15)setView(current);});observer.observe(canvas.parentElement);
     bindControls();canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;fail('그래픽 연결이 중단되었습니다. 페이지를 새로고침해 주세요.');});
     canvas.addEventListener('webglcontextrestored',()=>location.reload());
