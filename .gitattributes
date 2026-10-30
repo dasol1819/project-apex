@@ -1,0 +1,7 @@
+*.bin binary
+*.gz binary
+*.png binary
+*.zip binary
+*.blend binary
+# Keep the pinned upstream AC3D file byte-for-byte, including its CRLF lines.
+assets/su35-source/original.ac -text whitespace=cr-at-eol

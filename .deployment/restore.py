@@ -23,7 +23,7 @@ if manifest.is_file():
  assert set(expected)==actual, 'Missing or unlisted web override'
  for name,digest in expected.items():
   rel=Path(name)
-  assert not rel.is_absolute() and '..' not in rel.parts and rel.suffix in {'.js','.css','.html'}, 'Unsafe web override path'
+  assert not rel.is_absolute() and '..' not in rel.parts and rel.suffix in {'.js','.css','.html','.json','.bin','.gz','.png','.txt','.zip'}, 'Unsafe web override path'
   file=source/'web'/rel
   assert not file.is_symlink() and hashlib.sha256(file.read_bytes()).hexdigest()==digest, 'Web override checksum mismatch: '+name
   target=Path('public')/rel

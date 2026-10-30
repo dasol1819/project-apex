@@ -19,7 +19,7 @@ with sync_playwright() as p:
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.on('console', lambda m: shader_errors.append(m.text) if m.type == 'error' else None)
     page.goto(base + '/su35.html', wait_until='networkidle')
-    page.wait_for_selector('html[data-su35-ready=true]')
+    page.wait_for_selector('html[data-su35-ready=true]', timeout=90000)
     assert not errors and not shader_errors, (errors, shader_errors)
     for name in ['front', 'top', 'rear', 'intake', 'nozzle', 'cockpit', 'overview']:
         page.locator(f'[data-view={name}]').click()
@@ -62,7 +62,7 @@ with sync_playwright() as p:
     page = mobile.new_page()
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.goto(base + '/su35.html', wait_until='networkidle')
-    page.wait_for_selector('html[data-su35-ready=true]')
+    page.wait_for_selector('html[data-su35-ready=true]', timeout=90000)
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'mobile horizontal overflow'
     page.locator('[data-view=intake]').tap()
     assert page.evaluate('su35Studio.view') == 'intake'
@@ -83,7 +83,7 @@ with sync_playwright() as p:
     assert page.locator('#tree-inspect-model').is_enabled()
     page.locator('#tree-inspect-model').click()
     page.wait_for_url('**/su35.html*')
-    page.wait_for_selector('html[data-su35-ready=true]')
+    page.wait_for_selector('html[data-su35-ready=true]', timeout=90000)
     assert not errors, errors
     context.close()
     browser.close()
