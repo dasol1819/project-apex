@@ -46,10 +46,13 @@ function duct(k,side){
     k.solid([pos(.11,a,end-.018),pos(.405,a+.13,end-.035),pos(.405,b+.13,end-.055),pos(.11,b,end-.035)],part,fanMat,.004);
   }
   k.ellipsoid([.10,.10,.12],[cx,cy,end-.07],part,fanMat,undefined,24);
-  const hinge=k.hinge(part,[cx,cy+.36,front+.20],'intakeRamp',[1,0,0],1);
-  const ramp=new T.MeshStandardMaterial({color:0x293336,roughness:.86,metalness:.15});
-  k.solid([[cx-.34,cy+.36,front+.20],[cx+.34,cy+.36,front+.20],
-    [cx+.32,cy+.17,front+1.45],[cx-.32,cy+.17,front+1.45]],part,ramp,.018,hinge);
+  // The compression ramp belongs to the duct roof, not the inlet mouth.
+  // Keep the aft edge clear of the centre passage throughout the 0–12° preview.
+  const hinge=k.hinge(part,[cx,cy+.40,front+1.15],'intakeRamp',[1,0,0],1);
+  const rampMaterial=new T.MeshStandardMaterial({color:0x546165,roughness:.78,metalness:.22,side:T.DoubleSide});
+  const ramp=k.solid([[cx-.35,cy+.40,front+1.15],[cx+.35,cy+.40,front+1.15],
+    [cx+.32,cy+.40,front+2.20],[cx-.32,cy+.40,front+2.20]],part,rampMaterial,.010,hinge);
+  ramp.name='Su-35 roof-mounted intake compression ramp';ramp.userData.keepDynamic=true;
   return {side,center:[cx,cy,front],part,opening:{half:[.36,.36],depth:4.20}};
 }
 
@@ -119,7 +122,7 @@ export function createSu35Model(asset,{combat=false}={}){
   model.group.userData.modelRevision='su35-surface-study-4';model.group.userData.intakes=inlets;
   model.group.userData.previewOnly=true;model.group.userData.source=asset.metadata?.source;
   model.group.userData.combatVariant=combat;
-  const update=model.update;model.update=(s={},dt=1/60)=>update({gear:1,...s},dt);model.update();
+  const update=model.update;model.update=(s={},dt=1/60)=>update({gear:1,...s,intakeRamp:T.MathUtils.clamp(s.intakeRamp??0,0,12*Math.PI/180)},dt);model.update();
   const bounds=new T.Box3();model.group.traverse(o=>{let live=true;for(let p=o;p;p=p.parent)if(!p.visible)live=false;if(!live||!o.isMesh||o.userData.visualEffect)return;o.geometry.computeBoundingBox();bounds.union(o.geometry.boundingBox.clone().applyMatrix4(o.matrixWorld));});
   const size=bounds.getSize(V());model.group.scale.set(15.3/size.x,5.9/size.y,21.9/size.z);
   model.group.position.set(-(bounds.min.x+bounds.max.x)*.5*model.group.scale.x,-2.1-bounds.min.y*model.group.scale.y,-10.6-bounds.min.z*model.group.scale.z);

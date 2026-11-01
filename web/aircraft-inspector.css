@@ -1,0 +1,336 @@
+.aircraft-inspector {
+  box-sizing: border-box;
+  width: min(1500px, 96vw);
+  height: min(960px, 94dvh);
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 1px solid #607b8859;
+  border-radius: 8px;
+  background: #101a21;
+  color: #d9e6eb;
+  overflow: hidden;
+  box-shadow: 0 24px 90px #0009;
+}
+.aircraft-inspector::backdrop {
+  background: #03090eeb;
+}
+.inspector-heading {
+  height: 76px;
+  box-sizing: border-box;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #adc5cd26;
+}
+.inspector-heading span {
+  font: 9px var(--mono, monospace);
+  letter-spacing: 3px;
+  color: #85afba;
+}
+.inspector-heading h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 5px 0 0;
+}
+.aircraft-inspector button {
+  font: inherit;
+  min-height: 44px;
+  border: 1px solid #91b9ca38;
+  background: #21343f;
+  color: #d8e7ec;
+  border-radius: 3px;
+  padding: 0 14px;
+  cursor: pointer;
+}
+.aircraft-inspector button:focus-visible,
+.aircraft-inspector canvas:focus-visible {
+  outline: 2px solid #9acbd4;
+  outline-offset: -3px;
+}
+.inspector-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  height: calc(100% - 76px);
+}
+.inspector-stage {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #1a2329;
+}
+.inspector-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+.inspector-stage canvas:active {
+  cursor: grabbing;
+}
+.inspector-view-name {
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  font-size: 12px;
+  color: #c2d8df;
+  pointer-events: none;
+}
+.inspector-hint {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  text-align: center;
+  font-size: 10px;
+  color: #a1bcc5;
+  pointer-events: none;
+}
+.inspector-stage [role="status"] {
+  position: absolute;
+  inset: 40% 20px auto;
+  text-align: center;
+  background: #101a21;
+  padding: 20px;
+  font-size: 13px;
+}
+.inspector-panel {
+  box-sizing: border-box;
+  padding: 20px;
+  overflow: auto;
+  border-left: 1px solid #adc5cd26;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #101d25;
+}
+.inspector-panel nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.inspector-panel nav button {
+  font-size: 12px;
+}
+.inspector-panel nav [aria-pressed="true"] {
+  border-color: #90bcbf;
+  background: #34545b;
+}
+.inspector-panel p {
+  font-size: 11px;
+  color: #a4bdc8;
+  line-height: 1.7;
+  margin: 0;
+}
+.inspector-panel fieldset {
+  border: 0;
+  border-top: 1px solid #adc5cd26;
+  padding: 16px 0 0;
+  margin: 0;
+  min-width: 0;
+}
+.inspector-panel legend {
+  padding: 0 8px 0 0;
+  font-size: 12px;
+}
+.inspector-panel label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 14px;
+  font-size: 12px;
+  min-height: 32px;
+}
+.inspector-panel label[hidden] {
+  display: none;
+}
+.inspector-panel input {
+  accent-color: #9ecac3;
+}
+.inspector-panel input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+.inspector-panel .inspector-range {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px;
+}
+.inspector-range input {
+  grid-column: 1/-1;
+  width: 100%;
+  min-height: 32px;
+  margin: 0;
+}
+.inspector-range output {
+  color: #a9cec9;
+  font: 11px var(--mono, monospace);
+}
+.inspector-tools {
+  display: grid;
+  grid-template-columns: 44px 44px 1fr;
+  gap: 6px;
+}
+.inspector-tools button {
+  padding: 0;
+  font-size: 12px;
+}
+.inspector-panel .inspector-note {
+  margin-top: auto;
+  font-size: 10px;
+  color: #829da8;
+}
+.in-game-inspect {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  border: 1px solid #91b9ca55;
+  padding: 0 14px;
+  border-radius: 3px;
+  background: #18313dcc;
+  font-size: 12px;
+  color: #dcebed;
+  pointer-events: auto;
+}
+@media (max-width: 700px) {
+  .aircraft-inspector {
+    width: 100vw;
+    height: 100dvh;
+    border: 0;
+    border-radius: 0;
+  }
+  .inspector-heading {
+    height: 66px;
+    padding: 10px 14px;
+  }
+  .inspector-heading h2 {
+    font-size: 16px;
+  }
+  .inspector-heading span {
+    font-size: 8px;
+  }
+  .inspector-layout {
+    height: calc(100% - 66px);
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(230px, 1fr) minmax(0, 37%);
+  }
+  .inspector-panel {
+    border-left: 0;
+    border-top: 1px solid #adc5cd26;
+    padding: 12px;
+    gap: 10px;
+    display: block;
+  }
+  .inspector-panel nav {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .inspector-panel nav button {
+    padding: 0 3px;
+    font-size: 11px;
+  }
+  .inspector-panel #inspector-description {
+    margin: 10px 0;
+  }
+  .inspector-panel fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+  }
+  .inspector-panel legend {
+    margin-bottom: 8px;
+  }
+  .inspector-panel label {
+    font-size: 11px;
+    margin-bottom: 7px;
+  }
+  .inspector-tools {
+    max-width: 280px;
+    margin: 6px auto 10px;
+  }
+  .inspector-note {
+    text-align: center;
+  }
+  .inspector-hint {
+    font-size: 9px;
+    bottom: 6px;
+  }
+  .inspector-view-name {
+    top: 12px;
+    left: 12px;
+  }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .aircraft-inspector {
+    height: 100dvh;
+    width: 100vw;
+    border-radius: 0;
+  }
+  .inspector-heading {
+    height: 54px;
+    padding: 6px 12px;
+  }
+  .inspector-heading h2 {
+    font-size: 15px;
+  }
+  .inspector-layout {
+    height: calc(100% - 54px);
+    grid-template-columns: minmax(0, 1fr) 230px;
+    grid-template-rows: 1fr;
+  }
+  .inspector-panel {
+    padding: 10px;
+    display: flex;
+  }
+  .inspector-panel nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .inspector-panel fieldset {
+    display: block;
+  }
+  .inspector-hint {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 700px) {
+  #hangar-inspect {
+    min-width: 44px;
+    padding: 0 8px;
+  }
+  #hangar-inspect .inspector-label {
+    display: none;
+  }
+}
+
+#inspector-save {
+  grid-column: 1/-1;
+}
+/* The game has a three-row settings-dialog layout; this viewer owns two blocks. */
+.aircraft-inspector[open] {
+  display: block;
+}
+/* Keep the new in-game entry available on the compact aircraft tree too. */
+#aircraft-tree-screen .tree-detail-actions #tree-inspect-model {
+  display: block;
+}
+@media (max-width: 760px) {
+  #aircraft-tree-screen .tree-detail-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  #aircraft-tree-screen .tree-detail-actions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #aircraft-tree-screen .tree-detail-actions #tree-prepare {
+    grid-column: auto;
+  }
+}

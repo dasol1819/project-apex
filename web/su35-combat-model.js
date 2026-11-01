@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
 import * as T from './vendor/three.module.js';
 import {cachedSu35Asset} from './su35-asset.js?v=5';
-import {createSu35Model} from './su35-model.js?v=6';
+import {createSu35Model} from './su35-model.js?v=7';
 import {aircraftDefinition,storeMount,irStoreAvailable} from './aircraft-catalog.js';
 import {PRESETS,bombMount,bombAvailable} from './loadout-catalog.js';
 import {createRussianMissileModel} from './russian-missile-model.js';

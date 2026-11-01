@@ -37,3 +37,5 @@ The original `.deployment/web-*.b64` payload is unchanged. `web/manifest.json` v
 - `su35-combat-model.mjs`: 30 collision bounds, exact preservation of source triangles, launch/station alignment, structure/store visibility and clipped wreckage attributes.
 - Regression checks also measure real 30 mm projectile hit energy against the existing GSh-30-1 and verify that native landing-flap angles lower both trailing edges. Static missile batching retains the exact triangle counts while using three material draw calls per missile.
 - Existing geometry and independent FDM tests remain. Playwright covers desktop/mobile selection, four loadouts, three Su-35S actors, throttle input and page/shader errors in the actual main game.
+
+The Su-35 intake compression ramps are attached to the inner duct roof, behind the mouth. They accept an explicit 0–12° geometry preview and otherwise remain neutral: the generic kit's estimated speed-based ramp sweep is not applied to this model. Inlet ray tests cover the complete preview range. The in-game inspector provides the full main-combat model for close-up viewing without changing the running simulation.

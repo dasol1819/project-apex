@@ -82,8 +82,10 @@ with sync_playwright() as p:
     assert page.locator('#tree-choose').is_enabled()
     assert page.locator('#tree-inspect-model').is_enabled()
     page.locator('#tree-inspect-model').click()
-    page.wait_for_url('**/su35.html*')
-    page.wait_for_selector('html[data-su35-ready=true]', timeout=90000)
+    page.wait_for_selector('#aircraft-inspector[data-ready=true]', timeout=120000)
+    assert 'Su-35S' in page.locator('#inspector-title').inner_text()
+    assert '?screen=tree' in page.url
+    page.locator('#inspector-close').click()
     assert not errors, errors
     context.close()
     browser.close()

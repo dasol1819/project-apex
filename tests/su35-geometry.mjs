@@ -70,6 +70,17 @@ for(const inlet of aircraft.group.userData.intakes){
     if(x===0&&y===0)assert.ok(hits[0].point.z-z>3.8&&hits[0].point.z-z<4.4,'compressor is about 4m recessed');
   }
 }
+// No speculative speed-driven inlet plate motion: the upper compression
+// ramp is roof-mounted and only moves when an explicit preview angle is given.
+const rampHinge=aircraft.damageParts[27].getObjectByName('intakeRamp physical hinge');
+aircraft.update({tas:0});const neutralRamp=rampHinge.quaternion.clone();aircraft.update({tas:900});assert.ok(rampHinge.quaternion.equals(neutralRamp),'no automatic ramp sweep across the inlet');
+for(const degrees of [0,6,12]){
+ aircraft.update({intakeRamp:degrees*Math.PI/180});
+ for(const inlet of aircraft.group.userData.intakes){
+  const [cx,cy,z]=inlet.centerWorld;
+  for(const x of [-.18,0,.18])for(const y of [-.16,0,.16]){const hits=new T.Raycaster(new T.Vector3(cx+x,cy+y,z-.4),new T.Vector3(0,0,1),0,6).intersectObject(aircraft.group,true).filter(h=>visible(h.object));assert.ok(hits.length&&hits[0].point.z>z+.03&&hits[0].object.name!=='Su-35 roof-mounted intake compression ramp','ramp stays behind inlet and clear of passage at '+degrees);}
+ }
+}
 const nozzle=aircraft.exhaustFrames[1],before=nozzle.getWorldPosition(new T.Vector3());
 const canopy=aircraft.group.getObjectByName('Su-35 hinged single-seat canopy');
 const closedCrown=new T.Box3().setFromObject(canopy).max.y;
@@ -102,4 +113,4 @@ for(let type=0;type<=12;type++){
   if([4,5,6,10,11,12].includes(type))assert.equal(a.damageParts[6].visible,true,'right fin '+type);
   disposeObject(a.group);
 }
-console.log(JSON.stringify({result:'PASS',visibleDimensions:size.toArray(),triangles,intakeRaySamples:18,undersideSamples,existingAircraft:13}));
+console.log(JSON.stringify({result:'PASS',visibleDimensions:size.toArray(),triangles,intakeRaySamples:18,rampRaySamples:54,undersideSamples,existingAircraft:13}));

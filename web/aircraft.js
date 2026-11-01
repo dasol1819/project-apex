@@ -1,5 +1,5 @@
 import {createMig29CombatAircraft} from './mig29-combat-model.js';
-import {createSu35CombatAircraft} from './su35-combat-model.js?v=6';
+import {createSu35CombatAircraft} from './su35-combat-model.js?v=7';
 import {createClassicAircraft} from './classic-aircraft.js';
 import {nozzlePose,NOZZLE_LENGTH,NOZZLE_HINGE} from './nozzle-kinematics.js';
 import {enableWorldDepthIn} from './world-depth.js';

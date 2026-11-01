@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
 import * as T from './vendor/three.module.js';
 import {loadSu35Asset} from './su35-asset.js?v=5';
-import {createSu35Model} from './su35-model.js?v=6';
+import {createSu35Model} from './su35-model.js?v=7';
 import {Su35Flight,SU35_FLIGHT} from './su35-flight-physics.js?v=5';
 import {disposeObject} from './aircraft-catalog.js';
 const $=id=>document.getElementById(id),V=(...p)=>new T.Vector3(...p),DEG=180/Math.PI;

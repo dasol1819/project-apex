@@ -1,5 +1,5 @@
 import * as T from './vendor/three.module.js';
-import {createSu35Model} from './su35-model.js?v=6';
+import {createSu35Model} from './su35-model.js?v=7';
 import {loadSu35Asset} from './su35-asset.js?v=5';
 import {disposeObject} from './aircraft-catalog.js';
 
@@ -11,7 +11,7 @@ const PRESETS={
   top:{name:'상면',eye:[0,34,.3],at:[0,0,.3],number:'03 / PLANFORM',title:'날개와 동체가 만나는 방식.',copy:'길게 이어지는 날개 뿌리와 후퇴익, 전동 수평미익을 표현했습니다. 청회색 위장과 패널 선은 기체 표면을 따라 이어집니다.'},
   bottom:{name:'하부 전체',eye:[0,-34,.3],at:[0,0,.3],number:'08 / UNDERSIDE',title:'하부 외피와 엔진 나셀.',copy:'중앙 하부 동체, 두 엔진 나셀과 복부 안정판을 확인하세요. 착륙장치를 접으면 덮개와 하부 외피의 연결을 더 자세히 살펴볼 수 있습니다.'},
   rear:{name:'후면',eye:[21,9,29],at:[0,.7,1.0],number:'04 / AFT',title:'쌍발 Flanker의 뒷모습.',copy:'서로 떨어진 엔진과 가운데 테일 붐, 쌍미익을 확인하세요. 금속 배기부에는 열변색과 정비 패널의 경계를 표현했습니다.'},
-  intake:{name:'흡입구 상세',eye:[2.1,-.03,-5.2],at:[1.25,-.067,-.65],number:'05 / INTAKE',title:'입구 뒤로, 약 4미터.',copy:'얇게 말린 입구 테두리에서 어두운 내부 덕트와 압축기까지 이어집니다. 램프를 움직이거나 회전해 내부 깊이와 분리판을 확인하세요.'},
+  intake:{name:'흡입구 상세',eye:[2.1,-.03,-5.2],at:[1.25,-.067,-.65],number:'05 / INTAKE',title:'입구 뒤로, 약 4미터.',copy:'입구 뒤의 내부 덕트와 압축기까지 이어집니다. 덕트 상부에 붙은 압축 램프와 안쪽 통로를 확대해 살펴보세요.'},
   nozzle:{name:'노즐 상세',eye:[2.0,.55,13.0],at:[1.271,.083,8.85],number:'06 / EXHAUST',title:'열을 견디는 금속의 표정.',copy:'겹쳐진 24개 노즐 페탈과 안쪽 배기 통로를 표현했습니다. 개방과 편향 슬라이더로 노즐 형상이 바뀌는 모습을 확인하세요.'},
   cockpit:{name:'조종석 상세',eye:[1.9,2.85,-4.25],at:[0,1.20,-5.6],number:'07 / COCKPIT',title:'단좌 캐노피 아래의 디테일.',copy:'캐노피를 열고 두 개의 다기능 화면과 HUD, 좌석과 측면 콘솔을 살펴보세요. 앞유리 우측에는 IRST 구체를 배치했습니다.'}
 };
