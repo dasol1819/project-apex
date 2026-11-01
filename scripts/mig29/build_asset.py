@@ -19,9 +19,12 @@ def convert(v):return (-v[2]*SPAN_SCALE,-(v[0]-8.75)*X_SCALE,v[1]*Y_SCALE)
 def material(name,color,roughness=.65,metal=.1):
  m=bpy.data.materials.new(name);m.use_nodes=True;b=m.node_tree.nodes.get('Principled BSDF');b.inputs['Base Color'].default_value=(*color,1);b.inputs['Roughness'].default_value=roughness;b.inputs['Metallic'].default_value=metal;return m
 def part_for(name):
- side=1 if name.endswith('R') or name.endswith('.R') else 0
+ side=1 if name.endswith('R') or name.endswith('.R') or name.startswith('LouversR') else 0
+ if name.startswith('Louvers'):return 27+side,'louver-'+name
  for prefix,part,motion in [('Aileron',14,'aileron'),('Flaps',16,'flap'),('Slats',18,'slat'),('Stabilizer',3,'tail'),('Rudder',20,'rudder'),('Engine',7,'fixed'),('Combustion',7,'fixed'),('Flameholder',7,'fixed'),('IntakeScreen',27,'screen'),('Louver',27,'fixed')]:
   if name.startswith(prefix):return part+side,motion+('-right' if side else '-left') if motion!='fixed' else 'fixed'
+ if name=='Probe':return 10,'fixed'
+ if name.startswith('Louvers'):return 27+side,'louver-'+name
  if name.startswith('Wing'):return 1+side,'fixed'
  if name in ['Canopy','CanopyFrame']:return 11,'canopy'
  if name.startswith('AirBrake'):return 29,'airbrake-upper' if name.endswith('U') else 'airbrake-lower'
@@ -33,7 +36,7 @@ mats={'skin':material('skin',(.55,.61,.58)),'glass':material('glass',(.12,.20,.2
 records=[]
 for source in objects:
  name=source['name'];faces=[f for f in source['faces'] if len(f['refs'])>=3]
- if name.startswith(('Warn','Annun')):continue
+ if name.startswith(('Warn','Annun')) or name in ['EngineL','EngineR','CombustionChamberL','CombustionChamberR','FlameholderL','FlameholderR']:continue
  kind='skin' if source['texture']=='Mig-29.rgb' else 'glass' if name in ['Canopy','Windscreen','IRglass'] else 'rubber' if name.startswith(('wheel.','nosewheels')) else 'dark' if name.startswith(('Cockpit','LouverDuct','GearWell','nosegeaerwell')) else 'metal'
  mesh=bpy.data.meshes.new(name);mesh.from_pydata([convert(v) for v in source['vertices']],[],[tuple(int(r[0]) for r in f['refs']) for f in faces]);mesh.update();uv=mesh.uv_layers.new(name='UVMap')
  for i,f in enumerate(faces):

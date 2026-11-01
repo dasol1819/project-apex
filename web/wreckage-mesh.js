@@ -11,7 +11,7 @@ export function createWreckageFactory(aircraft){
   if(material.roughness!==undefined)material.roughness=Math.max(.65,material.roughness);
   if(material.emissive)material.emissive.set(0);
   const hook=original.onBeforeCompile,key=original.customProgramCacheKey();
-  material.onBeforeCompile=(shader,renderer)=>{hook.call(original,shader,renderer);if(shader.uniforms.skinIntegrity)shader.uniforms.skinIntegrity={value:.23};if(shader.uniforms.su35Integrity)shader.uniforms.su35Integrity={value:.23};};
+  material.onBeforeCompile=(shader,renderer)=>{hook.call(original,shader,renderer);if(shader.uniforms.skinIntegrity)shader.uniforms.skinIntegrity={value:.23};if(shader.uniforms.su35Integrity)shader.uniforms.su35Integrity={value:.23};if(shader.uniforms.migIntegrity)shader.uniforms.migIntegrity={value:.23};};
   material.customProgramCacheKey=()=>key+'-detached-v4';material.side=T.DoubleSide;
   materials.set(original,material);return material;
  }

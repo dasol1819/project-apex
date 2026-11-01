@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-      - name: Rebuild the native Su-35 combat module
+      - name: Rebuild the native Russian aircraft combat module
         run: |
           npm ci
           npm run build:combat
@@ -38,6 +38,11 @@ jobs:
         run: node tests/su35-combat-model.mjs public
       - name: Check Su-35 flight forces and integration
         run: node tests/su35-flight-physics.mjs public
+      - name: Check MiG-29 flight, combat and model
+        run: |
+          node tests/mig29-native.mjs public
+          node tests/mig29-combat.mjs public
+          node tests/mig29-model.mjs public
       - uses: actions/configure-pages@v5
         with:
           enablement: true

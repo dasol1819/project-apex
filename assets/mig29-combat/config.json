@@ -91,7 +91,7 @@
       "note": "GSh-30-1 · 150발"
     }
   ],
-  "assumptions": "Dimensions, mass and thrust from public Su-35 specifications; aerodynamic derivatives, inertia, sensor ranges/RCS, targeting-pod compatibility and weapon performance are explicit game estimates.",
+  "assumptions": "MiG-29 9.12 public overall dimensions and RD-33 output; aerodynamic derivatives, inertia, RCS, radar range/quality and weapon motion are game estimates. Conventional controls, no TVC, no surface-targeting radar mode.",
   "irMounts": [
     [
       -4.65,

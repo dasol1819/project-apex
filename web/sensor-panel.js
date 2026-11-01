@@ -10,7 +10,7 @@ export function createSensorPanel(sim,combat,{toast,canAct,onChange}){
  let autoEnabled=true;try{autoEnabled=window.localStorage?.getItem('raptor.autoCM.v1')!=='off';}catch{}sim.set_auto_countermeasures(autoEnabled?1:0);
  function auto(){const a=new Float64Array(sim.memory.buffer,sim.get_auto_countermeasures(),12),enabled=!a[0];sim.set_auto_countermeasures(enabled?1:0);try{window.localStorage?.setItem('raptor.autoCM.v1',enabled?'on':'off')}catch{}onChange();toast(enabled?'자동 방어 ON · 감지된 미사일에 맞춰 대응탄 살포':'자동 방어 OFF · CM 버튼으로 수동 살포');}
  function power(){const r=combat.playerRadar;sim.set_radar_power(r[0]?0:1);onChange();}
- function mode(){if(simAircraft(sim).radarMode==='PULSE'){toast('펄스 레이더 · RWS 탐색 / STT 추적 지원');return;}if(surfaceMode(combat.surfaceRadar)){toast(surfaceLabel(combat.surfaceRadar)+' · 폭탄 선택 시 지상 표적 탐색 / 다른 무장은 공중 탐색');return;}const r=combat.playerRadar;sim.set_radar_mode(r[1]===2?1:2);onChange();}
+ function mode(){if(simAircraft(sim).id===14){toast('N019 펄스 도플러 · RWS 탐색 / STT 추적 · R-27R은 STT 유지 필요');return;}if(simAircraft(sim).radarMode==='PULSE'){toast('펄스 레이더 · RWS 탐색 / STT 추적 지원');return;}if(surfaceMode(combat.surfaceRadar)){toast(surfaceLabel(combat.surfaceRadar)+' · 폭탄 선택 시 지상 표적 탐색 / 다른 무장은 공중 탐색');return;}const r=combat.playerRadar;sim.set_radar_mode(r[1]===2?1:2);onChange();}
  function range(){const r=combat.playerRadar,scales=[10000,20000,40000,80000,160000];sim.set_radar_range(scales[(scales.indexOf(r[11])+1)%scales.length]);onChange();}
  function scan(){const r=combat.playerRadar;sim.set_radar_scan_width(Math.round(r[20])===30?60:Math.round(r[20])===60?130:30);onChange();}
  function elevation(delta){const r=combat.playerRadar;sim.set_radar_elevation(delta? r[21]+delta:0);onChange();}

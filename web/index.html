@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101720">
-<meta name="description" content="Project: Apex — Joint Air Dominance. 제공권을 다투는 공중전. 미국 46대·러시아 45대, 총 91개 형식의 기체 트리. BR 1.0–20.0과 주요 개량형을 비교하고 구현된 14종을 선택해 출격하세요.">
+<meta name="description" content="Project: Apex — Joint Air Dominance. 제공권을 다투는 공중전. 미국 46대·러시아 45대, 총 91개 형식의 기체 트리. BR 1.0–20.0과 주요 개량형을 비교하고 구현된 15종을 선택해 출격하세요.">
 <title>Project: Apex · Joint Air Dominance</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="aircraft-tree.css">
@@ -434,7 +434,7 @@
 </button>
    </div>
 </section>
-<section id="brief-battle" class="brief-page" role="tabpanel" data-brief-panel="battle" hidden=""><div class="brief-tree-entry"><button class="tree-shortcut" data-open-aircraft-tree disabled>기체 트리에서 플레이어 기체 선택 →</button><span>아군·적군 편대에는 구현된 14종만 표시됩니다.</span></div><div class="aircraft-select-grid"><label>플레이어 기체<select id="player-aircraft"><option value="0">F-22A · Raptor</option><option value="1">F-4E · Phantom II</option><option value="2">F-5E · Tiger II</option><option value="3">F-16C · Fighting Falcon</option><option value="4">F-14D · Tomcat</option><option value="5">F-15C · Eagle</option><option value="6">F-15E · Strike Eagle</option><option value="7">B-2A · Spirit</option><option value="9">P-26A Peashooter</option><option value="10">Su-57 · Felon</option><option value="11">F/A-18E · Super Hornet 단좌</option><option value="12">F/A-18F · Super Hornet 복좌</option>
+<section id="brief-battle" class="brief-page" role="tabpanel" data-brief-panel="battle" hidden=""><div class="brief-tree-entry"><button class="tree-shortcut" data-open-aircraft-tree disabled>기체 트리에서 플레이어 기체 선택 →</button><span>아군·적군 편대에는 구현된 15종만 표시됩니다.</span></div><div class="aircraft-select-grid"><label>플레이어 기체<select id="player-aircraft"><option value="0">F-22A · Raptor</option><option value="1">F-4E · Phantom II</option><option value="2">F-5E · Tiger II</option><option value="3">F-16C · Fighting Falcon</option><option value="4">F-14D · Tomcat</option><option value="5">F-15C · Eagle</option><option value="6">F-15E · Strike Eagle</option><option value="7">B-2A · Spirit</option><option value="9">P-26A Peashooter</option><option value="10">Su-57 · Felon</option><option value="11">F/A-18E · Super Hornet 단좌</option><option value="12">F/A-18F · Super Hornet 복좌</option>
 <option value="8">B-52H · Stratofortress</option><option value="13">Su-35S · Flanker-E</option><option value="14">MiG-29 9.12 · Fulcrum-A</option></select></label><label>아군 기체<select id="ally-aircraft"><option value="0">F-22A · Raptor</option><option value="1">F-4E · Phantom II</option><option value="2">F-5E · Tiger II</option><option value="3">F-16C · Fighting Falcon</option><option value="4">F-14D · Tomcat</option><option value="5">F-15C · Eagle</option><option value="6">F-15E · Strike Eagle</option><option value="7">B-2A · Spirit</option><option value="9">P-26A Peashooter</option><option value="10">Su-57 · Felon</option><option value="11">F/A-18E · Super Hornet 단좌</option><option value="12">F/A-18F · Super Hornet 복좌</option>
 <option value="8">B-52H · Stratofortress</option><option value="mixed">혼성 편대</option><option value="13">Su-35S · Flanker-E</option><option value="14">MiG-29 9.12 · Fulcrum-A</option></select></label><label>적군 기체<select id="enemy-aircraft"><option value="0">F-22A · Raptor</option><option value="1">F-4E · Phantom II</option><option value="2">F-5E · Tiger II</option><option value="3">F-16C · Fighting Falcon</option><option value="4">F-14D · Tomcat</option><option value="5">F-15C · Eagle</option><option value="6">F-15E · Strike Eagle</option><option value="7">B-2A · Spirit</option><option value="9">P-26A Peashooter</option><option value="10">Su-57 · Felon</option><option value="11">F/A-18E · Super Hornet 단좌</option><option value="12">F/A-18F · Super Hornet 복좌</option>
 <option value="8">B-52H · Stratofortress</option><option value="mixed">혼성 편대</option><option value="13">Su-35S · Flanker-E</option><option value="14">MiG-29 9.12 · Fulcrum-A</option></select></label></div><p id="aircraft-selection-note" class="sensor-help"></p><p id="loadout-mission-note" class="loadout-warning" aria-live="polite"></p>
@@ -1191,7 +1191,7 @@
 </span>
 </div>
 </details></section>
-<section id="guide-weapons" data-guide-panel="weapons" role="tabpanel" hidden=""><p class="sensor-help">격납고 또는 출격 설정 → 전투·편대에서 기체와 혼성 편대를 고릅니다. F-4E의 AIM-7은 STT를 유지해야 합니다. F-5E는 레이더 미사일이 없으며 AIM-9P는 후방 열원을 탐색합니다. 미사일은 작은 레이더 반사체이자 열원으로 탐지되며, IR만 잡히면 방위만 알 수 있습니다. `로 PPI, Tab / Shift+Tab으로 현재 탐지 표적을 전환합니다.</p>
+<section id="guide-weapons" data-guide-panel="weapons" role="tabpanel" hidden=""><p class="sensor-help">격납고 또는 출격 설정 → 전투·편대에서 기체와 혼성 편대를 고릅니다. F-4E의 AIM-7과 MiG-29의 R-27R은 STT를 유지해야 합니다. F-5E는 레이더 미사일이 없으며 AIM-9P는 후방 열원을 탐색합니다. 미사일은 작은 레이더 반사체이자 열원으로 탐지되며, IR만 잡히면 방위만 알 수 있습니다. `로 PPI, Tab / Shift+Tab으로 현재 탐지 표적을 전환합니다.</p>
 <div class="guide-cards">
 <article>
 <h3>기관포</h3>

@@ -11,4 +11,4 @@ blender -b --factory-startup --threads 4 --python scripts/mig29/build_asset.py -
 
 The web model adds an authored grey/green game livery, analog cockpit, independent controls, intake ducts, compressor faces, FOD doors, fixed-axis variable-area nozzles and missile stations. It represents the original narrow-spine 9.12; it does not claim SMT or TVC equipment. This is a game reconstruction using public information, not production CAD. Aerodynamic derivatives, inertias, radar/RCS and weapon parameters are estimates.
 
-Work in progress is checkpointed separately from the published Su-35S.
+The native game integration uses aircraft ID 14 with separate mass, thrust, aerodynamic and sensor tables. It retains the original game’s systems and damage model.
