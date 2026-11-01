@@ -17,12 +17,12 @@ export function preloadMig29Asset() {
 async function load() {
   const base = new URL("./assets/mig29/", import.meta.url),
     [meta, res] = await Promise.all([
-      fetch(new URL("airframe.json", base)),
+      fetch(new URL("airframe.json?v=visual-2", base)),
       fetch(
         new URL(
           typeof DecompressionStream === "function"
-            ? "airframe.bin.gz"
-            : "airframe.bin",
+            ? "airframe.bin.gz?v=visual-2"
+            : "airframe.bin?v=visual-2",
           base,
         ),
       ),
@@ -37,7 +37,7 @@ async function load() {
   const loader = new T.TextureLoader(),
     [albedo, ao] = await Promise.all(
       ["albedo.png", "ao.png"].map((n) =>
-        loader.loadAsync(new URL(n, base).href),
+        loader.loadAsync(new URL(n+"?v=visual-2", base).href),
       ),
     );
   albedo.colorSpace = T.SRGBColorSpace;

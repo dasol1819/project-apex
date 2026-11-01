@@ -12,3 +12,14 @@ blender -b --factory-startup --threads 4 --python scripts/mig29/build_asset.py -
 The web model adds an authored grey/green game livery, analog cockpit, independent controls, intake ducts, compressor faces, FOD doors, fixed-axis variable-area nozzles and missile stations. It represents the original narrow-spine 9.12; it does not claim SMT or TVC equipment. This is a game reconstruction using public information, not production CAD. Aerodynamic derivatives, inertias, radar/RCS and weapon parameters are estimates.
 
 The native game integration uses aircraft ID 14 with separate mass, thrust, aerodynamic and sensor tables. It retains the original game’s systems and damage model.
+
+The close-up graphics revision refines the fuselage and glazing at subdivision level 3,
+bakes the shared 2048² AO atlas, separates the pinned source's inward-facing inlet
+walls, and replaces its ground-only wedge plugs with fitted hinged FOD ramps.
+`web/mig29-details.js` contains editable bevel geometry for the cockpit, flat seat
+webbing, console controls, projected markings, and continuous RD-33 exhaust liners
+with overlapping morphing feathers. `web/mig29-finish.js` defines neutral-coordinate
+camouflage, antialiased panel/fastener detail, small surface relief, roughness variation
+and heat-tinted metal. Nose number 24 and the paint are authored game markings.
+The full model stays below a 245,000 visible-triangle budget. Collision regions are
+exported again from the new neutral geometry before rebuilding the native module.

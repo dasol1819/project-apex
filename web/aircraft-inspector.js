@@ -1,5 +1,5 @@
 import * as T from "./vendor/three.module.js";
-import { createAircraft } from "./aircraft.js?v=inspector-2";
+import { createAircraft } from "./aircraft.js?v=inspector-3";
 import { aircraftDefinition, disposeObject } from "./aircraft-catalog.js";
 
 const V = (...p) => new T.Vector3(...p),
@@ -133,8 +133,8 @@ export function createAircraftInspector({
           eye = V(1.3, -0.3, -5.2);
         }
         if (name === "cockpit") {
-          at.set(0, 0.85, -4.3);
-          eye = V(1.3, 2.2, -3.7);
+          at.set(0, 0.85, -4.0);
+          eye = V(1.35, 2.2, -2.6);
         }
       }
       target.copy(at);

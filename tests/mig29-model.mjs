@@ -47,7 +47,8 @@ const size = box.getSize(new T.Vector3());
 assert.ok(Math.abs(size.x - 11.36) < 0.02, "span");
 assert.ok(Math.abs(size.z - 17.32) < 0.03, "length");
 assert.ok(Math.abs(size.y - 4.73) < 0.05, "height");
-assert.ok(triangles < 180000);
+// Close-up skin/glazing refinement plus modeled cockpit and RD-33 hardware.
+assert.ok(triangles < 245000, `MiG-29 triangle budget: ${triangles}`);
 model.update({ gear: 0, fod: 0 });
 let underside = 0,
   inlets = 0;
@@ -82,6 +83,55 @@ for (const {
       );
       inlets++;
     }
+// Open and closed FOD states must change actual ray intersections; the door
+// stays inside the nacelle throughout its sweep, rather than rotating outside.
+for (const side of [-1, 1]) {
+  const door = model.group.getObjectByName(
+    "MiG-29 screen-" + (side < 0 ? "left" : "right"),
+  );
+  for (const fod of [0, 0.25, 0.5, 0.75, 1]) {
+    model.update({ gear: 0, fod });
+    const b = new T.Box3().setFromObject(door);
+    assert.ok(
+      b.min.y > -0.81 && b.max.y < -0.085,
+      "FOD sweep stays inside intake height",
+    );
+    assert.ok(
+      b.min.z > -1.88 && b.max.z < -1.15,
+      "FOD sweep stays inside intake depth",
+    );
+  }
+  model.update({ gear: 0, fod: 1 });
+  const h = new T.Raycaster(
+    new T.Vector3(side * 0.73, -0.46, -2.7),
+    new T.Vector3(0, 0, 1),
+    0,
+    3,
+  ).intersectObject(door, true)[0];
+  assert.ok(h && h.point.z < -1.8, "closed FOD blocks the passage");
+}
+model.update({ gear: 0, fod: 0, afterburner: 0 });
+const nozzleMeshes = [];
+model.group.traverse((o) => {
+  if (o.name === "MiG-29 RD-33 18 overlapping feathers") nozzleMeshes.push(o);
+});
+assert.equal(nozzleMeshes.length, 2);
+for (const petals of nozzleMeshes) {
+  const g = petals.geometry,
+    exit = [],
+    side = Math.sign(g.attributes.position.getX(0));
+  for (let i = 0; i < g.attributes.position.count; i++)
+    if (g.attributes.uv.getY(i) > 0.999) exit.push(i);
+  const radius = () =>
+    exit.reduce((sum, i) => {
+      petals.getVertexPosition(i, v);
+      return sum + Math.hypot(v.x - side * 0.949, v.y + 0.188);
+    }, 0) / exit.length;
+  const dry = radius();
+  model.update({ gear: 0, fod: 0, afterburner: 1 });
+  assert.ok(radius() > dry + 0.08, "physical nozzle aperture opens");
+  model.update({ gear: 0, fod: 0, afterburner: 0 });
+}
 const flap = model.group.getObjectByName("MiG-29 flap-left");
 model.update({ gear: 0, leftFlap: 0, fod: 0 });
 const y = flap.localToWorld(new T.Vector3(0, 0, 0.4)).y;
@@ -183,4 +233,10 @@ wreck.traverse((o) => {
 assert.ok(pieces > 0);
 factory.release(wreck);
 
-for(const part of [5,6]){let red=false;model.damageParts[part].traverse(o=>{if(o.isMesh&&o.material.color?.getHex()===0x9b2320)red=true;});assert.ok(red,'projected star lies on fin '+part);}
+for (const part of [5, 6]) {
+  let red = false;
+  model.damageParts[part].traverse((o) => {
+    if (o.isMesh && o.material.color?.getHex() === 0x9b2320) red = true;
+  });
+  assert.ok(red, "projected star lies on fin " + part);
+}

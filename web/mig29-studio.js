@@ -1,6 +1,6 @@
 import * as T from "./vendor/three.module.js";
-import { createMig29Model } from "./mig29-model.js?v=6";
-import { preloadMig29Asset as loadMig29Asset } from "./mig29-asset.js?v=5";
+import { createMig29Model } from "./mig29-model.js?v=visual-2";
+import { preloadMig29Asset as loadMig29Asset } from "./mig29-asset.js?v=visual-2";
 import { disposeObject } from "./aircraft-catalog.js";
 
 const $ = (id) => document.getElementById(id),
@@ -52,7 +52,7 @@ const PRESETS = {
   },
   intake: {
     name: "흡입구 상세",
-    eye: [2.4, -0.25, -5.2],
+    eye: [1.25, -0.40, -5.25],
     at: [0.72, -0.46, -1.75],
     number: "06 / AIRFRAME",
     title: "주 흡입구와 보조 흡입구.",
@@ -68,8 +68,8 @@ const PRESETS = {
   },
   cockpit: {
     name: "조종석 상세",
-    eye: [1.3, 2.2, -3.7],
-    at: [0, 0.85, -4.3],
+    eye: [1.35, 2.2, -2.6],
+    at: [0, 0.85, -4.0],
     number: "08 / AIRFRAME",
     title: "아날로그 조종석.",
     copy: "원형 비행 계기와 HUD, 좌석과 측면 콘솔을 확인하세요.",
@@ -347,7 +347,7 @@ function bindControls() {
       const url = URL.createObjectURL(blob),
         a = document.createElement("a");
       a.href = url;
-      a.download = "Project-Apex-Mig29S-" + current + ".png";
+      a.download = "Project-Apex-Mig29-" + current + ".png";
       a.click();
       setTimeout(() => URL.revokeObjectURL(url), 10000);
     }, "image/png");

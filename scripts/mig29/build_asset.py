@@ -36,19 +36,26 @@ mats={'skin':material('skin',(.55,.61,.58)),'glass':material('glass',(.12,.20,.2
 records=[]
 for source in objects:
  name=source['name'];faces=[f for f in source['faces'] if len(f['refs'])>=3]
- if name.startswith(('Warn','Annun')) or name in ['EngineL','EngineR','CombustionChamberL','CombustionChamberR','FlameholderL','FlameholderR']:continue
+ # The upstream FOD objects are visibility-only ground plugs, not hinged doors.
+ # Rebuild fitted doors in the web model rather than rotating those wedge plugs.
+ if name.startswith(('Warn','Annun','IntakeScreen')) or name in ['EngineL','EngineR','CombustionChamberL','CombustionChamberR','FlameholderL','FlameholderR']:continue
  kind='skin' if source['texture']=='Mig-29.rgb' else 'glass' if name in ['Canopy','Windscreen','IRglass'] else 'rubber' if name.startswith(('wheel.','nosewheels')) else 'dark' if name.startswith(('Cockpit','LouverDuct','GearWell','nosegeaerwell')) else 'metal'
  mesh=bpy.data.meshes.new(name);mesh.from_pydata([convert(v) for v in source['vertices']],[],[tuple(int(r[0]) for r in f['refs']) for f in faces]);mesh.update();uv=mesh.uv_layers.new(name='UVMap')
  for i,f in enumerate(faces):
   for j,l in enumerate(mesh.polygons[i].loop_indices):uv.data[l].uv=f['refs'][j][1:3]
  obj=bpy.data.objects.new(name,mesh);bpy.context.collection.objects.link(obj);obj.data.materials.append(mats[kind])
+ # Pinned-source inner intake walls point into the passage. Their original
+ # atlas is exterior paint; keep their topology but use a separate duct finish.
+ if name=='fuselage':
+  obj.data.materials.append(mats['dark'])
+  for i in [*range(743,755),*range(819,823)]:mesh.polygons[i].material_index=1
  bm=bmesh.new();bm.from_mesh(mesh);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=.00010);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));crease=bm.edges.layers.float.new('crease_edge');tip=bm.verts.layers.float.new('crease_vert')
  for e in bm.edges:e[crease]=1 if e.is_boundary or e.is_manifold and e.calc_face_angle(0)>.85 else 0
  for v in bm.verts:
   if name=='Probe' and abs(-v.co.y-(lo[0]-8.75)*X_SCALE)<.01 or name.startswith('Stabilizer') and abs(-v.co.y-(hi[0]-8.75)*X_SCALE)<.01: v[tip]=1
  bm.to_mesh(mesh);bm.free()
  for f in mesh.polygons:f.use_smooth=True
- sub=obj.modifiers.new('Crease-preserving surface refinement','SUBSURF');sub.levels=2 if kind in ['skin','glass'] else 1;sub.render_levels=sub.levels
+ sub=obj.modifiers.new('Crease-preserving surface refinement','SUBSURF');sub.levels=3 if name in ['fuselage','Canopy','Windscreen','IRglass'] else 2 if kind in ['skin','glass'] else 1;sub.render_levels=sub.levels
  part,motion=part_for(name);obj['part']=part;obj['motion']=motion;obj['material_key']=kind;records.append(obj)
 bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'mig29-adapted.blend'),compress=True)
 
@@ -70,8 +77,12 @@ for obj in records:
     evaluated = obj.evaluated_get(depsgraph)
     mesh = evaluated.to_mesh(preserve_all_data_layers=True, depsgraph=depsgraph)
     mesh.calc_loop_triangles()
-    positions, normals, uvs = [], [], []
+    groups = {}
     for tri in mesh.loop_triangles:
+        lining = obj.name == 'fuselage' and tri.material_index == 1
+        side = sum(mesh.vertices[mesh.loops[l].vertex_index].co.x for l in tri.loops) > 0
+        key = ('InletLiningR' if side else 'InletLiningL', 28 if side else 27, 'duct') if lining else (obj.name, int(obj['part']), obj['material_key'])
+        positions, normals, uvs = groups.setdefault(key, ([], [], []))
         for loop_id in tri.loops:
             loop = mesh.loops[loop_id]
             v = mesh.vertices[loop.vertex_index].co
@@ -79,7 +90,8 @@ for obj in records:
             positions.extend((v.x, v.z, -v.y))
             normals.extend((n.x, n.z, -n.y))
             uvs.extend(mesh.uv_layers.active.data[loop_id].uv)
-    meshes.append({'name': obj.name, 'part': int(obj['part']), 'motion': obj['motion'], 'material': obj['material_key'], 'position': append(positions), 'normal': append(normals), 'uv': append(uvs)})
+    for (name, part, kind), (positions, normals, uvs) in groups.items():
+        meshes.append({'name': name, 'part': part, 'motion': obj['motion'], 'material': kind, 'position': append(positions), 'normal': append(normals), 'uv': append(uvs)})
     evaluated.to_mesh_clear()
 (OUT / 'airframe.bin').write_bytes(blob)
 (OUT / 'airframe.bin.gz').write_bytes(gzip.compress(bytes(blob),compresslevel=9,mtime=0))

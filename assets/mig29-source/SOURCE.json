@@ -8,12 +8,12 @@
   "license": "GPL-2.0-only",
   "sha256": {
     "assets/mig29-source/COPYING.txt": "b15f41248f0957edfd2d91202ee810a6ef2d92c0256d330585d806677306a706",
-    "assets/mig29-source/README.md": "7caeb7e34bde216ee60d30ec56edc1eebb412d8664917acf7e57d8980ccf171e",
+    "assets/mig29-source/README.md": "5653c37b055d3bcf0a0bbe8b3aeba91230522774c44f3569a6206788430e4191",
     "assets/mig29-source/UPSTREAM-README.txt": "01a59ba7fe7edcf792d864a2949ec4daf8b4cd673018b98562e7a35294a013d0",
     "assets/mig29-source/albedo.png": "d9ab88aaf87e9873a50a7cf8b0b4f2820644cae00edb35eec646d56f1b074aeb",
     "assets/mig29-source/albedo.rgb": "4551dddec3b120b5fdc58c64297d91d425ef4181e220488b40ef8baaa25becd3",
     "assets/mig29-source/cockpit.ac": "84384e502856defd6627a113c62d6dc0a36ffd93f201f9d15a58f7a24eaa4783",
-    "assets/mig29-source/mig29-adapted.blend": "ab6609c1852ed3df5668c55772371d34961e21938e82207a6b01e796d2617139",
+    "assets/mig29-source/mig29-adapted.blend": "ac1d026c6629c80bee2ab4479313ffb2a0d31357d0249bf30c5f85be5d058a7c",
     "assets/mig29-source/original.ac": "fa1535f5d0feed49de771dd34a58bc82b032b71643ead203a8a1f25e066c4b48",
     "assets/mig29-source/reference-animations.xml": "0ad77964ddfed2fff814de309451af1a11e845d9fcdd078ae1cc35c77518e813",
     "assets/mig29-source/reference-fdm.xml": "45937cec57841f9b022c94452bcd0f4b1a3ee7d226c0a9d4dec0d7d49d376780"
