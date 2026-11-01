@@ -565,7 +565,7 @@ function markings(k) {
         const a = -Math.PI / 2 + (i * Math.PI) / 5,
           r = i % 2 ? scale * 0.43 : scale,
           y = 1.99 - Math.sin(a) * r,
-          z = 4.8 + Math.cos(a) * r;
+          z = 5.2 + Math.cos(a) * r;
         const hit = new T.Raycaster(
           V(side * 3, y, z),
           V(-side, 0, 0),

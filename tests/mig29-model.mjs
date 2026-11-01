@@ -182,3 +182,5 @@ wreck.traverse((o) => {
 });
 assert.ok(pieces > 0);
 factory.release(wreck);
+
+for(const part of [5,6]){let red=false;model.damageParts[part].traverse(o=>{if(o.isMesh&&o.material.color?.getHex()===0x9b2320)red=true;});assert.ok(red,'projected star lies on fin '+part);}
