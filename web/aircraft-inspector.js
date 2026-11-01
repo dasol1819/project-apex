@@ -231,6 +231,11 @@ export function createAircraftInspector({
       );
     camera.up.set(0, 1, 0);
     camera.lookAt(target.clone().add(pan));
+    const near = clamp(radius / 200, 0.015, 0.5);
+    if (camera.near !== near) {
+      camera.near = near;
+      camera.updateProjectionMatrix();
+    }
     floor.visible = view !== "bottom" && camera.position.y > ground + 0.05;
     renderer.render(scene, camera);
   }
@@ -291,7 +296,7 @@ export function createAircraftInspector({
         38,
         1,
         0.025,
-        Math.max(500, definition.span * 10),
+        Math.max(1500, definition.span * 30),
       );
       scene.add(new T.HemisphereLight(0xd9edf5, 0x34414a, 2));
       for (const [color, power, p] of [
