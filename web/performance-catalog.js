@@ -1,7 +1,7 @@
 import {simAircraft} from './aircraft-catalog.js';
 
 export const AIRCRAFT_ROLES=Object.freeze([
- ['스텔스 제공 전투기','STEALTH AIR SUPERIORITY'],['전투기 · 전폭기','FIGHTER / STRIKE'],['경량 전투기','LIGHT FIGHTER'],['다목적 전투기','MULTIROLE FIGHTER'],['함상 요격 전투기','FLEET DEFENCE FIGHTER'],['제공 전투기','AIR SUPERIORITY FIGHTER'],['장거리 전폭기','DUAL-ROLE STRIKE FIGHTER'],['스텔스 전략폭격기','STEALTH STRATEGIC BOMBER'],['장거리 전략폭격기','LONG-RANGE HEAVY BOMBER'],['초기 경전투기','LIGHT PROPELLER FIGHTER'],['스텔스 다목적 중전투기','STEALTH MULTIROLE HEAVY FIGHTER'],['함재 다목적 전투기 · 단좌','CARRIER MULTIROLE · SINGLE SEAT'],['함재 다목적 전투기 · 복좌','CARRIER MULTIROLE · TWO SEATS'],['다목적 제공 전투기','MULTIROLE AIR SUPERIORITY']
+ ['스텔스 제공 전투기','STEALTH AIR SUPERIORITY'],['전투기 · 전폭기','FIGHTER / STRIKE'],['경량 전투기','LIGHT FIGHTER'],['다목적 전투기','MULTIROLE FIGHTER'],['함상 요격 전투기','FLEET DEFENCE FIGHTER'],['제공 전투기','AIR SUPERIORITY FIGHTER'],['장거리 전폭기','DUAL-ROLE STRIKE FIGHTER'],['스텔스 전략폭격기','STEALTH STRATEGIC BOMBER'],['장거리 전략폭격기','LONG-RANGE HEAVY BOMBER'],['초기 경전투기','LIGHT PROPELLER FIGHTER'],['스텔스 다목적 중전투기','STEALTH MULTIROLE HEAVY FIGHTER'],['함재 다목적 전투기 · 단좌','CARRIER MULTIROLE · SINGLE SEAT'],['함재 다목적 전투기 · 복좌','CARRIER MULTIROLE · TWO SEATS'],['다목적 제공 전투기','MULTIROLE AIR SUPERIORITY'],['경량 전선 전투기','FRONTLINE FIGHTER']
 ]);
 // Published references describe particular configurations, not guaranteed game
 // performance. Keep qualifiers and units rather than inventing exact figures.
@@ -19,7 +19,8 @@ export const PUBLIC_CATALOG=Object.freeze([
  {speed:'Mach 2.0 · Su-57E 공개 참고',ceiling:'18,800 m · Su-57E 공개 참고',range:'전투행동반경 1,250 km · Su-57E 공개 참고',source:'https://roe.ru/en/production/multipurpose-fighters-and-fighter-bombers/su-57e/'},
  {speed:'Mach 1.8+ · 해군 공개값',ceiling:'50,000 ft 초과',range:'1,660 nmi · AIM-9 2발 + 480 gal 외부탱크 3개 페리 참고',source:'https://www.navair.navy.mil/product/FA-18EF-Super-Hornet'},
  {speed:'Mach 1.8+ · 해군 공개값',ceiling:'50,000 ft 초과',range:'1,660 nmi · AIM-9 2발 + 480 gal 외부탱크 3개 페리 참고',source:'https://www.navair.navy.mil/product/FA-18EF-Super-Hornet'},
- {speed:'Mach 2.25 · 고고도 공개 참고',ceiling:'18,000 m · 공개 참고',range:'3,600 km · 고고도 내부 연료 참고',source:'https://roe.ru/en/production/multipurpose-fighters-and-fighter-bombers/su-35/'}
+ {speed:'Mach 2.25 · 고고도 공개 참고',ceiling:'18,000 m · 공개 참고',range:'3,600 km · 고고도 내부 연료 참고',source:'https://roe.ru/en/production/multipurpose-fighters-and-fighter-bombers/su-35/'},
+ {speed:'Mach 2급 · 고고도 참고',ceiling:'17,500 m · 공개 참고',range:'구성·비행 프로파일에 따라 상이',source:'https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/197174/AFmuseum/mikoyan-gurevich-mig-29a/'}
 ]);
 const number=(v,d=1)=>v.toLocaleString('en-US',{maximumFractionDigits:d});
 export function readPerformance(sim,{altitude=3000,speed=200,fuel=.5}={}){
@@ -43,7 +44,7 @@ export function createPerformanceCatalog({document:d,getSim}){
   ]);
   const body=$('performance-envelope');body.replaceChildren();for(const speed of af.bomber?[90,120,150,180,220]:[120,160,200,250,300]){const q=readPerformance(sim,{...conditions,speed}),row=d.createElement('tr');for(const value of [number(speed*3.6,0),q[12]?number(q[12],1):'—',q[13]?number(q[13],1):'—']){const cell=d.createElement('td');cell.textContent=value;row.append(cell);}body.append(row);}
   rows('performance-radar',[
-   ['레이더',af.radar],['방식',af.radarMode],['공대공 탐색',radar[8]?'지원':'미지원 · 지상/해상 전용'],['공대공 기준 탐지거리',radar[8]?number(radar[1]/1000,0)+' km':'—'],['지상·해상 기준 거리',radar[2]>0?number(radar[2]/1000,0)+' km':'미지원'],['기준 표적 RCS',number(radar[9],0)+' m²'],['탐색 주기',number(radar[3],2)+' s'],['모델 빔 폭',number(radar[4],0)+'°'],['탐색 방위각 선택','30° / 60° / 130°'],['TWS',radar[8]&&af.id!==1&&af.id!==2?'지원':'미지원'],['속도 노치 기준',radar[5]>0?number(radar[5],0)+' m/s':'속도 노치 모델 미적용'],['미사일 유도',!af.rfCount?'레이더 미사일 미탑재':af.id===1?'Sparrow · STT 유지 필수':'능동 미사일 · 데이터링크 사용']
+   ['레이더',af.radar],['방식',af.radarMode],['공대공 탐색',radar[8]?'지원':'미지원 · 지상/해상 전용'],['공대공 기준 탐지거리',radar[8]?number(radar[1]/1000,0)+' km':'—'],['지상·해상 기준 거리',radar[2]>0?number(radar[2]/1000,0)+' km':'미지원'],['기준 표적 RCS',number(radar[9],0)+' m²'],['탐색 주기',number(radar[3],2)+' s'],['모델 빔 폭',number(radar[4],0)+'°'],['탐색 방위각 선택','30° / 60° / 130°'],['TWS',radar[8]&&af.id!==1&&af.id!==2&&af.id!==14?'지원':'미지원'],['속도 노치 기준',radar[5]>0?number(radar[5],0)+' m/s':'속도 노치 모델 미적용'],['미사일 유도',!af.rfCount?'레이더 미사일 미탑재':af.id===1?'Sparrow · STT 유지 필수':'능동 미사일 · 데이터링크 사용']
   ]);
   const reference=PUBLIC_CATALOG[af.id];rows('performance-public', [['공개 속도 참고',reference.speed],['공개 상승한도',reference.ceiling],['공개 항속거리',reference.range]]);$('performance-source').href=reference.source;
  }

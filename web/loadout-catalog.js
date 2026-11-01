@@ -3,7 +3,7 @@ export const WEAPONS=ARMAMENT.weapons,PRESETS=ARMAMENT.profiles,PODS=ARMAMENT.po
 export const presetsFor=t=>PRESETS.filter(p=>p.aircraft===Number(t));
 export const weaponFor=p=>WEAPONS[p?.bomb]||null;
 export const rfCount=p=>p?[...Array(6)].filter((_,i)=>p.rfMask&(1<<i)).length:0;
-export const presetMass=p=>p.ir*(p.aircraft===13?105:p.aircraft===10?106:85)+rfCount(p)*(p.aircraft===13?175:p.aircraft===10?190:p.aircraft===4?450:p.aircraft===1?230:152)+(weaponFor(p)?.mass||0)*p.bombs+(PODS[p.pod]?.mass||0);
+export const presetMass=p=>p.ir*([13,14].includes(p.aircraft)?105:p.aircraft===10?106:85)+rfCount(p)*(p.aircraft===14?253:p.aircraft===13?175:p.aircraft===10?190:p.aircraft===4?450:p.aircraft===1?230:152)+(weaponFor(p)?.mass||0)*p.bombs+(PODS[p.pod]?.mass||0);
 export function selectedPreset(type,storage){let id;try{id=JSON.parse(storage?.getItem('raptor.loadouts.v1')||'{}')[type];}catch{}return presetsFor(type).find(p=>p.id===id)||presetsFor(type)[0]||PRESETS[0];}
 export function savePreset(p,storage){try{const all=JSON.parse(storage?.getItem('raptor.loadouts.v1')||'{}');all[p.aircraft]=p.id;storage?.setItem('raptor.loadouts.v1',JSON.stringify(all));}catch{}}
 export function nativePreset(sim){if(sim?.get_loadout_state)return PRESETS[new Float64Array(sim.memory.buffer,sim.get_loadout_state(),16)[1]];return presetsFor(sim?.get_aircraft_type?.()||0)[0];}

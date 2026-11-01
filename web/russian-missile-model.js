@@ -4,6 +4,7 @@ import * as T from './vendor/three.module.js';
 // Original exterior meshes. Public approximate overall dimensions; small
 // fittings and folded-carriage detail are authored, not engineering CAD.
 export function createRussianMissileModel(kind='r77'){
+ if(kind==='r27r')return createR27();
  if(kind==='r771'||kind==='r73')return externalRussianMissile(kind);
  const rf=kind==='r77',L=rf?4.06:2.92,R=rf?.10:.085,root=new T.Group();
  root.name=rf?'R-77M · folded-fin internal carriage':'R-74M2 · internal short-range missile';
@@ -49,4 +50,13 @@ function batchMissile(root){
  root.updateMatrixWorld(true);const meshes=[];root.traverse(o=>{if(o.isMesh)meshes.push(o);});
  for(const mesh of meshes)if(mesh.parent!==root)root.attach(mesh);
  batchStaticMeshes(root);return root;
+}
+
+function createR27(){
+ const root=new T.Group();root.name='R-27R · semi-active radar missile';root.userData.dimensions={length:4.08,diameter:.23};
+ const paint=new T.MeshStandardMaterial({color:0xc9ceca,roughness:.65,side:T.DoubleSide}),nose=new T.MeshStandardMaterial({color:0xe0dfcd,roughness:.8}),metal=new T.MeshStandardMaterial({color:0x56615d,roughness:.5,metalness:.65});
+ const add=(g,m)=>{const o=new T.Mesh(g,m);root.add(o);return o;};
+ const profile=[[.001,-2.04],[.04,-1.86],[.09,-1.57],[.115,-1.31],[.115,1.92],[.09,2.04]].map(p=>new T.Vector2(...p));for(const[p,m]of[[profile,paint],[profile.slice(0,4),nose]]){const g=new T.LatheGeometry(p,40);g.rotateX(Math.PI/2);add(g,m);}
+ for(let i=0;i<4;i++)for(const[z,span,chord]of[[-.53,.39,.62],[1.43,.30,.63]]){const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute([.11,0,z-chord/2,span,0,z-.15,span,0,z+.18,.11,0,z+chord/2],3));g.setIndex([0,1,2,0,2,3]);g.computeVertexNormals();add(g,paint).rotation.z=Math.PI/4+i*Math.PI/2;}
+ const g=new T.CylinderGeometry(.08,.09,.06,32,1,true);g.rotateX(Math.PI/2);g.translate(0,0,2.02);add(g,metal);return batchMissile(root);
 }

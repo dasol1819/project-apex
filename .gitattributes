@@ -5,3 +5,7 @@
 *.blend binary
 # Keep the pinned upstream AC3D file byte-for-byte, including its CRLF lines.
 assets/su35-source/original.ac -text whitespace=cr-at-eol
+
+assets/mig29-source/*.ac -text whitespace=cr-at-eol
+assets/mig29-source/*.xml -text whitespace=cr-at-eol
+assets/mig29-source/*.txt -text whitespace=cr-at-eol

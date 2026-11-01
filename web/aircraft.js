@@ -1,3 +1,4 @@
+import {createMig29CombatAircraft} from './mig29-combat-model.js';
 import {createSu35CombatAircraft} from './su35-combat-model.js?v=6';
 import {createClassicAircraft} from './classic-aircraft.js';
 import {nozzlePose,NOZZLE_LENGTH,NOZZLE_HINGE} from './nozzle-kinematics.js';
@@ -13,6 +14,7 @@ import {createMainWeaponBay} from './main-weapon-bay.js';
 // Original procedural exterior. Metres; +X starboard, +Y up, -Z nose.
 // Geometry is based on the public F-22 outline, not production CAD.
 export function createAircraft(type=0,options={}) {
+  if(Number(type)===14)return createMig29CombatAircraft(options);
   if(Number(type)===13)return createSu35CombatAircraft(options);
   if(Number(type)>0)return createClassicAircraft(Number(type),options);
   const group = new THREE.Group();

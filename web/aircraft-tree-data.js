@@ -37,7 +37,7 @@ export const TREE_SOURCES=Object.freeze({
 });
 const rows=[];
 // [suffix, designation, variant, BR, era, distinguishing note, native ID?]
-function add(nation,branch,family,nickname,source,variants){for(const [suffix,name,variant,br,era,note,simId=null]of variants)rows.push(Object.freeze({id:`${nation}-${family}-${suffix}`,nation,branch,family,nickname,source,name,variant,br,era,note,simId,implemented:Number.isInteger(simId),previewUrl:family==='su35'?'su35.html?v=5':null}));}
+function add(nation,branch,family,nickname,source,variants){for(const [suffix,name,variant,br,era,note,simId=null]of variants)rows.push(Object.freeze({id:`${nation}-${family}-${suffix}`,nation,branch,family,nickname,source,name,variant,br,era,note,simId,implemented:Number.isInteger(simId),previewUrl:family==='su35'?'su35.html?v=6':family==='mig29'&&suffix==='912'?'mig29.html':null}));}
 add('us','light','p40','Warhawk','ww2',[
  ['e','P-40E','기총 강화형',3,'prop','초기 Warhawk에서 기총 화력을 강화한 대표 E형.']]);
 add('us','light','p51','Mustang','ww2',[
@@ -127,7 +127,7 @@ add('ru','light','mig17','Fresco','museum',[
 add('ru','light','mig21','Fishbed','soviet',[
  ['bis','MiG-21bis','후기 엔진형',12.5,'supersonic','경량 델타익 MiG-21의 엔진·무장 운용 발전형.']]);
 add('ru','light','mig29','Fulcrum','mig29',[
- ['912','MiG-29','9.12 · 초기형',14.5,'fourth','경량 쌍발 전선 전투기의 초기 실전형. 현대화 SMT와 별도.']]);
+ ['912','MiG-29','9.12 · 초기형',14.5,'fourth','RD-33 쌍발 · N019 PD/STT · R-73 / R-27R · 초기 9.12형.',14]]);
 add('ru','heavy','pe3','Petlyakov Fighter','soviet',[
  ['bis','Pe-3bis','쌍발 중전투형',3.5,'prop','Pe-2 계열에서 발전한 쌍발 전투기의 무장·방호 개량형.']]);
 add('ru','heavy','su15','Flagon','soviet',[
