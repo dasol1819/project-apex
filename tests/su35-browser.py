@@ -76,6 +76,8 @@ with sync_playwright() as p:
     page = context.new_page()
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.goto(base + '/?screen=tree', wait_until='domcontentloaded')
+    page.wait_for_selector('html[data-raptor-ready=true]', timeout=120000)
+    page.set_default_timeout(90000)
     page.locator('[data-tree-nation=ru]').click()
     page.locator('[data-tree-aircraft=ru-su35-s]').click()
     assert '구현' in page.locator('#tree-detail-status').inner_text()

@@ -261,7 +261,7 @@ export function createAircraftInspector({
       disposeObject(scene);
     }
     renderer?.renderLists.dispose();
-    model = scene = camera = undefined;
+    model = scene = camera = floor = snapshot = undefined;
     onClose();
     previousFocus?.focus?.({ preventScroll: true });
   }
@@ -279,6 +279,7 @@ export function createAircraftInspector({
     dialog.showModal();
     $("inspector-title").textContent =
       definition.name + " · " + definition.nickname;
+    $("inspector-status").textContent = "기체를 준비하는 중…";
     $("inspector-status").hidden = false;
     try {
       renderer ??= new T.WebGLRenderer({
