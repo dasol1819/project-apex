@@ -44,6 +44,13 @@ aircraft.update({gear:0,pitchInput:.5,rollInput:.5,yawInput:.4});
 assert.ok(aircraft.group.getObjectByName('Su-35 tail-left').rotation.x<0,'tailplane follows pitch command');
 assert.ok(aircraft.group.getObjectByName('Su-35 flaperon-left').rotation.x>0&&aircraft.group.getObjectByName('Su-35 flaperon-right').rotation.x<0,'differential flaperons follow right roll');
 assert.ok(aircraft.group.getObjectByName('Su-35 rudder-right').rotation.y>0,'rudder follows yaw command');
+// Native flap angle must lower both trailing edges; the aileron term stays differential.
+aircraft.update({gear:0,leftAileron:0,rightAileron:0,leftFlap:0,rightFlap:0});
+const flaperon=aircraft.group.getObjectByName('Su-35 flaperon-left');
+const neutralTrailing=flaperon.localToWorld(new T.Vector3(0,0,.4)).y;
+aircraft.update({gear:1,leftAileron:0,rightAileron:0,leftFlap:.35,rightFlap:.35});
+assert.ok(flaperon.localToWorld(new T.Vector3(0,0,.4)).y<neutralTrailing-.05,'native landing flap lowers trailing edge');
+assert.ok(aircraft.group.getObjectByName('Su-35 flaperon-right').rotation.x>0,'both flaps lower symmetrically');
 aircraft.update({gear:1});
 const combiner=aircraft.group.getObjectByName('Su-35 HUD combiner');
 const windshield=aircraft.group.getObjectByName('Su-35 adapted object.001');

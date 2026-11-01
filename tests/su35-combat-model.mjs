@@ -24,3 +24,9 @@ for(const [id,variant]of [[1,0],[5,4],[0,1]]){
  wreck.traverse(node=>{if(!node.isMesh)return;pieces++;for(const attr of Object.values(node.geometry.attributes))assert.ok(Array.from(attr.array).every(Number.isFinite));if(node.geometry.attributes.liveryPosition)assert.equal(node.geometry.attributes.liveryPosition.count,node.geometry.attributes.position.count);});factory.release(wreck);
 }
 console.log(JSON.stringify({result:'PASS',collisionRegions:30,preservedTriangles:true,externalStoreCoordinates:true,damageInheritance:true,wreckageMeshes:pieces}));
+
+const {createRussianMissileModel}=await load('russian-missile-model.js');
+for(const [kind,triangles] of [['r77',848],['r74',856],['r771',1592],['r73',984]]){
+ const missile=createRussianMissileModel(kind);let meshes=0,total=0;missile.traverse(o=>{if(o.isMesh){meshes++;total+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;}});
+ assert.equal(meshes,3,kind+' has three material draw calls');assert.equal(total,triangles,kind+' preserves all missile triangles');
+}

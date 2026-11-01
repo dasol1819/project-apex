@@ -35,4 +35,5 @@ The original `.deployment/web-*.b64` payload is unchanged. `web/manifest.json` v
 - `su35-combat-native.mjs`: original 13-aircraft specs/radars/gear/loadouts and bit-identical trajectories over 15,600 ticks; Su-35 identity, four loadout masses, 12 flight-envelope scenarios, nozzle stops, damage and reset.
 - `su35-combat-systems.mjs`: fleet-based RF/IR acquisition, launch, trajectories and hits; Su-35 as an RF target; 150 gun rounds and reload; laser pod; native bomb release; flare/chaff; runway takeoff.
 - `su35-combat-model.mjs`: 30 collision bounds, exact preservation of source triangles, launch/station alignment, structure/store visibility and clipped wreckage attributes.
+- Regression checks also measure real 30 mm projectile hit energy against the existing GSh-30-1 and verify that native landing-flap angles lower both trailing edges. Static missile batching retains the exact triangle counts while using three material draw calls per missile.
 - Existing geometry and independent FDM tests remain. Playwright covers desktop/mobile selection, four loadouts, three Su-35S actors, throttle input and page/shader errors in the actual main game.

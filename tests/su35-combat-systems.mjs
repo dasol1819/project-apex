@@ -37,3 +37,26 @@ const aircraft=make();aircraft.set_map(2);aircraft.reset_sortie_spawn(0,0,0);let
 for(let i=0;i<120*80;i++){const s=state(aircraft);aircraft.set_controls(s[13]>80?.5:0,0,0,1.1,s[1]>50?0:1,0,0,1);aircraft.step(1/120);if(s[1]>80){takeoffTime=i/120;break;}}
 assert.ok(takeoffTime&&takeoffTime<50,'takeoff from the existing runway');assert.equal(state(aircraft)[33],0,'takeoff remains intact');
 console.log(JSON.stringify({result:'PASS',engagements,gunRounds:150,reload:true,laserPod:true,bombRelease:true,countermeasures:true,takeoffSeconds:takeoffTime}));
+
+// Measure delivered hit energy against the existing GSh-30-1, through real
+// projectile travel and collision. Muzzle velocity alone cannot verify this.
+function impactEnergies(type){
+ const shooter=make(type),target=make(8,-180,250),factors=[];
+ target.set_invincible(1);shooter.set_trigger(1);
+ const bridge=createFleetBridge([{id:1,team:0,active:true,sim:shooter},{id:101,team:1,active:true,sim:target}],undefined,{onEvents(a){
+  if(a.id!==1)return;const hits=read(shooter,'get_fleet_hits',450);for(let i=0;i<hits[0];i++){const k=2+i*7;factors.push(hits[k+2]);}
+ }});
+ for(let i=0;i<180;i++)bridge.step(1/120);
+ assert.ok(factors.length,'gun hits a fleet target for type '+type);return Math.max(...factors);
+}
+const legacy30mm=impactEnergies(10),su35Impact=impactEnergies(13);
+assert.ok(Math.abs(su35Impact-legacy30mm)<1e-12,'Su-35 actual 30mm hit energy matches the existing 30mm gun');
+assert.ok(su35Impact>.4,'30mm impact multiplier is applied');
+console.log(JSON.stringify({result:'PASS',gunImpact:{legacy30mm,su35Impact}}));
+
+const ai=make(),aiTarget=make(1,-4000,210);ai.set_combat_ai(1,.8,0);
+const aiBridge=createFleetBridge([{id:1,team:0,active:true,sim:ai},{id:101,team:1,active:true,sim:aiTarget}]);
+let aiLaunched=false;for(let i=0;i<3600;i++){aiBridge.step(1/120);aiLaunched ||= read(ai,'get_amraam_state',32)[1]<6;}
+assert.ok(aiLaunched,'AI acquires and launches its own RF missile');
+assert.ok(read(aiTarget,'get_systems',256)[16]<.99,'AI delivers native combat damage');
+console.log(JSON.stringify({result:'PASS',aiCombat:true}));

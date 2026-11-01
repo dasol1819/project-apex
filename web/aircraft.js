@@ -1,4 +1,4 @@
-import {createSu35CombatAircraft} from './su35-combat-model.js?v=5';
+import {createSu35CombatAircraft} from './su35-combat-model.js?v=6';
 import {createClassicAircraft} from './classic-aircraft.js';
 import {nozzlePose,NOZZLE_LENGTH,NOZZLE_HINGE} from './nozzle-kinematics.js';
 import {enableWorldDepthIn} from './world-depth.js';

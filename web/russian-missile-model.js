@@ -1,3 +1,4 @@
+import {batchStaticMeshes} from './static-mesh-batching.js';
 import * as T from './vendor/three.module.js';
 
 // Original exterior meshes. Public approximate overall dimensions; small
@@ -20,7 +21,7 @@ export function createRussianMissileModel(kind='r77'){
  if(!rf)fin(-.95,.09,.11);
  for(const z of [-L*.25,L*.18]){const g=new T.CylinderGeometry(R*1.008,R*1.008,.014,32);g.rotateX(Math.PI/2);g.translate(0,0,z);add(g,metal);}
  const nozzle=new T.CylinderGeometry(R*.72,R*.75,.055,32,1,true);nozzle.rotateX(Math.PI/2);nozzle.translate(0,0,L*.48);add(nozzle,metal);
- return root;
+ return batchMissile(root);
 }
 
 function externalRussianMissile(kind){
@@ -39,5 +40,13 @@ function externalRussianMissile(kind){
  }}else{fins(.98,.40,.255);fins(-1.10,.09,.12);}
  const throat=new T.CylinderGeometry(R*.70,R*.78,.065,32,1,true);throat.rotateX(Math.PI/2);throat.translate(0,0,L*.49);add(throat,steel);
  for(const z of [-L*.22,L*.18]){const band=new T.CylinderGeometry(R*1.01,R*1.01,.018,32);band.rotateX(Math.PI/2);band.translate(0,0,z);add(band,steel);}
- return root;
+ return batchMissile(root);
+}
+
+// Static geometry keeps its exact world transform, vertex normals and UVs.
+// Lattice fins share materials instead of costing one draw call per grid bar.
+function batchMissile(root){
+ root.updateMatrixWorld(true);const meshes=[];root.traverse(o=>{if(o.isMesh)meshes.push(o);});
+ for(const mesh of meshes)if(mesh.parent!==root)root.attach(mesh);
+ batchStaticMeshes(root);return root;
 }

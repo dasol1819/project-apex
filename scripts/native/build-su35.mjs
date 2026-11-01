@@ -147,7 +147,7 @@ changeFunction('step',body=>{
   body=body.replace(old,`    ${isSu35}\n    if (result f64)\n      f64.const ${32*Math.PI/180}\n    else\n      ${old.trim()}\n    end\n`);
   // GSh-30-1 muzzle velocity and impact energy, independently of gun cadence.
   for(const [local,anchor]of [[4,'i32.const 860'],[3,'f64.const 0x1.0cccccccccccdp+1']]){
-    const at=body.indexOf(anchor);expect(at>0,'30mm gun parameter');
+    const at=body.indexOf(anchor,body.indexOf('i32.const 860'));expect(at>0,'30mm gun parameter');
     const tail=typeOr(body.slice(at),local);body=body.slice(0,at)+tail;
   }
   // R-73 flight estimates: 40g, 2.3 boost factor, 45-degree seeker cone.

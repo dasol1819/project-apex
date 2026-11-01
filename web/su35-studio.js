@@ -1,5 +1,5 @@
 import * as T from './vendor/three.module.js';
-import {createSu35Model} from './su35-model.js?v=5';
+import {createSu35Model} from './su35-model.js?v=6';
 import {loadSu35Asset} from './su35-asset.js?v=5';
 import {disposeObject} from './aircraft-catalog.js';
 

@@ -109,7 +109,7 @@ export function createSu35Model(asset,{combat=false}={}){
       if(key.startsWith('main-')){g.rotation.z=(key==='main-left'?-1:1)*(1-gear)*1.45;g.visible=gear>.015;}
       const side=key.endsWith('left')?-1:1;
       if(key.startsWith('tail-')&&s.enabled?.[side<0?3:4]!==0)g.rotation.x=-(s[side<0?'leftTail':'rightTail']??(.30*(s.pitchInput||0)-side*.07*(s.rollInput||0)));
-      if(key.startsWith('flaperon-'))g.rotation.x=s[side<0?'leftAileron':'rightAileron']!==undefined?-(s[side<0?'leftAileron':'rightAileron']*.65+s[side<0?'leftFlap':'rightFlap']*.65):-side*.28*(s.rollInput||0)+.19*gear;
+      if(key.startsWith('flaperon-'))g.rotation.x=s[side<0?'leftAileron':'rightAileron']!==undefined?-s[side<0?'leftAileron':'rightAileron']*.65+s[side<0?'leftFlap':'rightFlap']*.65:-side*.28*(s.rollInput||0)+.19*gear;
       if(key.startsWith('rudder-')&&s.enabled?.[side<0?20:21]!==0)g.rotation.y=(s[side<0?'leftRudder':'rightRudder']??(.32*(s.yawInput||0)))+side*.35*(s.airbrake||0);
       if(key.startsWith('lef-'))g.quaternion.setFromAxisAngle(V(1,0,side*.82).normalize(),-(s[side<0?'leftLEF':'rightLEF']??Math.max(0,(s.alpha||0)*.45)));
     }
