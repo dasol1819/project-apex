@@ -5,7 +5,7 @@ import {geometry} from './fighter-exterior-tools.js';
 import {paintSu35Markings} from './su35-markings.js?v=5';
 import {modernSu35Cockpit} from './su35-cockpit.js?v=5';
 import {flankerNozzle} from './su35-details.js?v=5';
-import {applySu35Livery} from './su35-livery.js?v=5';
+import {applySu35Livery} from './su35-livery.js?v=6';
 import {su35StructuralMeshes} from './su35-structure.js?v=5';
 
 export const SU35=Object.freeze({id:13,key:'su35',name:'Su-35S',nickname:'Flanker-E',length:21.9,span:15.3,engines:2,
@@ -14,8 +14,8 @@ const V=(...p)=>new T.Vector3(...p),mix=T.MathUtils.lerp;
 
 function surfaceMaterials(textures={}){
   const skin=new T.MeshStandardMaterial({color:0xe4ebee,map:textures.albedo??null,roughness:.72,metalness:.08,envMapIntensity:.65,
-    aoMap:textures.ao??null,aoMapIntensity:.32,bumpMap:textures.albedo??null,bumpScale:.00035,side:T.DoubleSide});
-  applySu35Livery(skin);
+    normalMap:textures.surface??null,normalScale:new T.Vector2(.85,.85),side:T.DoubleSide});
+  applySu35Livery(skin,undefined,textures);
   return {
     skin,glass:new T.MeshPhysicalMaterial({color:0x748a8e,roughness:.055,metalness:.08,transparent:true,opacity:.48,depthWrite:false,
       clearcoat:1,clearcoatRoughness:.035,side:T.DoubleSide,envMapIntensity:1.1}),
@@ -60,7 +60,7 @@ export function createSu35Model(asset,{combat=false}={}){
   if(!asset?.meshes)throw new Error('Su-35 model assets are required');
   const k=createAirframeKit(SU35),materials=surfaceMaterials(asset.textures),motions=new Map(),skinSurfaces=[];
   const integrity=Array.from({length:30},()=>({value:1}));
-  const skins=integrity.map(value=>applySu35Livery(materials.skin.clone(),value));
+  const skins=integrity.map(value=>applySu35Livery(materials.skin.clone(),value,asset.textures));
   k.materials.metal=materials.metal;k.materials.nozzle=materials.nozzle;k.materials.titanium=materials.metal;
   const pivots={canopy:[0,1.19,-4.0],'main-left':[-2.02,.33,2.90],'main-right':[2.02,.33,2.90],'nose-gear':[0,.60,-2.90],
     'tail-left':[-2.65,.02,6.55],'tail-right':[2.65,.02,6.55],
@@ -119,7 +119,7 @@ export function createSu35Model(asset,{combat=false}={}){
   });
   for(const group of motions.values())k.batch(group);
   const model=k.finish({exhaustFrames,gunMount:[1.05,.73,-4.0],gunPart:0,wingTips:[[-7.65,.62,4.0],[7.65,.62,4.0]]});
-  model.group.userData.modelRevision='su35-surface-study-4';model.group.userData.intakes=inlets;
+  model.group.userData.surfaceTextures={backend:asset.textures?.surface?.userData.surfaceBackend??'none',gpuBytes:asset.textures?.surface?.userData.gpuBytes??0};model.group.userData.modelRevision='su35-pbr-surface-1';model.group.userData.intakes=inlets;
   model.group.userData.previewOnly=true;model.group.userData.source=asset.metadata?.source;
   model.group.userData.combatVariant=combat;
   const update=model.update;model.update=(s={},dt=1/60)=>update({gear:1,...s,intakeRamp:T.MathUtils.clamp(s.intakeRamp??0,0,12*Math.PI/180)},dt);model.update();

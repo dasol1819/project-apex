@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
 import * as T from './vendor/three.module.js';
-import {loadSu35Asset} from './su35-asset.js?v=5';
-import {createSu35Model} from './su35-model.js?v=7';
+import {loadSu35Asset} from './su35-asset.js?v=6';
+import {createSu35Model} from './su35-model.js?v=8';
 import {Su35Flight,SU35_FLIGHT} from './su35-flight-physics.js?v=5';
 import {disposeObject} from './aircraft-catalog.js';
 const $=id=>document.getElementById(id),V=(...p)=>new T.Vector3(...p),DEG=180/Math.PI;
@@ -70,7 +70,7 @@ async function boot(){try{
   const ocean=new T.Mesh(new T.PlaneGeometry(100000,100000,1,1),new T.MeshStandardMaterial({color:0x355967,roughness:.70,metalness:.12}));ocean.rotation.x=-Math.PI/2;scene.add(ocean);
   const points=[];for(let i=-20;i<=20;i++){points.push(V(i*1000,.2,-20000),V(i*1000,.2,20000),V(-20000,.2,i*1000),V(20000,.2,i*1000));}
   scene.add(new T.LineSegments(new T.BufferGeometry().setFromPoints(points),new T.LineBasicMaterial({color:0xb5d3dc,transparent:true,opacity:.12})));
-  const asset=await loadSu35Asset(message=>status.textContent=message);model=createSu35Model(asset);model.group.position.sub(V(...SU35_FLIGHT.cg));root=new T.Group();root.add(model.group);scene.add(root);
+  const asset=await loadSu35Asset(message=>status.textContent=message,renderer);model=createSu35Model(asset);model.group.position.sub(V(...SU35_FLIGHT.cg));root=new T.Group();root.add(model.group);scene.add(root);
   resize();cameraFrame(1);telemetry();renderer.render(scene,camera);ready=true;status.hidden=true;$('flight-toggle').disabled=$('flight-reset').disabled=false;phase();bind();
   observer=new ResizeObserver(resize);observer.observe(canvas.parentElement);
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();paused=true;status.hidden=false;status.textContent='그래픽 연결이 끊겼습니다. 페이지를 새로고침해 주세요.';});

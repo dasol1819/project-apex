@@ -1,11 +1,12 @@
 import * as T from './vendor/three.module.js';
-import {createSu35Model} from './su35-model.js?v=7';
-import {loadSu35Asset} from './su35-asset.js?v=5';
+import {createSu35Model} from './su35-model.js?v=8';
+import {loadSu35Asset} from './su35-asset.js?v=6';
 import {disposeObject} from './aircraft-catalog.js';
 
 const $=id=>document.getElementById(id),canvas=$('model-canvas'),status=$('model-status');
 const DEG=Math.PI/180,clamp=T.MathUtils.clamp,V=(...a)=>new T.Vector3(...a);
 const PRESETS={
+  surface:{name:'외피 상세',eye:[4.7,3.1,-.4],at:[3.5,.55,2.3],neutral:true,number:'09 / SURFACE',title:'도장 아래의 미세한 표면.',copy:'패널의 이음새와 리벳, 도장의 미세한 굴곡과 거칠기를 가까이에서 살펴보세요.'},
   overview:{name:'전체 형상',eye:[17,9,-21],at:[0,.3,.5],number:'01 / AIRFRAME',title:'Flanker의 선을 따라.',copy:'긴 앞동체와 날개 뿌리의 연결, 떨어져 배치된 엔진과 쌍미익. 카나드가 없는 Su-35S의 실루엣을 표현했습니다.'},
   front:{fov:28,name:'정면',eye:[0,1.2,-28],at:[0,.4,-.2],number:'02 / FRONT',title:'좌우 대칭, 서로 다른 깊이.',copy:'중앙 동체 아래 두 흡입구가 열려 있습니다. 얇은 분리판과 입구의 경사, 오른쪽으로 치우친 IRST 센서를 살펴보세요.'},
   top:{name:'상면',eye:[0,34,.3],at:[0,0,.3],number:'03 / PLANFORM',title:'날개와 동체가 만나는 방식.',copy:'길게 이어지는 날개 뿌리와 후퇴익, 전동 수평미익을 표현했습니다. 청회색 위장과 패널 선은 기체 표면을 따라 이어집니다.'},
@@ -30,7 +31,8 @@ const desired={...pose};
 function fail(message){status.hidden=false;status.classList.add('error');status.textContent=message;$('save-view').disabled=true;}
 function setView(name,instant=false){
   const p=PRESETS[name];if(!p)return;camera.fov=p.fov||38;camera.updateProjectionMatrix();current=name;targetGoal.set(...p.at);
-  offset.set(...p.eye).sub(targetGoal);goal.setFromVector3(offset);
+  if(p.neutral&&model){targetGoal.copy(model.group.localToWorld(V(...p.at)));offset.copy(model.group.localToWorld(V(...p.eye))).sub(targetGoal);}
+  else offset.set(...p.eye).sub(targetGoal);goal.setFromVector3(offset);
   // Portrait stages frame the complete airframe, rather than cropping the wings.
   if(['overview','front','top','bottom','rear'].includes(name))goal.radius*=Math.max(1,.95/(width/height));
   if(instant||reduced.matches){spherical.copy(goal);target.copy(targetGoal);camera.position.setFromSpherical(spherical).add(target);camera.lookAt(target);}
@@ -144,7 +146,7 @@ async function boot(){
       const points=Array.from({length:181},(_,i)=>V(Math.cos(i/180*Math.PI*2)*radius,-2.103,Math.sin(i/180*Math.PI*2)*radius));
       marks.add(new T.Line(new T.BufferGeometry().setFromPoints(points),new T.LineBasicMaterial({color:0x47616e,transparent:true,opacity:radius===11.5?.28:.14})));
     }
-    await new Promise(resolve=>requestAnimationFrame(resolve));const asset=await loadSu35Asset(message=>{status.textContent=message;});status.textContent='곡면과 재질을 준비하는 중…';await new Promise(resolve=>requestAnimationFrame(resolve));model=createSu35Model(asset);scene.add(model.group);
+    await new Promise(resolve=>requestAnimationFrame(resolve));const asset=await loadSu35Asset(message=>{status.textContent=message;},renderer);status.textContent='곡면과 재질을 준비하는 중…';await new Promise(resolve=>requestAnimationFrame(resolve));model=createSu35Model(asset);scene.add(model.group);
     resize();setView(new URLSearchParams(location.search).get('view')||'overview',true);
     // Compile the actual paint, glass and morph variants before dismissing loading.
     model.update(pose);floor.visible=current!=='bottom';scene.getObjectByName('metre-scale studio ground markings').visible=floor.visible;renderer.render(scene,camera);status.hidden=true;$('save-view').disabled=false;

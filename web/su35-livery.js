@@ -1,24 +1,51 @@
 // SPDX-License-Identifier: GPL-2.0-only
-import * as T from './vendor/three.module.js';
+import * as T from "./vendor/three.module.js";
+import { addSu35Surface } from "./su35-surface.js?v=1";
 
-export const SU35_LIVERY=Object.freeze({number:'52',registration:'RF-81719',name:'Su-35S · 52 · 청회색 위장',
-  pale:0xb0ccd8,blue:0x80a6b9,slate:0x638a9d,radome:0x596970});
-const rgb=hex=>'vec3('+new T.Color(hex).toArray().map(n=>n.toFixed(6)).join(',')+')';
+export const SU35_LIVERY = Object.freeze({
+  number: "52",
+  registration: "RF-81719",
+  name: "Su-35S · 52 · 청회색 위장",
+  pale: 0xb0ccd8,
+  blue: 0x80a6b9,
+  slate: 0x638a9d,
+  radome: 0x596970,
+});
+const rgb = (hex) =>
+  "vec3(" +
+  new T.Color(hex)
+    .toArray()
+    .map((n) => n.toFixed(6))
+    .join(",") +
+  ")";
 
 // Fixed, airframe-space paint boundaries, shared by the shell and its controls.
 // The existing atlas contributes only fine surface detail to the painted areas.
-export function applySu35Livery(material,integrity={value:1}){
-  material.onBeforeCompile=shader=>{
-    shader.uniforms.su35Integrity=integrity;
-    shader.vertexShader='attribute vec3 liveryPosition; varying vec3 vSu35Local; varying vec3 vSu35NeutralNormal;\n'+shader.vertexShader;
-    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvSu35Local=liveryPosition;vSu35NeutralNormal=normal;');
-    shader.fragmentShader=`uniform float su35Integrity;varying vec3 vSu35Local;varying vec3 vSu35NeutralNormal;
+export function applySu35Livery(
+  material,
+  integrity = { value: 1 },
+  textures = {},
+) {
+  material.onBeforeCompile = (shader) => {
+    shader.uniforms.su35Integrity = integrity;
+    shader.vertexShader =
+      "attribute vec3 liveryPosition; varying vec3 vSu35Local; varying vec3 vSu35NeutralNormal;\n" +
+      shader.vertexShader;
+    shader.vertexShader = shader.vertexShader.replace(
+      "#include <begin_vertex>",
+      "#include <begin_vertex>\nvSu35Local=liveryPosition;vSu35NeutralNormal=normal;",
+    );
+    shader.fragmentShader =
+      `uniform float su35Integrity;varying vec3 vSu35Local;varying vec3 vSu35NeutralNormal;
       float paintOval(vec2 p,vec2 c,vec2 r,float a){float cs=cos(a),sn=sin(a);vec2 q=p-c;q=mat2(cs,-sn,sn,cs)*q/r;float edge=1.+.19*sin(q.x*3.1+q.y*2.5)+.13*cos(q.y*4.6-q.x*1.7)+.055*sin(q.x*7.3-q.y*5.2);return 1.-smoothstep(edge-.015,edge+.015,length(q));}
-    `+shader.fragmentShader;
-    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
-      vec3 original=diffuseColor.rgb;float luma=dot(original,vec3(.2126,.7152,.0722));
+    ` + shader.fragmentShader;
+    shader.fragmentShader = shader.fragmentShader.replace(
+      "#include <map_fragment>",
+      `#include <map_fragment>
+      vec3 original=diffuseColor.rgb;
+      vec3 rawColor=original/max(diffuse,vec3(.001));float luma=dot(rawColor,vec3(.2126,.7152,.0722));
       vec3 blurred=texture2D(map,vMapUv,3.5).rgb;float broad=dot(blurred,vec3(.2126,.7152,.0722));
-      float surfaceDetail=mix(1.,clamp((luma+.04)/(broad+.04),.68,1.20),.48);
+      float surfaceDetail=mix(1.,clamp((luma+.04)/(broad+.04),.55,1.),.70);
       vec2 p=vSu35Local.xz;float top=smoothstep(.03,.30,vSu35NeutralNormal.y);
       float medium=max(paintOval(p,vec2(-1.0,-3.4),vec2(.68,2.35),-.13),paintOval(p,vec2(1.10,-.1),vec2(.95,2.05),.23));
       medium=max(medium,paintOval(p,vec2(-3.7,3.50),vec2(2.05,.74),-.33));
@@ -40,10 +67,16 @@ export function applySu35Livery(material,integrity={value:1}){
       float metal=step(5.25,vSu35Local.z)*(1.-smoothstep(.62,.70,engineDistance));
       vec3 steel=mix(vec3(luma),original,.35)*vec3(.96,1.02,1.06);
       diffuseColor.rgb=mix(paint*surfaceDetail,steel,metal);
+      diffuseColor.rgb*=1.-(1.-suSurface.a)*.28;
+      diffuseColor.rgb*=1.-smoothstep(.70,.80,suSurface.b)*.07*(1.-metal);
       float scarring=(1.-su35Integrity)*smoothstep(.25,.72,fract(sin(dot(floor(vSu35Local*4.),vec3(12.98,78.23,37.71)))*43758.54));
       diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.025,.029,.030),scarring*.85);
-    `);
+    `,
+    );
+    addSu35Surface(shader, textures);
   };
-  material.customProgramCacheKey=()=> 'su35-52-reference-paint-5';
+  material.userData.su35Surface = true;
+  material.customProgramCacheKey = () =>
+    "su35-52-pbr-surface-1-" + !!textures.surface + "-" + !!textures.micro;
   return material;
 }

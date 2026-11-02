@@ -15,3 +15,12 @@ The browser reconstruction adds the modern cockpit, rounded seat and harness, pr
 To rebuild an extracted source archive, run `blender -b --factory-startup --threads 4 --python scripts/su35/build_asset.py -- --bake` from its root. This writes geometry, textures, license and occlusion to `web/assets/su35`. Repackage with `python3 scripts/su35/package_source.py web` and serve the `web` directory to inspect `su35.html`.
 
 The 52 / RF-81719 blue-gray reconstruction is defined in `web/su35-livery.js`; the original atlas now supplies fine panel detail rather than its Su-27 camouflage colors. Lower-wing and fin markings are projected onto the real skin. The source package also includes the independent flight-test modules, their physics test and the model assumptions in `docs/su35-flight-model.md`.
+
+
+The packed surface revision adds a separate UV-aligned normal/roughness/occlusion
+atlas and a shared micro-normal tile, replacing albedo-derived bump. See
+[the surface study](../../docs/su35-surface-review/README.md) for the public Dagor
+references, channel layout, measured storage budget and reproduction commands.
+The editable panel layout is `surface-layout.json`; `scripts/su35/build_surface.py`
+compiles the C++ rasterizer and builds the PNG/WebP/KTX2 data maps. This changes
+surface shading without adding or moving model triangles.

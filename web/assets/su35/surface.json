@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "geometrySha256": "6f6bd4088bb019dd5b4f81c1ffdf39f4acdd90d252c33f52caefbd7242b6da8a",
+  "layoutSha256": "e0dff9e493420ccdfce85894641e91fc01cd545e4e2a7cfb5b661e612a12b711",
+  "layout": "RG=OpenGL tangent normal XY; B=perceptual roughness; A=occlusion/cavity",
+  "compressedSize": [
+    4096,
+    4096
+  ],
+  "fallbackSize": [
+    2048,
+    2048
+  ],
+  "microSize": [
+    256,
+    256
+  ],
+  "geometryAdded": 0,
+  "compressedGpuBytesIncludingMips": 22369648,
+  "files": {
+    "surface.ktx2.gz": {
+      "bytes": 7730026,
+      "sha256": "62fb0e0f24afef815b03f5b03664f55354324276e392f28e67e286ee3df7d059"
+    },
+    "surface-fallback.webp": {
+      "bytes": 3165064,
+      "sha256": "b2b5cbd2c89a4d956bf1b5f879e5080b8ed32346d84fbbe86985457d0caef5c2"
+    },
+    "micro-surface.webp": {
+      "bytes": 83154,
+      "sha256": "ecbd38595d40ea384ab684b565ed3131c9009c1c5122af8264689d6aa3d032e3"
+    },
+    "albedo.webp": {
+      "bytes": 696042,
+      "sha256": "75399714c0086765ba1e093867178adc7b18b32929c7a60a9f1cea92b19b9f81"
+    }
+  }
+}
