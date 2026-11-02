@@ -1,0 +1,22 @@
+{
+  "id": 2,
+  "name": "F-5E",
+  "extent": [
+    8.13,
+    6.3,
+    14.45
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 404498,
+      "sha256": "18e34e737cf7673bf3da4b1c892891e583c972b7aedf732b30e9d49e4e9db7b7"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2231080,
+      "sha256": "9c96e77f3131d24da3519bc5e6775d8d41d02e6b89f24a6c95c9faa3ed89763a"
+    }
+  }
+}

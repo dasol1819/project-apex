@@ -44,6 +44,11 @@ jobs:
           node tests/mig29-combat.mjs public
           node tests/mig29-model.mjs public
           node tests/mig29-surface-data.mjs public
+      - name: Check fleet surface integrity, moving paint and round exhausts
+        run: |
+          node scripts/aircraft-progress.mjs
+          node tests/fleet-surface.mjs public
+          node tests/fleet-surface-transcode.mjs public
       - uses: actions/configure-pages@v5
         with:
           enablement: true

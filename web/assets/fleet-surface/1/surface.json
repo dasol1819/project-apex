@@ -1,0 +1,22 @@
+{
+  "id": 1,
+  "name": "F-4E",
+  "extent": [
+    11.7,
+    6.3,
+    19.2
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 396844,
+      "sha256": "ca389f41e38003c1c88065d693eefc64a6b934dc9b1e21c26552098ac80b7240"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2204878,
+      "sha256": "f713f3a1c494486d992a914cf8e60e5df2d87ba77df53c552f8bc4fd52554478"
+    }
+  }
+}

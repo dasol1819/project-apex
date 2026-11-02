@@ -33,4 +33,4 @@ export function storeMount(type,kind,slot){
 export function sweptPoint(p,side,degrees=20){const a=-side*(Math.max(20,Math.min(68,degrees))-20)*Math.PI/180,c=Math.cos(a),s=Math.sin(a),x=p[0]-side*3.15,z=p[2]-.25;return[side*3.15+x*c+z*s,p[1],.25-x*s+z*c];}
 export function aircraftConfiguration(sim){return sim?.get_aircraft_configuration?new Float64Array(sim.memory.buffer,sim.get_aircraft_configuration(),8):[0,20,1,20,13.56,2,0,0];}
 export const irStoreAvailable=(state,slot)=>(state?.[slot<2?12+slot:33+slot-2]??1)>0;
-export function disposeObject(root){const gs=new Set(),ms=new Set();root.traverse(o=>{if(o.geometry)gs.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material])if(m)ms.add(m);});for(const g of gs)g.dispose();for(const m of ms)m.dispose();root.removeFromParent();}
+export function disposeObject(root){root.userData?.releaseFleetSurface?.();const gs=new Set(),ms=new Set();root.traverse(o=>{if(o.geometry)gs.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material])if(m)ms.add(m);});for(const g of gs)g.dispose();for(const m of ms)m.dispose();root.removeFromParent();}

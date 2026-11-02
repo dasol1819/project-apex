@@ -1,0 +1,22 @@
+{
+  "id": 10,
+  "name": "Su-57",
+  "extent": [
+    14.1,
+    6.3,
+    20.1
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 402640,
+      "sha256": "9a40931a35130461b2d2091bced480e1667a5f49aa0b219c0713ab5ada0b7556"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2229504,
+      "sha256": "42206df8d2b4f7704cf9154b13e4f8f36092741ccdbe84aa46d2850938c7af2e"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": 6,
+  "name": "F-15E",
+  "extent": [
+    13.05,
+    6.3,
+    19.43
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 402004,
+      "sha256": "2ef43f2375ad8a16043da480a64666dcd6c0f749e8cf1f98e73ed8a848fc5c9e"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2252826,
+      "sha256": "4819afd5e5affa967b773d9ddee34ae8c7de027fdba6c320dd3902658d8ae6c5"
+    }
+  }
+}

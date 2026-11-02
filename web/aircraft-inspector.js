@@ -1,5 +1,5 @@
 import * as T from "./vendor/three.module.js";
-import { createAircraft } from "./aircraft.js?v=inspector-5";
+import { createAircraft } from "./aircraft.js?v=fleet-surface-1";
 import { aircraftDefinition, disposeObject } from "./aircraft-catalog.js";
 
 const V = (...p) => new T.Vector3(...p),

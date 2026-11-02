@@ -1,6 +1,7 @@
+import {addFleetSurface} from './fleet-surface.js';
 import {createMig29CombatAircraft} from './mig29-combat-model.js?v=surface-1';
-import {createSu35CombatAircraft} from './su35-combat-model.js?v=8';
-import {createClassicAircraft} from './classic-aircraft.js';
+import {createSu35CombatAircraft} from './su35-combat-model.js?v=fleet-surface-1';
+import {createClassicAircraft} from './classic-aircraft.js?v=fleet-surface-1';
 import {nozzlePose,NOZZLE_LENGTH,NOZZLE_HINGE} from './nozzle-kinematics.js';
 import {enableWorldDepthIn} from './world-depth.js';
 import * as THREE from './vendor/three.module.js';
@@ -16,7 +17,7 @@ import {createMainWeaponBay} from './main-weapon-bay.js';
 export function createAircraft(type=0,options={}) {
   if(Number(type)===14)return createMig29CombatAircraft(options);
   if(Number(type)===13)return createSu35CombatAircraft(options);
-  if(Number(type)>0)return createClassicAircraft(Number(type),options);
+  if(Number(type)>0)return addFleetSurface(createClassicAircraft(Number(type),options),Number(type));
   const group = new THREE.Group();
   group.name = 'F-22 Raptor';
   const clamp = THREE.MathUtils.clamp;
@@ -748,5 +749,5 @@ export function createAircraft(type=0,options={}) {
     return {min:bounds.min.toArray(),max:bounds.max.toArray(),center:bounds.getCenter(V(0,0,0)).toArray(),half:bounds.getSize(V(0,0,0)).multiplyScalar(.5).toArray()};
   });
   update({ gear: 0, engine: .6 });
-  return { group, update, damageParts, exhaustFrames,weaponBays,mainWeaponBay,gun:{mount:gunMount,door:gunDoor,barrels:gunBarrels,flash:gunFlash}, setDamageOverlay:enabled=>damageOverlay.setEnabled(enabled), damageOverlay:damageOverlay.root };
+  return addFleetSurface({ group, update, damageParts, exhaustFrames,weaponBays,mainWeaponBay,gun:{mount:gunMount,door:gunDoor,barrels:gunBarrels,flash:gunFlash}, setDamageOverlay:enabled=>damageOverlay.setEnabled(enabled), damageOverlay:damageOverlay.root },0);
 }

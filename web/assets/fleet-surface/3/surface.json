@@ -1,0 +1,22 @@
+{
+  "id": 3,
+  "name": "F-16C",
+  "extent": [
+    9.96,
+    6.3,
+    15.06
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 398076,
+      "sha256": "5bd95885f98b65009576ca026fdf912deb186fd3d8be488448fc480483954f1c"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2243567,
+      "sha256": "60f49779850c21c139c156272ced5f4e0d3724202bd79580c23b5f17dad99e14"
+    }
+  }
+}

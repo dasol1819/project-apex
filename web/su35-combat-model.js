@@ -7,7 +7,7 @@ import {PRESETS,bombMount,bombAvailable} from './loadout-catalog.js';
 import {createRussianMissileModel} from './russian-missile-model.js';
 import {createBombModel} from './bomb-model.js';
 import {enableWorldDepthIn} from './world-depth.js';
-import {createSu35Plumes} from './su35-combat-effects.js?v=5';
+import {createSu35Plumes} from './su35-combat-effects.js?v=fleet-surface-1';
 
 const V=(...p)=>new T.Vector3(...p);
 export function createSu35CombatAircraft({asset=cachedSu35Asset()}={}){

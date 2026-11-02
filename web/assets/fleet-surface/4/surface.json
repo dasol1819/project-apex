@@ -1,0 +1,22 @@
+{
+  "id": 4,
+  "name": "F-14D",
+  "extent": [
+    19.545,
+    6.3,
+    19.13
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 384682,
+      "sha256": "255fb2599d9c7d8d86ce7499a68f3dfa192ff67aed640e037c8ec8241cefd37f"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2189749,
+      "sha256": "edfc5c8e39b19ecdf21edc4888045a0f2b0adbe1759bc9a5ed24d35504e3780c"
+    }
+  }
+}

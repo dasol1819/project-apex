@@ -1,0 +1,22 @@
+{
+  "id": 12,
+  "name": "F/A-18F",
+  "extent": [
+    13.68,
+    6.3,
+    18.38
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 398048,
+      "sha256": "8bcd1629f199f2e91d0f38dd20664b9b84f6712b32fff80158225103f0aeff50"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2223961,
+      "sha256": "37682740ed6a491b8579c888be1684b7300537957c077f13fa1dd5956f800369"
+    }
+  }
+}
