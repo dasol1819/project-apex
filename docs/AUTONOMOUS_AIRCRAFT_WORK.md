@@ -1,0 +1,26 @@
+# Autonomous aircraft implementation
+
+User authorization (2026-11-02): implement every unimplemented aircraft individually, continue with scheduled background runs while the app is closed, use the connected GitHub repository, commit and publish reviewed changes. Target: 2026-12-02. Quality target: a convincing simulator exterior comparable in care to War Thunder; this is a target, not a claim that existing models meet it.
+
+Repository: https://github.com/dasol1819/project-apex
+Production: https://project-apex.kro.kr
+Queue: `docs/aircraft-progress.json` (91 variants at initialization: 15 implemented, 76 planned).
+
+## Each execution
+
+1. Fetch current main and read this file and the queue. Reconcile the queue with `web/aircraft-tree-data.js` and `web/aircraft-catalog.js`; preserve genuine new progress. Inspect open aircraft work branches/PRs and the active queue lease before starting. Work on one aircraft at a time. Resume an unfinished aircraft before starting another. A lease lasts 110 minutes; do not overlap an unexpired lease or another active contributor's work. A stale lease permits recovery, never deletion of unfinished changes.
+2. Use an isolated worktree/branch. Record aircraft ID, branch, start/lease expiry, evidence and next concrete step in the queue. Publish checkpoints to GitHub so future executions can recover without relying on local files or chat context. If CLI push lacks credentials, use the connected GitHub Git Data tools to publish blobs/tree/commit and update the branch with an expected SHA. Never print credentials or force-push.
+3. Research real photographs and manufacturer/museum specifications of the exact variant, including top/side/front/rear views. Keep source URLs and access date. Do not use proprietary War Thunder assets. Keep licenses and editable sources for legitimately adapted assets. Closely related variants may share assets only when their actual differences are modeled and documented.
+4. Implement the actual aircraft, not a generic shape or a catalog alias. Integrate model, high quality authored texture/UV or documented neutral-coordinate mapping, normal/roughness/AO detail, material-dependent finish, animated controls/gear/nozzles, correct intakes and engines, aircraft catalog/tree, native flight physics, weapons/stations, AI, damage and wreckage. Prefer C++ for simulation and offline asset processing; preserve the existing frontend architecture.
+5. Compare actual game renders with the references. Inspect silhouette and proportions, wing planform/sweep/dihedral, clear recessed intakes, engine count/spacing/nozzle shape, plume direction/shape, canopy and landing gear. Check neutral and deflected controls, gear down/up, idle/military/afterburner, and damaged states. Non-afterburning aircraft must not acquire afterburner flames. Correct visible defects and render again. Avoid visibly tiled grids, oversized rivets, shimmering seams, fake bump from camouflage boundaries, and texture sliding on moving parts.
+6. Run restore/manifest verification, deterministic native rebuild, relevant physics/combat/model regressions, texture integrity and real renderer shader checks. Record screenshots and measured triangle/transfer/GPU texture costs, with the actual test environment. Never claim hardware FPS or visual approval from numeric tests alone. A blocker leaves the entry in progress, with a resumable next step; it does not qualify as completed.
+7. A reviewed aircraft requires committed references, editable source/provenance, integrated assets, comparison images and successful checks recorded in the entry. Publish through a focused PR and merge only after required checks/local validation pass. Verify the resulting Pages deployment. Preserve existing gameplay, progression, missions and installer update channels; do not rewrite the encoded base payload. Run `python3 scripts/update-web-manifest.py` and `python3 .deployment/restore.py` for readable web overrides.
+8. Update progress and release the lease. Choose the next planned variant by queue order after the current aircraft passes review. Work on another only if there is enough execution budget to make a durable checkpoint. Report concrete completed work, commit/PR links and blockers in Korean. Do not send repetitive no-change reports.
+
+## Resource limits and continuation
+
+The scheduler cannot observe an account's usage-reset event. Scheduled executions are retry opportunities, not a promise of continuous compute or unlimited use. Honor actual limits; checkpoint to GitHub before ending when possible. A later scheduled execution resumes the last checkpoint. Never bypass limits, invent successful work, or mark an aircraft reviewed to meet the deadline. If access/authentication fails, report the precise blocker once and preserve progress.
+
+## Completion and deadline
+
+Existing 15 aircraft also need a documented visual quality review; their initial status is not `reviewed`. Prioritize unfinished current work, then new aircraft in queue order. When every entry is reviewed and deployment is verified, disable the automation named `Project Apex 기체 구현`. At the deadline, report completed/reviewed/remaining counts and concrete remaining issues; do not automatically lower the quality bar or extend the user's target.

@@ -1,0 +1,1739 @@
+{
+  "schemaVersion": 1,
+  "repository": "dasol1819/project-apex",
+  "initialized": "2026-11-02",
+  "targetDate": "2026-12-02",
+  "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
+  "lease": null,
+  "aircraft": [
+    {
+      "id": "ru-i16-10",
+      "name": "I-16",
+      "variant": "Type 10",
+      "nation": "ru",
+      "family": "i16",
+      "branch": "light",
+      "br": 1,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-yak-1b",
+      "name": "Yak-1B",
+      "variant": "시야·무장 개량",
+      "nation": "ru",
+      "family": "yak",
+      "branch": "light",
+      "br": 3,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-p40-e",
+      "name": "P-40E",
+      "variant": "기총 강화형",
+      "nation": "us",
+      "family": "p40",
+      "branch": "light",
+      "br": 3,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-il2-1942",
+      "name": "Il-2",
+      "variant": "1942 · 복좌형",
+      "nation": "ru",
+      "family": "il2",
+      "branch": "attack",
+      "br": 3.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-pe2-110",
+      "name": "Pe-2",
+      "variant": "Series 110",
+      "nation": "ru",
+      "family": "pe2",
+      "branch": "tactical",
+      "br": 3.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-pe3-bis",
+      "name": "Pe-3bis",
+      "variant": "쌍발 중전투형",
+      "nation": "ru",
+      "family": "pe3",
+      "branch": "heavy",
+      "br": 3.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-la-5fn",
+      "name": "La-5FN",
+      "variant": "연료 분사형",
+      "nation": "ru",
+      "family": "la",
+      "branch": "light",
+      "br": 4,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-b25-j",
+      "name": "B-25J",
+      "variant": "후기 중형 폭격형",
+      "nation": "us",
+      "family": "b25",
+      "branch": "tactical",
+      "br": 4,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f6f-5",
+      "name": "F6F-5",
+      "variant": "후기 함상 전투형",
+      "nation": "us",
+      "family": "f6f",
+      "branch": "naval",
+      "br": 4,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-il10-base",
+      "name": "Il-10",
+      "variant": "후속 장갑 공격형",
+      "nation": "ru",
+      "family": "il10",
+      "branch": "attack",
+      "br": 4.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-la-7",
+      "name": "La-7",
+      "variant": "후기 공력 개량",
+      "nation": "ru",
+      "family": "la",
+      "branch": "light",
+      "br": 4.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-a26-b",
+      "name": "A-26B",
+      "variant": "기총 기수형",
+      "nation": "us",
+      "family": "a26",
+      "branch": "attack",
+      "br": 4.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-p47-d28",
+      "name": "P-47D",
+      "variant": "D-28 · 버블 캐노피",
+      "nation": "us",
+      "family": "p47",
+      "branch": "heavy",
+      "br": 4.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-pe8-base",
+      "name": "Pe-8",
+      "variant": "4발 중폭격형",
+      "nation": "ru",
+      "family": "pe8",
+      "branch": "strategic",
+      "br": 5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-yak-3p",
+      "name": "Yak-3P",
+      "variant": "기관포 3문",
+      "nation": "ru",
+      "family": "yak",
+      "branch": "light",
+      "br": 5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-b17-g",
+      "name": "B-17G",
+      "variant": "기수 하부 포탑",
+      "nation": "us",
+      "family": "b17",
+      "branch": "strategic",
+      "br": 5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-p38-l",
+      "name": "P-38L",
+      "variant": "후기 쌍동체 전투형",
+      "nation": "us",
+      "family": "p38",
+      "branch": "heavy",
+      "br": 5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-p51-d30",
+      "name": "P-51D",
+      "variant": "D-30 · 후기 블록",
+      "nation": "us",
+      "family": "p51",
+      "branch": "light",
+      "br": 5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f4u-4b",
+      "name": "F4U-4B",
+      "variant": "20 mm 기관포형",
+      "nation": "us",
+      "family": "f4u",
+      "branch": "naval",
+      "br": 5.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-a1-h",
+      "name": "A-1H",
+      "variant": "근접 지원 구성",
+      "nation": "us",
+      "family": "a1",
+      "branch": "attack",
+      "br": 6,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-tu4-base",
+      "name": "Tu-4",
+      "variant": "전후 중폭격형",
+      "nation": "ru",
+      "family": "tu4",
+      "branch": "strategic",
+      "br": 6.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-b29-a",
+      "name": "B-29A",
+      "variant": "고고도 중폭격형",
+      "nation": "us",
+      "family": "b29",
+      "branch": "strategic",
+      "br": 6.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f80-c",
+      "name": "F-80C",
+      "variant": "엔진 개량형",
+      "nation": "us",
+      "family": "f80",
+      "branch": "light",
+      "br": 7,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-il28-base",
+      "name": "Il-28",
+      "variant": "제트 전술폭격형",
+      "nation": "ru",
+      "family": "il28",
+      "branch": "tactical",
+      "br": 8,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f84-g",
+      "name": "F-84G",
+      "variant": "후기 직선익형",
+      "nation": "us",
+      "family": "f84",
+      "branch": "multirole",
+      "br": 8,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig15-bis",
+      "name": "MiG-15bis",
+      "variant": "엔진 개량형",
+      "nation": "ru",
+      "family": "mig15",
+      "branch": "light",
+      "br": 8.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-b57-b",
+      "name": "B-57B",
+      "variant": "전술 타격형",
+      "nation": "us",
+      "family": "b57",
+      "branch": "tactical",
+      "br": 8.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig17-f",
+      "name": "MiG-17F",
+      "variant": "후연 엔진형",
+      "nation": "ru",
+      "family": "mig17",
+      "branch": "light",
+      "br": 9,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f86-f40",
+      "name": "F-86F",
+      "variant": "F-40 · 확장 슬랫 날개",
+      "nation": "us",
+      "family": "f86",
+      "branch": "light",
+      "br": 9,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig19-s",
+      "name": "MiG-19S",
+      "variant": "주간 초음속 전투형",
+      "nation": "ru",
+      "family": "mig19",
+      "branch": "light",
+      "br": 10,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f5-a",
+      "name": "F-5A",
+      "variant": "Freedom Fighter",
+      "nation": "us",
+      "family": "f5",
+      "branch": "light",
+      "br": 10,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig21-f13",
+      "name": "MiG-21F-13",
+      "variant": "초기 미사일형",
+      "nation": "ru",
+      "family": "mig21",
+      "branch": "light",
+      "br": 10.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-yak38-m",
+      "name": "Yak-38M",
+      "variant": "추진 계통 개량",
+      "nation": "ru",
+      "family": "yak38",
+      "branch": "naval",
+      "br": 11,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f106-a",
+      "name": "F-106A",
+      "variant": "전천후 요격형",
+      "nation": "us",
+      "family": "f106",
+      "branch": "heavy",
+      "br": 11,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-b52-d",
+      "name": "B-52D",
+      "variant": "대량 재래식 폭격형",
+      "nation": "us",
+      "family": "b52",
+      "branch": "strategic",
+      "br": 11.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f4-c",
+      "name": "F-4C",
+      "variant": "미 공군 초기형",
+      "nation": "us",
+      "family": "f4",
+      "branch": "multirole",
+      "br": 11.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su25-base",
+      "name": "Su-25",
+      "variant": "초기 장갑 공격형",
+      "nation": "ru",
+      "family": "su25",
+      "branch": "attack",
+      "br": 12,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f105-d",
+      "name": "F-105D",
+      "variant": "전천후 전폭형",
+      "nation": "us",
+      "family": "f105",
+      "branch": "tactical",
+      "br": 12,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig21-bis",
+      "name": "MiG-21bis",
+      "variant": "후기 엔진형",
+      "nation": "ru",
+      "family": "mig21",
+      "branch": "light",
+      "br": 12.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su15-tm",
+      "name": "Su-15TM",
+      "variant": "후기 레이더형",
+      "nation": "ru",
+      "family": "su15",
+      "branch": "heavy",
+      "br": 12.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f4-j",
+      "name": "F-4J",
+      "variant": "펄스 도플러형",
+      "nation": "us",
+      "family": "f4",
+      "branch": "naval",
+      "br": 12.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig23-mld",
+      "name": "MiG-23MLD",
+      "variant": "후기 기동·센서 개량",
+      "nation": "ru",
+      "family": "mig23",
+      "branch": "multirole",
+      "br": 13.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su17-m4",
+      "name": "Su-17M4",
+      "variant": "후기 전자장비형",
+      "nation": "ru",
+      "family": "su17",
+      "branch": "attack",
+      "br": 13.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig25-pd",
+      "name": "MiG-25PD",
+      "variant": "센서 개량 요격형",
+      "nation": "ru",
+      "family": "mig25",
+      "branch": "heavy",
+      "br": 14,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig27-k",
+      "name": "MiG-27K",
+      "variant": "Kaira 표적 장비",
+      "nation": "ru",
+      "family": "mig27",
+      "branch": "attack",
+      "br": 14,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-a10-c",
+      "name": "A-10C",
+      "variant": "Precision Engagement",
+      "nation": "us",
+      "family": "a10",
+      "branch": "attack",
+      "br": 14,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-tu95-ms",
+      "name": "Tu-95MS",
+      "variant": "순항미사일 운반형",
+      "nation": "ru",
+      "family": "tu95",
+      "branch": "strategic",
+      "br": 14.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f16-a15",
+      "name": "F-16A",
+      "variant": "Block 15",
+      "nation": "us",
+      "family": "f16",
+      "branch": "multirole",
+      "br": 14.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su24-m",
+      "name": "Su-24M",
+      "variant": "정밀 타격 개량",
+      "nation": "ru",
+      "family": "su24",
+      "branch": "tactical",
+      "br": 15,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su25-sm3",
+      "name": "Su-25SM3",
+      "variant": "추가 현대화",
+      "nation": "ru",
+      "family": "su25",
+      "branch": "attack",
+      "br": 15,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f111-f",
+      "name": "F-111F",
+      "variant": "정밀 타격형",
+      "nation": "us",
+      "family": "f111",
+      "branch": "tactical",
+      "br": 15,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f15-a",
+      "name": "F-15A",
+      "variant": "초기 제공형",
+      "nation": "us",
+      "family": "f15",
+      "branch": "heavy",
+      "br": 15,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su27-s",
+      "name": "Su-27S",
+      "variant": "초기 제공형",
+      "nation": "ru",
+      "family": "su27",
+      "branch": "heavy",
+      "br": 15.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f14-a",
+      "name": "F-14A",
+      "variant": "TF30 · AWG-9",
+      "nation": "us",
+      "family": "f14",
+      "branch": "naval",
+      "br": 15.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f16-c25",
+      "name": "F-16C",
+      "variant": "Block 25",
+      "nation": "us",
+      "family": "f16",
+      "branch": "multirole",
+      "br": 15.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig29-s",
+      "name": "MiG-29S",
+      "variant": "9.13S · 전자장비 개량",
+      "nation": "ru",
+      "family": "mig29",
+      "branch": "light",
+      "br": 16,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su24-m2",
+      "name": "Su-24M2",
+      "variant": "현대화형",
+      "nation": "ru",
+      "family": "su24",
+      "branch": "tactical",
+      "br": 16,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su33-base",
+      "name": "Su-33",
+      "variant": "함상 제공형",
+      "nation": "ru",
+      "family": "su33",
+      "branch": "naval",
+      "br": 16,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-tu22m-3",
+      "name": "Tu-22M3",
+      "variant": "엔진·흡입구 개량",
+      "nation": "ru",
+      "family": "tu22m",
+      "branch": "tactical",
+      "br": 16,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-b1-b",
+      "name": "B-1B",
+      "variant": "가변익 전략폭격형",
+      "nation": "us",
+      "family": "b1",
+      "branch": "strategic",
+      "br": 16,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f14-b",
+      "name": "F-14B",
+      "variant": "F110 · AWG-9",
+      "nation": "us",
+      "family": "f14",
+      "branch": "naval",
+      "br": 16.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-fa18-c",
+      "name": "F/A-18C",
+      "variant": "단좌 Night Attack",
+      "nation": "us",
+      "family": "fa18",
+      "branch": "naval",
+      "br": 16.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig29-smt",
+      "name": "MiG-29SMT",
+      "variant": "9.19 · 현대화",
+      "nation": "ru",
+      "family": "mig29",
+      "branch": "multirole",
+      "br": 17,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-tu160-base",
+      "name": "Tu-160",
+      "variant": "가변익 전략폭격형",
+      "nation": "ru",
+      "family": "tu160",
+      "branch": "strategic",
+      "br": 17,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f16-c52",
+      "name": "F-16C",
+      "variant": "Block 52 · PW 엔진",
+      "nation": "us",
+      "family": "f16",
+      "branch": "multirole",
+      "br": 17,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig29-k",
+      "name": "MiG-29K",
+      "variant": "9.41 · 단좌 함재형",
+      "nation": "ru",
+      "family": "mig29",
+      "branch": "naval",
+      "br": 17.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig29-kub",
+      "name": "MiG-29KUB",
+      "variant": "9.47 · 복좌 함재형",
+      "nation": "ru",
+      "family": "mig29",
+      "branch": "naval",
+      "br": 17.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su34-base",
+      "name": "Su-34",
+      "variant": "병렬 복좌 전폭형",
+      "nation": "ru",
+      "family": "su34",
+      "branch": "tactical",
+      "br": 17.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig31-bm",
+      "name": "MiG-31BM",
+      "variant": "현대화 요격형",
+      "nation": "ru",
+      "family": "mig31",
+      "branch": "heavy",
+      "br": 18,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig35-s",
+      "name": "MiG-35S",
+      "variant": "단좌 다목적형",
+      "nation": "ru",
+      "family": "mig35",
+      "branch": "multirole",
+      "br": 18,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su30-sm",
+      "name": "Su-30SM",
+      "variant": "카나드 · 추력 편향",
+      "nation": "ru",
+      "family": "su30",
+      "branch": "multirole",
+      "br": 18,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su30-sm2",
+      "name": "Su-30SM2",
+      "variant": "현대화 패키지",
+      "nation": "ru",
+      "family": "su30",
+      "branch": "multirole",
+      "br": 18.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-tu160-m",
+      "name": "Tu-160M",
+      "variant": "심화 현대화형",
+      "nation": "ru",
+      "family": "tu160",
+      "branch": "strategic",
+      "br": 18.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f15-eaesa",
+      "name": "F-15E",
+      "variant": "APG-82(V)1 · AESA",
+      "nation": "us",
+      "family": "f15",
+      "branch": "tactical",
+      "br": 19,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f35-a",
+      "name": "F-35A",
+      "variant": "공군용 통상 이착륙형",
+      "nation": "us",
+      "family": "f35",
+      "branch": "multirole",
+      "br": 19,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f35-c",
+      "name": "F-35C",
+      "variant": "항공모함용 · 큰 날개",
+      "nation": "us",
+      "family": "f35",
+      "branch": "naval",
+      "br": 19.5,
+      "simId": null,
+      "status": "planned",
+      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-p26-a",
+      "name": "P-26A",
+      "variant": "초기 단엽 전투형",
+      "nation": "us",
+      "family": "p26",
+      "branch": "light",
+      "br": 1,
+      "simId": 9,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f5-e",
+      "name": "F-5E",
+      "variant": "APQ-159 · AIM-9P",
+      "nation": "us",
+      "family": "f5",
+      "branch": "light",
+      "br": 11,
+      "simId": 2,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f4-e",
+      "name": "F-4E",
+      "variant": "APQ-120 · AIM-7E-2",
+      "nation": "us",
+      "family": "f4",
+      "branch": "multirole",
+      "br": 12.5,
+      "simId": 1,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-mig29-912",
+      "name": "MiG-29",
+      "variant": "9.12 · 초기형",
+      "nation": "ru",
+      "family": "mig29",
+      "branch": "light",
+      "br": 14.5,
+      "simId": 14,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-b52-h",
+      "name": "B-52H",
+      "variant": "TF33 · APQ-166",
+      "nation": "us",
+      "family": "b52",
+      "branch": "strategic",
+      "br": 14.5,
+      "simId": 8,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f15-c",
+      "name": "F-15C",
+      "variant": "APG-63 · AIM-120",
+      "nation": "us",
+      "family": "f15",
+      "branch": "heavy",
+      "br": 17,
+      "simId": 5,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f16-c50",
+      "name": "F-16C",
+      "variant": "Block 50",
+      "nation": "us",
+      "family": "f16",
+      "branch": "multirole",
+      "br": 17,
+      "simId": 3,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f14-d",
+      "name": "F-14D",
+      "variant": "F110 · APG-71",
+      "nation": "us",
+      "family": "f14",
+      "branch": "naval",
+      "br": 17.5,
+      "simId": 4,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f15-e",
+      "name": "F-15E",
+      "variant": "APG-70 · PW-229",
+      "nation": "us",
+      "family": "f15",
+      "branch": "tactical",
+      "br": 17.5,
+      "simId": 6,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-fa18-eii",
+      "name": "F/A-18E",
+      "variant": "Block II · AESA",
+      "nation": "us",
+      "family": "fa18",
+      "branch": "naval",
+      "br": 18,
+      "simId": 11,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-fa18-fii",
+      "name": "F/A-18F",
+      "variant": "Block II · 복좌 AESA",
+      "nation": "us",
+      "family": "fa18",
+      "branch": "naval",
+      "br": 18,
+      "simId": 12,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su35-s",
+      "name": "Su-35S",
+      "variant": "Irbis · 추력 편향",
+      "nation": "ru",
+      "family": "su35",
+      "branch": "heavy",
+      "br": 19,
+      "simId": 13,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "ru-su57-base",
+      "name": "Su-57",
+      "variant": "초기 실전 구성",
+      "nation": "ru",
+      "family": "su57",
+      "branch": "heavy",
+      "br": 19.5,
+      "simId": 10,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-b2-a",
+      "name": "B-2A",
+      "variant": "전익 스텔스 · 현행 게임형",
+      "nation": "us",
+      "family": "b2",
+      "branch": "strategic",
+      "br": 19.5,
+      "simId": 7,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    },
+    {
+      "id": "us-f22-game",
+      "name": "F-22A",
+      "variant": "APG-77 · AIM-9X / 120",
+      "nation": "us",
+      "family": "f22",
+      "branch": "heavy",
+      "br": 20,
+      "simId": 0,
+      "status": "implemented",
+      "nextStep": "Reference comparison and visual quality review",
+      "evidence": {
+        "references": [],
+        "assets": [],
+        "screenshots": [],
+        "checks": [],
+        "commit": null
+      }
+    }
+  ]
+}
