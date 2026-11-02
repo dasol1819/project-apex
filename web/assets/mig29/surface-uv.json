@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "geometrySha256": "0412eeaa8d8e3713b326ac011536f0794dbc9b467785bad2ea289b3696975400",
+  "binarySha256": "51451f93efd9d545c186e152c9707dec27c6014aab3565624cbb63e13e0b9f70",
+  "channel": 1,
+  "meshes": [
+    {
+      "index": 0,
+      "name": "AileronL",
+      "offset": 0,
+      "count": 1344
+    },
+    {
+      "index": 1,
+      "name": "AileronR",
+      "offset": 5376,
+      "count": 1344
+    },
+    {
+      "index": 2,
+      "name": "AirBrakeB",
+      "offset": 10752,
+      "count": 12768
+    },
+    {
+      "index": 3,
+      "name": "AirBrakeU",
+      "offset": 61824,
+      "count": 12960
+    },
+    {
+      "index": 5,
+      "name": "CanopyFrame",
+      "offset": 113664,
+      "count": 27264
+    },
+    {
+      "index": 8,
+      "name": "FlapsL",
+      "offset": 222720,
+      "count": 1344
+    },
+    {
+      "index": 9,
+      "name": "FlapsR",
+      "offset": 228096,
+      "count": 1344
+    },
+    {
+      "index": 27,
+      "name": "Probe",
+      "offset": 233472,
+      "count": 8640
+    },
+    {
+      "index": 28,
+      "name": "RudderL",
+      "offset": 268032,
+      "count": 1920
+    },
+    {
+      "index": 29,
+      "name": "RudderR",
+      "offset": 275712,
+      "count": 1920
+    },
+    {
+      "index": 30,
+      "name": "SlatsL",
+      "offset": 283392,
+      "count": 3936
+    },
+    {
+      "index": 31,
+      "name": "SlatsR",
+      "offset": 299136,
+      "count": 3936
+    },
+    {
+      "index": 32,
+      "name": "StabilizerL",
+      "offset": 314880,
+      "count": 8160
+    },
+    {
+      "index": 33,
+      "name": "StabilizerR",
+      "offset": 347520,
+      "count": 8160
+    },
+    {
+      "index": 34,
+      "name": "Vstabs",
+      "offset": 380160,
+      "count": 57408
+    },
+    {
+      "index": 37,
+      "name": "WingL",
+      "offset": 609792,
+      "count": 16800
+    },
+    {
+      "index": 38,
+      "name": "WingR",
+      "offset": 676992,
+      "count": 16800
+    },
+    {
+      "index": 39,
+      "name": "fuselage",
+      "offset": 744192,
+      "count": 671424
+    },
+    {
+      "index": 42,
+      "name": "fwdgeardoor.L",
+      "offset": 3429888,
+      "count": 5184
+    },
+    {
+      "index": 43,
+      "name": "fwdgeardoor.R",
+      "offset": 3450624,
+      "count": 5184
+    },
+    {
+      "index": 44,
+      "name": "fwdnosegeardoor",
+      "offset": 3471360,
+      "count": 2112
+    },
+    {
+      "index": 52,
+      "name": "nosegeardoor.L",
+      "offset": 3479808,
+      "count": 1824
+    },
+    {
+      "index": 53,
+      "name": "nosegeardoor.R",
+      "offset": 3487104,
+      "count": 1824
+    },
+    {
+      "index": 55,
+      "name": "reargeardoor.L",
+      "offset": 3494400,
+      "count": 5184
+    },
+    {
+      "index": 56,
+      "name": "reargeardoor.R",
+      "offset": 3515136,
+      "count": 5184
+    }
+  ]
+}

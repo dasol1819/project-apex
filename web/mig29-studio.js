@@ -1,6 +1,6 @@
 import * as T from "./vendor/three.module.js";
-import { createMig29Model } from "./mig29-model.js?v=visual-2";
-import { preloadMig29Asset as loadMig29Asset } from "./mig29-asset.js?v=visual-2";
+import { createMig29Model } from "./mig29-model.js?v=surface-1";
+import { preloadMig29Asset as loadMig29Asset } from "./mig29-asset.js?v=surface-1";
 import { disposeObject } from "./aircraft-catalog.js";
 
 const $ = (id) => document.getElementById(id),
@@ -10,6 +10,15 @@ const DEG = Math.PI / 180,
   clamp = T.MathUtils.clamp,
   V = (...a) => new T.Vector3(...a);
 const PRESETS = {
+  surface: {
+    name: "외피 상세",
+    eye: [4.4, 2.2, -0.8],
+    at: [3.25, 0.2, 1.9],
+    fov: 35,
+    number: "09 / SURFACE",
+    title: "리벳과 도장 표면.",
+    copy: "날개 패널의 이음새와 리벳, 도장의 미세한 굴곡과 거칠기를 가까이에서 살펴보세요.",
+  },
   overview: {
     name: "전체 형상",
     eye: [14, 7, -18],
@@ -52,7 +61,7 @@ const PRESETS = {
   },
   intake: {
     name: "흡입구 상세",
-    eye: [1.25, -0.40, -5.25],
+    eye: [1.25, -0.4, -5.25],
     at: [0.72, -0.46, -1.75],
     number: "06 / AIRFRAME",
     title: "주 흡입구와 보조 흡입구.",
@@ -469,7 +478,7 @@ async function boot() {
     await new Promise((resolve) => requestAnimationFrame(resolve));
     const asset = await loadMig29Asset((message) => {
       status.textContent = message;
-    });
+    }, renderer);
     status.textContent = "곡면과 재질을 준비하는 중…";
     await new Promise((resolve) => requestAnimationFrame(resolve));
     model = createMig29Model(asset);

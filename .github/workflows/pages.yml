@@ -43,6 +43,7 @@ jobs:
           node tests/mig29-native.mjs public
           node tests/mig29-combat.mjs public
           node tests/mig29-model.mjs public
+          node tests/mig29-surface-data.mjs public
       - uses: actions/configure-pages@v5
         with:
           enablement: true

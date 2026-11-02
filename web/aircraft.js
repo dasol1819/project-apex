@@ -1,4 +1,4 @@
-import {createMig29CombatAircraft} from './mig29-combat-model.js?v=visual-2';
+import {createMig29CombatAircraft} from './mig29-combat-model.js?v=surface-1';
 import {createSu35CombatAircraft} from './su35-combat-model.js?v=8';
 import {createClassicAircraft} from './classic-aircraft.js';
 import {nozzlePose,NOZZLE_LENGTH,NOZZLE_HINGE} from './nozzle-kinematics.js';

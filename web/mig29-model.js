@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0-only
 import * as T from "./vendor/three.module.js";
-import { paint } from "./mig29-finish.js?v=visual-2";
+import { paint } from "./mig29-finish.js?v=surface-1";
 import {
   cockpit,
   intakeDoor,
   rd33Nozzle,
   serviceMarkings,
-} from "./mig29-details.js?v=visual-2";
+} from "./mig29-details.js?v=surface-1";
 import { createAirframeKit } from "./classic-airframe-kit.js";
 const V = (...p) => new T.Vector3(...p),
   D = Math.PI / 180;
@@ -81,11 +81,11 @@ export function createMig29Model(asset, { combat = false } = {}) {
     map: textures.albedo ?? null,
     roughness: 0.65,
     metalness: 0.07,
-    aoMap: textures.ao ?? null,
-    aoMapIntensity: 0.48,
+    normalMap: textures.surface ?? null,
+    normalScale: new T.Vector2(1.15, 1.15),
     side: T.DoubleSide,
   });
-  const skins = integrity.map((h) => paint(skin.clone(), h)),
+  const skins = integrity.map((h) => paint(skin.clone(), h, textures)),
     materials = {
       metal: new T.MeshStandardMaterial({
         color: 0x73817c,
@@ -164,9 +164,12 @@ export function createMig29Model(asset, { combat = false } = {}) {
     }
     const g = new T.BufferGeometry();
     for (const [n, a] of Object.entries(mesh.attributes))
-      g.setAttribute(n, a.clone());
+      if (n !== "detailUv") g.setAttribute(n, a.clone());
     g.setAttribute("liveryPosition", mesh.attributes.position.clone());
-    g.setAttribute("uv1", mesh.attributes.uv.clone());
+    g.setAttribute(
+      "uv1",
+      (mesh.attributes.detailUv ?? mesh.attributes.uv).clone(),
+    );
     const m = k.mesh(
       g,
       mesh.material === "skin"
@@ -345,6 +348,10 @@ export function createMig29Model(asset, { combat = false } = {}) {
       [5.68, 0.15, 2.8],
     ],
   });
+  model.group.userData.surfaceTextures = {
+    backend: textures.surface?.userData.surfaceBackend ?? "none",
+    gpuBytes: textures.surface?.userData.gpuBytes ?? 0,
+  };
   model.group.userData.intakes = inlets;
   model.group.userData.gearContacts = [
     [0, -1.86, -2.45],

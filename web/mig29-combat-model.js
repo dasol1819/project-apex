@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
 import * as T from "./vendor/three.module.js";
-import { cachedMig29Asset } from "./mig29-asset.js?v=visual-2";
-import { createMig29Model } from "./mig29-model.js?v=visual-2";
+import { cachedMig29Asset } from "./mig29-asset.js?v=surface-1";
+import { createMig29Model } from "./mig29-model.js?v=surface-1";
 import {
   aircraftDefinition,
   storeMount,

@@ -58,6 +58,12 @@ for image in sorted((ROOT / "docs/su35-surface-review").glob("*.png")):
     entries[str(image.relative_to(ROOT))] = image
 entries["web/assets/su35/surface.json"] = ROOT / "web/assets/su35/surface.json"
 
+for name in [
+    "scripts/airframe-surface/build_surface.py",
+    "scripts/airframe-surface/bake_surface.cpp",
+]:
+    entries[name] = ROOT / name
+
 # Worker URLs and runtime transcoders are not static ES module imports.
 for name in [
     "surface-transcoder.worker.js",

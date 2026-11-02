@@ -23,3 +23,11 @@ camouflage, antialiased panel/fastener detail, small surface relief, roughness v
 and heat-tinted metal. Nose number 24 and the paint are authored game markings.
 The full model stays below a 245,000 visible-triangle budget. Collision regions are
 exported again from the new neutral geometry before rebuilding the native module.
+
+
+The packed PBR revision adds an independent, non-overlapping UV channel for
+surface relief and occlusion. Original positions, normals and paint UVs remain
+byte-identical. Run `BASISU=/path/to/basisu python3 scripts/mig29/build_surface.py`:
+the Blender chart/AO pass feeds the shared rasterizer and KTX2 encoder. See
+[the surface review](../../docs/mig29-surface-review/README.md) for captures,
+resource costs, tests and reproduction details. No War Thunder assets are used.

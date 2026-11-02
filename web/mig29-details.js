@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only
 import * as T from "./vendor/three.module.js";
-import { heatSteel } from "./mig29-finish.js?v=visual-2";
+import { heatSteel } from "./mig29-finish.js?v=surface-1";
 const V = (...p) => new T.Vector3(...p);
 export function cockpit(k, m) {
   const panel = new T.MeshStandardMaterial({ color: 0x344745, roughness: 0.8 }),

@@ -1,5 +1,5 @@
 import * as T from './vendor/three.module.js';
-import {createAircraft} from './aircraft.js?v=inspector-4';
+import {createAircraft} from './aircraft.js?v=inspector-5';
 import {disposeObject} from './aircraft-catalog.js';
 import {heightAt} from './terrain.js';
 import {STALINGRAD} from './stalingrad-data.js';

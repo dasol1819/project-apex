@@ -36,6 +36,7 @@ export async function loadGpuSurface({
   url,
   fallbackUrl,
   forceFallback = false,
+  label = "Su-35",
 }) {
   const selected =
     !forceFallback &&
@@ -84,7 +85,7 @@ export async function loadGpuSurface({
         8,
         renderer.capabilities.getMaxAnisotropy(),
       );
-      texture.name = "Su-35 shared 4K surface / " + selected.name;
+      texture.name = label + " shared 4K surface / " + selected.name;
       texture.userData.surfaceBackend = selected.name;
       texture.userData.gpuBytes = result.mipmaps.reduce(
         (n, m) => n + m.data.byteLength,
@@ -98,7 +99,7 @@ export async function loadGpuSurface({
   const texture = await new T.TextureLoader().loadAsync(fallbackUrl);
   texture.colorSpace = T.NoColorSpace;
   texture.anisotropy = 8;
-  texture.name = "Su-35 shared 2K surface fallback";
+  texture.name = label + " shared 2K surface fallback";
   texture.userData.surfaceBackend = "rgba8-2k";
   texture.userData.gpuBytes = (2048 * 2048 * 4 * 4) / 3;
   if (failure) texture.userData.surfaceFallbackReason = failure;
