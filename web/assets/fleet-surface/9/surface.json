@@ -1,0 +1,22 @@
+{
+  "id": 9,
+  "name": "P-26A",
+  "extent": [
+    8.5,
+    2.6,
+    7.26
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 416144,
+      "sha256": "34668a3d42afbb5e01c12ab437ef0b242d14a43d27523bb7a3a3c5ab4d6377ce"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2303971,
+      "sha256": "6abf964235d0020022b2f6ff88107d0d098a5b4ede033fc5c07f24e5e440b18b"
+    }
+  }
+}

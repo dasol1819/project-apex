@@ -22,7 +22,7 @@ export function createWreckageFactory(aircraft){
    const a=polygon[i],b=polygon[(i+1)%polygon.length],da=distance(a),db=distance(b);
    if(da<=1e-7)result.push(a);
    if((da<0&&db>0)||(da>0&&db<0)){
-    const t=da/(da-db),v={p:a.p.map((x,k)=>x+(b.p[k]-x)*t),n:a.n.map((x,k)=>x+(b.n[k]-x)*t),c:a.c.map((x,k)=>x+(b.c[k]-x)*t),s:a.s.map((x,k)=>x+(b.s[k]-x)*t),l:a.l.map((x,k)=>x+(b.l[k]-x)*t),u:a.u.map((x,k)=>x+(b.u[k]-x)*t),u1:a.u1.map((x,k)=>x+(b.u1[k]-x)*t)};
+    const t=da/(da-db),v={p:a.p.map((x,k)=>x+(b.p[k]-x)*t),n:a.n.map((x,k)=>x+(b.n[k]-x)*t),c:a.c.map((x,k)=>x+(b.c[k]-x)*t),s:a.s.map((x,k)=>x+(b.s[k]-x)*t),l:a.l.map((x,k)=>x+(b.l[k]-x)*t),u:a.u.map((x,k)=>x+(b.u[k]-x)*t),u1:a.u1.map((x,k)=>x+(b.u1[k]-x)*t),f:a.f.map((x,k)=>x+(b.f[k]-x)*t)};
     result.push(v);intersections.push(v.p);
    }
   }
@@ -44,7 +44,7 @@ export function createWreckageFactory(aircraft){
  }
  function create(part,variant,pivot,half){
   const root=new T.Group();root.name=`detached ${part}:${variant}`;
-  const source=aircraft.damageParts[part];if(!source)return root;
+  const source=aircraft.damageParts[part];if(!source)return root;root.userData.releaseFleetSurface=aircraft.group.userData.retainFleetSurface?.();
   aircraft.group.updateWorldMatrix(true,true);
   const inverse=aircraft.group.matrixWorld.clone().invert(),buckets=new Map(),cuts=[];
   if(part===0&&(variant===1||variant===2)){
@@ -59,7 +59,7 @@ export function createWreckageFactory(aircraft){
    if(!node.isMesh||node.userData.damageOverlay||Array.isArray(node.material)||node.material.isShaderMaterial)return;
    for(let ancestor=node;ancestor&&ancestor!==source;ancestor=ancestor.parent)if(!ancestor.visible)return;
    const matrix=new T.Matrix4().multiplyMatrices(inverse,node.matrixWorld),normalMatrix=new T.Matrix3().getNormalMatrix(matrix);
-   const g=node.geometry,position=g.attributes.position,normals=g.attributes.normal,colors=g.attributes.color,skin=g.attributes.skinPosition,livery=g.attributes.liveryPosition,uv=g.attributes.uv,uv1=g.attributes.uv1;
+   const g=node.geometry,position=g.attributes.position,normals=g.attributes.normal,colors=g.attributes.color,skin=g.attributes.skinPosition,livery=g.attributes.liveryPosition,uv=g.attributes.uv,uv1=g.attributes.uv1,fleet=g.attributes.fleetPosition;
    if(!position)return;const material=materialFor(node.material);
    // Components are already disjoint. Reuse their immutable vertex buffers
    // and snapshot only the transform; triangle clipping is needed solely for
@@ -69,26 +69,26 @@ export function createWreckageFactory(aircraft){
     mesh.matrix.makeTranslation(-pivot[0],-pivot[1],-pivot[2]).multiply(matrix);
     mesh.userData.sharedAirframeGeometry=true;mesh.castShadow=mesh.receiveShadow=true;root.add(mesh);return;
    }
-   if(!buckets.has(material))buckets.set(material,{p:[],n:[],c:[],s:[],l:[],u:[],u1:[]});const bucket=buckets.get(material);
+   if(!buckets.has(material))buckets.set(material,{p:[],n:[],c:[],s:[],l:[],u:[],u1:[],f:[]});const bucket=buckets.get(material);
    const count=g.index?g.index.count:position.count;
    for(let i=0;i<count;i+=3){
     let polygon=[];
     for(let j=0;j<3;j++){
      const index=g.index?g.index.getX(i+j):i+j,p=new T.Vector3().fromBufferAttribute(position,index).applyMatrix4(matrix),n=normals?new T.Vector3().fromBufferAttribute(normals,index).applyMatrix3(normalMatrix).normalize():new T.Vector3(0,1,0);
-     polygon.push({p:p.toArray(),n:n.toArray(),c:colors?[colors.getX(index),colors.getY(index),colors.getZ(index)]:[1,1,1],s:skin?[skin.getX(index),skin.getY(index),skin.getZ(index)]:p.toArray(),l:livery?[livery.getX(index),livery.getY(index),livery.getZ(index)]:p.toArray(),u:uv?[uv.getX(index),uv.getY(index)]:[0,0],u1:uv1?[uv1.getX(index),uv1.getY(index)]:[0,0]});
+     polygon.push({p:p.toArray(),n:n.toArray(),c:colors?[colors.getX(index),colors.getY(index),colors.getZ(index)]:[1,1,1],s:skin?[skin.getX(index),skin.getY(index),skin.getZ(index)]:p.toArray(),l:livery?[livery.getX(index),livery.getY(index),livery.getZ(index)]:p.toArray(),u:uv?[uv.getX(index),uv.getY(index)]:[0,0],u1:uv1?[uv1.getX(index),uv1.getY(index)]:[0,0],f:fleet?[fleet.getX(index),fleet.getY(index),fleet.getZ(index)]:p.toArray()});
     }
     for(const cut of cuts)polygon=clip(polygon,cut.axis,cut.value,cut.less,cut.points);
     for(let j=1;j<polygon.length-1;j++)for(const v of [polygon[0],polygon[j],polygon[j+1]]){
-     bucket.p.push(...v.p.map((x,k)=>x-pivot[k]));bucket.n.push(...new T.Vector3(...v.n).normalize().toArray());bucket.c.push(...v.c);bucket.s.push(...v.s);bucket.l.push(...v.l);bucket.u.push(...v.u);bucket.u1.push(...v.u1);
+     bucket.p.push(...v.p.map((x,k)=>x-pivot[k]));bucket.n.push(...new T.Vector3(...v.n).normalize().toArray());bucket.c.push(...v.c);bucket.s.push(...v.s);bucket.l.push(...v.l);bucket.u.push(...v.u);bucket.u1.push(...v.u1);bucket.f.push(...v.f);
     }
    }
   });
   for(const [material,b]of buckets){
-   if(!b.p.length)continue;const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(b.p,3));g.setAttribute('normal',new T.Float32BufferAttribute(b.n,3));g.setAttribute('color',new T.Float32BufferAttribute(b.c,3));g.setAttribute('skinPosition',new T.Float32BufferAttribute(b.s,3));g.setAttribute('liveryPosition',new T.Float32BufferAttribute(b.l,3));g.setAttribute('uv',new T.Float32BufferAttribute(b.u,2));g.setAttribute('uv1',new T.Float32BufferAttribute(b.u1,2));g.computeBoundingSphere();
+   if(!b.p.length)continue;const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(b.p,3));g.setAttribute('normal',new T.Float32BufferAttribute(b.n,3));g.setAttribute('color',new T.Float32BufferAttribute(b.c,3));g.setAttribute('skinPosition',new T.Float32BufferAttribute(b.s,3));g.setAttribute('liveryPosition',new T.Float32BufferAttribute(b.l,3));g.setAttribute('uv',new T.Float32BufferAttribute(b.u,2));g.setAttribute('uv1',new T.Float32BufferAttribute(b.u1,2));g.setAttribute('fleetPosition',new T.Float32BufferAttribute(b.f,3));g.computeBoundingSphere();
    const mesh=new T.Mesh(g,material);mesh.castShadow=mesh.receiveShadow=true;root.add(mesh);
   }
   for(const cut of cuts){const face=cap(cut.points,cut.axis,cut.value,cut.less,pivot);if(face)root.add(face);}
   return root;
  }
- return {create,release(root){root.traverse(o=>{if(!o.userData.sharedAirframeGeometry)o.geometry?.dispose();});root.removeFromParent();}};
+ return {create,release(root){root.userData.releaseFleetSurface?.();root.traverse(o=>{if(!o.userData.sharedAirframeGeometry)o.geometry?.dispose();});root.removeFromParent();}};
 }

@@ -1,0 +1,22 @@
+{
+  "id": 7,
+  "name": "B-2A",
+  "extent": [
+    52.4256,
+    6.5,
+    21.0312
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 408696,
+      "sha256": "0b33bb596023dbf80e56410150f3c91b703e8fc7001da9dd123050539bf00264"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2337686,
+      "sha256": "9fd2d119b8f7a9c064f66a65259d7e4756586e417427e83f26ef1fc7d1e6d577"
+    }
+  }
+}

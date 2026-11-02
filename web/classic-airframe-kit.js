@@ -1,3 +1,4 @@
+import {roundExhaustPlume} from './round-exhaust-plume.js';
 import {batchStaticMeshes} from './static-mesh-batching.js';
 import * as T from './vendor/three.module.js';
 import {PART_NAMES,PARTS} from './airframe-parts.js';
@@ -124,8 +125,8 @@ function paintMaterial(d,material,part,integrity){
     panel=min(panel,abs(coatBox(q-vec2(2.1,1.4),vec2(.21,.27))));
    }
    ${d.id===10?'panel=felonPanels(p);':''}
-   float seam=(1.-smoothstep(max(.002,foot*.3),max(.006,foot*.9),panel))*.12;
-   float rivets=(1.-smoothstep(.015,.027,abs(fract(p.z*7.)-.5)))*(1.-smoothstep(.007,.015,abs(abs(p.x)-.53)))*fine*.13;
+   float seam=${d.id===10?'(1.-smoothstep(max(.002,foot*.3),max(.006,foot*.9),panel))*.08':'0.'};
+   float rivets=0.;
    float chips=(1.-skinIntegrity)*smoothstep(.48,.77,coatNoise(p*3.1));
    ${kind==='skin'?`diffuseColor.rgb*=coat*(1.-seam-rivets)+variation*.002+(grain-.5)*.002;`:kind==='metal'&&d.id===10?su57MetalFinish:kind==='metal'?`float heat=smoothstep(${(d.id===1?4.1:d.id===2?4.4:4.1).toFixed(2)},${(d.id===1?7.5:d.id===2?6.2:6.4).toFixed(2)},p.z);vec3 tint=mix(vec3(.95,.99,1.04),vec3(.71,.65,.56),heat*(.45+.3*coatNoise(p*vec3(14.,14.,.8))));diffuseColor.rgb*=tint*(.95+grain*.06);`:'diffuseColor.rgb*=.97+grain*.035;'}
    diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.033,.035,.034),chips*.78);
@@ -207,8 +208,7 @@ export function createAirframeKit(d){
   if(featherless)petals.name='F100 inner convergent-divergent nozzle segments';
   const throat=tube(R*.82,R*.84,.035,[x,y,z+.22],nozzlePart,materials.dark,{open:true});throat.material.side=T.DoubleSide;
   const frame=new T.Group();frame.position.set(x,y,z+.37);frame.name='real exhaust exit';frame.userData.keepGroup=true;parts[nozzlePart].add(frame);
-  const plumeMaterial=new T.ShaderMaterial({transparent:true,depthWrite:false,side:T.DoubleSide,blending:T.AdditiveBlending,uniforms:{time:{value:0},power:{value:0}},vertexShader:'varying vec2 tex;void main(){tex=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying vec2 tex;uniform float time,power;void main(){float edge=pow(max(0.,1.-abs(tex.x*2.-1.)),2.);float lengthFade=smoothstep(0.,.035,tex.y)*(1.-smoothstep(.30,1.,tex.y));float shock=.55+.45*pow(.5+.5*cos(tex.y*51.-time*2.),4.);float alpha=edge*lengthFade*power*(.4+.6*shock);if(alpha<.004)discard;gl_FragColor=vec4(mix(vec3(.18,.32,1.),vec3(1.,.43,.12),smoothstep(.06,.65,tex.y)),alpha*.65);}' });
-  const flameRoot=new T.Group();frame.add(flameRoot);for(let i=0;i<3;i++){const geo=new T.PlaneGeometry(R*1.64,4.8,2,20);geo.rotateX(Math.PI/2);geo.translate(0,0,2.4);const m=new T.Mesh(geo,plumeMaterial);m.rotation.z=i*Math.PI/3;flameRoot.add(m);}
+  const plume=roundExhaustPlume(R,R*8),plumeMaterial=plume.material,flameRoot=plume.root;frame.add(flameRoot);
   nozzles.push({part:enginePart,nozzlePart,petals,hardware,frame,flameRoot,plumeMaterial});return frame;
  }
  function gear({x=0,z,part=24,main=false,topY=-.55,radius=main?.31:.23}){
@@ -258,7 +258,7 @@ export function createAirframeKit(d){
    for(const c of controls)if(s.enabled?.[c.part]!==0&&s.enabled?.[c.part]!==false){q.setFromAxisAngle(c.axis,(s[c.field]??(c.field==='intakeRamp'?clamp(((s.tas??0)/340-.5)*.1,0,.12):0))*c.sign);c.h.quaternion.copy(q);}
    const deployed=clamp(s.gear??0,0,1);for(const g of gears){g.h.visible=deployed>.01;g.h.rotation[g.main?'z':'x']=(1-deployed)*(g.main?g.side*1.44:1.48);g.door.rotation.z=g.side*deployed*1.5;if(!g.main)g.h.rotation.y=-(s.yawInput??0)*.21*deployed;}
    const preset=PRESETS[s.bombs?.[22]];for(const item of stores){if(item.kind==='bomb'){item.m.visible=bombAvailable(s.bombs,item.slot);if(preset&&preset.bombs){const changed=item.m.userData.weaponId!==preset.bomb;setBombModel(item.m,preset.bomb);if(changed)batch(item.m);item.m.position.set(...bombMount(preset,item.slot));}}else if(item.kind==='pod')item.m.visible=!!preset?.pod;else item.m.visible=item.kind==='ir'?irStoreAvailable(s.missiles,item.slot):(s.amraam?.[16+item.slot]??1)>0;}
-   const ab=clamp(s.afterburner??0,0,1);for(const n of nozzles){n.petals.morphTargetInfluences[0]=ab;if(n.hardware)n.hardware.morphTargetInfluences[0]=ab;n.plumeMaterial.uniforms.time.value=s.time??0;n.plumeMaterial.uniforms.power.value=ab;n.flameRoot.visible=ab>.01&&health[n.part]>=.08&&health[n.nozzlePart]>=.08&&s.enabled?.[n.part]!==0;}
+   const ab=clamp(s.afterburner??0,0,1);for(const n of nozzles){n.petals.morphTargetInfluences[0]=ab;if(n.hardware)n.hardware.morphTargetInfluences[0]=ab;n.plumeMaterial.uniforms.time.value=s.time??0;n.plumeMaterial.uniforms.power.value=ab*(s[n.part===8?'rightEngineFactor':'leftEngineFactor']??1);n.flameRoot.scale.z=.55+.45*ab;n.flameRoot.visible=n.plumeMaterial.uniforms.power.value>.01&&health[n.part]>=.08&&health[n.nozzlePart]>=.08&&s.enabled?.[n.part]!==0;}
    for(const f of flashes)f.visible=!!s.gunFiring&&health[gunPart]>=.08;extra.update?.(s,dt);for(const fn of animations)fn(s,dt);group.updateMatrixWorld(true);overlay.update(health);
   }
   update();return{group,update,damageParts:parts,exhaustFrames:extra.exhaustFrames||nozzles.map(n=>n.frame),gun:{mount:gunMount,flash},definition:d,damageOverlay:overlay.root,setDamageOverlay:value=>overlay.setEnabled(value)};

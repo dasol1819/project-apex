@@ -1,0 +1,22 @@
+{
+  "id": 8,
+  "name": "B-52H",
+  "extent": [
+    56.4,
+    13.5,
+    48.6
+  ],
+  "size": 4096,
+  "channels": "RG tangent normal XY; B roughness; A shallow cavity",
+  "layoutSHA256": "4bf6d11ec7b8d7b6c7c9bbda459f409ec69ffd77e536d847dfc9c9b288a0a516",
+  "files": {
+    "surface-fallback.webp": {
+      "bytes": 374332,
+      "sha256": "68574d221a2735ac1b0f24570701a66d614a080cec320b07eb12cbc302f1d6ca"
+    },
+    "surface.ktx2.gz": {
+      "bytes": 2188029,
+      "sha256": "28764692b6c797e66636c0f0bbc818e69440d2d431c584cab014c1ae32f87d57"
+    }
+  }
+}

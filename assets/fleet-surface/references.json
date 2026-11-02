@@ -1,0 +1,105 @@
+[
+  {
+    "id": 0,
+    "source": "https://commons.wikimedia.org/wiki/File%3ALockheed_Martin_F-22.jpg",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Lockheed_Martin_F-22.jpg/1280px-Lockheed_Martin_F-22.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  },
+  {
+    "id": 1,
+    "source": "https://nara.getarchive.net/media/an-air-to-air-view-left-side-view-of-a-347th-tactical-fighter-wing-f-4e-phantom-fec323",
+    "photo": "https://cdn10.picryl.com/photo/1986/03/01/an-air-to-air-view-left-side-view-of-a-347th-tactical-fighter-wing-f-4e-phantom-fec323-1600.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; no photograph redistribution."
+  },
+  {
+    "id": 2,
+    "source": "https://www.wikidata.org/wiki/Q308940",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Northrop_F-5E_%28Tail_No._01557%29_061006-F-1234S-073.jpg/1280px-Northrop_F-5E_%28Tail_No._01557%29_061006-F-1234S-073.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; no photograph redistribution."
+  },
+  {
+    "id": 3,
+    "source": "https://commons.wikimedia.org/wiki/File%3A79th_Fighter_Squadron_-_Lockheed_Martin_F-16CJ_Block_50_Fighting_Falcon_00-220.jpg",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/c/c9/79th_Fighter_Squadron_-_Lockheed_Martin_F-16CJ_Block_50_Fighting_Falcon_00-220.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  },
+  {
+    "id": 4,
+    "source": "https://commons.wikimedia.org/wiki/File%3AF-14D_Tomcats_of_VF-31_take_off_from_NAS_Oceana_in_2006.jpeg",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/7f/F-14D_Tomcats_of_VF-31_take_off_from_NAS_Oceana_in_2006.jpeg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  },
+  {
+    "id": 5,
+    "source": "https://www.jetphotos.com/photo/441873",
+    "photo": "https://cdn.jetphotos.com/full/1/68093_1111700015.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  },
+  {
+    "id": 6,
+    "source": "https://www.airteamimages.com/mcdonnell-douglas-f-15-eagle_90-0257_usa-us-air-force_451983",
+    "photo": "https://d3trj3zqmkebtg.cloudfront.net/pics/451983/medium-large.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  },
+  {
+    "id": 7,
+    "source": "https://www.militaryaircraft.de/pictures/military/aircraft/B-2A/B-2A.html",
+    "photo": "https://www.militaryaircraft.de/pictures/military/aircraft/B-2A/RIAT2017/B-2A_RIAT2017_3471_800.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  },
+  {
+    "id": 8,
+    "source": "https://www.dvidshub.net/image/8709611/ace-brings-agileair-flightline",
+    "photo": "https://d1ldvf68ux039x.cloudfront.net/thumbs/photos/2410/8709611/1000w_q95.jpg",
+    "accessed": "2026-11-02"
+  },
+  {
+    "id": 9,
+    "source": "https://www.si.edu/object/boeing-p-26a-peashooter%3Anasm_A19730273000",
+    "photo": "https://ids.si.edu/ids/deliveryService?id=NASM-A19730273000-NASM2019-00988",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  },
+  {
+    "id": 10,
+    "source": "https://baonghean.vn/en/an-do-ban-mua-su-57-va-s-500-tu-nga-diem-ky-thuat-10313356.html",
+    "photo": "https://bna.1cdn.vn/2025/12/01/img_ce239067.jpg",
+    "accessed": "2026-11-02"
+  },
+  {
+    "id": 11,
+    "source": "https://www.navair.navy.mil/product/FA-18EF-Super-Hornet",
+    "photo": "https://www.navair.navy.mil/sites/g/files/jejdrs536/files/styles/crop_16_9/public/FA-18%20Super%20Hornet.jpg?itok=GlZo5RlF",
+    "accessed": "2026-11-02",
+    "fetchStatus": "Photo server returned HTTP 403; use the linked published product photo."
+  },
+  {
+    "id": 12,
+    "source": "https://en.wikipedia.org/wiki/Boeing_F/A-18E/F_Super_Hornet",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/d/de/US_Navy_071203-N-8923M-074_An_F-A-18F_Super_Hornet%2C_from_the_Red_Rippers_of_Strike_Fighter_Squadron_%28VFA%29_11%2C_makes_a_sharp_turn_above_the_flight_deck_aboard_the_Nimitz-class_nuclear-powered_aircraft_carrier_USS_Harry_S._Truman.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  },
+  {
+    "id": 13,
+    "source": "https://absatz.media/news/142483-prizhal-k-zemle-nazvan-samyj-mogushestvennyj-istrebitel-v-zone-svo",
+    "photo": "https://cdnimages.absatz.media/images/2022.09/original/720_631f2c2eb09c601cb9f77029.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  },
+  {
+    "id": 14,
+    "source": "https://www.runway28.nl/2015_08_20_EPMM_EN.php",
+    "photo": "https://www.runway28.nl/reports/2015_08_20_EPMM/pictures/2015_08_20_EPMM_P02.jpg",
+    "accessed": "2026-11-02",
+    "use": "Visual reference only; source photograph not redistributed. Geometry/layout comparison is our inference."
+  }
+]
