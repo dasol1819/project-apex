@@ -5,11 +5,11 @@
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
   "lease": {
-    "owner": "automation-20261103T020553Z",
+    "owner": "automation-20261103T041811Z",
     "workId": "existing-fleet-surface-review",
     "branch": "airframe-textures-20261102",
-    "startedAt": "2026-11-03T02:05:53Z",
-    "expiresAt": "2026-11-03T03:55:53Z"
+    "startedAt": "2026-11-03T04:18:11Z",
+    "expiresAt": "2026-11-03T06:08:11Z"
   },
   "aircraft": [
     {
