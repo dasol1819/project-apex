@@ -4,7 +4,13 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "owner": "automation-20261103T020553Z",
+    "workId": "existing-fleet-surface-review",
+    "branch": "airframe-textures-20261102",
+    "startedAt": "2026-11-03T02:05:53Z",
+    "expiresAt": "2026-11-03T03:55:53Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -1735,5 +1741,12 @@
         "commit": null
       }
     }
-  ]
+  ],
+  "currentWork": {
+    "kind": "existing-aircraft-surface-review",
+    "branch": "airframe-textures-20261102",
+    "state": "validation",
+    "scope": "13 new packed surface atlases; existing Su-35S/MiG-29 retained; 15-model shape/reference review",
+    "nextStep": "Recover PR #1 from GitHub; restore missing binary atlases and comparison evidence, validate then deploy to project-apex.kro.kr."
+  }
 }
