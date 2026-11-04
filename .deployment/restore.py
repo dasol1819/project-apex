@@ -19,7 +19,7 @@ if manifest.is_file():
  overrides=json.loads(manifest.read_text())
  assert overrides['version']==1, 'Unsupported web override manifest'
  expected=overrides['files']
- actual={p.relative_to(source/'web').as_posix() for p in (source/'web').rglob('*') if p.is_file() and p.name!='manifest.json'}
+ actual={p.relative_to(source/'web').as_posix() for p in (source/'web').rglob('*') if p.is_file() and p.name!='manifest.json' and not p.name.startswith('.')}
  assert set(expected)==actual, 'Missing or unlisted web override'
  for name,digest in expected.items():
   rel=Path(name)

@@ -1,0 +1,294 @@
+{
+  "name": "photo-side",
+  "photo": "assets/mig15bis/references/usaf-side.jpg",
+  "credit": "Valder137 / CC BY 2.0 / 2009-09-26; overlay added by Project Apex",
+  "initialEyes": [
+    [
+      -14,
+      1,
+      1
+    ],
+    [
+      -10,
+      2,
+      2
+    ],
+    [
+      -15,
+      2,
+      -1
+    ]
+  ],
+  "points": [
+    {
+      "label": "windscreen base",
+      "model": [
+        0,
+        0.76,
+        -3.6
+      ],
+      "photo": [
+        180,
+        374
+      ]
+    },
+    {
+      "label": "windscreen upper frame",
+      "model": [
+        0,
+        1.18,
+        -3.13
+      ],
+      "photo": [
+        287,
+        329
+      ]
+    },
+    {
+      "label": "canopy crown",
+      "model": [
+        0,
+        1.3,
+        -2.58
+      ],
+      "photo": [
+        348,
+        326
+      ]
+    },
+    {
+      "label": "canopy aft sill",
+      "model": [
+        0,
+        0.8,
+        -1.78
+      ],
+      "photo": [
+        475,
+        363
+      ]
+    },
+    {
+      "label": "tailpipe centre",
+      "model": [
+        0,
+        -0.06,
+        5.085
+      ],
+      "photo": [
+        937,
+        434
+      ]
+    },
+    {
+      "label": "fin upper leading edge",
+      "model": [
+        0,
+        2.3,
+        3.55
+      ],
+      "photo": [
+        1010,
+        191
+      ],
+      "fit": false
+    },
+    {
+      "label": "fin upper trailing edge",
+      "model": [
+        0,
+        2.3,
+        4.2
+      ],
+      "photo": [
+        1073,
+        204
+      ],
+      "fit": false
+    },
+    {
+      "label": "port main wheel centre",
+      "model": [
+        -1.7,
+        -1.09,
+        0.17
+      ],
+      "photo": [
+        610,
+        600
+      ]
+    },
+    {
+      "label": "nose wheel centre",
+      "model": [
+        0,
+        -1.185,
+        -3.11
+      ],
+      "photo": [
+        180,
+        581
+      ]
+    }
+  ],
+  "focalPixels": 420.0000000003133,
+  "fitRmsPixels": 40.99881936193305,
+  "landmarks": [
+    {
+      "label": "windscreen base",
+      "model": [
+        0,
+        0.76,
+        -3.6
+      ],
+      "photo": [
+        180,
+        374
+      ],
+      "projected": [
+        188.85386184843952,
+        370.3884622872677
+      ],
+      "errorPixels": 9.562116621425428
+    },
+    {
+      "label": "windscreen upper frame",
+      "model": [
+        0,
+        1.18,
+        -3.13
+      ],
+      "photo": [
+        287,
+        329
+      ],
+      "projected": [
+        249.7852742281935,
+        330.94616812739434
+      ],
+      "errorPixels": 37.26557908648201
+    },
+    {
+      "label": "canopy crown",
+      "model": [
+        0,
+        1.3,
+        -2.58
+      ],
+      "photo": [
+        348,
+        326
+      ],
+      "projected": [
+        312.2713595688042,
+        322.53127592201207
+      ],
+      "errorPixels": 35.89662649596605
+    },
+    {
+      "label": "canopy aft sill",
+      "model": [
+        0,
+        0.8,
+        -1.78
+      ],
+      "photo": [
+        475,
+        363
+      ],
+      "projected": [
+        392.90404573326566,
+        372.46625340130566
+      ],
+      "errorPixels": 82.63991566079594
+    },
+    {
+      "label": "tailpipe centre",
+      "model": [
+        0,
+        -0.06,
+        5.085
+      ],
+      "photo": [
+        937,
+        434
+      ],
+      "projected": [
+        937.912245879097,
+        451.3718115438375
+      ],
+      "errorPixels": 17.395747436041244
+    },
+    {
+      "label": "fin upper leading edge",
+      "model": [
+        0,
+        2.3,
+        3.55
+      ],
+      "photo": [
+        1010,
+        191
+      ],
+      "fit": false,
+      "projected": [
+        822.3716058455709,
+        277.3483101228369
+      ],
+      "errorPixels": 206.544050880289
+    },
+    {
+      "label": "fin upper trailing edge",
+      "model": [
+        0,
+        2.3,
+        4.2
+      ],
+      "photo": [
+        1073,
+        204
+      ],
+      "fit": false,
+      "projected": [
+        863.1693481644359,
+        280.98957059547763
+      ],
+      "errorPixels": 223.5090522332681
+    },
+    {
+      "label": "port main wheel centre",
+      "model": [
+        -1.7,
+        -1.09,
+        0.17
+      ],
+      "photo": [
+        610,
+        600
+      ],
+      "projected": [
+        614.2184200196027,
+        597.6220265158545
+      ],
+      "errorPixels": 4.842501972439882
+    },
+    {
+      "label": "nose wheel centre",
+      "model": [
+        0,
+        -1.185,
+        -3.11
+      ],
+      "photo": [
+        180,
+        581
+      ],
+      "projected": [
+        222.89663685592592,
+        579.5653911337325
+      ],
+      "errorPixels": 42.92061924236829
+    }
+  ],
+  "limitation": "Hand-picked landmarks, lens distortion and occlusion limit accuracy. No mesh/photo warping; offscreen renderer, not browser QA."
+}

@@ -72,6 +72,7 @@ for id in map(int,sys.argv[1:] or range(15)):
         else:
             focus=np.array(camera.get('focus',center),dtype='f4');d=np.array(camera['direction'],dtype='f4');d/=np.linalg.norm(d);eye=focus+d*camera.get('distance',scale*1.93)
             view=look_at(eye,focus,camera.get('up',(0,0,-1) if angle=='top' else (0,1,0)));projection=perspective(np.radians(camera.get('fov',36)),W/H,.05,scale*20)
+        ctx.depth_mask=True
         target.clear(0,0,0,0,depth=1) if cameras else target.clear(.12,.145,.175,1,depth=1)
         for p,spec,vao,buffers,ib in sorted(objects,key=lambda o:o[1]['transparent']):
             for name,value in spec['uniforms'].items():setu(p,name,value)
@@ -85,11 +86,14 @@ for id in map(int,sys.argv[1:] or range(15)):
             for name,v in spec['uniforms'].items():
                 if isinstance(v,dict) and 'texture' in v and name in p:
                     texture(v['texture']).use(unit);p[name].value=unit;unit+=1
+            ctx.depth_mask=not spec['transparent']
             if spec['transparent']:ctx.enable(moderngl.BLEND);ctx.blend_func=(moderngl.SRC_ALPHA,moderngl.ONE if spec['additive'] else moderngl.ONE_MINUS_SRC_ALPHA)
             else:ctx.disable(moderngl.BLEND)
             if spec['side']==2:ctx.disable(moderngl.CULL_FACE)
             else:ctx.enable(moderngl.CULL_FACE);ctx.cull_face='front' if spec['side']==1 else 'back'
-            vao.render()
+            if spec['transparent'] and spec['side']==2:
+                ctx.enable(moderngl.CULL_FACE);ctx.cull_face='front';vao.render();ctx.cull_face='back';vao.render()
+            else:vao.render()
         image=Image.frombytes('RGBA',(W,H),target.read(components=4)).transpose(Image.Transpose.FLIP_TOP_BOTTOM)
         if cameras:image.save(OUT/f'{id}-{angle}.png')
         else:

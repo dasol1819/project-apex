@@ -1,0 +1,138 @@
+{
+  "name": "photo-side",
+  "photo": "assets/mig15bis/references/usaf-side.jpg",
+  "credit": "Valder137 / CC BY 2.0 / 2009-09-26; overlay added by Project Apex",
+  "initialEyes": [
+    [
+      -14,
+      1,
+      1
+    ],
+    [
+      -10,
+      2,
+      2
+    ],
+    [
+      -15,
+      2,
+      -1
+    ]
+  ],
+  "points": [
+    {
+      "label": "windscreen base",
+      "model": [
+        0,
+        0.76,
+        -3.6
+      ],
+      "photo": [
+        180,
+        374
+      ]
+    },
+    {
+      "label": "windscreen upper frame",
+      "model": [
+        0,
+        1.24,
+        -2.94
+      ],
+      "photo": [
+        225,
+        337
+      ]
+    },
+    {
+      "label": "canopy crown",
+      "model": [
+        0,
+        1.31,
+        -1.42
+      ],
+      "photo": [
+        348,
+        326
+      ]
+    },
+    {
+      "label": "canopy aft sill",
+      "model": [
+        0,
+        0.8,
+        -0.57
+      ],
+      "photo": [
+        475,
+        363
+      ]
+    },
+    {
+      "label": "tailpipe centre",
+      "model": [
+        0,
+        -0.06,
+        3.455
+      ],
+      "photo": [
+        937,
+        434
+      ]
+    },
+    {
+      "label": "fin upper leading edge",
+      "model": [
+        0,
+        2.6,
+        4.42
+      ],
+      "photo": [
+        1010,
+        191
+      ],
+      "fit": true
+    },
+    {
+      "label": "fin upper trailing edge",
+      "model": [
+        0,
+        2.55,
+        5.25
+      ],
+      "photo": [
+        1073,
+        204
+      ],
+      "fit": true
+    },
+    {
+      "label": "port main wheel centre",
+      "model": [
+        -1.7,
+        -0.79,
+        0.17
+      ],
+      "photo": [
+        610,
+        600
+      ]
+    },
+    {
+      "label": "nose wheel centre",
+      "model": [
+        0,
+        -0.885,
+        -3.11
+      ],
+      "photo": [
+        180,
+        581
+      ]
+    }
+  ],
+  "state": {
+    "gear": 1,
+    "canopy": 1
+  }
+}

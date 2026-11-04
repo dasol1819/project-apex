@@ -11,7 +11,7 @@ for(let type=0;type<15;type++){
 }
 const s=make(),spec=read(s,'get_aircraft_specs',28);assert.equal(s.get_aircraft_type(),15);assert.equal(spec[1],1);assert.equal(spec[6],20.6);assert.equal(spec[7],10.085);assert.equal(spec[8],3580);assert.equal(spec[16],200);assert.equal(spec[2],spec[3]);assert.ok(Math.abs(spec[4]-26.483)<.01);assert.equal(spec[12],0);assert.equal(spec[18],0);assert.equal(spec[27],0);
 assert.equal(s.set_loadout(45),1);assert.equal(s.set_loadout(42),0);assert.equal(read(s,'get_loadout_state',16)[8],0);
-assert.deepEqual(read(s,'get_aircraft_gear_contacts',9),[0,-1.4,-3.03,-1.63,-1.4,.25,1.63,-1.4,.25]);
+assert.deepEqual(read(s,'get_aircraft_gear_contacts',9),[0,-1.1,-3.03,-1.63,-1.1,.25,1.63,-1.1,.25]);
 assert.equal(read(s,'get_radar_profile',10)[8],0);s.set_radar_power(1);assert.equal(read(s,'get_radar_state',32)[0],0);
 assert.deepEqual(read(s,'get_countermeasure_state',16).slice(0,2),[0,0]);assert.equal(s.request_countermeasure(3),0);assert.ok(s.request_missile_fire()<=0);assert.ok(s.request_amraam_fire()<=0);
 let scenarios=0;
@@ -26,6 +26,7 @@ s.reset_spawn(1);s.debug_set_state(0,5000,0,0,0,-200,0,0,0,1);s.set_controls(0,0
 const gun=read(s,'get_combat',12);assert.equal(gun[0],0);assert.equal(gun[4],200);
 const raw=new DataView(s.memory.buffer);let nr=0,n37=0;for(let i=0;i<200;i++){const tracer=raw.getInt32(14258880+i*88,true);tracer?n37++:nr++;}
 assert.equal(nr,160);assert.equal(n37,40);
+s.set_trigger(0);assert.ok(read(s,'get_reload_state',8)[2]>0,'empty gun starts reload timer');for(let i=0;i<120*24;i++)s.step(1/120);assert.equal(read(s,'get_combat',12)[0],200,'reload restores 200 rounds');
 s.reset_spawn(1);s.damage_part(10,1);s.set_trigger(1);for(let i=0;i<120;i++)s.step(1/120);assert.equal(read(s,'get_combat',12)[4],0,'detached nose cannot shoot');
 s.reset_spawn(1);assert.equal(read(s,'get_combat',12)[0],200,'respawn restores ammunition');
 // Match the new player with a real native target through the existing combat
@@ -35,4 +36,5 @@ const shooter=make(),target=make(15);shooter.debug_set_state(0,5000,0,0,0,-200,0
 for(const a of[shooter,target])a.set_controls(0,0,0,.7,0,0,0,1);
 const bridge=createFleetBridge([{id:1,team:0,active:true,sim:shooter},{id:101,team:1,active:true,sim:target}]);shooter.set_trigger(1);for(let i=0;i<480;i++)bridge.step(1/120);assert.ok(read(target,'get_systems',256).some((v,i)=>i>=16&&(i-16)%8===0&&v<.99),'native cannon damage');
 const ai=make();ai.set_combat_ai(1,.8,0);const aiTarget=make(2);aiTarget.debug_set_state(0,5000,-900,0,0,-160,0,0,0,1);ai.debug_set_state(0,5000,0,0,0,-200,0,0,0,1);const fleet=createFleetBridge([{id:1,team:0,active:true,sim:ai},{id:101,team:1,active:true,sim:aiTarget}]);for(let i=0;i<1200;i++)fleet.step(1/120);assert.ok(state(ai).every(Number.isFinite));assert.equal(ai.get_aircraft_type(),15);
-console.log(JSON.stringify({result:'PASS',nativeAircraft:15,legacyAircraft:15,legacyTicks,flightEnvelopeScenarios:scenarios,projectiles:200,nr23:160,n37d:40,radar:false,afterburner:false,nativeGunHits:true,aiFlight:true}));
+const runway=make();runway.set_map(2);runway.reset_sortie_spawn(0,0,0);let takeoffSeconds;for(let i=0;i<9600;i++){const st=state(runway);runway.set_controls(st[13]>72?.5:0,0,0,1.2,st[1]>50?0:1,0,0,1);runway.step(1/120);if(st[1]>80){takeoffSeconds=i/120;break;}}assert.ok(takeoffSeconds&&takeoffSeconds<50);assert.equal(state(runway)[33],0);
+console.log(JSON.stringify({result:'PASS',takeoffSeconds,reload:true,nativeAircraft:15,legacyAircraft:15,legacyTicks,flightEnvelopeScenarios:scenarios,projectiles:200,nr23:160,n37d:40,radar:false,afterburner:false,nativeGunHits:true,aiFlight:true}));

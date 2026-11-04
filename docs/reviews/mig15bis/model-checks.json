@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "dimensions": [
+    10.145999908447266,
+    3.6999999284744263,
+    10.132500162124634
+  ],
+  "triangles": 47442,
+  "meshes": 81,
+  "materials": 46,
+  "geometryBytes": 1454344,
+  "gpuTextureBytes": 0,
+  "inletRays": 12,
+  "frozenSurfaceCoordinates": true,
+  "flightControlAnimation": true,
+  "damageInheritance": true,
+  "engines": 1
+}

@@ -38,7 +38,8 @@ function shader(material,id){
 }
 for(const id of (process.argv[4]?process.argv[4].split(',').map(Number):Array.from({length:15},(_,i)=>i))){
  const options=id===13?{asset:asset('su35')}:id===14?{asset:asset('mig29')}:{};
- const model=createAircraft(id,options);model.update({gear:0,engine:process.env.REVIEW_EFFECTS?1.2:.85,afterburner:process.env.REVIEW_EFFECTS?1:0,time:1});model.group.updateMatrixWorld(true);
+ const state={gear:0,engine:process.env.REVIEW_EFFECTS?1.2:.85,afterburner:process.env.REVIEW_EFFECTS?1:0,time:1,...JSON.parse(process.env.REVIEW_STATE||'{}')};
+ const model=createAircraft(id,options);model.update(state);model.group.updateMatrixWorld(true);
  const meshes=[],programs=[],programKeys=new Map(),buffers=[],bounds=new T.Box3();let offset=0,triangles=0;
  const v=new T.Vector3(),norm=new T.Vector3();
  model.group.traverse(node=>{
@@ -57,6 +58,6 @@ for(const id of (process.argv[4]?process.argv[4].split(',').map(Number):Array.fr
   let index;if(g.index){const b=Buffer.from(new Uint32Array(g.index.array).buffer);index={offset,bytes:b.length,count:g.index.count};buffers.push(b);offset+=b.length;}
   triangles+=(g.index?.count||g.attributes.position.count)/3;meshes.push({name:node.name,program,attributes,index});
  });
- fs.writeFileSync(path.join(out,id+'.bin'),Buffer.concat(buffers));fs.writeFileSync(path.join(out,id+'.json'),JSON.stringify({id,name:model.definition?.name||'F-22A',bounds:[bounds.min.toArray(),bounds.max.toArray()],triangles,programs,meshes}));
+ fs.writeFileSync(path.join(out,id+'.bin'),Buffer.concat(buffers));fs.writeFileSync(path.join(out,id+'.json'),JSON.stringify({id,name:model.definition?.name||'F-22A',state,bounds:[bounds.min.toArray(),bounds.max.toArray()],triangles,programs,meshes}));
  console.log(id,meshes.length,programs.length,triangles);
 }

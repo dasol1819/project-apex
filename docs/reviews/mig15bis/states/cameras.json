@@ -1,0 +1,47 @@
+{
+  "size": [
+    1200,
+    800
+  ],
+  "views": [
+    {
+      "angle": "quarter",
+      "direction": [
+        -0.85,
+        0.5,
+        -1
+      ],
+      "distance": 19
+    },
+    {
+      "angle": "intake",
+      "direction": [
+        0.12,
+        0.05,
+        -1
+      ],
+      "focus": [
+        0,
+        0,
+        -4.1
+      ],
+      "distance": 3.0,
+      "fov": 38
+    },
+    {
+      "angle": "nozzle",
+      "direction": [
+        0.15,
+        0.1,
+        1
+      ],
+      "focus": [
+        0,
+        -0.06,
+        3.1
+      ],
+      "distance": 3.2,
+      "fov": 39
+    }
+  ]
+}
