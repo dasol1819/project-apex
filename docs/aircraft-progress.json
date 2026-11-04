@@ -5,11 +5,11 @@
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
   "lease": {
-    "owner": "interactive-photo-overlay-20261103T1339Z",
-    "workId": "existing-fleet-surface-review",
-    "branch": "airframe-textures-20261102",
-    "startedAt": "2026-11-03T13:39:00Z",
-    "expiresAt": "2026-11-03T15:29:00Z"
+    "owner": "interactive-mig15bis-20261104",
+    "workId": "ru-mig15-bis",
+    "branch": "aircraft-mig15bis-20261104",
+    "startedAt": "2026-11-04T03:06:00Z",
+    "expiresAt": "2026-11-04T04:56:00Z"
   },
   "aircraft": [
     {
@@ -496,8 +496,8 @@
       "branch": "light",
       "br": 8.5,
       "simId": null,
-      "status": "planned",
-      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "status": "in_progress",
+      "nextStep": "Author MiG-15bis exterior, native flight/gun definition and photo-overlay evidence.",
       "evidence": {
         "references": [],
         "assets": [],
@@ -1743,6 +1743,14 @@
     }
   ],
   "currentWork": {
+    "kind": "new-aircraft",
+    "aircraftId": "ru-mig15-bis",
+    "branch": "aircraft-mig15bis-20261104",
+    "state": "research",
+    "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
+    "nextStep": "Author MiG-15bis exterior, native flight/gun definition and photo-overlay evidence."
+  },
+  "previousWork": {
     "kind": "existing-aircraft-surface-review",
     "branch": "airframe-textures-20261102",
     "state": "validation",
