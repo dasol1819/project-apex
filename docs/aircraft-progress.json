@@ -600,7 +600,15 @@
           "referencePhotoLicense": "Valder137 / CC BY 2.0",
           "addedImageBytes": 646692,
           "usesExistingCommittedImages": true,
-          "gameplayRuntimeChanges": false
+          "gameplayRuntimeChanges": false,
+          "deployment": {
+            "commit": "c79a321578b57243dac6dfed2e2d9b12b5468880",
+            "workflow": "https://github.com/dasol1819/project-apex/actions/runs/41844508317",
+            "conclusion": "success",
+            "url": "http://project-apex.kro.kr/mig15bis-review.html",
+            "verification": "HTTP 200 and byte-identical HTML + all four licensed reference/render images; HTTPS remains 503.",
+            "report": "docs/reviews/mig15bis/recovery-20261104.json"
+          }
         }
       }
     },
@@ -1847,7 +1855,7 @@
     "state": "published-visual-corrections-pending",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
     "nextStep": "MiG-15bis side/rear overlays re-inspected: wing trailing-edge/near-wing silhouette, wheel placement and canopy framing remain visibly misaligned. Resolve rigid-camera uncertainty with exact-bis front/top references, correct geometry, render/overlay again, then complete desktop/mobile WebGL gameplay QA. Review viewer: mig15bis-review.html. HTTPS custom domain still returns 503; HTTP serves game.",
-    "checkpointCommit": "ec5158ba5eb47f60255ac784313cb06274213b9c",
+    "checkpointCommit": "49dc46f988d2078ddc9c18406616f81afa53ada8",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
     "publicationApproval": {
       "date": "2026-11-04",
@@ -1900,6 +1908,15 @@
       ],
       "https": "HTTPS custom-domain requests currently return HTTP 503 upstream connection failure in this environment. HTTP serves the verified deployment.",
       "browserQA": "Pending: managed browser cannot create WebGL; no successful browser gameplay claim."
+    },
+    "reviewPullRequest": "https://github.com/dasol1819/project-apex/pull/3",
+    "reviewViewerDeployment": {
+      "commit": "c79a321578b57243dac6dfed2e2d9b12b5468880",
+      "workflow": "https://github.com/dasol1819/project-apex/actions/runs/41844508317",
+      "conclusion": "success",
+      "url": "http://project-apex.kro.kr/mig15bis-review.html",
+      "verification": "HTTP 200 and byte-identical HTML + all four licensed reference/render images; HTTPS remains 503.",
+      "report": "docs/reviews/mig15bis/recovery-20261104.json"
     }
   },
   "previousWork": {

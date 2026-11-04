@@ -32,7 +32,9 @@
     ],
     "opacityInput": 70,
     "computedRenderOpacity": 0.7,
-    "rangeDisabledInRenderMode": true
+    "rangeDisabledInRenderMode": true,
+    "htmlBytes": 8348,
+    "imageBytes": 646692
   },
   "visualReinspection": {
     "result": "PENDING_CORRECTIONS",
@@ -41,6 +43,55 @@
       "Wheel positions and canopy frames do not align fully. Native dimensions and contact tests do not certify their visual accuracy.",
       "The side/rear reference photographs cannot verify the nose duct depth. Obtain exact-bis front comparison."
     ],
-    "browserGameplay": "BLOCKED: production navigation ends at HTTPS upstream connection error; previous WebGL creation failure remains unresolved."
+    "browserGameplay": "BLOCKED: managed Chrome reproduced THREE.WebGLRenderer Error creating WebGL context at local preview; GL_VENDOR and GL_RENDERER Disabled; BindToCurrentSequence failed. Production HTTPS also returns 503."
+  },
+  "reviewViewerDeployment": {
+    "commit": "c79a321578b57243dac6dfed2e2d9b12b5468880",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/3",
+    "workflow": "https://github.com/dasol1819/project-apex/actions/runs/41844508317",
+    "conclusion": "success",
+    "files": [
+      {
+        "path": "mig15bis-review.html",
+        "status": 200,
+        "url": "http://project-apex.kro.kr/mig15bis-review.html",
+        "bytes": 8348,
+        "sha256": "d1cd7d9d1c79642d3e1547000143a960bfaa29b654a31317d7a7d3733966df36",
+        "matchesSource": true
+      },
+      {
+        "path": "assets/mig15bis-review/side-photo.jpg",
+        "status": 200,
+        "url": "http://project-apex.kro.kr/assets/mig15bis-review/side-photo.jpg",
+        "bytes": 169895,
+        "sha256": "fbc4821c03de4bff5ded9f164fff476040de332cb8165f3537ea5cc917686b86",
+        "matchesSource": true
+      },
+      {
+        "path": "assets/mig15bis-review/side-render.png",
+        "status": 200,
+        "url": "http://project-apex.kro.kr/assets/mig15bis-review/side-render.png",
+        "bytes": 211038,
+        "sha256": "57b62e0c23b4b5d51a13995bacbfa159fe76949593660db790fdef01b9463ddd",
+        "matchesSource": true
+      },
+      {
+        "path": "assets/mig15bis-review/rear-photo.jpg",
+        "status": 200,
+        "url": "http://project-apex.kro.kr/assets/mig15bis-review/rear-photo.jpg",
+        "bytes": 154657,
+        "sha256": "6f15756e9beb8fb3f7a5c82b1851ab0a0bc183659058f82fb2729a8a26fda5b6",
+        "matchesSource": true
+      },
+      {
+        "path": "assets/mig15bis-review/rear-render.png",
+        "status": 200,
+        "url": "http://project-apex.kro.kr/assets/mig15bis-review/rear-render.png",
+        "bytes": 111102,
+        "sha256": "1a89de842c4e1e68f4d7b7687ab20b839aaa87a9e25536a9f145485a6d6cd20b",
+        "matchesSource": true
+      }
+    ],
+    "https": "503 in this environment; not verified as healthy"
   }
 }
