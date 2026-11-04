@@ -491,7 +491,7 @@
       "br": 8.5,
       "simId": 15,
       "status": "in_progress",
-      "nextStep": "Publish approved PR #2 and verify deployment; finish desktop/mobile WebGL gameplay QA when a working renderer is available.",
+      "nextStep": "Published at sim ID 15. Complete desktop/mobile WebGL gameplay QA and check custom-domain HTTPS availability; retain recorded native/render validation.",
       "evidence": {
         "references": [
           "assets/mig15bis/README.md",
@@ -544,6 +544,53 @@
           "date": "2026-11-04",
           "userMessage": "그냥 게시해",
           "acceptedPendingBrowserQA": true
+        },
+        "deployment": {
+          "date": "2026-11-04",
+          "commit": "125839a14da443bddc4d6252611e57572376a837",
+          "workflow": "https://github.com/dasol1819/project-apex/actions/runs/41778695272",
+          "conclusion": "success",
+          "url": "http://project-apex.kro.kr/?screen=tree&aircraft=15",
+          "verification": "HTTP 200; index, tree, catalog, MiG-15bis model and native flight module match committed web files byte for byte.",
+          "files": [
+            {
+              "path": "?screen=tree&aircraft=15",
+              "status": 200,
+              "sha256": "d34f4551ac1291d02868da8684c8ebfe297dd675d60114b54cdbdb58a73ac6f3",
+              "bytes": 80812,
+              "matchesSource": true
+            },
+            {
+              "path": "aircraft-tree-data.js?v=mig15bis-1",
+              "status": 200,
+              "sha256": "6eace81710142c82018277a93d63ee530fe1121e208cad18efa82b7183097622",
+              "bytes": 23010,
+              "matchesSource": true
+            },
+            {
+              "path": "aircraft-catalog.js?v=mig15bis-1",
+              "status": 200,
+              "sha256": "42d44983f6e1c837ad415804f3e58006f92ad2c99c2ef0e81a296ae6988dd923",
+              "bytes": 11411,
+              "matchesSource": true
+            },
+            {
+              "path": "mig15bis-model.js?v=mig15bis-1",
+              "status": 200,
+              "sha256": "8b35d9a5eb2b6dc6c51de0d3be84b2dead854fa112931f164e5d8fcaabbae129",
+              "bytes": 14188,
+              "matchesSource": true
+            },
+            {
+              "path": "flight.wasm?v=mig15bis-1",
+              "status": 200,
+              "sha256": "64068a1a896486760be8a31ca66f3e804d15aed021d9a76ee826dd542ad30af4",
+              "bytes": 325232,
+              "matchesSource": true
+            }
+          ],
+          "https": "HTTPS custom-domain requests currently return HTTP 503 upstream connection failure in this environment. HTTP serves the verified deployment.",
+          "browserQA": "Pending: managed browser cannot create WebGL; no successful browser gameplay claim."
         }
       }
     },
@@ -1787,15 +1834,62 @@
     "kind": "new-aircraft",
     "aircraftId": "ru-mig15-bis",
     "branch": "aircraft-mig15bis-20261104",
-    "state": "publishing",
+    "state": "published-browser-qa-pending",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
-    "nextStep": "User explicitly approved publishing PR #2 on 2026-11-04 after disclosure of pending browser WebGL QA. Merge this reviewed implementation and verify GitHub Pages deployment; retain pending browser QA without marking reviewed.",
+    "nextStep": "PR #2 merged and Pages deployment succeeded with explicit user approval. Published files verified over HTTP. Complete desktop/mobile WebGL gameplay QA when a working renderer is available; investigate custom-domain HTTPS 503. Keep aircraft in_progress until visual browser review completes.",
     "checkpointCommit": "ec5158ba5eb47f60255ac784313cb06274213b9c",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
     "publicationApproval": {
       "date": "2026-11-04",
       "userMessage": "그냥 게시해",
       "acceptedPendingBrowserQA": true
+    },
+    "deployment": {
+      "date": "2026-11-04",
+      "commit": "125839a14da443bddc4d6252611e57572376a837",
+      "workflow": "https://github.com/dasol1819/project-apex/actions/runs/41778695272",
+      "conclusion": "success",
+      "url": "http://project-apex.kro.kr/?screen=tree&aircraft=15",
+      "verification": "HTTP 200; index, tree, catalog, MiG-15bis model and native flight module match committed web files byte for byte.",
+      "files": [
+        {
+          "path": "?screen=tree&aircraft=15",
+          "status": 200,
+          "sha256": "d34f4551ac1291d02868da8684c8ebfe297dd675d60114b54cdbdb58a73ac6f3",
+          "bytes": 80812,
+          "matchesSource": true
+        },
+        {
+          "path": "aircraft-tree-data.js?v=mig15bis-1",
+          "status": 200,
+          "sha256": "6eace81710142c82018277a93d63ee530fe1121e208cad18efa82b7183097622",
+          "bytes": 23010,
+          "matchesSource": true
+        },
+        {
+          "path": "aircraft-catalog.js?v=mig15bis-1",
+          "status": 200,
+          "sha256": "42d44983f6e1c837ad415804f3e58006f92ad2c99c2ef0e81a296ae6988dd923",
+          "bytes": 11411,
+          "matchesSource": true
+        },
+        {
+          "path": "mig15bis-model.js?v=mig15bis-1",
+          "status": 200,
+          "sha256": "8b35d9a5eb2b6dc6c51de0d3be84b2dead854fa112931f164e5d8fcaabbae129",
+          "bytes": 14188,
+          "matchesSource": true
+        },
+        {
+          "path": "flight.wasm?v=mig15bis-1",
+          "status": 200,
+          "sha256": "64068a1a896486760be8a31ca66f3e804d15aed021d9a76ee826dd542ad30af4",
+          "bytes": 325232,
+          "matchesSource": true
+        }
+      ],
+      "https": "HTTPS custom-domain requests currently return HTTP 503 upstream connection failure in this environment. HTTP serves the verified deployment.",
+      "browserQA": "Pending: managed browser cannot create WebGL; no successful browser gameplay claim."
     }
   },
   "previousWork": {
