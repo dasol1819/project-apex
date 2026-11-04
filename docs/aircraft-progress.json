@@ -491,7 +491,7 @@
       "br": 8.5,
       "simId": 15,
       "status": "in_progress",
-      "nextStep": "PR #2 implements and validates MiG-15bis. Automatic approval review rejected merging 91 files into main because explicit publication approval and acceptance of pending WebGL browser QA were not established. Await user approval before merge/publication; do not route code into main by another path.",
+      "nextStep": "Publish approved PR #2 and verify deployment; finish desktop/mobile WebGL gameplay QA when a working renderer is available.",
       "evidence": {
         "references": [
           "assets/mig15bis/README.md",
@@ -539,6 +539,11 @@
           "flightControlAnimation": true,
           "damageInheritance": true,
           "engines": 1
+        },
+        "publicationApproval": {
+          "date": "2026-11-04",
+          "userMessage": "그냥 게시해",
+          "acceptedPendingBrowserQA": true
         }
       }
     },
@@ -1782,11 +1787,16 @@
     "kind": "new-aircraft",
     "aircraftId": "ru-mig15-bis",
     "branch": "aircraft-mig15bis-20261104",
-    "state": "awaiting-publication-approval",
+    "state": "publishing",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
-    "nextStep": "PR #2 implements and validates MiG-15bis. Automatic approval review rejected merging 91 files into main because explicit publication approval and acceptance of pending WebGL browser QA were not established. Await user approval before merge/publication; do not route code into main by another path.",
+    "nextStep": "User explicitly approved publishing PR #2 on 2026-11-04 after disclosure of pending browser WebGL QA. Merge this reviewed implementation and verify GitHub Pages deployment; retain pending browser QA without marking reviewed.",
     "checkpointCommit": "ec5158ba5eb47f60255ac784313cb06274213b9c",
-    "pullRequest": "https://github.com/dasol1819/project-apex/pull/2"
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
+    "publicationApproval": {
+      "date": "2026-11-04",
+      "userMessage": "그냥 게시해",
+      "acceptedPendingBrowserQA": true
+    }
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",

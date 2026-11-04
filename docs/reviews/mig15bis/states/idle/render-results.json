@@ -1,0 +1,13 @@
+{
+  "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+  "shaderProgramsCompiled": 8,
+  "aircraft": [
+    {
+      "id": 15,
+      "triangles": 47442,
+      "meshes": 81,
+      "views": 3
+    }
+  ],
+  "limitation": "Offscreen OpenGL port of expanded Three shaders; WebGL browser unavailable. Not a browser gameplay test."
+}

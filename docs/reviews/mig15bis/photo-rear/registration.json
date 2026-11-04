@@ -1,0 +1,298 @@
+{
+  "name": "photo-rear",
+  "photo": "assets/mig15bis/references/usaf-rear.jpg",
+  "credit": "Valder137 / CC BY 2.0 / 2009-09-26; overlay added by Project Apex",
+  "initialEyes": [
+    [
+      -14,
+      3,
+      10
+    ],
+    [
+      -20,
+      2,
+      12
+    ],
+    [
+      -12,
+      1,
+      7
+    ]
+  ],
+  "points": [
+    {
+      "label": "nose port lip",
+      "model": [
+        -0.556,
+        0,
+        -4.68
+      ],
+      "photo": [
+        343,
+        405
+      ]
+    },
+    {
+      "label": "windscreen upper frame",
+      "model": [
+        0,
+        1.24,
+        -2.94
+      ],
+      "photo": [
+        405,
+        337
+      ]
+    },
+    {
+      "label": "canopy crown",
+      "model": [
+        0,
+        1.31,
+        -1.42
+      ],
+      "photo": [
+        502,
+        321
+      ]
+    },
+    {
+      "label": "canopy aft sill",
+      "model": [
+        0,
+        0.8,
+        -0.57
+      ],
+      "photo": [
+        582,
+        344
+      ]
+    },
+    {
+      "label": "tailpipe centre",
+      "model": [
+        0,
+        -0.06,
+        3.455
+      ],
+      "photo": [
+        847,
+        430
+      ]
+    },
+    {
+      "label": "fin upper leading edge",
+      "model": [
+        0,
+        2.6,
+        4.42
+      ],
+      "photo": [
+        978,
+        148
+      ],
+      "fit": true
+    },
+    {
+      "label": "fin upper trailing edge",
+      "model": [
+        0,
+        2.55,
+        5.25
+      ],
+      "photo": [
+        1051,
+        147
+      ],
+      "fit": true
+    },
+    {
+      "label": "port wingtip leading edge",
+      "model": [
+        -5.0425,
+        -0.311,
+        1.246
+      ],
+      "photo": [
+        204,
+        472
+      ]
+    },
+    {
+      "label": "port wingtip trailing edge",
+      "model": [
+        -5.0425,
+        -0.311,
+        2.43
+      ],
+      "photo": [
+        272,
+        490
+      ]
+    }
+  ],
+  "state": {
+    "gear": 1,
+    "canopy": 1
+  },
+  "focalPixels": 868.0803555459935,
+  "fitRmsPixels": 20.089954800973025,
+  "landmarks": [
+    {
+      "label": "nose port lip",
+      "model": [
+        -0.556,
+        0,
+        -4.68
+      ],
+      "photo": [
+        343,
+        405
+      ],
+      "projected": [
+        340.86033861801286,
+        407.300188109399
+      ],
+      "errorPixels": 3.1414990320208176
+    },
+    {
+      "label": "windscreen upper frame",
+      "model": [
+        0,
+        1.24,
+        -2.94
+      ],
+      "photo": [
+        405,
+        337
+      ],
+      "projected": [
+        440.77295001568314,
+        326.99409223266434
+      ],
+      "errorPixels": 37.14595729111032
+    },
+    {
+      "label": "canopy crown",
+      "model": [
+        0,
+        1.31,
+        -1.42
+      ],
+      "photo": [
+        502,
+        321
+      ],
+      "projected": [
+        509.3559891543744,
+        318.65701525110205
+      ],
+      "errorPixels": 7.720113598441565
+    },
+    {
+      "label": "canopy aft sill",
+      "model": [
+        0,
+        0.8,
+        -0.57
+      ],
+      "photo": [
+        582,
+        344
+      ],
+      "projected": [
+        551.8011348046817,
+        356.6894709078927
+      ],
+      "errorPixels": 32.75658912352231
+    },
+    {
+      "label": "tailpipe centre",
+      "model": [
+        0,
+        -0.06,
+        3.455
+      ],
+      "photo": [
+        847,
+        430
+      ],
+      "projected": [
+        840.4433500003001,
+        445.89784087934066
+      ],
+      "errorPixels": 17.196831215180293
+    },
+    {
+      "label": "fin upper leading edge",
+      "model": [
+        0,
+        2.6,
+        4.42
+      ],
+      "photo": [
+        978,
+        148
+      ],
+      "fit": true,
+      "projected": [
+        954.1433531392588,
+        147.63707714035732
+      ],
+      "errorPixels": 23.859407210577633
+    },
+    {
+      "label": "fin upper trailing edge",
+      "model": [
+        0,
+        2.55,
+        5.25
+      ],
+      "photo": [
+        1051,
+        147
+      ],
+      "fit": true,
+      "projected": [
+        1057.8201746854245,
+        136.40610660696888
+      ],
+      "errorPixels": 12.59941903274169
+    },
+    {
+      "label": "port wingtip leading edge",
+      "model": [
+        -5.0425,
+        -0.311,
+        1.246
+      ],
+      "photo": [
+        204,
+        472
+      ],
+      "projected": [
+        200.8389623767547,
+        472.5889185717998
+      ],
+      "errorPixels": 3.2154290444329603
+    },
+    {
+      "label": "port wingtip trailing edge",
+      "model": [
+        -5.0425,
+        -0.311,
+        2.43
+      ],
+      "photo": [
+        272,
+        490
+      ],
+      "projected": [
+        280.7201822794775,
+        489.79294505150534
+      ],
+      "errorPixels": 8.722640124355111
+    }
+  ],
+  "limitation": "Hand-picked landmarks, lens distortion and occlusion limit accuracy. No mesh/photo warping; offscreen renderer, not browser QA."
+}

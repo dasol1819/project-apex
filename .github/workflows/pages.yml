@@ -26,6 +26,8 @@ jobs:
       - name: Rebuild the native Russian aircraft combat module
         run: |
           npm ci
+          node scripts/native/export-mig15-shapes.mjs public
+          git diff --exit-code -- assets/mig15bis/shapes.json
           npm run build:combat
           git diff --exit-code -- web/flight.wasm
       - name: Check native combat and legacy flight regression
@@ -44,6 +46,11 @@ jobs:
           node tests/mig29-combat.mjs public
           node tests/mig29-model.mjs public
           node tests/mig29-surface-data.mjs public
+      - name: Check MiG-15bis flight, mixed cannon fit and exterior
+        run: |
+          node tests/mig15-native.mjs public
+          node tests/mig15-model.mjs public
+          node scripts/aircraft-progress.mjs
       - uses: actions/configure-pages@v5
         with:
           enablement: true

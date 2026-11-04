@@ -1,0 +1,60 @@
+{
+  "idle": {
+    "gear": 1,
+    "canopy": 1,
+    "engine": 0.2
+  },
+  "military": {
+    "gear": 0,
+    "engine": 1,
+    "afterburner": 1
+  },
+  "controls": {
+    "gear": 1,
+    "leftFlap": 0.52,
+    "rightFlap": 0.52,
+    "leftAileron": 0.22,
+    "rightAileron": -0.22,
+    "leftTail": 0.18,
+    "rightTail": 0.18,
+    "leftRudder": 0.25,
+    "airbrake": 1
+  },
+  "damaged": {
+    "gear": 0,
+    "engine": 1,
+    "afterburner": 1,
+    "health": [
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0.45
+    ]
+  }
+}

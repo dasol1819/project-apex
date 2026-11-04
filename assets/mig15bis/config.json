@@ -1,0 +1,14 @@
+{
+ "id":15,"name":"MiG-15bis SD","engine":"Klimov VK-1",
+ "airframeDoubles":{
+  "8":5953.594358828,"16":5953.594358828,"24":20.6,"32":10.085,"40":2.20,
+  "48":3580,"56":1170,"64":10.10,"72":8,"80":-3,"88":22,"96":2.25,
+  "104":8500,"112":14500,"120":6200,"128":5150,"136":0.023,"144":0.093,
+  "152":4.65,"160":0.32,"168":0.64,"176":1.20,"184":0.90,"192":0,"200":2.3,
+  "224":35,"232":-0.28,"240":-0.62,"248":-4.60,"256":0.0,"264":3.2,"280":6105
+ },
+ "airframeInts":{"0":1,"208":4,"212":0,"216":200,"272":0},
+ "rcs":3.5,"loadoutId":45,
+ "gun":{"nr23":{"barrels":2,"roundsPerBarrel":80,"muzzleVelocity":690},"n37d":{"barrels":1,"rounds":40,"muzzleVelocity":690},"aggregateRoundsPerSecond":35,"schedule":"four NR-23 rounds then one N-37D; per-projectile damage classes; synchronized aggregate approximation"},
+ "assumptions":"Dimensions, VK-1 dry thrust and cannon fit from museum references. Inertia, aerodynamic coefficients, RCS, synchronized gun cadence and impact multipliers are game estimates. No afterburner, combat radar, missiles, TVC or countermeasures. Clean air-combat configuration; tanks and bombs are not equipped."
+}

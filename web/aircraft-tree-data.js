@@ -121,7 +121,7 @@ add('ru','light','la','Lavochkin Fighter','soviet',[
  ['5fn','La-5FN','연료 분사형',4,'prop','성형 엔진·연료 분사를 사용하는 La-5 발전형.'],
  ['7','La-7','후기 공력 개량',4.5,'prop','La-5FN에서 공력과 중량을 개선한 후속 계열.']]);
 add('ru','light','mig15','Fagot','museum',[
- ['bis','MiG-15bis','엔진 개량형',8.5,'jet','후퇴익 초기 제트 전투기의 엔진 개량형.']]);
+ ['bis','MiG-15bis','엔진 개량형',8.5,'jet','VK-1 단발 · 23 mm 2문 / 37 mm 1문 · 고정식 배기구 · 후연 없음.',15]]);
 add('ru','light','mig17','Fresco','museum',[
  ['f','MiG-17F','후연 엔진형',9,'jet','MiG-15 이후 날개와 고속 특성을 발전시키고 후연 엔진을 적용한 형식.']]);
 add('ru','light','mig21','Fishbed','soviet',[
