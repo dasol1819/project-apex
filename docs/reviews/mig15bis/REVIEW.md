@@ -27,3 +27,9 @@ The final manual camera fit has RMS landmark residuals of approximately 20.1 px 
 - The final native WASM is 325,232 bytes (122,440 bytes with gzip). GPU costs are data-size measurements in software EGL, not hardware FPS or timing claims.
 
 The managed cloud browser was tried twice and reported `Error creating WebGL context.` Browser gameplay/desktop/mobile interaction QA is therefore **pending**, not passed. The queue remains `in_progress`, with native implementation and offline evidence committed; do not mark the aircraft `reviewed` until that final QA is done. The feature can be published with this explicit verification limit, while the pending quality review remains recoverable.
+
+## Recovery review, 2026-11-04
+
+`web/mig15bis-review.html` now exposes the committed side/rear photographs and registered transparent game renders as independent layers, with direction, photo/render/overlay mode and opacity controls. Both photos retain Valder137 / CC BY 2.0 attribution. All four image files are byte-identical copies of already committed evidence (646,692 bytes total); there are no new flight/model changes. The restore allowlist now accepts `.jpg` alongside existing raster formats without changing the original encoded payload.
+
+Reinspection explicitly found remaining wing trailing-edge/near-wing silhouette differences, wheel displacement and canopy-frame mismatch. The previous description of a closer outline does not constitute visual approval. Before another geometry correction, separate camera uncertainty from the wing shape using exact-bis front/top references. The queue remains in progress. `recovery-20261104.json` records the viewer interaction checks, HTTP verification and HTTPS 503. The full 18-command native/restore suite passed again with byte-identical WASM and collision output. Managed browser gameplay remains unverified.

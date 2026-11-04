@@ -4,13 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "owner": "review-mig15bis-20261104T1406Z",
-    "workId": "ru-mig15-bis",
-    "branch": "review-mig15bis-20261104",
-    "startedAt": "2026-11-04T14:06:00Z",
-    "expiresAt": "2026-11-04T15:56:00Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -497,7 +491,7 @@
       "br": 8.5,
       "simId": 15,
       "status": "in_progress",
-      "nextStep": "Published at sim ID 15. Complete desktop/mobile WebGL gameplay QA and check custom-domain HTTPS availability; retain recorded native/render validation.",
+      "nextStep": "MiG-15bis side/rear overlays re-inspected: wing trailing-edge/near-wing silhouette, wheel placement and canopy framing remain visibly misaligned. Resolve rigid-camera uncertainty with exact-bis front/top references, correct geometry, render/overlay again, then complete desktop/mobile WebGL gameplay QA. Review viewer: mig15bis-review.html. HTTPS custom domain still returns 503; HTTP serves game.",
       "evidence": {
         "references": [
           "assets/mig15bis/README.md",
@@ -509,7 +503,8 @@
           "web/mig15bis-model.js",
           "web/mig15bis-finish.js",
           "assets/mig15bis/config.json",
-          "assets/mig15bis/shapes.json"
+          "assets/mig15bis/shapes.json",
+          "web/mig15bis-review.html"
         ],
         "screenshots": [
           "docs/reviews/mig15bis/15-quarter.jpg",
@@ -520,13 +515,15 @@
         "checks": [
           "docs/reviews/mig15bis/checks.json",
           "docs/reviews/mig15bis/model-checks.json",
-          "docs/reviews/mig15bis/REVIEW.md"
+          "docs/reviews/mig15bis/REVIEW.md",
+          "docs/reviews/mig15bis/recovery-20261104.json"
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/ec5158ba5eb47f60255ac784313cb06274213b9c",
         "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
         "limitations": [
           "Managed browser cannot create WebGL; final browser gameplay QA pending",
-          "Photo landmarks are approximate and have recorded residuals; not a CAD tolerance claim"
+          "Photo landmarks are approximate and have recorded residuals; not a CAD tolerance claim",
+          "2026-11-04 overlay reinspection: wing silhouette/trailing edge, wheels and canopy framing still diverge; visual corrections pending."
         ],
         "resourceCost": {
           "result": "PASS",
@@ -597,6 +594,13 @@
           ],
           "https": "HTTPS custom-domain requests currently return HTTP 503 upstream connection failure in this environment. HTTP serves the verified deployment.",
           "browserQA": "Pending: managed browser cannot create WebGL; no successful browser gameplay claim."
+        },
+        "reviewViewer": {
+          "path": "mig15bis-review.html",
+          "referencePhotoLicense": "Valder137 / CC BY 2.0",
+          "addedImageBytes": 646692,
+          "usesExistingCommittedImages": true,
+          "gameplayRuntimeChanges": false
         }
       }
     },
@@ -1839,10 +1843,10 @@
   "currentWork": {
     "kind": "new-aircraft",
     "aircraftId": "ru-mig15-bis",
-    "branch": "aircraft-mig15bis-20261104",
-    "state": "published-browser-qa-pending",
+    "branch": "review-mig15bis-20261104",
+    "state": "published-visual-corrections-pending",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
-    "nextStep": "PR #2 merged and Pages deployment succeeded with explicit user approval. Published files verified over HTTP. Complete desktop/mobile WebGL gameplay QA when a working renderer is available; investigate custom-domain HTTPS 503. Keep aircraft in_progress until visual browser review completes.",
+    "nextStep": "MiG-15bis side/rear overlays re-inspected: wing trailing-edge/near-wing silhouette, wheel placement and canopy framing remain visibly misaligned. Resolve rigid-camera uncertainty with exact-bis front/top references, correct geometry, render/overlay again, then complete desktop/mobile WebGL gameplay QA. Review viewer: mig15bis-review.html. HTTPS custom domain still returns 503; HTTP serves game.",
     "checkpointCommit": "ec5158ba5eb47f60255ac784313cb06274213b9c",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
     "publicationApproval": {
