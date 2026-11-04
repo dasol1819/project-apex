@@ -230,7 +230,7 @@ export function createAirframeKit(d){
 
  function attachStores(){
   const stores=[],f4=d.id===1,f5=d.id===2;
-  if(d.previewOnly||d.bomber||d.propeller||d.internalWeapons)return stores;
+  if(d.gunOnly||d.previewOnly||d.bomber||d.propeller||d.internalWeapons)return stores;
   function wingPylon(pos,part,length=.95){
    group.updateMatrixWorld(true);
    const skin=[];for(const id of [1,2,12,13,16,17,18,19])parts[id].traverse(o=>{if(o.isMesh&&o.material.userData.coatKind==='skin')skin.push(o);});

@@ -500,7 +500,12 @@
       "nextStep": "Author MiG-15bis exterior, native flight/gun definition and photo-overlay evidence.",
       "evidence": {
         "references": [],
-        "assets": [],
+        "assets": [
+          "web/mig15bis-model.js",
+          "web/mig15bis-finish.js",
+          "assets/mig15bis/config.json",
+          "assets/mig15bis/shapes.json"
+        ],
         "screenshots": [],
         "checks": [],
         "commit": null
@@ -1746,9 +1751,9 @@
     "kind": "new-aircraft",
     "aircraftId": "ru-mig15-bis",
     "branch": "aircraft-mig15bis-20261104",
-    "state": "research",
+    "state": "validation",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
-    "nextStep": "Author MiG-15bis exterior, native flight/gun definition and photo-overlay evidence."
+    "nextStep": "Fit real-photo camera overlays, finish mechanism/damage views, complete regression checks and publish"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",

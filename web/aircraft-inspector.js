@@ -137,6 +137,7 @@ export function createAircraftInspector({
           eye = V(1.35, 2.2, -2.6);
         }
       }
+      if(type===15){if(name==='intake'){at.set(0,0,-4.65);eye=V(1.05,.3,-7.4);}if(name==='cockpit'){at.set(0,.93,-2.65);eye=V(1.6,1.9,-4.0);}}
       target.copy(at);
       if (width / height < 0.8) eye.sub(at).multiplyScalar(1.3).add(at);
     }
@@ -360,10 +361,10 @@ export function createAircraftInspector({
       $("inspector-vector").value = "0";
       $("inspector-aperture-value").textContent = "30%";
       $("inspector-vector-value").textContent = "0°";
-      $("inspector-canopy-row").hidden = ![13, 14].includes(type);
+      $("inspector-canopy-row").hidden = ![13, 14, 15].includes(type);
       $("inspector-fod-row").hidden = type !== 14;
       $("inspector-aperture-row").hidden = !!(
-        definition.bomber || definition.propeller
+        definition.bomber || definition.propeller || definition.noAfterburner
       );
       $("inspector-vector-row").hidden = !definition.tvc;
       resize();

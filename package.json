@@ -3,5 +3,5 @@
   "private": true,
   "type": "module",
   "devDependencies": {"wabt": "1.0.39"},
-  "scripts": {"build:combat": "node scripts/native/build-mig29.mjs"}
+  "scripts": {"build:combat": "node scripts/native/build-mig15.mjs"}
 }

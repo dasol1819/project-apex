@@ -1,7 +1,7 @@
 import {simAircraft} from './aircraft-catalog.js';
 
 export const AIRCRAFT_ROLES=Object.freeze([
- ['스텔스 제공 전투기','STEALTH AIR SUPERIORITY'],['전투기 · 전폭기','FIGHTER / STRIKE'],['경량 전투기','LIGHT FIGHTER'],['다목적 전투기','MULTIROLE FIGHTER'],['함상 요격 전투기','FLEET DEFENCE FIGHTER'],['제공 전투기','AIR SUPERIORITY FIGHTER'],['장거리 전폭기','DUAL-ROLE STRIKE FIGHTER'],['스텔스 전략폭격기','STEALTH STRATEGIC BOMBER'],['장거리 전략폭격기','LONG-RANGE HEAVY BOMBER'],['초기 경전투기','LIGHT PROPELLER FIGHTER'],['스텔스 다목적 중전투기','STEALTH MULTIROLE HEAVY FIGHTER'],['함재 다목적 전투기 · 단좌','CARRIER MULTIROLE · SINGLE SEAT'],['함재 다목적 전투기 · 복좌','CARRIER MULTIROLE · TWO SEATS'],['다목적 제공 전투기','MULTIROLE AIR SUPERIORITY'],['경량 전선 전투기','FRONTLINE FIGHTER']
+ ['스텔스 제공 전투기','STEALTH AIR SUPERIORITY'],['전투기 · 전폭기','FIGHTER / STRIKE'],['경량 전투기','LIGHT FIGHTER'],['다목적 전투기','MULTIROLE FIGHTER'],['함상 요격 전투기','FLEET DEFENCE FIGHTER'],['제공 전투기','AIR SUPERIORITY FIGHTER'],['장거리 전폭기','DUAL-ROLE STRIKE FIGHTER'],['스텔스 전략폭격기','STEALTH STRATEGIC BOMBER'],['장거리 전략폭격기','LONG-RANGE HEAVY BOMBER'],['초기 경전투기','LIGHT PROPELLER FIGHTER'],['스텔스 다목적 중전투기','STEALTH MULTIROLE HEAVY FIGHTER'],['함재 다목적 전투기 · 단좌','CARRIER MULTIROLE · SINGLE SEAT'],['함재 다목적 전투기 · 복좌','CARRIER MULTIROLE · TWO SEATS'],['다목적 제공 전투기','MULTIROLE AIR SUPERIORITY'],['경량 전선 전투기','FRONTLINE FIGHTER'],['초기 제트 전투기','SWEPT-WING JET FIGHTER']
 ]);
 // Published references describe particular configurations, not guaranteed game
 // performance. Keep qualifiers and units rather than inventing exact figures.
@@ -20,7 +20,8 @@ export const PUBLIC_CATALOG=Object.freeze([
  {speed:'Mach 1.8+ · 해군 공개값',ceiling:'50,000 ft 초과',range:'1,660 nmi · AIM-9 2발 + 480 gal 외부탱크 3개 페리 참고',source:'https://www.navair.navy.mil/product/FA-18EF-Super-Hornet'},
  {speed:'Mach 1.8+ · 해군 공개값',ceiling:'50,000 ft 초과',range:'1,660 nmi · AIM-9 2발 + 480 gal 외부탱크 3개 페리 참고',source:'https://www.navair.navy.mil/product/FA-18EF-Super-Hornet'},
  {speed:'Mach 2.25 · 고고도 공개 참고',ceiling:'18,000 m · 공개 참고',range:'3,600 km · 고고도 내부 연료 참고',source:'https://roe.ru/en/production/multipurpose-fighters-and-fighter-bombers/su-35/'},
- {speed:'Mach 2급 · 고고도 참고',ceiling:'17,500 m · 공개 참고',range:'구성·비행 프로파일에 따라 상이',source:'https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/197174/AFmuseum/mikoyan-gurevich-mig-29a/'}
+ {speed:'Mach 2급 · 고고도 참고',ceiling:'17,500 m · 공개 참고',range:'구성·비행 프로파일에 따라 상이',source:'https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/197174/AFmuseum/mikoyan-gurevich-mig-29a/'},
+ {speed:'670 mph · 박물관 공개 참고',ceiling:'51,000 ft',range:'500 mi · 구성에 따라 상이',source:'https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/196115/mikoyan-gurevich-mig-15bis/'}
 ]);
 const number=(v,d=1)=>v.toLocaleString('en-US',{maximumFractionDigits:d});
 export function readPerformance(sim,{altitude=3000,speed=200,fuel=.5}={}){

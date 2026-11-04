@@ -7,7 +7,7 @@ export function bodyCenter(position,quaternion,target=new T.Vector3()){
 // The app hides the own-aircraft exterior; no cockpit mesh is required.
 export class PilotCamera{
  update(camera,position,quaternion,type=0){
-  camera.position.set(0,[1.12,1.25,1.03,1.22,1.46,1.53,1.53,1.70,2.15,.83,1.20,1.20,1.20,1.38,1.12][type]??1.12,[-5.1,-5.1,-3.85,-3.85,-5.45,-5.55,-5.55,-7.15,-19.8,-.50,-5.15,-4.8,-4.8,-6.15,-4.1][type]??-5.1).applyQuaternion(quaternion).add(position);
+  camera.position.set(0,[1.12,1.25,1.03,1.22,1.46,1.53,1.53,1.70,2.15,.83,1.20,1.20,1.20,1.38,1.12,1.10][type]??1.12,[-5.1,-5.1,-3.85,-3.85,-5.45,-5.55,-5.55,-7.15,-19.8,-.50,-5.15,-4.8,-4.8,-6.15,-4.1,-2.70][type]??-5.1).applyQuaternion(quaternion).add(position);
   camera.quaternion.copy(quaternion);
   camera.up.set(0,1,0).applyQuaternion(quaternion);
   camera.updateMatrixWorld();
