@@ -1,0 +1,46 @@
+{
+  "dateUTC": "2026-11-04T14:06:14Z",
+  "deploymentRequests": [
+    {
+      "requestedURL": "https://project-apex.kro.kr/?screen=tree&aircraft=15",
+      "error": "HTTP Error 503: Service Unavailable"
+    },
+    {
+      "requestedURL": "http://project-apex.kro.kr/?screen=tree&aircraft=15",
+      "finalURL": "http://project-apex.kro.kr/?screen=tree&aircraft=15",
+      "status": 200,
+      "bytes": 80812,
+      "sha256": "d34f4551ac1291d02868da8684c8ebfe297dd675d60114b54cdbdb58a73ac6f3"
+    }
+  ],
+  "reviewViewerQA": {
+    "result": "PASS",
+    "environment": "managed Chrome, local static preview",
+    "directions": [
+      "side",
+      "rear"
+    ],
+    "imagesLoaded": 4,
+    "naturalSize": [
+      1200,
+      803
+    ],
+    "modes": [
+      "photo",
+      "render",
+      "overlay"
+    ],
+    "opacityInput": 70,
+    "computedRenderOpacity": 0.7,
+    "rangeDisabledInRenderMode": true
+  },
+  "visualReinspection": {
+    "result": "PENDING_CORRECTIONS",
+    "observations": [
+      "Near-wing silhouette and trailing edge diverge below the real wing in the side overlay; rear overlay also shows planform/position differences. Resolve camera uncertainty against additional front/top evidence before changing wing stations.",
+      "Wheel positions and canopy frames do not align fully. Native dimensions and contact tests do not certify their visual accuracy.",
+      "The side/rear reference photographs cannot verify the nose duct depth. Obtain exact-bis front comparison."
+    ],
+    "browserGameplay": "BLOCKED: production navigation ends at HTTPS upstream connection error; previous WebGL creation failure remains unresolved."
+  }
+}
