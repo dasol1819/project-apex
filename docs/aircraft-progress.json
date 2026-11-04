@@ -4,13 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "owner": "interactive-mig15bis-20261104",
-    "workId": "ru-mig15-bis",
-    "branch": "aircraft-mig15bis-20261104",
-    "startedAt": "2026-11-04T03:06:00Z",
-    "expiresAt": "2026-11-04T06:33:00Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -495,15 +489,57 @@
       "family": "mig15",
       "branch": "light",
       "br": 8.5,
-      "simId": null,
+      "simId": 15,
       "status": "in_progress",
-      "nextStep": "Author MiG-15bis exterior, native flight/gun definition and photo-overlay evidence.",
+      "nextStep": "PR #2 implements and validates MiG-15bis. Automatic approval review rejected merging 91 files into main because explicit publication approval and acceptance of pending WebGL browser QA were not established. Await user approval before merge/publication; do not route code into main by another path.",
       "evidence": {
-        "references": [],
-        "assets": [],
-        "screenshots": [],
-        "checks": [],
-        "commit": null
+        "references": [
+          "assets/mig15bis/README.md",
+          "assets/mig15bis/references/",
+          "assets/mig15bis/rear-registration.json",
+          "assets/mig15bis/side-registration.json"
+        ],
+        "assets": [
+          "web/mig15bis-model.js",
+          "web/mig15bis-finish.js",
+          "assets/mig15bis/config.json",
+          "assets/mig15bis/shapes.json"
+        ],
+        "screenshots": [
+          "docs/reviews/mig15bis/15-quarter.jpg",
+          "docs/reviews/mig15bis/photo-rear/comparison.jpg",
+          "docs/reviews/mig15bis/photo-side/comparison.jpg",
+          "docs/reviews/mig15bis/states/state-comparison.jpg"
+        ],
+        "checks": [
+          "docs/reviews/mig15bis/checks.json",
+          "docs/reviews/mig15bis/model-checks.json",
+          "docs/reviews/mig15bis/REVIEW.md"
+        ],
+        "commit": "https://github.com/dasol1819/project-apex/commit/ec5158ba5eb47f60255ac784313cb06274213b9c",
+        "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
+        "limitations": [
+          "Managed browser cannot create WebGL; final browser gameplay QA pending",
+          "Photo landmarks are approximate and have recorded residuals; not a CAD tolerance claim"
+        ],
+        "resourceCost": {
+          "result": "PASS",
+          "dimensions": [
+            10.145999908447266,
+            3.6999999284744263,
+            10.132500162124634
+          ],
+          "triangles": 47442,
+          "meshes": 81,
+          "materials": 46,
+          "geometryBytes": 1454344,
+          "gpuTextureBytes": 0,
+          "inletRays": 12,
+          "frozenSurfaceCoordinates": true,
+          "flightControlAnimation": true,
+          "damageInheritance": true,
+          "engines": 1
+        }
       }
     },
     {
@@ -1746,10 +1782,11 @@
     "kind": "new-aircraft",
     "aircraftId": "ru-mig15-bis",
     "branch": "aircraft-mig15bis-20261104",
-    "state": "validation",
+    "state": "awaiting-publication-approval",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
-    "nextStep": "Native MiG-15bis and model tests pass; finish photo overlays and deployment. Implementation commit f66601e8e1565224398bcb519f0666e4f3fd5840",
-    "checkpointCommit": "f66601e8e1565224398bcb519f0666e4f3fd5840"
+    "nextStep": "PR #2 implements and validates MiG-15bis. Automatic approval review rejected merging 91 files into main because explicit publication approval and acceptance of pending WebGL browser QA were not established. Await user approval before merge/publication; do not route code into main by another path.",
+    "checkpointCommit": "ec5158ba5eb47f60255ac784313cb06274213b9c",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/2"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
