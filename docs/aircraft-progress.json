@@ -9,7 +9,7 @@
     "workId": "ru-mig15-bis",
     "branch": "aircraft-mig15bis-20261104",
     "startedAt": "2026-11-04T03:06:00Z",
-    "expiresAt": "2026-11-04T04:56:00Z"
+    "expiresAt": "2026-11-04T06:33:00Z"
   },
   "aircraft": [
     {
@@ -1746,9 +1746,10 @@
     "kind": "new-aircraft",
     "aircraftId": "ru-mig15-bis",
     "branch": "aircraft-mig15bis-20261104",
-    "state": "research",
+    "state": "validation",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
-    "nextStep": "Author MiG-15bis exterior, native flight/gun definition and photo-overlay evidence."
+    "nextStep": "Native MiG-15bis and model tests pass; finish photo overlays and deployment. Implementation commit f66601e8e1565224398bcb519f0666e4f3fd5840",
+    "checkpointCommit": "f66601e8e1565224398bcb519f0666e4f3fd5840"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
