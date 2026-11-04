@@ -4,13 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "owner": "interactive-mig15bis-20261104",
-    "workId": "ru-mig15-bis",
-    "branch": "aircraft-mig15bis-20261104",
-    "startedAt": "2026-11-04T03:06:00Z",
-    "expiresAt": "2026-11-04T06:33:00Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -497,7 +491,7 @@
       "br": 8.5,
       "simId": 15,
       "status": "in_progress",
-      "nextStep": "Native implementation and offline/photo-overlay review complete; finish desktop/mobile WebGL gameplay QA when a working renderer is available. Do not mark reviewed before that check.",
+      "nextStep": "PR #2 implements and validates MiG-15bis. Automatic approval review rejected merging 91 files into main because explicit publication approval and acceptance of pending WebGL browser QA were not established. Await user approval before merge/publication; do not route code into main by another path.",
       "evidence": {
         "references": [
           "assets/mig15bis/README.md",
@@ -1788,9 +1782,9 @@
     "kind": "new-aircraft",
     "aircraftId": "ru-mig15-bis",
     "branch": "aircraft-mig15bis-20261104",
-    "state": "native-complete-browser-qa-pending",
+    "state": "awaiting-publication-approval",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
-    "nextStep": "Native implementation and offline/photo-overlay review complete; finish desktop/mobile WebGL gameplay QA when a working renderer is available. Do not mark reviewed before that check.",
+    "nextStep": "PR #2 implements and validates MiG-15bis. Automatic approval review rejected merging 91 files into main because explicit publication approval and acceptance of pending WebGL browser QA were not established. Await user approval before merge/publication; do not route code into main by another path.",
     "checkpointCommit": "ec5158ba5eb47f60255ac784313cb06274213b9c",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/2"
   },
