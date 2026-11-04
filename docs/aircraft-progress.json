@@ -522,7 +522,7 @@
           "docs/reviews/mig15bis/model-checks.json",
           "docs/reviews/mig15bis/REVIEW.md"
         ],
-        "commit": "https://github.com/dasol1819/project-apex/commit/f66601e8e1565224398bcb519f0666e4f3fd5840",
+        "commit": "https://github.com/dasol1819/project-apex/commit/ec5158ba5eb47f60255ac784313cb06274213b9c",
         "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
         "limitations": [
           "Managed browser cannot create WebGL; final browser gameplay QA pending",
@@ -1791,7 +1791,7 @@
     "state": "native-complete-browser-qa-pending",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
     "nextStep": "Native implementation and offline/photo-overlay review complete; finish desktop/mobile WebGL gameplay QA when a working renderer is available. Do not mark reviewed before that check.",
-    "checkpointCommit": "f66601e8e1565224398bcb519f0666e4f3fd5840",
+    "checkpointCommit": "ec5158ba5eb47f60255ac784313cb06274213b9c",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/2"
   },
   "previousWork": {
