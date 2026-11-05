@@ -88,5 +88,45 @@
       "docs/reviews/mig15bis/webgl-20261105/photo-side-comparison.jpg",
       "docs/reviews/mig15bis/webgl-20261105/photo-rear-comparison.jpg"
     ]
+  },
+  "viewerDeployment": {
+    "date": "2026-11-05",
+    "commit": "6088c82b7d9ae4fd3698be7ba59ff403e29524ae",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/6",
+    "workflow": "https://github.com/dasol1819/project-apex/actions/runs/42012931374",
+    "conclusion": "success",
+    "url": "http://project-apex.kro.kr/mig15bis-review.html",
+    "files": [
+      {
+        "path": "mig15bis-review.html",
+        "status": 200,
+        "bytes": 8526,
+        "sha256": "31aac8a333faaedd1600384aade99ffecf5f0d5e0eb63d1c54d72db377009b83",
+        "matchesSource": true
+      },
+      {
+        "path": "assets/mig15bis-review/side-render.png?v=3",
+        "status": 200,
+        "bytes": 425423,
+        "sha256": "f8fe57a36ddec32753c8f0d71043316d17517d10f6d79854aab9c8f846a974f4",
+        "matchesSource": true
+      },
+      {
+        "path": "assets/mig15bis-review/rear-render.png?v=3",
+        "status": 200,
+        "bytes": 222379,
+        "sha256": "4ac6d01b9ce2e3b6b6e3f27eb6786a89ca8f7995d1d8cbd7e1536fada9e0fb03",
+        "matchesSource": true
+      }
+    ],
+    "verification": "HTTP 200 and byte-identical public viewer plus both actual WebGL registered captures.",
+    "https": "FAILED: independent runner detects TLS certificate hostname mismatch; managed HTTPS returns 503. GitHub settings browser is logged out and cannot access repository Pages administration."
+  },
+  "connectionBlocker": {
+    "checked": "2026-11-05",
+    "reason": "TLS certificate hostname mismatch for project-apex.kro.kr",
+    "integration": "Pages health API returned 403 Resource not accessible by integration; Pages updates require administration access.",
+    "browser": "GitHub Settings → Pages shows logged-out 404 and Sign in; no authenticated admin session available.",
+    "nextAction": "Restore/request the custom-domain certificate from an authenticated repository administrator session; enable HTTPS enforcement only after the correct certificate is issued."
   }
 }

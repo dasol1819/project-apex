@@ -633,12 +633,37 @@
           "usesExistingCommittedImages": false,
           "gameplayRuntimeChanges": false,
           "deployment": {
-            "commit": "c79a321578b57243dac6dfed2e2d9b12b5468880",
-            "workflow": "https://github.com/dasol1819/project-apex/actions/runs/41844508317",
+            "date": "2026-11-05",
+            "commit": "6088c82b7d9ae4fd3698be7ba59ff403e29524ae",
+            "pullRequest": "https://github.com/dasol1819/project-apex/pull/6",
+            "workflow": "https://github.com/dasol1819/project-apex/actions/runs/42012931374",
             "conclusion": "success",
             "url": "http://project-apex.kro.kr/mig15bis-review.html",
-            "verification": "HTTP 200 and byte-identical HTML + all four licensed reference/render images; HTTPS remains 503.",
-            "report": "docs/reviews/mig15bis/recovery-20261104.json"
+            "files": [
+              {
+                "path": "mig15bis-review.html",
+                "status": 200,
+                "bytes": 8526,
+                "sha256": "31aac8a333faaedd1600384aade99ffecf5f0d5e0eb63d1c54d72db377009b83",
+                "matchesSource": true
+              },
+              {
+                "path": "assets/mig15bis-review/side-render.png?v=3",
+                "status": 200,
+                "bytes": 425423,
+                "sha256": "f8fe57a36ddec32753c8f0d71043316d17517d10f6d79854aab9c8f846a974f4",
+                "matchesSource": true
+              },
+              {
+                "path": "assets/mig15bis-review/rear-render.png?v=3",
+                "status": 200,
+                "bytes": 222379,
+                "sha256": "4ac6d01b9ce2e3b6b6e3f27eb6786a89ca8f7995d1d8cbd7e1536fada9e0fb03",
+                "matchesSource": true
+              }
+            ],
+            "verification": "HTTP 200 and byte-identical public viewer plus both actual WebGL registered captures.",
+            "https": "FAILED: independent runner detects TLS certificate hostname mismatch; managed HTTPS returns 503. GitHub settings browser is logged out and cannot access repository Pages administration."
           },
           "referencePhotosUnchanged": true,
           "renderer": "Actual game WebGL inspector, Chromium 156 / ANGLE SwiftShader; floor/background hidden only for photo compositing"
@@ -651,7 +676,8 @@
           "job": 127191493095,
           "report": "docs/reviews/mig15bis/webgl-20261105/browser.json",
           "scope": "Chromium 156 ANGLE/SwiftShader desktop and mobile viewport/touch emulation; shader/pixel/WASM, inspector, mechanisms, sortie/throttle/finite native simulation and exact registered photo-camera renders; no physical-device GPU or hardware FPS claim."
-        }
+        },
+        "comparisonCommit": "https://github.com/dasol1819/project-apex/commit/7abf50b2a69084f5e2dfbd5f49b70f2b83c9cd59"
       }
     },
     {
@@ -1974,12 +2000,37 @@
     },
     "reviewPullRequest": "https://github.com/dasol1819/project-apex/pull/3",
     "reviewViewerDeployment": {
-      "commit": "c79a321578b57243dac6dfed2e2d9b12b5468880",
-      "workflow": "https://github.com/dasol1819/project-apex/actions/runs/41844508317",
+      "date": "2026-11-05",
+      "commit": "6088c82b7d9ae4fd3698be7ba59ff403e29524ae",
+      "pullRequest": "https://github.com/dasol1819/project-apex/pull/6",
+      "workflow": "https://github.com/dasol1819/project-apex/actions/runs/42012931374",
       "conclusion": "success",
       "url": "http://project-apex.kro.kr/mig15bis-review.html",
-      "verification": "HTTP 200 and byte-identical HTML + all four licensed reference/render images; HTTPS remains 503.",
-      "report": "docs/reviews/mig15bis/recovery-20261104.json"
+      "files": [
+        {
+          "path": "mig15bis-review.html",
+          "status": 200,
+          "bytes": 8526,
+          "sha256": "31aac8a333faaedd1600384aade99ffecf5f0d5e0eb63d1c54d72db377009b83",
+          "matchesSource": true
+        },
+        {
+          "path": "assets/mig15bis-review/side-render.png?v=3",
+          "status": 200,
+          "bytes": 425423,
+          "sha256": "f8fe57a36ddec32753c8f0d71043316d17517d10f6d79854aab9c8f846a974f4",
+          "matchesSource": true
+        },
+        {
+          "path": "assets/mig15bis-review/rear-render.png?v=3",
+          "status": 200,
+          "bytes": 222379,
+          "sha256": "4ac6d01b9ce2e3b6b6e3f27eb6786a89ca8f7995d1d8cbd7e1536fada9e0fb03",
+          "matchesSource": true
+        }
+      ],
+      "verification": "HTTP 200 and byte-identical public viewer plus both actual WebGL registered captures.",
+      "https": "FAILED: independent runner detects TLS certificate hostname mismatch; managed HTTPS returns 503. GitHub settings browser is logged out and cannot access repository Pages administration."
     },
     "geometryPullRequest": "https://github.com/dasol1819/project-apex/pull/5",
     "browserPullRequest": "https://github.com/dasol1819/project-apex/pull/4",
@@ -2075,6 +2126,14 @@
           "docs/reviews/mig15bis/webgl-20261105/photo-rear-comparison.jpg"
         ]
       }
+    },
+    "evidenceCheckpointCommit": "7abf50b2a69084f5e2dfbd5f49b70f2b83c9cd59",
+    "connectionBlocker": {
+      "checked": "2026-11-05",
+      "reason": "TLS certificate hostname mismatch for project-apex.kro.kr",
+      "integration": "Pages health API returned 403 Resource not accessible by integration; Pages updates require administration access.",
+      "browser": "GitHub Settings → Pages shows logged-out 404 and Sign in; no authenticated admin session available.",
+      "nextAction": "Restore/request the custom-domain certificate from an authenticated repository administrator session; enable HTTPS enforcement only after the correct certificate is issued."
     }
   },
   "previousWork": {
