@@ -23,10 +23,10 @@ export function createMig15bisAircraft(){
  chrome=mat('oleo chrome',0xb2b9ba,.24,.88),seat=mat('ejection seat upholstery',0x35423c,.87,.03);
  const skinSet=new Set([aluminium,lip,heat]);
  k.materials.skin=aluminium;k.materials.metal=chrome;k.materials.dark=dark;k.materials.frame=frame;k.materials.rubber=rubber;
- group.name='MiG-15bis · VK-1';group.userData.modelRevision=1;group.userData.noAfterburner=true;
+ group.name='MiG-15bis · VK-1';group.userData.modelRevision=2;group.userData.noAfterburner=true;
  group.userData.gearContacts=[[0,-1.10,-3.03],[-1.63,-1.10,.25],[1.63,-1.10,.25]];
  group.userData.intakes=[{center:[-.27,0,-4.68],radius:.22},{center:[.27,0,-4.68],radius:.22}];
- group.userData.modelLandmarks={nose:[0,0,-4.68],tail:[0,-.06,3.45],wingTips:[[-5.0425,-.31,1.84],[5.0425,-.31,1.84]],finTop:[0,2.60,4.60],nozzle:[0,-.06,3.45]};
+ group.userData.modelLandmarks={nose:[0,0,-4.68],tail:[0,-.06,3.45],wingTips:[[-5.0425,-.40109,1.84],[5.0425,-.40109,1.84]],finTop:[0,2.60,4.60],nozzle:[0,-.06,3.45]};
  loft(MIG15_STATIONS.slice(0,4),10,aluminium,{samples:5});
  loft(MIG15_STATIONS.slice(3,8),0,aluminium,{samples:5});
  loft(MIG15_STATIONS.slice(7),29,aluminium,{samples:5});
@@ -45,15 +45,21 @@ export function createMig15bisAircraft(){
  const coreMaterial=new T.MeshBasicMaterial({color:0x8b3520,transparent:true,opacity:0,depthWrite:false});
  const core=new T.Mesh(new T.CircleGeometry(.15,32),coreMaterial);core.rotation.y=Math.PI;core.position.set(0,-.06,2.32);core.userData.visualEffect=true;parts[7].add(core);
  // Fixed wing centre, 35-degree swept tips, conventional separate controls.
- const wing=(x)=>[x,-.225-Math.abs(x)*.017,-2.46+Math.abs(x)*.735,.443+Math.abs(x)*.394,.31-Math.abs(x)*.041];
+ // TR-AE-63 (VK-1), section I: approximately two degrees anhedral.
+ // The physical control axis follows the swept cut edge, not global X.
+ const anhedral=Math.tan(T.MathUtils.degToRad(2)),controlCut=.73;
+ const wing=(x)=>[x,-.225-Math.abs(x)*anhedral,-2.46+Math.abs(x)*.735,.443+Math.abs(x)*.394,.31-Math.abs(x)*.041];
+ const tip=(s)=>{const row=wing(s*5.0425);row[4]=.025;return row;};
+ const cutAt=(x)=>{const [span,y,le,te]=wing(x);return [span,y,T.MathUtils.lerp(le,te,controlCut)];};
+ const cutSweep=.735+(.394-.735)*controlCut;
  for(const s of [-1,1]){
   const wi=s<0?1:2,outer=s<0?12:13,ail=s<0?14:15,flap=s<0?16:17,tail=s<0?3:4;
   airfoil([wing(s*.62),wing(s*2.65)],wi,aluminium,{chordRange:[0,.73]});
-  airfoil([wing(s*2.65),wing(s*4.90),[s*5.0425,-.311,1.246,2.430,.025]],outer,aluminium,{chordRange:[0,.73]});
-  const fh=hinge(flap,[s*1.65,-.25,.64],s<0?'leftFlap':'rightFlap',[1,0,0],1);
+  airfoil([wing(s*2.65),wing(s*4.90),tip(s)],outer,aluminium,{chordRange:[0,.73]});
+  const fh=hinge(flap,cutAt(s*1.65),s<0?'leftFlap':'rightFlap',[1,-s*anhedral,s*cutSweep],1);
   airfoil([wing(s*.81),wing(s*2.64)],flap,aluminium,{chordRange:[.73,1],parent:fh});
-  const ah=hinge(ail,[s*3.77,-.289,1.49],s<0?'leftAileron':'rightAileron',[1,0,.394*s],1);
-  airfoil([wing(s*2.65),wing(s*4.9),[s*5.0425,-.311,1.246,2.430,.025]],ail,aluminium,{chordRange:[.73,1],parent:ah});
+  const ah=hinge(ail,cutAt(s*3.77),s<0?'leftAileron':'rightAileron',[1,-s*anhedral,s*cutSweep],1);
+  airfoil([wing(s*2.65),wing(s*4.9),tip(s)],ail,aluminium,{chordRange:[.73,1],parent:ah});
   // Exactly two spanwise-flow fences on each wing (MiG-17 has three).
   for(const x of [2.16,3.58]){
    const st=wing(s*x),le=st[2],te=st[3],y=st[1]+st[4]*.55;
@@ -76,15 +82,18 @@ export function createMig15bisAircraft(){
     if(plane!=='top'){solid(p,part,m,.001);continue;}
     // Subdivide and drape the marking over the actual airfoil profile. A flat
     // decal through a curved wing produces half-hidden stars and z-fighting.
-    const triangles=T.ShapeUtils.triangulateShape(p.map(q=>new T.Vector2(q[0],q[2])),[]),out=[];
+    const triangles=T.ShapeUtils.triangulateShape(p.map(q=>new T.Vector2(q[0],q[2])),[]),out=[],moving=[];
     const surface=q=>{const st=wing(q[0]),u=T.MathUtils.clamp((q[2]-st[2])/(st[3]-st[2]),0,1),profile=(.2969*Math.sqrt(u)-.126*u-.3516*u*u+.2843*u*u*u-.1036*u*u*u*u)/.1;return[q[0],st[1]+st[4]*profile*.5+layer,q[2]];};
-    const push=(a,b,c)=>{const av=new T.Vector3(...a),bv=new T.Vector3(...b),cv=new T.Vector3(...c);if(bv.sub(av).cross(cv.sub(av)).y<0)out.push(...a,...c,...b);else out.push(...a,...b,...c);};
+    // Split each paint triangle at the physical control cut. Paint aft of
+    // the seam belongs to the aileron, so it cannot float above a deflection.
+    const clip=(poly,aft)=>{const result=[],distance=q=>(q[2]-cutAt(q[0])[2])*(aft?1:-1);for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],da=distance(a),db=distance(b);if(da>=0)result.push(a);if((da>=0)!==(db>=0)){const t=da/(da-db);result.push(surface(a.map((v,j)=>T.MathUtils.lerp(v,b[j],t))));}}return result;};
+    const push=(a,b,c)=>{for(const [aft,dst]of [[false,out],[true,moving]]){const poly=clip([a,b,c],aft);for(let i=1;i+1<poly.length;i++){const a=poly[0],b=poly[i],c=poly[i+1],av=new T.Vector3(...a),bv=new T.Vector3(...b),cv=new T.Vector3(...c);if(bv.sub(av).cross(cv.sub(av)).y<0)dst.push(...a,...c,...b);else dst.push(...a,...b,...c);}}};
     for(const ids of triangles){const a=new T.Vector3(...p[ids[0]]),b=new T.Vector3(...p[ids[1]]),c=new T.Vector3(...p[ids[2]]),n=6,at=(i,j)=>surface(a.clone().multiplyScalar(1-(i+j)/n).addScaledVector(b,i/n).addScaledVector(c,j/n).toArray());for(let i=0;i<n;i++)for(let j=0;j<n-i;j++){push(at(i,j),at(i+1,j),at(i,j+1));if(j<n-i-1)push(at(i+1,j),at(i+1,j+1),at(i,j+1));}}
-    const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(out,3));g.computeVertexNormals();mesh(g,m,part,undefined,'conformal Soviet star');
+    for(const [vertices,region,parent]of [[out,part,undefined],[moving,ail,ah]]){if(!vertices.length)continue;const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));g.computeVertexNormals();mesh(g,m,region,parent,'conformal Soviet star');}
    }};
   const st=wing(s*3.64);star([s*3.64,st[1]+st[4]*.505,1.12],.44,'top',outer);
   star([s*.071,1.52,3.70],.29,'side',5);
-  k.navLight([s*5.038,-.30,1.84],s<0?0xd72b20:0x28a267,outer);
+  k.navLight([s*5.038,wing(s*5.038)[1]+.01,1.84],s<0?0xd72b20:0x28a267,outer);
  }
  // Swept single fin, horizontal stabilizer through it; separate aft rudder.
  const finStations=[[.43,0,1.13,3.75,.17],[1.35,0,2.50,4.50,.13],[2.42,0,4.02,5.30,.08],[2.55,0,4.20,5.25,.045],[2.60,0,4.42,5.08,.015]];
@@ -135,7 +144,7 @@ export function createMig15bisAircraft(){
  }
  k.animations.push(st=>{const g=T.MathUtils.clamp(st.gear??0,0,1);for(const e of gearGroups){e.leg.visible=g>.01;e.leg.rotation[e.main?'z':'x']=(1-g)*(e.main?e.side*1.48:1.49);e.door.rotation.z=e.side*g*1.45;if(!e.main)e.leg.rotation.y=-(st.yawInput??0)*.2*g;}});
  // Right-wing pitot, antenna mast, gun access panel and small service details.
- line([[4.73,-.24,1.49],[4.73,-.24,.51]],13,chrome,.009);
+ line([[4.73,wing(4.73)[1]+.02,1.49],[4.73,wing(4.73)[1]+.02,.51]],13,chrome,.009);
  solid([[.04,.82,-1.69],[.04,1.15,-1.47],[.04,.80,-1.34]],0,frame,.025);
  for(const x of [-.58,.58])line([[x,.35,-3.15],[x,.37,-2.68],[x,.22,-2.50]],10,heat,.004);
  // Original red 23 identity, built from small vector strokes on the compound

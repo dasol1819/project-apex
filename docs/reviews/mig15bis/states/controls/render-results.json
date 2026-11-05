@@ -1,11 +1,11 @@
 {
   "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
-  "shaderProgramsCompiled": 8,
+  "shaderProgramsCompiled": 9,
   "aircraft": [
     {
       "id": 15,
-      "triangles": 47474,
-      "meshes": 82,
+      "triangles": 47522,
+      "meshes": 86,
       "views": 3
     }
   ],

@@ -6,9 +6,9 @@
   "collisionExportByteIdentical": true,
   "runtimeFiles": {
     "web/mig15bis-model.js": {
-      "bytes": 14188,
-      "gzipBytes": 6165,
-      "sha256": "8b35d9a5eb2b6dc6c51de0d3be84b2dead854fa112931f164e5d8fcaabbae129"
+      "bytes": 15391,
+      "gzipBytes": 6678,
+      "sha256": "77b056f20f21a0cd091cf21ad8e3e8a6cb02a056eaa690b1f563b87e2703a103"
     },
     "web/mig15bis-finish.js": {
       "bytes": 4220,
@@ -17,8 +17,8 @@
     },
     "web/flight.wasm": {
       "bytes": 325232,
-      "gzipBytes": 122440,
-      "sha256": "64068a1a896486760be8a31ca66f3e804d15aed021d9a76ee826dd542ad30af4"
+      "gzipBytes": 122441,
+      "sha256": "43352467a6fc6a11c11e87a3e46b1f3de883d6d0174e2aea1d41aedfaa5c5f31"
     }
   },
   "checks": [
@@ -28,7 +28,7 @@
         "scripts/update-web-manifest.py"
       ],
       "exitCode": 0,
-      "seconds": 0.1,
+      "seconds": 0.106,
       "stdout": "Recorded 93 web overrides",
       "stderr": ""
     },
@@ -38,7 +38,7 @@
         ".deployment/restore.py"
       ],
       "exitCode": 0,
-      "seconds": 0.293,
+      "seconds": 0.303,
       "stdout": "Verified and restored Project Apex",
       "stderr": ""
     },
@@ -49,7 +49,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 0.197,
+      "seconds": 0.213,
       "stdout": "Exported 30 MiG-15bis damage regions and three contact points",
       "stderr": ""
     },
@@ -60,7 +60,7 @@
         "build:combat"
       ],
       "exitCode": 0,
-      "seconds": 1.526,
+      "seconds": 0.948,
       "stdout": "> build:combat\n> node scripts/native/build-mig15.mjs\n\n{\"result\":\"BUILT\",\"bytes\":306583,\"regions\":{\"airframes\":14417920,\"rcs\":14421952,\"radars\":14422064,\"loadouts\":14422848,\"irAttachmentParts\":14423856,\"partPivots\":14423920,\"partHalfExtents\":14424640,\"AirframesMounts6\":14425360,\"AirframesMounts2\":14425504,\"BombsMounts2\":14425552},\"relocated\":139,\"typeGuards\":28,\"pages\":221}\n{\"result\":\"BUILT\",\"bytes\":316088,\"guards\":28,\"pages\":222}\n{\"result\":\"BUILT\",\"aircraft\":16,\"bytes\":325232,\"bounds\":28,\"pages\":223}",
       "stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm."
     },
@@ -70,7 +70,7 @@
         "scripts/update-web-manifest.py"
       ],
       "exitCode": 0,
-      "seconds": 0.107,
+      "seconds": 0.108,
       "stdout": "Recorded 93 web overrides",
       "stderr": ""
     },
@@ -80,7 +80,7 @@
         ".deployment/restore.py"
       ],
       "exitCode": 0,
-      "seconds": 0.313,
+      "seconds": 0.292,
       "stdout": "Verified and restored Project Apex",
       "stderr": ""
     },
@@ -91,7 +91,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 1.524,
+      "seconds": 1.537,
       "stdout": "{\"result\":\"PASS\",\"legacyAircraft\":13,\"legacyTicks\":15600,\"flightEnvelopeScenarios\":12,\"nativeAircraftId\":13,\"loadouts\":4}",
       "stderr": ""
     },
@@ -102,7 +102,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 1.627,
+      "seconds": 1.619,
       "stdout": "{\"result\":\"PASS\",\"engagements\":[{\"kind\":\"rf\",\"targetType\":1,\"remaining\":5,\"targetBody\":0.9626855584006094},{\"kind\":\"ir\",\"targetType\":1,\"remaining\":1,\"targetBody\":0.8896916500048598},{\"kind\":\"rf\",\"targetType\":13,\"remaining\":5,\"targetBody\":0.8363108436657253}],\"gunRounds\":150,\"reload\":true,\"laserPod\":true,\"bombRelease\":true,\"countermeasures\":true,\"takeoffSeconds\":23.791666666666668}\n{\"result\":\"PASS\",\"gunImpact\":{\"legacy30mm\":0.42000000000000004,\"su35Impact\":0.42000000000000004}}\n{\"result\":\"PASS\",\"aiCombat\":true}",
       "stderr": ""
     },
@@ -113,7 +113,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 3.63,
+      "seconds": 3.265,
       "stdout": "{\"result\":\"PASS\",\"visibleDimensions\":[15.3,5.8999999999999995,21.9],\"triangles\":177834,\"intakeRaySamples\":18,\"rampRaySamples\":54,\"undersideSamples\":17,\"existingAircraft\":13}",
       "stderr": ""
     },
@@ -124,7 +124,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 1.024,
+      "seconds": 0.957,
       "stdout": "{\"result\":\"PASS\",\"collisionRegions\":30,\"preservedTriangles\":true,\"externalStoreCoordinates\":true,\"damageInheritance\":true,\"wreckageMeshes\":13}",
       "stderr": ""
     },
@@ -135,7 +135,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 0.155,
+      "seconds": 0.15,
       "stdout": "{\"result\":\"PASS\",\"scenarios\":12,\"levelAltitude\":1510.418316531855,\"pullUpG\":4.033521591743231,\"substepTrajectoryError\":0}",
       "stderr": ""
     },
@@ -146,7 +146,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 1.76,
+      "seconds": 1.691,
       "stdout": "{\"result\":\"PASS\",\"nativeAircraftId\":14,\"legacyAircraft\":14,\"legacyTicks\":16800,\"loadouts\":3,\"flightEnvelopeScenarios\":12}\n{\"result\":\"PASS\",\"conventionalControls\":true,\"gunDamageLink\":true}\n{\"result\":\"PASS\",\"nativeForces\":{\"drySpeed\":257.2340661410796,\"wetSpeed\":263.69040068259494,\"brakedSpeed\":235.9926277557272}}",
       "stderr": ""
     },
@@ -157,7 +157,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 2.256,
+      "seconds": 2.146,
       "stdout": "{\"result\":\"PASS\",\"engagements\":[{\"kind\":\"rf\",\"targetType\":1,\"remaining\":1,\"targetBody\":0.9591541257388934},{\"kind\":\"ir\",\"targetType\":1,\"remaining\":3,\"targetBody\":0.8896921780941923},{\"kind\":\"rf\",\"targetType\":14,\"remaining\":1,\"targetBody\":0}],\"gunRounds\":150,\"reload\":true,\"countermeasures\":true,\"takeoffSeconds\":19.833333333333332}\n{\"result\":\"PASS\",\"gunImpact\":{\"legacy30mm\":0.42000000000000004,\"mig29Impact\":0.42000000000000004}}\n{\"result\":\"PASS\",\"aiCombat\":true}\n{\"result\":\"PASS\",\"sarhIllumination\":{\"maintained\":0.9591541257388934,\"lost\":1}}\n{\"result\":\"PASS\",\"r73Stations\":4}",
       "stderr": ""
     },
@@ -168,7 +168,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 6.689,
+      "seconds": 6.77,
       "stdout": "{\"result\":\"PASS\",\"visibleDimensions\":[11.360000610351562,4.7208135080337525,17.319999618530275],\"triangles\":238896,\"undersideSamples\":6,\"inletSamples\":18,\"mechanisms\":true,\"combatStores\":true,\"collisionRegions\":30}",
       "stderr": ""
     },
@@ -179,7 +179,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 0.18,
+      "seconds": 0.22,
       "stdout": "{\"result\":\"PASS\",\"skinMeshes\":25,\"uvBytes\":3535872,\"independentUv\":true,\"invalidDownloadsRejected\":true}",
       "stderr": ""
     },
@@ -190,7 +190,7 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 2.107,
+      "seconds": 1.961,
       "stdout": "{\"result\":\"PASS\",\"takeoffSeconds\":23.4,\"reload\":true,\"nativeAircraft\":15,\"legacyAircraft\":15,\"legacyTicks\":18000,\"flightEnvelopeScenarios\":12,\"projectiles\":200,\"nr23\":160,\"n37d\":40,\"radar\":false,\"afterburner\":false,\"nativeGunHits\":true,\"aiFlight\":true}",
       "stderr": ""
     },
@@ -201,8 +201,19 @@
         "public"
       ],
       "exitCode": 0,
-      "seconds": 0.345,
-      "stdout": "{\"result\":\"PASS\",\"dimensions\":[10.145999908447266,3.6999999284744263,10.132500162124634],\"triangles\":47442,\"meshes\":81,\"materials\":46,\"geometryBytes\":1454344,\"gpuTextureBytes\":0,\"inletRays\":12,\"frozenSurfaceCoordinates\":true,\"flightControlAnimation\":true,\"damageInheritance\":true,\"engines\":1}",
+      "seconds": 0.305,
+      "stdout": "{\"result\":\"PASS\",\"dimensions\":[10.145999908447266,3.6999999284744263,10.132500162124634],\"triangles\":47490,\"meshes\":85,\"materials\":46,\"geometryBytes\":1457800,\"gpuTextureBytes\":0,\"inletRays\":12,\"frozenSurfaceCoordinates\":true,\"flightControlAnimation\":true,\"damageInheritance\":true,\"engines\":1}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "tests/mig15-hinges.mjs",
+        "public"
+      ],
+      "exitCode": 0,
+      "seconds": 0.249,
+      "stdout": "{\"result\":\"PASS\",\"maxHingeDriftMetres\":1.9715526945154207e-8,\"anhedralDegrees\":[{\"field\":\"leftFlap\",\"degrees\":2.0000003821237318},{\"field\":\"rightFlap\",\"degrees\":2.0000003821237318},{\"field\":\"leftAileron\",\"degrees\":1.9999998505322154},{\"field\":\"rightAileron\",\"degrees\":1.9999998505322154}],\"measurements\":[{\"field\":\"leftFlap\",\"span\":-2.6400001287460326,\"angle\":-0.4,\"driftMetres\":1.971552692645456e-8},{\"field\":\"leftFlap\",\"span\":-0.8100000262260436,\"angle\":-0.4,\"driftMetres\":2.7374625922380847e-9},{\"field\":\"rightFlap\",\"span\":0.8100000262260436,\"angle\":-0.4,\"driftMetres\":2.7374625922380847e-9},{\"field\":\"rightFlap\",\"span\":2.6400001287460326,\"angle\":-0.4,\"driftMetres\":1.971552692645456e-8},{\"field\":\"leftAileron\",\"span\":-5.042500038146972,\"angle\":-0.4,\"driftMetres\":1.4519740783007611e-8},{\"field\":\"leftAileron\",\"span\":-2.650000114440918,\"angle\":-0.4,\"driftMetres\":8.832481816856583e-9},{\"field\":\"rightAileron\",\"span\":2.650000114440918,\"angle\":-0.4,\"driftMetres\":8.832481816856583e-9},{\"field\":\"rightAileron\",\"span\":5.042500038146972,\"angle\":-0.4,\"driftMetres\":1.4519740783007611e-8},{\"field\":\"leftFlap\",\"span\":-2.6400001287460326,\"angle\":0.4,\"driftMetres\":1.9715526945154207e-8},{\"field\":\"leftFlap\",\"span\":-0.8100000262260436,\"angle\":0.4,\"driftMetres\":2.737462575483113e-9},{\"field\":\"rightFlap\",\"span\":0.8100000262260436,\"angle\":0.4,\"driftMetres\":2.737462575483113e-9},{\"field\":\"rightFlap\",\"span\":2.6400001287460326,\"angle\":0.4,\"driftMetres\":1.9715526945154207e-8},{\"field\":\"leftAileron\",\"span\":-5.042500038146972,\"angle\":0.4,\"driftMetres\":1.4519740768570646e-8},{\"field\":\"leftAileron\",\"span\":-2.650000114440918,\"angle\":0.4,\"driftMetres\":8.832481784213513e-9},{\"field\":\"rightAileron\",\"span\":2.650000114440918,\"angle\":0.4,\"driftMetres\":8.832481784213513e-9},{\"field\":\"rightAileron\",\"span\":5.042500038146972,\"angle\":0.4,\"driftMetres\":1.4519740768570646e-8}]}",
       "stderr": ""
     },
     {
@@ -211,8 +222,8 @@
         "scripts/aircraft-progress.mjs"
       ],
       "exitCode": 0,
-      "seconds": 0.073,
-      "stdout": "{\n  \"target\": \"2026-12-02\",\n  \"total\": 91,\n  \"actuallyImplemented\": 16,\n  \"counts\": {\n    \"planned\": 75,\n    \"implemented\": 15,\n    \"in_progress\": 1,\n    \"reviewed\": 0,\n    \"blocked\": 0\n  },\n  \"next\": {\n    \"id\": \"ru-mig15-bis\",\n    \"name\": \"MiG-15bis\",\n    \"step\": \"Published at sim ID 15. Complete desktop/mobile WebGL gameplay QA and check custom-domain HTTPS availability; retain recorded native/render validation.\"\n  },\n  \"lease\": {\n    \"owner\": \"review-mig15bis-20261104T1406Z\",\n    \"workId\": \"ru-mig15-bis\",\n    \"branch\": \"review-mig15bis-20261104\",\n    \"startedAt\": \"2026-11-04T14:06:00Z\",\n    \"expiresAt\": \"2026-11-04T15:56:00Z\"\n  }\n}",
+      "seconds": 0.07,
+      "stdout": "{\n  \"target\": \"2026-12-02\",\n  \"total\": 91,\n  \"actuallyImplemented\": 16,\n  \"counts\": {\n    \"planned\": 75,\n    \"implemented\": 15,\n    \"in_progress\": 1,\n    \"reviewed\": 0,\n    \"blocked\": 0\n  },\n  \"next\": {\n    \"id\": \"ru-mig15-bis\",\n    \"name\": \"MiG-15bis\",\n    \"step\": \"MiG-15bis side/rear overlays re-inspected: wing trailing-edge/near-wing silhouette, wheel placement and canopy framing remain visibly misaligned. Resolve rigid-camera uncertainty with exact-bis front/top references, correct geometry, render/overlay again, then complete desktop/mobile WebGL gameplay QA. Review viewer: mig15bis-review.html. HTTPS custom domain still returns 503; HTTP serves game.\"\n  },\n  \"lease\": {\n    \"owner\": \"mig15bis-geometry-20261105T1010Z\",\n    \"workId\": \"ru-mig15-bis\",\n    \"branch\": \"mig15bis-geometry-20261105\",\n    \"startedAt\": \"2026-11-05T10:10:00Z\",\n    \"expiresAt\": \"2026-11-05T12:00:00Z\"\n  }\n}",
       "stderr": ""
     }
   ],

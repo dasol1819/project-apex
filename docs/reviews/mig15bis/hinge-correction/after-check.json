@@ -1,0 +1,120 @@
+{
+  "result": "PASS",
+  "maxHingeDriftMetres": 1.9715526945154207e-8,
+  "anhedralDegrees": [
+    {
+      "field": "leftFlap",
+      "degrees": 2.0000003821237318
+    },
+    {
+      "field": "rightFlap",
+      "degrees": 2.0000003821237318
+    },
+    {
+      "field": "leftAileron",
+      "degrees": 1.9999998505322154
+    },
+    {
+      "field": "rightAileron",
+      "degrees": 1.9999998505322154
+    }
+  ],
+  "measurements": [
+    {
+      "field": "leftFlap",
+      "span": -2.6400001287460326,
+      "angle": -0.4,
+      "driftMetres": 1.971552692645456e-8
+    },
+    {
+      "field": "leftFlap",
+      "span": -0.8100000262260436,
+      "angle": -0.4,
+      "driftMetres": 2.7374625922380847e-9
+    },
+    {
+      "field": "rightFlap",
+      "span": 0.8100000262260436,
+      "angle": -0.4,
+      "driftMetres": 2.7374625922380847e-9
+    },
+    {
+      "field": "rightFlap",
+      "span": 2.6400001287460326,
+      "angle": -0.4,
+      "driftMetres": 1.971552692645456e-8
+    },
+    {
+      "field": "leftAileron",
+      "span": -5.042500038146972,
+      "angle": -0.4,
+      "driftMetres": 1.4519740783007611e-8
+    },
+    {
+      "field": "leftAileron",
+      "span": -2.650000114440918,
+      "angle": -0.4,
+      "driftMetres": 8.832481816856583e-9
+    },
+    {
+      "field": "rightAileron",
+      "span": 2.650000114440918,
+      "angle": -0.4,
+      "driftMetres": 8.832481816856583e-9
+    },
+    {
+      "field": "rightAileron",
+      "span": 5.042500038146972,
+      "angle": -0.4,
+      "driftMetres": 1.4519740783007611e-8
+    },
+    {
+      "field": "leftFlap",
+      "span": -2.6400001287460326,
+      "angle": 0.4,
+      "driftMetres": 1.9715526945154207e-8
+    },
+    {
+      "field": "leftFlap",
+      "span": -0.8100000262260436,
+      "angle": 0.4,
+      "driftMetres": 2.737462575483113e-9
+    },
+    {
+      "field": "rightFlap",
+      "span": 0.8100000262260436,
+      "angle": 0.4,
+      "driftMetres": 2.737462575483113e-9
+    },
+    {
+      "field": "rightFlap",
+      "span": 2.6400001287460326,
+      "angle": 0.4,
+      "driftMetres": 1.9715526945154207e-8
+    },
+    {
+      "field": "leftAileron",
+      "span": -5.042500038146972,
+      "angle": 0.4,
+      "driftMetres": 1.4519740768570646e-8
+    },
+    {
+      "field": "leftAileron",
+      "span": -2.650000114440918,
+      "angle": 0.4,
+      "driftMetres": 8.832481784213513e-9
+    },
+    {
+      "field": "rightAileron",
+      "span": 2.650000114440918,
+      "angle": 0.4,
+      "driftMetres": 8.832481784213513e-9
+    },
+    {
+      "field": "rightAileron",
+      "span": 5.042500038146972,
+      "angle": 0.4,
+      "driftMetres": 1.4519740768570646e-8
+    }
+  ]
+}
