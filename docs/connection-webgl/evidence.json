@@ -1,0 +1,246 @@
+{
+  "checkedDateKST": "2026-11-05",
+  "dns": {
+    "CNAME": [
+      {
+        "name": "project-apex.kro.kr.",
+        "type": 5,
+        "TTL": 300,
+        "data": "dasol1819.github.io."
+      }
+    ],
+    "A": [
+      {
+        "name": "project-apex.kro.kr.",
+        "type": 5,
+        "TTL": 300,
+        "data": "dasol1819.github.io."
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 1,
+        "TTL": 3600,
+        "data": "185.199.109.153"
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 1,
+        "TTL": 3600,
+        "data": "185.199.108.153"
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 1,
+        "TTL": 3600,
+        "data": "185.199.110.153"
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 1,
+        "TTL": 3600,
+        "data": "185.199.111.153"
+      }
+    ],
+    "AAAA": [
+      {
+        "name": "project-apex.kro.kr.",
+        "type": 5,
+        "TTL": 300,
+        "data": "dasol1819.github.io."
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 28,
+        "TTL": 3600,
+        "data": "2606:50c0:8000::153"
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 28,
+        "TTL": 3600,
+        "data": "2606:50c0:8002::153"
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 28,
+        "TTL": 3600,
+        "data": "2606:50c0:8003::153"
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 28,
+        "TTL": 3600,
+        "data": "2606:50c0:8001::153"
+      }
+    ],
+    "CAA": [
+      {
+        "name": "project-apex.kro.kr.",
+        "type": 5,
+        "TTL": 300,
+        "data": "dasol1819.github.io."
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 257,
+        "TTL": 3600,
+        "data": "0 issue \"letsencrypt.org\""
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 257,
+        "TTL": 3600,
+        "data": "0 issuewild \"letsencrypt.org\""
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 257,
+        "TTL": 3600,
+        "data": "0 issue \"digicert.com\""
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 257,
+        "TTL": 3600,
+        "data": "0 issuewild \"sectigo.com\""
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 257,
+        "TTL": 3600,
+        "data": "0 issuewild \"digicert.com\""
+      },
+      {
+        "name": "dasol1819.github.io.",
+        "type": 257,
+        "TTL": 3600,
+        "data": "0 issue \"sectigo.com\""
+      }
+    ]
+  },
+  "connections": {
+    "http": {
+      "ok": true,
+      "status": 200,
+      "url": "http://project-apex.kro.kr/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 80812,
+      "sha256": "d34f4551ac1291d02868da8684c8ebfe297dd675d60114b54cdbdb58a73ac6f3"
+    },
+    "https": {
+      "ok": false,
+      "status": 503,
+      "url": "https://project-apex.kro.kr/",
+      "location": null,
+      "error": "upstream connect error or disconnect/reset before headers. reset reason: remote connection failure"
+    },
+    "githubPages": {
+      "ok": false,
+      "status": 301,
+      "url": "https://dasol1819.github.io/project-apex/",
+      "location": "http://project-apex.kro.kr/",
+      "error": "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body>\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    }
+  },
+  "tls": {
+    "source": "Qualys SSL Labs API v3, public-domain assessment",
+    "statusAtCapture": "IN_PROGRESS",
+    "completedEndpoints": [
+      {
+        "ip": "2606:50c0:8001:0:0:0:0:153",
+        "grade": "T"
+      },
+      {
+        "ip": "2606:50c0:8000:0:0:0:0:153",
+        "grade": "T"
+      }
+    ],
+    "leaf": {
+      "subject": "CN=*.github.io",
+      "commonNames": [
+        "*.github.io"
+      ],
+      "altNames": [
+        "*.github.com",
+        "*.github.io",
+        "*.githubusercontent.com",
+        "github.com",
+        "github.io",
+        "githubusercontent.com"
+      ],
+      "notBefore": 1790811886000,
+      "notAfter": 1798587885000,
+      "issuerSubject": "CN=YR1, O=Let's Encrypt, C=US",
+      "sha256Hash": "f2f9a159ce50a0a168b3eaeaf2fced5addd49ba38e2bf63248f057a139fc7856",
+      "issues": 8
+    },
+    "finding": "The completed endpoints present a *.github.io certificate whose SANs do not include project-apex.kro.kr."
+  },
+  "managedBrowser": {
+    "version": "Chrome/155.0.0.0 Linux",
+    "webgl1": false,
+    "webgl2HighPerformanceAntialias": false,
+    "webgl2DefaultNoAntialias": false,
+    "creationError": "Could not create a WebGL context, VENDOR = 0xffff, DEVICE = 0xffff, GL_VENDOR = Disabled, GL_RENDERER = Disabled, Sandboxed = yes, Optimus = no, AMD switchable = no, Reset notification strategy = 0x0000, ErrorMessage = BindToCurrentSequence failed: .",
+    "flightModule": {
+      "status": 200,
+      "bytes": 325232,
+      "wasmValid": true
+    },
+    "gameEntryStatus": 200,
+    "mig15bisModelStatus": 200,
+    "modifiedErrorUI": "Verified visible in supported preview: execution failure + correct WebGL guidance + working diagnostics link"
+  },
+  "localValidation": {
+    "nativeRebuildByteIdentical": true,
+    "manifestRestore": "PASS",
+    "syntaxAndWorkflowParsing": "PASS",
+    "regressions": [
+      {
+        "test": "su35-combat-native",
+        "result": "PASS"
+      },
+      {
+        "test": "su35-combat-systems",
+        "result": "PASS"
+      },
+      {
+        "test": "su35-geometry",
+        "result": "PASS"
+      },
+      {
+        "test": "su35-combat-model",
+        "result": "PASS"
+      },
+      {
+        "test": "su35-flight-physics",
+        "result": "PASS"
+      },
+      {
+        "test": "mig29-native",
+        "result": "PASS"
+      },
+      {
+        "test": "mig29-combat",
+        "result": "PASS"
+      },
+      {
+        "test": "mig29-model",
+        "result": "PASS"
+      },
+      {
+        "test": "mig29-surface-data",
+        "result": "PASS"
+      },
+      {
+        "test": "mig15-native",
+        "result": "PASS"
+      },
+      {
+        "test": "mig15-model",
+        "result": "PASS"
+      }
+    ]
+  },
+  "newBrowserCI": "Prepared; NOT executed. Requires repository upload to run. No successful WebGL gameplay or hardware-performance claim."
+}
