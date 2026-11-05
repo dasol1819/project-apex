@@ -4,7 +4,13 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "owner": "mig15bis-geometry-20261105T1010Z",
+    "workId": "ru-mig15-bis",
+    "branch": "mig15bis-geometry-20261105",
+    "startedAt": "2026-11-05T10:10:00Z",
+    "expiresAt": "2026-11-05T12:00:00Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -491,13 +497,14 @@
       "br": 8.5,
       "simId": 15,
       "status": "in_progress",
-      "nextStep": "MiG-15bis side/rear overlays re-inspected: wing trailing-edge/near-wing silhouette, wheel placement and canopy framing remain visibly misaligned. Resolve rigid-camera uncertainty with exact-bis front/top references, correct geometry, render/overlay again, then complete desktop/mobile WebGL gameplay QA. Review viewer: mig15bis-review.html. HTTPS custom domain still returns 503; HTTP serves game.",
+      "nextStep": "Validate and publish corrected two-degree wing anhedral, swept flap/aileron axes and moving paint. Mesh cut-edge drift reduced from 0.2333 m to below 1e-5 m at +/-0.4 rad. Side/rear photo overlays and power/control/damage renders regenerated; residual canopy/wheel/silhouette errors remain. Preserve connection/WebGL PR #4; browser job passed but TLS hostname mismatch blocks its connection job.",
       "evidence": {
         "references": [
           "assets/mig15bis/README.md",
           "assets/mig15bis/references/",
           "assets/mig15bis/rear-registration.json",
-          "assets/mig15bis/side-registration.json"
+          "assets/mig15bis/side-registration.json",
+          "https://www.governmentattic.org/14docs/MIG-15pilotOpManual_1955.pdf"
         ],
         "assets": [
           "web/mig15bis-model.js",
@@ -510,13 +517,16 @@
           "docs/reviews/mig15bis/15-quarter.jpg",
           "docs/reviews/mig15bis/photo-rear/comparison.jpg",
           "docs/reviews/mig15bis/photo-side/comparison.jpg",
-          "docs/reviews/mig15bis/states/state-comparison.jpg"
+          "docs/reviews/mig15bis/states/state-comparison.jpg",
+          "docs/reviews/mig15bis/hinge-correction/comparison.jpg"
         ],
         "checks": [
           "docs/reviews/mig15bis/checks.json",
           "docs/reviews/mig15bis/model-checks.json",
           "docs/reviews/mig15bis/REVIEW.md",
-          "docs/reviews/mig15bis/recovery-20261104.json"
+          "docs/reviews/mig15bis/recovery-20261104.json",
+          "tests/mig15-hinges.mjs",
+          "docs/reviews/mig15bis/hinge-correction/review.json"
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/ec5158ba5eb47f60255ac784313cb06274213b9c",
         "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
@@ -532,10 +542,10 @@
             3.6999999284744263,
             10.132500162124634
           ],
-          "triangles": 47442,
-          "meshes": 81,
+          "triangles": 47490,
+          "meshes": 85,
           "materials": 46,
-          "geometryBytes": 1454344,
+          "geometryBytes": 1457800,
           "gpuTextureBytes": 0,
           "inletRays": 12,
           "frozenSurfaceCoordinates": true,
@@ -1851,10 +1861,10 @@
   "currentWork": {
     "kind": "new-aircraft",
     "aircraftId": "ru-mig15-bis",
-    "branch": "review-mig15bis-20261104",
-    "state": "published-visual-corrections-pending",
+    "branch": "mig15bis-geometry-20261105",
+    "state": "hinge-anhedral-correction-validation",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
-    "nextStep": "MiG-15bis side/rear overlays re-inspected: wing trailing-edge/near-wing silhouette, wheel placement and canopy framing remain visibly misaligned. Resolve rigid-camera uncertainty with exact-bis front/top references, correct geometry, render/overlay again, then complete desktop/mobile WebGL gameplay QA. Review viewer: mig15bis-review.html. HTTPS custom domain still returns 503; HTTP serves game.",
+    "nextStep": "Validate and publish corrected two-degree wing anhedral, swept flap/aileron axes and moving paint. Mesh cut-edge drift reduced from 0.2333 m to below 1e-5 m at +/-0.4 rad. Side/rear photo overlays and power/control/damage renders regenerated; residual canopy/wheel/silhouette errors remain. Preserve connection/WebGL PR #4; browser job passed but TLS hostname mismatch blocks its connection job.",
     "checkpointCommit": "49dc46f988d2078ddc9c18406616f81afa53ada8",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
     "publicationApproval": {

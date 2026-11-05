@@ -5,10 +5,10 @@
     3.6999999284744263,
     10.132500162124634
   ],
-  "triangles": 47442,
-  "meshes": 81,
+  "triangles": 47490,
+  "meshes": 85,
   "materials": 46,
-  "geometryBytes": 1454344,
+  "geometryBytes": 1457800,
   "gpuTextureBytes": 0,
   "inletRays": 12,
   "frozenSurfaceCoordinates": true,
