@@ -4,13 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "owner": "mig15bis-geometry-20261105T1010Z",
-    "workId": "ru-mig15-bis",
-    "branch": "mig15bis-geometry-20261105",
-    "startedAt": "2026-11-05T10:10:00Z",
-    "expiresAt": "2026-11-05T12:00:00Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -497,7 +491,7 @@
       "br": 8.5,
       "simId": 15,
       "status": "in_progress",
-      "nextStep": "Validate and publish corrected two-degree wing anhedral, swept flap/aileron axes and moving paint. Mesh cut-edge drift reduced from 0.2333 m to below 1e-5 m at +/-0.4 rad. Side/rear photo overlays and power/control/damage renders regenerated; residual canopy/wheel/silhouette errors remain. Preserve connection/WebGL PR #4; browser job passed but TLS hostname mismatch blocks its connection job.",
+      "nextStep": "Continue MiG-15bis exact-variant shape review: actual WebGL side/rear overlays still show canopy, wheel and wing/camera differences. Obtain uncovered exact-bis front photo (Monino photo has an intake cover), inspect splitter/duct and nozzle sleeve/lip. Keep in_progress. PR #4 actual Chromium desktop/mobile smoke and registered-camera capture pass; TLS hostname mismatch still blocks its connection check and HTTPS publication.",
       "evidence": {
         "references": [
           "assets/mig15bis/README.md",
@@ -518,7 +512,11 @@
           "docs/reviews/mig15bis/photo-rear/comparison.jpg",
           "docs/reviews/mig15bis/photo-side/comparison.jpg",
           "docs/reviews/mig15bis/states/state-comparison.jpg",
-          "docs/reviews/mig15bis/hinge-correction/comparison.jpg"
+          "docs/reviews/mig15bis/hinge-correction/comparison.jpg",
+          "docs/reviews/mig15bis/webgl-20261105/photo-side-comparison.jpg",
+          "docs/reviews/mig15bis/webgl-20261105/photo-rear-comparison.jpg",
+          "docs/reviews/mig15bis/webgl-20261105/desktop-intake.png",
+          "docs/reviews/mig15bis/webgl-20261105/desktop-nozzle.png"
         ],
         "checks": [
           "docs/reviews/mig15bis/checks.json",
@@ -526,14 +524,16 @@
           "docs/reviews/mig15bis/REVIEW.md",
           "docs/reviews/mig15bis/recovery-20261104.json",
           "tests/mig15-hinges.mjs",
-          "docs/reviews/mig15bis/hinge-correction/review.json"
+          "docs/reviews/mig15bis/hinge-correction/review.json",
+          "docs/reviews/mig15bis/hinge-correction/deployment.json",
+          "docs/reviews/mig15bis/webgl-20261105/browser.json"
         ],
-        "commit": "https://github.com/dasol1819/project-apex/commit/ec5158ba5eb47f60255ac784313cb06274213b9c",
+        "commit": "https://github.com/dasol1819/project-apex/commit/fa77956b51fba1e9c9d48c7b675b09c4540340eb",
         "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
         "limitations": [
-          "Managed browser cannot create WebGL; final browser gameplay QA pending",
           "Photo landmarks are approximate and have recorded residuals; not a CAD tolerance claim",
-          "2026-11-04 overlay reinspection: wing silhouette/trailing edge, wheels and canopy framing still diverge; visual corrections pending."
+          "2026-11-04 overlay reinspection: wing silhouette/trailing edge, wheels and canopy framing still diverge; visual corrections pending.",
+          "Actual Chromium/SwiftShader CI smoke passed; full silhouette/intake/canopy/wheel visual review and custom-domain HTTPS remain pending."
         ],
         "resourceCost": {
           "result": "PASS",
@@ -608,7 +608,7 @@
         "reviewViewer": {
           "path": "mig15bis-review.html",
           "referencePhotoLicense": "Valder137 / CC BY 2.0",
-          "addedImageBytes": 646692,
+          "addedImageBytes": 972354,
           "usesExistingCommittedImages": true,
           "gameplayRuntimeChanges": false,
           "deployment": {
@@ -619,6 +619,15 @@
             "verification": "HTTP 200 and byte-identical HTML + all four licensed reference/render images; HTTPS remains 503.",
             "report": "docs/reviews/mig15bis/recovery-20261104.json"
           }
+        },
+        "geometryPullRequest": "https://github.com/dasol1819/project-apex/pull/5",
+        "browserQA": {
+          "result": "PASS",
+          "run": "https://github.com/dasol1819/project-apex/actions/runs/42011527707",
+          "commit": "fd1c39ed5fcba303f0e7cbc0db0eabe16729da94",
+          "job": 127191493095,
+          "report": "docs/reviews/mig15bis/webgl-20261105/browser.json",
+          "scope": "Chromium 156 ANGLE/SwiftShader desktop and mobile viewport/touch emulation; shader/pixel/WASM, inspector, mechanisms, sortie/throttle/finite native simulation and exact registered photo-camera renders; no physical-device GPU or hardware FPS claim."
         }
       }
     },
@@ -1861,11 +1870,11 @@
   "currentWork": {
     "kind": "new-aircraft",
     "aircraftId": "ru-mig15-bis",
-    "branch": "mig15bis-geometry-20261105",
-    "state": "hinge-anhedral-correction-validation",
+    "branch": "fix-connection-webgl-20261105",
+    "state": "published-geometry-corrected-photo-review-pending",
     "scope": "User-selected Russian tree jet MiG-15bis; preserve pending fleet work on airframe-textures-20261102",
-    "nextStep": "Validate and publish corrected two-degree wing anhedral, swept flap/aileron axes and moving paint. Mesh cut-edge drift reduced from 0.2333 m to below 1e-5 m at +/-0.4 rad. Side/rear photo overlays and power/control/damage renders regenerated; residual canopy/wheel/silhouette errors remain. Preserve connection/WebGL PR #4; browser job passed but TLS hostname mismatch blocks its connection job.",
-    "checkpointCommit": "49dc46f988d2078ddc9c18406616f81afa53ada8",
+    "nextStep": "Continue MiG-15bis exact-variant shape review: actual WebGL side/rear overlays still show canopy, wheel and wing/camera differences. Obtain uncovered exact-bis front photo (Monino photo has an intake cover), inspect splitter/duct and nozzle sleeve/lip. Keep in_progress. PR #4 actual Chromium desktop/mobile smoke and registered-camera capture pass; TLS hostname mismatch still blocks its connection check and HTTPS publication.",
+    "checkpointCommit": "fd1c39ed5fcba303f0e7cbc0db0eabe16729da94",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/2",
     "publicationApproval": {
       "date": "2026-11-04",
@@ -1927,7 +1936,9 @@
       "url": "http://project-apex.kro.kr/mig15bis-review.html",
       "verification": "HTTP 200 and byte-identical HTML + all four licensed reference/render images; HTTPS remains 503.",
       "report": "docs/reviews/mig15bis/recovery-20261104.json"
-    }
+    },
+    "geometryPullRequest": "https://github.com/dasol1819/project-apex/pull/5",
+    "browserPullRequest": "https://github.com/dasol1819/project-apex/pull/4"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",

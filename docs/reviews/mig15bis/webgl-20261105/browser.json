@@ -1,0 +1,285 @@
+{
+  "checkedAt": "2026-11-05T10:32:49.512Z",
+  "result": "PASS",
+  "tests": [
+    "WebGL 2 shaders + framebuffer pixel readback + WASM validation",
+    "Registered side/rear real-photo cameras rendered by actual game WebGL inspector",
+    "desktop: tree, MiG-15bis inspector (8 views), mechanisms, sortie, throttle, native simulation, WebGL draw",
+    "mobile: tree, MiG-15bis inspector (3 views), mechanisms, sortie, throttle, native simulation, WebGL draw"
+  ],
+  "errors": [],
+  "limitation": "Chromium ANGLE/SwiftShader on CPU. Mobile is viewport/touch emulation; no physical-device GPU or hardware FPS claim.",
+  "launch": {
+    "args": [
+      "--use-gl=angle",
+      "--use-angle=swiftshader",
+      "--enable-unsafe-swiftshader"
+    ],
+    "executable": "/home/runner/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome"
+  },
+  "browserVersion": "156.0.8078.4",
+  "diagnostics": {
+    "checkedAt": "2026-11-05T10:32:51.001Z",
+    "url": "http://127.0.0.1:39073/diagnostics.html",
+    "secureContext": true,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+    "webgl2": {
+      "available": true,
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)",
+      "maxTextureSize": 8192,
+      "messages": [],
+      "pixel": [
+        64,
+        128,
+        191,
+        255
+      ],
+      "drawPassed": true,
+      "glError": 0
+    },
+    "webgl2Default": {
+      "available": true,
+      "attributes": {
+        "alpha": true,
+        "antialias": false,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "default",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)",
+      "maxTextureSize": 8192,
+      "messages": [],
+      "pixel": [
+        64,
+        128,
+        191,
+        255
+      ],
+      "drawPassed": true,
+      "glError": 0
+    },
+    "webgl1": {
+      "available": true,
+      "attributes": {
+        "alpha": true,
+        "antialias": false,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "default",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "version": "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)",
+      "maxTextureSize": 8192,
+      "messages": [],
+      "pixel": [
+        64,
+        128,
+        191,
+        255
+      ],
+      "drawPassed": true,
+      "glError": 0
+    },
+    "files": {
+      "flight": {
+        "ok": true,
+        "status": 200,
+        "bytes": 325232,
+        "wasmValid": true
+      },
+      "entryModule": {
+        "ok": true,
+        "status": 200,
+        "bytes": 118663
+      },
+      "model": {
+        "ok": true,
+        "status": 200,
+        "bytes": 15391
+      }
+    },
+    "result": "PASS",
+    "reason": "WebGL 2 셰이더·픽셀 그리기와 게임 파일 검사를 통과했습니다. 게임 실행 검사는 별도로 수행합니다."
+  },
+  "photoCameras": [
+    {
+      "name": "side",
+      "size": [
+        1200,
+        803
+      ],
+      "triangles": 48962,
+      "view": [
+        [
+          -0.13777420334030865,
+          -0.014189993622852635,
+          0.990362011072177,
+          -0.35866727256834546
+        ],
+        [
+          -0.02460278532316485,
+          0.9996378778287229,
+          0.01090028276833116,
+          -0.5956555229891559
+        ],
+        [
+          -0.9901580539733471,
+          -0.022863886176035658,
+          -0.13807342561348923,
+          -7.56645651136275
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "projection": [
+        [
+          1.4000000000000496,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2.0921544209216183,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1.0000500012500313,
+          -0.10000250006250155
+        ],
+        [
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "state": {
+        "gear": 1,
+        "canopy": 1
+      },
+      "limitation": "Actual inspector WebGL renderer; transparent background and floor hidden only for photo compositing. No photo/mesh warping."
+    },
+    {
+      "name": "rear",
+      "size": [
+        1200,
+        803
+      ],
+      "triangles": 49442,
+      "view": [
+        [
+          0.6828501970826127,
+          0.04585930669843577,
+          0.7291176395708548,
+          -0.23440022751977652
+        ],
+        [
+          -0.03591408407822316,
+          0.9989283557560115,
+          -0.029194496594612023,
+          -0.2420752661988637
+        ],
+        [
+          -0.7296751242224574,
+          -0.006250124457104812,
+          0.6837654195959396,
+          -10.514297051451646
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "projection": [
+        [
+          1.4277096185784452,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2.13356356450079,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1.0000500012500313,
+          -0.10000250006250155
+        ],
+        [
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "state": {
+        "gear": 1,
+        "canopy": 1
+      },
+      "limitation": "Actual inspector WebGL renderer; transparent background and floor hidden only for photo compositing. No photo/mesh warping."
+    }
+  ],
+  "desktop": {
+    "nativeType": 15,
+    "modelType": 15,
+    "simulationSeconds": 0.33333333333333354,
+    "finiteState": true,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "contextLost": false,
+    "glError": 0,
+    "drawCalls": 196,
+    "triangles": 65906
+  },
+  "mobile": {
+    "nativeType": 15,
+    "modelType": 15,
+    "simulationSeconds": 0.5750000000000004,
+    "finiteState": true,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "contextLost": false,
+    "glError": 0,
+    "drawCalls": 178,
+    "triangles": 65506
+  }
+}
