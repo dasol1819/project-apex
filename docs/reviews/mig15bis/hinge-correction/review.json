@@ -1,0 +1,285 @@
+{
+  "date": "2026-11-05",
+  "source": {
+    "title": "USAF ATIC Technical Report TR-AE-63, MIG-15 (VK-1), 26 April 1955",
+    "url": "https://www.governmentattic.org/14docs/MIG-15pilotOpManual_1955.pdf",
+    "section": "I, General Description, printed page 1",
+    "accessed": "2026-11-05",
+    "provenance": "Official declassified USAF document released by NASIC under FOIA in 2015; report explicitly distinguishes the VK-1 aircraft from RD-45.",
+    "anhedralDegrees": 2,
+    "qualification": "Report describes approximately 2 degrees; this model uses exactly 2 as an authored reconstruction."
+  },
+  "before": {
+    "result": "FAIL",
+    "maxHingeDriftMetres": 0.23331753557875434,
+    "measurements": [
+      {
+        "field": "leftFlap",
+        "span": -2.6400001287460326,
+        "angle": -0.4,
+        "driftMetres": 0.12042045916588077
+      },
+      {
+        "field": "leftFlap",
+        "span": -0.8100000262260436,
+        "angle": -0.4,
+        "driftMetres": 0.23331753557875434
+      },
+      {
+        "field": "rightFlap",
+        "span": 0.8100000262260436,
+        "angle": -0.4,
+        "driftMetres": 0.23331753557875434
+      },
+      {
+        "field": "rightFlap",
+        "span": 2.6400001287460326,
+        "angle": -0.4,
+        "driftMetres": 0.12042045916588077
+      },
+      {
+        "field": "leftAileron",
+        "span": -5.042500038146972,
+        "angle": -0.4,
+        "driftMetres": 0.0448356604287843
+      },
+      {
+        "field": "leftAileron",
+        "span": -2.650000114440918,
+        "angle": -0.4,
+        "driftMetres": 0.03825039124205942
+      },
+      {
+        "field": "rightAileron",
+        "span": 2.650000114440918,
+        "angle": -0.4,
+        "driftMetres": 0.03825039124205942
+      },
+      {
+        "field": "rightAileron",
+        "span": 5.042500038146972,
+        "angle": -0.4,
+        "driftMetres": 0.0448356604287843
+      },
+      {
+        "field": "leftFlap",
+        "span": -2.6400001287460326,
+        "angle": 0.4,
+        "driftMetres": 0.12042045916588079
+      },
+      {
+        "field": "leftFlap",
+        "span": -0.8100000262260436,
+        "angle": 0.4,
+        "driftMetres": 0.2333175355787543
+      },
+      {
+        "field": "rightFlap",
+        "span": 0.8100000262260436,
+        "angle": 0.4,
+        "driftMetres": 0.2333175355787543
+      },
+      {
+        "field": "rightFlap",
+        "span": 2.6400001287460326,
+        "angle": 0.4,
+        "driftMetres": 0.12042045916588079
+      },
+      {
+        "field": "leftAileron",
+        "span": -5.042500038146972,
+        "angle": 0.4,
+        "driftMetres": 0.04483566042878447
+      },
+      {
+        "field": "leftAileron",
+        "span": -2.650000114440918,
+        "angle": 0.4,
+        "driftMetres": 0.03825039124205946
+      },
+      {
+        "field": "rightAileron",
+        "span": 2.650000114440918,
+        "angle": 0.4,
+        "driftMetres": 0.03825039124205946
+      },
+      {
+        "field": "rightAileron",
+        "span": 5.042500038146972,
+        "angle": 0.4,
+        "driftMetres": 0.04483566042878447
+      }
+    ]
+  },
+  "after": {
+    "result": "PASS",
+    "maxHingeDriftMetres": 1.9715526945154207e-08,
+    "anhedralDegrees": [
+      {
+        "field": "leftFlap",
+        "degrees": 2.0000003821237318
+      },
+      {
+        "field": "rightFlap",
+        "degrees": 2.0000003821237318
+      },
+      {
+        "field": "leftAileron",
+        "degrees": 1.9999998505322154
+      },
+      {
+        "field": "rightAileron",
+        "degrees": 1.9999998505322154
+      }
+    ],
+    "measurements": [
+      {
+        "field": "leftFlap",
+        "span": -2.6400001287460326,
+        "angle": -0.4,
+        "driftMetres": 1.971552692645456e-08
+      },
+      {
+        "field": "leftFlap",
+        "span": -0.8100000262260436,
+        "angle": -0.4,
+        "driftMetres": 2.7374625922380847e-09
+      },
+      {
+        "field": "rightFlap",
+        "span": 0.8100000262260436,
+        "angle": -0.4,
+        "driftMetres": 2.7374625922380847e-09
+      },
+      {
+        "field": "rightFlap",
+        "span": 2.6400001287460326,
+        "angle": -0.4,
+        "driftMetres": 1.971552692645456e-08
+      },
+      {
+        "field": "leftAileron",
+        "span": -5.042500038146972,
+        "angle": -0.4,
+        "driftMetres": 1.4519740783007611e-08
+      },
+      {
+        "field": "leftAileron",
+        "span": -2.650000114440918,
+        "angle": -0.4,
+        "driftMetres": 8.832481816856583e-09
+      },
+      {
+        "field": "rightAileron",
+        "span": 2.650000114440918,
+        "angle": -0.4,
+        "driftMetres": 8.832481816856583e-09
+      },
+      {
+        "field": "rightAileron",
+        "span": 5.042500038146972,
+        "angle": -0.4,
+        "driftMetres": 1.4519740783007611e-08
+      },
+      {
+        "field": "leftFlap",
+        "span": -2.6400001287460326,
+        "angle": 0.4,
+        "driftMetres": 1.9715526945154207e-08
+      },
+      {
+        "field": "leftFlap",
+        "span": -0.8100000262260436,
+        "angle": 0.4,
+        "driftMetres": 2.737462575483113e-09
+      },
+      {
+        "field": "rightFlap",
+        "span": 0.8100000262260436,
+        "angle": 0.4,
+        "driftMetres": 2.737462575483113e-09
+      },
+      {
+        "field": "rightFlap",
+        "span": 2.6400001287460326,
+        "angle": 0.4,
+        "driftMetres": 1.9715526945154207e-08
+      },
+      {
+        "field": "leftAileron",
+        "span": -5.042500038146972,
+        "angle": 0.4,
+        "driftMetres": 1.4519740768570646e-08
+      },
+      {
+        "field": "leftAileron",
+        "span": -2.650000114440918,
+        "angle": 0.4,
+        "driftMetres": 8.832481784213513e-09
+      },
+      {
+        "field": "rightAileron",
+        "span": 2.650000114440918,
+        "angle": 0.4,
+        "driftMetres": 8.832481784213513e-09
+      },
+      {
+        "field": "rightAileron",
+        "span": 5.042500038146972,
+        "angle": 0.4,
+        "driftMetres": 1.4519740768570646e-08
+      }
+    ]
+  },
+  "model": {
+    "result": "PASS",
+    "dimensions": [
+      10.145999908447266,
+      3.6999999284744263,
+      10.132500162124634
+    ],
+    "triangles": 47490,
+    "meshes": 85,
+    "materials": 46,
+    "geometryBytes": 1457800,
+    "gpuTextureBytes": 0,
+    "inletRays": 12,
+    "frozenSurfaceCoordinates": true,
+    "flightControlAnimation": true,
+    "damageInheritance": true,
+    "engines": 1
+  },
+  "screenshots": [
+    "docs/reviews/mig15bis/hinge-correction/comparison.jpg",
+    "docs/reviews/mig15bis/photo-side/comparison.jpg",
+    "docs/reviews/mig15bis/photo-rear/comparison.jpg",
+    "docs/reviews/mig15bis/states/state-comparison.jpg"
+  ],
+  "visualReview": {
+    "result": "IN_PROGRESS",
+    "fixed": [
+      "Swept control hinge centreline stays on fixed wing during positive/negative deflection.",
+      "Two-degree anhedral including tip light and pitot placement.",
+      "Wing star triangles split along the aileron seam; aft paint now moves with the aileron instead of floating.",
+      "Review exporter uses Three basic/physical shader families, including canopy clearcoat."
+    ],
+    "remaining": [
+      "Photo manual-camera fit still leaves wing/body, canopy and wheel differences. No complete shape approval.",
+      "Exact-bis front photo registration still needed for nose intake comparison.",
+      "Latest geometry has offscreen EGL checks; do not substitute previous PR #4 browser smoke result for browser verification of this commit."
+    ],
+    "renderer": "EGL llvmpipe LLVM 20.1.2; real game meshes and expanded material hooks; not WebGL gameplay or hardware FPS."
+  },
+  "runtime": {
+    "web/mig15bis-model.js": {
+      "bytes": 15391,
+      "gzipBytes": 6678,
+      "sha256": "77b056f20f21a0cd091cf21ad8e3e8a6cb02a056eaa690b1f563b87e2703a103"
+    },
+    "web/flight.wasm": {
+      "bytes": 325232,
+      "gzipBytes": 122441,
+      "sha256": "43352467a6fc6a11c11e87a3e46b1f3de883d6d0174e2aea1d41aedfaa5c5f31"
+    }
+  }
+}

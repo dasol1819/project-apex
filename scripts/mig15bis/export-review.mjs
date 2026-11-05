@@ -17,10 +17,12 @@ function asset(name){
 }
 const countDefines={'NUM_DIR_LIGHTS':2,'NUM_POINT_LIGHTS':0,'NUM_SPOT_LIGHTS':0,'NUM_SPOT_LIGHT_MAPS':0,'NUM_SPOT_LIGHT_COORDS':0,'NUM_RECT_AREA_LIGHTS':0,'NUM_HEMI_LIGHTS':1,'NUM_DIR_LIGHT_SHADOWS':0,'NUM_POINT_LIGHT_SHADOWS':0,'NUM_SPOT_LIGHT_SHADOWS':0,'NUM_SPOT_LIGHT_SHADOWS_WITH_MAPS':0,'NUM_CLIPPING_PLANES':0,'UNION_CLIPPING_PLANES':0};
 function shader(material,id){
- const lib=material.isShaderMaterial?null:T.ShaderLib.standard;
+ const lib=material.isShaderMaterial?null:material.isMeshBasicMaterial?T.ShaderLib.basic:material.isMeshPhysicalMaterial?T.ShaderLib.physical:T.ShaderLib.standard;
  const sh={vertexShader:lib?lib.vertexShader:material.vertexShader,fragmentShader:lib?lib.fragmentShader:material.fragmentShader,uniforms:lib?T.UniformsUtils.clone(lib.uniforms):{...material.uniforms}};
  if(lib){sh.uniforms.diffuse={value:material.color};sh.uniforms.roughness={value:material.roughness};sh.uniforms.metalness={value:material.metalness};sh.uniforms.opacity={value:material.opacity};sh.uniforms.emissive={value:material.emissive};sh.uniforms.map={value:material.map};sh.uniforms.normalMap={value:material.normalMap};sh.uniforms.normalScale={value:material.normalScale};material.onBeforeCompile(sh);}
+ if(material.isMeshPhysicalMaterial)for(const key of ['clearcoat','clearcoatRoughness','ior','specularIntensity','specularColor'])if(sh.uniforms[key])sh.uniforms[key]={value:material[key]};
  let defines=Object.entries(countDefines).map(([k,v])=>`#define ${k} ${v}`).join('\n')+'\n';
+ if(material.isMeshPhysicalMaterial){defines+='#define PHYSICAL\n';if(material.clearcoat>0)defines+='#define USE_CLEARCOAT\n';}
  if(material.vertexColors)defines+='#define USE_COLOR\n';
  if(material.side===T.DoubleSide)defines+='#define DOUBLE_SIDED\n';
  if(material.side===T.BackSide)defines+='#define FLIP_SIDED\n';

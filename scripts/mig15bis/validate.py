@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[2];out=ROOT/'docs/reviews/mig15bis';out.mk
 sha=lambda p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
 before=sha('web/flight.wasm');shapes=sha('assets/mig15bis/shapes.json')
 commands=[['python3','scripts/update-web-manifest.py'],['python3','.deployment/restore.py'],['node','scripts/native/export-mig15-shapes.mjs','public'],['npm','run','build:combat'],['python3','scripts/update-web-manifest.py'],['python3','.deployment/restore.py']]
-commands += [['node',p,'public'] for p in ['tests/su35-combat-native.mjs','tests/su35-combat-systems.mjs','tests/su35-geometry.mjs','tests/su35-combat-model.mjs','tests/su35-flight-physics.mjs','tests/mig29-native.mjs','tests/mig29-combat.mjs','tests/mig29-model.mjs','tests/mig29-surface-data.mjs','tests/mig15-native.mjs','tests/mig15-model.mjs']]
+commands += [['node',p,'public'] for p in ['tests/su35-combat-native.mjs','tests/su35-combat-systems.mjs','tests/su35-geometry.mjs','tests/su35-combat-model.mjs','tests/su35-flight-physics.mjs','tests/mig29-native.mjs','tests/mig29-combat.mjs','tests/mig29-model.mjs','tests/mig29-surface-data.mjs','tests/mig15-native.mjs','tests/mig15-model.mjs','tests/mig15-hinges.mjs']]
 commands.append(['node','scripts/aircraft-progress.mjs']);results=[]
 for cmd in commands:
  start=time.monotonic();r=subprocess.run(cmd,cwd=ROOT,capture_output=True,text=True)

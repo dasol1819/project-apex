@@ -50,6 +50,7 @@ jobs:
         run: |
           node tests/mig15-native.mjs public
           node tests/mig15-model.mjs public
+          node tests/mig15-hinges.mjs public
           node scripts/aircraft-progress.mjs
       - uses: actions/configure-pages@v5
         with:
