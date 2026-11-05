@@ -1,0 +1,51 @@
+name: Browser WebGL and connection QA
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: read
+jobs:
+  webgl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: python3 .deployment/restore.py
+      - run: npm ci
+      - name: Install matching Chromium and its system dependencies
+        run: npx playwright install --with-deps chromium
+      - name: Test actual WebGL, shaders, WASM, desktop and mobile gameplay
+        run: node tests/webgl-browser.mjs public
+      - name: Retain browser details, errors and actual game screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: webgl-browser-evidence
+          path: artifacts/webgl
+          if-no-files-found: error
+          retention-days: 30
+  connection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - run: python3 .deployment/restore.py
+      - name: Check DNS, HTTP redirects, TLS, Pages state and deployed files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/check-connection.py --require-https
+      - name: Retain connection diagnosis even when HTTPS fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: connection-evidence
+          path: artifacts/connection
+          if-no-files-found: error
+          retention-days: 30

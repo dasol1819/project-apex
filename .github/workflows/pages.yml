@@ -52,6 +52,18 @@ jobs:
           node tests/mig15-model.mjs public
           node tests/mig15-hinges.mjs public
           node scripts/aircraft-progress.mjs
+      - name: Install the matching browser for real WebGL review
+        run: npx playwright install --with-deps chromium
+      - name: Check desktop and mobile WebGL gameplay before publishing
+        run: npm run test:browser
+      - name: Retain actual browser review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-webgl-evidence
+          path: artifacts/webgl
+          if-no-files-found: warn
+          retention-days: 30
       - uses: actions/configure-pages@v5
         with:
           enablement: true
