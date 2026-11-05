@@ -1,0 +1,161 @@
+{
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "browserVersion": "156.0.8078.4",
+  "comparisons": [
+    {
+      "name": "side",
+      "size": [
+        1200,
+        803
+      ],
+      "photoSHA256": "fbc4821c03de4bff5ded9f164fff476040de332cb8165f3537ea5cc917686b86",
+      "renderSHA256": "f8fe57a36ddec32753c8f0d71043316d17517d10f6d79854aab9c8f846a974f4",
+      "comparisonSHA256": "984586ca01d333cc4cb51c02f607e05816b384bd8ddfbb3f7a4f2251ec743715",
+      "maskCoverage": 0.26679846409298463,
+      "camera": {
+        "name": "side",
+        "size": [
+          1200,
+          803
+        ],
+        "triangles": 48962,
+        "view": [
+          [
+            -0.13777420334030865,
+            -0.014189993622852635,
+            0.990362011072177,
+            -0.35866727256834546
+          ],
+          [
+            -0.02460278532316485,
+            0.9996378778287229,
+            0.01090028276833116,
+            -0.5956555229891559
+          ],
+          [
+            -0.9901580539733471,
+            -0.022863886176035658,
+            -0.13807342561348923,
+            -7.56645651136275
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": [
+          [
+            1.4000000000000496,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2.0921544209216183,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1.0000500012500313,
+            -0.10000250006250155
+          ],
+          [
+            0,
+            0,
+            -1,
+            0
+          ]
+        ],
+        "state": {
+          "gear": 1,
+          "canopy": 1
+        },
+        "limitation": "Actual inspector WebGL renderer; transparent background and floor hidden only for photo compositing. No photo/mesh warping."
+      },
+      "credit": "Valder137 / CC BY 2.0 / 2009-09-26; overlay added by Project Apex"
+    },
+    {
+      "name": "rear",
+      "size": [
+        1200,
+        803
+      ],
+      "photoSHA256": "6f15756e9beb8fb3f7a5c82b1851ab0a0bc183659058f82fb2729a8a26fda5b6",
+      "renderSHA256": "4ac6d01b9ce2e3b6b6e3f27eb6786a89ca8f7995d1d8cbd7e1536fada9e0fb03",
+      "comparisonSHA256": "c487b7d2d8801a93ccccba079e59f59d277b526e4db84b1034a747c50ec205f1",
+      "maskCoverage": 0.11766085512660855,
+      "camera": {
+        "name": "rear",
+        "size": [
+          1200,
+          803
+        ],
+        "triangles": 49442,
+        "view": [
+          [
+            0.6828501970826127,
+            0.04585930669843577,
+            0.7291176395708548,
+            -0.23440022751977652
+          ],
+          [
+            -0.03591408407822316,
+            0.9989283557560115,
+            -0.029194496594612023,
+            -0.2420752661988637
+          ],
+          [
+            -0.7296751242224574,
+            -0.006250124457104812,
+            0.6837654195959396,
+            -10.514297051451646
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": [
+          [
+            1.4277096185784452,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2.13356356450079,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1.0000500012500313,
+            -0.10000250006250155
+          ],
+          [
+            0,
+            0,
+            -1,
+            0
+          ]
+        ],
+        "state": {
+          "gear": 1,
+          "canopy": 1
+        },
+        "limitation": "Actual inspector WebGL renderer; transparent background and floor hidden only for photo compositing. No photo/mesh warping."
+      },
+      "credit": "Valder137 / CC BY 2.0 / 2009-09-26; overlay added by Project Apex"
+    }
+  ],
+  "limitation": "Manual camera correspondence and occlusion errors remain. No complete aircraft visual approval or hardware FPS claim."
+}

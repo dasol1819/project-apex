@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-05",
+  "commit": "e130a832e8a49562464d40fd0e61baff1c05245d",
+  "pullRequest": "https://github.com/dasol1819/project-apex/pull/5",
+  "workflow": "https://github.com/dasol1819/project-apex/actions/runs/42010439252",
+  "conclusion": "success",
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "06374d6a4e8578419a19bdb337924947bff23bf21e0e2c4911fd95a362821a17",
+      "bytes": 80812,
+      "matchesSource": true
+    },
+    {
+      "path": "app.js?v=mig15bis-2",
+      "status": 200,
+      "sha256": "2d4312155d23b49b6f24721b9e1b1a0d6c758ad6d4305b1626ee5a0a4bed94bb",
+      "bytes": 118204,
+      "matchesSource": true
+    },
+    {
+      "path": "aircraft.js?v=mig15bis-2",
+      "status": 200,
+      "sha256": "a7947d30549f70d6f6c85325413ebfb992dee83b080d796d67bd76589e2b3f4c",
+      "bytes": 56338,
+      "matchesSource": true
+    },
+    {
+      "path": "mig15bis-model.js?v=2",
+      "status": 200,
+      "sha256": "77b056f20f21a0cd091cf21ad8e3e8a6cb02a056eaa690b1f563b87e2703a103",
+      "bytes": 15391,
+      "matchesSource": true
+    },
+    {
+      "path": "flight.wasm?v=mig15bis-2",
+      "status": 200,
+      "sha256": "43352467a6fc6a11c11e87a3e46b1f3de883d6d0174e2aea1d41aedfaa5c5f31",
+      "bytes": 325232,
+      "matchesSource": true
+    },
+    {
+      "path": "mig15bis-review.html",
+      "status": 200,
+      "sha256": "e91172d475f2001f29ae137cb9babcde91abefb7b47c6ce0d9482c1406810a75",
+      "bytes": 8386,
+      "matchesSource": true
+    },
+    {
+      "path": "assets/mig15bis-review/side-render.png?v=2",
+      "status": 200,
+      "sha256": "67256ee0daaa5e145665520b1566d3a8ce0f8d06f97fc593b8a93e87f69d2552",
+      "bytes": 217971,
+      "matchesSource": true
+    },
+    {
+      "path": "assets/mig15bis-review/rear-render.png?v=2",
+      "status": 200,
+      "sha256": "1ce7c55129e748fb612edfeb97b55748b16f23946677a0ea92807b19c7ec2e8a",
+      "bytes": 109848,
+      "matchesSource": true
+    }
+  ],
+  "https": "Current managed HTTPS request returns 503. Independent runner detects certificate hostname mismatch; Pages settings require repository administration access.",
+  "browserQA": {
+    "run": "https://github.com/dasol1819/project-apex/actions/runs/42010760593",
+    "branch": "fix-connection-webgl-20261105",
+    "commit": "7cda7ff1fbd2fb9ecaedd806380d940e37a8cd46",
+    "status": "webgl job PASS; connection job FAIL",
+    "scope": "Actual Chromium WebGL/desktop/mobile gameplay smoke. Full aircraft photo/shape review remains in progress.",
+    "jobId": 127188887335,
+    "artifact": "https://github.com/dasol1819/project-apex/actions/runs/42010760593/artifacts/13406637691",
+    "artifactSHA256": "110ff6d3dc45631d678b4af77d2758c606bc8f1f567ee4149718503736e92441",
+    "screenshots": [
+      "docs/reviews/mig15bis/webgl-20261105/desktop-top.png",
+      "docs/reviews/mig15bis/webgl-20261105/desktop-intake.png",
+      "docs/reviews/mig15bis/webgl-20261105/desktop-nozzle.png",
+      "docs/reviews/mig15bis/webgl-20261105/mobile-flight.png"
+    ],
+    "report": "docs/reviews/mig15bis/webgl-20261105/browser.json",
+    "registeredCameraRun": "https://github.com/dasol1819/project-apex/actions/runs/42011527707",
+    "registeredCameraCommit": "fd1c39ed5fcba303f0e7cbc0db0eabe16729da94",
+    "registeredCameraResult": "PASS",
+    "registeredCameraArtifact": "https://github.com/dasol1819/project-apex/actions/runs/42011527707/artifacts/13408165191",
+    "registeredCameraArtifactSHA256": "e2d6e686256e2b612d6b1c75e2ff0e44ce5df685d838b40f723964c89a9cce94",
+    "comparisons": [
+      "docs/reviews/mig15bis/webgl-20261105/photo-side-comparison.jpg",
+      "docs/reviews/mig15bis/webgl-20261105/photo-rear-comparison.jpg"
+    ]
+  }
+}
