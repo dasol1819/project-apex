@@ -80,6 +80,46 @@ try {
       const response = await route.fetch();
       await route.fulfill({ response, body: await response.text() + hook });
     });
+    // Test-only inspector capture: use the committed rigid photo camera with
+    // the actual game renderer/materials. Transparent background and hidden
+    // floor permit compositing over the photograph without changing the mesh.
+    await page.route('**/aircraft-inspector.js*', async route => {
+      const response = await route.fetch();
+      let source = await response.text();
+      const marker = '  return {\n    open,\n    close,';
+      assert.ok(source.includes(marker), 'Inspector test hook anchor');
+      source = source.replace('alpha: false,', 'alpha: true,').replace(marker, `  return {
+    __registered(spec) {
+      const temporary = new T.PerspectiveCamera();
+      const viewMatrix = new T.Matrix4().set(...spec.view.flat());
+      temporary.matrix.copy(viewMatrix).invert();
+      temporary.matrixAutoUpdate = false;
+      temporary.updateMatrixWorld(true);
+      temporary.projectionMatrix.set(...spec.projection.flat());
+      temporary.projectionMatrixInverse.copy(temporary.projectionMatrix).invert();
+      const oldBackground = scene.background, oldFloor = floor?.visible;
+      const oldRatio = renderer.getPixelRatio();
+      try {
+        scene.background = null;
+        if (floor) floor.visible = false;
+        renderer.setPixelRatio(1);
+        renderer.setSize(...spec.size, false);
+        model.update({...spec.state, afterburner: 0, engine: .85});
+        renderer.render(scene, temporary);
+        return {png:canvas.toDataURL('image/png'), glError:renderer.getContext().getError(),
+          triangles:renderer.info.render.triangles, size:[canvas.width,canvas.height]};
+      } finally {
+        scene.background = oldBackground;
+        if (floor) floor.visible = oldFloor;
+        renderer.setPixelRatio(oldRatio);
+        renderer.setSize(width, height, false);
+        dirty = true;
+      }
+    },
+    open,
+    close,`);
+      await route.fulfill({ response, body: source });
+    });
     await page.goto(base + '/?screen=tree&aircraft=15', { waitUntil:'domcontentloaded' });
     await page.waitForFunction(() => document.documentElement.dataset.raptorReady === 'true'
       || document.documentElement.dataset.raptorError);
@@ -100,6 +140,22 @@ try {
       // Wait for the dirty inspector frame after changing the camera.
       await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       await page.screenshot({ path: resolve(out, `${label}-${view}.png`) });
+    }
+    if (!mobile) {
+      report.photoCameras = [];
+      for (const name of ['side', 'rear']) {
+        const camera = JSON.parse(await readFile(resolve(`docs/reviews/mig15bis/photo-${name}/camera.json`), 'utf8'));
+        const registration = JSON.parse(await readFile(resolve(`assets/mig15bis/${name}-registration.json`), 'utf8'));
+        const result = await page.evaluate(spec => __apexQA.inspector.__registered(spec),
+          {...camera.views[0], size:camera.size, state:registration.state});
+        assert.equal(result.glError, 0, name + ' registered render GL error');
+        assert.deepEqual(result.size, camera.size);
+        await writeFile(resolve(out, `photo-${name}-render.png`), Buffer.from(result.png.split(',')[1], 'base64'));
+        report.photoCameras.push({name, size:result.size, triangles:result.triangles,
+          view:camera.views[0].view, projection:camera.views[0].projection,
+          state:registration.state, limitation:'Actual inspector WebGL renderer; transparent background and floor hidden only for photo compositing. No photo/mesh warping.'});
+      }
+      report.tests.push('Registered side/rear real-photo cameras rendered by actual game WebGL inspector');
     }
     await page.locator('#inspector-gear').uncheck();
     await page.locator('#inspector-canopy').check();
