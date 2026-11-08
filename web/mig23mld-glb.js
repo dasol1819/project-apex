@@ -40,21 +40,50 @@ export async function parseMig23Glb(buffer){
    const url=URL.createObjectURL(new Blob([bin.slice(start,start+v.byteLength)],{type:im.mimeType??'image/png'}));urls.push(url);
    return new T.TextureLoader().loadAsync(url);
   }));
+  // glTF textures may share an image but require different color spaces:
+  // albedo/emission are sRGB, while normal/occlusion/metal-roughness are linear.
   const textures=(j.textures??[]).map(t=>{
-   const x=images[t.source];if(!x)throw Error('텍스처 참조 오류');
-   const s=j.samplers?.[t.sampler]??{};
-   x.colorSpace=T.SRGBColorSpace;x.flipY=false;x.anisotropy=4;
-   x.wrapS=s.wrapS===33071?T.ClampToEdgeWrapping:T.RepeatWrapping;
-   x.wrapT=s.wrapT===33071?T.ClampToEdgeWrapping:T.RepeatWrapping;
-   return x;
+   const image=images[t.source];if(!image)throw Error('텍스처 참조 오류');
+   const sampler=j.samplers?.[t.sampler]??{};
+   const wrap=v=>v===33071?T.ClampToEdgeWrapping:v===33648?T.MirroredRepeatWrapping:T.RepeatWrapping;
+   const filter=v=>({
+    9728:T.NearestFilter,9729:T.LinearFilter,9984:T.NearestMipmapNearestFilter,
+    9985:T.LinearMipmapNearestFilter,9986:T.NearestMipmapLinearFilter,9987:T.LinearMipmapLinearFilter
+   })[v];
+   const source=image.clone();source.flipY=false;source.anisotropy=4;
+   source.wrapS=wrap(sampler.wrapS);source.wrapT=wrap(sampler.wrapT);
+   if(filter(sampler.magFilter))source.magFilter=filter(sampler.magFilter);
+   if(filter(sampler.minFilter))source.minFilter=filter(sampler.minFilter);
+   source.needsUpdate=true;
+   return source;
   });
+  const textureVariants=new Map();
+  function texture(info,color=false){
+   if(info===undefined)return null;
+   const id=info.index;
+   if(!Number.isInteger(id)||!textures[id])throw Error('잘못된 텍스처 인덱스');
+   if((info.texCoord??0)!==0)throw Error('TEXCOORD_1 UV는 아직 지원하지 않습니다');
+   const key=id+':'+(color?'srgb':'linear');
+   if(!textureVariants.has(key)){
+    const t=textures[id].clone();
+    t.colorSpace=color?T.SRGBColorSpace:T.NoColorSpace;
+    t.needsUpdate=true;
+    textureVariants.set(key,t);
+   }
+   return textureVariants.get(key);
+  }
   const mats=(j.materials??[]).map(m=>{
    const p=m.pbrMetallicRoughness??{},c=p.baseColorFactor??[1,1,1,1];
+   const orm=texture(p.metallicRoughnessTexture),em=m.emissiveFactor??[0,0,0],mode=m.alphaMode??'OPAQUE';
    return new T.MeshStandardMaterial({name:m.name??'MiG-23 material',
-    color:new T.Color().setRGB(c[0],c[1],c[2]),map:textures[p.baseColorTexture?.index]??null,
+    color:new T.Color().setRGB(c[0],c[1],c[2]),map:texture(p.baseColorTexture,true),
     metalness:p.metallicFactor??1,roughness:p.roughnessFactor??1,
-    side:m.doubleSided?T.DoubleSide:T.FrontSide,transparent:m.alphaMode==='BLEND',
-    opacity:c[3],alphaTest:m.alphaMode==='MASK'?(m.alphaCutoff??.5):0,depthWrite:m.alphaMode!=='BLEND'});
+    metalnessMap:orm,roughnessMap:orm,aoMap:texture(m.occlusionTexture),
+    aoMapIntensity:m.occlusionTexture?.strength??1,
+    normalMap:texture(m.normalTexture),normalScale:new T.Vector2(m.normalTexture?.scale??1,m.normalTexture?.scale??1),
+    emissive:new T.Color().setRGB(...em),emissiveMap:texture(m.emissiveTexture,true),
+    side:m.doubleSided?T.DoubleSide:T.FrontSide,transparent:mode==='BLEND',
+    opacity:mode==='OPAQUE'?1:c[3],alphaTest:mode==='MASK'?(m.alphaCutoff??.5):0,depthWrite:mode!=='BLEND'});
   });
   const geometries=(j.meshes??[]).map(m=>m.primitives.map(p=>{
    if((p.mode??4)!==4)throw Error('삼각형이 아닌 메시');
@@ -63,6 +92,8 @@ export async function parseMig23Glb(buffer){
     if(p.attributes[src]!==undefined)g.setAttribute(dst,attribute(j,bin,p.attributes[src]));
    if(p.indices!==undefined)g.setIndex(attribute(j,bin,p.indices));
    if(!g.getAttribute('normal'))g.computeVertexNormals();
+   // Three.js MeshStandardMaterial's aoMap expects uv2 even when glTF reuses TEXCOORD_0.
+   if(g.getAttribute('uv')&&!g.getAttribute('uv2'))g.setAttribute('uv2',g.getAttribute('uv'));
    return {g,mat:mats[p.material]??new T.MeshStandardMaterial({color:0x929a96})};
   }));
   const nodes=(j.nodes??[]).map((n,i)=>{

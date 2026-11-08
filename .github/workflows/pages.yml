@@ -54,6 +54,8 @@ jobs:
           node scripts/aircraft-progress.mjs
       - name: Check MiG-23MLD glTF airframe preview
         run: node tests/mig23mld-preview.mjs public
+      - name: Check MiG-23MLD PBR maps and source geometry
+        run: node tests/mig23mld-pbr.mjs public
       - uses: actions/configure-pages@v5
         with:
           enablement: true
