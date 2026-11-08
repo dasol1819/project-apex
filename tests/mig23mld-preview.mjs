@@ -43,3 +43,5 @@ if(fs.existsSync(binary)){
 }else{
  console.log('PASS: MiG-23 preview/manifest/static JS verified. Model binary NOT deployed; local file selection required.');
 }
+
+// MiG-23 performance branch: original vertex buffers retained after texture repacking.
