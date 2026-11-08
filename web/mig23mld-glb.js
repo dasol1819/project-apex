@@ -90,8 +90,8 @@ export function normalizeMig23(scene){
 }
 export function rigMig23Sweep(scene,nodes){
  const parts=[
-  {pivot:[-3.772,.55,-1.141],sign:1,names:['OBJ0257','OBJ0259','OBJ0260','OBJ0261','OBJ0262','OBJ0272','OBJ0273']},
-  {pivot:[-4.531,.55,-1.141],sign:-1,names:['OBJ0264','OBJ0266','OBJ0267','OBJ0268','OBJ0269','OBJ0274','OBJ0275']}
+  {pivot:[-3.772,.55,-1.141],sign:1,names:['OBJ0256','OBJ0257','OBJ0258','OBJ0259','OBJ0260','OBJ0261','OBJ0262','OBJ0270','OBJ0272','OBJ0273']},
+  {pivot:[-4.531,.55,-1.141],sign:-1,names:['OBJ0263','OBJ0264','OBJ0265','OBJ0266','OBJ0267','OBJ0268','OBJ0269','OBJ0271','OBJ0274','OBJ0275']}
  ];
  const groups=parts.map(d=>{
   const pivot=new T.Group();pivot.position.set(...d.pivot);scene.add(pivot);
@@ -99,7 +99,7 @@ export function rigMig23Sweep(scene,nodes){
   return {pivot,sign:d.sign};
  });
  return degrees=>{
-  const angle=T.MathUtils.degToRad(Math.max(16,Math.min(72,Number(degrees)||16))-16);
+  const angle=T.MathUtils.degToRad(Math.max(16,Math.min(72,Number(degrees)||72))-72);
   for(const {pivot,sign} of groups)pivot.rotation.y=sign*angle;
  };
 }
