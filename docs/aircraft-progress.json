@@ -4,13 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "continue-mig23mld-pbr-geometry-20261108",
-    "startedAt": "2026-11-08T09:30:00Z",
-    "expiresAt": "2026-11-08T11:20:00Z",
-    "purpose": "GLB PBR renderer, wing geometry review and reproducible preview checks"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -981,7 +975,7 @@
       "br": 13.5,
       "simId": null,
       "status": "in_progress",
-      "nextStep": "Original 22.6MB source GLB now committed and preview deployed (PR #7–#12). Validate PBR textures/GLB geometry sweep and browser render; implement native flight/controls/weapons/damage separately before making selectable.",
+      "nextStep": "PBR importer patch and original GLB verification are in review on continue-mig23mld-pbr-geometry-20261108. Confirm CI + actual WebGL texture/wing-pivot images and compare top/side/front/rear MLD references. Then develop native MiG-23MLD flight, swing-wing aero/animation, radar, weapon stations, gear and damage before enabling selection. Remain in_progress.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -993,14 +987,17 @@
           "web/mig23mld-glb.js",
           "web/mig23mld-viewer.js",
           "web/mig23mld.html",
-          "web/assets/mig23mld/Mig-23.glb (22,593,404 bytes; PR #7 merged)"
+          "web/assets/mig23mld/Mig-23.glb (22,593,404 bytes; PR #7 merged)",
+          "web/mig23mld-glb.js (PBR color/linear texture variants, normal/ORM/AO/emissive maps)"
         ],
         "screenshots": [],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
           "Original swept 72-degree wingspan ~7.53m at 16.7m normalization; calculated extension at 16 degrees ~13.51m; photogrammetric review pending",
           "Browser JS syntax parse passed via V8; real WebGL renderer screenshot and mobile QA NOT done",
-          "MiG-23MLD preview source GLB committed in main; GitHub Pages deploy 42465677308 success on 2026-11-08. No physical GPU/registered photo review yet."
+          "MiG-23MLD preview source GLB committed in main; GitHub Pages deploy 42465677308 success on 2026-11-08. No physical GPU/registered photo review yet.",
+          "tests/mig23mld-pbr.mjs (GLB material refs, source geometry, deployment manifest) — CI pending",
+          ".github/workflows/pages.yml and .github/workflows/mig23mld-preview.yml now run PBR regression"
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1019,7 +1016,8 @@
       "limitations": [
         "Source user GLB rigged for preview only; wing rotation pivot approximation awaits WebGL/photographic inspection",
         "No native sim type or flight/control/weapon/damage integration; status stays in_progress",
-        "Original Blender 22.6 MB asset is deployed; no claimed browser QA, native flight or finish review."
+        "Original Blender 22.6 MB asset is deployed; no claimed browser QA, native flight or finish review.",
+        "PBR improvement not yet confirmed visually in a real browser; CI and WebGL review pending."
       ]
     },
     {
