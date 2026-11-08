@@ -7,6 +7,8 @@ import {execFileSync} from 'node:child_process';
 
 const root=path.resolve(import.meta.dirname,'..');
 const web=process.argv[2] ? path.resolve(process.argv[2]) : path.join(root,'web');
+// Runtime imports must resolve from the deployed archive (not merely in source JS).
+assert.ok(fs.existsSync(path.join(web,'vendor/three.module.js')), 'Missing deployed vendor/three.module.js; MiG-23 module cannot initialize');
 const tree=fs.readFileSync(path.join(web,'aircraft-tree-data.js'),'utf8');
 const preview=fs.readFileSync(path.join(web,'mig23mld.html'),'utf8');
 const loader=fs.readFileSync(path.join(web,'mig23mld-glb.js'),'utf8');
