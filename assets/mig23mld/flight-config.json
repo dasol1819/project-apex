@@ -3,8 +3,8 @@
   "name": "MiG-23MLD Flogger-K",
   "engine": "R-35-300",
   "airframeDoubles": {
-    "8": 11970,
-    "16": 18800,
+    "8": 18794.027643135796,
+    "16": 28660.89215578209,
     "24": 37.35,
     "32": 13.965,
     "40": 4.82,
@@ -119,7 +119,7 @@
       1.2
     ]
   ],
-  "assumptions": "MiG-23MLD dimensions, R-35-300 nominal dry/maximum afterburner thrust and 16/45/72 degree wing sweep sourced from Luftfahrttechnisches Museum Rothenburg, Jane's MiGavia, flymig.com. Wing auto schedule is GAME ASSISTANCE (the real pilot selected sweep). Drag/lift/control/inertia/fuel flow and missile/radar performance are estimates, not classified performance claims.",
+  "assumptions": "MiG-23MLD dimensions, R-35-300 nominal dry/maximum afterburner thrust and 16/45/72 degree wing sweep sourced from Luftfahrttechnisches Museum Rothenburg, Jane's MiGavia, flymig.com. Wing auto schedule is GAME ASSISTANCE (the real pilot selected sweep). Drag/lift/control/inertia/fuel flow and missile/radar performance are estimates, not classified performance claims. Static hangar thrust fields are lbf (convert from 83.6/127.49 kN), while dynamic engine fields remain N.",
   "sources": [
     "https://luftfahrtmuseum-rothenburg.de/triebwerke/triebwerk-r-35/",
     "https://janes.migavia.com/rus/mig/mig-23.html",
