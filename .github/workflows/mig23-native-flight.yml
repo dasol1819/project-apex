@@ -1,0 +1,55 @@
+name: MiG23 native flight build
+on:
+  pull_request:
+    paths:
+      - 'scripts/native/build-mig23.mjs'
+      - 'assets/mig23mld/**'
+      - 'tests/mig23-native.mjs'
+concurrency:
+  group: mig23-flight-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  flight:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: python3 scripts/update-web-manifest.py
+      - run: python3 .deployment/restore.py
+      - run: node --check scripts/native/build-mig23.mjs
+      - run: node scripts/native/build-mig23.mjs
+      - run: cp web/flight.wasm public/flight.wasm
+      - run: node tests/mig23-native.mjs
+      - run: node tests/mig23-autosweep.mjs
+      - name: Legacy native flight/weapon/damage compatibility
+        run: |
+          node tests/mig15-native.mjs public
+          node tests/mig29-native.mjs public
+          node tests/su35-combat-native.mjs public
+      - name: Web runtime and manifest integrity
+        run: |
+          node --check web/app.js
+          node --check web/aircraft.js
+          node --check web/mig23mld-game.js
+          node --check web/mig23mld-flight.js
+          node tests/mig23mld-preview.mjs public
+          node tests/mig23mld-pbr.mjs public
+          node scripts/aircraft-progress.mjs
+      - name: Real Chromium WebGL MiG-23MLD flight smoke
+        run: |
+          python3 -m venv /tmp/apex-playwright
+          /tmp/apex-playwright/bin/pip install --quiet playwright==1.56.0
+          /tmp/apex-playwright/bin/python -m playwright install --with-deps chromium
+          python3 -m http.server 8765 --directory public > /tmp/mig23-web.log 2>&1 &
+          APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mig23-webgl-captures
+          path: /tmp/mig23-flight-browser
+          if-no-files-found: ignore

@@ -143,7 +143,7 @@ add('ru','heavy','su35','Flanker-E','uac',[
 add('ru','heavy','su57','Felon','uac',[
  ['base','Su-57','초기 실전 구성',19.5,'modern','초기 양산형 AL-41F1 · 쌍발 경사축 TVC · 내부 무장창 · 공개되지 않은 성능은 게임 추정.',10]]);
 add('ru','multirole','mig23','Flogger','soviet',[
- ['mld','MiG-23MLD','후기 기동·센서 개량',13.5,'supersonic','가변익 MiG-23의 공력·전자장비 개량형.']]);
+ ['mld','MiG-23MLD','후기 기동·센서 개량',13.5,'supersonic','가변익 MiG-23의 공력·전자장비 개량형.',16]]);
 add('ru','multirole','mig29','Modern Fulcrum','uacmap',[
  ['smt','MiG-29SMT','9.19 · 현대화',17,'modern','연료·조종석·공대지 운용을 발전시킨 MiG-29 현대화형.']]);
 add('ru','multirole','mig35','Fulcrum-F','uac',[

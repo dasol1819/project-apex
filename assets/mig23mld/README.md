@@ -32,3 +32,15 @@
 4. Build and test separate native flight/combat integration; do not classify the airframe as implemented until it is complete.
 
 Status: **preview work in progress**; not flyable, not yet visually reviewed.
+
+
+## Native flight integration — 2026-11-08 (supersedes preview-only status above)
+
+PR: https://github.com/dasol1819/project-apex/pull/14
+
+- Registered aircraft as native type **16** and MiG-23MLD in the Russian multirole tree. Source-backed original 22.59 MB GLB remains credited to Tim Samedov (CC BY 4.0).
+- Reproducible 17th-aircraft WASM build via `scripts/native/build-mig23.mjs`; CI compiles and copies the resulting binary into public Pages output, preserving the original packed payload.
+- Single R-35-300 engine, dry/afterburning nominal thrust 83.6/127.49 kN, fuel, hydraulic wing actuator and sweep-coupled lift/drag implemented in native flight. Native radar, missile stores and gear contact probes use documented approximate open-source/game parameters.
+- Default game-assist automatic sweep schedules 16°–72° by Mach/IAS, load factor and landing gear; manual detents 16°, 33°, 45°, 72° and AUTO return. The actual MiG-23 pilot selected wing angle manually; this automatic schedule is intentionally a game feature.
+- Tests: `tests/mig23-native.mjs`, `tests/mig23-autosweep.mjs`, source GLB PBR tests, old native-aircraft regressions, desktop/mobile Chromium smoke. Browser QA must pass before merging.
+- **Outstanding:** original GLB gear/canopy/control-surface partitions have no complete animation rig; native radar, missile, drag/stall envelope and single-engine damage coefficients remain approximations. Actual photo overlay verification and dedicated device GPU performance review remain outstanding. Do not mark exterior quality-reviewed based solely on native CI tests.

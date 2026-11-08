@@ -1,0 +1,65 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const wasm=fs.readFileSync('web/flight.wasm');
+const imports={env:{pow:Math.pow,atan2:Math.atan2,asin:Math.asin,external_terrain:()=>0}};
+const make=()=>new WebAssembly.Instance(new WebAssembly.Module(wasm),imports).exports;
+const sim=make();
+sim.set_aircraft_type(16);
+assert.equal(sim.get_aircraft_type(),16,'MiG-23MLD must be a distinct native aircraft');
+sim.reset_spawn(1);
+const read=(name,count)=>Array.from(new Float64Array(sim.memory.buffer,sim[name](),count));
+const specs=read('get_aircraft_specs',28);
+console.log('MiG23 specs',JSON.stringify(specs));
+assert.equal(specs[1],1,'R-35-300 is single engine');
+assert.ok(Math.abs(specs[4]-83.6)<.01,'R-35-300 dry thrust must be 83.6 kN');
+assert.ok(Math.abs(specs[5]-127.49)<.01,'R-35-300 max afterburner must be 127.49 kN');
+assert.ok(Math.abs(specs[6]-37.35)<.01,'wing area');
+assert.ok(Math.abs(specs[7]-13.965)<.01,'wing span');
+assert.equal(specs[8],9595);
+assert.equal(specs[9],4672);
+const g=read('get_aircraft_gear_contacts',9);
+console.log('MiG23 gear',JSON.stringify(g));
+assert.equal(sim.set_loadout(46),1,'MiG23 loadout');
+const pre=read('get_aircraft_configuration',8);
+sim.set_wing_sweep(16);
+const low=read('get_aircraft_configuration',8);
+sim.set_wing_sweep(72);
+const high=read('get_aircraft_configuration',8);
+console.log('MiG23 sweep',JSON.stringify({pre,low,high}));
+assert.equal(low[3],16,'16 degree selected');
+assert.equal(high[3],72,'72 degree selected');
+assert.equal(high[2],0,'manual sweep mode');
+// Move the real hydraulic actuator; merely changing the target is not enough.
+sim.debug_set_state(0,4500,0,0,0,-235,0,0,0,1);
+sim.set_controls(0,0,0,.75,0,0,0,1);
+const initial=read('get_aircraft_configuration',8)[1];
+for(let i=0;i<120*15;i++)sim.step(1/120);
+const deflected=read('get_aircraft_configuration',8);
+console.log('MiG23 swept hydraulic servo',JSON.stringify({initial,deflected}));
+assert.ok(deflected[1]>initial+2,'WASM hydraulic wing angle must actually move');
+assert.ok(deflected[1]<=72.001,'mechanical limit');
+sim.set_wing_sweep(16);
+for(let i=0;i<120*18;i++)sim.step(1/120);
+const extended=read('get_aircraft_configuration',8)[1];
+assert.ok(extended<deflected[1]-2,'WASM actuator must extend when commanded');
+sim.set_wing_sweep(-1);
+assert.equal(read('get_aircraft_configuration',8)[2],1,'AUTO native flag');
+let normal=false,ab=false,minFuel=Infinity;
+sim.reset_spawn(1);
+sim.debug_set_state(0,3200,0,0,0,-180,0,0,0,1);
+for(let i=0;i<600;i++){
+ const throttle=i<300?1:1.2;
+ sim.set_controls(0,0,0,throttle,0,0,0,1);
+ sim.step(1/120);
+ if(i%40===0){
+  const s=read('get_state',104);
+  assert.ok(s.every(Number.isFinite),'all state finite');
+  assert.ok(s[19]>0,'fuel');
+  minFuel=Math.min(minFuel,s[19]);
+  if(i>120&&i<300)normal ||= s[62]<.02;
+  if(i>450)ab ||= s[62]>.05;
+ }
+}
+assert.ok(normal&&ab,'dry and afterburning phase observed');
+sim.set_aircraft_type(15);assert.equal(sim.get_aircraft_type(),15,'legacy type intact');
+console.log(JSON.stringify({result:'PASS',nativeType:16,engine:'R-35-300',sweepStops:[16,72],afterburner:ab,fuel:minFuel}));
