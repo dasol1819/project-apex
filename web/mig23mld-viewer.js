@@ -58,32 +58,48 @@ async function display(buffer,filename){
  $('upload').hidden=true;progress.hidden=true;say(filename+' · 외형 불러오기 완료');
 }
 async function loadHosted(){
+ const url='./assets/mig23mld/Mig-23.glb?v=3';
+ const controller=new AbortController();
+ let watchdog=null,loaded=0,stage='서버 응답 대기';
+ const arm=()=>{
+  clearTimeout(watchdog);
+  watchdog=setTimeout(()=>controller.abort(new Error('서버 응답이 15초 동안 없습니다.')),15000);
+ };
  try{
   setProgress(0,22593404,'MiG-23MLD 다운로드 준비 중…');
   say('MiG-23MLD 모델 확인 중…');
-  const response=await fetch('./assets/mig23mld/Mig-23.glb?v=2');
-  if(!response.ok)throw Error('HTTP '+response.status);
+  arm();
+  const response=await fetch(url,{signal:controller.signal,cache:'default'});
+  if(!response.ok)throw Error('서버 오류 HTTP '+response.status);
   const total=Number(response.headers.get('content-length'))||0;
   let buffer;
-  if(response.body&&total){
-   const reader=response.body.getReader(),chunks=[];let loaded=0;
+  stage='모델 다운로드';
+  if(response.body){
+   const reader=response.body.getReader(),chunks=[];
    while(true){
+    arm();
     const {done,value}=await reader.read();if(done)break;
+    if(!value?.byteLength)continue;
     chunks.push(value);loaded+=value.byteLength;
     setProgress(loaded,total,'MiG-23MLD 다운로드 중…');
    }
-   buffer=new Uint8Array(loaded);let at=0;
-   for(const chunk of chunks){buffer.set(chunk,at);at+=chunk.byteLength;}
-   buffer=buffer.buffer;
-  }else if(response.body){
-   const reader=response.body.getReader(),chunks=[];let loaded=0;
-   while(true){const {done,value}=await reader.read();if(done)break;chunks.push(value);loaded+=value.byteLength;setProgress(loaded,0,'MiG-23MLD 다운로드 중…');}
-   const bytes=new Uint8Array(loaded);let at=0;for(const chunk of chunks){bytes.set(chunk,at);at+=chunk.byteLength;}buffer=bytes.buffer;
-  }else{buffer=await response.arrayBuffer();setProgress(buffer.byteLength,buffer.byteLength,'다운로드 완료');}
+   const bytes=new Uint8Array(loaded);let at=0;
+   for(const chunk of chunks){bytes.set(chunk,at);at+=chunk.byteLength;}
+   buffer=bytes.buffer;
+  }else{
+   arm();buffer=await response.arrayBuffer();
+   loaded=buffer.byteLength;
+   setProgress(loaded,loaded,'다운로드 완료');
+  }
+  clearTimeout(watchdog);
+  stage='3D 모델 처리';
   await display(buffer,'MiG-23MLD');
  }catch(e){
-  progress.hidden=true;$('upload').hidden=false;say('모델을 불러오지 못했습니다: '+e.message,true);
-  console.info('MiG-23MLD not hosted:',e);
+  clearTimeout(watchdog);
+  progress.hidden=true;$('upload').hidden=false;
+  const reason=controller.signal.aborted?'서버가 15초 동안 응답하지 않았습니다.':e.message;
+  say(stage+' 실패: '+reason+' 새로고침하거나 로컬 GLB 파일을 선택하세요.',true);
+  console.error('MiG-23MLD model load failure:',{stage,loaded,error:e});
  }
 }
 $('file').addEventListener('change',async event=>{
