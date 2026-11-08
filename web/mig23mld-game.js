@@ -1,5 +1,6 @@
 import * as T from './vendor/three.module.js';
 import {createClassicAircraft} from './classic-aircraft.js';
+import {aircraftDefinition} from './aircraft-catalog.js';
 import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=2';
 
 const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
@@ -8,6 +9,8 @@ const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
 export function createMig23mldAircraft(options={}){
  const base=createClassicAircraft(4,options);
  base.group.name='MiG-23MLD | R-35-300 / Flogger-K';
+ base.group.userData.aircraftType=16;
+ base.group.userData.previewOnly=false;
  const standIns=[];
  base.group.traverse(n=>{if(n.isMesh||n.isLineSegments)standIns.push(n);});
  let original=null,sweep=()=>{},loaded=false,failed=false,lastAngle=16;
@@ -54,5 +57,5 @@ export function createMig23mldAircraft(options={}){
   nozzle.visible=health>.04;
  }
  function dispose(){controller.abort();plumeMaterial.dispose();shockMat.dispose();cone.geometry.dispose();ring.geometry.dispose();}
- return {...base,group:base.group,update,dispose,get sourceLoaded(){return loaded},get sourceFailed(){return failed}};
+ return {...base,definition:aircraftDefinition(16),group:base.group,update,dispose,get sourceLoaded(){return loaded},get sourceFailed(){return failed}};
 }
