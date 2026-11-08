@@ -50,7 +50,7 @@ async function display(buffer,filename){
 }
 async function loadHosted(){
  try{
-  say('MiG-23MLD 파일 확인 중…');
+  say('MiG-23MLD 경량 모델 확인 중…');
   const response=await fetch('./assets/mig23mld/Mig-23.glb?v=2');
   if(!response.ok)throw Error('HTTP '+response.status);
   const total=Number(response.headers.get('content-length'))||0;
