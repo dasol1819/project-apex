@@ -40,8 +40,8 @@ with sync_playwright() as p:
         size=page.locator('#viewer').evaluate(
             '(el)=>({w:el.width,h:el.height})')
         assert size['w']>=300 and size['h']>=300,size
-        page.locator('#sweep').fill('16')
-        page.locator('#sweep').dispatch_event('input')
+        page.locator('#sweep').evaluate(
+            "(el)=>{el.value='16';el.dispatchEvent(new Event('input',{bubbles:true}));}")
         assert page.locator('#sweep-angle').inner_text()=='16°'
         page.locator('[data-view="top"]').click()
         page.screenshot(path=str(out/('mig23-studio-'+label+'.png')))
