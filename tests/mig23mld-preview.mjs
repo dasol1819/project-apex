@@ -27,7 +27,7 @@ assert.match(preview,/mig23mld-boot\\.js\\?v=1/);
 assert.match(boot,/AbortController/);
 assert.match(boot,/raw\\.githubusercontent\\.com/);
 assert.match(boot,/async function download/);
-assert.match(boot,/import\\('\.\/mig23mld-viewer\\.js/);
+assert.ok(boot.includes("import('./mig23mld-viewer.js"),'Download must defer Three.js module to dynamic import');
 for(const f of ['mig23mld-glb.js','mig23mld-viewer.js','mig23mld-boot.js'])
  execFileSync(process.execPath,['--check',path.join(web,f)],{stdio:'inherit'});
 
