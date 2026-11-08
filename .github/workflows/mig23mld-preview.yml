@@ -9,6 +9,7 @@ on:
       - 'web/assets/mig23mld/**'
       - 'web/manifest.json'
       - 'tests/mig23mld-preview.mjs'
+      - 'tests/mig23mld-pbr.mjs'
       - '.deployment/restore.py'
       - '.github/workflows/mig23mld-preview.yml'
 permissions:
@@ -24,4 +25,6 @@ jobs:
       - name: Verify restored public web tree
         run: python3 .deployment/restore.py
       - name: Verify MiG-23MLD viewer and source geometry metadata
-        run: node tests/mig23mld-preview.mjs public
+        run: |
+          node tests/mig23mld-preview.mjs public
+          node tests/mig23mld-pbr.mjs public
