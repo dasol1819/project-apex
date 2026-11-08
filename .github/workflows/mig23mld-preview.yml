@@ -1,0 +1,27 @@
+name: MiG-23MLD preview validation
+on:
+  push:
+    branches: [opensource-mig23mld-20261105]
+  pull_request:
+    paths:
+      - 'web/mig23mld*'
+      - 'web/aircraft-tree*'
+      - 'web/assets/mig23mld/**'
+      - 'web/manifest.json'
+      - 'tests/mig23mld-preview.mjs'
+      - '.deployment/restore.py'
+      - '.github/workflows/mig23mld-preview.yml'
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Verify restored public web tree
+        run: python3 .deployment/restore.py
+      - name: Verify MiG-23MLD viewer and source geometry metadata
+        run: node tests/mig23mld-preview.mjs public

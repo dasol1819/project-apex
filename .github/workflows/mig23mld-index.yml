@@ -1,0 +1,42 @@
+name: Index MiG-23MLD GLB after an authorized upload
+on:
+  push:
+    branches: [opensource-mig23mld-20261105]
+    paths:
+      - 'web/assets/mig23mld/Mig-23.glb'
+permissions:
+  contents: write
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: true
+      - name: Verify uploaded GLB signature
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct, json
+          data=Path('web/assets/mig23mld/Mig-23.glb').read_bytes()
+          assert data[:4]==b'glTF' and struct.unpack_from('<II',data,4)==(2,len(data))
+          size,kind=struct.unpack_from('<II',data,12)
+          assert kind==0x4e4f534a
+          doc=json.loads(data[20:20+size])
+          assert doc['asset']['version']=='2.0'
+          assert len(doc['meshes'])>=100 and len(doc['images'])>0
+          assert {'OBJ0257','OBJ0264'} <= {n.get('name') for n in doc['nodes']}
+          print('Verified Blender GLB,',len(data),'bytes')
+          PY
+      - name: Record SHA-256 in the signed web override manifest
+        run: |
+          python3 scripts/update-web-manifest.py
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- web/manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'build(mig23mld): index uploaded Blender GLB in deploy manifest'
+            git push origin HEAD:opensource-mig23mld-20261105
+          fi

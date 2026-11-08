@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1320">
+<title>MiG-23MLD · Airframe Studio — Project Apex</title>
+<meta name="description" content="MiG-23MLD 외형을 3D로 검토합니다. 가변익을 움직이고 다양한 방향에서 기체를 살펴보세요.">
+<link rel="icon" href="data:,">
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,-apple-system,'Noto Sans KR',sans-serif;background:#0b1320;color:#eaf2fa}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#111e30,#080e18);min-height:100vh}
+a{color:#8dd9f3}a:hover{color:#fff}header,footer{padding:20px clamp(18px,4vw,56px)}
+header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #36475c}
+h1{font-weight:700;letter-spacing:.02em;font-size:clamp(1.5rem,3vw,2.3rem);margin:9px 0 3px}
+.kicker{font-size:.72rem;letter-spacing:.22em;color:#9fbbcf}p{color:#b5c7d8;margin:5px 0 12px}
+.back{white-space:nowrap;text-decoration:none;border:1px solid #547087;border-radius:8px;padding:10px 14px}
+main{max-width:1500px;margin:auto}.stage{position:relative;height:min(68vh,850px);min-height:360px;background:radial-gradient(ellipse at center,#15283c,#080d15 70%);overflow:hidden}
+#viewer{display:block;width:100%;height:100%;touch-action:none;cursor:grab}#viewer:active{cursor:grabbing}
+#status{position:absolute;left:24px;top:18px;border-radius:7px;padding:9px 14px;background:#101c2bd9;border:1px solid #36516a;color:#c9e0ee;font-size:.85rem;max-width:70vw}
+#status[data-error="true"]{border-color:#a57947;color:#f1d6ac}
+#upload{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:22px 24px;text-align:center;max-width:450px;width:calc(100% - 40px);background:#102238ed;border:1px solid #52687c;border-radius:16px;box-shadow:0 18px 55px #0008}
+#upload p{line-height:1.5}#upload label{display:block;cursor:pointer;margin-top:18px;padding:13px 20px;background:#367a96;color:#fff;border-radius:8px}#file{position:absolute;opacity:0;pointer-events:none}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:18px 24px;border-top:1px solid #304255;border-bottom:1px solid #304255;background:#122235}
+.controls button{border:1px solid #5a7186;color:#e4edf6;background:#1b3246;border-radius:7px;padding:10px 17px;cursor:pointer}
+.controls button:hover{background:#29516b}.sweep{display:flex;gap:12px;align-items:center;margin-left:auto}
+input[type=range]{width:clamp(100px,18vw,240px);accent-color:#7ac9ef}#sweep-angle{min-width:35px}
+.meta{padding:16px 24px 23px;color:#b5c7d8;font-size:.85rem}footer{max-width:1500px;margin:0 auto;border-top:1px solid #24374b;font-size:.85rem;color:#a9bece}footer p{margin:8px 0;line-height:1.6}
+@media(max-width:650px){header{align-items:start;gap:10px}.stage{height:55vh;min-height:390px}.sweep{width:100%;margin-left:0}.controls{gap:8px}.controls button{padding:9px 11px}#status{top:10px;left:10px;max-width:calc(100% - 20px)}}
+</style>
+<script type="module" src="./mig23mld-viewer.js?v=1"></script>
+</head>
+<body>
+<header><div><span class="kicker">PROJECT APEX / AIRFRAME STUDIO</span><h1>MiG-23MLD <small style="font-size:.55em;opacity:.6">FLOGGER-K</small></h1><p>가변익 전투기 · 외형 검수</p></div><a class="back" href="./?screen=tree&aircraft=ru-mig23-mld">← 기체 트리</a></header>
+<main>
+<section class="stage" aria-label="MiG-23MLD 3D 모델">
+<canvas id="viewer" aria-label="마우스 드래그로 회전, 스크롤로 확대"></canvas>
+<div id="status" role="status">3D 환경 준비 중…</div>
+<div id="upload" hidden><b>원본 모델 파일을 선택하세요</b><p>서버에 GLB가 배포되기 전까지는 업로드한 파일을 이 브라우저에서만 볼 수 있습니다.</p><label for="file">Mig-23.glb 선택</label><input id="file" type="file" accept=".glb,model/gltf-binary"></div>
+</section>
+<nav class="controls" aria-label="3D 관찰 설정"><button data-view="quarter">사선</button><button data-view="front">정면</button><button data-view="side">측면</button><button data-view="rear">후면</button><button data-view="top">상면</button><div class="sweep"><label for="sweep">가변익</label><input id="sweep" type="range" min="16" max="72" step="1" value="72"><output id="sweep-angle" for="sweep">72°</output></div></nav>
+<p class="meta" id="metrics">모델 파일을 불러오면 메시 정보가 표시됩니다.</p>
+</main>
+<footer>
+<p>외형 모델: <a href="https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06" rel="noopener noreferrer">Tim Samedov (citizensnip)</a> · <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener noreferrer">CC BY 4.0</a>. 사용자 제공 Blender GLB를 기체 크기에 맞게 배치했으며 가변익의 시각적 회전 축을 추가했습니다.</p>
+<p>이 페이지는 모델 외형 미리보기입니다. 실제 기체 물리·무장·피해·착륙장치 애니메이션은 아직 구현되지 않았으며 본편에서 이 기종을 출격시킬 수 없습니다. 가변익 회전은 시각 검사용으로, 실제 작동 검증 완료를 의미하지 않습니다.</p>
+</footer>
+</body>
+</html>
