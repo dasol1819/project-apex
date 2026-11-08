@@ -4,8 +4,8 @@
     "aircraft-catalog.js": "42d44983f6e1c837ad415804f3e58006f92ad2c99c2ef0e81a296ae6988dd923",
     "aircraft-inspector.css": "15e557add5ef971a1e16d3f7982c933bde78d615d536a672f7d513cc15886e3e",
     "aircraft-inspector.js": "6df4207c3b11b5b80d7271050e6e0e9ebaa0b0b154c21a319cef10518a1134f2",
-    "aircraft-tree-data.js": "6eace81710142c82018277a93d63ee530fe1121e208cad18efa82b7183097622",
-    "aircraft-tree.js": "aaa2f15089025045e3414cd56f6785236d8f7a102e941f695cee30ca802df1fa",
+    "aircraft-tree-data.js": "a1b332d6887ecf4a12ab862313c953bedf3cda9aca033873f38c74d875e51284",
+    "aircraft-tree.js": "4d6c2fc9c6e13c913eac505b51b9eb8df065fe0df18440384473a19ae3745236",
     "aircraft.js": "a7947d30549f70d6f6c85325413ebfb992dee83b080d796d67bd76589e2b3f4c",
     "airframe-surface-uv.js": "ca39e340734cd392b1154aad6c59feb9e1a9aa4e483b3bcc06aaca5a50ecd693",
     "app.js": "2d4312155d23b49b6f24721b9e1b1a0d6c758ad6d4305b1626ee5a0a4bed94bb",
@@ -93,6 +93,9 @@
     "vendor/basis/THREE-LICENSE.txt": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
     "vendor/basis/basis_transcoder.js": "8478b5b6d6b74e7d3082b89f6417321d8d1dc0307f2b30d4484bb11b441696a1",
     "vendor/basis/basis_transcoder.wasm": "6cf17dc889352c42e9acf8897107978d127005fe3386c36a0e3845e27967630a",
-    "wreckage-mesh.js": "4a520df91a693a2484f777ef37de36f21705b36fefb1fea2555867743ef3b375"
+    "wreckage-mesh.js": "4a520df91a693a2484f777ef37de36f21705b36fefb1fea2555867743ef3b375",
+    "mig23mld.html": "4b33f91288b0169c05f2d376de347e7678aec4d07eb1442116ef7481bf706f2d",
+    "mig23mld-glb.js": "e7f977d5f38d59ffa7db505e9e84886f0f51fc48b7381cae49ba1457de2dcc79",
+    "mig23mld-viewer.js": "87001955a949317f0e0cd64a7cd30de7311f01ff5b5fcd08f55826f8f0ae70e4"
   }
 }
