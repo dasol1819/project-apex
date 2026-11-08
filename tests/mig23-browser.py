@@ -35,7 +35,14 @@ with sync_playwright() as p:
  page.wait_for_function('__mig23QA.aircraft.sourceLoaded || __mig23QA.aircraft.sourceFailed',timeout=120000)
  assert page.evaluate('__mig23QA.aircraft.sourceLoaded'),'Original licensed GLB did not render'
  page.screenshot(path=str(out/'mig23-hangar-desktop.png'))
- page.locator('#tree-prepare').click()
+ # The choose callback can rebuild the tree detail; the preparation action
+ # is optional, whereas the Hangar -> Sortie route is always exposed.
+ if page.locator('#tree-prepare').is_visible():
+  page.locator('#tree-prepare').click()
+ else:
+  page.locator('#tree-back').click()
+  page.locator('#hangar-open').click()
+  page.locator('#hangar-sortie-start').click()
  page.locator('#launch').click()
  page.wait_for_function('__mig23QA.started',timeout=120000)
  page.wait_for_function('__mig23QA.readState()[32]>.2',timeout=120000)
