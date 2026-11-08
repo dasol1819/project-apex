@@ -59,8 +59,8 @@
     "mig15bis-model.js": "77b056f20f21a0cd091cf21ad8e3e8a6cb02a056eaa690b1f563b87e2703a103",
     "mig15bis-review.html": "31aac8a333faaedd1600384aade99ffecf5f0d5e0eb63d1c54d72db377009b83",
     "mig23mld-glb.js": "17db0d5c76243ede2a735d8bca4d7aeaa40655295ac4f21bb742ae3702a58156",
-    "mig23mld-viewer.js": "be36bdc94fce13ac2e637f1d339a280d773e2cb6f1e7a9b284a2fe7342d6ee98",
-    "mig23mld.html": "bbe46af4c3621adaf759a32fa8cfe6a003c07b64a88201af7feba135f3cc8de6",
+    "mig23mld-viewer.js": "2f36be9e0308afbccb0fdf4f4ef111f745d8f99009348a5724c063909cac6a2c",
+    "mig23mld.html": "f2fa97ff5cb17014a71ac5b04e216d395ad9a5e18eae11341aa42941c44fe18f",
     "mig29-asset.js": "57b4c5819a936608f3c631fcf2e5c27663d8ac38fb6522a1a5520bc76dd8900f",
     "mig29-combat-model.js": "71e01e1872c4fc6af37409bae9272c9e790b7161078d0d544c2329c5aea6e6bd",
     "mig29-details.js": "133de88afec83fcb08403c3f78b290bbccc37e328a5399f0cdb89cfa9e30f220",
@@ -99,7 +99,7 @@
     "vendor/basis/basis_transcoder.js": "8478b5b6d6b74e7d3082b89f6417321d8d1dc0307f2b30d4484bb11b441696a1",
     "vendor/basis/basis_transcoder.wasm": "6cf17dc889352c42e9acf8897107978d127005fe3386c36a0e3845e27967630a",
     "wreckage-mesh.js": "4a520df91a693a2484f777ef37de36f21705b36fefb1fea2555867743ef3b375",
-    "mig23mld-boot.js": "94799f62a300dae72c970b2f2d563d9fad00e37518fd4209d5a7b2871cf80121",
+    "mig23mld-boot.js": "7ed072e44f7973f807341905de06b5abacc0526a407e2e03dc0e3447f41d8c24",
     "mig23mld-flight.js": "8530033d826a2ae7548a85aaf0bb98dbb597a08839a3b01e1b346e9bc166f8b9",
     "mig23mld-game.js": "2644b390b94c5549db57a9411e4703f2b4e556e8c77677002ea767246662260d"
   }
