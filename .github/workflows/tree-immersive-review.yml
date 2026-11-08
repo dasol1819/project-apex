@@ -1,0 +1,34 @@
+name: Aircraft tree UI review
+on:
+  push:
+    branches: [feature-tree-immersive-20261108]
+  pull_request:
+    paths:
+      - 'web/aircraft-tree*'
+      - 'web/index.html'
+      - 'web/app.js'
+      - 'web/manifest.json'
+      - 'tests/tree-immersive-browser.py'
+permissions:
+  contents: read
+jobs:
+  ui:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Restore and inspect original CSS selectors
+        run: |
+          python3 .deployment/restore.py
+          python3 - <<'PY'
+          from pathlib import Path
+          for file in ['aircraft-tree.css','aircraft-tree-map.css','style.css']:
+            p=Path('public')/file
+            print('===== ORIGINAL CSS',file,'SIZE',p.stat().st_size,'=====')
+            if file!='style.css':
+              for n,l in enumerate(p.read_text().splitlines(),1):
+                if file=='aircraft-tree.css' or '.aircraft-tree' in l or '.tree-' in l:
+                  print(f'{n}: {l}'[:380])
+          PY
