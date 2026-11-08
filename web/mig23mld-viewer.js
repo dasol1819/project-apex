@@ -14,6 +14,13 @@ const fill=new T.DirectionalLight(0x8dc3ff,1.1);fill.position.set(13,5,12);scene
 const grid=new T.GridHelper(48,24,0x293b4d,0x1c2939);grid.position.y=-3.5;scene.add(grid);
 
 let installed,sweep=()=>{},yaw=.8,pitch=.28,distance=29,drag=null;
+const progress=$('download-progress'),progressLabel=$('download-label'),progressPercent=$('download-percent'),progressTrack=$('download-track'),progressFill=$('download-fill'),progressDetail=$('download-detail');
+const mb=n=>(n/1048576).toFixed(1)+' MB';
+function setProgress(loaded,total,phase='다운로드 중'){
+ progress.hidden=false;progressLabel.textContent=phase;
+ if(total>0){const pct=Math.min(100,Math.floor(loaded/total*100));progressPercent.textContent=pct+'%';progressFill.style.width=pct+'%';progressTrack.setAttribute('aria-valuenow',String(pct));progressDetail.textContent=mb(loaded)+' / '+mb(total);}
+ else{progressPercent.textContent=mb(loaded);progressFill.style.width='100%';progressTrack.removeAttribute('aria-valuenow');progressDetail.textContent='전체 크기 확인 중 · '+mb(loaded)+' 다운로드됨';}
+}
 const say=(message,error=false)=>{$('status').textContent=message;$('status').dataset.error=String(error);};
 const preset=key=>{[yaw,pitch,distance]=({
  quarter:[.8,.28,29],front:[Math.PI,.06,32],side:[Math.PI/2,.06,29],
@@ -39,6 +46,8 @@ function dispose(root){
  for(const g of geo)g.dispose();
 }
 async function display(buffer,filename){
+ setProgress(1,1,'다운로드 완료 · 3D 모델 구성 중…');
+ progressDetail.textContent='메시와 텍스처 처리 중';
  say('GLB 메시와 텍스처 불러오는 중…');
  const asset=await parseMig23Glb(buffer);
  const {root,originalLength}=normalizeMig23(asset.scene);
@@ -46,11 +55,12 @@ async function display(buffer,filename){
  if(installed){scene.remove(installed);dispose(installed);}
  installed=root;scene.add(root);sweep=move;
  $('metrics').textContent=`${asset.metadata.meshes} meshes · ${asset.metadata.primitives} surfaces · ${asset.metadata.nodes} nodes · model length ${originalLength.toFixed(3)} → 16.7m`;
- $('upload').hidden=true;say(filename+' · 외형 불러오기 완료');
+ $('upload').hidden=true;progress.hidden=true;say(filename+' · 외형 불러오기 완료');
 }
 async function loadHosted(){
  try{
-  say('MiG-23MLD 경량 모델 확인 중…');
+  setProgress(0,22593404,'MiG-23MLD 다운로드 준비 중…');
+  say('MiG-23MLD 모델 확인 중…');
   const response=await fetch('./assets/mig23mld/Mig-23.glb?v=2');
   if(!response.ok)throw Error('HTTP '+response.status);
   const total=Number(response.headers.get('content-length'))||0;
@@ -60,22 +70,26 @@ async function loadHosted(){
    while(true){
     const {done,value}=await reader.read();if(done)break;
     chunks.push(value);loaded+=value.byteLength;
-    say('MiG-23MLD 다운로드 '+Math.min(100,Math.round(100*loaded/total))+'%');
+    setProgress(loaded,total,'MiG-23MLD 다운로드 중…');
    }
    buffer=new Uint8Array(loaded);let at=0;
    for(const chunk of chunks){buffer.set(chunk,at);at+=chunk.byteLength;}
    buffer=buffer.buffer;
-  }else buffer=await response.arrayBuffer();
+  }else if(response.body){
+   const reader=response.body.getReader(),chunks=[];let loaded=0;
+   while(true){const {done,value}=await reader.read();if(done)break;chunks.push(value);loaded+=value.byteLength;setProgress(loaded,0,'MiG-23MLD 다운로드 중…');}
+   const bytes=new Uint8Array(loaded);let at=0;for(const chunk of chunks){bytes.set(chunk,at);at+=chunk.byteLength;}buffer=bytes.buffer;
+  }else{buffer=await response.arrayBuffer();setProgress(buffer.byteLength,buffer.byteLength,'다운로드 완료');}
   await display(buffer,'MiG-23MLD');
  }catch(e){
-  $('upload').hidden=false;say('모델을 불러오지 못했습니다: '+e.message,true);
+  progress.hidden=true;$('upload').hidden=false;say('모델을 불러오지 못했습니다: '+e.message,true);
   console.info('MiG-23MLD not hosted:',e);
  }
 }
 $('file').addEventListener('change',async event=>{
  const file=event.currentTarget.files?.[0];if(!file)return;
- try{await display(await file.arrayBuffer(),file.name);}
- catch(e){say('모델 오류: '+e.message,true);console.error(e);}
+ try{setProgress(0,file.size,'로컬 모델 읽는 중…');await display(await file.arrayBuffer(),file.name);}
+ catch(e){progress.hidden=true;say('모델 오류: '+e.message,true);console.error(e);}
 });
 $('sweep').addEventListener('input',event=>{
  $('sweep-angle').textContent=event.currentTarget.value+'°';sweep(event.currentTarget.value);
