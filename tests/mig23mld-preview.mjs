@@ -18,7 +18,7 @@ assert.match(tree,/family==='mig23'&&suffix==='mld'\?'mig23mld\.html\?v=1'/);
 assert.match(tree,/\['mld','MiG-23MLD'/);
 assert.match(preview,/Tim Samedov/);
 assert.match(preview,/CC BY 4\.0/);
-assert.match(preview,/본편에서 이 기종을 출격시킬 수 없습니다/);
+assert.match(preview,/게임 본편에서는 MiG-23MLD를 선택해 출격할 수 있습니다/);
 assert.match(loader,/source-preserving|MiG-23MLD Blender/);
 assert.match(loader,/Math\.min\(72,Number\(degrees\)\|\|72\)\)-72/);
 assert.match(viewer,/parseMig23Glb/);
