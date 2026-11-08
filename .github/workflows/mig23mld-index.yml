@@ -1,10 +1,9 @@
 name: Index MiG-23MLD GLB after an authorized upload
 on:
   push:
-    branches: [opensource-mig23mld-20261105, perf-mig23mld-fast-load-20261108]
+    branches: [opensource-mig23mld-20261105]
     paths:
       - 'web/assets/mig23mld/Mig-23.glb'
-      - 'web/mig23mld-viewer.js'
 permissions:
   contents: write
 jobs:
@@ -14,12 +13,6 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: true
-      - name: Install texture encoder for fast-loading branch
-        if: github.ref_name == 'perf-mig23mld-fast-load-20261108'
-        run: python3 -m pip install Pillow==11.3.0
-      - name: Optimize GLB on fast-loading branch
-        if: github.ref_name == 'perf-mig23mld-fast-load-20261108'
-        run: python3 scripts/optimize-mig23-glb.py web/assets/mig23mld/Mig-23.glb
       - name: Verify uploaded GLB signature
         shell: bash
         run: |
@@ -43,8 +36,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- web/manifest.json
-          if [ "$GITHUB_REF_NAME" = 'perf-mig23mld-fast-load-20261108' ]; then git add -- web/assets/mig23mld/Mig-23.glb; fi
           if ! git diff --cached --quiet; then
             git commit -m 'build(mig23mld): index uploaded Blender GLB in deploy manifest'
-            git push origin HEAD:$GITHUB_REF_NAME
+            git push origin HEAD:opensource-mig23mld-20261105
           fi
