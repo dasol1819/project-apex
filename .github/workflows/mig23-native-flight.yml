@@ -1,0 +1,24 @@
+name: MiG23 native flight build
+on:
+  push:
+    branches: [feature-mig23mld-native-flight-20261108]
+  pull_request:
+    paths:
+      - 'scripts/native/build-mig23.mjs'
+      - 'assets/mig23mld/**'
+      - 'tests/mig23-native.mjs'
+permissions:
+  contents: read
+jobs:
+  flight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: python3 .deployment/restore.py
+      - run: node --check scripts/native/build-mig23.mjs
+      - run: node scripts/native/build-mig23.mjs
+      - run: node tests/mig23-native.mjs
