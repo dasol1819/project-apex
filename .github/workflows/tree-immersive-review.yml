@@ -32,3 +32,11 @@ jobs:
                 if file=='aircraft-tree.css' or '.aircraft-tree' in l or '.tree-' in l:
                   print(f'{n}: {l}'[:380])
           PY
+          python3 - <<'PY'
+          from pathlib import Path
+          for f,numbers in [('aircraft-tree.css',[4,5,7,8,10,11,13,15,16]),('aircraft-tree-map.css',[2,4]),('style.css',[])]:
+            for n,line in enumerate((Path('public')/f).read_text().splitlines(),1):
+              if n in numbers or (f=='style.css' and any(k in line for k in ['#welcome{','[data-menu-stage="tree"]','#aircraft-tree-screen'])):
+                print('DETAIL',f,n,'LEN',len(line))
+                for pos in range(0,len(line),1100):print('CSS',f,n,pos,line[pos:pos+1100])
+          PY
