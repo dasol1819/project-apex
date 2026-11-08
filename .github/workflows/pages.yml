@@ -52,6 +52,8 @@ jobs:
           node tests/mig15-model.mjs public
           node tests/mig15-hinges.mjs public
           node scripts/aircraft-progress.mjs
+      - name: Check MiG-23MLD glTF airframe preview
+        run: node tests/mig23mld-preview.mjs public
       - uses: actions/configure-pages@v5
         with:
           enablement: true
