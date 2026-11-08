@@ -6,12 +6,12 @@ const rate=v=>Number(v).toFixed(1),rating=v=>Math.round(Math.max(1,Math.min(20,N
 const branchFor=id=>TREE_BRANCHES.find(b=>b.id===id);
 function icon(branch){const path=branch==='strategic'?'M30 8 4 30 24 27 30 38 36 27 56 30Z':branch==='heavy'?'M27 5 22 20 6 30 23 28 23 38 28 35 30 25 32 35 37 38 37 28 54 30 38 20 33 5 30 16Z':'M30 4 26 20 8 29 26 27 23 38 30 34 37 38 34 27 52 29 34 20Z';return `<svg class="tree-plane-symbol" viewBox="0 0 60 44" aria-hidden="true"><path d="${path}"/><path d="M30 7v27" class="tree-plane-axis"/></svg>`;}
 export function createAircraftTree({document:d,storage,getSelectedType,onChoose,canChoose=()=>true,isReady=()=>true,onClose,onHangar,onInspect,onPrepare}){
- const $=id=>d.getElementById(id),root=$('aircraft-tree-screen');let state=defaults(),visible=[],active=false,inspected=null,focusId=null,layout=null,zoom=1;const views=new Map();root.classList.add('tree-spatial');
+ const $=id=>d.getElementById(id),root=$('aircraft-tree-screen');let state=defaults(),visible=[],active=false,inspected=null,focusId=null,layout=null,zoom=.9;const views=new Map();root.classList.add('tree-spatial');
  try{const saved=JSON.parse(storage?.getItem(TREE_STORAGE_KEY)||'null');if(saved&&typeof saved==='object'){
   // Previous versions saved search, branch, BR and tiny zoom filters.
   // The new nation-only tree deliberately restores none of those hidden filters.
   if(TREE_NATIONS.some(n=>n.id===saved.nation))state.nation=saved.nation;
-  zoom=Number.isFinite(saved.zoom)?Math.max(.9,Math.min(1.25,saved.zoom)):1;
+  zoom=Number.isFinite(saved.zoom)?Math.max(.75,Math.min(.9,saved.zoom)):.9;
  }}catch{}
  const selected=()=>treeAircraftForSim(getSelectedType());
  function el(tag,cls,text){const e=d.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
