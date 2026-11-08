@@ -4,13 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "owner": "mig23mld-recovery-20261105T2004Z",
-    "workId": "ru-mig23-mld",
-    "branch": "opensource-mig23mld-20261105",
-    "startedAt": "2026-11-05T20:04:00Z",
-    "expiresAt": "2026-11-05T21:54:00Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -981,14 +975,46 @@
       "br": 13.5,
       "simId": null,
       "status": "in_progress",
-      "nextStep": "Research exact variant; collect front/rear/top/side references",
+      "nextStep": "Blender GLB geometry and browser-preview importer prepared. Upload user-provided, same-geometry optimized Mig-23.glb to web/assets/mig23mld/Mig-23.glb on opensource-mig23mld-20261105; regenerate web/manifest.json and verify actual browser WebGL rendering and wing sweep. DO NOT mark implemented: native flight, weapons, damage, gear animation and in-game selection remain pending.",
       "evidence": {
-        "references": [],
-        "assets": [],
+        "references": [
+          "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
+          "https://creativecommons.org/licenses/by/4.0/",
+          "assets/mig23mld/README.md",
+          "web/assets/mig23mld/CREDITS.txt"
+        ],
+        "assets": [
+          "web/mig23mld-glb.js",
+          "web/mig23mld-viewer.js",
+          "web/mig23mld.html",
+          "web/assets/mig23mld/Mig-23.glb — NOT YET COMMITTED"
+        ],
         "screenshots": [],
-        "checks": [],
-        "commit": null
-      }
+        "checks": [
+          "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
+          "Optimized Blender GLB source-preserving 6,452,960 bytes, SHA-256 bc9580a7798fed2ed620aabd57cd436a3b7ce2af66dedb73ef216d46cb3efeea (local artifact, NOT ON GITHUB)",
+          "Original swept 72-degree wingspan ~7.53m at 16.7m normalization; calculated extension at 16 degrees ~13.51m; photogrammetric review pending",
+          "Browser JS syntax parse passed via V8; real WebGL renderer screenshot and mobile QA NOT done",
+          "tests/mig23mld-preview.mjs — pending CI"
+        ],
+        "commit": "https://github.com/dasol1819/project-apex/commit/76d8821e8bbef7050b5296e7f165372b7a78be2b",
+        "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer"
+      },
+      "resourceCost": {
+        "originalBytes": 22593404,
+        "optimizedBytes": 6452960,
+        "triangles": 43089,
+        "meshes": 136,
+        "primitives": 222,
+        "materials": 44,
+        "images": 22,
+        "renderedFps": null
+      },
+      "limitations": [
+        "Binary local attachment cannot be imported to GitHub with available text-only GitHub connector; repository binary remains missing",
+        "Source user GLB rigged for preview only; wing rotation pivot approximation awaits WebGL/photographic inspection",
+        "No native sim type or flight/control/weapon/damage integration; status stays in_progress"
+      ]
     },
     {
       "id": "ru-su17-m4",
