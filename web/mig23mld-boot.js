@@ -111,15 +111,15 @@
   return Promise.race([promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('3D 엔진 모듈을 '+Math.round(ms/1000)+'초 안에 불러오지 못했습니다.')),ms);})])
    .finally(()=>clearTimeout(timer));
  }
- async function mount(buffer,filename,run){
+ async function mount(buffer,filename,run,readyViewer=null){
   state('3D 렌더러 불러오는 중…');
   showProgress(buffer.byteLength,buffer.byteLength,'다운로드 완료 · 3D 엔진 준비 중…');
   // Import errors are caught here, rather than silently preventing the loader from starting.
-  const viewer=await timeout(import('./mig23mld-viewer.js?v=6'),20000);
+  const viewer=readyViewer||await timeout(import('./mig23mld-viewer.js?v=6'),20000);
   if(run!==generation)return;
   label.textContent='다운로드 완료 · 메시 및 텍스처 구성 중…';
   detail.textContent=mb(buffer.byteLength)+' 수신 완료 · GPU 구성 중';
-  await viewer.mountMig23(buffer,filename);
+  await timeout(viewer.mountMig23(buffer,filename),30000);
   if(run!==generation)return;
   panel.hidden=true;
   upload.hidden=true;
@@ -129,10 +129,17 @@
   const run=++generation;
   cancel();retry.hidden=true;upload.hidden=true;
   try{
-   const buffer=await loadModel(run);
+   // Start engine loading in parallel; catch an unavailable Three.js import
+   // without wasting the full 22.6 MB download.
+   const renderPromise=timeout(import('./mig23mld-viewer.js?v=6'),20000);
+   const modelPromise=loadModel(run);
+   const [viewer,buffer]=await Promise.all([renderPromise,modelPromise]);
    if(run!==generation)return;
-   await mount(buffer,'MiG-23MLD',run);
-  }catch(e){if(run===generation)reportError(e);}
+   await mount(buffer,'MiG-23MLD',run,viewer);
+  }catch(e){
+   cancel();
+   if(run===generation)reportError(e);
+  }
  }
  retry.addEventListener('click',start);
  input.addEventListener('change',async e=>{
