@@ -11,6 +11,8 @@ const read=(name,count)=>Array.from(new Float64Array(sim.memory.buffer,sim[name]
 const specs=read('get_aircraft_specs',28);
 console.log('MiG23 specs',JSON.stringify(specs));
 assert.equal(specs[1],1,'R-35-300 is single engine');
+assert.ok(Math.abs(specs[4]-83.6)<.01,'R-35-300 dry thrust must be 83.6 kN');
+assert.ok(Math.abs(specs[5]-127.49)<.01,'R-35-300 max afterburner must be 127.49 kN');
 assert.ok(Math.abs(specs[6]-37.35)<.01,'wing area');
 assert.ok(Math.abs(specs[7]-13.965)<.01,'wing span');
 assert.equal(specs[8],9595);
