@@ -4,7 +4,13 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "feature-mig23mld-native-flight-20261108",
+    "startedAt": "2026-11-08T11:12:00Z",
+    "expiresAt": "2026-11-08T13:02:00Z",
+    "purpose": "Dedicated native MiG-23MLD flight + automatic/manual sweep and R-35 AB; regression and deploy"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
