@@ -17,19 +17,18 @@
 - Initial left-wing upper-surface UV imbalance remapped from mirrored right-wing top UVs.
 - Key meshes by original name: left variable wing `OBJ0257`; right variable wing `OBJ0264`. Exact pivot and other control surface partitions not yet validated.
 
-## Important: NOT integrated, NOT visually reviewed
-- Conversion outputs exist only as **user-downloadable conversation artifacts**; GitHub currently has no GLB asset committed. Never claim this branch contains the binary.
-- No animation stacks in source FBX. Wing sweep, gear, control surfaces, canopy and nozzle still require animation rigs.
-- Landing gear is down in the imported pose; weapon stores and cockpit are included.
-- Native flight/combat, damage, aircraft-tree registration, WebGL loader, model-to-reference overlays, actual rendered screenshots and deployment **not done**.
-- Original geometry is 43k triangles, but numerous meshes and material calls (222 partitions) will require batching/LOD/resource QA.
-- Converters used Pillow, NumPy, trimesh, scipy; validated glTF 2.0 GLB by importing both variants with trimesh. This is **not** a browser/shader QA pass.
+## Current intake and preview status (2026-11-08)
+- The user uploaded the original Blender `Mig-23.glb` (22,593,404 bytes) to `web/assets/mig23mld/Mig-23.glb` on branch `opensource-mig23mld-20261105`.
+- The `Index MiG-23MLD GLB after an authorized upload` workflow succeeded and recorded the binary SHA-256 in `web/manifest.json`; this is the original Blender file, **not** the separate 6.45 MB optimized download.
+- A glTF parser, 3D preview page, variable-sweep visual control and Russian tree preview link now exist in this PR. The aircraft still has `simId: null`, and cannot be selected or flown.
+- Source FBX has no animation stacks. Wing sweep pivots are for visual inspection only; gear, control surfaces, canopy and nozzle are not fully rigged.
+- No live deployment, actual WebGL/photo comparison or FPS/quality review has been recorded. Native flight, radar, weapons and damage integration are still unimplemented.
+- The original model has many mesh/material draws; GPU resource measurements and LOD work remain to be done.
 
 ## Next work
-1. Upload the provided `mig23mld-game.glb` via a binary-capable GitHub workflow into the web asset tree (the GitHub text connector cannot import local sandbox binaries).
-2. Rig the variable-sweep wings and gear correctly; allow wing sweep/control feedback and damage.
-3. Integrate asynchronous GLTF loading in the existing Three.js runtime, and flight/weapons/tree data.
-4. Compare *actual WebGL renders* against licensed exact-variant top/side/front/rear photos, record failures and corrections.
-5. Run repository manifest/restore, native tests, and deploy only after a passing review.
+1. Pass the current revision's manifest/restore and `tests/mig23mld-preview.mjs` checks; prior failed runs began before the GLB was indexed.
+2. Verify actual browser WebGL rendering, texture orientation and correct variable-sweep hinge positions, and compare exact-variant photos.
+3. Review source/texture attribution and resource cost, and only then merge the preview PR for Pages publication.
+4. Build and test separate native flight/combat integration; do not classify the airframe as implemented until it is complete.
 
-Status: **in_progress**, not approved for release.
+Status: **preview work in progress**; not flyable, not yet visually reviewed.
