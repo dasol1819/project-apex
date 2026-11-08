@@ -13,8 +13,8 @@ with sync_playwright() as p:
  ctx=browser.new_context(viewport={'width':1366,'height':900},reduced_motion='reduce')
  page=ctx.new_page()
  page.set_default_timeout(120000)
- page.on('pageerror',lambda e:errors.append(str(e)))
- page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
+ page.on('pageerror',lambda e:errors.append('DESKTOP PAGE ERROR: '+(e.stack or str(e))))
+ page.on('console',lambda m:errors.append('DESKTOP CONSOLE ERROR: '+m.text) if m.type=='error' else None)
  def hook_module(route):
   response=route.fetch()
   route.fulfill(response=response,body=response.text()+hook)
@@ -53,6 +53,7 @@ with sync_playwright() as p:
  s=page.evaluate('Array.from(__mig23QA.readState())')
  assert all(x is not None and abs(x)<1e15 for x in s[:63]),'nonfinite or exploding flight state'
  page.screenshot(path=str(out/'mig23-flight-ab.png'))
+ if errors: print('MI23_DIAGNOSTIC_ERRORS',json.dumps(errors,ensure_ascii=False),flush=True)
  assert not errors,errors
  ctx.close()
  # Mobile selector and shader smoke: no forced full GLB loading on the
@@ -60,7 +61,7 @@ with sync_playwright() as p:
  ctx=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,has_touch=True,device_scale_factor=1,reduced_motion='reduce')
  mobile=ctx.new_page()
  mobile.route('**/app.js*',hook_module)
- mobile.on('pageerror',lambda e:errors.append(str(e)))
+ mobile.on('pageerror',lambda e:errors.append('MOBILE PAGE ERROR: '+(e.stack or str(e))))
  mobile.goto(base+'/?screen=tree',wait_until='domcontentloaded')
  mobile.wait_for_selector('html[data-raptor-ready=true]',timeout=180000)
  mobile.locator('[data-tree-nation=ru]').tap()
