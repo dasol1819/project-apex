@@ -975,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Flight/combat build available in PR branch: native type16 R-35-300 dry/AB, swept hydraulic aerodynamics + Mach/gear AUTO and 16/33/45/72 manual control, original licensed GLB integrated with fallback. Finish Chromium desktop/mobile WebGL QA, photo/gear/control-surface rig and native R-24/R-60 exact performance verification before exterior quality review. Confirm Pages deployed after merge; do NOT mark reviewed.",
+      "nextStep": "MiG-23MLD native type16 flight/combat is ALREADY MERGED AND PUBLISHED (R-35 dry/AB, WASM hydraulic 16–72° swept-wing aerodynamics, speed/gear AUTO plus manual 16/33/45/72, original GLB flight model, STT SARH/IR preliminary loadout). Next: true GLB gear/airbrake/spoilers/stabilator/canopy damage and hinge rigs, precise missile/weapon release and radar characterization, photo silhouette overlay and GPU performance QA. Do not redo successful native flight integration. Keep in_progress until high-quality exterior and flight/combat visual review.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -997,25 +997,28 @@
           "web/mig23mld-game.js",
           "web/flight.wasm (deterministic CI generated; binary NOT committed)"
         ],
-        "screenshots": [],
+        "screenshots": [
+          "https://github.com/dasol1819/project-apex/actions/runs/42483065382/artifacts/13617374547"
+        ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
           "Original swept 72-degree wingspan ~7.53m at 16.7m normalization; calculated extension at 16 degrees ~13.51m; photogrammetric review pending",
-          "Browser JS syntax parse passed via V8; real WebGL renderer screenshot and mobile QA NOT done",
           "MiG-23MLD preview source GLB committed in main; GitHub Pages deploy 42465677308 success on 2026-11-08. No physical GPU/registered photo review yet.",
-          "tests/mig23mld-pbr.mjs (GLB material refs, source geometry, deployment manifest) — CI pending",
           ".github/workflows/pages.yml and .github/workflows/mig23mld-preview.yml now run PBR regression",
           "tests/mig23-native.mjs",
           "tests/mig23-autosweep.mjs",
-          "tests/mig23-browser.py (real Chromium pending)",
           "tests/mig23mld-pbr.mjs",
           ".github/workflows/mig23-native-flight.yml",
           "GitHub Actions #42477389308 MiG-23MLD GLB preview validation: PASS",
-          "GitHub Actions #42477389306 native/browser QA: pending"
+          "GitHub Actions #42483065382: PASS native type16 R-35 dry/AB thrust and fuel, 16–72° hydraulic servo plus aerodynamic model, AUTO/manual transitions, legacy 16-aircraft regression, real Chromium/SwiftShader desktop+mobile 3D GLB and flight checks; zero page errors",
+          "GitHub Actions #42483065367: PASS GLB PBR/source/manifest preview validation",
+          "GitHub Actions #42483445394: SUCCESS GitHub Pages deployment on 2026-11-08; main SHA 5a93c7099a6176364c2ce91bbe5995e5ea07a5c8",
+          "MiG23 original GLB was rendered and tested in Chromium/SwiftShader; still no hardware-GPU reference photo/silhouette overlay review or actual FPS benchmark"
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
-        "pullRequest": "https://github.com/dasol1819/project-apex/pull/14"
+        "pullRequest": "https://github.com/dasol1819/project-apex/pull/14",
+        "publishedCommit": "https://github.com/dasol1819/project-apex/commit/26decd4cde214d2e44729d77e16ab5124b0250e9"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1026,15 +1029,12 @@
         "materials": 44,
         "images": 22,
         "renderedFps": null,
-        "nativeWasmBytes": 334779,
-        "nativeBuild": "GitHub Actions branch deterministic; deploy copies generated wasm into Pages output",
+        "nativeWasmBytes": 335087,
+        "nativeBuild": "GitHub Actions #42483065382 verified deterministic 17-aircraft WASM; GitHub Pages #42483445394 deployed generated public/flight.wasm",
         "fps": null
       },
       "limitations": [
-        "Source user GLB rigged for preview only; wing rotation pivot approximation awaits WebGL/photographic inspection",
-        "No native sim type or flight/control/weapon/damage integration; status stays in_progress",
-        "Original Blender 22.6 MB asset is deployed; no claimed browser QA, native flight or finish review.",
-        "PBR improvement not yet confirmed visually in a real browser; CI and WebGL review pending.",
+        "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
         "Engine and wing coefficients are open-source/game estimates, not a certified flight-test model.",
         "GLB original has unrigged gear/control-surface partitions; visual damage/gear fidelity remains pending.",
         "Native missile ballistic profiles reuse existing SARH/IR tables; R-24R / R-60M exact guidance/flight envelope remains pending.",
