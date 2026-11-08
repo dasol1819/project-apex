@@ -1,23 +1,24 @@
 /*
- * Aircraft Tree — immersive nation-only layout.
+ * Aircraft Tree — balanced nation-only layout.
  * Overrides packed legacy CSS without modifying the shared game's other screens.
  * Detail panel and branch path/scroll handling remain fully accessible.
  */
-body[data-menu-stage="tree"] .topbar { display: none !important; }
+/* Keep the game's navigation visible. The tree should be comfortably
+ * larger than the old filter-heavy panel, not an edge-to-edge takeover. */
 body[data-menu-stage="tree"] #welcome {
   position: fixed !important;
-  inset: 0 !important;
-  width: 100% !important;
-  max-width: none !important;
+  inset: calc(70px + var(--safe-top,0px)) 18px calc(24px + var(--safe-bottom,0px)) !important;
+  width: auto !important;
+  max-width: 1480px !important;
   min-width: 0 !important;
-  height: 100dvh !important;
+  height: auto !important;
   max-height: none !important;
   min-height: 0 !important;
   padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+  margin: 0 auto !important;
+  border: 1px solid #52677768 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 14px 38px #0005 !important;
   transform: none !important;
   z-index: 100 !important;
 }
@@ -47,8 +48,8 @@ body[data-menu-stage="tree"] #aircraft-tree-screen[hidden] { display:none!import
 #aircraft-tree-screen .tree-heading {
   grid-column: 1 !important;
   grid-row: 1 !important;
-  min-height: 48px;
-  height: 48px;
+  min-height: 44px;
+  height: 44px;
   padding: 4px 12px;
   margin: 0;
   gap: 8px;
@@ -64,15 +65,15 @@ body[data-menu-stage="tree"] #aircraft-tree-screen[hidden] { display:none!import
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 8px;
-  padding: 7px 12px;
+  padding: 5px 12px;
   background:#111e2a;
   border-bottom:1px solid #627d8940;
 }
 #aircraft-tree-screen .tree-nation {
   min-width:0;
-  min-height:50px;
-  max-height:54px;
-  height:50px;
+  min-height:44px;
+  max-height:44px;
+  height:44px;
   padding:5px 11px;
   gap:10px;
   border-radius:6px;
@@ -107,10 +108,11 @@ body[data-menu-stage="tree"] #aircraft-tree-screen[hidden] { display:none!import
 #aircraft-tree-screen .tree-spatial .tree-card-name {font-weight:650;}
 #aircraft-tree-screen .tree-detail {z-index:10;}
 @media (max-width:760px){
-  #aircraft-tree-screen .tree-heading {height:44px;min-height:44px;padding:2px 8px;}
+  body[data-menu-stage="tree"] #welcome {inset:calc(60px + var(--safe-top,0px)) 10px calc(12px + var(--safe-bottom,0px)) !important;}
+  #aircraft-tree-screen .tree-heading {height:42px;min-height:42px;padding:2px 8px;}
   #aircraft-tree-screen .tree-heading h2 {font-size:16px;}
   #aircraft-tree-screen .tree-nations {padding:6px 8px;gap:6px;}
-  #aircraft-tree-screen .tree-nation {height:46px;min-height:46px;max-height:46px;padding:4px 7px;gap:7px;}
+  #aircraft-tree-screen .tree-nation {height:42px;min-height:42px;max-height:42px;padding:4px 7px;gap:7px;}
   #aircraft-tree-screen .tree-flag {width:29px;height:20px;}
   #aircraft-tree-screen .tree-nation-copy>b {font-size:15px;}
   #aircraft-tree-screen .tree-nation-copy>small {display:none;}
@@ -127,6 +129,8 @@ body[data-menu-stage="tree"] #aircraft-tree-screen[hidden] { display:none!import
   #aircraft-tree-screen .tree-heading h2 {font-size:15px;}
 }
 @media(max-height:520px){
+  body[data-menu-stage="tree"] #welcome {inset:8px 10px !important;}
+  #aircraft-tree-screen .tree-heading {min-height:36px;height:36px;}
   body[data-menu-stage="tree"] #aircraft-tree-screen {
     grid-template-columns:minmax(0,1fr)!important;
     grid-template-rows:auto auto minmax(0,1fr)!important;

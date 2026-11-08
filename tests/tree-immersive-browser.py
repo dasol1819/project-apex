@@ -32,9 +32,12 @@ with sync_playwright() as p:
       rendered:document.querySelectorAll('#tree-board [data-tree-aircraft]').length};
   }""")
   print('TREE_LAYOUT',label,json.dumps(metric,ensure_ascii=False),flush=True)
-  assert abs(metric['screen']['x'])<12 and metric['screen']['w']>=size['width']-14, 'tree not fullscreen'
-  assert metric['screen']['h']>=size['height']*.96,'tree not full viewport height'
-  assert metric['board']['h']>=size['height']*.68,'usable tree height too small'
+  assert 7<=metric['screen']['x']<=24, 'tree should have a comfortable inset'
+  assert size['width']*.88<=metric['screen']['w']<size['width'], 'tree width must be balanced'
+  assert metric['screen']['h']>=size['height']*.85,'tree panel too short'
+  assert metric['screen']['h']<=size['height']*(.99 if size['height']<=520 else .94),'tree still takes over the full screen'
+  assert metric['screen']['y']>=6,'tree needs visible breathing room above'
+  assert metric['board']['h']>=size['height']*.66,'usable tree height too small'
   for item in ['search','branches','status','toolbar','current']:
    assert metric[item]['hidden'],'old UI still visible: '+item
   assert metric['rendered']>45,'filtered tree or missing aircraft'
