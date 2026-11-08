@@ -232,6 +232,63 @@ pre('DamageState::move_int__double__double__double__double__double__const',`    
       f64.const 0.16
       local.set 5
     end`);
+
+// Route the existing hydraulic actuator and swept-wing coefficient path to
+// native type 16. The F-14 path remains unchanged, while angle normalization
+// uses the MiG's 16..72 degree range instead of the Tomcat's 20..68 degrees.
+function wingGate(b,expression,needle){
+ expect(b.includes(needle),'wing gate missing: '+expression);
+ return b.replace(needle,needle.replace(expression,expression==='i32.ne'?'i32.eq':'i32.ne')+
+  (expression==='i32.ne'?'\n      '+isMig+'\n      i32.or\n      i32.eqz':''));
+}
+function sweepTerms(section){
+ const substitutions=[
+  ['f64.const -0x1.4p+4 (;=-20;)','f64.const -16\n      f64.const -20\n      '+isMig+'\n      select'],
+  ['f64.const 0x1.8p+5 (;=48;)','f64.const 56\n      f64.const 48\n      '+isMig+'\n      select'],
+  ['f64.const 0x1.4p+4 (;=20;)','f64.const 16\n      f64.const 20\n      '+isMig+'\n      select'],
+  ['f64.const 0x1.1p+6 (;=68;)','f64.const 72\n      f64.const 68\n      '+isMig+'\n      select']
+ ];
+ for(const [old,now] of substitutions)section=section.split(old).join(now);
+ return section;
+}
+for(const [name,argument] of [
+ ['coefficients_double__double__double__double__double__double__double__double__double__double__double_','8'],
+ ['liftCoefficient_double__double__double_','3']
+]){
+ change(name,b=>{
+  const marker='local.get '+argument+'\n        i32.const 4\n        i32.ne';
+  const at=b.indexOf('i32.const 4\n');
+  // Match whitespace independently of the original compiler indentation.
+  const regex=new RegExp('(local\\.get '+argument+'\\n)(\\s+)i32\\.const 4\\n\\s+i32\\.ne');
+  expect(regex.test(b),'lift/drag F-14 guard '+name);
+  b=b.replace(regex,(_,prefix,sp)=>prefix+sp+'i32.const 4\n'+sp+'i32.eq\n'+sp+isMig+'\n'+sp+'i32.or\n'+sp+'i32.eqz');
+  return sweepTerms(b);
+ });
+}
+change('step',b=>{
+ // Wing lift/camber reduction is calculated before the hydraulic servo.
+ const aero=b.indexOf('f64.load offset=1078952');
+ expect(aero>0,'sweep aerodynamic calculation');
+ let a=b.slice(Math.max(0,aero-1200),aero+1300);
+ const guard=/local\.get 4\n(\s+)i32\.const 4\n\s+i32\.ne/;
+ expect(guard.test(a),'wing drag guard');
+ a=a.replace(guard,(_,sp)=>'local.get 4\n'+sp+'i32.const 4\n'+sp+'i32.eq\n'+sp+isMig+'\n'+sp+'i32.or\n'+sp+'i32.eqz');
+ a=sweepTerms(a);
+ b=b.slice(0,aero-1200)+a+b.slice(aero+1300);
+ const marker=b.indexOf('i32.load8_u offset=1119600');
+ expect(marker>0,'hydraulic sweep controller');
+ const gate=b.lastIndexOf('i32.const 4\n      i32.ne',marker);
+ expect(gate>0&&marker-gate<1300,'hydraulic type guard');
+ b=b.slice(0,gate)+('i32.const 4\n      i32.eq\n      '+isMig+'\n      i32.or\n      i32.eqz')+b.slice(gate+'i32.const 4\n      i32.ne'.length);
+ // Adjust whole sweep actuator and wind-load geometry, preserving F-14 values.
+ const after=b.indexOf('f64.store offset=1078952',marker);
+ expect(after>marker,'hydraulic position update');
+ const tail=b.indexOf('f64.store offset=1078968',after);
+ const end=tail>after?tail+28:after+1600;
+ b=b.slice(0,marker)+sweepTerms(b.slice(marker,end))+b.slice(end);
+ return b;
+});
+
 const pages=Math.ceil(cursor/65536);
 wat=wat.replace(/\(memory \(;0;\) \d+\)/,`(memory (;0;) ${pages})`);
 wat=wat.slice(0,wat.lastIndexOf(')'))+
