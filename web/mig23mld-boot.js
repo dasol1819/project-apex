@@ -115,7 +115,7 @@
   state('3D 렌더러 불러오는 중…');
   showProgress(buffer.byteLength,buffer.byteLength,'다운로드 완료 · 3D 엔진 준비 중…');
   // Import errors are caught here, rather than silently preventing the loader from starting.
-  const viewer=readyViewer||await timeout(import('./mig23mld-viewer.js?v=6'),20000);
+  const viewer=readyViewer||await timeout(import('./mig23mld-viewer.js?v=7'),20000);
   if(run!==generation)return;
   label.textContent='다운로드 완료 · 메시 및 텍스처 구성 중…';
   detail.textContent=mb(buffer.byteLength)+' 수신 완료 · GPU 구성 중';
@@ -131,7 +131,7 @@
   try{
    // Start engine loading in parallel; catch an unavailable Three.js import
    // without wasting the full 22.6 MB download.
-   const renderPromise=timeout(import('./mig23mld-viewer.js?v=6'),20000);
+   const renderPromise=timeout(import('./mig23mld-viewer.js?v=7'),20000);
    const modelPromise=loadModel(run);
    const [viewer,buffer]=await Promise.all([renderPromise,modelPromise]);
    if(run!==generation)return;
