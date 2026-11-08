@@ -23,7 +23,9 @@ main{max-width:1500px;margin:auto}.stage{position:relative;height:min(68vh,850px
 #download-progress[hidden]{display:none}#download-label{font-weight:650;font-size:1rem;margin-bottom:12px}#download-percent{font-size:1.7rem;font-weight:750;color:#8dd9f3;margin-bottom:12px}
 #download-track{height:10px;background:#304256;border-radius:12px;overflow:hidden}#download-fill{height:100%;width:0%;background:#8dd9f3;transition:width .12s ease}#download-detail{font-size:.8rem;color:#b5c7d8;margin-top:12px}
 #upload{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:22px 24px;text-align:center;max-width:450px;width:calc(100% - 40px);background:#102238ed;border:1px solid #52687c;border-radius:16px;box-shadow:0 18px 55px #0008}
-#upload p{line-height:1.5}#upload label{display:block;cursor:pointer;margin-top:18px;padding:13px 20px;background:#367a96;color:#fff;border-radius:8px}#file{position:absolute;opacity:0;pointer-events:none}
+#upload p{line-height:1.5}
+#retry-load{display:block;width:100%;border:1px solid #89bdda;background:#245471;color:#fff;border-radius:8px;padding:12px 14px;cursor:pointer;margin-top:14px}
+#retry-load:hover{background:#367a96}#retry-load[hidden]{display:none}#upload label{display:block;cursor:pointer;margin-top:18px;padding:13px 20px;background:#367a96;color:#fff;border-radius:8px}#file{position:absolute;opacity:0;pointer-events:none}
 .controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:18px 24px;border-top:1px solid #304255;border-bottom:1px solid #304255;background:#122235}
 .controls button{border:1px solid #5a7186;color:#e4edf6;background:#1b3246;border-radius:7px;padding:10px 17px;cursor:pointer}
 .controls button:hover{background:#29516b}.sweep{display:flex;gap:12px;align-items:center;margin-left:auto}
@@ -31,7 +33,7 @@ input[type=range]{width:clamp(100px,18vw,240px);accent-color:#7ac9ef}#sweep-angl
 .meta{padding:16px 24px 23px;color:#b5c7d8;font-size:.85rem}footer{max-width:1500px;margin:0 auto;border-top:1px solid #24374b;font-size:.85rem;color:#a9bece}footer p{margin:8px 0;line-height:1.6}
 @media(max-width:650px){header{align-items:start;gap:10px}.stage{height:55vh;min-height:390px}.sweep{width:100%;margin-left:0}.controls{gap:8px}.controls button{padding:9px 11px}#status{top:10px;left:10px;max-width:calc(100% - 20px)}}
 </style>
-<script type="module" src="./mig23mld-viewer.js?v=5"></script>
+<script defer src="./mig23mld-boot.js?v=1"></script>
 </head>
 <body>
 <header><div><span class="kicker">PROJECT APEX / AIRFRAME STUDIO</span><h1>MiG-23MLD <small style="font-size:.55em;opacity:.6">FLOGGER-K</small></h1><p>가변익 전투기 · 외형 검수</p></div><a class="back" href="./?screen=tree&aircraft=ru-mig23-mld">← 기체 트리</a></header>
@@ -45,7 +47,7 @@ input[type=range]{width:clamp(100px,18vw,240px);accent-color:#7ac9ef}#sweep-angl
 <div id="download-track" role="progressbar" aria-label="모델 다운로드" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="download-fill"></div></div>
 <div id="download-detail">모델 파일 확인 중</div>
 </div>
-<div id="upload" hidden><b>원본 모델 파일을 선택하세요</b><p>서버에 GLB가 배포되기 전까지는 업로드한 파일을 이 브라우저에서만 볼 수 있습니다.</p><label for="file">Mig-23.glb 선택</label><input id="file" type="file" accept=".glb,model/gltf-binary"></div>
+<div id="upload" hidden><b>모델을 불러올 수 없습니다</b><p>서버 접속에 실패했거나 3D 렌더러를 실행하지 못했습니다. 재시도하거나 로컬 원본 GLB를 선택할 수 있습니다.</p><button type="button" id="retry-load" hidden>다시 시도</button><label for="file">로컬 Mig-23.glb 선택</label><input id="file" type="file" accept=".glb,model/gltf-binary"></div>
 </section>
 <nav class="controls" aria-label="3D 관찰 설정"><button data-view="quarter">사선</button><button data-view="front">정면</button><button data-view="side">측면</button><button data-view="rear">후면</button><button data-view="top">상면</button><div class="sweep"><label for="sweep">가변익</label><input id="sweep" type="range" min="16" max="72" step="1" value="72"><output id="sweep-angle" for="sweep">72°</output></div></nav>
 <p class="meta" id="metrics">모델 파일을 불러오면 메시 정보가 표시됩니다.</p>
@@ -54,5 +56,16 @@ input[type=range]{width:clamp(100px,18vw,240px);accent-color:#7ac9ef}#sweep-angl
 <p>외형 모델: <a href="https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06" rel="noopener noreferrer">Tim Samedov (citizensnip)</a> · <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener noreferrer">CC BY 4.0</a>. 사용자 제공 Blender GLB를 기체 크기에 맞게 배치했으며 가변익의 시각적 회전 축을 추가했습니다.</p>
 <p>이 페이지는 모델 외형 미리보기입니다. 실제 기체 물리·무장·피해·착륙장치 애니메이션은 아직 구현되지 않았으며 본편에서 이 기종을 출격시킬 수 없습니다. 가변익 회전은 시각 검사용으로, 실제 작동 검증 완료를 의미하지 않습니다.</p>
 </footer>
+<noscript><p style="padding:20px;color:#fff">3D 미리보기와 다운로드 진행률을 보려면 JavaScript를 켜 주세요.</p></noscript>
+<script>
+/* A plain-script watchdog still reports failure when the separate loader file fails to load at all. */
+setTimeout(function(){
+ if(window.__apexMig23BootAlive)return;
+ var p=document.getElementById('download-progress'),u=document.getElementById('upload'),t=document.getElementById('status');
+ if(p)p.hidden=true;
+ if(u)u.hidden=false;
+ if(t){t.textContent='다운로드 로더가 실행되지 않았습니다. 사이트 캐시를 새로고침해 주세요.';t.dataset.error='true';}
+},12000);
+</script>
 </body>
 </html>
