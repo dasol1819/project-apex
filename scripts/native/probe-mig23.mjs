@@ -20,11 +20,11 @@ for(const needle of ['i32.const 4','f64.store offset=','f64.load offset=']){
 const names=[...wat.matchAll(/^  \(func \$([^\s(]+)/gm)].map(m=>m[1]);console.log('SUSPECT NAMES '+names.filter(n=>/wing|sweep|aero|coeff|engine|thrust|fuel/i.test(n)).join(' | '));
 
 for(const needle of ['1078952','1078960','1119600','1078968']){
- console.log('\n=== WING ADDRESS '+needle+' ===');
- for(const m of [...wat.matchAll(/^  \\(func \\$([^\s(]+)/gm)]){
-  const at=m.index,j=wat.indexOf('\n  (',at+1),b=wat.slice(at,j<0?wat.length:j);
-  let p=0,count=0;while((p=b.indexOf(needle,p))>=0){
-   if(count++<12)console.log(m[1]+'@'+p+' '+b.slice(Math.max(0,p-440),p+530).replace(/\n/g,'\\n'));p+=needle.length;
+ console.log('=== WING ADDRESS '+needle+' ===');
+ for(const section of wat.split('\n  (func $').slice(1)){
+  const name=section.slice(0,section.indexOf(' '));
+  let p=0,count=0;while((p=section.indexOf(needle,p))>=0){
+   if(count++<5)console.log(name+'@'+p+': '+section.slice(Math.max(0,p-240),p+360).split('\n').join(' '));p+=needle.length;
   }
  }
 }
