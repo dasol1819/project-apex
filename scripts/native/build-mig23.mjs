@@ -187,12 +187,12 @@ change('set_wing_sweep',b=>{
       ${isMig}
       i32.or
       i32.eqz`);
- b=b.replaceAll('f64.const 0x1.4p+4 (;=20;)',`f64.const 20
-      f64.const 16
+ b=b.replaceAll('f64.const 0x1.4p+4 (;=20;)',`f64.const 16
+      f64.const 20
       ${isMig}
       select`);
- b=b.replaceAll('f64.const 0x1.1p+6 (;=68;)',`f64.const 68
-      f64.const 72
+ b=b.replaceAll('f64.const 0x1.1p+6 (;=68;)',`f64.const 72
+      f64.const 68
       ${isMig}
       select`);
  return b;
