@@ -7,10 +7,13 @@ import {execFileSync} from 'node:child_process';
 
 const root=path.resolve(import.meta.dirname,'..');
 const web=process.argv[2] ? path.resolve(process.argv[2]) : path.join(root,'web');
+// Runtime imports must resolve from the deployed archive (not merely in source JS).
+assert.ok(fs.existsSync(path.join(web,'vendor/three.module.js')), 'Missing deployed vendor/three.module.js; MiG-23 module cannot initialize');
 const tree=fs.readFileSync(path.join(web,'aircraft-tree-data.js'),'utf8');
 const preview=fs.readFileSync(path.join(web,'mig23mld.html'),'utf8');
 const loader=fs.readFileSync(path.join(web,'mig23mld-glb.js'),'utf8');
 const viewer=fs.readFileSync(path.join(web,'mig23mld-viewer.js'),'utf8');
+const boot=fs.readFileSync(path.join(web,'mig23mld-boot.js'),'utf8');
 assert.match(tree,/family==='mig23'&&suffix==='mld'\?'mig23mld\.html\?v=1'/);
 assert.match(tree,/\['mld','MiG-23MLD'/);
 assert.match(preview,/Tim Samedov/);
@@ -19,11 +22,17 @@ assert.match(preview,/본편에서 이 기종을 출격시킬 수 없습니다/)
 assert.match(loader,/source-preserving|MiG-23MLD Blender/);
 assert.match(loader,/Math\.min\(72,Number\(degrees\)\|\|72\)\)-72/);
 assert.match(viewer,/parseMig23Glb/);
-for(const f of ['mig23mld-glb.js','mig23mld-viewer.js'])
+assert.match(viewer,/export async function mountMig23/);
+assert.ok(preview.includes('mig23mld-boot.js?v=1'),'Missing non-module bootloader script');
+assert.match(boot,/AbortController/);
+assert.ok(boot.includes('raw.githubusercontent.com'),'Missing backup model source');
+assert.match(boot,/async function download/);
+assert.ok(boot.includes("import('./mig23mld-viewer.js"),'Download must defer Three.js module to dynamic import');
+for(const f of ['mig23mld-glb.js','mig23mld-viewer.js','mig23mld-boot.js'])
  execFileSync(process.execPath,['--check',path.join(web,f)],{stdio:'inherit'});
 
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'web/manifest.json'),'utf8'));
-for(const f of ['mig23mld.html','mig23mld-glb.js','mig23mld-viewer.js','aircraft-tree-data.js','aircraft-tree.js']){
+for(const f of ['mig23mld.html','mig23mld-glb.js','mig23mld-viewer.js','mig23mld-boot.js','aircraft-tree-data.js','aircraft-tree.js']){
  const data=fs.readFileSync(path.join(root,'web',f));
  assert.equal(crypto.createHash('sha256').update(data).digest('hex'),manifest.files[f],'Manifest mismatch: '+f);
 }

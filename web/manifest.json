@@ -59,8 +59,8 @@
     "mig15bis-model.js": "77b056f20f21a0cd091cf21ad8e3e8a6cb02a056eaa690b1f563b87e2703a103",
     "mig15bis-review.html": "31aac8a333faaedd1600384aade99ffecf5f0d5e0eb63d1c54d72db377009b83",
     "mig23mld-glb.js": "5d636586be9bf9fd7809054666cdb5fed26d4620896161de1162c99fc2f93789",
-    "mig23mld-viewer.js": "b3ebacaa2c4f5f4fb99efd6a8fcb296158d7d935e7726f2e64599a71f8262d4c",
-    "mig23mld.html": "4a9b5eb89417bfd1cac1e195686eb228c432cc2c3aa8c1615dd4dcb4971ab916",
+    "mig23mld-viewer.js": "be36bdc94fce13ac2e637f1d339a280d773e2cb6f1e7a9b284a2fe7342d6ee98",
+    "mig23mld.html": "2790664c7eef58b1fea7987d56854db98ebfa74825411cc5ec862f4d3aaaf4b4",
     "mig29-asset.js": "57b4c5819a936608f3c631fcf2e5c27663d8ac38fb6522a1a5520bc76dd8900f",
     "mig29-combat-model.js": "71e01e1872c4fc6af37409bae9272c9e790b7161078d0d544c2329c5aea6e6bd",
     "mig29-details.js": "133de88afec83fcb08403c3f78b290bbccc37e328a5399f0cdb89cfa9e30f220",
@@ -98,6 +98,7 @@
     "vendor/basis/THREE-LICENSE.txt": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
     "vendor/basis/basis_transcoder.js": "8478b5b6d6b74e7d3082b89f6417321d8d1dc0307f2b30d4484bb11b441696a1",
     "vendor/basis/basis_transcoder.wasm": "6cf17dc889352c42e9acf8897107978d127005fe3386c36a0e3845e27967630a",
-    "wreckage-mesh.js": "4a520df91a693a2484f777ef37de36f21705b36fefb1fea2555867743ef3b375"
+    "wreckage-mesh.js": "4a520df91a693a2484f777ef37de36f21705b36fefb1fea2555867743ef3b375",
+    "mig23mld-boot.js": "94799f62a300dae72c970b2f2d563d9fad00e37518fd4209d5a7b2871cf80121"
   }
 }
