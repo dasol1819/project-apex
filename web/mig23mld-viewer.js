@@ -16,8 +16,8 @@ const grid=new T.GridHelper(48,24,0x293b4d,0x1c2939);grid.position.y=-3.5;scene.
 let installed,sweep=()=>{},yaw=.8,pitch=.28,distance=29,drag=null;
 const say=(message,error=false)=>{$('status').textContent=message;$('status').dataset.error=String(error);};
 const preset=key=>{[yaw,pitch,distance]=({
- quarter:[.8,.28,29],front:[0,.06,32],side:[Math.PI/2,.06,29],
- rear:[Math.PI,.05,29],top:[0,Math.PI/2-.04,34]
+ quarter:[.8,.28,29],front:[Math.PI,.06,32],side:[Math.PI/2,.06,29],
+ rear:[0,.05,29],top:[0,Math.PI/2-.04,34]
 })[key]??[.8,.28,29];};
 function resize(){
  const rect=canvas.getBoundingClientRect(),w=Math.max(2,Math.round(rect.width)),h=Math.max(2,Math.round(rect.height));
