@@ -28,3 +28,6 @@ for(const needle of ['1078952','1078960','1119600','1078968']){
   }
  }
 }
+
+console.log('SWEEP AERO '+body('step').slice(260800,263400));
+console.log('SWEEP SERVO '+body('step').slice(266900,270600));
