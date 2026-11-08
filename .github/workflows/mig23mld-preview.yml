@@ -9,6 +9,7 @@ on:
       - 'web/assets/mig23mld/**'
       - 'web/manifest.json'
       - 'tests/mig23mld-preview.mjs'
+      - 'tests/mig23mld-studio-browser.py'
       - 'tests/mig23mld-pbr.mjs'
       - '.deployment/restore.py'
       - '.github/workflows/mig23mld-preview.yml'
@@ -16,7 +17,7 @@ permissions:
   contents: read
 jobs:
   preview:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -28,3 +29,16 @@ jobs:
         run: |
           node tests/mig23mld-preview.mjs public
           node tests/mig23mld-pbr.mjs public
+      - name: Verify real desktop and mobile 3D viewer in Chromium
+        run: |
+          python3 -m venv /tmp/apex-mig23-viewer
+          /tmp/apex-mig23-viewer/bin/pip install --quiet playwright==1.56.0
+          /tmp/apex-mig23-viewer/bin/python -m playwright install --with-deps chromium
+          python3 -m http.server 8766 --directory public >/tmp/mig23-studio-server.log 2>&1 &
+          APEX_TEST_URL=http://127.0.0.1:8766 /tmp/apex-mig23-viewer/bin/python tests/mig23mld-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mig23-studio-render-captures
+          path: /tmp/mig23-studio-browser
+          if-no-files-found: ignore
