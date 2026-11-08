@@ -1,0 +1,128 @@
+{
+  "id": 16,
+  "name": "MiG-23MLD Flogger-K",
+  "engine": "R-35-300",
+  "airframeDoubles": {
+    "8": 11970,
+    "16": 18800,
+    "24": 37.35,
+    "32": 13.965,
+    "40": 4.82,
+    "48": 9595,
+    "56": 4672,
+    "64": 16.7,
+    "72": 7.5,
+    "80": -3,
+    "88": 25,
+    "96": 3.55,
+    "104": 83600,
+    "112": 127490,
+    "120": 18000,
+    "128": 12000,
+    "136": 0.0275,
+    "144": 0.11,
+    "152": 4.35,
+    "160": 0.4,
+    "168": 0.85,
+    "176": 1.7,
+    "184": 1.01,
+    "192": 16600,
+    "200": 1.9,
+    "224": 25,
+    "232": 0.92,
+    "240": 0.65,
+    "248": -4.7,
+    "256": 1.08,
+    "264": 6.4,
+    "280": 18030
+  },
+  "airframeInts": {
+    "0": 1,
+    "208": 0,
+    "212": 2,
+    "216": 260,
+    "272": 4
+  },
+  "radar": {
+    "range": 85000,
+    "surfaceRange": 55000,
+    "revisit": 2.2,
+    "scanStepDegrees": 9,
+    "notch": 29,
+    "quality": 0.58,
+    "tws": 0,
+    "datalink": 0
+  },
+  "rcs": 5.8,
+  "loadouts": [
+    {
+      "id": 46,
+      "aircraft": 16,
+      "key": "mig23mld-intercept",
+      "name": "요격 · R-24R / R-60M",
+      "ir": 4,
+      "rfMask": 3,
+      "bomb": -1,
+      "bombs": 0,
+      "pod": 0,
+      "note": "R-60M ×4 + R-24R ×2 · native missile ballistics are approximated from existing SARH/IR profiles"
+    }
+  ],
+  "irMounts": [
+    [
+      -5.1,
+      -0.18,
+      1.25
+    ],
+    [
+      5.1,
+      -0.18,
+      1.25
+    ],
+    [
+      -3.65,
+      -0.22,
+      0.75
+    ],
+    [
+      3.65,
+      -0.22,
+      0.75
+    ]
+  ],
+  "rfMounts": [
+    [
+      -2.5,
+      -0.36,
+      0.8
+    ],
+    [
+      2.5,
+      -0.36,
+      0.8
+    ]
+  ],
+  "gearContacts": [
+    [
+      0,
+      -1.42,
+      -3.18
+    ],
+    [
+      -1.82,
+      -1.42,
+      1.2
+    ],
+    [
+      1.82,
+      -1.42,
+      1.2
+    ]
+  ],
+  "assumptions": "MiG-23MLD dimensions, R-35-300 nominal dry/maximum afterburner thrust and 16/45/72 degree wing sweep sourced from Luftfahrttechnisches Museum Rothenburg, Jane's MiGavia, flymig.com. Wing auto schedule is GAME ASSISTANCE (the real pilot selected sweep). Drag/lift/control/inertia/fuel flow and missile/radar performance are estimates, not classified performance claims.",
+  "sources": [
+    "https://luftfahrtmuseum-rothenburg.de/triebwerke/triebwerk-r-35/",
+    "https://janes.migavia.com/rus/mig/mig-23.html",
+    "https://www.flymig.com/aircraft/MiG-23/"
+  ]
+}
