@@ -1,0 +1,36 @@
+name: Optimize MiG-23MLD model for faster download
+on:
+  push:
+    branches: [perf-mig23mld-fast-load-20261108]
+    paths:
+      - 'scripts/optimize-mig23-glb.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install image encoder
+        run: python -m pip install Pillow==11.3.0
+      - name: Compress embedded textures without touching geometry
+        run: python scripts/optimize-mig23-glb.py web/assets/mig23mld/Mig-23.glb
+      - name: Refresh hashed web manifest and verify restored tree
+        run: |
+          python scripts/update-web-manifest.py
+          python .deployment/restore.py
+          node tests/mig23mld-preview.mjs public
+          git diff --check
+      - name: Commit optimized model and manifest
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add web/assets/mig23mld/Mig-23.glb web/manifest.json
+          git commit -m 'perf(mig23mld): compress GLB textures while preserving mesh geometry'
+          git push origin HEAD:perf-mig23mld-fast-load-20261108
