@@ -94,8 +94,9 @@
     "vendor/basis/basis_transcoder.js": "8478b5b6d6b74e7d3082b89f6417321d8d1dc0307f2b30d4484bb11b441696a1",
     "vendor/basis/basis_transcoder.wasm": "6cf17dc889352c42e9acf8897107978d127005fe3386c36a0e3845e27967630a",
     "wreckage-mesh.js": "4a520df91a693a2484f777ef37de36f21705b36fefb1fea2555867743ef3b375",
-    "mig23mld.html": "4b33f91288b0169c05f2d376de347e7678aec4d07eb1442116ef7481bf706f2d",
-    "mig23mld-glb.js": "e7f977d5f38d59ffa7db505e9e84886f0f51fc48b7381cae49ba1457de2dcc79",
-    "mig23mld-viewer.js": "87001955a949317f0e0cd64a7cd30de7311f01ff5b5fcd08f55826f8f0ae70e4"
+    "mig23mld.html": "00a42adcb8748abe1d44c0b096f4a49975a29a028bf2be0ecd27f3332f402a12",
+    "mig23mld-glb.js": "5d636586be9bf9fd7809054666cdb5fed26d4620896161de1162c99fc2f93789",
+    "mig23mld-viewer.js": "09170366504b3d1a504f605a1a9bcfc104263f1b53173302477ef85e84edcbc7",
+    "assets/mig23mld/CREDITS.txt": "97d39e4d2bef207bcf8961947d923d19a9ef617f419f21c29828f58ea12211fd"
   }
 }
