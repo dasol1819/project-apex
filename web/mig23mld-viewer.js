@@ -11,7 +11,23 @@ const camera=new T.PerspectiveCamera(40,1,.1,180);
 scene.add(new T.HemisphereLight(0xcde6ff,0x263343,2.2));
 const sun=new T.DirectionalLight(0xfff4db,3);sun.position.set(-11,18,-12);scene.add(sun);
 const fill=new T.DirectionalLight(0x8dc3ff,1.1);fill.position.set(13,5,12);scene.add(fill);
-const grid=new T.GridHelper(48,24,0x293b4d,0x1c2939);grid.position.y=-3.5;scene.add(grid);
+// The game's compact Three.js build does not export GridHelper.
+// Draw the reference floor with the same primitives used by combat aircraft;
+// never prevent model loading because a decorative helper is unavailable.
+function createReferenceGrid(){
+ if(![T.BufferGeometry,T.Float32BufferAttribute,T.LineBasicMaterial,T.LineSegments].every(x=>typeof x==='function'))return null;
+ const positions=[],half=24,spacing=2;
+ for(let x=-half;x<=half;x+=spacing){
+  positions.push(-half,0,x, half,0,x, x,0,-half, x,0,half);
+ }
+ const geometry=new T.BufferGeometry();
+ geometry.setAttribute('position',new T.Float32BufferAttribute(positions,3));
+ const material=new T.LineBasicMaterial({color:0x293b4d,transparent:true,opacity:.65,depthWrite:false});
+ const lines=new T.LineSegments(geometry,material);
+ lines.name='Airframe reference grid';lines.position.y=-3.5;
+ return lines;
+}
+const grid=createReferenceGrid();if(grid)scene.add(grid);
 
 let installed,sweep=()=>{},yaw=.8,pitch=.28,distance=29,drag=null;
 const say=(message,error=false)=>{$('status').textContent=message;$('status').dataset.error=String(error);};
