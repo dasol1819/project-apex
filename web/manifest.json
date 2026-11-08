@@ -8,7 +8,7 @@
     "aircraft-tree.js": "4d6c2fc9c6e13c913eac505b51b9eb8df065fe0df18440384473a19ae3745236",
     "aircraft.js": "166ed892c307632ea71c4e0ce28cb43609bec1d53f1f9f0dae7c114903a8a845",
     "airframe-surface-uv.js": "ca39e340734cd392b1154aad6c59feb9e1a9aa4e483b3bcc06aaca5a50ecd693",
-    "app.js": "a2a2cf06f28cfe7cea8479651c56be246f28fbeb5bc2b040cb1e65a84db4ef4e",
+    "app.js": "8bfef31d07f56f43558a2f9aefa96e7a0614fff9f04503dd2d70c5a84494c963",
     "armament-data.js": "ca3e865b597f535e118f42cdbc0313971602f18414f31187d0be41ed75e3bd6a",
     "assets/mig15bis-review/rear-photo.jpg": "6f15756e9beb8fb3f7a5c82b1851ab0a0bc183659058f82fb2729a8a26fda5b6",
     "assets/mig15bis-review/rear-render.png": "4ac6d01b9ce2e3b6b6e3f27eb6786a89ca8f7995d1d8cbd7e1536fada9e0fb03",
@@ -60,7 +60,7 @@
     "mig15bis-review.html": "31aac8a333faaedd1600384aade99ffecf5f0d5e0eb63d1c54d72db377009b83",
     "mig23mld-glb.js": "17db0d5c76243ede2a735d8bca4d7aeaa40655295ac4f21bb742ae3702a58156",
     "mig23mld-viewer.js": "be36bdc94fce13ac2e637f1d339a280d773e2cb6f1e7a9b284a2fe7342d6ee98",
-    "mig23mld.html": "2790664c7eef58b1fea7987d56854db98ebfa74825411cc5ec862f4d3aaaf4b4",
+    "mig23mld.html": "bbe46af4c3621adaf759a32fa8cfe6a003c07b64a88201af7feba135f3cc8de6",
     "mig29-asset.js": "57b4c5819a936608f3c631fcf2e5c27663d8ac38fb6522a1a5520bc76dd8900f",
     "mig29-combat-model.js": "71e01e1872c4fc6af37409bae9272c9e790b7161078d0d544c2329c5aea6e6bd",
     "mig29-details.js": "133de88afec83fcb08403c3f78b290bbccc37e328a5399f0cdb89cfa9e30f220",
@@ -101,6 +101,6 @@
     "wreckage-mesh.js": "4a520df91a693a2484f777ef37de36f21705b36fefb1fea2555867743ef3b375",
     "mig23mld-boot.js": "94799f62a300dae72c970b2f2d563d9fad00e37518fd4209d5a7b2871cf80121",
     "mig23mld-flight.js": "8530033d826a2ae7548a85aaf0bb98dbb597a08839a3b01e1b346e9bc166f8b9",
-    "mig23mld-game.js": "7e06f64df9de07a1f24d56f92019834bce0ae7910842b2a9ee25cc9d9367f495"
+    "mig23mld-game.js": "2644b390b94c5549db57a9411e4703f2b4e556e8c77677002ea767246662260d"
   }
 }
