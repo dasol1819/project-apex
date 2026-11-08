@@ -9,7 +9,7 @@ import {createMissionRun,missionDefinition,FLIGHT_CHECKPOINTS} from './missions.
 import {createMissionWorld} from './mission-world.js';
 import {DAGGER_ID} from './dagger-mission.js';
 import {createDaggerDirector} from './dagger-director.js';
-import {createAircraftTree} from './aircraft-tree.js?v=inspector-5';
+import {createAircraftTree} from './aircraft-tree.js?v=balanced-1';
 import {createGraphicsSettings} from './graphics-settings.js';
 import {createGraphicsWorkload} from './graphics-workload.js?v=inspector-5';
 import {nativePreset,selectedPreset,savePreset,weaponFor,rfCount,availableWeapons} from './loadout-catalog.js';
