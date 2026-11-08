@@ -1,0 +1,14 @@
+MiG-23MLD 3D model
+Original model author: Tim Samedov (Sketchfab: citizensnip)
+Original: https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+
+Source for Project Apex: user-supplied Blender-exported Mig-23.glb.
+Changes: browser display transform to +Y up, nose toward -Z, length 16.7 m;
+source variable-sweep wing meshes regrouped under rotation pivots, Blender-
+exported geometry/UVs retained. Optional browser optimization replaces opaque
+PNG textures with resampled JPEG; alpha-bearing images remain PNG.
+
+Original creator is not affiliated with or endorsing Project Apex.
+This attribution does not cover third-party additions unless separately licensed.
