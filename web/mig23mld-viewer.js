@@ -50,12 +50,25 @@ async function display(buffer,filename){
 }
 async function loadHosted(){
  try{
-  say('MiG-23MLD 파일 확인 중…');
-  const response=await fetch('./assets/mig23mld/Mig-23.glb?v=1',{cache:'no-cache'});
+  say('MiG-23MLD 경량 모델 확인 중…');
+  const response=await fetch('./assets/mig23mld/Mig-23.glb?v=2');
   if(!response.ok)throw Error('HTTP '+response.status);
-  await display(await response.arrayBuffer(),'MiG-23MLD');
+  const total=Number(response.headers.get('content-length'))||0;
+  let buffer;
+  if(response.body&&total){
+   const reader=response.body.getReader(),chunks=[];let loaded=0;
+   while(true){
+    const {done,value}=await reader.read();if(done)break;
+    chunks.push(value);loaded+=value.byteLength;
+    say('MiG-23MLD 다운로드 '+Math.min(100,Math.round(100*loaded/total))+'%');
+   }
+   buffer=new Uint8Array(loaded);let at=0;
+   for(const chunk of chunks){buffer.set(chunk,at);at+=chunk.byteLength;}
+   buffer=buffer.buffer;
+  }else buffer=await response.arrayBuffer();
+  await display(buffer,'MiG-23MLD');
  }catch(e){
-  $('upload').hidden=false;say('서버에 모델 파일이 없습니다. 로컬 GLB를 선택하면 미리 볼 수 있습니다.',true);
+  $('upload').hidden=false;say('모델을 불러오지 못했습니다: '+e.message,true);
   console.info('MiG-23MLD not hosted:',e);
  }
 }
