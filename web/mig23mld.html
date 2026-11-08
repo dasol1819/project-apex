@@ -38,7 +38,7 @@ input[type=range]{width:clamp(100px,18vw,240px);accent-color:#7ac9ef}#sweep-angl
 <div id="status" role="status">3D 환경 준비 중…</div>
 <div id="upload" hidden><b>원본 모델 파일을 선택하세요</b><p>서버에 GLB가 배포되기 전까지는 업로드한 파일을 이 브라우저에서만 볼 수 있습니다.</p><label for="file">Mig-23.glb 선택</label><input id="file" type="file" accept=".glb,model/gltf-binary"></div>
 </section>
-<nav class="controls" aria-label="3D 관찰 설정"><button data-view="quarter">사선</button><button data-view="front">정면</button><button data-view="side">측면</button><button data-view="rear">후면</button><button data-view="top">상면</button><div class="sweep"><label for="sweep">가변익</label><input id="sweep" type="range" min="16" max="72" step="1" value="16"><output id="sweep-angle" for="sweep">16°</output></div></nav>
+<nav class="controls" aria-label="3D 관찰 설정"><button data-view="quarter">사선</button><button data-view="front">정면</button><button data-view="side">측면</button><button data-view="rear">후면</button><button data-view="top">상면</button><div class="sweep"><label for="sweep">가변익</label><input id="sweep" type="range" min="16" max="72" step="1" value="72"><output id="sweep-angle" for="sweep">72°</output></div></nav>
 <p class="meta" id="metrics">모델 파일을 불러오면 메시 정보가 표시됩니다.</p>
 </main>
 <footer>
