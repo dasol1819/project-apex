@@ -1,12 +1,13 @@
 name: MiG23 native flight build
 on:
-  push:
-    branches: [feature-mig23mld-native-flight-20261108]
   pull_request:
     paths:
       - 'scripts/native/build-mig23.mjs'
       - 'assets/mig23mld/**'
       - 'tests/mig23-native.mjs'
+concurrency:
+  group: mig23-flight-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
