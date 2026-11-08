@@ -979,22 +979,29 @@
       "family": "mig23",
       "branch": "multirole",
       "br": 13.5,
-      "simId": null,
+      "simId": 16,
       "status": "in_progress",
-      "nextStep": "PBR importer patch and original GLB verification are in review on continue-mig23mld-pbr-geometry-20261108. Confirm CI + actual WebGL texture/wing-pivot images and compare top/side/front/rear MLD references. Then develop native MiG-23MLD flight, swing-wing aero/animation, radar, weapon stations, gear and damage before enabling selection. Remain in_progress.",
+      "nextStep": "Flight/combat build available in PR branch: native type16 R-35-300 dry/AB, swept hydraulic aerodynamics + Mach/gear AUTO and 16/33/45/72 manual control, original licensed GLB integrated with fallback. Finish Chromium desktop/mobile WebGL QA, photo/gear/control-surface rig and native R-24/R-60 exact performance verification before exterior quality review. Confirm Pages deployed after merge; do NOT mark reviewed.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
           "https://creativecommons.org/licenses/by/4.0/",
           "assets/mig23mld/README.md",
-          "web/assets/mig23mld/CREDITS.txt"
+          "web/assets/mig23mld/CREDITS.txt",
+          "https://luftfahrtmuseum-rothenburg.de/triebwerke/triebwerk-r-35/",
+          "https://janes.migavia.com/rus/mig/mig-23.html"
         ],
         "assets": [
           "web/mig23mld-glb.js",
           "web/mig23mld-viewer.js",
           "web/mig23mld.html",
           "web/assets/mig23mld/Mig-23.glb (22,593,404 bytes; PR #7 merged)",
-          "web/mig23mld-glb.js (PBR color/linear texture variants, normal/ORM/AO/emissive maps)"
+          "web/mig23mld-glb.js (PBR color/linear texture variants, normal/ORM/AO/emissive maps)",
+          "assets/mig23mld/flight-config.json",
+          "scripts/native/build-mig23.mjs",
+          "web/mig23mld-flight.js",
+          "web/mig23mld-game.js",
+          "web/flight.wasm (deterministic CI generated; binary NOT committed)"
         ],
         "screenshots": [],
         "checks": [
@@ -1003,7 +1010,12 @@
           "Browser JS syntax parse passed via V8; real WebGL renderer screenshot and mobile QA NOT done",
           "MiG-23MLD preview source GLB committed in main; GitHub Pages deploy 42465677308 success on 2026-11-08. No physical GPU/registered photo review yet.",
           "tests/mig23mld-pbr.mjs (GLB material refs, source geometry, deployment manifest) — CI pending",
-          ".github/workflows/pages.yml and .github/workflows/mig23mld-preview.yml now run PBR regression"
+          ".github/workflows/pages.yml and .github/workflows/mig23mld-preview.yml now run PBR regression",
+          "tests/mig23-native.mjs",
+          "tests/mig23-autosweep.mjs",
+          "tests/mig23-browser.py (real Chromium pending)",
+          "tests/mig23mld-pbr.mjs",
+          ".github/workflows/mig23-native-flight.yml"
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1017,13 +1029,20 @@
         "primitives": 222,
         "materials": 44,
         "images": 22,
-        "renderedFps": null
+        "renderedFps": null,
+        "nativeWasmBytes": 334779,
+        "nativeBuild": "GitHub Actions branch deterministic; deploy copies generated wasm into Pages output",
+        "fps": null
       },
       "limitations": [
         "Source user GLB rigged for preview only; wing rotation pivot approximation awaits WebGL/photographic inspection",
         "No native sim type or flight/control/weapon/damage integration; status stays in_progress",
         "Original Blender 22.6 MB asset is deployed; no claimed browser QA, native flight or finish review.",
-        "PBR improvement not yet confirmed visually in a real browser; CI and WebGL review pending."
+        "PBR improvement not yet confirmed visually in a real browser; CI and WebGL review pending.",
+        "Engine and wing coefficients are open-source/game estimates, not a certified flight-test model.",
+        "GLB original has unrigged gear/control-surface partitions; visual damage/gear fidelity remains pending.",
+        "Native missile ballistic profiles reuse existing SARH/IR tables; R-24R / R-60M exact guidance/flight envelope remains pending.",
+        "A/B and manual hydraulic sweep verified in native CI; hardware GPU/photogrammetric review remains pending."
       ]
     },
     {
