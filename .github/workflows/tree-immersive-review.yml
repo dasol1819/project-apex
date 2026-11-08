@@ -1,0 +1,43 @@
+name: Aircraft tree UI review
+on:
+  push:
+    branches: [feature-tree-immersive-20261108]
+  pull_request:
+    paths:
+      - 'web/aircraft-tree*'
+      - 'web/index.html'
+      - 'web/app.js'
+      - 'web/manifest.json'
+      - 'tests/tree-immersive-browser.py'
+      - '.github/workflows/tree-immersive-review.yml'
+permissions:
+  contents: read
+concurrency:
+  group: tree-immersive-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ui:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Verify tree module and restore real deployment
+        run: |
+          node --check web/aircraft-tree.js
+          python3 scripts/update-web-manifest.py
+          python3 .deployment/restore.py
+      - name: Desktop/mobile/landscape Chromium tree test
+        run: |
+          python3 -m venv /tmp/apex-tree-playwright
+          /tmp/apex-tree-playwright/bin/pip install --quiet playwright==1.56.0
+          /tmp/apex-tree-playwright/bin/python -m playwright install --with-deps chromium
+          python3 -m http.server 8770 --directory public >/tmp/apex-tree-server.log 2>&1 &
+          APEX_TEST_URL=http://127.0.0.1:8770 /tmp/apex-tree-playwright/bin/python tests/tree-immersive-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: immersive-tree-desktop-mobile
+          path: /tmp/aircraft-tree-immersive
+          if-no-files-found: ignore

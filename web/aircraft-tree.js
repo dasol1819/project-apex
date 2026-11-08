@@ -6,11 +6,12 @@ const rate=v=>Number(v).toFixed(1),rating=v=>Math.round(Math.max(1,Math.min(20,N
 const branchFor=id=>TREE_BRANCHES.find(b=>b.id===id);
 function icon(branch){const path=branch==='strategic'?'M30 8 4 30 24 27 30 38 36 27 56 30Z':branch==='heavy'?'M27 5 22 20 6 30 23 28 23 38 28 35 30 25 32 35 37 38 37 28 54 30 38 20 33 5 30 16Z':'M30 4 26 20 8 29 26 27 23 38 30 34 37 38 34 27 52 29 34 20Z';return `<svg class="tree-plane-symbol" viewBox="0 0 60 44" aria-hidden="true"><path d="${path}"/><path d="M30 7v27" class="tree-plane-axis"/></svg>`;}
 export function createAircraftTree({document:d,storage,getSelectedType,onChoose,canChoose=()=>true,isReady=()=>true,onClose,onHangar,onInspect,onPrepare}){
- const $=id=>d.getElementById(id),root=$('aircraft-tree-screen');let state=defaults(),visible=[],active=false,inspected=null,focusId=null,layout=null,zoom=.8;const views=new Map();root.classList.add('tree-spatial');
+ const $=id=>d.getElementById(id),root=$('aircraft-tree-screen');let state=defaults(),visible=[],active=false,inspected=null,focusId=null,layout=null,zoom=1;const views=new Map();root.classList.add('tree-spatial');
  try{const saved=JSON.parse(storage?.getItem(TREE_STORAGE_KEY)||'null');if(saved&&typeof saved==='object'){
-  for(const [key,allowed]of [['nation',TREE_NATIONS.map(n=>n.id)],['branch',['all',...TREE_BRANCHES.map(b=>b.id)]],['era',['all',...TREE_ERAS.map(e=>e.id)]],['status',['all','implemented','unimplemented']]])if(allowed.includes(saved[key]))state[key]=saved[key];
-  zoom=Number.isFinite(saved.zoom)?Math.max(.5,Math.min(1.25,saved.zoom)):.8;
-  state.query=typeof saved.query==='string'?saved.query.slice(0,80):'';state.minBR=Number.isFinite(saved.minBR)?rating(saved.minBR):1;state.maxBR=Number.isFinite(saved.maxBR)?Math.max(state.minBR,rating(saved.maxBR)):20;
+  // Previous versions saved search, branch, BR and tiny zoom filters.
+  // The new nation-only tree deliberately restores none of those hidden filters.
+  if(TREE_NATIONS.some(n=>n.id===saved.nation))state.nation=saved.nation;
+  zoom=Number.isFinite(saved.zoom)?Math.max(.9,Math.min(1.25,saved.zoom)):1;
  }}catch{}
  const selected=()=>treeAircraftForSim(getSelectedType());
  function el(tag,cls,text){const e=d.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
@@ -75,7 +76,7 @@ export function createAircraftTree({document:d,storage,getSelectedType,onChoose,
  function revealResult(){if(visible.length&&focusId)scrollTo(focusId);}
  function render(){
   syncFilters();save();visible=filterAircraftTree(state);if(!visible.some(a=>a.id===focusId))focusId=visible.find(a=>a.id===selected()?.id)?.id||visible[0]?.id||null;
-  const constrained=state.query||state.status!=='all'||state.era!=='all'||state.minBR!==1||state.maxBR!==20,branches=TREE_BRANCHES.filter(b=>(state.branch==='all'||b.id===state.branch)&&(!(constrained&&state.branch==='all')||visible.some(a=>a.branch===b.id)));
+  const branches=TREE_BRANCHES;
   renderMap(branches);
   $('tree-empty').hidden=visible.length>0;const other=state.nation==='us'?'ru':'us',otherRows=filterAircraftTree({...state,nation:other});$('tree-other-nation').hidden=!!visible.length||!otherRows.length;$('tree-other-nation').textContent=(other==='us'?'미국':'러시아')+' 트리에서 '+otherRows.length+'개 보기';$('tree-other-nation').onclick=()=>switchNation(other);
   $('tree-results').textContent=visible.length+' / '+treeSummary(state.nation).total+'개 형식 · 표시 중 구현 '+visible.filter(a=>a.implemented).length;$('tree-navigation-hint').textContent='같은 BR은 같은 높이 · 빈 공간 드래그로 이동 · 방향키 / Enter';
@@ -86,7 +87,7 @@ export function createAircraftTree({document:d,storage,getSelectedType,onChoose,
   const box=$('tree-board-viewport'),old=zoom,x=(box.scrollLeft+box.clientWidth/2)/old,y=(box.scrollTop+box.clientHeight/2-TREE_GRID.header)/old;
   zoom=Math.round(Math.max(.5,Math.min(1.25,next))*100)/100;render();box.scrollLeft=x*zoom-box.clientWidth/2;box.scrollTop=TREE_GRID.header+y*zoom-box.clientHeight/2;
  }
- function switchNation(nation){if(!TREE_NATIONS.some(n=>n.id===nation))return;rememberView();state.nation=nation;closeDetail({focus:false});render();$('tree-board-viewport').scrollTop=0;$('tree-board-viewport').scrollLeft=0;if(state.query||state.branch!=='all'||state.era!=='all'||state.status!=='all'||state.minBR!==1||state.maxBR!==20)revealResult();say(`${nation==='us'?'미국':'러시아'} 트리. ${visible.length}개 형식.`);}
+ function switchNation(nation){if(!TREE_NATIONS.some(n=>n.id===nation))return;rememberView();state.nation=nation;closeDetail({focus:false});render();$('tree-board-viewport').scrollTop=0;$('tree-board-viewport').scrollLeft=0;const remembered=views.get(nation);if(remembered){$('tree-board-viewport').scrollLeft=remembered.left;$('tree-board-viewport').scrollTop=remembered.top;}say(`${nation==='us'?'미국':'러시아'} 트리. ${visible.length}개 형식.`);}
  function resetFilters(){state={...defaults(),nation:state.nation};closeDetail({focus:false});render();$('tree-board-viewport').scrollTop=0;$('tree-board-viewport').scrollLeft=0;}
  function refresh(){const current=selected();const badge=$('current-aircraft-rating');if(badge)badge.textContent=current?'BR '+rate(current.br):'—';$('tree-current-name').textContent=current?`${current.name} · ${current.variant}`:'선택 기체 없음';$('tree-current-rating').textContent=current?'BR '+rate(current.br):'';updateCards();if(inspected)renderDetail();}
  function jumpToSelected(){const a=selected();if(!a)return;state={...defaults(),nation:a.nation};render();inspect(a.id);scrollTo(a.id,true);}

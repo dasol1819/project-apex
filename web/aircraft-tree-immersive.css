@@ -1,0 +1,139 @@
+/*
+ * Aircraft Tree — immersive nation-only layout.
+ * Overrides packed legacy CSS without modifying the shared game's other screens.
+ * Detail panel and branch path/scroll handling remain fully accessible.
+ */
+body[data-menu-stage="tree"] .topbar { display: none !important; }
+body[data-menu-stage="tree"] #welcome {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  height: 100dvh !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  z-index: 100 !important;
+}
+body[data-menu-stage="tree"] #aircraft-tree-screen {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: auto auto minmax(0, 1fr) !important;
+  overflow: hidden;
+  padding-top: env(safe-area-inset-top,0px);
+  padding-bottom: env(safe-area-inset-bottom,0px);
+  border: 0;
+  border-radius: 0;
+}
+body[data-menu-stage="tree"] #aircraft-tree-screen[hidden] { display:none!important; }
+/* Pure nation switch + tree. Old search, filters and toolbars no longer occupy space. */
+#aircraft-tree-screen .tree-filters,
+#aircraft-tree-screen .tree-branch-bar,
+#aircraft-tree-screen .tree-info-row,
+#aircraft-tree-screen .tree-footer,
+#aircraft-tree-screen .tree-current { display: none !important; }
+#aircraft-tree-screen .tree-heading {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  min-height: 48px;
+  height: 48px;
+  padding: 4px 12px;
+  margin: 0;
+  gap: 8px;
+  background: #111e2a;
+  border-bottom: 1px solid #607c8e48;
+}
+#aircraft-tree-screen .tree-heading .section-kicker { display:none !important; }
+#aircraft-tree-screen .tree-heading h2 { margin:0;font-size:18px;letter-spacing:.2px;line-height:1.25; }
+#aircraft-tree-screen .tree-heading .back-button {min-height:40px;min-width:40px;width:40px;padding:0 6px;flex-shrink:0;}
+#aircraft-tree-screen .tree-nations {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 8px;
+  padding: 7px 12px;
+  background:#111e2a;
+  border-bottom:1px solid #627d8940;
+}
+#aircraft-tree-screen .tree-nation {
+  min-width:0;
+  min-height:50px;
+  max-height:54px;
+  height:50px;
+  padding:5px 11px;
+  gap:10px;
+  border-radius:6px;
+  touch-action:manipulation;
+}
+#aircraft-tree-screen .tree-nation-copy {gap:2px;}
+#aircraft-tree-screen .tree-nation-copy>b {font-size:16px;}
+#aircraft-tree-screen .tree-nation-copy>small {font-size:8px;letter-spacing:.4px;}
+#aircraft-tree-screen .tree-nation-count {gap:2px;}
+#aircraft-tree-screen .tree-nation-count>strong {font-size:10px;}
+#aircraft-tree-screen .tree-workspace {
+  grid-column:1 !important;
+  grid-row:3 !important;
+  display:flex;
+  position:relative;
+  min-height:0;
+  height:100%;
+  min-width:0;
+  overflow:hidden;
+}
+#aircraft-tree-screen .tree-board-area,
+#aircraft-tree-screen #tree-board-viewport {
+  min-height:0;
+  height:100%;
+}
+#aircraft-tree-screen #tree-board-viewport {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  touch-action:pan-x pan-y;
+}
+#aircraft-tree-screen .tree-spatial .tree-card-name {font-weight:650;}
+#aircraft-tree-screen .tree-detail {z-index:10;}
+@media (max-width:760px){
+  #aircraft-tree-screen .tree-heading {height:44px;min-height:44px;padding:2px 8px;}
+  #aircraft-tree-screen .tree-heading h2 {font-size:16px;}
+  #aircraft-tree-screen .tree-nations {padding:6px 8px;gap:6px;}
+  #aircraft-tree-screen .tree-nation {height:46px;min-height:46px;max-height:46px;padding:4px 7px;gap:7px;}
+  #aircraft-tree-screen .tree-flag {width:29px;height:20px;}
+  #aircraft-tree-screen .tree-nation-copy>b {font-size:15px;}
+  #aircraft-tree-screen .tree-nation-copy>small {display:none;}
+  #aircraft-tree-screen .tree-nation-count>small {display:none;}
+  #aircraft-tree-screen .tree-nation-count>strong {font-size:9px;}
+  #aircraft-tree-screen .tree-workspace {position:relative;}
+  #aircraft-tree-screen .tree-detail {
+    position:absolute;inset:0;width:100%;height:100%;flex-basis:auto;
+    border-left:0;
+  }
+}
+@media(max-width:360px){
+  #aircraft-tree-screen .tree-nation-count {display:none;}
+  #aircraft-tree-screen .tree-heading h2 {font-size:15px;}
+}
+@media(max-height:520px){
+  body[data-menu-stage="tree"] #aircraft-tree-screen {
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:auto auto minmax(0,1fr)!important;
+  }
+  #aircraft-tree-screen .tree-heading {grid-column:1!important;grid-row:1!important;height:38px;min-height:38px;}
+  #aircraft-tree-screen .tree-nations {grid-column:1!important;grid-row:2!important;padding:3px 8px;}
+  #aircraft-tree-screen .tree-nation {height:38px;min-height:38px;max-height:38px;}
+  #aircraft-tree-screen .tree-workspace {grid-column:1!important;grid-row:3!important;}
+  #aircraft-tree-screen .tree-nation-copy>b {font-size:13px;}
+}
