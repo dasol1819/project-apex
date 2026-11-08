@@ -26,6 +26,8 @@ with sync_playwright() as p:
  assert page.locator('#tree-choose').is_enabled(),'MiG-23MLD not unlocked in tech tree'
  page.locator('#tree-choose').click()
  page.wait_for_function('__mig23QA.sim.get_aircraft_type()===16 && __mig23QA.aircraft?.definition?.id===16',timeout=120000)
+ assert page.evaluate("document.getElementById('hangar-aircraft-role').textContent")=='가변익 요격 전투기','MiG23 performance metadata missing'
+ assert 'janes.migavia.com' in page.evaluate("document.getElementById('performance-source').href")
  assert page.evaluate('__mig23QA.wing.mode')=='AUTO'
  page.evaluate('document.getElementById("wing-sweep").click()')
  assert page.evaluate('__mig23QA.wing.mode')=='MANUAL'
