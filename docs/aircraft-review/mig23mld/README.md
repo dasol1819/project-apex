@@ -38,3 +38,19 @@ The [native sortie screenshot](05-native-sortie.jpg) records the player aircraft
 The [airborne game renderer comparison](06-log-depth-game-comparison.jpg) uses the native type 16 at approximately 11 km altitude, with afterburner above 65%. The original effect rendered in the isolated test, but the game depth-tested it with a different depth mapping. The corrected shader uses the renderer's logarithmic-depth chunks. A Chromium regression renders one scene twice from the same camera with only the plume visibility toggled. The baseline returned identical frames. With the depth fix the frames differ and the plume is visible from the authored nozzle. The camera is a test-only inspection view.
 
 PR #18 was deployed by [GitHub Pages](https://github.com/dasol1819/project-apex/actions/runs/42636625933). Its JavaScript checksum matched over the custom domain's HTTP endpoint. The HTTPS endpoint returned HTTP 503 from this environment.
+
+## Runway contact alignment · 2026-11-10
+
+The original render used the midpoint of the GLB bounding box as the gameplay origin. At that origin the two main tyres reached about −2.489 m while the native contact probes used −1.420 m. The runtime now measures the two authored tyre meshes and translates the original render root upward by about 1.069 m. The nozzle is anchored after this translation. The native contact coordinates, spawn, suspension and flight module retain their prior values.
+
+| Wheel | GLB node | Original bottom (m) | Corrected bottom (m) | Native probe (m) |
+| --- | --- | ---: | ---: | ---: |
+| Nose twin wheels | `OBJ0041` | −2.434 | −1.365 | −1.420 |
+| Main tyre, negative X | `OBJ0109` | −2.489 | −1.420 | −1.420 |
+| Main tyre, positive X | `OBJ0131` | −2.489 | −1.420 | −1.420 |
+
+[Runway comparison](07-runway-contact-comparison.jpg) shows the actual game renderer and native type 16 on its runway with the same body-relative test camera. The fuselage and lower gear are clearer after the correction. Tyres still partially intersect the runway in the rolling capture. Check the native suspension pose and rendered wheel clearance together. The 5.5 cm static nose offset and the fore-aft and track discrepancies remain for the gear rig.
+
+The [earlier registered G4 photograph](02-intake-gear-overlay.jpg) and [Vinnytsya no. 40 main gear close-up](https://commons.wikimedia.org/wiki/File:MiG-23MLD_2007_G7.jpg) show the exposed actuator, linkage, fuselage door and wheel fairing. The latter was photographed by George Chernilevsky and is available under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). The authored wheel and door pieces are visible in the new runway capture. Perspective and the different stance limit the comparison. The [Bulgarian Academy of Sciences linkage study](https://bjed.tu-sofia.bg/items/BJED-0033%282017%29.pdf) provides a mechanism reference for the separate pivots. Verify travel against exact-variant footage before choosing the retraction path.
+
+The game reads tyre vertices once during loading. The correction adds 484 source JavaScript bytes and uses the same meshes, textures and draw submissions. The 22,593,404-byte source GLB and the 335,087-byte generated native WASM retain their previous SHA-256 checksums. Chromium/SwiftShader verified the local contact positions against the native type 16 probes and passed the mobile and live plume regression. Manifest/restore, native build and 16 regression scripts passed locally.

@@ -7,6 +7,18 @@ const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
 const ENGINE_PART=7, NOZZLE_PART=22;
 const DRY_CONTRACTION=.10;
 
+// Type 16 uses a shared contact height for all three native gear probes.
+const GEAR_CONTACT_Y=-1.42;
+
+function alignGroundContact(root){
+ root.updateMatrixWorld(true);
+ const wheels=['OBJ0109','OBJ0131'].map(name=>root.getObjectByName(name));
+ if(wheels.some(wheel=>!wheel))return;
+ const bounds=new T.Box3();
+ for(const wheel of wheels)bounds.expandByObject(wheel,true);
+ if(!bounds.isEmpty())root.position.y+=GEAR_CONTACT_Y-bounds.min.y;
+}
+
 // The authored soplo mesh already contains the petals. Move their lips
 // radially while keeping the forward mounting ring fixed.
 function rigExhaust(root, plume){
@@ -103,6 +115,7 @@ export function createMig23mldAircraft(options={}){
    const normalized=normalizeMig23(asset.scene);
    const rig=rigMig23Sweep(asset.scene,asset.nodes);
    if(controller.signal.aborted){normalized.root.traverse(n=>{n.geometry?.dispose?.();});return;}
+   alignGroundContact(normalized.root);
    exhaust=rigExhaust(normalized.root,plume);
    sweep=rig;
    base.group.add(normalized.root);
