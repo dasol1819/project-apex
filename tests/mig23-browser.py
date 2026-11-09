@@ -6,10 +6,10 @@ from playwright.sync_api import sync_playwright
 base=os.environ.get('APEX_TEST_URL','http://127.0.0.1:8765').rstrip('/')
 out=Path(os.environ.get('APEX_TEST_OUTPUT','/tmp/mig23-flight-browser'))
 out.mkdir(parents=True,exist_ok=True)
-hook='''\nwindow.__mig23QA={get sim(){return sim},get aircraft(){return aircraft},get wing(){return mig23Wing},get started(){return started},get ready(){return ready},readState,comparePlume(){
- const group=aircraft.group, plume=group.getObjectByName('R-35-300 exhaust visual');
+hook='''\nwindow.__mig23QA={get sim(){return sim},get aircraft(){return aircraft},get wing(){return mig23Wing},get started(){return started},get ready(){return ready},readState,capture(offset, comparePlume=false){
+ const group=aircraft.group;
  const testCamera=camera.clone();
- testCamera.position.copy(group.localToWorld(new T.Vector3(8,2,24)));
+ testCamera.position.copy(group.localToWorld(new T.Vector3(...offset)));
  testCamera.up.copy(new T.Vector3(0,1,0).applyQuaternion(group.quaternion));
  testCamera.lookAt(group.position);
  testCamera.fov=30;
@@ -17,6 +17,8 @@ hook='''\nwindow.__mig23QA={get sim(){return sim},get aircraft(){return aircraft
  testCamera.updateMatrixWorld();
  renderer.render(scene,testCamera);
  const lit=renderer.domElement.toDataURL();
+ if(!comparePlume)return lit.split(',')[1];
+ const plume=group.getObjectByName('R-35-300 exhaust visual');
  plume.visible=false;
  renderer.render(scene,testCamera);
  const dark=renderer.domElement.toDataURL();
@@ -73,11 +75,35 @@ with sync_playwright() as p:
  s=page.evaluate('Array.from(__mig23QA.readState())')
  assert all(x is not None and abs(x)<1e15 for x in s[:63]),'nonfinite or exploding flight state'
  page.screenshot(path=str(out/'mig23-flight-ab.png'))
+ (out/'mig23-runway-gear.png').write_bytes(base64.b64decode(
+  page.evaluate('__mig23QA.capture([24,3,8])')))
+ gear=page.evaluate('''()=>{
+  const {aircraft:a,sim}=__mig23QA;
+  const contact=new Float64Array(sim.memory.buffer,sim.get_aircraft_gear_contacts(),9);
+  const group=a.group;
+  group.updateWorldMatrix(true,true);
+  const inverse=group.matrixWorld.clone().invert();
+  const minY=name=>{
+   let bottom=Infinity;
+   group.getObjectByName(name).traverse(mesh=>{
+    const p=mesh.geometry?.getAttribute('position');
+    if(!p)return;
+    const transform=inverse.clone().multiply(mesh.matrixWorld), v=group.position.clone();
+    for(let i=0;i<p.count;i++)
+     bottom=Math.min(bottom,v.fromBufferAttribute(p,i).applyMatrix4(transform).y);
+   });
+   return bottom;
+  };
+  return {native:[contact[1],contact[4],contact[7]],visible:['OBJ0041','OBJ0109','OBJ0131'].map(minY)};
+ }''')
+ assert abs(gear['visible'][0]-gear['native'][0])<.06,gear
+ assert all(abs(gear['visible'][i]-gear['native'][i])<.002 for i in (1,2)),gear
+ print('MI23_GROUND_CONTACT',json.dumps(gear),flush=True)
  # Use the real renderer with logarithmic depth and an unobstructed aft camera.
  # Toggling only the plume must change rendered pixels at native afterburner.
  page.evaluate('__mig23QA.sim.reset_spawn(2)')
  page.wait_for_function('__mig23QA.readState()[1]>1000 && __mig23QA.readState()[62]>.65 && __mig23QA.aircraft.group.getObjectByName("R-35-300 exhaust visual").visible',timeout=120000)
- plume_render=page.evaluate('__mig23QA.comparePlume()')
+ plume_render=page.evaluate('__mig23QA.capture([8,2,24],true)')
  assert plume_render['visiblePixels'],'Afterburner is active but missing from the game framebuffer'
  (out/'mig23-airborne-plume.png').write_bytes(base64.b64decode(plume_render['png']))
 
@@ -99,7 +125,7 @@ with sync_playwright() as p:
   const nozzleLost=sample(1);
   return {position:plume.position.toArray(),dry,wet,engineOff,nozzleLost};
  }""")
- assert abs(exhaust['position'][1]+1.0576)<.005,exhaust
+ assert abs(exhaust['position'][1]-.011)<.005,exhaust
  assert abs(exhaust['position'][2]-7.7548)<.005,exhaust
  assert exhaust['wet']==[True,0],exhaust
  assert all(exhaust[state]==[False,1] for state in ('dry','engineOff','nozzleLost')),exhaust

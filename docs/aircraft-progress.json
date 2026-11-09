@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-gear-20261110",
-    "startedAt": "2026-11-09T15:03:45.000Z",
-    "expiresAt": "2026-11-09T16:53:45.000Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -980,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Resume true gear and door, stabilator, and airbrake rigs on the existing native type 16 GLB. Register uncovered forward and matched overhead reference views for intake and wing geometry. Verify R-35 internals and plume with an uncovered exact-variant reference and live lighted plume. Complete combat damage and physical GPU performance checks before reviewed.",
+      "nextStep": "Rig the main gear linkage and the separate fuselage and wheel doors, then nose gear, across native deployment states. Verify the remaining 5.5 cm static nose offset, rolling wheel clearance and lateral/fore-aft residuals against exact-variant references. Continue with stabilators, airbrakes, intakes, matched overhead wing, uncovered R-35 exhaust, combat damage and GPU performance.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -992,7 +987,9 @@
           "https://pimaair.org/museum-aircraft/mig-23mld/",
           "https://commons.wikimedia.org/wiki/File:MiG-23MLD.jpg",
           "https://commons.wikimedia.org/wiki/File:MiG-23MLD_2008_G4.jpg",
-          "https://commons.wikimedia.org/wiki/File:MiG-23MLD_2008_G7.jpg"
+          "https://commons.wikimedia.org/wiki/File:MiG-23MLD_2008_G7.jpg",
+          "https://commons.wikimedia.org/wiki/File:MiG-23MLD_2007_G7.jpg",
+          "https://bjed.tu-sofia.bg/items/BJED-0033%282017%29.pdf"
         ],
         "assets": [
           "web/mig23mld-glb.js",
@@ -1013,7 +1010,8 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/03-aft-overlay.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/04-afterburner-before-after.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/05-native-sortie.jpg",
-          "https://github.com/dasol1819/project-apex/blob/mig23mld-exhaust-logdepth-20261109/docs/aircraft-review/mig23mld/06-log-depth-game-comparison.jpg"
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-exhaust-logdepth-20261109/docs/aircraft-review/mig23mld/06-log-depth-game-comparison.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-gear-20261110/docs/aircraft-review/mig23mld/07-runway-contact-comparison.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1033,7 +1031,9 @@
           "Chromium 141 SwiftShader actual native sortie and mobile selector PASS with anonymous account session fixture. Render audit verified authored soplo attachment, full afterburner, dry, engine disabled, and destroyed nozzle cases.",
           "Registered exact-variant reference overlays for the side, front quarter, and aft quarter. Geometry residuals and limitations are recorded; plume shape remains a visual estimate.",
           "Chromium real game at approximately 11 km, native AB above 65%, framebuffer A/B confirms the old custom shader was depth-rejected and the logarithmic-depth fix displays the plume. Added an automated framebuffer regression.",
-          "PR #18 GitHub Pages deploy run 42636625933 succeeded and served the expected HTTP file checksum. Production HTTPS responded with HTTP 503."
+          "PR #18 GitHub Pages deploy run 42636625933 succeeded and served the expected HTTP file checksum. Production HTTPS responded with HTTP 503.",
+          "2026-11-10 Chromium actual runway render baseline main tyre minima −2.489 m; corrected −1.420 m matches native type 16. Corrected nose wheel bottom −1.365 m. Full desktop/mobile and live plume browser regression PASS; original JS failed the new contact check.",
+          "Manifest/restore, 335,087-byte native build and 16 regressions PASS. Original GLB and native SHA-256 unchanged."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1062,7 +1062,10 @@
         "afterburnerDrawCallsBefore": 226,
         "afterburnerDrawCallsAfter": 224,
         "afterburnerSubmittedTrianglesBefore": 43575,
-        "afterburnerSubmittedTrianglesAfter": 43475
+        "afterburnerSubmittedTrianglesAfter": 43475,
+        "groundContactJavascriptBytes": 484,
+        "groundContactAddedMeshes": 0,
+        "groundContactAddedTextureBytes": 0
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
@@ -1070,7 +1073,8 @@
         "GLB original has unrigged gear/control-surface partitions; visual damage/gear fidelity remains pending.",
         "Native missile ballistic profiles reuse existing SARH/IR tables; R-24R / R-60M exact guidance/flight envelope remains pending.",
         "A/B and manual hydraulic sweep verified in native CI; hardware GPU/photogrammetric review remains pending.",
-        "The registered overlays expose residuals in the intake lip, wing, canopy, tail, and wheel placement. The museum intake and nozzle covers obscure their inner geometry. The R-35 active plume remains a visual estimate."
+        "The registered overlays expose residuals in the intake lip, wing, canopy, tail, and wheel placement. The museum intake and nozzle covers obscure their inner geometry. The R-35 active plume remains a visual estimate.",
+        "The visual origin is aligned to the main native gear plane. Static nose-wheel clearance is +5.5 cm relative to its probe. The rolling capture still shows partial wheel/terrain intersection. Gear doors and retraction remain pending."
       ]
     },
     {
@@ -2009,10 +2013,10 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-gear-20261110",
-    "state": "gear-in-progress",
+    "state": "gear-contact-aligned-next-retraction",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Map the authored landing gear, align the runtime wheel contact plane, rig retraction with the native gear state and review actual game renders.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-exhaust-logdepth-20261109/docs/aircraft-review/mig23mld",
+    "nextStep": "Rig the main gear linkage and the separate fuselage and wheel doors, then nose gear, across native deployment states. Verify the remaining 5.5 cm static nose offset, rolling wheel clearance and lateral/fore-aft residuals against exact-variant references. Continue with stabilators, airbrakes, intakes, matched overhead wing, uncovered R-35 exhaust, combat damage and GPU performance.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-gear-20261110/docs/aircraft-review/mig23mld",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/18",
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld"
   },
