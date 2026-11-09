@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-gear-20261110",
+    "startedAt": "2026-11-09T15:03:45.000Z",
+    "expiresAt": "2026-11-09T16:53:45.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -2003,10 +2008,10 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-exhaust-logdepth-20261109",
-    "state": "exhaust-reviewed-next-gear",
+    "branch": "mig23mld-gear-20261110",
+    "state": "gear-in-progress",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Resume true gear and door, stabilator, and airbrake rigs on the existing native type 16 GLB. Register uncovered forward and matched overhead reference views for intake and wing geometry. Verify R-35 internals and plume with an uncovered exact-variant reference and live lighted plume. Complete combat damage and physical GPU performance checks before reviewed.",
+    "nextStep": "Map the authored landing gear, align the runtime wheel contact plane, rig retraction with the native gear state and review actual game renders.",
     "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-exhaust-logdepth-20261109/docs/aircraft-review/mig23mld",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/18",
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld"
