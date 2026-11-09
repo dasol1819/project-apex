@@ -55,6 +55,29 @@ with sync_playwright() as p:
  s=page.evaluate('Array.from(__mig23QA.readState())')
  assert all(x is not None and abs(x)<1e15 for x in s[:63]),'nonfinite or exploding flight state'
  page.screenshot(path=str(out/'mig23-flight-ab.png'))
+ # Exercise the rendered exhaust with native part indices and typed health buffers.
+ exhaust=page.evaluate("""()=>{
+  const a=__mig23QA.aircraft;
+  const plume=a.group.getObjectByName('R-35-300 exhaust visual');
+  const petals=a.group.getObjectByName('soplo').children.find(mesh=>mesh.isMesh);
+  const health=new Float32Array(30).fill(1), enabled=new Float32Array(30).fill(1);
+  const sample=afterburner=>{
+   a.update({afterburner,engine:1,health,enabled});
+   return [plume.visible,petals.morphTargetInfluences[0]];
+  };
+  const dry=sample(0), wet=sample(1);
+  enabled[7]=0;
+  const engineOff=sample(1);
+  enabled[7]=1;
+  health[22]=0;
+  const nozzleLost=sample(1);
+  return {position:plume.position.toArray(),dry,wet,engineOff,nozzleLost};
+ }""")
+ assert abs(exhaust['position'][1]+1.0576)<.005,exhaust
+ assert abs(exhaust['position'][2]-7.7548)<.005,exhaust
+ assert exhaust['wet']==[True,0],exhaust
+ assert all(exhaust[state]==[False,1] for state in ('dry','engineOff','nozzleLost')),exhaust
+
  if errors: print('MI23_DIAGNOSTIC_ERRORS',json.dumps(errors,ensure_ascii=False),flush=True)
  assert not errors,errors
  ctx.close()

@@ -5,6 +5,8 @@ on:
       - 'scripts/native/build-mig23.mjs'
       - 'assets/mig23mld/**'
       - 'tests/mig23-native.mjs'
+      - 'tests/mig23-browser.py'
+      - 'web/mig23mld-game.js'
 concurrency:
   group: mig23-flight-${{ github.ref }}
   cancel-in-progress: true
