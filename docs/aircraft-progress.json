@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-review-20261109",
+    "startedAt": "2026-11-09T14:22:17.000Z",
+    "expiresAt": "2026-11-09T16:12:17.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -1974,12 +1979,12 @@
     }
   ],
   "currentWork": {
-    "kind": "new-aircraft-open-source",
+    "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "opensource-mig23mld-20261105",
-    "state": "asset-import",
-    "scope": "User-requested real open-source 3D model implementation; retain unfinished MiG-15bis and fleet reviews.",
-    "nextStep": "Recover pinned GPL-3.0 source, implement hierarchy/UV/material-preserving import and independent MiG-23MLD preview; then native flight/combat integration and exact-variant visual review. Do not mark implemented while incomplete."
+    "branch": "mig23mld-review-20261109",
+    "state": "in-progress",
+    "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
+    "nextStep": "Measure and correct the exhaust attachment and afterburner, then validate the actual game render and exact-variant photo comparisons."
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
