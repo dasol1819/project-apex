@@ -11,6 +11,8 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,args=['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
  errors=[]
  ctx=browser.new_context(viewport={'width':1366,'height':900},reduced_motion='reduce')
+ # The flight smoke uses an anonymous session and has no account dependency.
+ ctx.route("**/api/account/session",lambda route:route.fulfill(json={"user":None}))
  page=ctx.new_page()
  page.set_default_timeout(120000)
  page.on('pageerror',lambda e:errors.append('DESKTOP PAGE ERROR: '+(e.stack or str(e))))
@@ -84,6 +86,8 @@ with sync_playwright() as p:
  # Mobile selector and shader smoke: no forced full GLB loading on the
  # second device to avoid needless GPU texture duplication in SwiftShader.
  ctx=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,has_touch=True,device_scale_factor=1,reduced_motion='reduce')
+ # The flight smoke uses an anonymous session and has no account dependency.
+ ctx.route("**/api/account/session",lambda route:route.fulfill(json={"user":None}))
  mobile=ctx.new_page()
  mobile.route('**/app.js*',hook_module)
  mobile.on('pageerror',lambda e:errors.append('MOBILE PAGE ERROR: '+(e.stack or str(e))))
