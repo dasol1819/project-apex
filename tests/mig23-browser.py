@@ -1,12 +1,28 @@
 """MiG-23MLD real Chromium/WebGL game-flight smoke on the restored Pages build.
 Instrumentation is injected by Playwright and never shipped to end users."""
-import json, os
+import base64, json, os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 base=os.environ.get('APEX_TEST_URL','http://127.0.0.1:8765').rstrip('/')
 out=Path(os.environ.get('APEX_TEST_OUTPUT','/tmp/mig23-flight-browser'))
 out.mkdir(parents=True,exist_ok=True)
-hook='''\nwindow.__mig23QA={get sim(){return sim},get aircraft(){return aircraft},get wing(){return mig23Wing},get started(){return started},get ready(){return ready},readState};\n'''
+hook='''\nwindow.__mig23QA={get sim(){return sim},get aircraft(){return aircraft},get wing(){return mig23Wing},get started(){return started},get ready(){return ready},readState,comparePlume(){
+ const group=aircraft.group, plume=group.getObjectByName('R-35-300 exhaust visual');
+ const testCamera=camera.clone();
+ testCamera.position.copy(group.localToWorld(new T.Vector3(8,2,24)));
+ testCamera.up.copy(new T.Vector3(0,1,0).applyQuaternion(group.quaternion));
+ testCamera.lookAt(group.position);
+ testCamera.fov=30;
+ testCamera.updateProjectionMatrix();
+ testCamera.updateMatrixWorld();
+ renderer.render(scene,testCamera);
+ const lit=renderer.domElement.toDataURL();
+ plume.visible=false;
+ renderer.render(scene,testCamera);
+ const dark=renderer.domElement.toDataURL();
+ plume.visible=true;
+ return {visiblePixels:lit!==dark,png:lit.split(',')[1]};
+}};\n'''
 with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,args=['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
  errors=[]
@@ -57,6 +73,14 @@ with sync_playwright() as p:
  s=page.evaluate('Array.from(__mig23QA.readState())')
  assert all(x is not None and abs(x)<1e15 for x in s[:63]),'nonfinite or exploding flight state'
  page.screenshot(path=str(out/'mig23-flight-ab.png'))
+ # Use the real renderer with logarithmic depth and an unobstructed aft camera.
+ # Toggling only the plume must change rendered pixels at native afterburner.
+ page.evaluate('__mig23QA.sim.reset_spawn(2)')
+ page.wait_for_function('__mig23QA.readState()[1]>1000 && __mig23QA.readState()[62]>.65 && __mig23QA.aircraft.group.getObjectByName("R-35-300 exhaust visual").visible',timeout=120000)
+ plume_render=page.evaluate('__mig23QA.comparePlume()')
+ assert plume_render['visiblePixels'],'Afterburner is active but missing from the game framebuffer'
+ (out/'mig23-airborne-plume.png').write_bytes(base64.b64decode(plume_render['png']))
+
  # Exercise the rendered exhaust with native part indices and typed health buffers.
  exhaust=page.evaluate("""()=>{
   const a=__mig23QA.aircraft;

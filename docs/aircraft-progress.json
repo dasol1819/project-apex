@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-exhaust-logdepth-20261109",
-    "startedAt": "2026-11-09T14:40:57.000Z",
-    "expiresAt": "2026-11-09T16:30:57.000Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -1012,7 +1007,8 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/02-intake-gear-overlay.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/03-aft-overlay.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/04-afterburner-before-after.jpg",
-          "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/05-native-sortie.jpg"
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/05-native-sortie.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-exhaust-logdepth-20261109/docs/aircraft-review/mig23mld/06-log-depth-game-comparison.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1030,7 +1026,9 @@
           "MiG23 original GLB was rendered and tested in Chromium/SwiftShader; still no hardware-GPU reference photo/silhouette overlay review or actual FPS benchmark",
           "2026-11-09 manifest/restore and deterministic 335,087-byte native type 16 build PASS, 16 flight/combat/geometry/PBR regression scripts and queue integrity PASS.",
           "Chromium 141 SwiftShader actual native sortie and mobile selector PASS with anonymous account session fixture. Render audit verified authored soplo attachment, full afterburner, dry, engine disabled, and destroyed nozzle cases.",
-          "Registered exact-variant reference overlays for the side, front quarter, and aft quarter. Geometry residuals and limitations are recorded; plume shape remains a visual estimate."
+          "Registered exact-variant reference overlays for the side, front quarter, and aft quarter. Geometry residuals and limitations are recorded; plume shape remains a visual estimate.",
+          "Chromium real game at approximately 11 km, native AB above 65%, framebuffer A/B confirms the old custom shader was depth-rejected and the logarithmic-depth fix displays the plume. Added an automated framebuffer regression.",
+          "PR #18 GitHub Pages deploy run 42636625933 succeeded and served the expected HTTP file checksum. Production HTTPS responded with HTTP 503."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1038,7 +1036,9 @@
         "publishedCommit": "https://github.com/dasol1819/project-apex/commit/26decd4cde214d2e44729d77e16ab5124b0250e9",
         "exteriorReview": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld",
         "exhaustCommit": "https://github.com/dasol1819/project-apex/commit/e9aeba7b3374591d53e49976902ea9bb689c9cd4",
-        "exhaustPullRequest": "https://github.com/dasol1819/project-apex/pull/18"
+        "exhaustPullRequest": "https://github.com/dasol1819/project-apex/pull/18",
+        "exhaustPages": "https://github.com/dasol1819/project-apex/actions/runs/42636625933",
+        "logDepthReview": "https://github.com/dasol1819/project-apex/tree/mig23mld-exhaust-logdepth-20261109/docs/aircraft-review/mig23mld"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -2004,10 +2004,10 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-exhaust-logdepth-20261109",
-    "state": "exhaust-logdepth-followup",
+    "state": "exhaust-reviewed-next-gear",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Repair logarithmic-depth shader compatibility and compare the actual in-game plume at altitude before publication.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/e9aeba7b3374591d53e49976902ea9bb689c9cd4",
+    "nextStep": "Resume true gear and door, stabilator, and airbrake rigs on the existing native type 16 GLB. Register uncovered forward and matched overhead reference views for intake and wing geometry. Verify R-35 internals and plume with an uncovered exact-variant reference and live lighted plume. Complete combat damage and physical GPU performance checks before reviewed.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-exhaust-logdepth-20261109/docs/aircraft-review/mig23mld",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/18",
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld"
   },
