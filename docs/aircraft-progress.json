@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-review-20261109",
-    "startedAt": "2026-11-09T14:22:17.000Z",
-    "expiresAt": "2026-11-09T16:12:17.000Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -980,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "MiG-23MLD native type16 flight/combat is ALREADY MERGED AND PUBLISHED (R-35 dry/AB, WASM hydraulic 16–72° swept-wing aerodynamics, speed/gear AUTO plus manual 16/33/45/72, original GLB flight model, STT SARH/IR preliminary loadout). Next: true GLB gear/airbrake/spoilers/stabilator/canopy damage and hinge rigs, precise missile/weapon release and radar characterization, photo silhouette overlay and GPU performance QA. Do not redo successful native flight integration. Keep in_progress until high-quality exterior and flight/combat visual review.",
+      "nextStep": "Resume true gear and door, stabilator, and airbrake rigs on the existing native type 16 GLB. Register uncovered forward and matched overhead reference views for intake and wing geometry. Verify R-35 internals and plume with an uncovered exact-variant reference and live lighted plume. Complete combat damage and physical GPU performance checks before reviewed.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -988,7 +983,11 @@
           "assets/mig23mld/README.md",
           "web/assets/mig23mld/CREDITS.txt",
           "https://luftfahrtmuseum-rothenburg.de/triebwerke/triebwerk-r-35/",
-          "https://janes.migavia.com/rus/mig/mig-23.html"
+          "https://janes.migavia.com/rus/mig/mig-23.html",
+          "https://pimaair.org/museum-aircraft/mig-23mld/",
+          "https://commons.wikimedia.org/wiki/File:MiG-23MLD.jpg",
+          "https://commons.wikimedia.org/wiki/File:MiG-23MLD_2008_G4.jpg",
+          "https://commons.wikimedia.org/wiki/File:MiG-23MLD_2008_G7.jpg"
         ],
         "assets": [
           "web/mig23mld-glb.js",
@@ -1003,7 +1002,12 @@
           "web/flight.wasm (deterministic CI generated; binary NOT committed)"
         ],
         "screenshots": [
-          "https://github.com/dasol1819/project-apex/actions/runs/42483065382/artifacts/13617374547"
+          "https://github.com/dasol1819/project-apex/actions/runs/42483065382/artifacts/13617374547",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/01-flight-side-overlay.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/02-intake-gear-overlay.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/03-aft-overlay.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/04-afterburner-before-after.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-review-20261109/docs/aircraft-review/mig23mld/05-native-sortie.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1018,12 +1022,18 @@
           "GitHub Actions #42483065382: PASS native type16 R-35 dry/AB thrust and fuel, 16–72° hydraulic servo plus aerodynamic model, AUTO/manual transitions, legacy 16-aircraft regression, real Chromium/SwiftShader desktop+mobile 3D GLB and flight checks; zero page errors",
           "GitHub Actions #42483065367: PASS GLB PBR/source/manifest preview validation",
           "GitHub Actions #42483445394: SUCCESS GitHub Pages deployment on 2026-11-08; main SHA 5a93c7099a6176364c2ce91bbe5995e5ea07a5c8",
-          "MiG23 original GLB was rendered and tested in Chromium/SwiftShader; still no hardware-GPU reference photo/silhouette overlay review or actual FPS benchmark"
+          "MiG23 original GLB was rendered and tested in Chromium/SwiftShader; still no hardware-GPU reference photo/silhouette overlay review or actual FPS benchmark",
+          "2026-11-09 manifest/restore and deterministic 335,087-byte native type 16 build PASS, 16 flight/combat/geometry/PBR regression scripts and queue integrity PASS.",
+          "Chromium 141 SwiftShader actual native sortie and mobile selector PASS with anonymous account session fixture. Render audit verified authored soplo attachment, full afterburner, dry, engine disabled, and destroyed nozzle cases.",
+          "Registered exact-variant reference overlays for the side, front quarter, and aft quarter. Geometry residuals and limitations are recorded; plume shape remains a visual estimate."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
         "pullRequest": "https://github.com/dasol1819/project-apex/pull/14",
-        "publishedCommit": "https://github.com/dasol1819/project-apex/commit/26decd4cde214d2e44729d77e16ab5124b0250e9"
+        "publishedCommit": "https://github.com/dasol1819/project-apex/commit/26decd4cde214d2e44729d77e16ab5124b0250e9",
+        "exteriorReview": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld",
+        "exhaustCommit": "https://github.com/dasol1819/project-apex/commit/e9aeba7b3374591d53e49976902ea9bb689c9cd4",
+        "exhaustPullRequest": "https://github.com/dasol1819/project-apex/pull/18"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1036,14 +1046,21 @@
         "renderedFps": null,
         "nativeWasmBytes": 335087,
         "nativeBuild": "GitHub Actions #42483065382 verified deterministic 17-aircraft WASM; GitHub Pages #42483445394 deployed generated public/flight.wasm",
-        "fps": null
+        "fps": null,
+        "exhaustAudit": "Chromium 141 SwiftShader isolated gameplay model camera",
+        "dryDrawCalls": 223,
+        "afterburnerDrawCallsBefore": 226,
+        "afterburnerDrawCallsAfter": 224,
+        "afterburnerSubmittedTrianglesBefore": 43575,
+        "afterburnerSubmittedTrianglesAfter": 43475
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
         "Engine and wing coefficients are open-source/game estimates, not a certified flight-test model.",
         "GLB original has unrigged gear/control-surface partitions; visual damage/gear fidelity remains pending.",
         "Native missile ballistic profiles reuse existing SARH/IR tables; R-24R / R-60M exact guidance/flight envelope remains pending.",
-        "A/B and manual hydraulic sweep verified in native CI; hardware GPU/photogrammetric review remains pending."
+        "A/B and manual hydraulic sweep verified in native CI; hardware GPU/photogrammetric review remains pending.",
+        "The registered overlays expose residuals in the intake lip, wing, canopy, tail, and wheel placement. The museum intake and nozzle covers obscure their inner geometry. The R-35 active plume remains a visual estimate."
       ]
     },
     {
@@ -1982,9 +1999,12 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-review-20261109",
-    "state": "in-progress",
+    "state": "exhaust-reviewed-next-gear",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Measure and correct the exhaust attachment and afterburner, then validate the actual game render and exact-variant photo comparisons."
+    "nextStep": "Resume true gear and door, stabilator, and airbrake rigs on the existing native type 16 GLB. Register uncovered forward and matched overhead reference views for intake and wing geometry. Verify R-35 internals and plume with an uncovered exact-variant reference and live lighted plume. Complete combat damage and physical GPU performance checks before reviewed.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/e9aeba7b3374591d53e49976902ea9bb689c9cd4",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/18",
+    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
