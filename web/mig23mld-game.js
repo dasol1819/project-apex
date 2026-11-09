@@ -53,16 +53,21 @@ function createPlume(){
   transparent:true,depthWrite:false,blending:T.AdditiveBlending,side:T.DoubleSide,
   uniforms:{heat:{value:0},time:{value:0}},
   vertexShader:`
+   #include <common>
+   #include <logdepthbuf_pars_vertex>
    varying vec2 plumeUV;
    void main(){
     plumeUV=uv;
     gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);
+    #include <logdepthbuf_vertex>
    }`,
   fragmentShader:`
+   #include <logdepthbuf_pars_fragment>
    uniform float heat;
    uniform float time;
    varying vec2 plumeUV;
    void main(){
+    #include <logdepthbuf_fragment>
     float z=plumeUV.y;
     float cells=pow(0.5+0.5*cos(33.0*z-1.3*z*z),4.0);
     float flicker=0.91+0.09*sin(28.0*z-21.0*time);

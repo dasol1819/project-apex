@@ -32,3 +32,9 @@ The audit verified the typed damage buffers and effect suppression with the engi
 Continue with true gear and door motion, stabilators and airbrakes. Use an uncovered forward photo for intake lip and splitter geometry and a matched overhead view at a known sweep for the wings. Measure the aft control surface and ventral profiles with a second aligned view. Confirm the exhaust internals and plume against uncovered and lit R-35 references. Verify GPU performance and combat damage before marking the complete aircraft reviewed.
 
 The [native sortie screenshot](05-native-sortie.jpg) records the player aircraft in the actual game after selecting type 16 and commanding afterburner. The complete desktop and mobile smoke passed with an anonymous account-session fixture. In the runway capture, the belly and wheel contact height still need matching against the native gear geometry. The model-only before/after image above holds the camera and afterburner level fixed for the plume comparison.
+
+## Logarithmic depth follow-up
+
+The [airborne game renderer comparison](06-log-depth-game-comparison.jpg) uses the native type 16 at approximately 11 km altitude, with afterburner above 65%. The original effect rendered in the isolated test, but the game depth-tested it with a different depth mapping. The corrected shader uses the renderer's logarithmic-depth chunks. A Chromium regression renders one scene twice from the same camera with only the plume visibility toggled. The baseline returned identical frames. With the depth fix the frames differ and the plume is visible from the authored nozzle. The camera is a test-only inspection view.
+
+PR #18 was deployed by [GitHub Pages](https://github.com/dasol1819/project-apex/actions/runs/42636625933). Its JavaScript checksum matched over the custom domain's HTTP endpoint. The HTTPS endpoint returned HTTP 503 from this environment.
