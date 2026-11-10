@@ -113,6 +113,18 @@ with sync_playwright() as p:
  page.wait_for_function('__mig23QA.readState()[21]>.99')
  capture_fin='__mig23QA.capture([20,-5,11])'
  capture_nose='__mig23QA.capture([3.5,-2.1,-6.9],false,[0,-.15,-3.55])'
+ capture_main='__mig23QA.capture([4.9,-2.0,.7],false,[.5,-.55,1.9])'
+ main_pose="""()=>{
+  const group=__mig23QA.aircraft.group;
+  return ['port','starboard'].map(side=>{
+   const part=name=>group.getObjectByName('MiG-23MLD main gear '+side+' '+name);
+   return {wheel:group.worldToLocal(part('wheel carrier').getWorldPosition(group.position.clone())).toArray(),
+    lower:part('lower door').quaternion.w,upper:part('upper door').quaternion.w};
+  });
+ }"""
+ main_down=page.evaluate(main_pose)
+ assert all(abs(abs(p['wheel'][0])-.938)<.002 and p['lower']>.999 and p['upper']>.999 for p in main_down),main_down
+ (out/'mig23-main-extended.png').write_bytes(base64.b64decode(page.evaluate(capture_main)))
  nose_pose="""()=>['nose strut hinge','nose door port','nose door starboard'].map(name=>
   __mig23QA.aircraft.group.getObjectByName('MiG-23MLD '+name).quaternion.w)"""
  assert min(page.evaluate(nose_pose))>.999
@@ -124,6 +136,9 @@ with sync_playwright() as p:
  assert abs(intermediate['w']-math.cos(math.pi/4*(1-intermediate['travel'])))<.04,intermediate
  mid=page.evaluate(nose_pose)
  assert mid[0]<.98 and min(mid[1:])>.999,mid
+ main_mid=page.evaluate(main_pose)
+ assert all(p['wheel'][1]>d['wheel'][1]+.03 and p['lower']>.999 and p['upper']>.999 for p,d in zip(main_mid,main_down)),main_mid
+ (out/'mig23-main-moving.png').write_bytes(base64.b64decode(page.evaluate(capture_main)))
  (out/'mig23-nose-moving.png').write_bytes(base64.b64decode(page.evaluate(capture_nose)))
  page.wait_for_function('__mig23QA.readState()[21]<.005')
  assert abs(page.evaluate(f'{fin}.quaternion.w')-math.sqrt(.5))<.004,'Ventral fin must deploy with gear stowed'
@@ -133,10 +148,18 @@ with sync_playwright() as p:
  assert abs(stowed[0]-math.cos(math.radians(46)))<.004,stowed
  assert all(abs(w-math.sqrt(.5))<.004 for w in stowed[1:]),stowed
  (out/'mig23-nose-stowed.png').write_bytes(base64.b64decode(page.evaluate(capture_nose)))
+ main_up=page.evaluate(main_pose)
+ assert all(p['wheel'][1]>d['wheel'][1]+.8 and abs(p['wheel'][0])<.65 for p,d in zip(main_up,main_down)),main_up
+ assert all(abs(p['lower']-math.sqrt(.5))<.004 and abs(p['upper']-math.cos(math.pi/12))<.004 for p in main_up),main_up
+ assert abs(main_up[0]['wheel'][0]+main_up[1]['wheel'][0])<.002,main_up
+ (out/'mig23-main-stowed.png').write_bytes(base64.b64decode(page.evaluate(capture_main)))
  page.evaluate('document.getElementById("gear").click()')
  page.wait_for_function('__mig23QA.readState()[21]>.995')
  assert min(page.evaluate(nose_pose))>.999
  print('MI23_NOSE_GEAR',json.dumps({'moving':mid,'stowed':stowed}),flush=True)
+ main_return=page.evaluate(main_pose)
+ assert all(math.dist(p['wheel'],d['wheel'])<.002 and p['lower']>.999 and p['upper']>.999 for p,d in zip(main_return,main_down)),main_return
+ print('MI23_MAIN_GEAR',json.dumps({'extended':main_down,'transit':main_mid,'stowed':main_up}),flush=True)
 
  # Exercise the rendered exhaust with native part indices and typed health buffers.
  exhaust=page.evaluate("""()=>{

@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-main-gear-20261111",
-    "startedAt": "2026-11-10T20:04:37.000Z",
-    "expiresAt": "2026-11-10T21:54:37.000Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -980,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Rig the main gear linkage, fuselage doors and wheel covers using exact-variant close-ups and native gear travel. Measure down, transit, up and reverse clearances, including residual runway wheel clipping. Continue stabilators, airbrakes, intakes, matched overhead wing, uncovered R-35 exhaust, combat damage and GPU performance.",
+      "nextStep": "Rig stabilators and airbrakes from native controls. Recheck gear taxi clearance, the forward main door seam and full intermediate clearances, then inspect intakes, matched overhead wing, R-35 exhaust, combat damage and GPU performance.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1000,7 +995,10 @@
           "https://www.repulomuzeum.hu/Leltar/Leltarfotok/MiG-23.htm",
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/08.shtm",
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/09.shtm",
-          "https://wofmd.com/2018/07/26/mikoyangurevich-mig-23mld/"
+          "https://wofmd.com/2018/07/26/mikoyangurevich-mig-23mld/",
+          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/03.shtm",
+          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/07.shtm",
+          "https://www.homemadetools.net/forum/mig-23-landing-gear-gif-79064"
         ],
         "assets": [
           "web/mig23mld-glb.js",
@@ -1025,7 +1023,8 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-gear-20261110/docs/aircraft-review/mig23mld/07-runway-contact-comparison.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-ventral-fin-20261110/docs/aircraft-review/mig23mld/08-ventral-fin-photo-overlay.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-ventral-fin-20261110/docs/aircraft-review/mig23mld/09-ventral-fin-in-game.jpg",
-          "https://github.com/dasol1819/project-apex/blob/mig23mld-nose-gear-20261110/docs/aircraft-review/mig23mld/10-nose-gear-in-game.jpg"
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-nose-gear-20261110/docs/aircraft-review/mig23mld/10-nose-gear-in-game.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-main-gear-20261111/docs/aircraft-review/mig23mld/11-main-gear-in-game.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1051,7 +1050,9 @@
           "2026-11-10 original OBJ0024 gear-linked folding fin. Live Chromium native gear down, transit and up verified, with photo overlay and gameplay screenshots.",
           "Manifest/restore, 335,087-byte deterministic native build, 16 regressions passed. Source GLB and native binary checksums retained.",
           "2026-11-10 Chromium native nose gear extend, transit, stow and re-extension passed; original pose retained. Isolated close-up corrected 218 mm gap between inner door extents to 0.1 mm. Twin tyres clear the stowed door plane vertically in the measured pose.",
-          "Manifest/restore, deterministic native rebuild, 16 regressions, live plume, runway and desktop/mobile browser smoke passed."
+          "Manifest/restore, deterministic native rebuild, 16 regressions, live plume, runway and desktop/mobile browser smoke passed.",
+          "2026-11-11 native main gear extend, transit, stow and reverse verified in Chromium. Bilateral wheel-carrier joints rise approximately 0.948 m, close by approximately 0.347 m per side, and retain native −1.420 m extended tyre contact. Upper and lower fuselage doors registered to 6 and 16 unique matching exterior UV vertices.",
+          "Manifest/restore, 343,744-byte deterministic native rebuild, 17 regressions including current missile calibration and desktop/mobile browser smoke passed."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1093,7 +1094,11 @@
         "noseGearAuditDrawsExtended": 156,
         "noseGearAuditDrawsStowed": 157,
         "noseGearAuditTrianglesExtended": 40049,
-        "noseGearAuditTrianglesStowed": 40077
+        "noseGearAuditTrianglesStowed": 40077,
+        "mainGearAddedJsBytes": 4245,
+        "mainGearAddedTransformNodes": 14,
+        "mainGearAuditDraws": 112,
+        "mainGearAuditTriangles": 13789
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
@@ -1104,7 +1109,8 @@
         "The registered overlays expose residuals in the intake lip, wing, canopy, tail, and wheel placement. The museum intake and nozzle covers obscure their inner geometry. The R-35 active plume remains a visual estimate.",
         "The visual origin is aligned to the main native gear plane. Static nose-wheel clearance is +5.5 cm relative to its probe. The rolling capture still shows partial wheel/terrain intersection. Gear doors and retraction remain pending.",
         "Ventral fin travel is a visual approximation driven by native gear progress; wheels and doors remain visibly extended until their rig is implemented.",
-        "Nose gear pivot travel and door timing are visual estimates. Exact suspension clearance, main gear retraction and full exterior review remain pending."
+        "Nose gear pivot travel and door timing are visual estimates. Exact suspension clearance, main gear retraction and full exterior review remain pending.",
+        "Main gear visual linkage approximates exact hardware and timing. Some forward cover seam and taxi clearance remain to be verified."
       ]
     },
     {
@@ -2043,10 +2049,10 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-main-gear-20261111",
-    "state": "main-gear-rig",
+    "state": "main-gear-rigged-next-controls",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Map and animate main gear and doors from native travel; verify GLB clearance and real game.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-nose-gear-20261110/docs/aircraft-review/mig23mld",
+    "nextStep": "Rig stabilators and airbrakes from native controls. Recheck gear taxi clearance, the forward main door seam and full intermediate clearances, then inspect intakes, matched overhead wing, R-35 exhaust, combat damage and GPU performance.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-main-gear-20261111/docs/aircraft-review/mig23mld",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/18",
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld"
   },
