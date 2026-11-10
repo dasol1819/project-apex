@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-ventral-fin-20261110",
+    "startedAt": "2026-11-10T00:02:30.000Z",
+    "expiresAt": "2026-11-10T01:52:30.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -2012,10 +2017,10 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-gear-20261110",
-    "state": "gear-contact-aligned-next-retraction",
+    "branch": "mig23mld-ventral-fin-20261110",
+    "state": "gear-linked-ventral-fin",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Rig the main gear linkage and the separate fuselage and wheel doors, then nose gear, across native deployment states. Verify the remaining 5.5 cm static nose offset, rolling wheel clearance and lateral/fore-aft residuals against exact-variant references. Continue with stabilators, airbrakes, intakes, matched overhead wing, uncovered R-35 exhaust, combat damage and GPU performance.",
+    "nextStep": "Identify and rig the authored foldable ventral fin to native gear travel, then inspect its clearance and the main-gear linkage mapping.",
     "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-gear-20261110/docs/aircraft-review/mig23mld",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/18",
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld"
