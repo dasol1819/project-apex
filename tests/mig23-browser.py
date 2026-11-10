@@ -1,6 +1,6 @@
 """MiG-23MLD real Chromium/WebGL game-flight smoke on the restored Pages build.
 Instrumentation is injected by Playwright and never shipped to end users."""
-import base64, json, os
+import base64, json, math, os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 base=os.environ.get('APEX_TEST_URL','http://127.0.0.1:8765').rstrip('/')
@@ -99,6 +99,8 @@ with sync_playwright() as p:
  assert abs(gear['visible'][0]-gear['native'][0])<.06,gear
  assert all(abs(gear['visible'][i]-gear['native'][i])<.002 for i in (1,2)),gear
  print('MI23_GROUND_CONTACT',json.dumps(gear),flush=True)
+ fin='__mig23QA.aircraft.group.getObjectByName("MiG-23MLD ventral fin hinge")'
+ assert page.evaluate(f'{fin}.quaternion.w')>.999,'Ventral fin must fold with gear extended'
  # Use the real renderer with logarithmic depth and an unobstructed aft camera.
  # Toggling only the plume must change rendered pixels at native afterburner.
  page.evaluate('__mig23QA.sim.reset_spawn(2)')
@@ -106,6 +108,19 @@ with sync_playwright() as p:
  plume_render=page.evaluate('__mig23QA.capture([8,2,24],true)')
  assert plume_render['visiblePixels'],'Afterburner is active but missing from the game framebuffer'
  (out/'mig23-airborne-plume.png').write_bytes(base64.b64decode(plume_render['png']))
+
+ # Drive the normal gear control while airborne and compare the real game.
+ page.wait_for_function('__mig23QA.readState()[21]>.99')
+ capture_fin='__mig23QA.capture([20,-5,11])'
+ (out/'mig23-fin-folded.png').write_bytes(base64.b64decode(page.evaluate(capture_fin)))
+ page.evaluate('document.getElementById("gear").click()')
+ page.wait_for_function('__mig23QA.readState()[21]>.15 && __mig23QA.readState()[21]<.85')
+ intermediate=page.evaluate(f'({{travel:__mig23QA.readState()[21],w:{fin}.quaternion.w}})')
+ assert abs(intermediate['w']-math.cos(math.pi/4*(1-intermediate['travel'])))<.04,intermediate
+ page.wait_for_function('__mig23QA.readState()[21]<.005')
+ assert abs(page.evaluate(f'{fin}.quaternion.w')-math.sqrt(.5))<.004,'Ventral fin must deploy with gear stowed'
+ (out/'mig23-fin-deployed.png').write_bytes(base64.b64decode(page.evaluate(capture_fin)))
+ print('MI23_VENTRAL_FIN',json.dumps(intermediate),flush=True)
 
  # Exercise the rendered exhaust with native part indices and typed health buffers.
  exhaust=page.evaluate("""()=>{

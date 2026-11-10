@@ -1,7 +1,7 @@
 import {fullBombInventory} from './loadout-catalog.js';
 import {AIRCRAFT,aircraftDefinition,disposeObject,aircraftConfiguration} from './aircraft-catalog.js';
 import * as T from './vendor/three.module.js';
-import {createAircraft} from './aircraft.js?v=mig23mld-4';
+import {createAircraft} from './aircraft.js?v=mig23mld-5';
 import {basesForMap,mapCode} from './map-data.js';
 import {createDamageEffects} from './damage-effects.js';
 import {createSAMEffects} from './sam-effects.js';
