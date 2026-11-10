@@ -6,12 +6,12 @@ from playwright.sync_api import sync_playwright
 base=os.environ.get('APEX_TEST_URL','http://127.0.0.1:8765').rstrip('/')
 out=Path(os.environ.get('APEX_TEST_OUTPUT','/tmp/mig23-flight-browser'))
 out.mkdir(parents=True,exist_ok=True)
-hook='''\nwindow.__mig23QA={get sim(){return sim},get aircraft(){return aircraft},get wing(){return mig23Wing},get started(){return started},get ready(){return ready},readState,capture(offset, comparePlume=false){
+hook='''\nwindow.__mig23QA={get sim(){return sim},get aircraft(){return aircraft},get wing(){return mig23Wing},get started(){return started},get ready(){return ready},readState,capture(offset, comparePlume=false, target=[0,0,0]){
  const group=aircraft.group;
  const testCamera=camera.clone();
  testCamera.position.copy(group.localToWorld(new T.Vector3(...offset)));
  testCamera.up.copy(new T.Vector3(0,1,0).applyQuaternion(group.quaternion));
- testCamera.lookAt(group.position);
+ testCamera.lookAt(group.localToWorld(new T.Vector3(...target)));
  testCamera.fov=30;
  testCamera.updateProjectionMatrix();
  testCamera.updateMatrixWorld();
@@ -112,15 +112,31 @@ with sync_playwright() as p:
  # Drive the normal gear control while airborne and compare the real game.
  page.wait_for_function('__mig23QA.readState()[21]>.99')
  capture_fin='__mig23QA.capture([20,-5,11])'
+ capture_nose='__mig23QA.capture([3.5,-2.1,-6.9],false,[0,-.15,-3.55])'
+ nose_pose="""()=>['nose strut hinge','nose door port','nose door starboard'].map(name=>
+  __mig23QA.aircraft.group.getObjectByName('MiG-23MLD '+name).quaternion.w)"""
+ assert min(page.evaluate(nose_pose))>.999
+ (out/'mig23-nose-extended.png').write_bytes(base64.b64decode(page.evaluate(capture_nose)))
  (out/'mig23-fin-folded.png').write_bytes(base64.b64decode(page.evaluate(capture_fin)))
  page.evaluate('document.getElementById("gear").click()')
- page.wait_for_function('__mig23QA.readState()[21]>.15 && __mig23QA.readState()[21]<.85')
+ page.wait_for_function('__mig23QA.readState()[21]>.30 && __mig23QA.readState()[21]<.68')
  intermediate=page.evaluate(f'({{travel:__mig23QA.readState()[21],w:{fin}.quaternion.w}})')
  assert abs(intermediate['w']-math.cos(math.pi/4*(1-intermediate['travel'])))<.04,intermediate
+ mid=page.evaluate(nose_pose)
+ assert mid[0]<.98 and min(mid[1:])>.999,mid
+ (out/'mig23-nose-moving.png').write_bytes(base64.b64decode(page.evaluate(capture_nose)))
  page.wait_for_function('__mig23QA.readState()[21]<.005')
  assert abs(page.evaluate(f'{fin}.quaternion.w')-math.sqrt(.5))<.004,'Ventral fin must deploy with gear stowed'
  (out/'mig23-fin-deployed.png').write_bytes(base64.b64decode(page.evaluate(capture_fin)))
  print('MI23_VENTRAL_FIN',json.dumps(intermediate),flush=True)
+ stowed=page.evaluate(nose_pose)
+ assert abs(stowed[0]-math.cos(math.radians(46)))<.004,stowed
+ assert all(abs(w-math.sqrt(.5))<.004 for w in stowed[1:]),stowed
+ (out/'mig23-nose-stowed.png').write_bytes(base64.b64decode(page.evaluate(capture_nose)))
+ page.evaluate('document.getElementById("gear").click()')
+ page.wait_for_function('__mig23QA.readState()[21]>.995')
+ assert min(page.evaluate(nose_pose))>.999
+ print('MI23_NOSE_GEAR',json.dumps({'moving':mid,'stowed':stowed}),flush=True)
 
  # Exercise the rendered exhaust with native part indices and typed health buffers.
  exhaust=page.evaluate("""()=>{

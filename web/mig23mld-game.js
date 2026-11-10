@@ -19,20 +19,48 @@ function alignGroundContact(root){
  if(!bounds.isEmpty())root.position.y+=GEAR_CONTACT_Y-bounds.min.y;
 }
 
-// OBJ0024 is authored in the starboard-folded position. The two points
-// are the centres of the hinge pads, measured in normalized airframe metres.
-function rigVentralFin(root){
- const fin=root.getObjectByName('OBJ0024');
- if(!fin)return ()=>{};
+function rigHinge(root,name,parts,forwardPoint,aftPoint){
  const pivot=new T.Group();
- pivot.name='MiG-23MLD ventral fin hinge';
- const forward=root.worldToLocal(new T.Vector3(-.063,-1.818,5.267));
- const aft=root.worldToLocal(new T.Vector3(-.050,-1.759,6.085));
+ pivot.name=name;
+ const forward=root.worldToLocal(new T.Vector3(...forwardPoint));
+ const aft=root.worldToLocal(new T.Vector3(...aftPoint));
  const axis=aft.sub(forward).normalize();
  pivot.position.copy(forward);
  root.add(pivot);
- pivot.attach(fin);
- return gear=>pivot.quaternion.setFromAxisAngle(axis,-Math.PI/2*(1-gear));
+ for(const part of parts)pivot.attach(part);
+ return angle=>pivot.quaternion.setFromAxisAngle(axis,angle);
+}
+
+// OBJ0024 is authored in the starboard-folded position.
+function rigVentralFin(root){
+ const fin=root.getObjectByName('OBJ0024');
+ if(!fin)return ()=>{};
+ const rotate=rigHinge(root,'MiG-23MLD ventral fin hinge',[fin],
+  [-.063,-1.818,5.267],[-.050,-1.759,6.085]);
+ return gear=>rotate(-Math.PI/2*(1-gear));
+}
+
+function rigNoseGear(root){
+ const strut=['stoykanos','nos','OBJ0041','OBJ0355'].map(name=>root.getObjectByName(name));
+ const doors=['OBJ0047','OBJ0063'].map(name=>root.getObjectByName(name));
+ if([...strut,...doors].some(part=>!part))return ()=>{};
+ // The transverse pin sits at the front of the bay. The strut folds aft.
+ const fold=rigHinge(root,'MiG-23MLD nose strut hinge',strut,
+  [0,-.887,-3.93],[1,-.887,-3.93]);
+ const close=doors.map((door,i)=>{
+  const x=i===0?-.208:.208;
+  return rigHinge(root,`MiG-23MLD nose door ${i===0?'port':'starboard'}`,[door],
+   [x,-1.082,-4.136],[x,-1.179,-2.377]);
+ });
+ return gear=>{
+  const stow=1-gear;
+  // The doors clear the moving wheel before closing, in either direction.
+  const travel=T.MathUtils.smoothstep(stow,0,.80);
+  const closure=Math.PI/2*T.MathUtils.smoothstep(stow,.78,1);
+  fold(-T.MathUtils.degToRad(92)*travel);
+  close[0](closure);
+  close[1](-closure);
+ };
 }
 
 // The authored soplo mesh already contains the petals. Move their lips
@@ -119,7 +147,7 @@ export function createMig23mldAircraft(options={}){
  base.group.userData.previewOnly=false;
  const standIns=[];
  base.group.traverse(n=>{if(n.isMesh||n.isLineSegments)standIns.push(n);});
- let sweep=()=>{},setVentralFin=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1;
+ let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1;
  const plume=createPlume();
  base.group.add(plume);
  const controller=new AbortController();
@@ -132,12 +160,14 @@ export function createMig23mldAircraft(options={}){
    const rig=rigMig23Sweep(asset.scene,asset.nodes);
    if(controller.signal.aborted){normalized.root.traverse(n=>{n.geometry?.dispose?.();});return;}
    setVentralFin=rigVentralFin(normalized.root);
+   setNoseGear=rigNoseGear(normalized.root);
    alignGroundContact(normalized.root);
    exhaust=rigExhaust(normalized.root,plume);
    sweep=rig;
    base.group.add(normalized.root);
    sweep(lastAngle);
    setVentralFin(lastGear);
+   setNoseGear(lastGear);
    exhaust?.(0,0);
    loaded=true;
    for(const node of standIns)node.visible=false;
@@ -152,6 +182,7 @@ export function createMig23mldAircraft(options={}){
   if(loaded){
    sweep(angle);
    setVentralFin(lastGear);
+   setNoseGear(lastGear);
    for(const node of standIns)node.visible=false;
   }
   const ab=clamp(Number(state.afterburner)||0,0,1);
