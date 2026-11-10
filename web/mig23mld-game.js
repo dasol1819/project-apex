@@ -19,6 +19,22 @@ function alignGroundContact(root){
  if(!bounds.isEmpty())root.position.y+=GEAR_CONTACT_Y-bounds.min.y;
 }
 
+// OBJ0024 is authored in the starboard-folded position. The two points
+// are the centres of the hinge pads, measured in normalized airframe metres.
+function rigVentralFin(root){
+ const fin=root.getObjectByName('OBJ0024');
+ if(!fin)return ()=>{};
+ const pivot=new T.Group();
+ pivot.name='MiG-23MLD ventral fin hinge';
+ const forward=root.worldToLocal(new T.Vector3(-.063,-1.818,5.267));
+ const aft=root.worldToLocal(new T.Vector3(-.050,-1.759,6.085));
+ const axis=aft.sub(forward).normalize();
+ pivot.position.copy(forward);
+ root.add(pivot);
+ pivot.attach(fin);
+ return gear=>pivot.quaternion.setFromAxisAngle(axis,-Math.PI/2*(1-gear));
+}
+
 // The authored soplo mesh already contains the petals. Move their lips
 // radially while keeping the forward mounting ring fixed.
 function rigExhaust(root, plume){
@@ -103,7 +119,7 @@ export function createMig23mldAircraft(options={}){
  base.group.userData.previewOnly=false;
  const standIns=[];
  base.group.traverse(n=>{if(n.isMesh||n.isLineSegments)standIns.push(n);});
- let sweep=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16;
+ let sweep=()=>{},setVentralFin=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1;
  const plume=createPlume();
  base.group.add(plume);
  const controller=new AbortController();
@@ -115,11 +131,13 @@ export function createMig23mldAircraft(options={}){
    const normalized=normalizeMig23(asset.scene);
    const rig=rigMig23Sweep(asset.scene,asset.nodes);
    if(controller.signal.aborted){normalized.root.traverse(n=>{n.geometry?.dispose?.();});return;}
+   setVentralFin=rigVentralFin(normalized.root);
    alignGroundContact(normalized.root);
    exhaust=rigExhaust(normalized.root,plume);
    sweep=rig;
    base.group.add(normalized.root);
    sweep(lastAngle);
+   setVentralFin(lastGear);
    exhaust?.(0,0);
    loaded=true;
    for(const node of standIns)node.visible=false;
@@ -130,8 +148,10 @@ export function createMig23mldAircraft(options={}){
   originalUpdate(state,dt);
   const angle=Number.isFinite(state.wingSweep)?clamp(state.wingSweep,16,72):lastAngle;
   lastAngle=angle;
+  if(Number.isFinite(state.gear))lastGear=clamp(state.gear,0,1);
   if(loaded){
    sweep(angle);
+   setVentralFin(lastGear);
    for(const node of standIns)node.visible=false;
   }
   const ab=clamp(Number(state.afterburner)||0,0,1);
