@@ -9,7 +9,11 @@ const imports={env:{pow:Math.pow,atan2:Math.atan2,asin:Math.asin,external_terrai
 const read=(s,n,l)=>Array.from(new Float64Array(s.memory.buffer,s[n](),l)),state=s=>read(s,'get_state',104);
 const make=(type=13,z=0,speed=250)=>{const s=new WebAssembly.Instance(module,imports).exports;s.set_aircraft_type(type);s.reset_spawn(1);s.debug_set_state(0,5000,z,0,0,-speed,0,0,0,1);s.set_controls(0,0,0,.75,0,0,0,1);s.set_invincible(0);return s;};
 function engagement(kind,targetType=1){
- const player=make(),target=make(targetType,-4000,210),bridge=createFleetBridge([{id:1,team:0,active:true,sim:player},{id:101,team:1,active:true,sim:target}]);
+ const player=make(),target=make(targetType,-4000,210);
+ let damage=0;
+ const bridge=createFleetBridge([{id:1,team:0,active:true,sim:player},{id:101,team:1,active:true,sim:target}],undefined,{
+  onHit(source,victim,weapon,part,loss){if(source.sim===player&&weapon===5)damage+=loss;}
+ });
  player.set_radar_power(1);player[kind==='rf'?'set_amraam_enabled':'set_missile_enabled'](1);
  let locked=false,launched=false,trajectory=false;
  for(let i=0;i<3600;i++){
@@ -20,8 +24,8 @@ function engagement(kind,targetType=1){
   if(launched&&read(player,kind==='rf'?'get_amraams':'get_missiles',2)[0]>0)trajectory=true;
  }
  assert.ok(locked&&launched&&trajectory,kind+' acquires, launches and flies');
- const health=read(target,'get_systems',256);assert.ok(health[16]<.999,kind+' inflicts native damage through the fleet bridge');
- return{kind,targetType,remaining:read(player,kind==='rf'?'get_amraam_state':'get_missile_state',32)[1],targetBody:health[16]};
+ assert.ok(damage>0,kind+' inflicts native damage through the fleet bridge');
+ return{kind,targetType,remaining:read(player,kind==='rf'?'get_amraam_state':'get_missile_state',32)[1],damage};
 }
 const engagements=[engagement('rf'),engagement('ir'),engagement('rf',13)];
 const gun=make();gun.set_trigger(1);for(let i=0;i<720;i++)gun.step(1/120);gun.set_trigger(0);
@@ -55,8 +59,11 @@ assert.ok(su35Impact>.4,'30mm impact multiplier is applied');
 console.log(JSON.stringify({result:'PASS',gunImpact:{legacy30mm,su35Impact}}));
 
 const ai=make(),aiTarget=make(1,-4000,210);ai.set_combat_ai(1,.8,0);
-const aiBridge=createFleetBridge([{id:1,team:0,active:true,sim:ai},{id:101,team:1,active:true,sim:aiTarget}]);
+let aiMissileDamage=0;
+const aiBridge=createFleetBridge([{id:1,team:0,active:true,sim:ai},{id:101,team:1,active:true,sim:aiTarget}],undefined,{
+ onHit(source,target,weapon,part,loss){if(source.sim===ai&&weapon===5)aiMissileDamage+=loss;}
+});
 let aiLaunched=false;for(let i=0;i<3600;i++){aiBridge.step(1/120);aiLaunched ||= read(ai,'get_amraam_state',32)[1]<6;}
 assert.ok(aiLaunched,'AI acquires and launches its own RF missile');
-assert.ok(read(aiTarget,'get_systems',256)[16]<.99,'AI delivers native combat damage');
+assert.ok(aiMissileDamage>0,'AI delivers native missile damage');
 console.log(JSON.stringify({result:'PASS',aiCombat:true}));

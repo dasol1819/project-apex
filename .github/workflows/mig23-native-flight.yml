@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - 'scripts/native/build-mig23.mjs'
+      - 'scripts/native/patch-missiles.mjs'
+      - 'web/missile-data.js'
+      - 'tests/missile-systems.mjs'
+      - 'tests/missile-browser.py'
       - 'assets/mig23mld/**'
       - 'tests/mig23-native.mjs'
       - 'tests/mig23-browser.py'
@@ -33,6 +37,7 @@ jobs:
           node tests/mig15-native.mjs public
           node tests/mig29-native.mjs public
           node tests/su35-combat-native.mjs public
+          node tests/missile-systems.mjs public
       - name: Web runtime and manifest integrity
         run: |
           node --check web/app.js
@@ -48,6 +53,7 @@ jobs:
           /tmp/apex-playwright/bin/pip install --quiet playwright==1.56.0
           /tmp/apex-playwright/bin/python -m playwright install --with-deps chromium
           python3 -m http.server 8765 --directory public > /tmp/mig23-web.log 2>&1 &
+          APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/missile-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
