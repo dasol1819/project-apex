@@ -5,11 +5,11 @@ import {createAircraft} from './aircraft.js?v=mig23mld-6';
 import {basesForMap,mapCode} from './map-data.js';
 import {createDamageEffects} from './damage-effects.js';
 import {createSAMEffects} from './sam-effects.js';
-import {createMissileEffects} from './missile-effects.js';
+import {createMissileEffects} from './missile-effects.js?v=missiles-1';
 import {createCountermeasureEffects} from './countermeasure-effects.js';
 import {createBombEffects} from './bomb-effects.js';
 import {readCombatScore} from './combat-score.js';
-import {createFleetBridge,AI_MODES} from './fleet-bridge.js';
+import {createFleetBridge,AI_MODES} from './fleet-bridge.js?v=missiles-1';
 import {PARTS,readSystems,partValue} from './airframe-parts.js';
 const data=(sim,name,n)=>new Float64Array(sim.memory.buffer,sim[name](),n);
 const state=sim=>data(sim,'get_state',104),weapon=sim=>data(sim,'get_combat',12);
@@ -26,7 +26,7 @@ export async function createCombatScene(scene,module,imports,player,world,onImpa
  const flashes=Array.from({length:64},()=>({point:new T.Vector3(),age:1,seed:0}));
  function traceFor(actor){const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(new Float32Array(512*6),3));g.setDrawRange(0,0);const trace=new T.LineSegments(g,new T.LineBasicMaterial({color:actor.team?0xffbb8e:0xffdca0,transparent:true,opacity:.85,blending:T.AdditiveBlending,depthWrite:false}));trace.frustumCulled=false;trace.name='pooled cannon tracers '+actor.id;scene.add(trace);actor.trace=trace;traces.push(trace);}
  traceFor(roster[0]);world.loadCombatWorld(player);
- function capture(actor){const sim=actor.sim,a=data(sim,'get_impacts',162);for(let i=0;i<a[0];i++){const k=2+i*5,f=flashes[flashCursor++%64];f.point.set(a[k],a[k+1],a[k+2]);f.age=0;f.seed=serial++;}missileEffects.capture(sim);samEffects.capture(sim);bombEffects.capture(sim,actor.id,player);}
+ function capture(actor){const sim=actor.sim,a=data(sim,'get_impacts',162);for(let i=0;i<a[0];i++){const k=2+i*5,f=flashes[flashCursor++%64];f.point.set(a[k],a[k+1],a[k+2]);f.age=0;f.seed=serial++;}missileEffects.capture(sim,roster[0].state);samEffects.capture(sim);bombEffects.capture(sim,actor.id,player);}
  const bridge=createFleetBridge(roster,world,{onEvents:capture,canHit(source,target){return !source.neutral&&!target.neutral&&!!player.match_can_hit(source.id,target.id)},onHit(source,target,weapon,part,loss){player.record_match_damage(source.id,target.id,part,loss,weapon);if(source.id===1){hitTimer=.3;onPlayerHit?.({target:target.id,weapon,part,loss});}}});
  async function createActor(team,index){const id=team?101+index:2+index,key=team+':'+index;if(pool.has(key))return pool.get(key);const instance=await WebAssembly.instantiate(module,imports),sim=instance.exports,aircraft=createAircraft(),actor={id,team,index,sim,aircraft,active:false,alive:true,fxAge:0,renderAge:0,name:(team?'RED ':'BLUE ')+String(index+1).padStart(2,'0')};aircraft.group.name=team&&index===0?'enemy F-22 / one patrol aircraft':actor.name+' / combat aircraft';aircraft.group.visible=false;aircraft.group.traverse(o=>{if(o.isMesh)o.castShadow=false;});scene.add(aircraft.group);const beforeFX=new Set(scene.children);actor.damageEffects=createDamageEffects(scene,aircraft,{onImpact:(energy,explosive)=>{const p=state(player);if(aircraft.group.position.distanceTo(new T.Vector3(...p.subarray(0,3)))<6500)onImpact?.(energy,explosive);}});actor.type=0;actor.fxNodes=scene.children.filter(o=>!beforeFX.has(o));traceFor(actor);world.loadCombatWorld(sim);pool.set(key,actor);roster.push(actor);return actor;}
  await createActor(1,0);

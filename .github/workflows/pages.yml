@@ -38,6 +38,7 @@ jobs:
         run: |
           node tests/su35-combat-native.mjs public
           node tests/su35-combat-systems.mjs public
+          node tests/missile-systems.mjs public
       - name: Check Su-35 exterior and existing aircraft
         run: node tests/su35-geometry.mjs public
       - name: Check Su-35 combat geometry, stations and wreckage

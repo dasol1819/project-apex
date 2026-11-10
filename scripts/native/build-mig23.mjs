@@ -6,6 +6,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import wabtFactory from 'wabt';
+import {patchMissiles} from './patch-missiles.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const build=path.join(root,'.native-build');
 execFileSync(process.execPath,[path.join(root,'scripts/native/build-mig15.mjs')],{stdio:'inherit'});
@@ -289,6 +290,7 @@ change('step',b=>{
  return b;
 });
 
+wat=patchMissiles(wat,region,17,regions.radars);
 const pages=Math.ceil(cursor/65536);
 wat=wat.replace(/\(memory \(;0;\) \d+\)/,`(memory (;0;) ${pages})`);
 wat=wat.slice(0,wat.lastIndexOf(')'))+

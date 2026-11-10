@@ -1,5 +1,5 @@
 export const AIRCRAFT=Object.freeze([
- {id:0,key:'f22',name:'F-22A',nickname:'Raptor',engine:'F119',engines:2,length:18.92,span:13.56,gun:'M61A2',ammo:480,ir:'AIM-9X',rf:'AIM-120',rfCount:6,radar:'AN/APG-77',radarMode:'AESA',notes:'쌍발 · 내부 무장창 · 피치 TVC'},
+ {id:0,key:'f22',name:'F-22A',nickname:'Raptor',engine:'F119',engines:2,length:18.92,span:13.56,gun:'M61A2',ammo:480,ir:'AIM-9X',rf:'AIM-120C',rfCount:6,radar:'AN/APG-77',radarMode:'AESA',notes:'쌍발 · 내부 무장창 · 피치 TVC'},
  {id:1,key:'f4',name:'F-4E',nickname:'Phantom II',engine:'J79-GE-17',engines:2,length:19.2,span:11.7,gun:'M61A1',ammo:640,ir:'AIM-9J',rf:'AIM-7E-2',rfCount:4,radar:'AN/APQ-120',radarMode:'PULSE',notes:'쌍발 · 복좌 · 펄스 레이더 · Sparrow는 STT 유지 필요'},
  {id:2,key:'f5',name:'F-5E',nickname:'Tiger II',engine:'J85-GE-21',engines:2,length:14.45,span:8.13,gun:'M39A3 ×2',ammo:560,ir:'AIM-9P',rf:'없음',rfCount:0,radar:'AN/APQ-159',radarMode:'PULSE',notes:'경량 쌍발 · 쌍열 20 mm · AIM-9P 후방 열추적'},
  {id:3,key:'f16',name:'F-16C',nickname:'Fighting Falcon',engine:'F110-GE-129',engines:1,length:15.06,span:9.96,gun:'M61A1',ammo:500,ir:'AIM-9M',rf:'AIM-120C',rfCount:4,radar:'AN/APG-68',radarMode:'PD',notes:'Block 50 · 단발 · 버블 캐노피 · 펄스 도플러'},

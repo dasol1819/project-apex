@@ -29,13 +29,23 @@ const make = (type = 14, z = 0, speed = 250) => {
   s.set_invincible(0);
   return s;
 };
+function combatBridge(shooter, target) {
+  let missileDamage = 0;
+  const bridge = createFleetBridge([
+    { id: 1, team: 0, active: true, sim: shooter },
+    { id: 101, team: 1, active: true, sim: target },
+  ], undefined, {
+    onHit(source, victim, weapon, part, loss) {
+      if (source.sim === shooter && weapon === 5) missileDamage += loss;
+    },
+  });
+  return { bridge, damage: () => missileDamage };
+}
+
 function engagement(kind, targetType = 1) {
   const player = make(),
     target = make(targetType, -4000, 210),
-    bridge = createFleetBridge([
-      { id: 1, team: 0, active: true, sim: player },
-      { id: 101, team: 1, active: true, sim: target },
-    ]);
+    { bridge, damage } = combatBridge(player, target);
   player.set_radar_power(1);
   player[kind === "rf" ? "set_amraam_enabled" : "set_missile_enabled"](1);
   let locked = false,
@@ -72,9 +82,8 @@ function engagement(kind, targetType = 1) {
     locked && launched && trajectory,
     kind + " acquires, launches and flies",
   );
-  const health = read(target, "get_systems", 256);
   assert.ok(
-    health[16] < 0.999,
+    damage() > 0,
     kind + " inflicts native damage through the fleet bridge",
   );
   return {
@@ -85,7 +94,7 @@ function engagement(kind, targetType = 1) {
       kind === "rf" ? "get_amraam_state" : "get_missile_state",
       32,
     )[1],
-    targetBody: health[16],
+    damage: damage(),
   };
 }
 const engagements = [engagement("rf"), engagement("ir"), engagement("rf", 14)];
@@ -196,10 +205,7 @@ console.log(
 const ai = make(),
   aiTarget = make(1, -4000, 210);
 ai.set_combat_ai(1, 0.8, 0);
-const aiBridge = createFleetBridge([
-  { id: 1, team: 0, active: true, sim: ai },
-  { id: 101, team: 1, active: true, sim: aiTarget },
-]);
+const { bridge: aiBridge, damage: aiDamage } = combatBridge(ai, aiTarget);
 let aiLaunched = false;
 for (let i = 0; i < 3600; i++) {
   aiBridge.step(1 / 120);
@@ -207,18 +213,15 @@ for (let i = 0; i < 3600; i++) {
 }
 assert.ok(aiLaunched, "AI acquires and launches its own RF missile");
 assert.ok(
-  read(aiTarget, "get_systems", 256)[16] < 0.99,
-  "AI delivers native combat damage",
+  aiDamage() > 0,
+  "AI delivers native missile damage",
 );
 console.log(JSON.stringify({ result: "PASS", aiCombat: true }));
 // Semi-active radar homing requires illumination throughout the engagement.
 function illumination(cut) {
   const shooter = make(),
     target = make(1, -4000, 210),
-    bridge = createFleetBridge([
-      { id: 1, team: 0, active: true, sim: shooter },
-      { id: 101, team: 1, active: true, sim: target },
-    ]);
+    { bridge, damage } = combatBridge(shooter, target);
   shooter.set_radar_power(1);
   shooter.set_amraam_enabled(1);
   let detected = false,
@@ -242,12 +245,12 @@ function illumination(cut) {
     if (cut && firedAt >= 0 && i - firedAt > 30) shooter.set_radar_power(0);
   }
   assert.ok(firedAt >= 0);
-  return read(target, "get_systems", 256)[16];
+  return damage();
 }
 const maintained = illumination(false),
   lost = illumination(true);
-assert.ok(maintained < 0.99);
-assert.equal(lost, 1, "loss of illumination prevents the SARH hit");
+assert.ok(maintained > 0);
+assert.equal(lost, 0, "loss of illumination prevents the SARH hit");
 console.log(
   JSON.stringify({ result: "PASS", sarhIllumination: { maintained, lost } }),
 );
