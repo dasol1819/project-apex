@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-main-gear-20261111",
+    "startedAt": "2026-11-10T20:04:37.000Z",
+    "expiresAt": "2026-11-10T21:54:37.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -2037,10 +2042,10 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-nose-gear-20261110",
-    "state": "nose-gear-rigged-next-main-gear",
+    "branch": "mig23mld-main-gear-20261111",
+    "state": "main-gear-rig",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Rig the main gear linkage, fuselage doors and wheel covers using exact-variant close-ups and native gear travel. Measure down, transit, up and reverse clearances, including residual runway wheel clipping. Continue stabilators, airbrakes, intakes, matched overhead wing, uncovered R-35 exhaust, combat damage and GPU performance.",
+    "nextStep": "Map and animate main gear and doors from native travel; verify GLB clearance and real game.",
     "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-nose-gear-20261110/docs/aircraft-review/mig23mld",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/18",
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld"
