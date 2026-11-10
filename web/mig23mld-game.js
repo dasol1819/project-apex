@@ -63,6 +63,82 @@ function rigNoseGear(root){
  };
 }
 
+// Port and starboard use the original GLB's mirrored parts. Closed door
+// positions register the door skin UV vertices to the matching fuselage edges.
+function rigMainGear(root){
+ const range=(first,last)=>Array.from({length:last-first+1},(_,i)=>i+first);
+ const sides=[
+  {side:-1,name:'port',doors:[43,44],wheel:[46,...range(109,124)],
+   beam:[125,130,134,136,138,140],cylinder:108,rod:141},
+  {side:1,name:'starboard',doors:[61,62],wheel:[131,...range(147,162)],
+   beam:[163,168,170,172,174,176,177],cylinder:181,rod:182}
+ ];
+ const find=id=>root.getObjectByName('OBJ'+String(id).padStart(4,'0'));
+ const rig=sides.map(({side,name,doors,wheel,beam,cylinder,rod})=>{
+  const point=([x,y,z])=>root.worldToLocal(new T.Vector3(side*x,y,z));
+  const origin=point([0,0,0]);
+  const rotation=([x,y,z],degrees)=>new T.Quaternion().setFromAxisAngle(
+   point([x,y,z]).sub(origin).normalize().multiplyScalar(side),T.MathUtils.degToRad(degrees));
+  const mount=(label,at,ids)=>{
+   const pivot=new T.Group();
+   pivot.name=`MiG-23MLD main gear ${name} ${label}`;
+   pivot.position.copy(at);
+   root.add(pivot);
+   for(const id of ids){const part=find(id);if(part)pivot.attach(part);}
+   return pivot;
+  };
+  const panel=(part,label,start,end,axis,angle)=>{
+   const at=point(start),closed=point(end);
+   const pivot=mount(label,at,[]);
+   if(part)pivot.attach(part);
+   const turn=rotation(axis,angle);
+   return amount=>{
+    pivot.position.lerpVectors(at,closed,amount);
+    pivot.quaternion.identity().slerp(turn,amount);
+   };
+  };
+  const closeLower=panel(find(doors[0]),'lower door',[.25437,-1.46876,2],[.25435,-1.46986,2.01661],
+   [-.00127,-.06628,.99780],90);
+  const closeUpper=panel(find(doors[1]),'upper door',[.79182,-.46903,2],[.79188,-.46977,2.01384],
+   [-.00473,.05363,-.99855],30);
+  const base=point([.24,-1.38,1.55]),joint=point([.938,-1.662,1.706]);
+  const startArm=joint.clone().sub(base),endArm=point([.59344,-.70923,1.70638]).sub(base);
+  const beamAxis=startArm.clone().normalize(),twist=new T.Quaternion();
+  const beamEnd=new T.Quaternion().setFromUnitVectors(beamAxis,endArm.normalize());
+  const wheelEnd=rotation([-.34044,.17258,-.92429],42.661);
+  const upper=mount('beam',base,beam),lower=mount('wheel carrier',joint,wheel);
+  const forwardSkin=find(beam[0])?.children.find(part=>part.material?.name==='fuzcamo');
+  const coverOrigin=point([.817,-1.931,1.458]),coverEnd=point([.83,-.818,1.534]);
+  const coverOffset=coverOrigin.clone().sub(base),coverTurn=rotation([0,0,1],90);
+  const forwardCover=mount('forward cover',coverOrigin,[]);
+  if(forwardSkin)forwardCover.attach(forwardSkin);
+  const head=point([.548,-.429,1.62]),tail=point([.447,-1.355,1.575]);
+  const actuatorBase=tail.clone().sub(head),actuatorDirection=actuatorBase.clone().normalize();
+  const ramMount=tail.clone().sub(base),stroke=new T.Vector3();
+  const shell=mount('actuator cylinder',head,[cylinder]),piston=mount('actuator rod',head,[rod]);
+  return gear=>{
+   const stow=1-gear,travel=T.MathUtils.smoothstep(stow,0,.83);
+   upper.quaternion.identity().slerp(beamEnd,travel);
+   // Roll the offset linkage into the bay while keeping the wheel joint fixed.
+   upper.quaternion.multiply(twist.setFromAxisAngle(beamAxis,T.MathUtils.degToRad(-170*side)*travel));
+   lower.position.copy(startArm).applyQuaternion(upper.quaternion).add(base);
+   lower.quaternion.identity().slerp(wheelEnd,travel);
+   stroke.copy(ramMount).applyQuaternion(upper.quaternion).add(base).sub(head);
+   const length=stroke.length();
+   stroke.normalize();
+   shell.quaternion.setFromUnitVectors(actuatorDirection,stroke);
+   piston.quaternion.copy(shell.quaternion);
+   piston.position.copy(head).addScaledVector(stroke,length-actuatorBase.length());
+   const latch=T.MathUtils.smoothstep(stow,.72,1);
+   forwardCover.position.copy(coverOffset).applyQuaternion(upper.quaternion).add(base).lerp(coverEnd,latch);
+   forwardCover.quaternion.copy(upper.quaternion).slerp(coverTurn,latch);
+   closeLower(T.MathUtils.smoothstep(stow,.79,1));
+   closeUpper(T.MathUtils.smoothstep(stow,.85,1));
+  };
+ });
+ return gear=>{for(const pose of rig)pose(gear);};
+}
+
 // The authored soplo mesh already contains the petals. Move their lips
 // radially while keeping the forward mounting ring fixed.
 function rigExhaust(root, plume){
@@ -147,7 +223,7 @@ export function createMig23mldAircraft(options={}){
  base.group.userData.previewOnly=false;
  const standIns=[];
  base.group.traverse(n=>{if(n.isMesh||n.isLineSegments)standIns.push(n);});
- let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1;
+ let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},setMainGear=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1;
  const plume=createPlume();
  base.group.add(plume);
  const controller=new AbortController();
@@ -161,6 +237,7 @@ export function createMig23mldAircraft(options={}){
    if(controller.signal.aborted){normalized.root.traverse(n=>{n.geometry?.dispose?.();});return;}
    setVentralFin=rigVentralFin(normalized.root);
    setNoseGear=rigNoseGear(normalized.root);
+   setMainGear=rigMainGear(normalized.root);
    alignGroundContact(normalized.root);
    exhaust=rigExhaust(normalized.root,plume);
    sweep=rig;
@@ -168,6 +245,7 @@ export function createMig23mldAircraft(options={}){
    sweep(lastAngle);
    setVentralFin(lastGear);
    setNoseGear(lastGear);
+   setMainGear(lastGear);
    exhaust?.(0,0);
    loaded=true;
    for(const node of standIns)node.visible=false;
@@ -183,6 +261,7 @@ export function createMig23mldAircraft(options={}){
    sweep(angle);
    setVentralFin(lastGear);
    setNoseGear(lastGear);
+   setMainGear(lastGear);
    for(const node of standIns)node.visible=false;
   }
   const ab=clamp(Number(state.afterburner)||0,0,1);
