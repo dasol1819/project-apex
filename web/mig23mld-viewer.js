@@ -1,5 +1,5 @@
 import * as T from './vendor/three.module.js';
-import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=1';
+import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=3';
 
 const $=id=>document.getElementById(id),canvas=$('viewer');
 const renderer=new T.WebGLRenderer({canvas,antialias:true});
