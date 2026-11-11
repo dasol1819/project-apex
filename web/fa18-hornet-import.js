@@ -18,12 +18,22 @@ function fitExterior(scene){
  const object=scene.clone(true);
  const hidden=/^(?:Plane(?:\.\d+)?|2K_Bomb(?:\.\d+)?|AIM-9_Missile(?:\.\d+)?|AIM-9_Launcher(?:\.\d+)?|Missile(?:\.\d+)?|MultipleEjectorRack(?:\.\d+)?|Pylon(?:\.\d+)?|Fuel_Tank_External)$/;
  object.traverse(n=>{if(hidden.test(n.name))n.visible=false;});
- const body=object.getObjectByName('Fuselage');
- if(!body)throw Error('F/A-18B body node missing');
+ // Measure the visible airframe rather than just the fuselage. The authored
+ // tailplane projects beyond the fuselage; using body length overscales the jet.
+ // Hidden presentation planes and baked-on weapons must not affect fitting.
  object.updateMatrixWorld(true);
- const box=new THREE.Box3().setFromObject(body);
+ const box=new THREE.Box3();
+ object.traverse(node=>{
+  if(!node.isMesh)return;
+  let ancestor=node;
+  while(ancestor&&ancestor!==object){
+   if(!ancestor.visible)return;
+   ancestor=ancestor.parent;
+  }
+  box.expandByObject(node,true);
+ });
  const size=box.getSize(new THREE.Vector3());
- if(!(size.x>3&&size.x<100))throw Error('F/A-18B geometry extent invalid');
+ if(!(size.x>3&&size.x<100&&size.z>2))throw Error('F/A-18B geometry extent invalid');
  object.position.sub(box.getCenter(new THREE.Vector3()));
  const root=new THREE.Group();
  root.name='F/A-18B authored exterior (F/A-18F visual reference only)';
