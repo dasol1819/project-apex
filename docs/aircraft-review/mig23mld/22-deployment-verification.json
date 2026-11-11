@@ -1,0 +1,86 @@
+{
+  "merge": "dc580884af01f200f4852a30204aef84b6527d98",
+  "pages": "https://github.com/dasol1819/project-apex/actions/runs/43059931057",
+  "pagesConclusion": "success",
+  "checkedAtSeoul": "2026-11-12",
+  "http": [
+    {
+      "file": "index.html",
+      "url": "http://project-apex.kro.kr/",
+      "status": 200,
+      "bytes": 82298,
+      "sha256": "3c314c53797d6c6f4a9d1212c8e55832492c46ac5b9e1ac9c69f488699a5ccc2",
+      "matchesValidatedBuild": true
+    },
+    {
+      "file": "app.js",
+      "url": "http://project-apex.kro.kr/app.js?v=instructor-axis-1-mig23mld-11",
+      "status": 200,
+      "bytes": 121379,
+      "sha256": "278c9ad9017870b93c3fd0461f9f1fa143cea3597fca5badc2f9557b635b2a3f",
+      "matchesValidatedBuild": true
+    },
+    {
+      "file": "aircraft.js",
+      "url": "http://project-apex.kro.kr/aircraft.js?v=mig23mld-11",
+      "status": 200,
+      "bytes": 56465,
+      "sha256": "c4c7a75cb27e6f5ddc1a1a061e97c667625d5becbcbb660110c1c4770a29a469",
+      "matchesValidatedBuild": true
+    },
+    {
+      "file": "aircraft-inspector.js",
+      "url": "http://project-apex.kro.kr/aircraft-inspector.js?v=mig23mld-11",
+      "status": 200,
+      "bytes": 20897,
+      "sha256": "fefefdbd90c361981beba995424c5524628460c6e1f0bdea6b56c79e093c481f",
+      "matchesValidatedBuild": true
+    },
+    {
+      "file": "combat-scene.js",
+      "url": "http://project-apex.kro.kr/combat-scene.js?v=mig23mld-11",
+      "status": 200,
+      "bytes": 19978,
+      "sha256": "04be17610f89dfbfbc7f5e6741cdcd6dbac8c7e8a874b6b194e85a9906affd2b",
+      "matchesValidatedBuild": true
+    },
+    {
+      "file": "mig23mld-game.js",
+      "url": "http://project-apex.kro.kr/mig23mld-game.js?v=11",
+      "status": 200,
+      "bytes": 17647,
+      "sha256": "aa15d5c1e1fc748781ca1ebc7bfdaff6a85713dd4fd18a52679797ab05723a8d",
+      "matchesValidatedBuild": true
+    },
+    {
+      "file": "mig23mld-glb.js",
+      "url": "http://project-apex.kro.kr/mig23mld-glb.js?v=3",
+      "status": 200,
+      "bytes": 8893,
+      "sha256": "32456164daa4b7e55fc1873c86c9585a31bdd4150984733ccc4915cc4ec9b6df",
+      "matchesValidatedBuild": true
+    },
+    {
+      "file": "flight.wasm",
+      "url": "http://project-apex.kro.kr/flight.wasm?v=instructor-axis-1-missiles-1",
+      "status": 200,
+      "bytes": 344183,
+      "sha256": "1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693",
+      "matchesValidatedBuild": true
+    },
+    {
+      "file": "assets/mig23mld/Mig-23.glb",
+      "url": "http://project-apex.kro.kr/assets/mig23mld/Mig-23.glb?v=3",
+      "status": 200,
+      "bytes": 22593404,
+      "sha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+      "matchesValidatedBuild": true
+    }
+  ],
+  "https": {
+    "url": "https://project-apex.kro.kr/",
+    "status": 503,
+    "error": "upstream connect error or disconnect/reset before headers. reset reason: remote connection failure"
+  },
+  "httpsVerified": false
+}

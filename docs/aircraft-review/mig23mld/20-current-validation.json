@@ -138,7 +138,155 @@
       "pageErrors": []
     },
     "baseline": "20-current-baseline.json",
-    "shared": "20-current-shared.json"
+    "shared": "20-current-shared.json",
+    "studio": {
+      "result": "PASS",
+      "loadedGLB": true,
+      "gridHelperCrash": false,
+      "devices": [
+        {
+          "device": "desktop",
+          "sweep": 16,
+          "metrics": "136 meshes \u00b7 222 surfaces \u00b7 136 nodes \u00b7 model length 4.391 \u2192 16.7m",
+          "canvas": {
+            "w": 1366,
+            "h": 612
+          },
+          "errors": []
+        },
+        {
+          "device": "mobile",
+          "sweep": 16,
+          "metrics": "136 meshes \u00b7 222 surfaces \u00b7 136 nodes \u00b7 model length 4.391 \u2192 16.7m",
+          "canvas": {
+            "w": 390,
+            "h": 464
+          },
+          "errors": []
+        }
+      ]
+    },
+    "tree": {
+      "result": "PASS",
+      "nationOnly": true,
+      "devices": [
+        {
+          "device": "desktop",
+          "size": {
+            "width": 1366,
+            "height": 900
+          },
+          "treeHeight": 705,
+          "screenHeight": 804,
+          "zoom": "90%",
+          "renderedUSA": 46,
+          "horizontalScroll": {
+            "visible": 1328,
+            "content": 2308
+          }
+        },
+        {
+          "device": "mobile",
+          "size": {
+            "width": 390,
+            "height": 844
+          },
+          "treeHeight": 673,
+          "screenHeight": 770,
+          "zoom": "90%",
+          "renderedUSA": 46,
+          "horizontalScroll": {
+            "visible": 368,
+            "content": 2308
+          }
+        },
+        {
+          "device": "landscape",
+          "size": {
+            "width": 844,
+            "height": 390
+          },
+          "treeHeight": 289,
+          "screenHeight": 372,
+          "zoom": "90%",
+          "renderedUSA": 46,
+          "horizontalScroll": {
+            "visible": 822,
+            "content": 2308
+          }
+        }
+      ]
+    },
+    "missile": {
+      "delta": 0.03999999999996362,
+      "gl": 0
+    }
   },
-  "cacheBust": "mig23mld-11 (main had already used direct game module v10); instructor-axis prefix and sweep v2 preserved"
+  "cacheBust": "mig23mld-11 (main had already used direct game module v10); instructor-axis prefix and sweep v2 preserved",
+  "ci": {
+    "head": "d36d529041a6910b3e954ef05d5e69652fd23df6",
+    "merge": "dc580884af01f200f4852a30204aef84b6527d98",
+    "runs": [
+      {
+        "url": "https://github.com/dasol1819/project-apex/actions/runs/43058442457",
+        "conclusion": "success"
+      },
+      {
+        "url": "https://github.com/dasol1819/project-apex/actions/runs/43058442405",
+        "conclusion": "success"
+      },
+      {
+        "url": "https://github.com/dasol1819/project-apex/actions/runs/43058442449",
+        "conclusion": "success"
+      },
+      {
+        "url": "https://github.com/dasol1819/project-apex/actions/runs/43058442618",
+        "conclusion": "success"
+      }
+    ],
+    "priorFailedDependencyRun": "https://github.com/dasol1819/project-apex/actions/runs/43056395728",
+    "note": "Prior run failed installing optional apt font dependencies due mirror DNS; replacement workflows launch the same pinned Chromium 141 headless shell and run all real-renderer assertions.",
+    "resourceAudit": {
+      "result": "PASS",
+      "expectSharedSource": true,
+      "one": {
+        "calls": 244,
+        "triangles": 44497,
+        "rendererTextures": 34,
+        "textureObjects": 36,
+        "handles": 22,
+        "estimatedRGBA8Bytes": 183074056
+      },
+      "two": {
+        "calls": 466,
+        "triangles": 87572,
+        "rendererTextures": 35,
+        "textureObjects": 36,
+        "handles": 22,
+        "estimatedRGBA8Bytes": 183074056
+      },
+      "remaining": {
+        "calls": 244,
+        "triangles": 44497,
+        "rendererTextures": 34,
+        "textureObjects": 36,
+        "handles": 22,
+        "estimatedRGBA8Bytes": 183074056
+      },
+      "additionalFixtureRequests": 0,
+      "poses": {
+        "distinctPoses": true,
+        "primaryUnchanged": true,
+        "wet": 0,
+        "dry": 1,
+        "fixtureHalf": 0.5,
+        "geometryIndependent": true,
+        "materialsIndependent": true,
+        "sharedTextures": true
+      },
+      "environment": "Chromium 141 / SwiftShader, actual game renderer, 1366x900. Second visual factory instance; not AI combat/flight certification.",
+      "memoryNote": "Texture handles observed; RGBA8 full-mipmap storage estimated. Driver allocation and hardware FPS unmeasured."
+    }
+  },
+  "deployment": "22-deployment-verification.json"
 }

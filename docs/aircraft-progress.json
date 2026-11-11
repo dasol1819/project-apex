@@ -975,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Continue exact MLD exterior and native damage integration. Confirm airbrake limits/fittings and moving root/taxi clearances; obtain matched overhead wings and uncovered intake/R-35 exhaust plus active plume references. Review physical part separation/wreckage and hardware GPU performance. Shared full-resolution source is now resource-tested for two visual factory instances.",
+      "nextStep": "Continue the same MiG-23MLD. Match actual intake/root cameras to recovered exact-MLD Keip 27/28 and 45/47 references, resolve camera versus fin/root/stabilator/gear-cover geometry residuals, verify hydraulic stops and taxi clearance, obtain matched overhead wing and uncovered rear/active-plume references, then complete physical damage/wreckage and hardware resource review. Source-sharing fix is merged, CI-validated and HTTP-deployed; HTTPS connection verification remains blocked (503).",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1003,7 +1003,9 @@
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/47.shtm",
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/49.shtm",
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/51.shtm",
-          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/45.shtm"
+          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/45.shtm",
+          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/27.shtm",
+          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/28.shtm"
         ],
         "assets": [
           "web/mig23mld-glb.js",
@@ -1083,7 +1085,8 @@
           "2026-11-11 user-selected AUTO wing sweep: IAS >500 km/h to 45 degrees, IAS <400 km/h to 16 degrees; Mach >1.1 to 72 degrees, Mach <1.0 from 72 to 45 degrees. Retains target in hysteresis bands; manual detents and native hydraulic rate unchanged. tests/mig23-autosweep.mjs covers 19 acceleration/deceleration transitions, exact thresholds, command deduplication, pause, manual/AUTO and reset.",
           "2026-11-12 Seoul: reconciled PR #28 with main 1569099, retaining #33 mixed axis instructor, user AUTO sweep thresholds, OBJ0277 visibility and OBJ0100 moving wing detail, F/A-18 asset and licenses. Manifest/restore, deterministic current 344,183-byte native build SHA-256 1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693, 20 native/model/queue checks, C++ authored airbrake fit replay, actual desktop/mobile flight, mixed input and two-instance baseline/shared renderer audits passed. No page errors. Current dry scene one/two calls 244/466, triangles 44,497/87,572; source sharing still 44→22 handles and estimated RGBA8 mip bytes 366,148,112→183,074,056. The older Nov 11 binary and draw counts above are historical checkpoints.",
           "Current actual-renderer tail image registered at 48% over the preserved unblended US Navy photo crop using the existing global two-landmark recipe. Original redownload returns HTTP 403. Fin top/root/stabilator and perspective residuals remain; no whole-aircraft visual approval. Editable crop-overlay script and recipe retained. HTTPS still 503 before publication; HTTP 200.",
-          "PR #28 reconciliation head 7346d5d passed native/build/model/C++ steps, but CI run 43056395728 failed before browser launch: apt optional font dependencies could not resolve azure.archive.ubuntu.com. No renderer result is claimed for that run. All four Ubuntu-24.04 browser workflows now install the same pinned Playwright 1.56.0 headless Chromium shell without apt; real browser launch/tests remain mandatory. Await exact-head revalidation before merge."
+          "PR #28 reconciliation head 7346d5d passed native/build/model/C++ steps, but CI run 43056395728 failed before browser launch: apt optional font dependencies could not resolve azure.archive.ubuntu.com. No renderer result is claimed for that run. All four Ubuntu-24.04 browser workflows now install the same pinned Playwright 1.56.0 headless Chromium shell without apt; real browser launch/tests remain mandatory. Await exact-head revalidation before merge.",
+          "2026-11-12 Seoul: PR #28 final head d36d529 passed all four exact-head workflows (43058442457 preview, 43058442405 tree desktop/mobile/landscape, 43058442449 mixed controls, 43058442618 native flight/weapons/resources). Native CI reproduced local 244/466 scene calls, 44,497/87,572 triangles and 22 source handles for one/two models; independent poses/nozzle and sibling disposal pass. Local additional studio/tree/missile browser tests pass (proximity render delta 0.04 m, GL error 0). Merged dc580884af01f200f4852a30204aef84b6527d98; Pages 43059931057 success. Nine HTTP production files match validated bytes, including current 344,183-byte WASM and original 22,593,404-byte GLB. HTTPS returns 503 upstream connection failure; HTTPS is not verified. Detailed per-part residuals and linked Keip exact-MLD photos are in 21-part-review.md; aircraft remains in_progress."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1115,7 +1118,11 @@
         "airbrakePublishedCommit": "https://github.com/dasol1819/project-apex/commit/948b57bc013ba42b18bb8e09a2aab85b899e278b",
         "airbrakePages": "https://github.com/dasol1819/project-apex/actions/runs/42976173806",
         "sourceCacheCurrentValidation": "docs/aircraft-review/mig23mld/20-current-validation.json",
-        "partReview": "docs/aircraft-review/mig23mld/21-part-review.md"
+        "partReview": "docs/aircraft-review/mig23mld/21-part-review.md",
+        "sourceCacheValidatedHead": "https://github.com/dasol1819/project-apex/commit/d36d529041a6910b3e954ef05d5e69652fd23df6",
+        "sourceCachePublishedCommit": "https://github.com/dasol1819/project-apex/commit/dc580884af01f200f4852a30204aef84b6527d98",
+        "sourceCachePages": "https://github.com/dasol1819/project-apex/actions/runs/43059931057",
+        "sourceCacheDeploymentChecks": "docs/aircraft-review/mig23mld/22-deployment-verification.json"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1127,7 +1134,7 @@
         "images": 22,
         "renderedFps": null,
         "nativeWasmBytes": 344183,
-        "nativeBuild": "Current main #33 instructor extension: deterministic local rebuild 344,183 bytes; SHA-256 1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693. Original tracked base WASM unchanged. Source cache does not alter native code.",
+        "nativeBuild": "Current main #33 instructor extension: deterministic 344,183-byte build SHA-256 1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693. PR #28 CI and Pages 43059931057 pass; production HTTP bytes match. Original tracked base WASM unchanged. Source sharing changes no native code.",
         "fps": null,
         "exhaustAudit": "Chromium 141 SwiftShader isolated gameplay model camera",
         "dryDrawCalls": 223,
@@ -2138,12 +2145,12 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-source-cache-20261111",
-    "state": "source-cache-ci-dependency-retry",
+    "state": "source-cache-published-next-exterior-damage",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Await exact-head CI after the Ubuntu optional-font DNS install fix; merge PR #28 only after validation, verify Pages and deployed file hashes, then continue MiG-23MLD part review using recovered Keip 27/28 splitter and 45/47 aft/root references. Preserve missing overhead, rear nozzle/plume, clearance and physical damage tasks.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld",
+    "nextStep": "Continue the same MiG-23MLD. Match actual intake/root cameras to recovered exact-MLD Keip 27/28 and 45/47 references, resolve camera versus fin/root/stabilator/gear-cover geometry residuals, verify hydraulic stops and taxi clearance, obtain matched overhead wing and uncovered rear/active-plume references, then complete physical damage/wreckage and hardware resource review. Source-sharing fix is merged, CI-validated and HTTP-deployed; HTTPS connection verification remains blocked (503).",
+    "checkpoint": "https://github.com/dasol1819/project-apex/blob/main/docs/aircraft-review/mig23mld/21-part-review.md",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/28",
-    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld"
+    "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
