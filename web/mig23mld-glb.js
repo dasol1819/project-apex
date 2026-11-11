@@ -112,6 +112,12 @@ export async function parseMig23Glb(buffer){
  }finally{for(const u of urls)URL.revokeObjectURL(u);}
 }
 export function normalizeMig23(scene){
+ // The original source contains a detached, one-sided camouflaged flap
+ // (OBJ0277) below the moving wing. It appears as a triangular protrusion
+ // in the overhead render and has no symmetric counterpart. Preserve the
+ // original GLB data but exclude this loose sheet from the game/studio pose.
+ const strayPanel=scene.getObjectByName('OBJ0277');
+ if(strayPanel)strayPanel.visible=false;
  const box=new T.Box3().setFromObject(scene),size=box.getSize(new T.Vector3());
  if(!Number.isFinite(size.z)||size.z<=0)throw Error('비정상 기체 크기');
  scene.position.sub(box.getCenter(new T.Vector3()));
