@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-tail-controls-20261111",
-    "startedAt": "2026-11-11T06:06:00Z",
-    "expiresAt": "2026-11-11T07:56:00Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -980,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Rig stabilators and airbrakes from native controls. Recheck gear taxi clearance, the forward main door seam and full intermediate clearances, then inspect intakes, matched overhead wing, R-35 exhaust, combat damage and GPU performance.",
+      "nextStep": "Rig the four airbrakes from native airbrake state. Recheck moving stabilator/root-fairing clearance, taxi tyre clearance and main-door seam. Continue matched overhead wings, uncovered intakes/R-35 exhaust and plume, physical combat damage and hardware GPU review before full approval.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1003,7 +998,11 @@
           "https://wofmd.com/2018/07/26/mikoyangurevich-mig-23mld/",
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/03.shtm",
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/07.shtm",
-          "https://www.homemadetools.net/forum/mig-23-landing-gear-gif-79064"
+          "https://www.homemadetools.net/forum/mig-23-landing-gear-gif-79064",
+          "http://cnit.ssau.ru/operenie/o8_2.htm",
+          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/47.shtm",
+          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/49.shtm",
+          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/51.shtm"
         ],
         "assets": [
           "web/mig23mld-glb.js",
@@ -1029,7 +1028,9 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-ventral-fin-20261110/docs/aircraft-review/mig23mld/08-ventral-fin-photo-overlay.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-ventral-fin-20261110/docs/aircraft-review/mig23mld/09-ventral-fin-in-game.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-nose-gear-20261110/docs/aircraft-review/mig23mld/10-nose-gear-in-game.jpg",
-          "https://github.com/dasol1819/project-apex/blob/mig23mld-main-gear-20261111/docs/aircraft-review/mig23mld/11-main-gear-in-game.jpg"
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-main-gear-20261111/docs/aircraft-review/mig23mld/11-main-gear-in-game.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-tail-controls-20261111/docs/aircraft-review/mig23mld/12-native-tail-controls.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-tail-controls-20261111/docs/aircraft-review/mig23mld/13-tail-photo-overlay.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1057,7 +1058,11 @@
           "2026-11-10 Chromium native nose gear extend, transit, stow and re-extension passed; original pose retained. Isolated close-up corrected 218 mm gap between inner door extents to 0.1 mm. Twin tyres clear the stowed door plane vertically in the measured pose.",
           "Manifest/restore, deterministic native rebuild, 16 regressions, live plume, runway and desktop/mobile browser smoke passed.",
           "2026-11-11 native main gear extend, transit, stow and reverse verified in Chromium. Bilateral wheel-carrier joints rise approximately 0.948 m, close by approximately 0.347 m per side, and retain native −1.420 m extended tyre contact. Upper and lower fuselage doors registered to 6 and 16 unique matching exterior UV vertices.",
-          "Manifest/restore, 343,744-byte deterministic native rebuild, 17 regressions including current missile calibration and desktop/mobile browser smoke passed."
+          "Manifest/restore, 343,744-byte deterministic native rebuild, 17 regressions including current missile calibration and desktop/mobile browser smoke passed.",
+          "2026-11-11 native outputs drive original slab tails and single rudder. Chromium 141 / SwiftShader actual game pitch +/-0.65, differential roll +0.65, yaw +/-0.65 and disabled-control freeze passed. Inboard tail trailing-edge moves +0.273/-0.266m in pitch, approximately +/-0.060m in roll; rudder trailing tip approximately +/-0.150m.",
+          "Exact-MLD US Navy no.34 photograph overlaid at 48% with actual game-renderer pixels using one similarity transform. Editable recipe, review script and measured outputs committed. Fin, tail, wing, canopy and ventral profile residuals remain; complete aircraft NOT visually approved.",
+          "Manifest/restore, unchanged deterministic 343,744-byte native rebuild, 17 regressions and actual desktop/mobile WebGL smoke pass, with no page errors. Source GLB SHA-256 unchanged.",
+          "PR #25 single-engine lateral arm fix reviewed and merged as 8a8a12711e164b79997362a243caa3d742f5b5fa; 4 neutral-rudder takeoffs pass (FBW off/on, dry/AB), max yaw <0.000728rad, drift <0.726m. Three exact-head CI workflows pass. Pages 42969491433 success; production HTTP WASM SHA-256 b9c76d6f98d8d929a2d935a4d7089982055a4bcf68c5d735561e7c01899ba715 matches. HTTPS returns 503."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1067,7 +1072,12 @@
         "exhaustCommit": "https://github.com/dasol1819/project-apex/commit/e9aeba7b3374591d53e49976902ea9bb689c9cd4",
         "exhaustPullRequest": "https://github.com/dasol1819/project-apex/pull/18",
         "exhaustPages": "https://github.com/dasol1819/project-apex/actions/runs/42636625933",
-        "logDepthReview": "https://github.com/dasol1819/project-apex/tree/mig23mld-exhaust-logdepth-20261109/docs/aircraft-review/mig23mld"
+        "logDepthReview": "https://github.com/dasol1819/project-apex/tree/mig23mld-exhaust-logdepth-20261109/docs/aircraft-review/mig23mld",
+        "tailControlCommit": "https://github.com/dasol1819/project-apex/commit/86dc407b1ebd1a27e2966213a4035101140ed223",
+        "tailControlPullRequest": "https://github.com/dasol1819/project-apex/pull/26",
+        "tailControlRecipe": "docs/aircraft-review/mig23mld/tail-overlay-recipe.json",
+        "takeoffFixCommit": "https://github.com/dasol1819/project-apex/commit/8a8a12711e164b79997362a243caa3d742f5b5fa",
+        "takeoffFixPages": "https://github.com/dasol1819/project-apex/actions/runs/42969491433"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1078,8 +1088,8 @@
         "materials": 44,
         "images": 22,
         "renderedFps": null,
-        "nativeWasmBytes": 335087,
-        "nativeBuild": "GitHub Actions #42483065382 verified deterministic 17-aircraft WASM; GitHub Pages #42483445394 deployed generated public/flight.wasm",
+        "nativeWasmBytes": 343744,
+        "nativeBuild": "PR #25 centerline thrust fix; deterministic 343,744-byte local rebuild preserved by tail rig; Pages 42969491433 success and production HTTP SHA-256 match.",
         "fps": null,
         "exhaustAudit": "Chromium 141 SwiftShader isolated gameplay model camera",
         "dryDrawCalls": 223,
@@ -1103,19 +1113,29 @@
         "mainGearAddedJsBytes": 4245,
         "mainGearAddedTransformNodes": 14,
         "mainGearAuditDraws": 112,
-        "mainGearAuditTriangles": 13789
+        "mainGearAuditTriangles": 13789,
+        "tailControlAddedJsBytes": 1563,
+        "tailControlAddedTransformNodes": 3,
+        "tailControlAddedMeshes": 0,
+        "tailControlAddedTextureBytes": 0,
+        "tailControlAircraftCalls": 223,
+        "tailControlAircraftTriangles": 43091,
+        "tailControlSceneCalls": 248,
+        "tailControlSceneTriangles": 44975,
+        "tailControlAudit": "Chromium 141.0.7390.37 / SwiftShader, real game dry side inspection camera at 1366x900; not hardware FPS"
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
         "Engine and wing coefficients are open-source/game estimates, not a certified flight-test model.",
-        "GLB original has unrigged gear/control-surface partitions; visual damage/gear fidelity remains pending.",
+        "Gear, slab tails and rudder now have visual rigs. Airbrakes, wing control partitions, visual damage and full-travel hardware fidelity remain pending.",
         "Native missile ballistic profiles reuse existing SARH/IR tables; R-24R / R-60M exact guidance/flight envelope remains pending.",
         "A/B and manual hydraulic sweep verified in native CI; hardware GPU/photogrammetric review remains pending.",
         "The registered overlays expose residuals in the intake lip, wing, canopy, tail, and wheel placement. The museum intake and nozzle covers obscure their inner geometry. The R-35 active plume remains a visual estimate.",
-        "The visual origin is aligned to the main native gear plane. Static nose-wheel clearance is +5.5 cm relative to its probe. The rolling capture still shows partial wheel/terrain intersection. Gear doors and retraction remain pending.",
-        "Ventral fin travel is a visual approximation driven by native gear progress; wheels and doors remain visibly extended until their rig is implemented.",
-        "Nose gear pivot travel and door timing are visual estimates. Exact suspension clearance, main gear retraction and full exterior review remain pending.",
-        "Main gear visual linkage approximates exact hardware and timing. Some forward cover seam and taxi clearance remain to be verified."
+        "The visual origin is aligned to the main native gear plane. Static nose-wheel clearance is +5.5 cm relative to its probe. The rolling capture still shows partial wheel/terrain intersection. Nose and main gear retraction are visually rigged; taxi and full intermediate clearances remain pending.",
+        "Ventral fin travel is a visual approximation driven by native gear progress; nose and main wheel/door rigs have since been added; exact fin timing remains unverified.",
+        "Nose gear pivot travel and door timing are visual estimates. Exact suspension clearance and full exterior review remain pending; main gear was rigged in the following checkpoint.",
+        "Main gear visual linkage approximates exact hardware and timing. Some forward cover seam and taxi clearance remain to be verified.",
+        "Tail shaft positions and clearances are visual fits to the original GLB and a MiG-23 family structural reference. Exact MLD limits, moving root-fairing clearances and physical damage remain unverified. Registered no.34 overlay still shows fin/stabilator/ventral-profile residuals and cannot validate intake depth or an active plume."
       ]
     },
     {
@@ -2054,12 +2074,12 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-tail-controls-20261111",
-    "state": "tail-controls-in-progress",
+    "state": "tail-controls-rigged-next-airbrakes",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Inspect exact-variant tail references and rig stabilators/rudder from native control outputs. Keep airbrakes, taxi clearance, intake/wing/exhaust, combat damage and GPU review open.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-tail-controls-20261111",
-    "pullRequest": "https://github.com/dasol1819/project-apex/pull/18",
-    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld"
+    "nextStep": "Rig the four airbrakes from native airbrake state. Recheck moving stabilator/root-fairing clearance, taxi tyre clearance and main-door seam. Continue matched overhead wings, uncovered intakes/R-35 exhaust and plume, physical combat damage and hardware GPU review before full approval.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-tail-controls-20261111/docs/aircraft-review/mig23mld",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/26",
+    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-tail-controls-20261111/docs/aircraft-review/mig23mld"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
