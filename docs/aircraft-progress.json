@@ -7,8 +7,8 @@
   "lease": {
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-source-cache-20261111",
-    "startedAt": "2026-11-11T06:59:33.000Z",
-    "expiresAt": "2026-11-11T08:49:33.000Z"
+    "startedAt": "2026-11-11T16:03:58.000Z",
+    "expiresAt": "2026-11-11T17:53:58.000Z"
   },
   "aircraft": [
     {
@@ -2108,11 +2108,11 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-source-cache-20261111",
-    "state": "source-cache-in-progress",
+    "state": "source-cache-reconciling-main",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Share one decoded immutable MiG-23MLD source per module session; clone mutable geometry/materials and transform graphs. Verify two-instance source texture handles, independent controls/nozzles and disposal, then native/browser regressions and deployment.",
+    "nextStep": "Reconcile PR #28 with current main's instructor, user sweep thresholds and detached-wing fix without overwriting them. Rebuild and rerun native/control/geometry and actual-renderer resource regressions, then merge and verify deployment.",
     "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-source-cache-20261111",
-    "pullRequest": null,
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/28",
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld"
   },
   "previousWork": {
