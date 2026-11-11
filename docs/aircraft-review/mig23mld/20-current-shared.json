@@ -1,0 +1,41 @@
+{
+  "result": "PASS",
+  "expectSharedSource": true,
+  "one": {
+    "calls": 244,
+    "triangles": 44497,
+    "rendererTextures": 34,
+    "textureObjects": 36,
+    "handles": 22,
+    "estimatedRGBA8Bytes": 183074056
+  },
+  "two": {
+    "calls": 466,
+    "triangles": 87572,
+    "rendererTextures": 35,
+    "textureObjects": 36,
+    "handles": 22,
+    "estimatedRGBA8Bytes": 183074056
+  },
+  "remaining": {
+    "calls": 244,
+    "triangles": 44497,
+    "rendererTextures": 34,
+    "textureObjects": 36,
+    "handles": 22,
+    "estimatedRGBA8Bytes": 183074056
+  },
+  "additionalFixtureRequests": 0,
+  "poses": {
+    "distinctPoses": true,
+    "primaryUnchanged": true,
+    "wet": 0,
+    "dry": 1,
+    "fixtureHalf": 0.5,
+    "geometryIndependent": true,
+    "materialsIndependent": true,
+    "sharedTextures": true
+  },
+  "environment": "Chromium 141 / SwiftShader, actual game renderer, 1366x900. Second visual factory instance; not AI combat/flight certification.",
+  "memoryNote": "Texture handles observed; RGBA8 full-mipmap storage estimated. Driver allocation and hardware FPS unmeasured."
+}

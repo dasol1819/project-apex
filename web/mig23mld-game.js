@@ -7,6 +7,42 @@ const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
 const ENGINE_PART=7, NOZZLE_PART=22;
 const DRY_CONTRACTION=.10;
 
+// Retain one immutable decoded source for the module session. Aircraft share
+// its textures; every instance owns the transforms, materials and deformable
+// vertex buffers that controls, damage and nozzle morphs can modify.
+let sourcePromise=null;
+function sharedSource(){
+ if(!sourcePromise){
+  const pending=(async()=>{
+   const response=await fetch('./assets/mig23mld/Mig-23.glb?v=3');
+   if(!response.ok)throw Error('MiG-23 source GLB HTTP '+response.status);
+   return parseMig23Glb(await response.arrayBuffer());
+  })();
+  const guarded=pending.catch(error=>{
+   if(sourcePromise===guarded)sourcePromise=null;
+   throw error;
+  });
+  sourcePromise=guarded;
+ }
+ return sourcePromise;
+}
+
+function instanceSource(source){
+ const scene=source.scene.clone(true),geometries=new Map(),materials=new Map(),nodes=[];
+ const material=m=>{
+  if(!materials.has(m))materials.set(m,m.clone());
+  return materials.get(m);
+ };
+ scene.traverse(node=>{
+  nodes.push(node);
+  if(!node.isMesh)return;
+  if(!geometries.has(node.geometry))geometries.set(node.geometry,node.geometry.clone());
+  node.geometry=geometries.get(node.geometry);
+  node.material=Array.isArray(node.material)?node.material.map(material):material(node.material);
+ });
+ return {scene,nodes};
+}
+
 // Type 16 uses a shared contact height for all three native gear probes.
 const GEAR_CONTACT_Y=-1.42;
 
@@ -294,9 +330,10 @@ export function createMig23mldAircraft(options={}){
  const controller=new AbortController();
  (async()=>{
   try{
-   const r=await fetch('./assets/mig23mld/Mig-23.glb?v=3',{signal:controller.signal});
-   if(!r.ok)throw Error('MiG-23 source GLB HTTP '+r.status);
-   const buffer=await r.arrayBuffer(),asset=await parseMig23Glb(buffer);
+   const source=await sharedSource();
+   // Cancelling one aircraft must not cancel a sibling's shared download.
+   if(controller.signal.aborted)return;
+   const asset=instanceSource(source);
    const normalized=normalizeMig23(asset.scene);
    const rig=rigMig23Sweep(asset.scene,asset.nodes);
    if(controller.signal.aborted){normalized.root.traverse(n=>{n.geometry?.dispose?.();});return;}
