@@ -19,6 +19,29 @@ assert.equal(specs[8],9595);
 assert.equal(specs[9],4672);
 const g=read('get_aircraft_gear_contacts',9);
 console.log('MiG23 gear',JSON.stringify(g));
+// The single R-35-300 acts on the centerline. A twin-engine lateral arm
+// produces uncommanded yaw even with perfectly symmetric wheel contacts.
+for(const fbw of [0,1])for(const throttle of [1,1.2]){
+ const runway=make();runway.set_aircraft_type(16);runway.set_map(2);
+ runway.reset_sortie_spawn(0,0,0);
+ const state=()=>Array.from(new Float64Array(runway.memory.buffer,runway.get_state(),104));
+ const initial=state();let airborne=false,maxYaw=0,maxDrift=0,seconds=0;
+ for(let i=0;i<120*45;i++){
+  const s=state();
+  runway.set_controls(s[13]>90?.5:0,0,0,throttle,s[1]>50?0:1,0,0,fbw);
+  runway.step(1/120);
+  const next=state();
+  assert.ok(next.every(Number.isFinite));
+  assert.equal(next[33],0,'takeoff must not crash');
+  maxYaw=Math.max(maxYaw,Math.abs(next[11]-initial[11]));
+  maxDrift=Math.max(maxDrift,Math.abs(next[0]-initial[0]));
+  if(next[1]>initial[1]+80){airborne=true;seconds=(i+1)/120;break;}
+ }
+ assert.ok(airborne,'neutral-rudder takeoff must reach 80m above runway');
+ assert.ok(maxYaw<.01,'neutral controls must not create yaw');
+ assert.ok(maxDrift<3,'takeoff must stay near runway centerline');
+ console.log('MiG23 straight takeoff',JSON.stringify({fbw,throttle,seconds,maxYaw,maxDrift}));
+}
 assert.equal(sim.set_loadout(46),1,'MiG23 loadout');
 const pre=read('get_aircraft_configuration',8);
 sim.set_wing_sweep(16);

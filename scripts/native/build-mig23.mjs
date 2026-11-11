@@ -32,6 +32,9 @@ function table(name,count,stride,fill){
  relocations.push([old[name],stride,at]);return at;
 }
 const frames=table('airframes',17,288,b=>{
+ // Offset 256 is the lateral engine moment arm, not half the gear track.
+ // A single centerline engine must not inherit the MiG-29's thrust yaw.
+ expect(cfg.airframeInts[0]===1&&cfg.airframeDoubles[256]===0,'MiG-23 centerline thrust configuration');
  memory.copy(b,16*288,old.airframes+14*288,old.airframes+15*288);
  for(const [off,val] of Object.entries(cfg.airframeDoubles))b.writeDoubleLE(val,16*288+Number(off));
  for(const [off,val] of Object.entries(cfg.airframeInts))b.writeInt32LE(val,16*288+Number(off));
