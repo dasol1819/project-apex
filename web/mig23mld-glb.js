@@ -119,10 +119,14 @@ export function normalizeMig23(scene){
  root.rotation.y=Math.PI;root.scale.setScalar(16.7/size.z);
  return {root,originalLength:size.z};
 }
+// Keep source-mesh auxiliaries on their authored wing: OBJ0277 is the
+// one-sided lower wing skin/fairing; OBJ0100 is the tiny port-tip duplicate
+// adjacent to OBJ0265. Without these registrations both stay behind as the
+// 16-72 degree swing wing moves, showing detached floating geometry.
 export function rigMig23Sweep(scene,nodes){
  const parts=[
-  {pivot:[-3.772,.55,-1.141],sign:1,names:['OBJ0256','OBJ0257','OBJ0258','OBJ0259','OBJ0260','OBJ0261','OBJ0262','OBJ0270','OBJ0272','OBJ0273']},
-  {pivot:[-4.531,.55,-1.141],sign:-1,names:['OBJ0263','OBJ0264','OBJ0265','OBJ0266','OBJ0267','OBJ0268','OBJ0269','OBJ0271','OBJ0274','OBJ0275']}
+  {pivot:[-3.772,.55,-1.141],sign:1,names:['OBJ0256','OBJ0257','OBJ0258','OBJ0259','OBJ0260','OBJ0261','OBJ0262','OBJ0270','OBJ0272','OBJ0273','OBJ0277']},
+  {pivot:[-4.531,.55,-1.141],sign:-1,names:['OBJ0263','OBJ0264','OBJ0265','OBJ0266','OBJ0267','OBJ0268','OBJ0269','OBJ0271','OBJ0274','OBJ0275','OBJ0100']}
  ];
  const groups=parts.map(d=>{
   const pivot=new T.Group();pivot.position.set(...d.pivot);scene.add(pivot);
