@@ -77,6 +77,7 @@ with sync_playwright() as p:
   }));
  }""")
  assert all(item['registered'] for item in wing_parent_checks),wing_parent_checks
+ assert page.evaluate('!__mig23QA.aircraft.group.getObjectByName("OBJ0277").visible'), 'Loose asymmetric panel should not render'
  print('MIG23_SWEEP_AUXILIARIES',json.dumps(wing_parent_checks),flush=True)
 
  page.screenshot(path=str(out/'mig23-hangar-desktop.png'))
