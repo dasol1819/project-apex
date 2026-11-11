@@ -1,0 +1,26 @@
+{
+  "photo": "https://commons.wikimedia.org/wiki/File:MiG-23MLD.jpg",
+  "original": "https://upload.wikimedia.org/wikipedia/commons/a/ae/MiG-23MLD.jpg?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org",
+  "photoLicense": "US Navy official photograph, 1986-02-01; public domain in the United States",
+  "modelAttribution": "Tim Samedov (citizensnip), MiG-23MLD, CC BY 4.0",
+  "accessed": "2026-11-11",
+  "camera": [23, -4, 4.4],
+  "target": [0, 0.95, 0],
+  "fovDegrees": 30,
+  "viewport": [1366, 900],
+  "visualPose": {"wingSweep": 72, "gear": 0, "leftTail": 0, "rightTail": 0, "leftRudder": 0, "afterburner": 0},
+  "landmarks": ["nozzle lip centre", "pitot tip"],
+  "renderAnchors": [[109, 502], [1222, 500]],
+  "photoAnchors": [[255, 950], [2960, 615]],
+  "opacity": 0.48,
+  "tailCrop": [300, 140, 920, 710],
+  "photoTailCrop": [40, 360, 1100, 1160],
+  "samples": [
+    ["neutral", "Neutral / native actuator outputs near zero"],
+    ["pitch-up", "Pitch +0.65 / both stabilators +16.25 degrees"],
+    ["pitch-down", "Pitch -0.65 / both stabilators -16.25 degrees"],
+    ["roll-right", "Roll +0.65 / differential tails -3.58 / +3.58 degrees"],
+    ["yaw-right", "Yaw +0.65 / single rudder +19.50 degrees"],
+    ["yaw-left", "Yaw -0.65 / single rudder -19.50 degrees"]
+  ]
+}

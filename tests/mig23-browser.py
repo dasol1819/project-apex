@@ -18,6 +18,16 @@ hook='''\nwindow.__mig23QA={get sim(){return sim},get aircraft(){return aircraft
  renderer.render(scene,testCamera);
  const lit=renderer.domElement.toDataURL();
  if(!comparePlume)return lit.split(',')[1];
+ if(comparePlume==='aircraft'){
+  const calls=renderer.info.render.calls,triangles=renderer.info.render.triangles;
+  group.visible=false;
+  renderer.render(scene,testCamera);
+  const background=renderer.domElement.toDataURL();
+  group.visible=true;
+  return {png:lit.split(',')[1],background:background.split(',')[1],
+   calls,triangles,aircraftCalls:calls-renderer.info.render.calls,
+   aircraftTriangles:triangles-renderer.info.render.triangles};
+ }
  const plume=group.getObjectByName('R-35-300 exhaust visual');
  plume.visible=false;
  renderer.render(scene,testCamera);
@@ -160,6 +170,68 @@ with sync_playwright() as p:
  main_return=page.evaluate(main_pose)
  assert all(math.dist(p['wheel'],d['wheel'])<.002 and p['lower']>.999 and p['upper']>.999 for p,d in zip(main_return,main_down)),main_return
  print('MI23_MAIN_GEAR',json.dumps({'extended':main_down,'transit':main_mid,'stowed':main_up}),flush=True)
+
+ # Native actuator outputs must move the original GLB tails, including
+ # differential roll and the single rudder. Sample and render in one task so
+ # the normal frame loop cannot replace the commanded state mid-capture.
+ tail=page.evaluate("""()=>{
+  const {sim,aircraft:a}=__mig23QA,group=a.group;
+  const names=['stab2','stab','rudder'];
+  const hinges=['port stabilator','starboard stabilator','rudder'].map(n=>group.getObjectByName('MiG-23MLD '+n));
+  if(hinges.some(n=>!n))throw Error('Original tail control hinges missing');
+  const probes=names.map(name=>{
+   let result,max=-Infinity;
+   group.updateWorldMatrix(true,true);
+   group.getObjectByName(name).traverse(mesh=>{
+    const p=mesh.geometry?.attributes.position;if(!p)return;
+    for(let i=0;i<p.count;i++){
+     const v=group.position.clone().fromBufferAttribute(p,i);
+     group.worldToLocal(mesh.localToWorld(v));
+     if(name!=='rudder'&&Math.abs(v.x)>.8)continue;
+     if(v.z>max){max=v.z;result={mesh,index:i};}
+    }
+   });
+   return result;
+  });
+  const positions=()=>{
+   group.updateWorldMatrix(true,true);
+   return probes.map(({mesh,index})=>group.worldToLocal(mesh.localToWorld(
+    group.position.clone().fromBufferAttribute(mesh.geometry.attributes.position,index))).toArray());
+  };
+  const samples={};
+  for(const [name,pitch,roll,yaw] of [['neutral',0,0,0],['pitch-up',.65,0,0],['pitch-down',-.65,0,0],
+   ['roll-right',0,.65,0],['yaw-right',0,0,.65],['yaw-left',0,0,-.65]]){
+   sim.reset_spawn(2);sim.debug_set_state(0,5000,0,0,0,-235,0,0,0,1);
+   sim.set_controls(pitch,roll,yaw,.7,0,0,0,0);
+   for(let i=0;i<120;i++)sim.step(1/120);
+   const s=__mig23QA.readState();
+   group.position.set(s[0],s[1],s[2]);group.quaternion.set(s[6],s[7],s[8],s[9]);
+   a.update({leftTail:s[49],rightTail:s[50],leftRudder:s[55],gear:0,wingSweep:72,afterburner:0});
+   samples[name]={native:[s[49],s[50],s[55]],positions:positions(),
+    png:__mig23QA.capture([8,3.5,16],false,[0,.7,6.6])};
+  }
+  const enabled=new Float32Array(30).fill(1);enabled[3]=enabled[4]=enabled[20]=0;
+  const before=hinges.map(n=>n.quaternion.toArray());
+  a.update({leftTail:.5,rightTail:.5,leftRudder:.5,enabled});
+  const frozen=hinges.every((n,i)=>n.quaternion.toArray().every((v,k)=>v===before[i][k]));
+  a.update({leftTail:0,rightTail:0,leftRudder:0,enabled:new Float32Array(30).fill(1)});
+  const overlay=__mig23QA.capture([23,-4,4.4],'aircraft',[0,.95,0]);
+  return {samples,frozen,overlay};
+ }""")
+ for name,sample in tail['samples'].items():
+  (out/('mig23-tail-'+name+'.png')).write_bytes(base64.b64decode(sample.pop('png')))
+ for key in ('png','background'):
+  (out/('mig23-tail-overlay-'+key+'.png')).write_bytes(base64.b64decode(tail['overlay'].pop(key)))
+ print('MI23_TAIL_CONTROLS',json.dumps(tail),flush=True)
+ assert tail['frozen'],'Disabled native control parts must retain their last pose'
+ neutral=tail['samples']['neutral']['positions']
+ for i in (0,1):
+  assert tail['samples']['pitch-up']['positions'][i][1]>neutral[i][1]+.1,tail['samples']['pitch-up']['native']
+  assert tail['samples']['pitch-down']['positions'][i][1]<neutral[i][1]-.1
+ roll=tail['samples']['roll-right']['positions']
+ assert roll[0][1]<neutral[0][1]-.02 and roll[1][1]>neutral[1][1]+.02,roll
+ assert tail['samples']['yaw-right']['positions'][2][0]>neutral[2][0]+.07
+ assert tail['samples']['yaw-left']['positions'][2][0]<neutral[2][0]-.07
 
  # Exercise the rendered exhaust with native part indices and typed health buffers.
  exhaust=page.evaluate("""()=>{

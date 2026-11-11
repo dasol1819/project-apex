@@ -31,6 +31,31 @@ function rigHinge(root,name,parts,forwardPoint,aftPoint){
  return angle=>pivot.quaternion.setFromAxisAngle(axis,angle);
 }
 
+function rigTailControls(root){
+ // MiG-23 slab tails rotate about swept shafts, rather than an elevator
+ // hinge. The shaft crosses approximately half the authored root chord.
+ // Samara University's structural reference gives about 45 degrees to the
+ // fuselage side; the exact installation position is a visual fit.
+ const controls=[
+  {name:'port stabilator',mesh:'stab2',field:'leftTail',part:3,sign:-1,
+   start:[-.68,-.60,6.62],end:[.32,-.60,5.62]},
+  {name:'starboard stabilator',mesh:'stab',field:'rightTail',part:4,sign:-1,
+   start:[.68,-.60,6.62],end:[1.68,-.60,7.62]},
+  // The forward skin vertices define the rudder's swept, nearly vertical pin.
+  {name:'rudder',mesh:'rudder',field:'leftRudder',part:20,sign:1,
+   start:[0,.0922,6.8594],end:[0,1.2794,7.5492]}
+ ].map(control=>{
+  const mesh=root.getObjectByName(control.mesh);
+  return {...control,rotate:mesh?rigHinge(root,'MiG-23MLD '+control.name,[mesh],control.start,control.end):null};
+ });
+ return state=>{
+  for(const c of controls){
+   if(!c.rotate||!Number.isFinite(state[c.field])||state.enabled?.[c.part]===0||state.enabled?.[c.part]===false)continue;
+   c.rotate(c.sign*clamp(state[c.field],-.6,.6));
+  }
+ };
+}
+
 // OBJ0024 is authored in the starboard-folded position.
 function rigVentralFin(root){
  const fin=root.getObjectByName('OBJ0024');
@@ -223,7 +248,8 @@ export function createMig23mldAircraft(options={}){
  base.group.userData.previewOnly=false;
  const standIns=[];
  base.group.traverse(n=>{if(n.isMesh||n.isLineSegments)standIns.push(n);});
- let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},setMainGear=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1;
+ let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},setMainGear=()=>{},setTailControls=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1;
+ const lastControls={leftTail:0,rightTail:0,leftRudder:0};
  const plume=createPlume();
  base.group.add(plume);
  const controller=new AbortController();
@@ -238,6 +264,7 @@ export function createMig23mldAircraft(options={}){
    setVentralFin=rigVentralFin(normalized.root);
    setNoseGear=rigNoseGear(normalized.root);
    setMainGear=rigMainGear(normalized.root);
+   setTailControls=rigTailControls(normalized.root);
    alignGroundContact(normalized.root);
    exhaust=rigExhaust(normalized.root,plume);
    sweep=rig;
@@ -246,6 +273,7 @@ export function createMig23mldAircraft(options={}){
    setVentralFin(lastGear);
    setNoseGear(lastGear);
    setMainGear(lastGear);
+   setTailControls(lastControls);
    exhaust?.(0,0);
    loaded=true;
    for(const node of standIns)node.visible=false;
@@ -257,11 +285,15 @@ export function createMig23mldAircraft(options={}){
   const angle=Number.isFinite(state.wingSweep)?clamp(state.wingSweep,16,72):lastAngle;
   lastAngle=angle;
   if(Number.isFinite(state.gear))lastGear=clamp(state.gear,0,1);
+  for(const field of ['leftTail','rightTail','leftRudder'])
+   if(Number.isFinite(state[field]))lastControls[field]=state[field];
+  lastControls.enabled=state.enabled;
   if(loaded){
    sweep(angle);
    setVentralFin(lastGear);
    setNoseGear(lastGear);
    setMainGear(lastGear);
+   setTailControls(lastControls);
    for(const node of standIns)node.visible=false;
   }
   const ab=clamp(Number(state.afterburner)||0,0,1);
