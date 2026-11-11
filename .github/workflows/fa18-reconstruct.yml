@@ -1,0 +1,59 @@
+name: Restore F-18 GLB binary
+on:
+  push:
+    branches:
+      - feat/fa18f-blendswap-source-20261111
+    paths:
+      - '.deployment/fa18-transfer/**'
+      - '.github/workflows/fa18-reconstruct.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Restore exact optimized F-18 GLB from transferred binary chunks
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v zstd >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y zstd
+          fi
+          python3 - <<'PY'
+          import hashlib
+          import subprocess
+          from pathlib import Path
+          directory = Path('.deployment/fa18-transfer')
+          parts = [directory / f'part{i:02d}.zst' for i in range(9)]
+          assert all(p.is_file() for p in parts), 'Missing transferred F-18 part'
+          payload = b''.join(p.read_bytes() for p in parts)
+          assert len(payload) == 8839257, f'Compressed size mismatch: {len(payload)}'
+          assert hashlib.sha256(payload).hexdigest() == '2bef06f598760845d8dd131f3a384c38b527b6d78abd103a6788d9fa89e5c565'
+          target = Path('web/assets/fa18/F18_Hornet_optimized.glb')
+          target.parent.mkdir(parents=True, exist_ok=True)
+          with target.open('wb') as output:
+              subprocess.run(['zstd', '-d', '-q', '-c'], input=payload, stdout=output, check=True)
+          assert target.stat().st_size == 21572512
+          assert hashlib.sha256(target.read_bytes()).hexdigest() == 'e427459761adf590c6704f2c49ca051ba500c6be614a999f084c582b171f8944'
+          for p in parts:
+              p.unlink()
+          directory.rmdir()
+          print(f'F-18 GLB restored: {target} ({target.stat().st_size} bytes)')
+          PY
+      - name: Verify deployment manifest
+        run: python3 .deployment/restore.py
+      - name: Commit verified GLB and clean temporary transfer files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm .github/workflows/fa18-reconstruct.yml
+          git add -A .deployment/fa18-transfer .github/workflows/fa18-reconstruct.yml web/assets/fa18/F18_Hornet_optimized.glb
+          git commit -m 'asset(fa18): add verified optimized Hornet GLB'
+          git push origin HEAD:feat/fa18f-blendswap-source-20261111
