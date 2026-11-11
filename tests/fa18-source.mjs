@@ -22,7 +22,7 @@ assert.equal(gltf.materials.length, 12, 'Expected authored materials');
 assert.equal(gltf.buffers.length, 1, 'Expected embedded binary buffer');
 const binaryHeader = 20 + jsonSize;
 assert.equal(data.toString('ascii', binaryHeader + 4, binaryHeader + 8), 'BIN\0', 'GLB binary chunk');
-const manifest = JSON.parse(readFileSync(join(webRoot, 'manifest.json'), 'utf8'));
+const manifest = JSON.parse(readFileSync(join('web', 'manifest.json'), 'utf8'));
 assert.equal(manifest.files[relative], expected, 'Deployment manifest hash');
 const credits = readFileSync(join(webRoot, 'assets/fa18/CREDITS.txt'), 'utf8');
 assert.match(credits, /ChrisKuhn/);
