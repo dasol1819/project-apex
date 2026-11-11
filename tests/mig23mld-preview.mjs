@@ -26,7 +26,7 @@ assert.match(viewer,/export async function mountMig23/);
 assert.ok(preview.includes('mig23mld-boot.js?v=2'),'Missing current non-module bootloader script');
 assert.doesNotMatch(viewer,/new\s+T\.GridHelper\s*\(/,'Compact Three.js build does not export GridHelper');
 assert.match(viewer,/new T\.LineSegments\(/,'Studio grid must use compact-build-compatible primitives');
-assert.match(boot,/mig23mld-viewer\.js\?v=7/,'Studio must import fixed viewer rather than cached broken version');
+assert.match(boot,/mig23mld-viewer\.js\?v=8/,'Studio must import fixed viewer rather than cached broken version');
 assert.match(boot,/AbortController/);
 assert.ok(boot.includes('raw.githubusercontent.com'),'Missing backup model source');
 assert.match(boot,/async function download/);
