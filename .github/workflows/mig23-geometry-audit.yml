@@ -1,0 +1,17 @@
+name: MiG-23MLD geometry diagnostics
+on:
+  pull_request:
+    paths:
+      - 'tests/mig23-geometry-audit.mjs'
+      - '.github/workflows/mig23-geometry-audit.yml'
+permissions:
+  contents: read
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: node tests/mig23-geometry-audit.mjs
