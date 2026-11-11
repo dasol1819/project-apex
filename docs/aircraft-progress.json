@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-tail-controls-20261111",
+    "startedAt": "2026-11-11T06:06:00Z",
+    "expiresAt": "2026-11-11T07:56:00Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -2048,11 +2053,11 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-main-gear-20261111",
-    "state": "main-gear-rigged-next-controls",
+    "branch": "mig23mld-tail-controls-20261111",
+    "state": "tail-controls-in-progress",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Rig stabilators and airbrakes from native controls. Recheck gear taxi clearance, the forward main door seam and full intermediate clearances, then inspect intakes, matched overhead wing, R-35 exhaust, combat damage and GPU performance.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-main-gear-20261111/docs/aircraft-review/mig23mld",
+    "nextStep": "Inspect exact-variant tail references and rig stabilators/rudder from native control outputs. Keep airbrakes, taxi clearance, intake/wing/exhaust, combat damage and GPU review open.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-tail-controls-20261111",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/18",
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-review-20261109/docs/aircraft-review/mig23mld"
   },
