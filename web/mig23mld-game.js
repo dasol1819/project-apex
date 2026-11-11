@@ -1,7 +1,7 @@
 import * as T from './vendor/three.module.js';
 import {createClassicAircraft} from './classic-aircraft.js';
 import {aircraftDefinition} from './aircraft-catalog.js';
-import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=2';
+import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=3';
 
 const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
 const ENGINE_PART=7, NOZZLE_PART=22;

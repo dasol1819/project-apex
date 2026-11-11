@@ -2,7 +2,7 @@ import {createMig29CombatAircraft} from './mig29-combat-model.js?v=surface-1';
 import {createSu35CombatAircraft} from './su35-combat-model.js?v=8';
 import {createClassicAircraft} from './classic-aircraft.js';
 import {createMig15bisAircraft} from './mig15bis-model.js?v=2';
-import {createMig23mldAircraft} from './mig23mld-game.js?v=10';
+import {createMig23mldAircraft} from './mig23mld-game.js?v=11';
 import {nozzlePose,NOZZLE_LENGTH,NOZZLE_HINGE} from './nozzle-kinematics.js';
 import {enableWorldDepthIn} from './world-depth.js';
 import * as THREE from './vendor/three.module.js';

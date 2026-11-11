@@ -1,0 +1,144 @@
+{
+  "mainBase": "1569099d7e404b94b7ab8f10c85d57bc38b99b7b",
+  "leaseBase": "0e28a0d3497ac0066012fffa66ef91d5b4de28c8",
+  "checkedAtSeoul": "2026-11-12",
+  "checks": [
+    {
+      "command": "node tests/mig23-native.mjs",
+      "code": 0,
+      "output": "MiG23 specs [1,1,18794.027643135796,28660.89215578209,83.59999999999998,127.49,37.35,13.965,9595,4672,7.5,-3,0,2,16,16.7,260,25,2,0,0,16600,25,203.40001727144224,18030,0,0,1]\nMiG23 gear [0,-1.42,-3.18,-1.82,-1.42,1.2,1.82,-1.42,1.2]\nMiG23 straight takeoff {\"fbw\":0,\"throttle\":1,\"seconds\":24.883333333333333,\"maxYaw\":0.0007272867231584762,\"maxDrift\":0.6028739457697156}\nMiG23 straight takeoff {\"fbw\":0,\"throttle\":1.2,\"seconds\":17.5,\"maxYaw\":0.0007273920213818738,\"maxDrift\":0.43855820511180355}\nMiG23 straight takeoff {\"fbw\":1,\"throttle\":1,\"seconds\":26.008333333333333,\"maxYaw\":0.0007148440808404353,\"maxDrift\":0.7253308709732664}\nMiG23 straight takeoff {\"fbw\":1,\"throttle\":1.2,\"seconds\":18.533333333333335,\"maxYaw\":0.0007139228913243315,\"maxDrift\":0.5429402316340202}\nMiG23 sweep {\"pre\":[1,20,1,20,13.965,4,1,0],\"low\":[1,20,0,16,13.965,4,1,0],\"high\":[1,20,0,72,13.965,4,1,0]}\nMiG23 swept hydraulic servo {\"initial\":20,\"deflected\":[1,71.99999993908007,0,72,9.810033429930957,4,1,0]}\n{\"result\":\"PASS\",\"nativeType\":16,\"engine\":\"R-35-300\",\"sweepStops\":[16,72],\"afterburner\":true,\"fuel\":3260.4970536355136}\n"
+    },
+    {
+      "command": "node tests/mig23-autosweep.mjs",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"auto\":true,\"manual\":true,\"hysteresis\":true,\"transitions\":19,\"sweepStops\":[16,33,45,72]}\n"
+    },
+    {
+      "command": "node tests/pilot-instructor.mjs",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"nativeAxisScenarios\":64,\"legacyAircraft\":17,\"legacyTicks\":4080,\"inputCurves\":true,\"opposingKeys\":true,\"releaseHandoff\":true,\"verticalPointer\":true}\n"
+    },
+    {
+      "command": "node tests/mig23-geometry-audit.mjs",
+      "code": 0,
+      "output": "\"t\":[-4.15096,0.65001,0.39281],\"s\":[0.27239,0.31091,0.27239],\"mesh\":128,\"primitives\":1,\"materials\":[\"005bl_co.paa\"],\"bounds\":{\"lo\":[-0.2778,-0.1747,-0.573],\"hi\":[0.273,-0.0719,-0.1421]}}\nNODE {\"i\":129,\"name\":\"r24\",\"parent\":null,\"t\":[-3.75657,0.47523,-0.8614],\"r\":[-0.01687,0,0,0.99986],\"mesh\":129,\"primitives\":1,\"materials\":[\"r24\"],\"bounds\":{\"lo\":[-0.0845,-0.0826,-0.5232],\"hi\":[0.0819,0.0841,0.5553]}}\nNODE {\"i\":130,\"name\":\"r025\",\"parent\":null,\"t\":[-4.54403,0.47523,-0.8614],\"r\":[-0.01687,0,0,0.99986],\"mesh\":130,\"primitives\":1,\"materials\":[\"r24\"],\"bounds\":{\"lo\":[-0.0845,-0.0826,-0.5232],\"hi\":[0.0819,0.0841,0.5553]}}\nNODE {\"i\":131,\"name\":\"rudder\",\"parent\":null,\"t\":[-4.15189,0.44069,-1.51676],\"s\":[0.01,0.01,0.01],\"mesh\":131,\"primitives\":2,\"materials\":[\"fuzcamo\",\"nab\"],\"bounds\":{\"lo\":[-1.5059,21.5698,-137.2088],\"hi\":[1.5051,53.7115,-105.7149]}}\nNODE {\"i\":132,\"name\":\"soplo\",\"parent\":null,\"t\":[-4.15152,0.36332,-2.76597],\"s\":[0.01094,0.01094,0.01],\"mesh\":132,\"primitives\":1,\"materials\":[\"nab\"],\"bounds\":{\"lo\":[-12.5856,-12.5041,-4.3371],\"hi\":[12.5856,12.5041,4.3372]}}\nNODE {\"i\":133,\"name\":\"stab\",\"parent\":null,\"t\":[-4.15189,0.44069,-1.51676],\"s\":[0.01,0.01,0.01],\"mesh\":133,\"primitives\":2,\"materials\":[\"fuzcamo\",\"00Bnosser.paa\"],\"bounds\":{\"lo\":[-69.6791,0.1069,-144.9081],\"hi\":[-15.9,7.0987,-65.1161]}}\nNODE {\"i\":134,\"name\":\"stab2\",\"parent\":null,\"t\":[-4.15189,0.44069,-1.51676],\"s\":[0.01,0.01,0.01],\"mesh\":134,\"primitives\":2,\"materials\":[\"fuzcamo\",\"00Bnosser.paa\"],\"bounds\":{\"lo\":[15.8971,0.1069,-144.9081],\"hi\":[69.6761,7.0987,-65.1161]}}\nNODE {\"i\":135,\"name\":\"stoykanos\",\"parent\":null,\"t\":[-4.15189,0.44069,-1.51676],\"s\":[0.01,0.01,0.01],\"mesh\":135,\"primitives\":3,\"materials\":[\"nab\",\"00Cnosser1.paa\",\"00Bnosser.paa\"],\"bounds\":{\"lo\":[-5.0264,-31.4457,176.7012],\"hi\":[1.6688,-3.1865,182.5199]}}\n"
+    },
+    {
+      "command": "node tests/su35-combat-native.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"legacyAircraft\":13,\"legacyTicks\":15600,\"flightEnvelopeScenarios\":12,\"nativeAircraftId\":13,\"loadouts\":4}\n"
+    },
+    {
+      "command": "node tests/su35-combat-systems.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"engagements\":[{\"kind\":\"rf\",\"targetType\":1,\"remaining\":5,\"damage\":5.1166077507864705},{\"kind\":\"ir\",\"targetType\":1,\"remaining\":1,\"damage\":3.5552954335259193},{\"kind\":\"rf\",\"targetType\":13,\"remaining\":5,\"damage\":2.1036145732437737}],\"gunRounds\":150,\"reload\":true,\"laserPod\":true,\"bombRelease\":true,\"countermeasures\":true,\"takeoffSeconds\":23.791666666666668}\n{\"result\":\"PASS\",\"gunImpact\":{\"legacy30mm\":0.42000000000000004,\"su35Impact\":0.42000000000000004}}\n{\"result\":\"PASS\",\"aiCombat\":true}\n"
+    },
+    {
+      "command": "node tests/su35-geometry.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"visibleDimensions\":[15.3,5.8999999999999995,21.9],\"triangles\":177834,\"intakeRaySamples\":18,\"rampRaySamples\":54,\"undersideSamples\":17,\"existingAircraft\":13}\n"
+    },
+    {
+      "command": "node tests/su35-combat-model.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"collisionRegions\":30,\"preservedTriangles\":true,\"externalStoreCoordinates\":true,\"damageInheritance\":true,\"wreckageMeshes\":13}\n"
+    },
+    {
+      "command": "node tests/su35-flight-physics.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"scenarios\":12,\"levelAltitude\":1510.418316531855,\"pullUpG\":4.033521591743231,\"substepTrajectoryError\":0}\n"
+    },
+    {
+      "command": "node tests/mig29-native.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"nativeAircraftId\":14,\"legacyAircraft\":14,\"legacyTicks\":16800,\"loadouts\":3,\"flightEnvelopeScenarios\":12}\n{\"result\":\"PASS\",\"conventionalControls\":true,\"gunDamageLink\":true}\n{\"result\":\"PASS\",\"nativeForces\":{\"drySpeed\":257.2340661410796,\"wetSpeed\":263.69040068259494,\"brakedSpeed\":235.9926277557272}}\n"
+    },
+    {
+      "command": "node tests/mig29-combat.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"engagements\":[{\"kind\":\"rf\",\"targetType\":1,\"remaining\":1,\"damage\":5.969685094668385},{\"kind\":\"ir\",\"targetType\":1,\"remaining\":3,\"damage\":3.5553069590657858},{\"kind\":\"rf\",\"targetType\":14,\"remaining\":1,\"damage\":3.629174933537767}],\"gunRounds\":150,\"reload\":true,\"countermeasures\":true,\"takeoffSeconds\":19.833333333333332}\n{\"result\":\"PASS\",\"gunImpact\":{\"legacy30mm\":0.42000000000000004,\"mig29Impact\":0.42000000000000004}}\n{\"result\":\"PASS\",\"aiCombat\":true}\n{\"result\":\"PASS\",\"sarhIllumination\":{\"maintained\":5.969685094668385,\"lost\":0}}\n{\"result\":\"PASS\",\"r73Stations\":4}\n"
+    },
+    {
+      "command": "node tests/mig29-model.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"visibleDimensions\":[11.360000610351562,4.7208135080337525,17.319999618530275],\"triangles\":238896,\"undersideSamples\":6,\"inletSamples\":18,\"mechanisms\":true,\"combatStores\":true,\"collisionRegions\":30}\n"
+    },
+    {
+      "command": "node tests/mig29-surface-data.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"skinMeshes\":25,\"uvBytes\":3535872,\"independentUv\":true,\"invalidDownloadsRejected\":true}\n"
+    },
+    {
+      "command": "node tests/mig15-native.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"takeoffSeconds\":23.4,\"reload\":true,\"nativeAircraft\":15,\"legacyAircraft\":15,\"legacyTicks\":18000,\"flightEnvelopeScenarios\":12,\"projectiles\":200,\"nr23\":160,\"n37d\":40,\"radar\":false,\"afterburner\":false,\"nativeGunHits\":true,\"aiFlight\":true}\n"
+    },
+    {
+      "command": "node tests/mig15-model.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"dimensions\":[10.145999908447266,3.6999999284744263,10.132500162124634],\"triangles\":47490,\"meshes\":85,\"materials\":46,\"geometryBytes\":1457800,\"gpuTextureBytes\":0,\"inletRays\":12,\"frozenSurfaceCoordinates\":true,\"flightControlAnimation\":true,\"damageInheritance\":true,\"engines\":1}\n"
+    },
+    {
+      "command": "node tests/mig15-hinges.mjs public",
+      "code": 0,
+      "output": "8,\"anhedralDegrees\":[{\"field\":\"leftFlap\",\"degrees\":2.0000003821237318},{\"field\":\"rightFlap\",\"degrees\":2.0000003821237318},{\"field\":\"leftAileron\",\"degrees\":1.9999998505322154},{\"field\":\"rightAileron\",\"degrees\":1.9999998505322154}],\"measurements\":[{\"field\":\"leftFlap\",\"span\":-2.6400001287460326,\"angle\":-0.4,\"driftMetres\":1.971552692645456e-8},{\"field\":\"leftFlap\",\"span\":-0.8100000262260436,\"angle\":-0.4,\"driftMetres\":2.7374625922380847e-9},{\"field\":\"rightFlap\",\"span\":0.8100000262260436,\"angle\":-0.4,\"driftMetres\":2.7374625922380847e-9},{\"field\":\"rightFlap\",\"span\":2.6400001287460326,\"angle\":-0.4,\"driftMetres\":1.971552692645456e-8},{\"field\":\"leftAileron\",\"span\":-5.042500038146972,\"angle\":-0.4,\"driftMetres\":1.4519740783007611e-8},{\"field\":\"leftAileron\",\"span\":-2.650000114440918,\"angle\":-0.4,\"driftMetres\":8.832481816856583e-9},{\"field\":\"rightAileron\",\"span\":2.650000114440918,\"angle\":-0.4,\"driftMetres\":8.832481816856583e-9},{\"field\":\"rightAileron\",\"span\":5.042500038146972,\"angle\":-0.4,\"driftMetres\":1.4519740783007611e-8},{\"field\":\"leftFlap\",\"span\":-2.6400001287460326,\"angle\":0.4,\"driftMetres\":1.9715526945154207e-8},{\"field\":\"leftFlap\",\"span\":-0.8100000262260436,\"angle\":0.4,\"driftMetres\":2.737462575483113e-9},{\"field\":\"rightFlap\",\"span\":0.8100000262260436,\"angle\":0.4,\"driftMetres\":2.737462575483113e-9},{\"field\":\"rightFlap\",\"span\":2.6400001287460326,\"angle\":0.4,\"driftMetres\":1.9715526945154207e-8},{\"field\":\"leftAileron\",\"span\":-5.042500038146972,\"angle\":0.4,\"driftMetres\":1.4519740768570646e-8},{\"field\":\"leftAileron\",\"span\":-2.650000114440918,\"angle\":0.4,\"driftMetres\":8.832481784213513e-9},{\"field\":\"rightAileron\",\"span\":2.650000114440918,\"angle\":0.4,\"driftMetres\":8.832481784213513e-9},{\"field\":\"rightAileron\",\"span\":5.042500038146972,\"angle\":0.4,\"driftMetres\":1.4519740768570646e-8}]}\n"
+    },
+    {
+      "command": "node tests/mig23mld-preview.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"binaryBytes\":22593404,\"sha\":\"eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8\",\"meshes\":136,\"images\":22}\n"
+    },
+    {
+      "command": "node tests/mig23mld-pbr.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"sourceBytes\":22593404,\"meshes\":136,\"primitives\":222,\"materials\":44,\"textures\":36,\"sha256\":\"eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8\"}\n"
+    },
+    {
+      "command": "node tests/missile-systems.mjs public",
+      "code": 0,
+      "output": "{\"result\":\"PASS\",\"fuzes\":\"IR/RF contact and proximity\",\"profiles\":15,\"highHead\":102601.09958475448,\"highTail\":55156.8553576357,\"lowHead\":59775.40852560171,\"shots\":[{\"missile\":\"AIM-54C\",\"launchKm\":59.2,\"peak\":1451.3441294254978,\"illuminated\":true},{\"missile\":\"R-77-1\",\"launchKm\":44.3,\"peak\":1271.7223527997041,\"illuminated\":true},{\"missile\":\"AIM-120C\",\"launchKm\":54.2,\"peak\":1260.5554100858355,\"illuminated\":true},{\"missile\":\"R-24R\",\"launchKm\":22.3,\"peak\":1191.7084745877446,\"illuminated\":true},{\"missile\":\"R-24R\",\"launchKm\":22.3,\"peak\":1191.7263602305807,\"illuminated\":false}]}\n"
+    },
+    {
+      "command": "node scripts/aircraft-progress.mjs",
+      "code": 0,
+      "output": "{\n  \"target\": \"2026-12-02\",\n  \"total\": 91,\n  \"actuallyImplemented\": 17,\n  \"counts\": {\n    \"planned\": 74,\n    \"implemented\": 15,\n    \"in_progress\": 2,\n    \"reviewed\": 0,\n    \"blocked\": 0\n  },\n  \"next\": {\n    \"id\": \"ru-mig15-bis\",\n    \"name\": \"MiG-15bis\",\n    \"step\": \"Continue MiG-15bis exact-variant shape review: actual WebGL side/rear overlays still show canopy, wheel and wing/camera differences. Obtain uncovered exact-bis front photo (Monino photo has an intake cover), inspect splitter/duct and nozzle sleeve/lip. Keep in_progress. PR #4 actual Chromium desktop/mobile smoke and registered-camera capture pass; TLS hostname mismatch still blocks its connection check and HTTPS publication.\"\n  },\n  \"lease\": null\n}\n"
+    }
+  ],
+  "native": {
+    "bytes": 344183,
+    "sha256": "1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693",
+    "deterministicRebuild": true,
+    "note": "Current main instructor/axis extension changes generated native output; source cache does not change native code. Tracked base binary remains unchanged."
+  },
+  "photo": {
+    "currentOverlay": "19-current-tail-photo-overlay.jpg",
+    "reference": "Public domain US Navy photo reproduced unblended in 13-tail-photo-overlay.jpg",
+    "recipe": "tail-overlay-recipe.json",
+    "script": "scripts/review-mig23-tail-crop.py",
+    "limitations": "Original download returned HTTP 403 on Nov 12. Reused the recorded JPEG photo crop with the same full-aircraft two-landmark transform, no part-specific warp. Fin and root silhouette/camera residuals remain."
+  },
+  "browser": {
+    "flight": {
+      "result": "PASS",
+      "nativeType": 16,
+      "realGLB": true,
+      "autoManualSweep": true,
+      "afterburner": true,
+      "mobileSelection": true,
+      "pageErrors": []
+    },
+    "instructor": {
+      "result": "PASS",
+      "perAxisOverride": true,
+      "opposingKeys": true,
+      "mouseAndKeyboard": true,
+      "releaseHandoff": true,
+      "settings": true,
+      "mobileStick": true,
+      "pageErrors": []
+    },
+    "baseline": "20-current-baseline.json",
+    "shared": "20-current-shared.json"
+  },
+  "cacheBust": "mig23mld-11 (main had already used direct game module v10); instructor-axis prefix and sweep v2 preserved"
+}

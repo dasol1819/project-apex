@@ -1035,7 +1035,9 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld/14-tail-native-stops.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld/15-four-airbrakes-in-game.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld/16-airbrake-closed-photo-overlay.jpg",
-          "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/17-resource-comparison.jpg"
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/17-resource-comparison.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/19-current-tail-photo-overlay.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/20-current-resource-comparison.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1077,7 +1079,10 @@
           "One-/two-instance dry renderer submissions remain 245/468 calls and 44,513/87,604 triangles. Two-instance RGBA8 mip storage estimate reduces 366,148,112→183,074,056 bytes. Handle counts observed; driver allocation, physical GPU FPS, other renderer contexts and AI combat/flight certification are outside this audit.",
           "Original full-resolution GLB and maps retained. Per-instance graph/material/vertex buffer clones verify different sweep/gear/control states, wet/dry/half nozzle states, no primary-pose changes when sibling updates, independent nozzle geometry/materials and a correct remaining render after disposal. Shared maps are intentionally retained for the module session.",
           "Manifest/restore, unchanged deterministic 343,744-byte native rebuild, 17 regressions, actual desktop/mobile full-control smoke and the new two-instance resource/lifetime regression pass locally with no page errors.",
-          "Airbrake PR #27 passed 3 exact-head workflows including C++ source-fit replay and merged 948b57bc013ba42b18bb8e09a2aab85b899e278b. Pages 42976173806 success; production HTTP HTML/JS/WASM match validated bytes. HTTPS still responds 503."
+          "Airbrake PR #27 passed 3 exact-head workflows including C++ source-fit replay and merged 948b57bc013ba42b18bb8e09a2aab85b899e278b. Pages 42976173806 success; production HTTP HTML/JS/WASM match validated bytes. HTTPS still responds 503.",
+          "2026-11-11 user-selected AUTO wing sweep: IAS >500 km/h to 45 degrees, IAS <400 km/h to 16 degrees; Mach >1.1 to 72 degrees, Mach <1.0 from 72 to 45 degrees. Retains target in hysteresis bands; manual detents and native hydraulic rate unchanged. tests/mig23-autosweep.mjs covers 19 acceleration/deceleration transitions, exact thresholds, command deduplication, pause, manual/AUTO and reset.",
+          "2026-11-12 Seoul: reconciled PR #28 with main 1569099, retaining #33 mixed axis instructor, user AUTO sweep thresholds, OBJ0277 visibility and OBJ0100 moving wing detail, F/A-18 asset and licenses. Manifest/restore, deterministic current 344,183-byte native build SHA-256 1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693, 20 native/model/queue checks, C++ authored airbrake fit replay, actual desktop/mobile flight, mixed input and two-instance baseline/shared renderer audits passed. No page errors. Current dry scene one/two calls 244/466, triangles 44,497/87,572; source sharing still 44→22 handles and estimated RGBA8 mip bytes 366,148,112→183,074,056. The older Nov 11 binary and draw counts above are historical checkpoints.",
+          "Current actual-renderer tail image registered at 48% over the preserved unblended US Navy photo crop using the existing global two-landmark recipe. Original redownload returns HTTP 403. Fin top/root/stabilator and perspective residuals remain; no whole-aircraft visual approval. Editable crop-overlay script and recipe retained. HTTPS still 503 before publication; HTTP 200."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1107,7 +1112,8 @@
         "sourceCacheMeasurements": "docs/aircraft-review/mig23mld/18-resource-shared.json",
         "sourceCacheRegression": "tests/mig23-resource-browser.py",
         "airbrakePublishedCommit": "https://github.com/dasol1819/project-apex/commit/948b57bc013ba42b18bb8e09a2aab85b899e278b",
-        "airbrakePages": "https://github.com/dasol1819/project-apex/actions/runs/42976173806"
+        "airbrakePages": "https://github.com/dasol1819/project-apex/actions/runs/42976173806",
+        "sourceCacheCurrentValidation": "docs/aircraft-review/mig23mld/20-current-validation.json"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1118,8 +1124,8 @@
         "materials": 44,
         "images": 22,
         "renderedFps": null,
-        "nativeWasmBytes": 343744,
-        "nativeBuild": "PR #25 centerline thrust fix; deterministic 343,744-byte local rebuild preserved by tail rig; Pages 42969491433 success and production HTTP SHA-256 match.",
+        "nativeWasmBytes": 344183,
+        "nativeBuild": "Current main #33 instructor extension: deterministic local rebuild 344,183 bytes; SHA-256 1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693. Original tracked base WASM unchanged. Source cache does not alter native code.",
         "fps": null,
         "exhaustAudit": "Chromium 141 SwiftShader isolated gameplay model camera",
         "dryDrawCalls": 223,
@@ -1172,10 +1178,10 @@
         "sourceCacheTwoInstanceEstimatedRGBA8BytesAfter": 183074056,
         "sourceCacheRendererTexturesAfterSiblingRemovalBefore": 56,
         "sourceCacheRendererTexturesAfterSiblingRemovalAfter": 34,
-        "sourceCacheOneInstanceCalls": 245,
-        "sourceCacheTwoInstanceCalls": 468,
-        "sourceCacheOneInstanceTriangles": 44513,
-        "sourceCacheTwoInstanceTriangles": 87604
+        "sourceCacheOneInstanceCalls": 244,
+        "sourceCacheTwoInstanceCalls": 466,
+        "sourceCacheOneInstanceTriangles": 44497,
+        "sourceCacheTwoInstanceTriangles": 87572
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
@@ -1190,7 +1196,8 @@
         "Main gear visual linkage approximates exact hardware and timing. Some forward cover seam and taxi clearance remain to be verified.",
         "Tail shaft positions and clearances are visual fits to the original GLB and a MiG-23 family structural reference. Exact MLD limits, moving root-fairing clearances and physical damage remain unverified. Registered no.34 overlay still shows fin/stabilator/ventral-profile residuals and cannot validate intake depth or an active plume.",
         "Airbrake visual extension stop is 45deg and is not independently confirmed for this exact MLD. Closed-pose UV fit measures the authored mesh, not physical clearances. Obtain exact-variant open-panel/manual evidence and inspect all intermediate hardware clearances. One-instance textures estimate 174.6MiB RGBA8 mip storage; two-instance duplicate source uploads have since been corrected and measured; other contexts and hardware performance remain unmeasured.",
-        "Shared immutable decoded source/texture data remains resident for the gameplay module session. Separate WebGL contexts may allocate separate copies. Two visual instances were audited, with independent mutable geometry/materials and disposal; hardware VRAM/FPS and AI flight/combat certification remain unmeasured."
+        "Shared immutable decoded source/texture data remains resident for the gameplay module session. Separate WebGL contexts may allocate separate copies. Two visual instances were audited, with independent mutable geometry/materials and disposal; hardware VRAM/FPS and AI flight/combat certification remain unmeasured.",
+        "Airbrake visual extension stop is 45deg and is not independently confirmed for this exact MLD. Closed-pose UV fit measures the authored mesh, not physical clearances. Obtain exact-variant open-panel/manual evidence and inspect all intermediate hardware clearances. One-instance textures estimate 174.6MiB RGBA8 mip storage; multi-instance duplication remains to be measured."
       ]
     },
     {
