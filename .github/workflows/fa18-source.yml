@@ -1,0 +1,33 @@
+name: F-18 source GLB validation
+on:
+  pull_request:
+    paths:
+      - 'web/assets/fa18/**'
+      - 'web/fa18-hornet-import.js'
+      - 'web/aircraft.js'
+      - 'web/manifest.json'
+      - 'tests/fa18-source.mjs'
+      - '.github/workflows/fa18-source.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'web/assets/fa18/**'
+      - 'web/fa18-hornet-import.js'
+      - 'web/aircraft.js'
+      - 'web/manifest.json'
+      - 'tests/fa18-source.mjs'
+      - '.github/workflows/fa18-source.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Restore and verify public files
+        run: python3 .deployment/restore.py
+      - name: Check F-18 GLB integrity, structure, credits and integration
+        run: node tests/fa18-source.mjs public
