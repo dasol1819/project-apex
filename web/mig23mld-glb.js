@@ -120,7 +120,7 @@ export function normalizeMig23(scene){
  return {root,originalLength:size.z};
 }
 // Keep source-mesh auxiliaries on their authored wing: OBJ0277 is the
-// one-sided lower wing skin/fairing; OBJ0100 is the tiny port-tip duplicate
+// one-sided lower wing skin/fairing; OBJ0100 is the tiny wingtip duplicate
 // adjacent to OBJ0265. Without these registrations both stay behind as the
 // 16-72 degree swing wing moves, showing detached floating geometry.
 export function rigMig23Sweep(scene,nodes){
