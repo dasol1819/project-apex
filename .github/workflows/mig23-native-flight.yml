@@ -12,6 +12,7 @@ on:
       - 'assets/mig23mld/**'
       - 'tests/mig23-native.mjs'
       - 'tests/mig23-browser.py'
+      - 'tests/mig23-resource-browser.py'
       - 'web/mig23mld-game.js'
 concurrency:
   group: mig23-flight-${{ github.ref }}
@@ -75,9 +76,12 @@ jobs:
           python3 -m http.server 8765 --directory public > /tmp/mig23-web.log 2>&1 &
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/missile-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-browser.py
+          APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-resource-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: mig23-webgl-captures
-          path: /tmp/mig23-flight-browser
+          path: |
+            /tmp/mig23-flight-browser
+            /tmp/mig23-resource-browser
           if-no-files-found: ignore

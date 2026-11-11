@@ -136,3 +136,30 @@ Manifest/restore, the unchanged deterministic 343,744-byte native build, 17 regr
 A separate actual-renderer [texture audit](texture-memory-audit.json) observed 36 visible texture objects backed by 22 uploaded WebGL texture handles. Dimensions were read from the loaded images; RGBA8 storage with full mipmaps is estimated at 183,074,056 bytes (174.6 MiB). Driver allocation and physical GPU FPS were not measured. Source sharing between multiple active aircraft is the next resource check; this audit covers one aircraft instance.
 
 [Tail PR #26](https://github.com/dasol1819/project-apex/pull/26) passed all three exact-head Actions workflows and merged as [`b420722`](https://github.com/dasol1819/project-apex/commit/b420722950d3214d39f3719f6fb299e516a19b54). [Pages run 42972494716](https://github.com/dasol1819/project-apex/actions/runs/42972494716) succeeded. Production HTTP index HTML, model JavaScript and WASM matched the validated files byte for byte. HTTPS verification remains blocked by HTTP 503 from this environment. The complete aircraft remains in progress.
+
+## Shared full-resolution source and independent instances · 2026-11-11
+
+A real flight-renderer audit with two visual factory instances reproduced duplicate source loading. Each constructor decoded its own original GLB and images. The second instance added a source request and another 22 texture handles. Removing it released its geometry resources but left its source texture uploads in the renderer. The [baseline data](17-resource-baseline.json) correspond to the airbrake implementation in main commit `948b57bc013ba42b18bb8e09a2aab85b899e278b`.
+
+The gameplay module now retains one immutable decoded source promise for its session. Every aircraft receives a cloned transform graph, materials and vertex buffers. Texture objects and their original full-resolution image data are shared. Nozzle morph targets are built on each aircraft's own geometry. A failed source promise is cleared so a later constructor can retry. Cancelling one aircraft does not abort the shared download used by another. The shared package intentionally remains available until the module session ends; there is no claim that the first aircraft's texture budget is removed after switching types. Separate WebGL contexts, such as the inspector, can allocate their own copies.
+
+| Actual renderer observation | Previous loading | Shared source |
+| --- | ---: | ---: |
+| One aircraft: source texture handles | 22 | 22 |
+| Two aircraft: source texture handles | 44 | 22 |
+| Two aircraft: visible texture objects | 72 | 36 |
+| Extra source requests for the second instance | 1 | 0 |
+| Two-aircraft RGBA8 full-mipmap estimate | 366,148,112 B | 183,074,056 B |
+| Total renderer texture count after removing the second instance | 56 | 34 |
+| One-aircraft renderer calls / triangles | 245 / 44,513 | 245 / 44,513 |
+| Two-aircraft renderer calls / triangles | 468 / 87,604 | 468 / 87,604 |
+
+The [before/after game captures](17-resource-comparison.jpg) and [shared-source measurements](18-resource-shared.json) retain the original exterior, camouflage and detail. The camera is a test-only inspection view inside the actual game renderer. Pixel identity is not claimed: lighting/background and frame timing vary between runs. The audit observes texture handles and dimensions. Its RGBA8 byte counts are estimates and exclude driver overhead, other renderer contexts, framebuffer attachments and actual hardware VRAM/FPS. The extra object is a visual gameplay-factory fixture; this is not an AI combat or flight certification.
+
+The regression independently poses the two aircraft with different wing sweep, gear, tail, rudder and afterburner states. It verifies distinct materials and nozzle geometry, shared source texture maps, a wet/dry/half-open nozzle sequence, an unchanged primary pose while the sibling updates, and a correct remaining render after sibling disposal. The new [`tests/mig23-resource-browser.py`](../../../tests/mig23-resource-browser.py) records these observations and screenshots. It joins the existing native flight browser CI and its uploaded artifacts. Reproduce it on a restored build with `APEX_TEST_URL=http://127.0.0.1:8765 python3 tests/mig23-resource-browser.py`; use `APEX_EXPECT_SHARED_SOURCE=0` when auditing the earlier loader. [`scripts/review-mig23-resources.py`](../../../scripts/review-mig23-resources.py) composes the two capture directories.
+
+Manifest/restore, unchanged deterministic 343,744-byte native rebuild, 17 regressions, actual Chromium 141 / SwiftShader full-control desktop/mobile smoke and the two-instance resource/pose/disposal audit passed locally without page errors. The change adds 1,225 source JavaScript bytes, zero mesh detail and zero texture bytes. Geometry buffers and materials remain independently mutable per instance, and the 22,593,404-byte original GLB and native WASM hashes remain unchanged. Material, UV, source license and editable review data are preserved.
+
+[Airbrake PR #27](https://github.com/dasol1819/project-apex/pull/27) passed all three exact-head workflows, including the C++ source-fit replay, then merged as [`948b57b`](https://github.com/dasol1819/project-apex/commit/948b57bc013ba42b18bb8e09a2aab85b899e278b). [Pages run 42976173806](https://github.com/dasol1819/project-apex/actions/runs/42976173806) succeeded. HTTP HTML, aircraft JavaScript and WASM matched the validated build byte for byte. The HTTPS endpoint remains blocked by HTTP 503 from this environment.
+
+The shared-source change does not resolve the remaining exact MLD exterior, actuator limits, root/taxi clearances or physical damage work. Keep the complete aircraft in progress and preserve the existing fleet review.
