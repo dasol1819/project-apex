@@ -7,7 +7,7 @@
     "aircraft-tree-data.js": "b25b21724594efb618f761c62bd77fbb06e24bffd960b87ebb5da322bf9f8787",
     "aircraft-tree-immersive.css": "68c4c1b88e08f81f5d531da4a9404db764a024328434a869af645b664a3e116c",
     "aircraft-tree.js": "593f4df8bd7af5e413a4fbaba9c1adb73321546379a1a463a8f215c1f26a645b",
-    "aircraft.js": "9452c029e33e0aa80f05817fab9e458beca70ee5a7032b1c08645ab990a30036",
+    "aircraft.js": "61320a3322a015889f80cf926519b371fcab62e9b05d92fd1c0f63549952311b",
     "airframe-surface-uv.js": "ca39e340734cd392b1154aad6c59feb9e1a9aa4e483b3bcc06aaca5a50ecd693",
     "app.js": "829f22e3554ee93f254f3b838e3fb4af80681071c9aef973991315f656bf136b",
     "armament-data.js": "22b17acbb8b914049627ff3b6d827cdbabd58eb69af64ab9ac0e0d34f5c15f5d",
@@ -103,6 +103,8 @@
     "vendor/basis/THREE-LICENSE.txt": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
     "vendor/basis/basis_transcoder.js": "8478b5b6d6b74e7d3082b89f6417321d8d1dc0307f2b30d4484bb11b441696a1",
     "vendor/basis/basis_transcoder.wasm": "6cf17dc889352c42e9acf8897107978d127005fe3386c36a0e3845e27967630a",
-    "wreckage-mesh.js": "4a520df91a693a2484f777ef37de36f21705b36fefb1fea2555867743ef3b375"
+    "wreckage-mesh.js": "4a520df91a693a2484f777ef37de36f21705b36fefb1fea2555867743ef3b375",
+    "fa18-hornet-import.js": "00b5fef0a02dd7e5d4c92ed703bc9cabd31122a00f6b9d963775400a3026c2db",
+    "assets/fa18/CREDITS.txt": "fd7e23a118d1a7d894f004c144a5683c02e2cb04fb700933a8fd2d1f7a3ebe88"
   }
 }
