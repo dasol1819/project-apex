@@ -34,6 +34,7 @@ jobs:
           cp web/flight.wasm public/flight.wasm
           node tests/mig23-native.mjs
           node tests/mig23-autosweep.mjs
+          node tests/pilot-instructor.mjs
       - name: Check native combat and legacy flight regression
         run: |
           node tests/su35-combat-native.mjs public

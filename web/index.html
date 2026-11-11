@@ -1337,7 +1337,11 @@
 </span>
 </span>
 </label>
-<div class="setting-explanation">PC는 화면 클릭으로 마우스를 고정한 뒤 이동으로 방향을 지정합니다. Esc로 해제·일시정지합니다. 터치는 화면 드래그로 조준합니다. 키보드·터치 스틱·게임패드는 입력하는 동안만 기체 축에 직접 반영되며 스틱 입력 크기에 비례합니다. 놓으면 현재 기수 방향에서 조준 보조가 이어집니다. FBW를 끄면 수동 조종을 사용합니다.</div>
+<label class="setting-row"><span class="setting-copy"><b>스틱 중앙 데드존</b><small>중앙에서 생기는 작은 흔들림 무시</small></span><span class="setting-control range-field"><input type="range" id="stick-deadzone" min="0" max="30" value="8"><output id="stick-deadzone-out">8%</output></span></label>
+<label class="setting-row"><span class="setting-copy"><b>스틱 중앙 정밀도</b><small>높일수록 중앙은 부드럽게 · 최대 조종량 유지</small></span><span class="setting-control range-field"><input type="range" id="stick-curve" min="10" max="30" value="15"><output id="stick-curve-out">1.5</output></span></label>
+<label class="setting-row"><span class="setting-copy"><b>스틱 응답</b><small>100%는 즉시 반응 · 낮추면 입력과 복귀가 부드러워집니다</small></span><span class="setting-control range-field"><input type="range" id="stick-response" min="10" max="100" value="100"><output id="stick-response-out">100%</output></span></label>
+<label class="setting-row"><span class="setting-copy"><b>수동 입력을 놓았을 때</b><small>입력 중 조준점을 옮기면 새 조준점을 유지합니다</small></span><span class="setting-control"><select id="aim-handoff"><option value="heading">현재 기수 방향에서 이어가기</option><option value="target">기존 조준점으로 돌아가기</option></select></span></label>
+<div class="setting-explanation">PC는 화면 클릭으로 마우스를 고정한 뒤 이동으로 방향을 지정합니다. Esc로 해제·일시정지합니다. 터치는 화면 드래그로 조준합니다. 키보드·터치 스틱·게임패드는 입력한 축만 직접 조종하고 나머지 축에는 조준 보조가 이어집니다. 키보드의 반대 방향 키를 함께 누르면 해당 입력이 상쇄됩니다. FBW를 끄면 수동 조종을 사용합니다.</div>
 </section>
 <section id="settings-display" role="tabpanel" data-settings-panel="display" hidden="">
 <h3>화면·단위</h3>
@@ -1499,7 +1503,7 @@
  <div id="toast" role="status" aria-live="polite">
 </div>
  <section id="theatre-tour" hidden aria-label="스탈린그라드 전장 둘러보기"><div><span id="theatre-tour-index">01 / 16</span><h2 id="theatre-tour-name">스탈린그라드</h2><p id="theatre-tour-note">1942년 가을</p></div><div class="theatre-tour-actions"><button id="theatre-tour-prev" aria-label="이전 지점">←</button><button id="theatre-tour-next" aria-label="다음 지점">→</button><button id="theatre-tour-close">출격 준비로 돌아가기</button></div></section>
-<script type="module" src="app.js?v=missiles-1-mig23mld-9-sweep-1">
+<script type="module" src="app.js?v=instructor-axis-1-mig23mld-9">
 </script>
 
 <dialog id="graphics-test-dialog" class="graphics-test-overlay" aria-labelledby="graphics-test-heading"><div class="graphics-test-overlay-card"><p class="section-kicker">PROJECT: APEX / PERFORMANCE TRIAL</p><h2 id="graphics-test-heading">그래픽 성능 측정</h2><p id="graphics-test-stage" role="status" aria-live="polite">시험 편대 준비 중</p><progress id="graphics-test-progress" max="1" value="0" aria-label="그래픽 성능 검사 진행률"></progress><p>실제 렌더링과 비행 물리를 측정하고 있습니다.</p><button id="graphics-test-cancel" class="secondary">검사 취소</button></div></dialog></body>

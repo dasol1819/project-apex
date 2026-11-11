@@ -7,6 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import wabtFactory from 'wabt';
 import {patchMissiles} from './patch-missiles.mjs';
+import {patchInstructor} from './patch-instructor.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const build=path.join(root,'.native-build');
 execFileSync(process.execPath,[path.join(root,'scripts/native/build-mig15.mjs')],{stdio:'inherit'});
@@ -294,12 +295,20 @@ change('step',b=>{
 });
 
 wat=patchMissiles(wat,region,17,regions.radars);
+const preInstructorWat=wat;
+wat=patchInstructor(wat,region);
 const pages=Math.ceil(cursor/65536);
-wat=wat.replace(/\(memory \(;0;\) \d+\)/,`(memory (;0;) ${pages})`);
-wat=wat.slice(0,wat.lastIndexOf(')'))+
+function finalize(source){
+ source=source.replace(/\(memory \(;0;\) \d+\)/,`(memory (;0;) ${pages})`);
+ return source.slice(0,source.lastIndexOf(')'))+
  additions.map(({at,b})=>'  (data (i32.const '+at+') "'+[...b].map(v=>'\\'+v.toString(16).padStart(2,'0')).join('')+'")').join('\n')+'\n)';
+}
+wat=finalize(wat);
 fs.writeFileSync(path.join(build,'mig23.wat'),wat);
 const wabt=await wabtFactory();
+const baseline=wabt.parseWat('pre-instructor.wat',finalize(preInstructorWat),{bulk_memory:true,nontrapping_fptoint:true});
+baseline.resolveNames();baseline.validate();
+fs.writeFileSync(path.join(build,'pre-instructor.wasm'),Buffer.from(baseline.toBinary({write_debug_names:true}).buffer));
 const parser=wabt.parseWat('mig23.wat',wat,{bulk_memory:true,nontrapping_fptoint:true});
 parser.resolveNames();parser.validate();
 const {buffer}=parser.toBinary({write_debug_names:true});

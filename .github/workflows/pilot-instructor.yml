@@ -1,0 +1,49 @@
+name: Aircraft instructor and mixed controls
+on:
+  pull_request:
+    paths:
+      - 'web/app.js'
+      - 'web/index.html'
+      - 'web/aim-input.js'
+      - 'web/pilot-*.js'
+      - 'scripts/native/build-mig23.mjs'
+      - 'scripts/native/patch-instructor.mjs'
+      - 'tests/pilot-instructor*'
+      - '.github/workflows/pilot-instructor.yml'
+permissions:
+  contents: read
+concurrency:
+  group: pilot-instructor-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm ci
+      - name: Restore and rebuild native controller
+        run: |
+          python3 .deployment/restore.py
+          npm run build:combat
+          cp web/flight.wasm public/flight.wasm
+          node --check web/app.js
+          node tests/pilot-instructor.mjs
+          node tests/mig23-native.mjs
+          node tests/mig23-autosweep.mjs
+      - name: Chromium desktop keyboard and mobile touch controls
+        run: |
+          python3 -m venv /tmp/apex-pilot-playwright
+          /tmp/apex-pilot-playwright/bin/pip install --quiet playwright==1.56.0
+          /tmp/apex-pilot-playwright/bin/python -m playwright install --with-deps chromium
+          python3 -m http.server 8768 --directory public >/tmp/apex-pilot-server.log 2>&1 &
+          APEX_TEST_URL=http://127.0.0.1:8768 /tmp/apex-pilot-playwright/bin/python tests/pilot-instructor-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pilot-instructor-desktop-mobile
+          path: /tmp/pilot-instructor-browser
+          if-no-files-found: ignore
