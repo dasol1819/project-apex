@@ -1,0 +1,19 @@
+Project Apex F/A-18B authored visual source
+
+Original model: "High Poly Hornet" by ChrisKuhn
+Source: https://blendswap.com/blend/8636
+Original license: Creative Commons Attribution (CC BY), as listed on BlendSwap.
+Adaptation: user-provided GLB conversion; two oversized helper planes excluded
+from the optimized deployment copy. Integrated through the Project Apex
+F/A-18F visual-source adapter, preserving the existing simulator physics.
+
+IMPORTANT: The original is a legacy two-seat F/A-18B Hornet, not an exact
+F/A-18F Super Hornet. Its use as a visual placeholder does not claim exact
+variant accuracy. No image textures are embedded in the supplied GLB;
+material base colors are preserved where available.
+
+Repository file required for deployment:
+web/assets/fa18/F18_Hornet_optimized.glb
+
+The adapter must not be merged as a completed authored model deployment before
+this binary is present, hashed into web/manifest.json and visually validated.

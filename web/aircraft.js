@@ -3,6 +3,7 @@ import {createSu35CombatAircraft} from './su35-combat-model.js?v=8';
 import {createClassicAircraft} from './classic-aircraft.js';
 import {createMig15bisAircraft} from './mig15bis-model.js?v=2';
 import {createMig23mldAircraft} from './mig23mld-game.js?v=9';
+import {createFa18fSourceAircraft} from './fa18-hornet-import.js?v=1';
 import {nozzlePose,NOZZLE_LENGTH,NOZZLE_HINGE} from './nozzle-kinematics.js';
 import {enableWorldDepthIn} from './world-depth.js';
 import * as THREE from './vendor/three.module.js';
@@ -17,6 +18,7 @@ import {createMainWeaponBay} from './main-weapon-bay.js';
 // Geometry is based on the public F-22 outline, not production CAD.
 export function createAircraft(type=0,options={}) {
   if(Number(type)===16)return createMig23mldAircraft(options);
+  if(Number(type)===12)return createFa18fSourceAircraft(options);
   if(Number(type)===15)return createMig15bisAircraft(options);
   if(Number(type)===14)return createMig29CombatAircraft(options);
   if(Number(type)===13)return createSu35CombatAircraft(options);
