@@ -66,6 +66,19 @@ with sync_playwright() as p:
  assert page.evaluate('__mig23QA.wing.mode')=='AUTO'
  page.wait_for_function('__mig23QA.aircraft.sourceLoaded || __mig23QA.aircraft.sourceFailed',timeout=120000)
  assert page.evaluate('__mig23QA.aircraft.sourceLoaded'),'Original licensed GLB did not render'
+ # Ensure source fairing and wingtip auxiliaries follow their own moving wing.
+ wing_parent_checks=page.evaluate("""()=>{
+  const g=__mig23QA.aircraft.group;
+  return [
+   ['OBJ0277','OBJ0257'],['OBJ0100','OBJ0264']
+  ].map(([part,wing])=>({
+    part,wing,registered:!!g.getObjectByName(part)&&
+      g.getObjectByName(part).parent===g.getObjectByName(wing)?.parent
+  }));
+ }""")
+ assert all(item['registered'] for item in wing_parent_checks),wing_parent_checks
+ print('MIG23_SWEEP_AUXILIARIES',json.dumps(wing_parent_checks),flush=True)
+
  page.screenshot(path=str(out/'mig23-hangar-desktop.png'))
  # The choose callback can rebuild the tree detail; the preparation action
  # is optional, whereas the Hangar -> Sortie route is always exposed.
