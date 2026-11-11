@@ -171,6 +171,69 @@ with sync_playwright() as p:
  assert all(math.dist(p['wheel'],d['wheel'])<.002 and p['lower']>.999 and p['upper']>.999 for p,d in zip(main_return,main_down)),main_return
  print('MI23_MAIN_GEAR',json.dumps({'extended':main_down,'transit':main_mid,'stowed':main_up}),flush=True)
 
+ # The original upper panels are authored ajar. At zero native brake their
+ # skin boundaries must register to the fuselage, before testing normal UI
+ # deployment, intermediate travel, full extension and closure.
+ page.locator('#throttle').fill('70')
+ page.locator('#throttle').dispatch_event('input')
+ page.wait_for_function('__mig23QA.readState()[62]<.005')
+ brake_setup=page.evaluate("""()=>{
+  const group=__mig23QA.aircraft.group,names=['OBJ0037','OBJ0057','OBJ0040','OBJ0060'];
+  const point=(mesh,i)=>group.worldToLocal(mesh.localToWorld(group.position.clone().fromBufferAttribute(mesh.geometry.attributes.position,i)));
+  const key=(uv,i)=>[uv.getX(i),uv.getY(i)].map(n=>n.toFixed(5)).join(',');
+  group.updateWorldMatrix(true,true);
+  const skin=new Map();
+  group.getObjectByName('mig23mld_fuz').traverse(mesh=>{
+   if(mesh.material?.name!=='fuzcamo')return;const uv=mesh.geometry.attributes.uv;
+   for(let i=0;i<uv.count;i++)skin.set(key(uv,i),point(mesh,i));
+  });
+  const registration=names.slice(0,2).map(name=>{
+   const errors=[];group.getObjectByName(name).traverse(mesh=>{
+    if(mesh.material?.name!=='fuzcamo')return;const uv=mesh.geometry.attributes.uv;
+    for(let i=0;i<uv.count;i++){const target=skin.get(key(uv,i));if(target)errors.push(point(mesh,i).distanceTo(target));}
+   });return {pairs:errors.length,maxError:Math.max(...errors)};
+  });
+  window.__mig23BrakeProbes=names.map(name=>{
+   let result,max=-Infinity;group.getObjectByName(name).traverse(mesh=>{
+    if(mesh.material?.name!=='fuzcamo')return;const p=mesh.geometry.attributes.position;
+    for(let i=0;i<p.count;i++){const v=point(mesh,i);if(v.z>max){max=v.z;result={mesh,index:i};}}
+   });return result;
+  });
+  return registration;
+ }""")
+ assert all(p['pairs']>=7 and p['maxError']<.00005 for p in brake_setup),brake_setup
+ brake_pose="""()=>{
+  const group=__mig23QA.aircraft.group;group.updateWorldMatrix(true,true);
+  return {progress:__mig23QA.readState()[22],points:__mig23BrakeProbes.map(({mesh,index})=>
+   group.worldToLocal(mesh.localToWorld(group.position.clone().fromBufferAttribute(mesh.geometry.attributes.position,index))).toArray())};
+ }"""
+ capture_brake_upper='__mig23QA.capture([3,2.8,4.7],false,[.35,.75,6.4])'
+ capture_brake_lower='__mig23QA.capture([3,-2,8],false,[.45,-.25,6.4])'
+ capture_brake_aft='__mig23QA.capture([0,.7,12],false,[0,.4,6.4])'
+ brake_closed=page.evaluate(brake_pose)
+ (out/'mig23-brakes-closed.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_upper)))
+ (out/'mig23-brakes-closed-lower.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_lower)))
+ (out/'mig23-brakes-closed-aft.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_aft)))
+ page.evaluate('document.getElementById("brake").click()')
+ page.wait_for_function('__mig23QA.readState()[22]>.25 && __mig23QA.readState()[22]<.75')
+ brake_moving=page.evaluate(brake_pose)
+ (out/'mig23-brakes-moving.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_upper)))
+ (out/'mig23-brakes-moving-lower.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_lower)))
+ page.wait_for_function('__mig23QA.readState()[22]>.999')
+ brake_open=page.evaluate(brake_pose)
+ for i in (0,1):assert brake_open['points'][i][1]>brake_closed['points'][i][1]+.15,brake_open
+ for i in (2,3):assert brake_open['points'][i][1]<brake_closed['points'][i][1]-.1,brake_open
+ (out/'mig23-brakes-open-upper.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_upper)))
+ (out/'mig23-brakes-open-lower.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_lower)))
+ (out/'mig23-brakes-open-aft.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_aft)))
+ page.evaluate('document.getElementById("brake").click()')
+ page.wait_for_function('__mig23QA.readState()[22]<.00001')
+ brake_return=page.evaluate(brake_pose)
+ assert all(math.dist(a,b)<.00005 for a,b in zip(brake_closed['points'],brake_return['points'])),brake_return
+ (out/'mig23-brakes-returned.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_upper)))
+ (out/'mig23-brakes-returned-lower.png').write_bytes(base64.b64decode(page.evaluate(capture_brake_lower)))
+ print('MI23_AIRBRAKES',json.dumps({'registration':brake_setup,'closed':brake_closed,'moving':brake_moving,'open':brake_open,'returned':brake_return}),flush=True)
+
  # Native actuator outputs must move the original GLB tails, including
  # differential roll and the single rudder. Sample and render in one task so
  # the normal frame loop cannot replace the commanded state mid-capture.
@@ -200,15 +263,18 @@ with sync_playwright() as p:
   };
   const samples={};
   for(const [name,pitch,roll,yaw] of [['neutral',0,0,0],['pitch-up',.65,0,0],['pitch-down',-.65,0,0],
-   ['roll-right',0,.65,0],['yaw-right',0,0,.65],['yaw-left',0,0,-.65]]){
+   ['roll-right',0,.65,0],['yaw-right',0,0,.65],['yaw-left',0,0,-.65],
+   ['pitch-stop-up',1,0,0],['pitch-stop-down',-1,0,0],
+   ['rudder-stop-right',0,0,1],['rudder-stop-left',0,0,-1]]){
    sim.reset_spawn(2);sim.debug_set_state(0,5000,0,0,0,-235,0,0,0,1);
    sim.set_controls(pitch,roll,yaw,.7,0,0,0,0);
    for(let i=0;i<120;i++)sim.step(1/120);
    const s=__mig23QA.readState();
    group.position.set(s[0],s[1],s[2]);group.quaternion.set(s[6],s[7],s[8],s[9]);
    a.update({leftTail:s[49],rightTail:s[50],leftRudder:s[55],gear:0,wingSweep:72,afterburner:0});
+   const stop=name.includes('stop');
    samples[name]={native:[s[49],s[50],s[55]],positions:positions(),
-    png:__mig23QA.capture([8,3.5,16],false,[0,.7,6.6])};
+    png:__mig23QA.capture(stop?[4,1.7,11]:[8,3.5,16],false,stop?[.25,.6,6.6]:[0,.7,6.6])};
   }
   const enabled=new Float32Array(30).fill(1);enabled[3]=enabled[4]=enabled[20]=0;
   const before=hinges.map(n=>n.quaternion.toArray());
@@ -232,6 +298,11 @@ with sync_playwright() as p:
  assert roll[0][1]<neutral[0][1]-.02 and roll[1][1]>neutral[1][1]+.02,roll
  assert tail['samples']['yaw-right']['positions'][2][0]>neutral[2][0]+.07
  assert tail['samples']['yaw-left']['positions'][2][0]<neutral[2][0]-.07
+ for i in (0,1):
+  assert tail['samples']['pitch-stop-up']['positions'][i][1]>neutral[i][1]+.35
+  assert tail['samples']['pitch-stop-down']['positions'][i][1]<neutral[i][1]-.35
+ assert tail['samples']['rudder-stop-right']['positions'][2][0]>neutral[2][0]+.20
+ assert tail['samples']['rudder-stop-left']['positions'][2][0]<neutral[2][0]-.20
 
  # Exercise the rendered exhaust with native part indices and typed health buffers.
  exhaust=page.evaluate("""()=>{

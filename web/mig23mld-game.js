@@ -56,6 +56,45 @@ function rigTailControls(root){
  };
 }
 
+function rigAirbrakes(root){
+ const upper=[
+  {name:'port',mesh:'OBJ0037',shift:[-1.0374213764,1.7840560426,.4284560724],
+   axis:[.8642645552,.4464771803,.2317431900],angle:19.9563906806},
+  {name:'starboard',mesh:'OBJ0057',shift:[.6834628010,1.7424056953,.3829618502],
+   axis:[.9315461135,-.3636229052,.0004702818],angle:18.2554438696}
+ ];
+ const origin=root.worldToLocal(new T.Vector3());
+ const corrected=new Map();
+ for(const {name,mesh,shift,axis,angle} of upper){
+  const panel=root.getObjectByName(mesh);if(!panel)continue;
+  const pose=new T.Group();pose.name=`MiG-23MLD ${name} upper airbrake rest`;
+  root.add(pose);pose.attach(panel);
+  // Register the original ajar skin to its matching fuselage UV boundary.
+  // These rigid transforms come from 8 port / 7 starboard source vertex pairs.
+  pose.position.copy(root.worldToLocal(new T.Vector3(...shift)).sub(origin));
+  const direction=root.worldToLocal(new T.Vector3(...axis)).sub(origin).normalize();
+  pose.quaternion.setFromAxisAngle(direction,T.MathUtils.degToRad(angle));
+  corrected.set(name,pose);
+ }
+ root.updateMatrixWorld(true);
+ const hinges=[];
+ for(const side of [-1,1]){
+  const name=side<0?'port':'starboard';
+  const upperPanel=corrected.get(name),lowerPanel=root.getObjectByName(side<0?'OBJ0040':'OBJ0060');
+  // The upper supports and lower hinge pads define two transverse pin lines.
+  const upperPoints=side<0?
+   [[-.4075,-.3915,6.1195],[-.2475,-.3205,6.1235]]:
+   [[.2475,-.3205,6.1235],[.4075,-.3915,6.1195]];
+  const lowerPoints=side<0?
+   [[-.62054,-1.18622,6.02708],[-.52856,-1.35316,6.01737]]:
+   [[.52856,-1.35316,6.01737],[.62054,-1.18622,6.02708]];
+  if(upperPanel)hinges.push({rotate:rigHinge(root,`MiG-23MLD ${name} upper airbrake`,[upperPanel],...upperPoints),sign:-1});
+  if(lowerPanel)hinges.push({rotate:rigHinge(root,`MiG-23MLD ${name} lower airbrake`,[lowerPanel],...lowerPoints),sign:1});
+ }
+ // 45 degrees is a visual stop; exact MLD limits still require confirmation.
+ return brake=>{for(const hinge of hinges)hinge.rotate(hinge.sign*Math.PI/4*brake);};
+}
+
 // OBJ0024 is authored in the starboard-folded position.
 function rigVentralFin(root){
  const fin=root.getObjectByName('OBJ0024');
@@ -248,7 +287,7 @@ export function createMig23mldAircraft(options={}){
  base.group.userData.previewOnly=false;
  const standIns=[];
  base.group.traverse(n=>{if(n.isMesh||n.isLineSegments)standIns.push(n);});
- let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},setMainGear=()=>{},setTailControls=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1;
+ let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},setMainGear=()=>{},setTailControls=()=>{},setAirbrakes=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1,lastAirbrake=0;
  const lastControls={leftTail:0,rightTail:0,leftRudder:0};
  const plume=createPlume();
  base.group.add(plume);
@@ -265,6 +304,7 @@ export function createMig23mldAircraft(options={}){
    setNoseGear=rigNoseGear(normalized.root);
    setMainGear=rigMainGear(normalized.root);
    setTailControls=rigTailControls(normalized.root);
+   setAirbrakes=rigAirbrakes(normalized.root);
    alignGroundContact(normalized.root);
    exhaust=rigExhaust(normalized.root,plume);
    sweep=rig;
@@ -274,6 +314,7 @@ export function createMig23mldAircraft(options={}){
    setNoseGear(lastGear);
    setMainGear(lastGear);
    setTailControls(lastControls);
+   setAirbrakes(lastAirbrake);
    exhaust?.(0,0);
    loaded=true;
    for(const node of standIns)node.visible=false;
@@ -285,6 +326,7 @@ export function createMig23mldAircraft(options={}){
   const angle=Number.isFinite(state.wingSweep)?clamp(state.wingSweep,16,72):lastAngle;
   lastAngle=angle;
   if(Number.isFinite(state.gear))lastGear=clamp(state.gear,0,1);
+  if(Number.isFinite(state.airbrake))lastAirbrake=clamp(state.airbrake,0,1);
   for(const field of ['leftTail','rightTail','leftRudder'])
    if(Number.isFinite(state[field]))lastControls[field]=state[field];
   lastControls.enabled=state.enabled;
@@ -294,6 +336,7 @@ export function createMig23mldAircraft(options={}){
    setNoseGear(lastGear);
    setMainGear(lastGear);
    setTailControls(lastControls);
+   setAirbrakes(lastAirbrake);
    for(const node of standIns)node.visible=false;
   }
   const ab=clamp(Number(state.afterburner)||0,0,1);

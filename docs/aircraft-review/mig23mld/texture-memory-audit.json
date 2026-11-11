@@ -1,0 +1,166 @@
+{
+  "visibleTextureObjects": 36,
+  "uploadedHandles": 22,
+  "pendingObjects": 0,
+  "rendererTextureCount": 34,
+  "renderer": "WebKit WebGL",
+  "textures": [
+    {
+      "width": 256,
+      "height": 64,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 87388
+    },
+    {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 22369620
+    },
+    {
+      "width": 512,
+      "height": 256,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 699052
+    },
+    {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 22369620
+    },
+    {
+      "width": 128,
+      "height": 128,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 87380
+    },
+    {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 22369620
+    },
+    {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 22369620
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 349524
+    },
+    {
+      "width": 256,
+      "height": 1024,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 1398108
+    },
+    {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 22369620
+    },
+    {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 22369620
+    },
+    {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 22369620
+    },
+    {
+      "width": 1024,
+      "height": 512,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 2796204
+    },
+    {
+      "width": 1024,
+      "height": 1024,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 5592404
+    },
+    {
+      "width": 1024,
+      "height": 512,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 2796204
+    },
+    {
+      "width": 512,
+      "height": 256,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 699052
+    },
+    {
+      "width": 512,
+      "height": 512,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 1398100
+    },
+    {
+      "width": 1042,
+      "height": 1024,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 5689940
+    },
+    {
+      "width": 512,
+      "height": 256,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 699052
+    },
+    {
+      "width": 512,
+      "height": 256,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 699052
+    },
+    {
+      "width": 512,
+      "height": 256,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 699052
+    },
+    {
+      "width": 1024,
+      "height": 512,
+      "colorSpace": "srgb",
+      "generateMipmaps": true,
+      "estimatedRGBA8Bytes": 2796204
+    }
+  ],
+  "estimatedRGBA8Bytes": 183074056,
+  "environment": "Chromium 141.0.7390.37 / SwiftShader, actual flight renderer, 1366x900",
+  "note": "Texture handles and dimensions are observed. RGBA8 full-mipmap storage is an estimate; driver allocation and hardware GPU FPS remain unmeasured."
+}
