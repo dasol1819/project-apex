@@ -2,25 +2,17 @@
 // State indices belong to native flight.wasm: TAS[13], IAS[14], Mach[15],
 // AoA[16], G[18], gear[21], density[24].
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-const ease=x=>{const y=clamp(x,0,1);return y*y*(3-2*y)};
 export const MIG23_SWEEP_STOPS=Object.freeze([16,33,45,72]);
 export const MIG23_SWEEP_MIN=16,MIG23_SWEEP_MAX=72;
-export function mig23AutomaticSweep(state){
+export function mig23AutomaticSweep(state,previousTarget=16){
  const mach=clamp(Number(state?.[15])||0,0,3);
- const gear=Number(state?.[21])||0;
- const ias=Number(state?.[14])||0;
- const g=Math.abs(Number(state?.[18])||1);
- // Full wing for takeoff/landing and deliberate low-speed approaches.
- if(gear>.35 || (mach<.52&&ias<170))return 16;
- // Smooth schedule: 16 -> 33 (maneuver) -> 45 (transonic) -> 72 (supersonic).
- // Thresholds are gameplay estimates, not a certified MiG-23 automatic system.
- let target=mach<.74?16+17*ease((mach-.52)/.22):
-     mach<1.12?33+12*ease((mach-.74)/.38):
-      45+27*ease((mach-1.12)/.53);
- // Prefer 33 deg in hard turns below transonic flight; don't move wings
- // violently at high dynamic pressure merely because G briefly spikes.
- if(mach<1.08&&g>3.2)target=Math.min(target,33);
- return clamp(target,16,72);
+ const iasKmh=(Number(state?.[14])||0)*3.6;
+ // User-selected game assistance: discrete targets with separate entry/exit
+ // thresholds. Remember the target, not the slowly moving hydraulic angle.
+ if(previousTarget===72)return mach<1?45:72;
+ if(mach>1.1)return 72;
+ if(previousTarget>=45)return iasKmh<400?16:45;
+ return iasKmh>500?45:16;
 }
 export function createMig23SweepController(sim){
  let mode='AUTO',target=16,commanded=NaN;
@@ -44,7 +36,7 @@ export function createMig23SweepController(sim){
   manual(MIG23_SWEEP_STOPS[index]);return target+'°';
  }
  function update(dt,state){
-  if(mode==='AUTO')target=mig23AutomaticSweep(state);
+  if(mode==='AUTO'&&dt>0)target=mig23AutomaticSweep(state,target);
   // The native WASM performs hydraulic-rate limiting. Repeated set commands
   // only update the desired detent and do not teleport the current sweep.
   if(dt>0&&Number.isFinite(target))issue(target);

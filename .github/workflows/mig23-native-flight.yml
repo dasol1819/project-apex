@@ -13,6 +13,8 @@ on:
       - 'tests/mig23-native.mjs'
       - 'tests/mig23-browser.py'
       - 'web/mig23mld-game.js'
+      - 'web/mig23mld-flight.js'
+      - 'tests/mig23-autosweep.mjs'
 concurrency:
   group: mig23-flight-${{ github.ref }}
   cancel-in-progress: true
