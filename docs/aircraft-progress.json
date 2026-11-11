@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-source-cache-20261111",
+    "startedAt": "2026-11-11T06:59:33.000Z",
+    "expiresAt": "2026-11-11T08:49:33.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -2101,12 +2106,12 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-airbrakes-20261111",
-    "state": "airbrakes-rigged-next-resources-and-damage",
+    "branch": "mig23mld-source-cache-20261111",
+    "state": "source-cache-in-progress",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Audit simultaneous MiG-23MLD instances for duplicate decoded textures/GPU uploads and preserve independent control/nozzle poses when sharing source data. Confirm exact MLD airbrake stops, fittings and moving root clearances; continue taxi clearance, uncovered intake/exhaust, matched overhead wings, active plume, native physical damage and hardware GPU review.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld",
-    "pullRequest": "https://github.com/dasol1819/project-apex/pull/27",
+    "nextStep": "Share one decoded immutable MiG-23MLD source per module session; clone mutable geometry/materials and transform graphs. Verify two-instance source texture handles, independent controls/nozzles and disposal, then native/browser regressions and deployment.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-source-cache-20261111",
+    "pullRequest": null,
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld"
   },
   "previousWork": {
