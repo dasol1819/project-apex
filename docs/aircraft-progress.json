@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-source-cache-20261111",
-    "startedAt": "2026-11-11T06:59:33.000Z",
-    "expiresAt": "2026-11-11T08:49:33.000Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -980,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Audit simultaneous MiG-23MLD instances for duplicate decoded textures/GPU uploads and preserve independent control/nozzle poses when sharing source data. Confirm exact MLD airbrake stops, fittings and moving root clearances; continue taxi clearance, uncovered intake/exhaust, matched overhead wings, active plume, native physical damage and hardware GPU review.",
+      "nextStep": "Continue exact MLD exterior and native damage integration. Confirm airbrake limits/fittings and moving root/taxi clearances; obtain matched overhead wings and uncovered intake/R-35 exhaust plus active plume references. Review physical part separation/wreckage and hardware GPU performance. Shared full-resolution source is now resource-tested for two visual factory instances.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1039,7 +1034,8 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-tail-controls-20261111/docs/aircraft-review/mig23mld/13-tail-photo-overlay.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld/14-tail-native-stops.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld/15-four-airbrakes-in-game.jpg",
-          "https://github.com/dasol1819/project-apex/blob/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld/16-airbrake-closed-photo-overlay.jpg"
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld/16-airbrake-closed-photo-overlay.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/17-resource-comparison.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1076,7 +1072,12 @@
           "Actual renderer at full native pitch/yaw commands verifies source slab outputs approximately +/-25deg and single-rudder output +/-30deg. New exact-MLD US Navy photo overlay uses the unchanged 48% similarity recipe; original earlier overlays preserved. Exact MLD airbrake extension stops/fittings remain unverified; 45deg is a visual estimate, aircraft NOT fully reviewed.",
           "Manifest/restore, unchanged deterministic 343,744-byte native rebuild, 17 regression scripts, C++ source-fit compile/replay and desktop/mobile game WebGL smoke pass locally. Dry side view retains 223 aircraft draws / 43,091 triangles. Original GLB and WASM SHA-256 preserved.",
           "Actual one-instance renderer texture audit: 36 texture objects share 22 uploaded WebGL handles; loaded image dimensions imply an estimated 183,074,056 bytes of RGBA8 full-mipmap storage. Driver allocation/hardware FPS remain unmeasured. Multi-instance duplication is the next audit.",
-          "Tail PR #26 passed 3 exact-head CI workflows, merged b420722950d3214d39f3719f6fb299e516a19b54. Pages 42972494716 success; production HTTP HTML/JS/WASM match exact local bytes. HTTPS still returns 503 from this environment."
+          "Tail PR #26 passed 3 exact-head CI workflows, merged b420722950d3214d39f3719f6fb299e516a19b54. Pages 42972494716 success; production HTTP HTML/JS/WASM match exact local bytes. HTTPS still returns 503 from this environment.",
+          "2026-11-11 Chromium 141 / SwiftShader actual game renderer with two visual factory instances reproduces duplicate source uploads: baseline source handles 22→44, extra source request 1, total renderer textures after sibling removal 56. Shared decoded source retains 22 handles / 36 texture objects with two instances, extra source requests 0, renderer total returns to baseline 34 after sibling disposal.",
+          "One-/two-instance dry renderer submissions remain 245/468 calls and 44,513/87,604 triangles. Two-instance RGBA8 mip storage estimate reduces 366,148,112→183,074,056 bytes. Handle counts observed; driver allocation, physical GPU FPS, other renderer contexts and AI combat/flight certification are outside this audit.",
+          "Original full-resolution GLB and maps retained. Per-instance graph/material/vertex buffer clones verify different sweep/gear/control states, wet/dry/half nozzle states, no primary-pose changes when sibling updates, independent nozzle geometry/materials and a correct remaining render after disposal. Shared maps are intentionally retained for the module session.",
+          "Manifest/restore, unchanged deterministic 343,744-byte native rebuild, 17 regressions, actual desktop/mobile full-control smoke and the new two-instance resource/lifetime regression pass locally with no page errors.",
+          "Airbrake PR #27 passed 3 exact-head workflows including C++ source-fit replay and merged 948b57bc013ba42b18bb8e09a2aab85b899e278b. Pages 42976173806 success; production HTTP HTML/JS/WASM match validated bytes. HTTPS still responds 503."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1099,7 +1100,14 @@
         "airbrakeFitSource": "scripts/fit-mig23-airbrakes.cpp",
         "textureAudit": "docs/aircraft-review/mig23mld/texture-memory-audit.json",
         "tailControlsPublishedCommit": "https://github.com/dasol1819/project-apex/commit/b420722950d3214d39f3719f6fb299e516a19b54",
-        "tailControlsPages": "https://github.com/dasol1819/project-apex/actions/runs/42972494716"
+        "tailControlsPages": "https://github.com/dasol1819/project-apex/actions/runs/42972494716",
+        "sourceCacheCommit": "https://github.com/dasol1819/project-apex/commit/e8b40ecae24d4ae093f8f857e410d5dfbe2fca39",
+        "sourceCachePullRequest": "https://github.com/dasol1819/project-apex/pull/28",
+        "sourceCacheBaseline": "docs/aircraft-review/mig23mld/17-resource-baseline.json",
+        "sourceCacheMeasurements": "docs/aircraft-review/mig23mld/18-resource-shared.json",
+        "sourceCacheRegression": "tests/mig23-resource-browser.py",
+        "airbrakePublishedCommit": "https://github.com/dasol1819/project-apex/commit/948b57bc013ba42b18bb8e09a2aab85b899e278b",
+        "airbrakePages": "https://github.com/dasol1819/project-apex/actions/runs/42976173806"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1154,7 +1162,20 @@
         "textureVisibleObjects": 36,
         "textureUploadedHandles": 22,
         "textureEstimatedRGBA8MipsBytes": 183074056,
-        "textureMemoryNote": "Observed handles/dimensions in Chromium 141 SwiftShader; RGBA8 full-mipmap bytes estimated, driver allocation/hardware FPS unmeasured."
+        "textureMemoryNote": "Observed handles/dimensions in Chromium 141 SwiftShader; RGBA8 full-mipmap bytes estimated, driver allocation/hardware FPS unmeasured.",
+        "sourceCacheAddedJsBytes": 1225,
+        "sourceCacheTwoInstanceHandlesBefore": 44,
+        "sourceCacheTwoInstanceHandlesAfter": 22,
+        "sourceCacheSecondInstanceSourceRequestsBefore": 1,
+        "sourceCacheSecondInstanceSourceRequestsAfter": 0,
+        "sourceCacheTwoInstanceEstimatedRGBA8BytesBefore": 366148112,
+        "sourceCacheTwoInstanceEstimatedRGBA8BytesAfter": 183074056,
+        "sourceCacheRendererTexturesAfterSiblingRemovalBefore": 56,
+        "sourceCacheRendererTexturesAfterSiblingRemovalAfter": 34,
+        "sourceCacheOneInstanceCalls": 245,
+        "sourceCacheTwoInstanceCalls": 468,
+        "sourceCacheOneInstanceTriangles": 44513,
+        "sourceCacheTwoInstanceTriangles": 87604
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
@@ -1168,7 +1189,8 @@
         "Nose gear pivot travel and door timing are visual estimates. Exact suspension clearance and full exterior review remain pending; main gear was rigged in the following checkpoint.",
         "Main gear visual linkage approximates exact hardware and timing. Some forward cover seam and taxi clearance remain to be verified.",
         "Tail shaft positions and clearances are visual fits to the original GLB and a MiG-23 family structural reference. Exact MLD limits, moving root-fairing clearances and physical damage remain unverified. Registered no.34 overlay still shows fin/stabilator/ventral-profile residuals and cannot validate intake depth or an active plume.",
-        "Airbrake visual extension stop is 45deg and is not independently confirmed for this exact MLD. Closed-pose UV fit measures the authored mesh, not physical clearances. Obtain exact-variant open-panel/manual evidence and inspect all intermediate hardware clearances. One-instance textures estimate 174.6MiB RGBA8 mip storage; multi-instance duplication remains to be measured."
+        "Airbrake visual extension stop is 45deg and is not independently confirmed for this exact MLD. Closed-pose UV fit measures the authored mesh, not physical clearances. Obtain exact-variant open-panel/manual evidence and inspect all intermediate hardware clearances. One-instance textures estimate 174.6MiB RGBA8 mip storage; two-instance duplicate source uploads have since been corrected and measured; other contexts and hardware performance remain unmeasured.",
+        "Shared immutable decoded source/texture data remains resident for the gameplay module session. Separate WebGL contexts may allocate separate copies. Two visual instances were audited, with independent mutable geometry/materials and disposal; hardware VRAM/FPS and AI flight/combat certification remain unmeasured."
       ]
     },
     {
@@ -2107,12 +2129,12 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-source-cache-20261111",
-    "state": "source-cache-in-progress",
+    "state": "source-shared-next-damage-and-exterior",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Share one decoded immutable MiG-23MLD source per module session; clone mutable geometry/materials and transform graphs. Verify two-instance source texture handles, independent controls/nozzles and disposal, then native/browser regressions and deployment.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-source-cache-20261111",
-    "pullRequest": null,
-    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld"
+    "nextStep": "Continue exact MLD exterior and native damage integration. Confirm airbrake limits/fittings and moving root/taxi clearances; obtain matched overhead wings and uncovered intake/R-35 exhaust plus active plume references. Review physical part separation/wreckage and hardware GPU performance. Shared full-resolution source is now resource-tested for two visual factory instances.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/28",
+    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
