@@ -15,5 +15,5 @@ for(let i=0;i<j.nodes.length;i++){
  }
  const bounds=m&&lo[0]!==Infinity?{lo:lo.map(x=>+x.toFixed(4)),hi:hi.map(x=>+x.toFixed(4))}:null;
  const f=x=>x?.map(v=>+v.toFixed(5));
- console.log('NODE',JSON.stringify({i,name:n.name??'',parent:parents.get(i)??null,t:f(n.translation),r:f(n.rotation),s:f(n.scale),matrix:f(n.matrix),mesh:n.mesh??null,primitives:m?.primitives?.length??0,bounds}));
+ console.log('NODE',JSON.stringify({i,name:n.name??'',parent:parents.get(i)??null,t:f(n.translation),r:f(n.rotation),s:f(n.scale),matrix:f(n.matrix),mesh:n.mesh??null,primitives:m?.primitives?.length??0,materials:m?.primitives?.map(p=>j.materials[p.material]?.name??'?'),bounds}));
 }
