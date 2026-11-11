@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'scripts/native/build-mig23.mjs'
+      - 'scripts/fit-mig23-airbrakes.cpp'
+      - 'docs/aircraft-review/mig23mld/airbrake-*'
       - 'scripts/native/patch-missiles.mjs'
       - 'web/missile-data.js'
       - 'tests/missile-systems.mjs'
@@ -25,6 +27,24 @@ jobs:
         with:
           node-version: '24'
       - run: npm ci
+      - name: Rebuild authored airbrake registration
+        run: |
+          c++ -std=c++17 -O2 -Wall -Wextra -Wpedantic scripts/fit-mig23-airbrakes.cpp -o /tmp/fit-airbrakes
+          /tmp/fit-airbrakes docs/aircraft-review/mig23mld/airbrake-landmarks.csv > /tmp/airbrake-fit.json
+          python3 - <<'PY'
+          import json, math
+          actual=json.load(open('/tmp/airbrake-fit.json'))
+          recorded=json.load(open('docs/aircraft-review/mig23mld/airbrake-fit.json'))
+          assert actual.keys()==recorded.keys()
+          for name, fit in actual.items():
+              assert fit['rmsMetres']<0.00001 and fit['pairs']>=7
+              for key, value in fit.items():
+                  expected=recorded[name][key]
+                  if isinstance(value,list):
+                      assert all(math.isclose(a,b,abs_tol=1e-10) for a,b in zip(value,expected))
+                  else:
+                      assert math.isclose(value,expected,abs_tol=1e-10)
+          PY
       - run: python3 scripts/update-web-manifest.py
       - run: python3 .deployment/restore.py
       - run: node --check scripts/native/build-mig23.mjs
