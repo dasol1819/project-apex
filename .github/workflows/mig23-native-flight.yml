@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - 'scripts/native/build-mig23.mjs'
+      - 'scripts/native/patch-instructor.mjs'
+      - 'web/app.js'
+      - 'web/aim-input.js'
+      - '.github/workflows/mig23-native-flight.yml'
       - 'scripts/fit-mig23-airbrakes.cpp'
       - 'scripts/fit-mig23-tail-bounds.cpp'
       - 'docs/aircraft-review/mig23mld/tail-damage-vertices.csv'
