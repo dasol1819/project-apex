@@ -27,6 +27,7 @@ on:
       - 'tests/mig23-native.mjs'
       - 'tests/mig23-tail-combat.mjs'
       - 'tests/mig23-nozzle-native.mjs'
+      - 'tests/mig23-nozzle-combat.mjs'
       - 'tests/mig23-browser.py'
       - 'tests/mig23-resource-browser.py'
       - 'tests/mig23-damage-browser.py'
@@ -100,6 +101,7 @@ jobs:
       - run: node tests/mig23-autosweep.mjs
       - run: node tests/mig23-tail-combat.mjs public
       - run: node tests/mig23-nozzle-native.mjs public
+      - run: node tests/mig23-nozzle-combat.mjs public
       - name: Legacy native flight/weapon/damage compatibility
         run: |
           node tests/mig15-native.mjs public

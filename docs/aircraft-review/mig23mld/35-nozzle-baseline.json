@@ -1,0 +1,161 @@
+{
+  "states": [
+    {
+      "opening": 0,
+      "visible": true,
+      "box": {
+        "min": [
+          -0.5243306830751432,
+          -0.5085967092299946,
+          7.4248751403258995
+        ],
+        "max": [
+          0.521367482973906,
+          0.5283484230117285,
+          7.7547783929261636
+        ]
+      },
+      "influences": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "opening": 0.5,
+      "visible": true,
+      "box": {
+        "min": [
+          -0.5247151904737701,
+          -0.5085967097409091,
+          7.4248751403258995
+        ],
+        "max": [
+          0.5217519903725328,
+          0.5301037044305346,
+          7.7547783929261636
+        ]
+      },
+      "influences": [
+        [
+          0.5
+        ]
+      ]
+    },
+    {
+      "opening": 1,
+      "visible": true,
+      "box": {
+        "min": [
+          -0.525099697872397,
+          -0.5085967102518236,
+          7.4248751403258995
+        ],
+        "max": [
+          0.5221364977711598,
+          0.5318589858493408,
+          7.7547783929261636
+        ]
+      },
+      "influences": [
+        [
+          0
+        ]
+      ]
+    }
+  ],
+  "loss": [
+    {
+      "opening": 0,
+      "health": 0,
+      "sourceVisibleAfterLoss": null,
+      "removedCapture": true,
+      "registered": false,
+      "triangles": 0,
+      "mapped": 0,
+      "maxPoseError": null,
+      "nativePivot": [
+        0,
+        -0.18800000846385956,
+        5.2592500460147855
+      ],
+      "nativeHalf": [
+        0.58,
+        0.5748082548379898,
+        0.3087999355792999
+      ],
+      "framebufferChanged": false,
+      "submittedTriangles": 0,
+      "frozen": true
+    },
+    {
+      "opening": 0.5,
+      "health": 0,
+      "sourceVisibleAfterLoss": null,
+      "removedCapture": true,
+      "registered": false,
+      "triangles": 0,
+      "mapped": 0,
+      "maxPoseError": null,
+      "nativePivot": [
+        0,
+        -0.18800000846385956,
+        5.2592500460147855
+      ],
+      "nativeHalf": [
+        0.58,
+        0.5748082548379898,
+        0.3087999355792999
+      ],
+      "framebufferChanged": false,
+      "submittedTriangles": 0,
+      "frozen": true
+    },
+    {
+      "opening": 1,
+      "health": 0,
+      "sourceVisibleAfterLoss": null,
+      "removedCapture": true,
+      "registered": false,
+      "triangles": 0,
+      "mapped": 0,
+      "maxPoseError": null,
+      "nativePivot": [
+        0,
+        -0.18800000846385956,
+        5.2592500460147855
+      ],
+      "nativeHalf": [
+        0.58,
+        0.5748082548379898,
+        0.3087999355792999
+      ],
+      "framebufferChanged": false,
+      "submittedTriangles": 0,
+      "frozen": true
+    }
+  ],
+  "hiddenAfterLoss": false,
+  "plumeAfterLoss": false,
+  "parents": [
+    {
+      "part": 7,
+      "hidden": false,
+      "plume": false
+    },
+    {
+      "part": 29,
+      "hidden": false,
+      "plume": false
+    },
+    {
+      "part": 0,
+      "hidden": false,
+      "plume": false
+    }
+  ],
+  "reset": true,
+  "pageErrors": [],
+  "environment": "Chromium 141 / SwiftShader; actual native type 16 gameplay; hardware FPS unmeasured",
+  "note": "Null pose error denotes empty baseline fallback geometry, not zero error."
+}
