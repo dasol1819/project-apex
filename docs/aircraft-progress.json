@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-nozzle-damage-20261112",
-    "startedAt": "2026-11-12T22:05:56.000Z",
-    "expiresAt": "2026-11-12T23:55:56.000Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -980,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Continue the SAME MiG-23MLD: remaining original wing/control/fuselage/gear/nozzle damage partitions without duplicating full wings across native bodies; matched intake/overhead/exhaust overlays, tail root/fin residuals, actuator stops, taxi clearance and exact active R-35 plume references. Keep in_progress.",
+      "nextStep": "Continue the SAME MiG-23MLD: original wing/control/fuselage/gear damage partitions without duplicated whole-wing child bodies; match uncovered intake/overhead/rear views, verify internal sleeve/petals/fan and active R-35 plume, actuator/taxi clearances, cold-download/abort and other pre-load control histories. Keep in_progress.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1105,7 +1100,8 @@
           "2026-11-12 final publication: exact head 172ee94 passed all four workflows (43144261264 native/damage, 43144261248 preview, 43144261197 tree, 43144261207 mixed controls). PR #34 merged as 58be00a; Pages 43145369211 success. Nine deployed HTTP files match validated bytes, including source-fit WASM 56546dd9 (344,183 B). Additional actual deployed-byte Chromium damage assertions pass with no page errors using inherited Chromium HTTP proxy with urllib retrieval only for instrumented app/emitter modules; direct browser transport failed and HTTPS is NOT verified (503). Current native parts 3/4/20 and textured framebuffer pieces are validated, but whole aircraft remains in_progress. Keip 28 was privately overlapped at 48% with camera 30; recipe 31 preserves anchors, camera and residual limitations. Public Navy overlap 24 remains preserved. Runtime JS growth is 1,622 B; extracted readable override inputs add 21,914 B separately. Own lease released after validated publication; preserve all other aircraft/branches.",
           "2026-11-12 Seoul nozzle audit: current-main baseline leaves soplo visible after native part22/engine7/aft29/fuselage0 loss and creates zero-triangle debris. Fixed original source mapping removes skin; actual native +0.5 s body shows a UV-mapped 288-triangle piece, preserving dry/half/wet aperture and independent morph weights. Source-fit native part22 pivot [-0.0014816,0.0116311,7.5898268] replaces copied pivot [0,-0.188,5.25925]. C++ endpoint envelope covers current linear visual morph with 2 mm numerical padding; not aircraft measurement/stop claim. Native comparison preserves other body pivot/half vectors across 510 type/damage fixtures. Local broader regression and final CI pending; keep entire aircraft in_progress.",
           "Nozzle final local review: real native gun/fleet rear fixture that crosses actual source petal triangles previously hit aft29 with nozzle health1; source-fit build selects22 and reduces nozzle1→0.8. Native remains conservative box collision (about87mm ahead of the sampled source surface on this ray), not triangle-exact/hollow-ring contact. Full original source +0.5s body screenshots and recorded 48% public-domain photo overlap reviewed; healthy overlap is pixel-identical to earlier24 because intact source geometry is preserved. Nozzle/tail-damage/resources/core-flight/mixed-controls/missile and F/A-18B desktop/mobile browser suites pass. One F/A-18B default-port invocation failed setup; isolated explicit-URL rerun passed. Original GLB/maps unchanged; dry/half/wet source morph and native ancestors/reset pass; hardware FPS and exact internal nozzle/plume fidelity remain unverified. Final exact-head CI pending.",
-          "Additional native ordering audit: a 352-triangle unmapped fallback body persisted after cached original arrival. Current effect refreshes that visual once to the original mapped 288-triangle nozzle, with half aperture, native serialized state/identity/position/quaternion unchanged, one actor, stable ten updates and clean reset. Test uses an effects-instance-specific HTTP-only getter; an earlier name-based observation selected another player body and is excluded. No debug API shipped. Eight local Chromium suites now pass, including this cached-arrival case; cold-download/abort and other pre-load control histories remain unverified. Final exact-head revalidation required after this renderer correction."
+          "Additional native ordering audit: a 352-triangle unmapped fallback body persisted after cached original arrival. Current effect refreshes that visual once to the original mapped 288-triangle nozzle, with half aperture, native serialized state/identity/position/quaternion unchanged, one actor, stable ten updates and clean reset. Test uses an effects-instance-specific HTTP-only getter; an earlier name-based observation selected another player body and is excluded. No debug API shipped. Eight local Chromium suites now pass, including this cached-arrival case; cold-download/abort and other pre-load control histories remain unverified. Final exact-head revalidation required after this renderer correction.",
+          "2026-11-13 Seoul final publication: final head ba31d2c passed all five CI workflows (43219280004 native/damage, 43219280052 preview, 43219279942 tree, 43219279943 mixed controls, 43219279970 F/A-18B). PR37 merged as f77fcf3; Pages43316745640 success. Fresh GitHub clone/manifest/restore/native rebuild reproduces f5e16f26, 344687 B. Ten deployed HTTP files match validated bytes. Actual production-response Chromium nozzle and cached-source-arrival suites both exit0 with no page errors: 288-triangle mapped native bodies in dry/half/wet states; 352-triangle fallback replaced once, half aperture/native state/pose/identity unchanged, stable reuse/reset. QA proxy arrangement and per-file costs recorded in report38. HTTPS still503; no HTTPS verification or whole-aircraft approval claimed. Own lease released; preserve other aircraft/branches and existing fleet surface review."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1166,7 +1162,11 @@
         "nozzleDamageCommit": "https://github.com/dasol1819/project-apex/commit/096fb33277d83f2c6e93a2921ddf2dc5e4d151f2",
         "nozzleDamageValidation": "docs/aircraft-review/mig23mld/34-nozzle-validation.json",
         "nozzleDamageBaseline": "docs/aircraft-review/mig23mld/35-nozzle-baseline.json",
-        "nozzleAsyncWreckageBrowser": "tests/mig23-async-wreckage-browser.py"
+        "nozzleAsyncWreckageBrowser": "tests/mig23-async-wreckage-browser.py",
+        "nozzleDamageValidatedHead": "https://github.com/dasol1819/project-apex/commit/ba31d2cd69b025ad87bc27f0f3b510e46e88e16b",
+        "nozzleDamagePublishedCommit": "https://github.com/dasol1819/project-apex/commit/f77fcf342695e1d28a8232a59c1d45bee50083c0",
+        "nozzleDamagePages": "https://github.com/dasol1819/project-apex/actions/runs/43316745640",
+        "nozzleDamageDeploymentChecks": "docs/aircraft-review/mig23mld/38-nozzle-deployment-verification.json"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1177,8 +1177,8 @@
         "materials": 44,
         "images": 22,
         "renderedFps": null,
-        "nativeWasmBytes": 344183,
-        "nativeBuild": "PR #34 source-fit native tail profile: deterministic 344,183-byte SHA-256 56546dd9d9c31a06911bc7c19af7e96fe32be740bdc7bf10e1fc6203ceed1f6f. All four exact-head CI and Pages 43145369211 pass; production HTTP bytes match, deployed-byte Chromium damage suite passes. Original tracked base WASM unchanged.",
+        "nativeWasmBytes": 344687,
+        "nativeBuild": "PR37 source-fit nozzle and posed/async native visuals. Final ba31d2c CI5 pass; Pages43316745640 success; ten production HTTP files match. Deterministic 344687-byte f5e16f264e8bccb77d76ba8bb578fc08046b30cd4f6fe60fd17bfdd3bee0646c module; original tracked base/encoded payload preserved.",
         "fps": null,
         "exhaustAudit": "Chromium 141 SwiftShader isolated gameplay model camera",
         "dryDrawCalls": 223,
@@ -1260,7 +1260,12 @@
         "nozzleDamageAddedTextureBytes": 0,
         "nozzleDamageEffectsAsyncAddedBytes": 569,
         "nozzleDamageEffectsTotalAddedBytes": 585,
-        "nozzleDamageRuntimeSourceAddedBytes": 1352
+        "nozzleDamageRuntimeSourceAddedBytes": 1352,
+        "nozzleDamageCoreRuntimeJsAddedBytes": 1352,
+        "nozzleDamageCacheQueryAddedJsBytes": 2,
+        "nozzleDamageCacheQueryAddedHtmlBytes": 2,
+        "nozzleDamageTotalRuntimeJsAddedBytes": 1354,
+        "nozzleDamageTotalReadableWebAddedBytes": 1356
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
@@ -2216,13 +2221,13 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-nozzle-damage-20261112",
-    "state": "source-nozzle-and-async-wreckage-final-ci",
+    "state": "source-nozzle-published-next-compartments",
     "scope": "Resume MiG-23MLD original nozzle loss, posed wreckage and native source-fit profile; preserve current flight guidance and F/A-18B work.",
-    "nextStep": "Final PR #37 now also replaces stale native fallback debris after async source arrival, preserving native identity/trajectory and impact aperture. Await final exact-head CI; publish/verify only after validation, then continue remaining MiG-23MLD source compartments and exact exterior/plume review.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/096fb33277d83f2c6e93a2921ddf2dc5e4d151f2",
+    "nextStep": "Continue the SAME MiG-23MLD: original wing/control/fuselage/gear damage partitions without duplicated whole-wing child bodies; match uncovered intake/overhead/rear views, verify internal sleeve/petals/fan and active R-35 plume, actuator/taxi clearances, cold-download/abort and other pre-load control histories. Keep in_progress.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/f77fcf342695e1d28a8232a59c1d45bee50083c0",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/37",
-    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld",
-    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43145369211"
+    "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
+    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43316745640"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",

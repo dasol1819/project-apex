@@ -1,0 +1,348 @@
+{
+  "checkedAt": "2026-11-12T22:09:20.084814+00:00",
+  "mergeCommit": "f77fcf342695e1d28a8232a59c1d45bee50083c0",
+  "validatedHead": "ba31d2cd69b025ad87bc27f0f3b510e46e88e16b",
+  "pagesWorkflow": "https://github.com/dasol1819/project-apex/actions/runs/43316745640",
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 82306,
+      "sha256": "045e5adf045556f389f94b31399dc5e29646eba1bcebc9e7aead24f745c6bf66",
+      "matchesValidatedBuild": true
+    },
+    {
+      "path": "app.js?v=instructor-response-2-nozzle-damage-1",
+      "status": 200,
+      "bytes": 121704,
+      "sha256": "0dd944ba8a4ab204d56d3aa8b5f168008ce396d386cf0cdd870923821697e758",
+      "matchesValidatedBuild": true
+    },
+    {
+      "path": "aircraft.js?v=mig23mld-13",
+      "status": 200,
+      "bytes": 56586,
+      "sha256": "79dea88897fdcc56763634afaa0b80799e95152627c26cc31d8a2dc6d63d78b5",
+      "matchesValidatedBuild": true
+    },
+    {
+      "path": "aircraft-inspector.js?v=mig23mld-13",
+      "status": 200,
+      "bytes": 20897,
+      "sha256": "91046749403f1f4ddae389f39aaf60e115ac49a0c6fce8fcacb262ce98e0f67d",
+      "matchesValidatedBuild": true
+    },
+    {
+      "path": "combat-scene.js?v=mig23mld-13",
+      "status": 200,
+      "bytes": 19995,
+      "sha256": "ebb2e540b46e77e717a45090d440dd59f64493e5ee2451c2d6f35eb563ace9ee",
+      "matchesValidatedBuild": true
+    },
+    {
+      "path": "mig23mld-game.js?v=13",
+      "status": 200,
+      "bytes": 19273,
+      "sha256": "00325280d1914c46c0d762dc53c166dee99017782c08ba48a6474453f4061e58",
+      "matchesValidatedBuild": true
+    },
+    {
+      "path": "damage-effects.js?v=source-parts-2",
+      "status": 200,
+      "bytes": 17065,
+      "sha256": "2c269d2b6f7a33046bbb81e45fad0bf33dcf3c04ab2f21288663eb18fa87ccf3",
+      "matchesValidatedBuild": true
+    },
+    {
+      "path": "wreckage-mesh.js?v=posed-morph-1",
+      "status": 200,
+      "bytes": 7821,
+      "sha256": "2e9137318f03e0cf0f78e23060b454ade33cbc8fbd5ee59ba6c4eba9224fe22c",
+      "matchesValidatedBuild": true
+    },
+    {
+      "path": "part-emitter.js?v=world-scale-1",
+      "status": 200,
+      "bytes": 5434,
+      "sha256": "b9ce46b0a8bd6214899595fb715064cb0fe8218575a25773f5d6986b4dedf670",
+      "matchesValidatedBuild": true
+    },
+    {
+      "path": "flight.wasm?v=instructor-response-2-nozzle-damage-1-missiles-1",
+      "status": 200,
+      "bytes": 344687,
+      "sha256": "f5e16f264e8bccb77d76ba8bb578fc08046b30cd4f6fe60fd17bfdd3bee0646c",
+      "matchesValidatedBuild": true
+    }
+  ],
+  "https": {
+    "status": 503,
+    "response": "upstream connect error or disconnect/reset before headers. reset reason: remote connection failure"
+  },
+  "pagesConclusion": "success",
+  "ci": [
+    {
+      "workflow": "native flight/damage",
+      "url": "https://github.com/dasol1819/project-apex/actions/runs/43219280004",
+      "conclusion": "success"
+    },
+    {
+      "workflow": "preview",
+      "url": "https://github.com/dasol1819/project-apex/actions/runs/43219280052",
+      "conclusion": "success"
+    },
+    {
+      "workflow": "tree",
+      "url": "https://github.com/dasol1819/project-apex/actions/runs/43219279942",
+      "conclusion": "success"
+    },
+    {
+      "workflow": "mixed controls",
+      "url": "https://github.com/dasol1819/project-apex/actions/runs/43219279943",
+      "conclusion": "success"
+    },
+    {
+      "workflow": "F/A-18B",
+      "url": "https://github.com/dasol1819/project-apex/actions/runs/43219279970",
+      "conclusion": "success"
+    }
+  ],
+  "freshRecovery": "Fresh GitHub branch clone at ba31d2c; manifest/restore and native rebuild reproduce 344687 bytes / f5e16f26; focused nozzle native/gun/morph checks pass.",
+  "productionBrowser": {
+    "state": "PASS",
+    "scope": "Committed nozzle and cached-source arrival tests on actual deployed HTTP responses. Chromium uses inherited HTTP proxy; only instrumented app/effects responses use urllib through the same inherited proxy. Anonymous account stub and response-only inspection hooks; no local asset substitution or HTTPS bypass.",
+    "nozzle": {
+      "result": "PASS",
+      "processExitCode": 0,
+      "report": {
+        "states": [
+          {
+            "opening": 0,
+            "visible": true,
+            "box": {
+              "min": [
+                -0.5243306830751432,
+                -0.5085967092299946,
+                7.4248751403258995
+              ],
+              "max": [
+                0.521367482973906,
+                0.5283484230117285,
+                7.7547783929261636
+              ]
+            },
+            "influences": [
+              [
+                1
+              ]
+            ]
+          },
+          {
+            "opening": 0.5,
+            "visible": true,
+            "box": {
+              "min": [
+                -0.5247151904737701,
+                -0.5085967097409091,
+                7.4248751403258995
+              ],
+              "max": [
+                0.5217519903725328,
+                0.5301037044305346,
+                7.7547783929261636
+              ]
+            },
+            "influences": [
+              [
+                0.5
+              ]
+            ]
+          },
+          {
+            "opening": 1,
+            "visible": true,
+            "box": {
+              "min": [
+                -0.525099697872397,
+                -0.5085967102518236,
+                7.4248751403258995
+              ],
+              "max": [
+                0.5221364977711598,
+                0.5318589858493408,
+                7.7547783929261636
+              ]
+            },
+            "influences": [
+              [
+                0
+              ]
+            ]
+          }
+        ],
+        "loss": [
+          {
+            "opening": 0,
+            "health": 0,
+            "sourceVisibleAfterLoss": false,
+            "removedCapture": true,
+            "registered": true,
+            "triangles": 288,
+            "mapped": 1,
+            "maxPoseError": 1.819100425848319e-12,
+            "nativePivot": [
+              -0.0014816000506186,
+              0.011631137798759,
+              7.589826766626
+            ],
+            "nativeHalf": [
+              0.52561809782178,
+              0.52222784805058,
+              0.16695162630013
+            ],
+            "framebufferChanged": true,
+            "submittedTriangles": 288,
+            "frozen": true
+          },
+          {
+            "opening": 0.5,
+            "health": 0,
+            "sourceVisibleAfterLoss": false,
+            "removedCapture": true,
+            "registered": true,
+            "triangles": 288,
+            "mapped": 1,
+            "maxPoseError": 1.819100425848319e-12,
+            "nativePivot": [
+              -0.0014816000506186,
+              0.011631137798759,
+              7.589826766626
+            ],
+            "nativeHalf": [
+              0.52561809782178,
+              0.52222784805058,
+              0.16695162630013
+            ],
+            "framebufferChanged": true,
+            "submittedTriangles": 288,
+            "frozen": true
+          },
+          {
+            "opening": 1,
+            "health": 0,
+            "sourceVisibleAfterLoss": false,
+            "removedCapture": true,
+            "registered": true,
+            "triangles": 288,
+            "mapped": 1,
+            "maxPoseError": 1.8192114481507815e-12,
+            "nativePivot": [
+              -0.0014816000506186,
+              0.011631137798759,
+              7.589826766626
+            ],
+            "nativeHalf": [
+              0.52561809782178,
+              0.52222784805058,
+              0.16695162630013
+            ],
+            "framebufferChanged": true,
+            "submittedTriangles": 288,
+            "frozen": true
+          }
+        ],
+        "maxEnvelopeExcess": -0.0019999999999668616,
+        "hiddenAfterLoss": true,
+        "plumeAfterLoss": false,
+        "parents": [
+          {
+            "part": 7,
+            "hidden": true,
+            "plume": false
+          },
+          {
+            "part": 29,
+            "hidden": true,
+            "plume": false
+          },
+          {
+            "part": 0,
+            "hidden": true,
+            "plume": false
+          }
+        ],
+        "reset": true,
+        "pageErrors": [],
+        "environment": "Chromium 141 / SwiftShader; actual native type 16 gameplay; hardware FPS unmeasured"
+      }
+    },
+    "processExitCode": 0,
+    "cachedSourceArrival": {
+      "result": "PASS",
+      "report": {
+        "loaded": true,
+        "sourceRootChanged": true,
+        "bodyReplaced": true,
+        "before": {
+          "triangles": 352,
+          "mapped": 0,
+          "weights": [
+            [
+              0.5
+            ]
+          ],
+          "position": [
+            -0.0014996509930887204,
+            5000.025945087918,
+            5.656868447815192
+          ],
+          "quaternion": [
+            0.005975581131052199,
+            9.883384124857264e-05,
+            0.0011762324660946435,
+            0.9999814493975395
+          ]
+        },
+        "after": {
+          "triangles": 288,
+          "mapped": 1,
+          "weights": [
+            [
+              0.5
+            ]
+          ],
+          "position": [
+            -0.0014996509930887204,
+            5000.025945087918,
+            5.656868447815192
+          ],
+          "quaternion": [
+            0.005975581131052199,
+            9.883384124857264e-05,
+            0.0011762324660946435,
+            0.9999814493975395
+          ]
+        },
+        "oldBodyRemoved": true,
+        "stableAfterTenUpdates": true,
+        "snapshotFrozen": true,
+        "nativeUnchanged": true,
+        "actorCount": 1,
+        "afterReset": 0,
+        "pageErrors": [],
+        "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+      }
+    }
+  },
+  "readableWebByteDeltas": {
+    "web/aircraft-inspector.js": 0,
+    "web/aircraft.js": 0,
+    "web/app.js": 2,
+    "web/combat-scene.js": 0,
+    "web/damage-effects.js": 585,
+    "web/index.html": 2,
+    "web/manifest.json": 0,
+    "web/mig23mld-game.js": 525,
+    "web/wreckage-mesh.js": 242
+  }
+}

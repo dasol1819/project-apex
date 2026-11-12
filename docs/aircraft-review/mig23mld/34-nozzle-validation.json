@@ -709,5 +709,15 @@
     },
     "scope": "Original cached source arrives after native nozzle creation; no network-failure or other pre-load control-history certification.",
     "inspection": "Actor is selected from its specific effect instance through an HTTP-response-only getter. Initial name-based probe read a different player body with the same name; that inspection failure is excluded."
+  },
+  "publication": {
+    "checkedAtSeoul": "2026-11-13",
+    "validatedHead": "ba31d2cd69b025ad87bc27f0f3b510e46e88e16b",
+    "mergeCommit": "f77fcf342695e1d28a8232a59c1d45bee50083c0",
+    "ci": "All five final-head workflows passed",
+    "deployment": "38-nozzle-deployment-verification.json",
+    "freshNativeRebuildSha256": "f5e16f264e8bccb77d76ba8bb578fc08046b30cd4f6fe60fd17bfdd3bee0646c",
+    "freshNativeRebuildBytes": 344687,
+    "productionRenderer": "Nozzle and cached-source-arrival tests passed and process exited 0; direct HTTP browser through inherited proxy, instrumented modules retrieved through urllib. HTTPS remains 503."
   }
 }
