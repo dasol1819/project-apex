@@ -81,6 +81,13 @@ additional sideslip feedback before native FBW; held manual yaw still replaces
 the assisted command exactly. The opt-in defaults to off, clears on respawn/type
 changes and is never requested by AI. Direct controls remain unchanged.
 
+Pointer intent is consumed once on every physics sample, including sorties
+without a mission director. Previously that side effect was inside an optional
+mission-call argument, so ordinary flight retained an old mouse event forever
+and incorrectly treated later manual corrections as simultaneous mouse input.
+Releasing those corrections could return to a stale destination. The browser
+test now covers mouse movement followed by a separate keyboard correction.
+
 Pointer targets are resampled spherically on the 120 Hz physics clock with a
 20 ms time constant. This prevents render-sized input batches from alternating
 between a jump and zero target velocity across catch-up ticks. The visible

@@ -388,7 +388,10 @@ function controls(dt){let p=(pc?.down('pitch_up')?1:0)-(pc?.down('pitch_down')?1
  sim.set_pilot_axis_override(fullDirect?0:sample.mask);
  sim.set_instructor_response(fullDirect?0:1);
  sim.set_aim_direction(...aimCursor.sample(dt),controlMode==='aim'?1:0);
- const wing=playerType===4?aircraftConfiguration(sim):null;daggerDirector?.input({pitch:p,roll:r,yaw:y,throttle,gear:gearTarget,brake:brakeTarget,wheels,fire:!!firing,aim:aimCursor.direction,pointerInput:pilotAuthority.consumePointerIntent(),wingCommand:wing?.[3],wingAutomatic:wing?.[2]});
+ // Consume pointer intent every sample, including ordinary sorties. Optional
+ // call arguments do not run without a mission director; retaining that old
+ // flag makes a later stick/key release return to a stale mouse target.
+ const wing=playerType===4?aircraftConfiguration(sim):null,pointerInput=pilotAuthority.consumePointerIntent();daggerDirector?.input({pitch:p,roll:r,yaw:y,throttle,gear:gearTarget,brake:brakeTarget,wheels,fire:!!firing,aim:aimCursor.direction,pointerInput,wingCommand:wing?.[3],wingAutomatic:wing?.[2]});
  // Send this sample's proportional command, without a lingering JS input
  // ramp. The native FBW and physical actuator dynamics still limit motion.
  pitch=clamp(p,-1,1);roll=clamp(r,-1,1);yaw=clamp(y,-1,1);sim.set_controls(pitch,roll,yaw,throttle,gearTarget,brakeTarget,wheels,fbw?1:0);sim.set_trigger(weaponMode==='gun'&&firing?1:0);if(weaponMode!=='gun'&&firing&&!priorFire)missileFire();priorFire=!!firing;combat.setHumidity(humidity);

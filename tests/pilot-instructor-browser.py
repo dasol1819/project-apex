@@ -50,6 +50,12 @@ with sync_playwright() as p:
  page.keyboard.up('d');page.wait_for_function('__pilotQA.authority.axisMask===0')
  after=page.evaluate('__pilotQA.target')
  assert sum((x-y)**2 for x,y in zip(target,after))<1e-12
+ # Earlier mouse movement must not mark every later manual correction as a
+ # simultaneous pointer gesture. This ordinary sortie has no mission director.
+ page.wait_for_function('!__pilotQA.authority.pointerIntent')
+ page.keyboard.down('d');page.wait_for_function('__pilotQA.authority.axisMask===2')
+ page.keyboard.up('d');page.wait_for_function('__pilotQA.authority.axisMask===0')
+ assert page.evaluate('__pilotQA.alignment()')>.99,'old pointer intent must not resurrect a stale destination'
  # Native response tuning must disengage in direct mode and re-engage when
  # the player returns to direction aim; it must never latch manual input.
  page.evaluate('__pilotQA.setControlMode("manual")')
