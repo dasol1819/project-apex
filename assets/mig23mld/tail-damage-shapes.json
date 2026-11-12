@@ -1,0 +1,13 @@
+{
+  "source": "Tim Samedov (citizensnip), MiG-23MLD, CC BY 4.0",
+  "sourceSha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+  "space": "aircraft-local metres after gameplay normalization and gear contact fit",
+  "limitNote": "visual rig clamp, not verified aircraft hydraulic stops",
+  "angleLimitRadians": 0.6,
+  "paddingMetres": 0.002,
+  "parts": {
+    "3": {"pivot":[-1.6273267112841,0.44293080254579,6.8326665195295],"half":[1.039961855797,0.64363198069157,1.5598203354528],"neutralHalf":[1.0226691480478,0.13295639361349,1.5173334804705],"vertices":113},
+    "4": {"pivot":[1.6273266931489,0.44293080254579,6.8326665195295],"half":[1.0399618739322,0.64363200965466,1.5598203481231],"neutralHalf":[1.022669166183,0.13295639361349,1.5173334804705],"vertices":117},
+    "20": {"pivot":[-4.0577495369946e-05,1.7374685167062,7.458287604729],"half":[0.46856460192087,0.63326610820054,0.61609978089211],"neutralHalf":[0.05725697685222,0.61121125944936,0.59889198626062],"vertices":94}
+  }
+}

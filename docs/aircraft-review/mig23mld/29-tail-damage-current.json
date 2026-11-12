@@ -1,0 +1,149 @@
+{
+  "cases": [
+    {
+      "part": 3,
+      "sourceNode": "stab2",
+      "health": 0,
+      "sourceVisible": false,
+      "registered": true,
+      "nativeVariant": 0,
+      "triangles": 64,
+      "mappedMeshes": 2,
+      "before": [
+        1.9066451886038975,
+        5005.039994471058,
+        -231.20017555565184
+      ],
+      "nativePivot": [
+        -1.6273267112841,
+        0.44293080254579,
+        6.8326665195295
+      ],
+      "nativeHalf": [
+        1.039961855797,
+        0.64363198069157,
+        1.5598203354528
+      ],
+      "sourceBounds": [
+        2.708417949085858,
+        1.5707625842169364,
+        3.269212985777841
+      ],
+      "nativeRenderedBodies": 1,
+      "renderedPiece": {
+        "visiblePixels": true,
+        "submittedTriangles": 64
+      }
+    },
+    {
+      "part": 4,
+      "sourceNode": "stab",
+      "health": 0,
+      "sourceVisible": false,
+      "registered": true,
+      "nativeVariant": 0,
+      "triangles": 64,
+      "mappedMeshes": 2,
+      "before": [
+        1.7631454371891788,
+        5005.01790281853,
+        -231.23391155273487
+      ],
+      "nativePivot": [
+        1.6273266931489,
+        0.44293080254579,
+        6.8326665195295
+      ],
+      "nativeHalf": [
+        1.0399618739322,
+        0.64363200965466,
+        1.5598203481231
+      ],
+      "sourceBounds": [
+        2.457642458366035,
+        2.0298389603131,
+        3.070161447717936
+      ],
+      "nativeRenderedBodies": 1,
+      "renderedPiece": {
+        "visiblePixels": true,
+        "submittedTriangles": 64
+      }
+    },
+    {
+      "part": 20,
+      "sourceNode": "rudder",
+      "health": 0,
+      "sourceVisible": false,
+      "registered": true,
+      "nativeVariant": 0,
+      "triangles": 40,
+      "mappedMeshes": 2,
+      "before": [
+        1.4173005554847888,
+        5005.656071417591,
+        -231.09932623585186
+      ],
+      "nativePivot": [
+        -4.0577495369946e-05,
+        1.7374685167062,
+        7.458287604729
+      ],
+      "nativeHalf": [
+        0.46856460192087,
+        0.63326610820054,
+        0.61609978089211
+      ],
+      "sourceBounds": [
+        0.5279764816635877,
+        1.5974676702662691,
+        1.6116063596607262
+      ],
+      "nativeRenderedBodies": 1,
+      "renderedPiece": {
+        "visiblePixels": true,
+        "submittedTriangles": 40
+      }
+    }
+  ],
+  "profileMaxOverflowMetres": -0.001999999999996005,
+  "parentLoss": [
+    {
+      "part": 3,
+      "visible": false
+    },
+    {
+      "part": 4,
+      "visible": false
+    },
+    {
+      "part": 20,
+      "visible": false
+    }
+  ],
+  "fuselageLoss": [
+    {
+      "part": 3,
+      "visible": false
+    },
+    {
+      "part": 4,
+      "visible": false
+    },
+    {
+      "part": 20,
+      "visible": false
+    }
+  ],
+  "reset": true,
+  "emitterRefresh": {
+    "loaded": true,
+    "replaced": true,
+    "fallbackSample": true,
+    "sourceSample": true,
+    "stableSourceSample": true
+  },
+  "environment": "Chromium 141 / SwiftShader / actual native type-16 gameplay; hardware FPS unmeasured",
+  "pageErrors": [],
+  "expectSourceDamage": true
+}

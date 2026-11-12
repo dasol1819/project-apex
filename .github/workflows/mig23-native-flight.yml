@@ -4,6 +4,11 @@ on:
     paths:
       - 'scripts/native/build-mig23.mjs'
       - 'scripts/fit-mig23-airbrakes.cpp'
+      - 'scripts/fit-mig23-tail-bounds.cpp'
+      - 'docs/aircraft-review/mig23mld/tail-damage-vertices.csv'
+      - 'web/damage-effects.js'
+      - 'web/part-emitter.js'
+      - 'tests/part-emitter-scale.mjs'
       - 'docs/aircraft-review/mig23mld/airbrake-*'
       - 'scripts/native/patch-missiles.mjs'
       - 'web/missile-data.js'
@@ -11,8 +16,10 @@ on:
       - 'tests/missile-browser.py'
       - 'assets/mig23mld/**'
       - 'tests/mig23-native.mjs'
+      - 'tests/mig23-tail-combat.mjs'
       - 'tests/mig23-browser.py'
       - 'tests/mig23-resource-browser.py'
+      - 'tests/mig23-damage-browser.py'
       - 'web/mig23mld-game.js'
       - 'web/mig23mld-flight.js'
       - 'tests/mig23-autosweep.mjs'
@@ -48,6 +55,20 @@ jobs:
                   else:
                       assert math.isclose(value,expected,abs_tol=1e-10)
           PY
+      - name: Rebuild source tail collision envelopes
+        run: |
+          c++ -std=c++17 -O2 -Wall -Wextra -Wpedantic -Werror scripts/fit-mig23-tail-bounds.cpp -o /tmp/fit-mig23-tail-bounds
+          /tmp/fit-mig23-tail-bounds docs/aircraft-review/mig23mld/tail-damage-vertices.csv > /tmp/tail-damage-shapes.json
+          python3 - <<'PYFIT'
+          import json, math
+          actual=json.load(open('/tmp/tail-damage-shapes.json'))
+          recorded=json.load(open('assets/mig23mld/tail-damage-shapes.json'))
+          assert actual.keys()==recorded.keys()
+          for part, shape in actual['parts'].items():
+              for key in ['pivot','half','neutralHalf']:
+                  assert all(math.isclose(a,b,abs_tol=1e-10) for a,b in zip(shape[key],recorded['parts'][part][key]))
+              assert shape['vertices']==recorded['parts'][part]['vertices']
+          PYFIT
       - run: python3 scripts/update-web-manifest.py
       - run: python3 .deployment/restore.py
       - run: node --check scripts/native/build-mig23.mjs
@@ -55,6 +76,7 @@ jobs:
       - run: cp web/flight.wasm public/flight.wasm
       - run: node tests/mig23-native.mjs
       - run: node tests/mig23-autosweep.mjs
+      - run: node tests/mig23-tail-combat.mjs public
       - name: Legacy native flight/weapon/damage compatibility
         run: |
           node tests/mig15-native.mjs public
@@ -69,6 +91,7 @@ jobs:
           node --check web/mig23mld-flight.js
           node tests/mig23mld-preview.mjs public
           node tests/mig23mld-pbr.mjs public
+          node tests/part-emitter-scale.mjs public
           node scripts/aircraft-progress.mjs
       - name: Real Chromium WebGL MiG-23MLD flight smoke
         run: |
@@ -80,6 +103,7 @@ jobs:
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/missile-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-resource-browser.py
+          APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-damage-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -87,4 +111,5 @@ jobs:
           path: |
             /tmp/mig23-flight-browser
             /tmp/mig23-resource-browser
+            /tmp/mig23-damage-browser
           if-no-files-found: ignore

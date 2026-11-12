@@ -980,7 +980,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Continue the same MiG-23MLD. Match actual intake/root cameras to recovered exact-MLD Keip 27/28 and 45/47 references, resolve camera versus fin/root/stabilator/gear-cover geometry residuals, verify hydraulic stops and taxi clearance, obtain matched overhead wing and uncovered rear/active-plume references, then complete physical damage/wreckage and hardware resource review. Source-sharing fix is merged, CI-validated and HTTP-deployed; HTTPS connection verification remains blocked (503).",
+      "nextStep": "After PR #34 exact-head validation and publication, continue the same MiG-23MLD: partition/map remaining original wing/control and fuselage/gear/nozzle damage sources without duplicating geometry across native child bodies; match intake/root photo cameras and resolve fin/root/gear-cover residuals, verified stops/taxi clearances, overhead wings and active-plume references. Keep whole aircraft in_progress and preserve existing fleet review.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1044,7 +1044,10 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-airbrakes-20261111/docs/aircraft-review/mig23mld/16-airbrake-closed-photo-overlay.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/17-resource-comparison.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/19-current-tail-photo-overlay.jpg",
-          "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/20-current-resource-comparison.jpg"
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/20-current-resource-comparison.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld/23-native-tail-damage.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld/24-tail-damage-photo-overlay.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld/25-intake-root-inspection.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1091,7 +1094,10 @@
           "2026-11-12 Seoul: reconciled PR #28 with main 1569099, retaining #33 mixed axis instructor, user AUTO sweep thresholds, OBJ0277 visibility and OBJ0100 moving wing detail, F/A-18 asset and licenses. Manifest/restore, deterministic current 344,183-byte native build SHA-256 1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693, 20 native/model/queue checks, C++ authored airbrake fit replay, actual desktop/mobile flight, mixed input and two-instance baseline/shared renderer audits passed. No page errors. Current dry scene one/two calls 244/466, triangles 44,497/87,572; source sharing still 44→22 handles and estimated RGBA8 mip bytes 366,148,112→183,074,056. The older Nov 11 binary and draw counts above are historical checkpoints.",
           "Current actual-renderer tail image registered at 48% over the preserved unblended US Navy photo crop using the existing global two-landmark recipe. Original redownload returns HTTP 403. Fin top/root/stabilator and perspective residuals remain; no whole-aircraft visual approval. Editable crop-overlay script and recipe retained. HTTPS still 503 before publication; HTTP 200.",
           "PR #28 reconciliation head 7346d5d passed native/build/model/C++ steps, but CI run 43056395728 failed before browser launch: apt optional font dependencies could not resolve azure.archive.ubuntu.com. No renderer result is claimed for that run. All four Ubuntu-24.04 browser workflows now install the same pinned Playwright 1.56.0 headless Chromium shell without apt; real browser launch/tests remain mandatory. Await exact-head revalidation before merge.",
-          "2026-11-12 Seoul: PR #28 final head d36d529 passed all four exact-head workflows (43058442457 preview, 43058442405 tree desktop/mobile/landscape, 43058442449 mixed controls, 43058442618 native flight/weapons/resources). Native CI reproduced local 244/466 scene calls, 44,497/87,572 triangles and 22 source handles for one/two models; independent poses/nozzle and sibling disposal pass. Local additional studio/tree/missile browser tests pass (proximity render delta 0.04 m, GL error 0). Merged dc580884af01f200f4852a30204aef84b6527d98; Pages 43059931057 success. Nine HTTP production files match validated bytes, including current 344,183-byte WASM and original 22,593,404-byte GLB. HTTPS returns 503 upstream connection failure; HTTPS is not verified. Detailed per-part residuals and linked Keip exact-MLD photos are in 21-part-review.md; aircraft remains in_progress."
+          "2026-11-12 Seoul: PR #28 final head d36d529 passed all four exact-head workflows (43058442457 preview, 43058442405 tree desktop/mobile/landscape, 43058442449 mixed controls, 43058442618 native flight/weapons/resources). Native CI reproduced local 244/466 scene calls, 44,497/87,572 triangles and 22 source handles for one/two models; independent poses/nozzle and sibling disposal pass. Local additional studio/tree/missile browser tests pass (proximity render delta 0.04 m, GL error 0). Merged dc580884af01f200f4852a30204aef84b6527d98; Pages 43059931057 success. Nine HTTP production files match validated bytes, including current 344,183-byte WASM and original 22,593,404-byte GLB. HTTPS returns 503 upstream connection failure; HTTPS is not verified. Detailed per-part residuals and linked Keip exact-MLD photos are in 21-part-review.md; aircraft remains in_progress.",
+          "2026-11-12 work checkpoint: actual native damage baseline leaves original stab2/stab/rudder visible at health 0 and produces empty (0-triangle) fallback wreckage. Source hinge registration now removes those surfaces and snapshots original UV-mapped 64/64/40-triangle pieces; native parent loss and reset pass. Source-fitted pivot/collision boxes replace copied MiG-29 data only for parts 3/4/20. C++ analytic arc envelope uses the visual +/-0.6 rad rig clamp and 2 mm numerical padding, not aircraft tolerance/stop claims. 20 native/model/queue checks pass; real-renderer final verification and CI pending. Async source-root emitter refresh and world-scale-equivalent surface sampling are under validation. Do not promote whole-aircraft status.",
+          "2026-11-12 tail source damage review: original stab2/stab/rudder now hide at native health 0, snapshot actual mapped 64/64/40-triangle native pieces, cover native aft/fuselage loss and reset. Following each native body at +0.5 s changes framebuffer pixels and submits exactly 64/64/40 triangles. Current source render registered at 48% over preserved US Navy photo crop; fin/root/camera residuals remain. Keip 27/28/45/47 privately re-inspected against recorded intake/root cameras, without redistributing copyrighted photos. C++ analytic continuous visual-arc boxes replace copied MiG-29 pivots only for parts 3/4/20, with 2 mm numerical padding, not aircraft tolerance claims. All 41 sampled source poses fit the boxes and native free-body vectors match. Actual static gun/fleet fixtures missed all three parts in old deployed SHA 1586e9e but now identify 3/4/20 and reduce correct health 1.0→0.8. These are conservative box tests, not triangle-exact hits or AI-flight certification.",
+          "22 local native/model/queue/transform/ballistic checks and seven Chromium 141 SwiftShader browser suites pass after final scaled-emitter correction. Equivalent node/ancestor transforms match 24 surface samples; async fallback→source emitter refresh occurs once and is reused on ten subsequent updates. Deterministic generated WASM remains 344,183 bytes, now SHA-256 56546dd9d9c31a06911bc7c19af7e96fe32be740bdc7bf10e1fc6203ceed1f6f. Original GLB/maps, encoded payload and tracked base WASM preserved. Added core JS bytes: gameplay 1101, damage effects 285, emitter 236; zero intact meshes/nodes/texture bytes. One/two dry scene submissions remain 244/466 calls, 44,497/87,572 triangles, 22 source handles and estimated 183,074,056 RGBA8 mip bytes. PR #34 implementation head bcd7864 passed four workflows; final evidence/ballistic/close-up head awaits exact-head CI before merge."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1127,7 +1133,17 @@
         "sourceCacheValidatedHead": "https://github.com/dasol1819/project-apex/commit/d36d529041a6910b3e954ef05d5e69652fd23df6",
         "sourceCachePublishedCommit": "https://github.com/dasol1819/project-apex/commit/dc580884af01f200f4852a30204aef84b6527d98",
         "sourceCachePages": "https://github.com/dasol1819/project-apex/actions/runs/43059931057",
-        "sourceCacheDeploymentChecks": "docs/aircraft-review/mig23mld/22-deployment-verification.json"
+        "sourceCacheDeploymentChecks": "docs/aircraft-review/mig23mld/22-deployment-verification.json",
+        "tailDamageSource": "scripts/fit-mig23-tail-bounds.cpp",
+        "tailDamageVertices": "docs/aircraft-review/mig23mld/tail-damage-vertices.csv",
+        "tailDamageShapes": "assets/mig23mld/tail-damage-shapes.json",
+        "tailDamageBrowserRegression": "tests/mig23-damage-browser.py",
+        "tailDamageCommit": "https://github.com/dasol1819/project-apex/commit/bcd78645f78f4a7821638eca7b7b06285dea6322",
+        "tailDamagePullRequest": "https://github.com/dasol1819/project-apex/pull/34",
+        "tailDamageValidation": "docs/aircraft-review/mig23mld/26-tail-damage-validation.json",
+        "tailBallisticContacts": "docs/aircraft-review/mig23mld/27-tail-ballistic-contacts.json",
+        "tailDamageBaseline": "docs/aircraft-review/mig23mld/28-tail-damage-baseline.json",
+        "tailDamageCurrent": "docs/aircraft-review/mig23mld/29-tail-damage-current.json"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1195,7 +1211,20 @@
         "sourceCacheOneInstanceCalls": 244,
         "sourceCacheTwoInstanceCalls": 466,
         "sourceCacheOneInstanceTriangles": 44497,
-        "sourceCacheTwoInstanceTriangles": 87572
+        "sourceCacheTwoInstanceTriangles": 87572,
+        "tailDamageGeneratedWasmBytes": 344183,
+        "tailDamageGeneratedWasmSha256": "56546dd9d9c31a06911bc7c19af7e96fe32be740bdc7bf10e1fc6203ceed1f6f",
+        "tailDamageGameJsAddedBytes": 1101,
+        "tailDamageEffectsJsAddedBytes": 285,
+        "tailDamageEmitterJsAddedBytes": 236,
+        "tailDamageAddedIntactMeshes": 0,
+        "tailDamageAddedTransformNodes": 0,
+        "tailDamageAddedTextureBytes": 0,
+        "tailDamageSourceTriangles": [
+          64,
+          64,
+          40
+        ]
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
@@ -1211,7 +1240,8 @@
         "Tail shaft positions and clearances are visual fits to the original GLB and a MiG-23 family structural reference. Exact MLD limits, moving root-fairing clearances and physical damage remain unverified. Registered no.34 overlay still shows fin/stabilator/ventral-profile residuals and cannot validate intake depth or an active plume.",
         "Airbrake visual extension stop is 45deg and is not independently confirmed for this exact MLD. Closed-pose UV fit measures the authored mesh, not physical clearances. Obtain exact-variant open-panel/manual evidence and inspect all intermediate hardware clearances. One-instance textures estimate 174.6MiB RGBA8 mip storage; two-instance duplicate source uploads have since been corrected and measured; other contexts and hardware performance remain unmeasured.",
         "Shared immutable decoded source/texture data remains resident for the gameplay module session. Separate WebGL contexts may allocate separate copies. Two visual instances were audited, with independent mutable geometry/materials and disposal; hardware VRAM/FPS and AI flight/combat certification remain unmeasured.",
-        "Airbrake visual extension stop is 45deg and is not independently confirmed for this exact MLD. Closed-pose UV fit measures the authored mesh, not physical clearances. Obtain exact-variant open-panel/manual evidence and inspect all intermediate hardware clearances. One-instance textures estimate 174.6MiB RGBA8 mip storage; multi-instance duplication remains to be measured."
+        "Airbrake visual extension stop is 45deg and is not independently confirmed for this exact MLD. Closed-pose UV fit measures the authored mesh, not physical clearances. Obtain exact-variant open-panel/manual evidence and inspect all intermediate hardware clearances. One-instance textures estimate 174.6MiB RGBA8 mip storage; multi-instance duplication remains to be measured.",
+        "Original source damage registration now covers only native parts 3/4/20. Other source compartments, wing/control subdivisions, fuselage/gear/nozzle destruction and complete overlays remain incomplete. Source-fit boxes enclose the +/-0.6 rad visual arc and are not measured mass centres, physical hydraulic stops or triangle-exact collision geometry."
       ]
     },
     {
@@ -2150,12 +2180,12 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-damage-review-20261112",
-    "state": "source-parts-damage-and-intake-review",
+    "state": "tail-damage-final-evidence-ci",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Resume MiG-23MLD: inspect original source part registration against native damage/wreckage contracts; compare actual game intake/root renders with exact-MLD references and preserve geometry/source/license evidence. Validate and publish only reviewed changes.",
+    "nextStep": "PR #34 has original source tail damage, source-fit native bounds and scaled async emitters plus actual-renderer evidence. Await final exact-head CI; merge/publish only if validated, verify deployed bytes/HTTPS, then continue remaining MiG-23MLD source compartments and exterior photo review.",
     "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-damage-review-20261112",
-    "pullRequest": "https://github.com/dasol1819/project-apex/pull/28",
-    "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld"
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/34",
+    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",

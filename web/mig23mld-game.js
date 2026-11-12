@@ -1,6 +1,7 @@
 import * as T from './vendor/three.module.js';
 import {createClassicAircraft} from './classic-aircraft.js';
-import {aircraftDefinition} from './aircraft-catalog.js';
+import {aircraftDefinition,partParentFor} from './aircraft-catalog.js';
+import {PARTS} from './airframe-parts.js';
 import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=3';
 
 const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
@@ -323,6 +324,17 @@ export function createMig23mldAircraft(options={}){
  base.group.userData.previewOnly=false;
  const standIns=[];
  base.group.traverse(n=>{if(n.isMesh||n.isLineSegments)standIns.push(n);});
+ // Keep the synchronous fallback's private part array intact. Effects and
+ // wreckage resolve this public array when each native event arrives.
+ const damageParts=base.damageParts.slice(),sourceDamage=[];
+ let lastHealth;
+ function updateSourceDamage(health){
+  for(const {part,node} of sourceDamage){
+   node.visible=true;
+   for(let p=part;p>=0;p=partParentFor(16,p,PARTS))
+    if((health?.[p]??1)<.08){node.visible=false;break;}
+  }
+ }
  let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},setMainGear=()=>{},setTailControls=()=>{},setAirbrakes=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1,lastAirbrake=0;
  const lastControls={leftTail:0,rightTail:0,leftRudder:0};
  const plume=createPlume();
@@ -341,6 +353,13 @@ export function createMig23mldAircraft(options={}){
    setNoseGear=rigNoseGear(normalized.root);
    setMainGear=rigMainGear(normalized.root);
    setTailControls=rigTailControls(normalized.root);
+   // These are disjoint authored surfaces with existing physical hinges.
+   // Register the hinge itself: preserve its live pose and source UVs when
+   // native damage snapshots it, without reparenting or recutting the skin.
+   for(const [part,name] of [[3,'port stabilator'],[4,'starboard stabilator'],[20,'rudder']]){
+    const node=normalized.root.getObjectByName('MiG-23MLD '+name);
+    if(node){node.userData.damageIndex=part;damageParts[part]=node;sourceDamage.push({part,node});}
+   }
    setAirbrakes=rigAirbrakes(normalized.root);
    alignGroundContact(normalized.root);
    exhaust=rigExhaust(normalized.root,plume);
@@ -353,6 +372,7 @@ export function createMig23mldAircraft(options={}){
    setTailControls(lastControls);
    setAirbrakes(lastAirbrake);
    exhaust?.(0,0);
+   updateSourceDamage(lastHealth);
    loaded=true;
    for(const node of standIns)node.visible=false;
   }catch(error){if(!controller.signal.aborted){failed=true;console.error('MiG-23MLD original exterior unavailable; using flight geometry fallback:',error);}}
@@ -360,6 +380,7 @@ export function createMig23mldAircraft(options={}){
  const originalUpdate=base.update.bind(base);
  function update(state={},dt=0){
   originalUpdate(state,dt);
+  lastHealth=state.health;
   const angle=Number.isFinite(state.wingSweep)?clamp(state.wingSweep,16,72):lastAngle;
   lastAngle=angle;
   if(Number.isFinite(state.gear))lastGear=clamp(state.gear,0,1);
@@ -374,6 +395,7 @@ export function createMig23mldAircraft(options={}){
    setMainGear(lastGear);
    setTailControls(lastControls);
    setAirbrakes(lastAirbrake);
+   updateSourceDamage(lastHealth);
    for(const node of standIns)node.visible=false;
   }
   const ab=clamp(Number(state.afterburner)||0,0,1);
@@ -392,5 +414,5 @@ export function createMig23mldAircraft(options={}){
   plume.material.dispose();
   plume.geometry.dispose();
  }
- return {...base,definition:aircraftDefinition(16),group:base.group,update,dispose,get sourceLoaded(){return loaded},get sourceFailed(){return failed}};
+ return {...base,definition:aircraftDefinition(16),group:base.group,damageParts,update,dispose,get sourceLoaded(){return loaded},get sourceFailed(){return failed}};
 }
