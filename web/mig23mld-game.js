@@ -336,6 +336,7 @@ export function createMig23mldAircraft(options={}){
   }
  }
  let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},setMainGear=()=>{},setTailControls=()=>{},setAirbrakes=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1,lastAirbrake=0;
+ let lastOpening=0;
  const lastControls={leftTail:0,rightTail:0,leftRudder:0};
  const plume=createPlume();
  base.group.add(plume);
@@ -360,6 +361,8 @@ export function createMig23mldAircraft(options={}){
     const node=normalized.root.getObjectByName('MiG-23MLD '+name);
     if(node){node.userData.damageIndex=part;damageParts[part]=node;sourceDamage.push({part,node});}
    }
+   const nozzle=normalized.root.getObjectByName('soplo');
+   if(nozzle){nozzle.userData.damageIndex=NOZZLE_PART;damageParts[NOZZLE_PART]=nozzle;sourceDamage.push({part:NOZZLE_PART,node:nozzle});}
    setAirbrakes=rigAirbrakes(normalized.root);
    alignGroundContact(normalized.root);
    exhaust=rigExhaust(normalized.root,plume);
@@ -407,7 +410,13 @@ export function createMig23mldAircraft(options={}){
   plume.visible=exhaust!==null&&heat>.03;
   plume.material.uniforms.heat.value=heat;
   plume.material.uniforms.time.value=state.time??0;
-  exhaust?.(opening,1.35+2.3*heat);
+  // A destroyed nozzle retains its last live aperture for the native debris
+  // snapshot; do not collapse the petals on the impact frame.
+  let intact=true;
+  for(let p=NOZZLE_PART;p>=0;p=partParentFor(16,p,PARTS))
+   if((state.health?.[p]??1)<.08){intact=false;break;}
+  if(intact)lastOpening=opening;
+  exhaust?.(lastOpening,1.35+2.3*heat);
  }
  function dispose(){
   controller.abort();

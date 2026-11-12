@@ -4,7 +4,7 @@ import {createDamageFlames} from './damage-flame.js';
 import {enableWorldDepth} from './world-depth.js';
 import * as T from './vendor/three.module.js';
 import {heightAt} from './terrain.js';
-import {createWreckageFactory} from './wreckage-mesh.js';
+import {createWreckageFactory} from './wreckage-mesh.js?v=posed-morph-1';
 import {PARTS,MAX_WRECKAGE,readSystems,partValue} from './airframe-parts.js';
 
 const clamp=T.MathUtils.clamp,STRIDE=40,MAX_BODIES=MAX_WRECKAGE;
@@ -85,10 +85,18 @@ export function createDamageEffects(scene,aircraft,{onImpact=()=>{}}={}){
   if(!sim?.get_wreckage)return;
   const pointer=sim.get_wreckage(),buffer=new Float64Array(sim.memory.buffer,pointer,2+MAX_BODIES*STRIDE),seen=new Set();focus=null;
   for(let i=0;i<buffer[0];i++){
-   const d=buffer.subarray(2+i*STRIDE,2+(i+1)*STRIDE),id=d[0];seen.add(id);let actor=actors.get(id);
+   const d=buffer.subarray(2+i*STRIDE,2+(i+1)*STRIDE),id=d[0],sourceRoot=aircraft.damageParts[d[1]];seen.add(id);let actor=actors.get(id);
    if(!actor){
     const mesh=factory.create(d[1],d[2],Array.from(d.slice(22,25)),Array.from(d.slice(25,28)));scene.add(mesh);
-    actor={id,mesh,part:d[1],variant:d[2],impacts:0,position:new T.Vector3(),quaternion:new T.Quaternion(),velocity:new T.Vector3(),angular:new T.Vector3(),fire:0,mass:d[36],age:d[3]};actors.set(id,actor);
+    actor={id,mesh,sourceRoot,part:d[1],variant:d[2],impacts:0,position:new T.Vector3(),quaternion:new T.Quaternion(),velocity:new T.Vector3(),angular:new T.Vector3(),fire:0,mass:d[36],age:d[3]};actors.set(id,actor);
+   }
+   // Streaming originals replace fallback part roots after native bodies
+   // already exist. Refresh only the visual snapshot; retain native identity,
+   // impact counters and trajectory instead of replaying the detachment.
+   if(sourceRoot&&actor.sourceRoot!==sourceRoot){
+    const mesh=factory.create(d[1],d[2],Array.from(d.slice(22,25)),Array.from(d.slice(25,28)));scene.add(mesh);
+    actor.emitter?.dispose();actor.emitter=null;factory.release(actor.mesh);
+    actor.mesh=mesh;actor.sourceRoot=sourceRoot;
    }
    actor.position.set(d[5],d[6],d[7]);actor.quaternion.set(d[8],d[9],d[10],d[11]);actor.velocity.set(d[12],d[13],d[14]);actor.angular.set(d[15],d[16],d[17]).applyQuaternion(actor.quaternion);actor.fire=d[18];actor.age=d[3];actor.ground=!!d[19];actor.mesh.position.copy(actor.position);actor.mesh.quaternion.copy(actor.quaternion);
    if(d[20]>actor.impacts){

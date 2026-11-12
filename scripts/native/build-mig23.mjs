@@ -20,7 +20,9 @@ const old=JSON.parse(fs.readFileSync(path.join(build,'mig15-layout.json'))).regi
 const cfg=JSON.parse(fs.readFileSync(path.join(root,'assets/mig23mld/flight-config.json')));
 const baseParts=JSON.parse(fs.readFileSync(path.join(root,'assets/mig29-combat/shapes.json'))).parts;
 const tailShapes=JSON.parse(fs.readFileSync(path.join(root,'assets/mig23mld/tail-damage-shapes.json'))).parts;
+const nozzleShape=JSON.parse(fs.readFileSync(path.join(root,'assets/mig23mld/nozzle-damage-shape.json')));
 const expect=(x,m)=>{if(!x)throw Error(m)};
+expect(nozzleShape.part===22&&nozzleShape.pivot?.length===3&&nozzleShape.half?.length===3&&nozzleShape.pivot.every(Number.isFinite)&&nozzleShape.half.every(v=>Number.isFinite(v)&&v>0),'Invalid source nozzle bounds');
 expect(Object.keys(tailShapes).sort().join(',')==='20,3,4','MiG-23 source tail part profile');
 for(const [id,shape] of Object.entries(tailShapes))
  expect(shape.pivot?.length===3&&shape.half?.length===3&&shape.pivot.every(Number.isFinite)&&shape.half.every(x=>Number.isFinite(x)&&x>0),'Invalid source tail bounds '+id);
@@ -133,13 +135,13 @@ function vectorLoad(at){
       f64.store offset=${off}`).join('\n');
 }
 const shapes=baseParts.map((p,i)=>{
+ if(i===22)return {id:i,pivot:nozzleShape.pivot,half:nozzleShape.half};
  if(tailShapes[i])return {id:i,pivot:tailShapes[i].pivot,half:tailShapes[i].half};
  const pivot=[p.pivot[0]*1.09,p.pivot[1],p.pivot[2]*.965];
  const half=[p.half[0]*1.09,p.half[1],p.half[2]*.965];
  // MiG-23 has a central vertical tail and a single exhaust.
  if(i===5){pivot[0]=0;half[0]=.14;}
  if(i===7){pivot[0]=0;half[0]=.55;}
- if(i===22){pivot[0]=0;half[0]=.58;}
  return {id:i,pivot,half};
 });
 for(const [fn,key] of [['shapePivot_int__int__double_','pivot'],['shapeHalf_int__int__double_','half']]){

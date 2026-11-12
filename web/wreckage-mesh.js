@@ -66,6 +66,9 @@ export function createWreckageFactory(aircraft){
    // newly fractured halves. Avoid rebuilding 29 intact components on impact.
    if(cuts.length===0){
     const mesh=new T.Mesh(g,material);mesh.name=node.name;mesh.matrixAutoUpdate=false;
+    // Morph buffers are immutable and shared, but weights belong to this
+    // impact pose. A later actuator update must not deform detached debris.
+    if(node.morphTargetInfluences)mesh.morphTargetInfluences=node.morphTargetInfluences.slice();
     mesh.matrix.makeTranslation(-pivot[0],-pivot[1],-pivot[2]).multiply(matrix);
     mesh.userData.sharedAirframeGeometry=true;mesh.castShadow=mesh.receiveShadow=true;root.add(mesh);return;
    }
@@ -74,7 +77,7 @@ export function createWreckageFactory(aircraft){
    for(let i=0;i<count;i+=3){
     let polygon=[];
     for(let j=0;j<3;j++){
-     const index=g.index?g.index.getX(i+j):i+j,p=new T.Vector3().fromBufferAttribute(position,index).applyMatrix4(matrix),n=normals?new T.Vector3().fromBufferAttribute(normals,index).applyMatrix3(normalMatrix).normalize():new T.Vector3(0,1,0);
+     const index=g.index?g.index.getX(i+j):i+j,p=node.getVertexPosition(index,new T.Vector3()).applyMatrix4(matrix),n=normals?new T.Vector3().fromBufferAttribute(normals,index).applyMatrix3(normalMatrix).normalize():new T.Vector3(0,1,0);
      polygon.push({p:p.toArray(),n:n.toArray(),c:colors?[colors.getX(index),colors.getY(index),colors.getZ(index)]:[1,1,1],s:skin?[skin.getX(index),skin.getY(index),skin.getZ(index)]:p.toArray(),l:livery?[livery.getX(index),livery.getY(index),livery.getZ(index)]:p.toArray(),u:uv?[uv.getX(index),uv.getY(index)]:[0,0],u1:uv1?[uv1.getX(index),uv1.getY(index)]:[0,0]});
     }
     for(const cut of cuts)polygon=clip(polygon,cut.axis,cut.value,cut.less,cut.points);
