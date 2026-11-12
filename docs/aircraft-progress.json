@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-nozzle-damage-20261112",
+    "startedAt": "2026-11-12T12:00:00.000Z",
+    "expiresAt": "2026-11-12T13:50:00.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -2184,10 +2189,10 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-damage-review-20261112",
-    "state": "tail-source-damage-published-next-compartments",
-    "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Continue the SAME MiG-23MLD: remaining original wing/control/fuselage/gear/nozzle damage partitions without duplicating full wings across native bodies; matched intake/overhead/exhaust overlays, tail root/fin residuals, actuator stops, taxi clearance and exact active R-35 plume references. Keep in_progress.",
+    "branch": "mig23mld-nozzle-damage-20261112",
+    "state": "source-nozzle-damage-audit",
+    "scope": "Resume MiG-23MLD original nozzle loss, posed wreckage and native source-fit profile; preserve current flight guidance and F/A-18B work.",
+    "nextStep": "Reproduce original nozzle health-zero rendering and live dry/wet morph snapshot; fit native part22 only, inspect actual renders and exact MLD rear references, validate before publication.",
     "checkpoint": "https://github.com/dasol1819/project-apex/commit/58be00a6566c10b488d87e2ccb565f6af3628e4e",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/34",
     "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld",
