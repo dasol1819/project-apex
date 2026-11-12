@@ -5,7 +5,7 @@ Source: https://blendswap.com/blend/8636
 Original license: Creative Commons Attribution (CC BY), as listed on BlendSwap.
 Adaptation: user-provided GLB conversion; two oversized helper planes excluded
 from the optimized deployment copy. Integrated through the Project Apex
-F/A-18F visual-source adapter, preserving the existing simulator physics.
+F/A-18B visual replacement for the former F/A-18F slot, preserving the existing simulator physics.
 
 IMPORTANT: The original is a legacy two-seat F/A-18B Hornet, not an exact
 F/A-18F Super Hornet. Its use as a visual placeholder does not claim exact
@@ -17,3 +17,7 @@ web/assets/fa18/F18_Hornet_optimized.glb
 
 The adapter must not be merged as a completed authored model deployment before
 this binary is present, hashed into web/manifest.json and visually validated.
+
+Slot 12 now registers as F/A-18B in the aircraft catalog and technology tree.
+The native flight/weapon model is still the former F/A-18F baseline; this
+will be recalibrated separately. The original source file is preserved.

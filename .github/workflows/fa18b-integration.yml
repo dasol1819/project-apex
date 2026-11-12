@@ -1,0 +1,46 @@
+name: F/A-18B model integration
+on:
+  pull_request:
+    paths:
+      - 'web/fa18b-aircraft.js'
+      - 'web/aircraft.js'
+      - 'web/aircraft-catalog.js'
+      - 'web/aircraft-tree-data.js'
+      - 'web/app.js'
+      - 'web/assets/fa18/**'
+      - 'web/manifest.json'
+      - 'tests/fa18b-integration.mjs'
+      - 'tests/fa18b-browser.py'
+      - '.github/workflows/fa18b-integration.yml'
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: python3 scripts/update-web-manifest.py
+      - run: python3 .deployment/restore.py
+      - name: Build the same current native module used by Pages
+        run: |
+          node scripts/native/export-mig15-shapes.mjs public
+          npm run build:combat
+          cp web/flight.wasm public/flight.wasm
+      - run: node tests/fa18b-integration.mjs public
+      - name: Real WebGL desktop/mobile model loading and weapons
+        run: |
+          python3 -m venv /tmp/fa18b-playwright
+          /tmp/fa18b-playwright/bin/pip install --quiet playwright==1.56.0
+          /tmp/fa18b-playwright/bin/python -m playwright install --with-deps chromium
+          python3 -m http.server 8779 --directory public >/tmp/fa18b-web.log 2>&1 &
+          APEX_TEST_URL=http://127.0.0.1:8779 /tmp/fa18b-playwright/bin/python tests/fa18b-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fa18b-browser-captures
+          path: /tmp/fa18b-browser
+          if-no-files-found: ignore
