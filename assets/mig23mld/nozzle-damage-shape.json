@@ -1,0 +1,7 @@
+{
+  "part": 22,
+  "pivot": [-0.0014816000506186,0.011631137798759,7.589826766626],
+  "half": [0.52561809782178,0.52222784805058,0.16695162630013],
+  "verticesPerPose": 688,
+  "scope": "Current source-model linear nozzle morph opening 0..1; endpoint envelope plus 2 mm numerical padding, not aircraft measurement or certified stops"
+}

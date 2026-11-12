@@ -4,7 +4,7 @@ import {createDamageFlames} from './damage-flame.js';
 import {enableWorldDepth} from './world-depth.js';
 import * as T from './vendor/three.module.js';
 import {heightAt} from './terrain.js';
-import {createWreckageFactory} from './wreckage-mesh.js';
+import {createWreckageFactory} from './wreckage-mesh.js?v=posed-morph-1';
 import {PARTS,MAX_WRECKAGE,readSystems,partValue} from './airframe-parts.js';
 
 const clamp=T.MathUtils.clamp,STRIDE=40,MAX_BODIES=MAX_WRECKAGE;
