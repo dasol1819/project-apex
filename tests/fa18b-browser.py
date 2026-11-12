@@ -10,7 +10,17 @@ window.__fa18QA={
   choose: chooseAircraft,
   get aircraft(){return aircraft;},
   get sim(){return sim;},
-  get ready(){return ready;}
+  get ready(){return ready;},
+  capture(offset){
+    const c=camera.clone(),g=aircraft.group;
+    const origin=g.getWorldPosition(new T.Vector3());
+    c.position.copy(origin.clone().add(new T.Vector3(...offset)));
+    c.lookAt(origin);
+    c.fov=36;c.near=.25;c.far=250;
+    c.updateProjectionMatrix();
+    renderer.render(scene,c);
+    return renderer.domElement.toDataURL('image/png').split(',')[1];
+  }
 };
 """
 with sync_playwright() as p:
@@ -54,6 +64,10 @@ with sync_playwright() as p:
   assert state['storeCount']>0 and state['visibleStoreCount']>0,'Source model should preserve native-equipped weapons: '+str(state)
   assert not errors,errors
   page.screenshot(path=str(out/('fa18b-'+label+'.png')))
+  if not mobile:
+   for name,offset in [('front',[0,2.5,-23]),('rear',[0,3,25]),('quarter',[19,9,24]),('top',[0,28,1])]:
+    png=page.evaluate('(offset)=>__fa18QA.capture(offset)',offset)
+    (out/('fa18b-model-'+name+'.png')).write_bytes(base64.b64decode(png))
   print('FA18B_BROWSER',json.dumps({'device':label,**state},ensure_ascii=False),flush=True)
   ctx.close()
  browser.close()
