@@ -26,7 +26,17 @@ with sync_playwright() as p:
    route.fulfill(response=response,body=response.text()+hook)
   page.route('**/app.js*',patch)
   page.goto(url+'/?screen=tree',wait_until='domcontentloaded')
-  page.wait_for_selector('html[data-raptor-ready=true]',timeout=180000)
+  try:
+   page.wait_for_selector('html[data-raptor-ready=true]',timeout=45000)
+  except Exception:
+   status=page.evaluate("""()=>{
+     const el=document.getElementById('load-status');
+     return {status:el?.textContent,body:document.body?.innerText.slice(0,350),
+       qa:!!window.__fa18QA,ready:document.documentElement.getAttribute('data-raptor-ready')};
+   }""")
+   print('FA18B_BOOT_FAILURE',json.dumps({'device':label,'state':status,'errors':errors},ensure_ascii=False),flush=True)
+   page.screenshot(path=str(out/('fa18b-boot-failure-'+label+'.png')))
+   raise
   ok=page.evaluate('__fa18QA.choose(12)')
   assert ok,'F/A-18B slot 12 could not be selected'
   page.wait_for_function('__fa18QA.aircraft.sourceLoaded || __fa18QA.aircraft.sourceFailed',timeout=150000)
