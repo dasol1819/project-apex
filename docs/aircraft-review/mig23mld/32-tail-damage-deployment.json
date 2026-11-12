@@ -96,7 +96,7 @@
     "result": "PASS",
     "baseUrl": "http://project-apex.kro.kr",
     "scope": "Actual deployed HTTP asset bytes in Chromium 141 / SwiftShader; original source skins hidden at native health zero, actual free-body framebuffer pieces, parent/fuselage loss, reset, source-fit native bounds and async emitter replacement.",
-    "network": "Browser direct proxy transport failed (Route.fetch socket hang-up, then page navigation timeout). QA then fetched every project-domain response from the deployed server through inherited urllib HTTP proxy and fulfilled it into the original page URL. No local asset substitution; anonymous account session stub and response-only inspection hooks match CI. HTTPS browser access not claimed.",
+    "network": "Successful run used Chromium configured with the inherited HTTP proxy. Only the two instrumented app.js and part-emitter.js responses were fetched from the deployed server by inherited urllib HTTP proxy and fulfilled with inspection hooks; remaining production assets were requested by the browser. No local asset substitution. Anonymous account session stub matches CI. HTTPS access is not claimed.",
     "report": {
       "cases": [
         {
@@ -245,6 +245,26 @@
       "environment": "Chromium 141 / SwiftShader / actual native type-16 gameplay; hardware FPS unmeasured",
       "pageErrors": [],
       "expectSourceDamage": true
-    }
+    },
+    "attempts": [
+      {
+        "mode": "Direct Playwright Route.fetch instrumentation",
+        "result": "FAILED",
+        "reason": "socket hang-up"
+      },
+      {
+        "mode": "Browser proxy plus deployed urllib retrieval for instrumented modules only",
+        "result": "PASS",
+        "processExitCode": 0
+      },
+      {
+        "mode": "Additional all-domain urllib response bridge",
+        "result": "FAILED",
+        "reason": "page navigation timeout; not counted as a browser pass"
+      }
+    ],
+    "confirmationProcessExitCode": 0,
+    "confirmationCheckedAt": "2026-11-12T03:15:27.191542+00:00",
+    "confirmation": "Same selected-module proxy QA repeated with separate capture/log files and exited successfully."
   }
 }
