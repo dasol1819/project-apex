@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-damage-review-20261112",
+    "startedAt": "2026-11-12T02:02:31.000Z",
+    "expiresAt": "2026-11-12T03:52:31.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -2144,11 +2149,11 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-source-cache-20261111",
-    "state": "source-cache-published-next-exterior-damage",
+    "branch": "mig23mld-damage-review-20261112",
+    "state": "source-parts-damage-and-intake-review",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Continue the same MiG-23MLD. Match actual intake/root cameras to recovered exact-MLD Keip 27/28 and 45/47 references, resolve camera versus fin/root/stabilator/gear-cover geometry residuals, verify hydraulic stops and taxi clearance, obtain matched overhead wing and uncovered rear/active-plume references, then complete physical damage/wreckage and hardware resource review. Source-sharing fix is merged, CI-validated and HTTP-deployed; HTTPS connection verification remains blocked (503).",
-    "checkpoint": "https://github.com/dasol1819/project-apex/blob/main/docs/aircraft-review/mig23mld/21-part-review.md",
+    "nextStep": "Resume MiG-23MLD: inspect original source part registration against native damage/wreckage contracts; compare actual game intake/root renders with exact-MLD references and preserve geometry/source/license evidence. Validate and publish only reviewed changes.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-damage-review-20261112",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/28",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld"
   },
