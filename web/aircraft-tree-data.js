@@ -107,8 +107,9 @@ add('us','naval','f14','Tomcat','navy',[
  ['a','F-14A','TF30 · AWG-9',15.5,'fourth','초기 TF30 엔진과 AWG-9 레이더의 함대 방공형.'],
  ['d','F-14D','F110 · APG-71',17.5,'fourth','현재 구현된 F110·APG-71·AIM-54C Phoenix 구성.',4]]);
 add('us','naval','fa18','Super Hornet','hornet',[
- ['eii','F/A-18E','Block II · AESA',18,'modern','APG-79 AESA · F414 쌍발 · 단좌 함재 다목적기 · 영화풍 외형.',11],
- ['fii','F/A-18F','Block II · 복좌 AESA',18,'modern','후방 WSO석과 긴 캐노피를 갖춘 복좌 Super Hornet. 단좌 E형과 별도 기체.',12]]);
+ ['eii','F/A-18E','Block II · AESA',18,'modern','APG-79 AESA · F414 쌍발 · 단좌 함재 다목적기 · 영화풍 외형.',11]]);
+add('us','naval','fa18','Hornet','hornet',[
+ ['b','F/A-18B','초기 복좌 Hornet',16,'fourth','ChrisKuhn CC BY F/A-18B 외형 모델 적용. 비행·무장은 기존 F/A-18F 시뮬레이션 임시 값.',12]]);
 add('us','naval','f35','Lightning II','navy',[
  ['c','F-35C','항공모함용 · 큰 날개',19.5,'modern','강화 착륙장치와 큰 접이식 날개의 항공모함용 기체.']]);
 
