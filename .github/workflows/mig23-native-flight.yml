@@ -15,6 +15,7 @@ on:
       - 'web/wreckage-mesh.js'
       - 'tests/wreckage-morph.mjs'
       - 'tests/mig23-nozzle-browser.py'
+      - 'tests/mig23-async-wreckage-browser.py'
       - 'scripts/fit-mig23-nozzle-bounds.cpp'
       - 'docs/aircraft-review/mig23mld/nozzle-damage-vertices.csv'
       - 'tests/part-emitter-scale.mjs'
@@ -131,6 +132,7 @@ jobs:
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-resource-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-damage-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-nozzle-browser.py
+          APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -140,4 +142,5 @@ jobs:
             /tmp/mig23-resource-browser
             /tmp/mig23-damage-browser
             /tmp/mig23-nozzle-browser
+            /tmp/mig23-async-wreckage-browser
           if-no-files-found: ignore

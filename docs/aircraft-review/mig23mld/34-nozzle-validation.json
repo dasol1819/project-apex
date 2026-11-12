@@ -306,7 +306,7 @@
   "resourceDeltaBytes": {
     "web/mig23mld-game.js": 525,
     "web/wreckage-mesh.js": 242,
-    "web/damage-effects.js": 16
+    "web/damage-effects.js": 585
   },
   "limits": [
     "Source-fit model envelope and numeric pose equivalence only; not measured R-35 hardware or hydraulic stops.",
@@ -594,7 +594,120 @@
     "pilotMixedDesktopMobile": "PASS",
     "missileRender": "PASS; proximity delta .04 m, WebGL error 0",
     "fa18bDesktopMobile": "PASS; isolated explicit 8765 URL",
-    "setupFailure": "A separate F/A-18B invocation used its default 8779 against a server on 8765 and failed connection. Explicit URL rerun passed; the failed invocation is not counted."
+    "setupFailure": "A separate F/A-18B invocation used its default 8779 against a server on 8765 and failed connection. Explicit URL rerun passed; the failed invocation is not counted.",
+    "asyncWreckage": "PASS; source replacement once, original UV/half pose, native state/identity unchanged and reset",
+    "nozzleAfterAsyncChange": "PASS"
   },
-  "unchangedOverlapGitBlob": "87d37a86daf7e4efeae33ff0f0371e968449d26b"
+  "unchangedOverlapGitBlob": "87d37a86daf7e4efeae33ff0f0371e968449d26b",
+  "asyncWreckage": {
+    "baselineCommit": "1ad68178f4016599a347b979e4e68490de79c9f5",
+    "before": {
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": false,
+      "before": {
+        "triangles": 352,
+        "mapped": 0,
+        "weights": [
+          [
+            0.5
+          ]
+        ],
+        "position": [
+          -0.0014996509930887204,
+          5000.025945087918,
+          5.656868447815192
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "after": {
+        "triangles": 352,
+        "mapped": 0,
+        "weights": [
+          [
+            0.5
+          ]
+        ],
+        "position": [
+          -0.0014996509930887204,
+          5000.025945087918,
+          5.656868447815192
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "oldBodyRemoved": false,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 1,
+      "afterReset": 0,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    },
+    "after": {
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "before": {
+        "triangles": 352,
+        "mapped": 0,
+        "weights": [
+          [
+            0.5
+          ]
+        ],
+        "position": [
+          -0.0014996509930887204,
+          5000.025945087918,
+          5.656868447815192
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "after": {
+        "triangles": 288,
+        "mapped": 1,
+        "weights": [
+          [
+            0.5
+          ]
+        ],
+        "position": [
+          -0.0014996509930887204,
+          5000.025945087918,
+          5.656868447815192
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "oldBodyRemoved": true,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 1,
+      "afterReset": 0,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    },
+    "scope": "Original cached source arrives after native nozzle creation; no network-failure or other pre-load control-history certification.",
+    "inspection": "Actor is selected from its specific effect instance through an HTTP-response-only getter. Initial name-based probe read a different player body with the same name; that inspection failure is excluded."
+  }
 }
