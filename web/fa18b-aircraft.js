@@ -7,7 +7,7 @@ import {parseMig23Glb} from './mig23mld-glb.js?v=4';
 
 const SOURCE='./assets/fa18/F18_Hornet_optimized.glb';
 const LENGTH_M=16.8, SPAN_M=12.3;
-const HIDDEN_STORES=/^(?:Plane(?:\\.\\d+)?|2K_Bomb(?:\\.\\d+)?|AIM-9_Missile(?:\\.\\d+)?|AIM-9_Launcher(?:\\.\\d+)?|Missile(?:\\.\\d+)?|MultipleEjectorRack(?:\\.\\d+)?|Pylon(?:\\.\\d+)?|Fuel_Tank_External)$/;
+const HIDDEN_STORES=/^(?:Plane|2K_Bomb|AIM-9_Missile|AIM-9_Launcher|Missile|MultipleEjectorRack|Pylon|Fuel_Tank_External)(?:[.]\\d+)?$/;
 const GEAR_PART=/^(?:Forward_Landing_Gear|Rear_Landing_Gear|Rear_Tires|Forward_Gear_Doors|Rear_Main_Gear_Doors|Rear_Secondary_Gear_Doors|Main_Forward_Gear_Door|Secondary_Forward_Gear_Door)/;
 let sourceBuffer;
 function loadSource(){
@@ -55,7 +55,16 @@ export function createFa18bAircraft(options={}){
  shell.name='F/A-18B Hornet | F404-GE-400';
  shell.userData.aircraftType=12;
  const standIns=[];
- shell.traverse(node=>{if(node.isMesh||node.isLineSegments)standIns.push(node);});
+ // Preserve live missiles/bombs, gun flash and native exhaust effects from
+ // the existing simulator. Only replace the procedural exterior skin meshes.
+ shell.traverse(node=>{
+  if(!node.isMesh&&!node.isLineSegments)return;
+  for(let parent=node;parent;parent=parent.parent){
+   if(parent.userData?.weaponStore||parent.userData?.visualEffect)return;
+  }
+  if(node.material?.isShaderMaterial)return; // animated exhaust/lighting
+  standIns.push(node);
+ });
  let visual=null,loaded=false,failed=false,disposed=false,lastGear=1;
  loadSource().then(parseMig23Glb).then(asset=>{
   if(disposed)return;
