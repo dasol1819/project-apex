@@ -2086,16 +2086,16 @@
       }
     },
     {
-      "id": "us-fa18-fii",
-      "name": "F/A-18F",
-      "variant": "Block II · 복좌 AESA",
+      "id": "us-fa18-b",
+      "name": "F/A-18B",
+      "variant": "Original two-seat Hornet · CC BY exterior",
       "nation": "us",
       "family": "fa18",
       "branch": "naval",
-      "br": 18,
+      "br": 16,
       "simId": 12,
       "status": "implemented",
-      "nextStep": "Reference comparison and visual quality review",
+      "nextStep": "Compare the licensed F/A-18B exterior against actual legacy Hornet photographs; replace inherited F/A-18F flight/weapon/aerodynamics with B-specific systems, then review. Model source is visually loaded on desktop/mobile but not yet full quality-reviewed.",
       "evidence": {
         "references": [],
         "assets": [],

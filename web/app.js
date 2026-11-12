@@ -26,7 +26,7 @@ import {RenderBudget} from './render-budget.js';
 import {isCompactFlightLayout} from './hud-layout.js';
 import {createInterface} from './interface.js';
 import * as T from './vendor/three.module.js';
-import {createAircraft} from './aircraft.js?v=mig23mld-12';
+import {createAircraft} from './aircraft.js?v=fa18b-1';
 import {createMig23SweepController} from './mig23mld-flight.js?v=2';
 import {createWorld} from './world.js';
 import {heightAt} from './terrain.js';
