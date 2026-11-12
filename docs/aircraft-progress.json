@@ -1091,7 +1091,8 @@
           "2026-11-12 Seoul: reconciled PR #28 with main 1569099, retaining #33 mixed axis instructor, user AUTO sweep thresholds, OBJ0277 visibility and OBJ0100 moving wing detail, F/A-18 asset and licenses. Manifest/restore, deterministic current 344,183-byte native build SHA-256 1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693, 20 native/model/queue checks, C++ authored airbrake fit replay, actual desktop/mobile flight, mixed input and two-instance baseline/shared renderer audits passed. No page errors. Current dry scene one/two calls 244/466, triangles 44,497/87,572; source sharing still 44→22 handles and estimated RGBA8 mip bytes 366,148,112→183,074,056. The older Nov 11 binary and draw counts above are historical checkpoints.",
           "Current actual-renderer tail image registered at 48% over the preserved unblended US Navy photo crop using the existing global two-landmark recipe. Original redownload returns HTTP 403. Fin top/root/stabilator and perspective residuals remain; no whole-aircraft visual approval. Editable crop-overlay script and recipe retained. HTTPS still 503 before publication; HTTP 200.",
           "PR #28 reconciliation head 7346d5d passed native/build/model/C++ steps, but CI run 43056395728 failed before browser launch: apt optional font dependencies could not resolve azure.archive.ubuntu.com. No renderer result is claimed for that run. All four Ubuntu-24.04 browser workflows now install the same pinned Playwright 1.56.0 headless Chromium shell without apt; real browser launch/tests remain mandatory. Await exact-head revalidation before merge.",
-          "2026-11-12 Seoul: PR #28 final head d36d529 passed all four exact-head workflows (43058442457 preview, 43058442405 tree desktop/mobile/landscape, 43058442449 mixed controls, 43058442618 native flight/weapons/resources). Native CI reproduced local 244/466 scene calls, 44,497/87,572 triangles and 22 source handles for one/two models; independent poses/nozzle and sibling disposal pass. Local additional studio/tree/missile browser tests pass (proximity render delta 0.04 m, GL error 0). Merged dc580884af01f200f4852a30204aef84b6527d98; Pages 43059931057 success. Nine HTTP production files match validated bytes, including current 344,183-byte WASM and original 22,593,404-byte GLB. HTTPS returns 503 upstream connection failure; HTTPS is not verified. Detailed per-part residuals and linked Keip exact-MLD photos are in 21-part-review.md; aircraft remains in_progress."
+          "2026-11-12 Seoul: PR #28 final head d36d529 passed all four exact-head workflows (43058442457 preview, 43058442405 tree desktop/mobile/landscape, 43058442449 mixed controls, 43058442618 native flight/weapons/resources). Native CI reproduced local 244/466 scene calls, 44,497/87,572 triangles and 22 source handles for one/two models; independent poses/nozzle and sibling disposal pass. Local additional studio/tree/missile browser tests pass (proximity render delta 0.04 m, GL error 0). Merged dc580884af01f200f4852a30204aef84b6527d98; Pages 43059931057 success. Nine HTTP production files match validated bytes, including current 344,183-byte WASM and original 22,593,404-byte GLB. HTTPS returns 503 upstream connection failure; HTTPS is not verified. Detailed per-part residuals and linked Keip exact-MLD photos are in 21-part-review.md; aircraft remains in_progress.",
+          "2026-11-12 work checkpoint: actual native damage baseline leaves original stab2/stab/rudder visible at health 0 and produces empty (0-triangle) fallback wreckage. Source hinge registration now removes those surfaces and snapshots original UV-mapped 64/64/40-triangle pieces; native parent loss and reset pass. Source-fitted pivot/collision boxes replace copied MiG-29 data only for parts 3/4/20. C++ analytic arc envelope uses the visual +/-0.6 rad rig clamp and 2 mm numerical padding, not aircraft tolerance/stop claims. 20 native/model/queue checks pass; real-renderer final verification and CI pending. Async source-root emitter refresh and world-scale-equivalent surface sampling are under validation. Do not promote whole-aircraft status."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1127,7 +1128,11 @@
         "sourceCacheValidatedHead": "https://github.com/dasol1819/project-apex/commit/d36d529041a6910b3e954ef05d5e69652fd23df6",
         "sourceCachePublishedCommit": "https://github.com/dasol1819/project-apex/commit/dc580884af01f200f4852a30204aef84b6527d98",
         "sourceCachePages": "https://github.com/dasol1819/project-apex/actions/runs/43059931057",
-        "sourceCacheDeploymentChecks": "docs/aircraft-review/mig23mld/22-deployment-verification.json"
+        "sourceCacheDeploymentChecks": "docs/aircraft-review/mig23mld/22-deployment-verification.json",
+        "tailDamageSource": "scripts/fit-mig23-tail-bounds.cpp",
+        "tailDamageVertices": "docs/aircraft-review/mig23mld/tail-damage-vertices.csv",
+        "tailDamageShapes": "assets/mig23mld/tail-damage-shapes.json",
+        "tailDamageBrowserRegression": "tests/mig23-damage-browser.py"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -2150,9 +2155,9 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-damage-review-20261112",
-    "state": "source-parts-damage-and-intake-review",
+    "state": "tail-damage-source-profile-validating",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "Resume MiG-23MLD: inspect original source part registration against native damage/wreckage contracts; compare actual game intake/root renders with exact-MLD references and preserve geometry/source/license evidence. Validate and publish only reviewed changes.",
+    "nextStep": "Finish actual-renderer validation of original-GLB stabilator/rudder damage, native source-fit collision/wreckage pivots and async scaled surface emitters; retain photo comparisons, run exact-head CI, then merge and verify Pages/production. Other source compartments and complete exterior review remain pending.",
     "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-damage-review-20261112",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/28",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld"
