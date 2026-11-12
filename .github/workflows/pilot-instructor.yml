@@ -9,6 +9,7 @@ on:
       - 'scripts/native/build-mig23.mjs'
       - 'scripts/native/patch-instructor.mjs'
       - 'tests/pilot-instructor*'
+      - 'tests/pilot-response.mjs'
       - '.github/workflows/pilot-instructor.yml'
 permissions:
   contents: read
@@ -32,6 +33,7 @@ jobs:
           cp web/flight.wasm public/flight.wasm
           node --check web/app.js
           node tests/pilot-instructor.mjs
+          node tests/pilot-response.mjs > /tmp/pilot-response-results.json
           node tests/mig23-native.mjs
           node tests/mig23-autosweep.mjs
       - name: Chromium desktop keyboard and mobile touch controls
@@ -46,5 +48,7 @@ jobs:
         if: always()
         with:
           name: pilot-instructor-desktop-mobile
-          path: /tmp/pilot-instructor-browser
+          path: |
+            /tmp/pilot-instructor-browser
+            /tmp/pilot-response-results.json
           if-no-files-found: ignore

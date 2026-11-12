@@ -33,6 +33,7 @@ with sync_playwright() as p:
   return page
  ctx=browser.new_context(viewport={'width':1366,'height':900},reduced_motion='reduce')
  page=open_flight(ctx)
+ page.wait_for_function('__pilotQA.sim.get_instructor_response()===1')
  page.keyboard.down('d')
  page.wait_for_function('__pilotQA.sim.get_pilot_axis_override()===2 && __pilotQA.aim()[9]===1')
  assert page.evaluate('__pilotQA.sim.get_pilot_override()')==0
@@ -49,6 +50,18 @@ with sync_playwright() as p:
  page.keyboard.up('d');page.wait_for_function('__pilotQA.authority.axisMask===0')
  after=page.evaluate('__pilotQA.target')
  assert sum((x-y)**2 for x,y in zip(target,after))<1e-12
+ # Earlier mouse movement must not mark every later manual correction as a
+ # simultaneous pointer gesture. This ordinary sortie has no mission director.
+ page.wait_for_function('!__pilotQA.authority.pointerIntent')
+ page.keyboard.down('d');page.wait_for_function('__pilotQA.authority.axisMask===2')
+ page.keyboard.up('d');page.wait_for_function('__pilotQA.authority.axisMask===0')
+ assert page.evaluate('__pilotQA.alignment()')>.99,'old pointer intent must not resurrect a stale destination'
+ # Native response tuning must disengage in direct mode and re-engage when
+ # the player returns to direction aim; it must never latch manual input.
+ page.evaluate('__pilotQA.setControlMode("manual")')
+ page.wait_for_function('__pilotQA.sim.get_instructor_response()===0')
+ page.evaluate('__pilotQA.setControlMode("aim")')
+ page.wait_for_function('__pilotQA.sim.get_instructor_response()===1')
  page.keyboard.press('F2')
  page.wait_for_selector('#settings-dialog[open]')
  for name,value in [('stick-deadzone','12'),('stick-curve','20'),('stick-response','70')]:
@@ -62,6 +75,7 @@ with sync_playwright() as p:
  # Real touch events use the production pointer capture/stick path.
  ctx=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,has_touch=True,device_scale_factor=1,reduced_motion='reduce')
  page=open_flight(ctx);box=page.locator('#stick').bounding_box();assert box
+ page.wait_for_function('__pilotQA.sim.get_instructor_response()===1')
  cdp=ctx.new_cdp_session(page)
  point={'x':box['x']+box['width']*.65,'y':box['y']+box['height']*.5}
  cdp.send('Input.dispatchTouchEvent',{'type':'touchStart','touchPoints':[point]})
