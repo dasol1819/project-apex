@@ -25,6 +25,11 @@ jobs:
       - run: npm ci
       - run: python3 scripts/update-web-manifest.py
       - run: python3 .deployment/restore.py
+      - name: Build the same current native module used by Pages
+        run: |
+          node scripts/native/export-mig15-shapes.mjs public
+          npm run build:combat
+          cp web/flight.wasm public/flight.wasm
       - run: node tests/fa18b-integration.mjs public
       - name: Real WebGL desktop/mobile model loading and weapons
         run: |
