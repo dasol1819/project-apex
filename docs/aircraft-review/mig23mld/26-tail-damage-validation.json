@@ -478,5 +478,13 @@
         0.3744476140732877
       ]
     }
+  },
+  "publishedValidation": {
+    "validatedHead": "172ee94c15a6ad2ac7501ee0c8daaa9d65b94a1c",
+    "mergeCommit": "58be00a6566c10b488d87e2ccb565f6af3628e4e",
+    "allFourCi": "success",
+    "deploymentReport": "32-tail-damage-deployment.json",
+    "runtimeJavascriptAddedBytes": 1622,
+    "extractedOverrideFilesAddedToRepositoryBytes": 21914
   }
 }

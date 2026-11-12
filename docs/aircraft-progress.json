@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-damage-review-20261112",
-    "startedAt": "2026-11-12T02:02:31.000Z",
-    "expiresAt": "2026-11-12T03:52:31.000Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -980,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "After PR #34 exact-head validation and publication, continue the same MiG-23MLD: partition/map remaining original wing/control and fuselage/gear/nozzle damage sources without duplicating geometry across native child bodies; match intake/root photo cameras and resolve fin/root/gear-cover residuals, verified stops/taxi clearances, overhead wings and active-plume references. Keep whole aircraft in_progress and preserve existing fleet review.",
+      "nextStep": "Continue the SAME MiG-23MLD: remaining original wing/control/fuselage/gear/nozzle damage partitions without duplicating full wings across native bodies; matched intake/overhead/exhaust overlays, tail root/fin residuals, actuator stops, taxi clearance and exact active R-35 plume references. Keep in_progress.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1047,7 +1042,8 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-source-cache-20261111/docs/aircraft-review/mig23mld/20-current-resource-comparison.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld/23-native-tail-damage.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld/24-tail-damage-photo-overlay.jpg",
-          "https://github.com/dasol1819/project-apex/blob/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld/25-intake-root-inspection.jpg"
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld/25-intake-root-inspection.jpg",
+          "https://github.com/dasol1819/project-apex/blob/main/docs/aircraft-review/mig23mld/30-intake-splitter-camera.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1097,7 +1093,8 @@
           "2026-11-12 Seoul: PR #28 final head d36d529 passed all four exact-head workflows (43058442457 preview, 43058442405 tree desktop/mobile/landscape, 43058442449 mixed controls, 43058442618 native flight/weapons/resources). Native CI reproduced local 244/466 scene calls, 44,497/87,572 triangles and 22 source handles for one/two models; independent poses/nozzle and sibling disposal pass. Local additional studio/tree/missile browser tests pass (proximity render delta 0.04 m, GL error 0). Merged dc580884af01f200f4852a30204aef84b6527d98; Pages 43059931057 success. Nine HTTP production files match validated bytes, including current 344,183-byte WASM and original 22,593,404-byte GLB. HTTPS returns 503 upstream connection failure; HTTPS is not verified. Detailed per-part residuals and linked Keip exact-MLD photos are in 21-part-review.md; aircraft remains in_progress.",
           "2026-11-12 work checkpoint: actual native damage baseline leaves original stab2/stab/rudder visible at health 0 and produces empty (0-triangle) fallback wreckage. Source hinge registration now removes those surfaces and snapshots original UV-mapped 64/64/40-triangle pieces; native parent loss and reset pass. Source-fitted pivot/collision boxes replace copied MiG-29 data only for parts 3/4/20. C++ analytic arc envelope uses the visual +/-0.6 rad rig clamp and 2 mm numerical padding, not aircraft tolerance/stop claims. 20 native/model/queue checks pass; real-renderer final verification and CI pending. Async source-root emitter refresh and world-scale-equivalent surface sampling are under validation. Do not promote whole-aircraft status.",
           "2026-11-12 tail source damage review: original stab2/stab/rudder now hide at native health 0, snapshot actual mapped 64/64/40-triangle native pieces, cover native aft/fuselage loss and reset. Following each native body at +0.5 s changes framebuffer pixels and submits exactly 64/64/40 triangles. Current source render registered at 48% over preserved US Navy photo crop; fin/root/camera residuals remain. Keip 27/28/45/47 privately re-inspected against recorded intake/root cameras, without redistributing copyrighted photos. C++ analytic continuous visual-arc boxes replace copied MiG-29 pivots only for parts 3/4/20, with 2 mm numerical padding, not aircraft tolerance claims. All 41 sampled source poses fit the boxes and native free-body vectors match. Actual static gun/fleet fixtures missed all three parts in old deployed SHA 1586e9e but now identify 3/4/20 and reduce correct health 1.0→0.8. These are conservative box tests, not triangle-exact hits or AI-flight certification.",
-          "22 local native/model/queue/transform/ballistic checks and seven Chromium 141 SwiftShader browser suites pass after final scaled-emitter correction. Equivalent node/ancestor transforms match 24 surface samples; async fallback→source emitter refresh occurs once and is reused on ten subsequent updates. Deterministic generated WASM remains 344,183 bytes, now SHA-256 56546dd9d9c31a06911bc7c19af7e96fe32be740bdc7bf10e1fc6203ceed1f6f. Original GLB/maps, encoded payload and tracked base WASM preserved. Added core JS bytes: gameplay 1101, damage effects 285, emitter 236; zero intact meshes/nodes/texture bytes. One/two dry scene submissions remain 244/466 calls, 44,497/87,572 triangles, 22 source handles and estimated 183,074,056 RGBA8 mip bytes. PR #34 implementation head bcd7864 passed four workflows; final evidence/ballistic/close-up head awaits exact-head CI before merge."
+          "22 local native/model/queue/transform/ballistic checks and seven Chromium 141 SwiftShader browser suites pass after final scaled-emitter correction. Equivalent node/ancestor transforms match 24 surface samples; async fallback→source emitter refresh occurs once and is reused on ten subsequent updates. Deterministic generated WASM remains 344,183 bytes, now SHA-256 56546dd9d9c31a06911bc7c19af7e96fe32be740bdc7bf10e1fc6203ceed1f6f. Original GLB/maps, encoded payload and tracked base WASM preserved. Added core JS bytes: gameplay 1101, damage effects 285, emitter 236; zero intact meshes/nodes/texture bytes. One/two dry scene submissions remain 244/466 calls, 44,497/87,572 triangles, 22 source handles and estimated 183,074,056 RGBA8 mip bytes. PR #34 implementation head bcd7864 passed four workflows; final evidence/ballistic/close-up head awaits exact-head CI before merge.",
+          "2026-11-12 final publication: exact head 172ee94 passed all four workflows (43144261264 native/damage, 43144261248 preview, 43144261197 tree, 43144261207 mixed controls). PR #34 merged as 58be00a; Pages 43145369211 success. Nine deployed HTTP files match validated bytes, including source-fit WASM 56546dd9 (344,183 B). Additional actual deployed-byte Chromium damage assertions pass with no page errors through the inherited urllib proxy response bridge; direct browser transport failed and HTTPS is NOT verified (503). Current native parts 3/4/20 and textured framebuffer pieces are validated, but whole aircraft remains in_progress. Keip 28 was privately overlapped at 48% with camera 30; recipe 31 preserves anchors, camera and residual limitations. Public Navy overlap 24 remains preserved. Runtime JS growth is 1,622 B; extracted readable override inputs add 21,914 B separately. Own lease released after validated publication; preserve all other aircraft/branches."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1143,7 +1140,13 @@
         "tailDamageValidation": "docs/aircraft-review/mig23mld/26-tail-damage-validation.json",
         "tailBallisticContacts": "docs/aircraft-review/mig23mld/27-tail-ballistic-contacts.json",
         "tailDamageBaseline": "docs/aircraft-review/mig23mld/28-tail-damage-baseline.json",
-        "tailDamageCurrent": "docs/aircraft-review/mig23mld/29-tail-damage-current.json"
+        "tailDamageCurrent": "docs/aircraft-review/mig23mld/29-tail-damage-current.json",
+        "tailDamageValidatedHead": "https://github.com/dasol1819/project-apex/commit/172ee94c15a6ad2ac7501ee0c8daaa9d65b94a1c",
+        "tailDamagePublishedCommit": "https://github.com/dasol1819/project-apex/commit/58be00a6566c10b488d87e2ccb565f6af3628e4e",
+        "tailDamagePages": "https://github.com/dasol1819/project-apex/actions/runs/43145369211",
+        "tailDamageDeploymentChecks": "docs/aircraft-review/mig23mld/32-tail-damage-deployment.json",
+        "intakeSplitterCamera": "docs/aircraft-review/mig23mld/30-intake-splitter-camera.jpg",
+        "intakeSplitterOverlapRecipe": "docs/aircraft-review/mig23mld/31-intake-splitter-overlay-recipe.json"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1155,7 +1158,7 @@
         "images": 22,
         "renderedFps": null,
         "nativeWasmBytes": 344183,
-        "nativeBuild": "Current main #33 instructor extension: deterministic 344,183-byte build SHA-256 1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693. PR #28 CI and Pages 43059931057 pass; production HTTP bytes match. Original tracked base WASM unchanged. Source sharing changes no native code.",
+        "nativeBuild": "PR #34 source-fit native tail profile: deterministic 344,183-byte SHA-256 56546dd9d9c31a06911bc7c19af7e96fe32be740bdc7bf10e1fc6203ceed1f6f. All four exact-head CI and Pages 43145369211 pass; production HTTP bytes match, deployed-byte Chromium damage suite passes. Original tracked base WASM unchanged.",
         "fps": null,
         "exhaustAudit": "Chromium 141 SwiftShader isolated gameplay model camera",
         "dryDrawCalls": 223,
@@ -1224,7 +1227,9 @@
           64,
           64,
           40
-        ]
+        ],
+        "tailDamageRuntimeJavascriptAddedBytes": 1622,
+        "tailDamageReadableOverrideFilesBytes": 21914
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
@@ -2180,12 +2185,13 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-damage-review-20261112",
-    "state": "tail-damage-final-evidence-ci",
+    "state": "tail-source-damage-published-next-compartments",
     "scope": "Resume native MiG-23MLD using the published CC BY 4.0 GLB.",
-    "nextStep": "PR #34 has original source tail damage, source-fit native bounds and scaled async emitters plus actual-renderer evidence. Await final exact-head CI; merge/publish only if validated, verify deployed bytes/HTTPS, then continue remaining MiG-23MLD source compartments and exterior photo review.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/tree/mig23mld-damage-review-20261112",
+    "nextStep": "Continue the SAME MiG-23MLD: remaining original wing/control/fuselage/gear/nozzle damage partitions without duplicating full wings across native bodies; matched intake/overhead/exhaust overlays, tail root/fin residuals, actuator stops, taxi clearance and exact active R-35 plume references. Keep in_progress.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/58be00a6566c10b488d87e2ccb565f6af3628e4e",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/34",
-    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld"
+    "evidence": "https://github.com/dasol1819/project-apex/tree/mig23mld-damage-review-20261112/docs/aircraft-review/mig23mld",
+    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43145369211"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
