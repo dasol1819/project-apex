@@ -1,0 +1,107 @@
+{
+  "method": "Static native F-22 gun/fleet collision fixtures against type 16. No AI flight/aim certification. Conservative source-rotation collision envelopes, not exact triangle hit tests.",
+  "before": {
+    "result": "PASS",
+    "expectSourceBounds": false,
+    "wasmSha256": "1586e9e449691ad5f5e267546dc13b3225484487bb365b12cd73c46ce1378693",
+    "fixtures": [
+      {
+        "expectedPart": 3,
+        "shotOrigin": [
+          -100,
+          5000.2,
+          5.34
+        ],
+        "actualPart": null,
+        "contact": null,
+        "healthBefore": 1,
+        "healthAfter": 1,
+        "ticks": 180
+      },
+      {
+        "expectedPart": 4,
+        "shotOrigin": [
+          100,
+          5000.2,
+          8.32
+        ],
+        "actualPart": null,
+        "contact": null,
+        "healthBefore": 1,
+        "healthAfter": 1,
+        "ticks": 180
+      },
+      {
+        "expectedPart": 20,
+        "shotOrigin": [
+          100,
+          5001.2,
+          9
+        ],
+        "actualPart": null,
+        "contact": null,
+        "healthBefore": 1,
+        "healthAfter": 1,
+        "ticks": 180
+      }
+    ]
+  },
+  "after": {
+    "result": "PASS",
+    "expectSourceBounds": true,
+    "wasmSha256": "56546dd9d9c31a06911bc7c19af7e96fe32be740bdc7bf10e1fc6203ceed1f6f",
+    "fixtures": [
+      {
+        "expectedPart": 3,
+        "shotOrigin": [
+          -100,
+          5000.2,
+          5.34
+        ],
+        "actualPart": 3,
+        "contact": [
+          -2.6672885670810995,
+          5000.637455045847,
+          6.755629598814881
+        ],
+        "healthBefore": 1,
+        "healthAfter": 0.8,
+        "ticks": 26
+      },
+      {
+        "expectedPart": 4,
+        "shotOrigin": [
+          100,
+          5000.2,
+          8.32
+        ],
+        "actualPart": 4,
+        "contact": [
+          2.6672885670811004,
+          5000.637455045847,
+          6.904370401185075
+        ],
+        "healthBefore": 1,
+        "healthAfter": 0.8,
+        "ticks": 26
+      },
+      {
+        "expectedPart": 20,
+        "shotOrigin": [
+          100,
+          5001.2,
+          9
+        ],
+        "actualPart": 20,
+        "contact": [
+          0.4685240244255,
+          5001.636716126129,
+          7.585872380080141
+        ],
+        "healthBefore": 1,
+        "healthAfter": 0.8,
+        "ticks": 27
+      }
+    ]
+  }
+}

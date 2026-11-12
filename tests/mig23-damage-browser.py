@@ -90,7 +90,19 @@ window.__tailDamage={get loaded(){return aircraft?.sourceLoaded},get started(){r
    for(let i=0;i<60;i++)sim.step(1/120);
    sync();damageEffects.update(read('get_state',104),.05,camera,sim,readSystems(sim));
    report.cases.at(-1).nativeRenderedBodies=damageEffects.stats.parts;
-   report.captures['wreck-'+part]=capture([10,4,17],[0,.5,4]);
+   const nativePiece=scene.getObjectByName('detached '+part+':'+body[2]);
+   if(!nativePiece)throw Error('Missing native visual body '+part);
+   const pieceCamera=camera.clone();
+   pieceCamera.position.copy(nativePiece.position).add(new T.Vector3(4,2,6).applyQuaternion(nativePiece.quaternion));
+   pieceCamera.up.copy(new T.Vector3(0,1,0).applyQuaternion(nativePiece.quaternion));
+   pieceCamera.lookAt(nativePiece.position);pieceCamera.fov=35;pieceCamera.updateProjectionMatrix();pieceCamera.updateMatrixWorld();
+   renderer.render(scene,pieceCamera);const lit=renderer.domElement.toDataURL();
+   const submitted=renderer.info.render.triangles;
+   nativePiece.visible=false;renderer.render(scene,pieceCamera);
+   const dark=renderer.domElement.toDataURL(),without=renderer.info.render.triangles;
+   nativePiece.visible=true;
+   report.cases.at(-1).renderedPiece={visiblePixels:lit!==dark,submittedTriangles:submitted-without};
+   report.captures['wreck-'+part]=lit.split(',')[1];
    damageEffects.reset();
   }
   prepare();sim.damage_part(29,1);sim.step(1/120);sync();
@@ -168,7 +180,7 @@ with sync_playwright() as p:
     (out / 'damage.json').write_text(json.dumps(report, indent=2) + '\n')
     assert not errors, errors
     if expected:
-        assert all(c['health'] < .08 and not c['sourceVisible'] and c['registered'] and c['triangles'] > 10 and c['mappedMeshes'] > 0 for c in report['cases']), report
+        assert all(c['health'] < .08 and not c['sourceVisible'] and c['registered'] and c['triangles'] > 10 and c['mappedMeshes'] > 0 and c['renderedPiece']['visiblePixels'] and c['renderedPiece']['submittedTriangles']>=c['triangles'] for c in report['cases']), report
         assert not any(c['visible'] for c in report['parentLoss']), report
         assert not any(c['visible'] for c in report['fuselageLoss']), report
         assert all(report['emitterRefresh'].values()), report
