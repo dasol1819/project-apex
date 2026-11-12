@@ -7,7 +7,7 @@ import {parseMig23Glb} from './mig23mld-glb.js?v=4';
 
 const SOURCE='./assets/fa18/F18_Hornet_optimized.glb';
 const LENGTH_M=16.8, SPAN_M=12.3;
-const HIDDEN_STORES=/^(?:Plane|2K_Bomb|AIM-9_Missile|AIM-9_Launcher|Missile|MultipleEjectorRack|Pylon|Fuel_Tank_External)(?:[.]\\d+)?$/;
+const HIDDEN_STORES=/^(?:Plane|2K_Bomb|AIM-9_Missile|AIM-9_Launcher|Missile|MultipleEjectorRack|Pylon|Fuel_Tank_External)(?:[.][0-9]+)?$/;
 const GEAR_PART=/^(?:Forward_Landing_Gear|Rear_Landing_Gear|Rear_Tires|Forward_Gear_Doors|Rear_Main_Gear_Doors|Rear_Secondary_Gear_Doors|Main_Forward_Gear_Door|Secondary_Forward_Gear_Door)/;
 let sourceBuffer;
 function loadSource(){
