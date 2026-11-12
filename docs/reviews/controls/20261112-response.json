@@ -1,0 +1,249 @@
+{
+  "result": "PASS",
+  "staticCases": 84,
+  "manualCases": 64,
+  "comparison": [
+    {
+      "type": 0,
+      "before": {
+        "settle": 5.533333333333333,
+        "tail": 0.0016302164128071913,
+        "peakG": 1.7734711984468639
+      },
+      "after": {
+        "settle": 4.108333333333333,
+        "tail": 0.005301946155408695,
+        "peakG": 4.028005369386753
+      }
+    },
+    {
+      "type": 4,
+      "before": {
+        "settle": 6.016666666666667,
+        "tail": 0.0013918100451411957,
+        "peakG": 1.5307522062039065
+      },
+      "after": {
+        "settle": 4.425,
+        "tail": 0.015307880569879353,
+        "peakG": 3.1809019118442645
+      }
+    },
+    {
+      "type": 13,
+      "before": {
+        "settle": 19.991666666666667,
+        "tail": 7.410957015889472,
+        "peakG": 1.6993851588613142
+      },
+      "after": {
+        "settle": 4.766666666666667,
+        "tail": 0.016515339245250466,
+        "peakG": 3.782564248415554
+      }
+    },
+    {
+      "type": 14,
+      "before": {
+        "settle": 19.991666666666667,
+        "tail": 12.209103557999464,
+        "peakG": 1.8010592557318479
+      },
+      "after": {
+        "settle": 5.991666666666666,
+        "tail": 0.011088425305142762,
+        "peakG": 4.149280565253476
+      }
+    },
+    {
+      "type": 15,
+      "before": {
+        "settle": 7.1499999999999995,
+        "tail": 0.0017737999371818694,
+        "peakG": 1.94217229122572
+      },
+      "after": {
+        "settle": 3.5,
+        "tail": 0.002115858209589133,
+        "peakG": 4.718936195257277
+      }
+    },
+    {
+      "type": 16,
+      "before": {
+        "settle": 5.766666666666667,
+        "tail": 0.0012827586040621613,
+        "peakG": 1.7034339904173608
+      },
+      "after": {
+        "settle": 4.266666666666667,
+        "tail": 0.009736722028608218,
+        "peakG": 4.1284011525108975
+      }
+    }
+  ],
+  "moving": [
+    {
+      "type": 0,
+      "hz": 20,
+      "before": 15.696469400951802,
+      "after": 4.7532632998237885
+    },
+    {
+      "type": 0,
+      "hz": 30,
+      "before": 8.124150584643491,
+      "after": 4.783427790493547
+    },
+    {
+      "type": 0,
+      "hz": 60,
+      "before": 8.22992468232179,
+      "after": 4.781235755818487
+    },
+    {
+      "type": 0,
+      "hz": 120,
+      "before": 6.981622268937179,
+      "after": 4.7932028572314085
+    },
+    {
+      "type": 4,
+      "hz": 20,
+      "before": 13.672469523686798,
+      "after": 3.430657943177572
+    },
+    {
+      "type": 4,
+      "hz": 30,
+      "before": 3.5886862904756063,
+      "after": 3.4569565552414447
+    },
+    {
+      "type": 4,
+      "hz": 60,
+      "before": 3.649230722386056,
+      "after": 3.4716300514139204
+    },
+    {
+      "type": 4,
+      "hz": 120,
+      "before": 3.688636075455965,
+      "after": 3.480980059726154
+    },
+    {
+      "type": 13,
+      "hz": 20,
+      "before": 13.044494409717151,
+      "after": 3.7171996792721305
+    },
+    {
+      "type": 13,
+      "hz": 30,
+      "before": 18.16734722151858,
+      "after": 3.7020804621302976
+    },
+    {
+      "type": 13,
+      "hz": 60,
+      "before": 18.97040462522659,
+      "after": 3.6989719147479656
+    },
+    {
+      "type": 13,
+      "hz": 120,
+      "before": 19.8743939593304,
+      "after": 3.7020404939921328
+    },
+    {
+      "type": 14,
+      "hz": 20,
+      "before": 18.66448575776627,
+      "after": 6.299389687622111
+    },
+    {
+      "type": 14,
+      "hz": 30,
+      "before": 11.34565189629661,
+      "after": 6.33752858481259
+    },
+    {
+      "type": 14,
+      "hz": 60,
+      "before": 11.516707284384653,
+      "after": 6.3633143553570655
+    },
+    {
+      "type": 14,
+      "hz": 120,
+      "before": 11.629277139924397,
+      "after": 6.381076505609926
+    },
+    {
+      "type": 15,
+      "hz": 20,
+      "before": 16.102679214658988,
+      "after": 7.252771991889304
+    },
+    {
+      "type": 15,
+      "hz": 30,
+      "before": 13.004324955550905,
+      "after": 7.213836713566339
+    },
+    {
+      "type": 15,
+      "hz": 60,
+      "before": 13.083490283123338,
+      "after": 7.21533798858909
+    },
+    {
+      "type": 15,
+      "hz": 120,
+      "before": 13.127514563795623,
+      "after": 7.204160547123595
+    },
+    {
+      "type": 16,
+      "hz": 20,
+      "before": 14.154022475855292,
+      "after": 6.45648798484558
+    },
+    {
+      "type": 16,
+      "hz": 30,
+      "before": 6.622681362882983,
+      "after": 6.406326429535043
+    },
+    {
+      "type": 16,
+      "hz": 60,
+      "before": 6.894564351595339,
+      "after": 6.407963049205971
+    },
+    {
+      "type": 16,
+      "hz": 120,
+      "before": 6.907593594157247,
+      "after": 6.423217532459212
+    }
+  ],
+  "peakCameraStep": 1.5132738401714718,
+  "conditions": {
+    "altitudeM": 4500,
+    "initialTASms": 220,
+    "throttle": 0.85,
+    "physicsHz": 120,
+    "staticSeconds": 20,
+    "staticToleranceDegrees": 1,
+    "staticTailSeconds": 2,
+    "movingSeconds": 30,
+    "movingWarmupSeconds": 10,
+    "movingHeading": "20 deg * sin(0.6 * t)",
+    "movingPitch": "6 deg * sin(0.45 * t)",
+    "baseline": "native direction solver without player response tuning or target resampling",
+    "environment": "Node 24, actual native WASM, fixed simulation clock; input frequencies are replay delivery rates, not measured hardware FPS"
+  },
+  "baselineCameraPeakStep": 9.9202183257391,
+  "cameraReplay": "0.2 degree vertical target steps at 60 Hz through 360 degrees; maximum consecutive camera quaternion angle"
+}

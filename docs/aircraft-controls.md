@@ -63,3 +63,47 @@ Validation:
 
 The Pages workflow rebuilds the compiled module from source. The committed
 payload and its encoded original archive remain unchanged.
+
+## Measured response correction (2026-11-12)
+
+The initial axis-ownership checks did not establish handling quality. The new
+`tests/pilot-response.mjs` measures actual aircraft attitude over time, including
+sustained acquisition, moving targets, input delivery frequency and camera
+continuity. Results and initial conditions are recorded in
+`docs/reviews/controls/20261112-response.json`.
+
+Player direction aim now opts into `set_instructor_response(1)`. For stationary
+or slowly moving targets, its bank-cone allowance decreases continuously with
+angular error instead of retaining a sideslip-blocked cone until after arrival.
+It blends back to the existing predictive solver as target angular velocity
+increases. Bomber and propeller cone profiles are retained. Su-35/MiG-29 receive
+additional sideslip feedback before native FBW; held manual yaw still replaces
+the assisted command exactly. The opt-in defaults to off, clears on respawn/type
+changes and is never requested by AI. Direct controls remain unchanged.
+
+Pointer targets are resampled spherically on the 120 Hz physics clock with a
+20 ms time constant. This prevents render-sized input batches from alternating
+between a jump and zero target velocity across catch-up ticks. The visible
+reticle and keyboard/stick commands remain immediate. Reset/release clears the
+resampling history. The chase camera now damps a rotation on the unit sphere and
+transports its up vector, avoiding Euler-heading/world-up flips at the poles.
+
+For a 20 degree horizontal target at 220 m/s TAS and 4,500 m, time to enter and
+remain inside a 1 degree error band changed as follows (seconds):
+
+| Aircraft | Before | After |
+| --- | ---: | ---: |
+| F-22A | 5.53 | 4.11 |
+| F-14D | 6.02 | 4.43 |
+| MiG-15bis | 7.15 | 3.50 |
+| MiG-23MLD | 5.77 | 4.27 |
+
+Su-35/MiG-29 previously failed to remain inside that band within 20 seconds;
+they now settle in 4.77/5.99 seconds, with final two-second mean errors below
+0.02 degrees. Native actuator rates, G/AoA protections, aerodynamic forces,
+damage, weapons and the MiG-23 sweep schedule are retained.
+
+Validation covers 84 static target cases across all 14 jets, 64 assisted/manual
+ownership combinations, and moving-target replays at 20/30/60/120 Hz for six
+aircraft. Those replay rates are not hardware FPS measurements. Desktop/mobile
+UI interaction is checked separately by the Chromium workflow.
