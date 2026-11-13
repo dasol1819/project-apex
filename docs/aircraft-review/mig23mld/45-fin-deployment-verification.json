@@ -1,0 +1,213 @@
+{
+  "checkedAt": "2026-11-14T03:09:13.912128+09:00",
+  "commit": "2119c070a46b42eb1d1004eb44715c2060d65739",
+  "files": [
+    {
+      "file": "index.html",
+      "url": "http://project-apex.kro.kr/?screen=tree",
+      "status": 200,
+      "bytes": 82303,
+      "sha256": "de354fa238afcc892749eb3533fef5b26fbd633ca5be32f6eee9f8ed462d5a20",
+      "expectedSha256": "de354fa238afcc892749eb3533fef5b26fbd633ca5be32f6eee9f8ed462d5a20",
+      "matches": true,
+      "seconds": 6.004
+    },
+    {
+      "file": "app.js",
+      "url": "http://project-apex.kro.kr/app.js?v=instructor-response-2-fin-damage-1",
+      "status": 200,
+      "bytes": 121701,
+      "sha256": "347cc20e9a96b90481397449bfb923fb57b2eacf331e383475ee1906f4d84733",
+      "expectedSha256": "347cc20e9a96b90481397449bfb923fb57b2eacf331e383475ee1906f4d84733",
+      "matches": true,
+      "seconds": 5.997
+    },
+    {
+      "file": "aircraft.js",
+      "url": "http://project-apex.kro.kr/aircraft.js?v=mig23mld-14",
+      "status": 200,
+      "bytes": 56586,
+      "sha256": "c21157bb508d7340749d016a85203718d36438549d76b39578a5a62b4d3934df",
+      "expectedSha256": "c21157bb508d7340749d016a85203718d36438549d76b39578a5a62b4d3934df",
+      "matches": true,
+      "seconds": 5.987
+    },
+    {
+      "file": "mig23mld-game.js",
+      "url": "http://project-apex.kro.kr/mig23mld-game.js?v=14",
+      "status": 200,
+      "bytes": 19462,
+      "sha256": "f8dff2308de67cfe1e01b0d1076892e0206e9e6dfe6db36f173a6e6fe107d6fc",
+      "expectedSha256": "f8dff2308de67cfe1e01b0d1076892e0206e9e6dfe6db36f173a6e6fe107d6fc",
+      "matches": true,
+      "seconds": 5.97
+    },
+    {
+      "file": "mig23mld-fin.js",
+      "url": "http://project-apex.kro.kr/mig23mld-fin.js",
+      "status": 200,
+      "bytes": 3201,
+      "sha256": "62e1e65f760049feec4df7d5a171dae5b7bcf39f0d109da870450f65ff20daab",
+      "expectedSha256": "62e1e65f760049feec4df7d5a171dae5b7bcf39f0d109da870450f65ff20daab",
+      "matches": true,
+      "seconds": 5.763
+    },
+    {
+      "file": "mig23mld-fin-data.js",
+      "url": "http://project-apex.kro.kr/mig23mld-fin-data.js",
+      "status": 200,
+      "bytes": 4120,
+      "sha256": "9e134e7c2a80099bd5df2a86f00c33049f9273f0a72d00b23b13dc3b094331e1",
+      "expectedSha256": "9e134e7c2a80099bd5df2a86f00c33049f9273f0a72d00b23b13dc3b094331e1",
+      "matches": true,
+      "seconds": 5.796
+    },
+    {
+      "file": "mig23mld-glb.js",
+      "url": "http://project-apex.kro.kr/mig23mld-glb.js?v=3",
+      "status": 200,
+      "bytes": 8893,
+      "sha256": "32456164daa4b7e55fc1873c86c9585a31bdd4150984733ccc4915cc4ec9b6df",
+      "expectedSha256": "32456164daa4b7e55fc1873c86c9585a31bdd4150984733ccc4915cc4ec9b6df",
+      "matches": true,
+      "seconds": 5.741
+    },
+    {
+      "file": "damage-effects.js",
+      "url": "http://project-apex.kro.kr/damage-effects.js?v=source-parts-2",
+      "status": 200,
+      "bytes": 17065,
+      "sha256": "2c269d2b6f7a33046bbb81e45fad0bf33dcf3c04ab2f21288663eb18fa87ccf3",
+      "expectedSha256": "2c269d2b6f7a33046bbb81e45fad0bf33dcf3c04ab2f21288663eb18fa87ccf3",
+      "matches": true,
+      "seconds": 5.739
+    },
+    {
+      "file": "wreckage-mesh.js",
+      "url": "http://project-apex.kro.kr/wreckage-mesh.js?v=posed-morph-1",
+      "status": 200,
+      "bytes": 7821,
+      "sha256": "2e9137318f03e0cf0f78e23060b454ade33cbc8fbd5ee59ba6c4eba9224fe22c",
+      "expectedSha256": "2e9137318f03e0cf0f78e23060b454ade33cbc8fbd5ee59ba6c4eba9224fe22c",
+      "matches": true,
+      "seconds": 5.311
+    },
+    {
+      "file": "part-emitter.js",
+      "url": "http://project-apex.kro.kr/part-emitter.js?v=world-scale-1",
+      "status": 200,
+      "bytes": 5434,
+      "sha256": "b9ce46b0a8bd6214899595fb715064cb0fe8218575a25773f5d6986b4dedf670",
+      "expectedSha256": "b9ce46b0a8bd6214899595fb715064cb0fe8218575a25773f5d6986b4dedf670",
+      "matches": true,
+      "seconds": 5.162
+    },
+    {
+      "file": "aircraft-catalog.js",
+      "url": "http://project-apex.kro.kr/aircraft-catalog.js",
+      "status": 200,
+      "bytes": 12584,
+      "sha256": "77bea6f245158d1a47f1bf46f4ea4e6fd0b8370e0d58ede42cb3fde58c865c80",
+      "expectedSha256": "77bea6f245158d1a47f1bf46f4ea4e6fd0b8370e0d58ede42cb3fde58c865c80",
+      "matches": true,
+      "seconds": 5.158
+    },
+    {
+      "file": "flight.wasm",
+      "url": "http://project-apex.kro.kr/flight.wasm?v=instructor-response-2-fin-damage-1-missiles-1",
+      "status": 200,
+      "bytes": 344687,
+      "sha256": "ac0f479cb659f61c309277782834306aa9753c03fc58ce74dbefbeabd1fbe007",
+      "expectedSha256": "ac0f479cb659f61c309277782834306aa9753c03fc58ce74dbefbeabd1fbe007",
+      "matches": true,
+      "seconds": 5.152
+    },
+    {
+      "file": "assets/mig23mld/Mig-23.glb",
+      "url": "http://project-apex.kro.kr/assets/mig23mld/Mig-23.glb?v=3",
+      "status": 200,
+      "bytes": 22593404,
+      "sha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+      "expectedSha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+      "matches": true,
+      "seconds": 6.24
+    }
+  ],
+  "allFilesMatch": true,
+  "https": {
+    "status": 503,
+    "error": "HTTP Error 503: Service Unavailable",
+    "scope": "observed through inherited environment proxy; HTTPS unverified, not a global-outage diagnosis"
+  },
+  "transport": "Normal inherited proxy and CA. Certificate checks enabled; no local asset replacement or alternate network path.",
+  "schemaVersion": 1,
+  "releaseMerge": "https://github.com/dasol1819/project-apex/commit/2119c070a46b42eb1d1004eb44715c2060d65739",
+  "pullRequest": "https://github.com/dasol1819/project-apex/pull/39",
+  "pages": {
+    "run": "https://github.com/dasol1819/project-apex/actions/runs/43400215098",
+    "status": "success",
+    "verifiedFromGitHubOn": "2026-11-14 Asia/Seoul"
+  },
+  "finalCodeCi": {
+    "head": "683f461ceed07ad87eb41d912e0ac7d158a38413",
+    "allFive": "success",
+    "runs": [
+      43397829566,
+      43397829602,
+      43397829698,
+      43397829617,
+      43397829734
+    ]
+  },
+  "freshRecovery": {
+    "source": "fresh main clone at8ccdc445; source release2119c070, not prior runtime files",
+    "manifest": "regenerated, no manifest diff",
+    "restore": "passed",
+    "nativeBytes": 344687,
+    "nativeSha256": "ac0f479cb659f61c309277782834306aa9753c03fc58ce74dbefbeabd1fbe007",
+    "originalGlbSha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+    "checks": [
+      "C++17 fin regeneration --check PASS",
+      "original topology/attributes conservation PASS",
+      "native fin body/profile PASS",
+      "native gun/fleet delivery and actual source-triangle ray contact PASS",
+      "queue/catalog reconciliation PASS"
+    ]
+  },
+  "productionRenderer": {
+    "status": "not_verified",
+    "firstAttempt": {
+      "navigationTimeoutMs": 120000,
+      "result": "Page.goto timed out before DOMContentLoaded; no actual game frame certified"
+    },
+    "transportDiagnostic": {
+      "rootHttpStatus": 200,
+      "requestsObserved": 60,
+      "responsesObserved": 14,
+      "responseStatuses": [
+        200
+      ],
+      "observation": "root and module responses succeeded; module graph was still loading after the20second diagnostic wait"
+    },
+    "extendedAttempt": {
+      "navigationTimeoutMs": 300000,
+      "result": "tool reported network approval was cancelled before a decision was returned; no completed fin/async/preservation/tail renderer report; pending processes no longer present"
+    },
+    "nextStep": "Resume QA branch using normal approved inherited-proxy execution. Run native fin, cached fin arrival and preservation suites, obtain current photo-camera capture, then record actual results. Do not count numeric/byte checks as production renderer success."
+  },
+  "reproduction": {
+    "branch": "https://github.com/dasol1819/project-apex/tree/mig23mld-fin-verify-20261114",
+    "scripts": [
+      "scripts/verify-mig23-fin-deployment.py",
+      "scripts/review-production-response-proxy.py"
+    ],
+    "navigationBudgetEnvironment": "APEX_TEST_NAVIGATION_TIMEOUT_MS=300000",
+    "scope": "QA-only source checkpoint. Byte verifier executed successfully; navigation-budget edit compiled, its renderer execution remains pending. No production application bytes changed."
+  },
+  "limits": [
+    "MiG-23MLD remains in_progress, not reviewed.",
+    "HTTPS503 observed through this environment; domain/certificate cause is not newly established.",
+    "Exact-MLD fin-tip/rudder/intake and remaining wing/exhaust/plume/gear geometry review remain open.",
+    "The13 byte matches do not establish successful direct browser navigation or hardware FPS/VRAM."
+  ]
+}

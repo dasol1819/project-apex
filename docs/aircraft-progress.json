@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-fin-verify-20261114",
-    "startedAt": "2026-11-13T18:06:45.000Z",
-    "expiresAt": "2026-11-13T19:56:45.000Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -980,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Continue the SAME MiG-23MLD: original wing/control/fuselage/gear damage partitions without duplicated whole-wing child bodies; match uncovered intake/overhead/rear views, verify internal sleeve/petals/fan and active R-35 plume, actuator/taxi clearances, cold-download/abort and other pre-load control histories. Keep in_progress.",
+      "nextStep": "Resume merged fin production verification from mig23mld-fin-verify-20261114; actual operating-domain renders are pending normal approved network execution. Then continue same MiG-23MLD original wing/control/fuselage/gear partitions and exact-variant photo/camera, internal nozzle/plume and actuator/taxi review. Keep in_progress.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1117,7 +1112,8 @@
           "Additional native ordering audit: a 352-triangle unmapped fallback body persisted after cached original arrival. Current effect refreshes that visual once to the original mapped 288-triangle nozzle, with half aperture, native serialized state/identity/position/quaternion unchanged, one actor, stable ten updates and clean reset. Test uses an effects-instance-specific HTTP-only getter; an earlier name-based observation selected another player body and is excluded. No debug API shipped. Eight local Chromium suites now pass, including this cached-arrival case; cold-download/abort and other pre-load control histories remain unverified. Final exact-head revalidation required after this renderer correction.",
           "2026-11-13 Seoul final publication: final head ba31d2c passed all five CI workflows (43219280004 native/damage, 43219280052 preview, 43219279942 tree, 43219279943 mixed controls, 43219279970 F/A-18B). PR37 merged as f77fcf3; Pages43316745640 success. Fresh GitHub clone/manifest/restore/native rebuild reproduces f5e16f26, 344687 B. Ten deployed HTTP files match validated bytes. Actual production-response Chromium nozzle and cached-source-arrival suites both exit0 with no page errors: 288-triangle mapped native bodies in dry/half/wet states; 352-triangle fallback replaced once, half aperture/native state/pose/identity unchanged, stable reuse/reset. QA proxy arrangement and per-file costs recorded in report38. HTTPS still503; no HTTPS verification or whole-aircraft approval claimed. Own lease released; preserve other aircraft/branches and existing fleet surface review.",
           "2026-11-13 source fin checkpoint: C++ original topology partition673 skin triangles +299 root/hinge fitting triangles; whole 43089-triangle source positions/normals/UVs conserved; vertices71214 and attribute/index bytes2537382 unchanged. Native type16 part5 source-fit box; baseline comparison510 damage fixtures preserves all other vectors. Real gun shot baseline misses/new part5 health1->0.8; ray intersects original skin. Initial floating lower fairing detected in actual renderer and corrected. Full regression/CI/deployment pending; not reviewed.",
-          "Final local fin validation: original 972 mapped triangles,5 mapped meshes, parent/rudder-only/root fairing loss/reset, native follow0error and poseerror9.1e-13m; cached and cold-source replacement1746->972 keep native serialized bodies/pose/identity,2 actors and clean reset. Eight same-tick cameras:7 pixel-identical,1 close fin/rudder seam pixel changes where ray depths differ3.846micrometres; disclosed in42, no full-frame bit-identity claim. Existing13native/model suites plus11 browser scripts (12 variants) pass. Initial7f3f1e6CI5success; final supplemental CI/deployment pending."
+          "Final local fin validation: original 972 mapped triangles,5 mapped meshes, parent/rudder-only/root fairing loss/reset, native follow0error and poseerror9.1e-13m; cached and cold-source replacement1746->972 keep native serialized bodies/pose/identity,2 actors and clean reset. Eight same-tick cameras:7 pixel-identical,1 close fin/rudder seam pixel changes where ray depths differ3.846micrometres; disclosed in42, no full-frame bit-identity claim. Existing13native/model suites plus11 browser scripts (12 variants) pass. Initial7f3f1e6CI5success; final supplemental CI/deployment pending.",
+          "2026-11-14 Seoul: PR #39 final head683f461 passed all five CI workflows; merge2119c070 Pages43400215098 succeeded. Fresh clone, manifest/restore and native rebuild reproduce344,687 bytes, SHA ac0f479c. Fin C++ topology/attributes/native profile/gun contact pass. All13 deployed HTTP files match23,277,261 bytes, including original GLB. HTTPS503. Production renderer NOT verified:120-second module navigation timeout; transport probe observed200 document/module responses; extended attempt execution network approval cancelled before decision, with no completed fin/async/preservation/tail report. QA source retained for normal approved execution; no bypass/reset API. Counts unchanged; own lease released."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1187,7 +1183,13 @@
         "finDamageCommit": "https://github.com/dasol1819/project-apex/commit/7f3f1e655680afd328aa63682fc4c9df0ceeb8c8",
         "finDamagePullRequest": "https://github.com/dasol1819/project-apex/pull/39",
         "finDamageValidation": "docs/aircraft-review/mig23mld/42-fin-damage-validation.json",
-        "finDamageOverlayRecipe": "docs/aircraft-review/mig23mld/43-fin-private-overlap-recipe.json"
+        "finDamageOverlayRecipe": "docs/aircraft-review/mig23mld/43-fin-private-overlap-recipe.json",
+        "finDamageFinalCommit": "https://github.com/dasol1819/project-apex/commit/683f461ceed07ad87eb41d912e0ac7d158a38413",
+        "finDamagePublishedCommit": "https://github.com/dasol1819/project-apex/commit/2119c070a46b42eb1d1004eb44715c2060d65739",
+        "finDamagePages": "https://github.com/dasol1819/project-apex/actions/runs/43400215098",
+        "finDamageDeployment": "docs/aircraft-review/mig23mld/45-fin-deployment-verification.json",
+        "finDamageVerificationBranch": "mig23mld-fin-verify-20261114",
+        "finDamageVerificationCheckpoint": "https://github.com/dasol1819/project-apex/commit/a7dfb65ccf60b6449b556a7389cca2e9b382557b"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -2257,10 +2259,10 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-fin-verify-20261114",
-    "state": "merged-fin-production-verification",
+    "state": "fin-http-published-production-render-pending-network",
     "scope": "Resume MiG-23MLD original fixed-fin source partition/native damage; preserve active PR38 control work.",
-    "nextStep": "Resume unfinished post-merge verification from GitHub: PR39 final683f461 CI5success, merge2119c070 Pages43400215098 success. Fresh restore/native build; compare production bytes and actual native fin/cached-arrival renderer, checkpoint/release lease. Preserve active PR38 and existing fleet review. No aircraft reviewed status promotion.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/2119c070a46b42eb1d1004eb44715c2060d65739",
+    "nextStep": "Resume mig23mld-fin-verify-20261114 from GitHub. PR #39 final head683f461 passed five CI workflows; Pages43400215098 succeeded. Fresh native rebuild ac0f479c and13 HTTP files match. Production renderer is NOT verified:120-second navigation timeout, then execution network approval cancelled before a decision during the300-second attempt. Retry fin/cached-arrival/preservation/tail-camera suites with normal approved network execution; record actual renders and photo overlap. Do not bypass limits or mark reviewed. Preserve PR38 and the initial fleet review.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/a7dfb65ccf60b6449b556a7389cca2e9b382557b",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/39",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
     "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43400215098",
