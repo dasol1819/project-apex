@@ -6,6 +6,7 @@ on:
       - 'scripts/native/patch-instructor.mjs'
       - 'web/app.js'
       - 'web/aim-input.js'
+      - 'web/maneuver-stick.js'
       - '.github/workflows/mig23-native-flight.yml'
       - 'scripts/fit-mig23-airbrakes.cpp'
       - 'scripts/fit-mig23-tail-bounds.cpp'

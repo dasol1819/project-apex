@@ -1118,16 +1118,16 @@
 <b>03</b>
 <span>
 <strong>출격</strong>
-<p>PC에서는 게임 화면을 클릭해 마우스를 고정하고 움직여 방향을 조준합니다. Esc는 마우스 해제와 일시정지, P나 계속 버튼은 재개입니다. 터치는 화면 드래그로 조준합니다. 키보드와 스틱은 입력하는 동안만 피치·롤을 직접 조종합니다. 스틱을 움직인 크기만큼 반응하며, 입력을 놓으면 현재 기수 방향에서 조준 보조가 이어집니다. 따로 전환할 필요가 없습니다.</p>
+<p>PC에서는 게임 화면을 클릭해 마우스를 고정하고 움직여 방향을 조준합니다. Esc는 마우스 해제와 일시정지, P나 계속 버튼은 재개입니다. 터치는 화면 드래그로 조준합니다. 보조 조종에서 스틱을 좌우로 움직이면 경사를 유지하며 선회하고, 상하로 움직이면 기수를 조절합니다. 키보드는 입력하는 동안 해당 축을 직접 조종합니다. 직접 조종 모드는 스틱으로 피치와 롤을 조종합니다.</p>
 </span>
 </div>
 </div>
 </section>
 <section id="guide-controls" data-guide-panel="controls" role="tabpanel" hidden=""><div class="shortcut-toolbar"><input id="pc-key-search" type="search" placeholder="기능 또는 키 검색" aria-label="단축키 검색"><button id="pc-keys-reset">기본 키 복원</button></div><p id="pc-key-note">키 버튼을 눌러 변경 · 조합 키는 Shift 사용 · 브라우저 기본 Ctrl/Alt 키는 유지됩니다.</p><div id="pc-shortcut-list" class="shortcut-list"></div><details class="legacy-control-guide"><summary>마우스 · 터치 · 게임패드 조작</summary>
 <div class="keygrid">
-<span>직접 피치 / 롤 조종</span>
+<span>기수 · 선회 조종</span>
 <span>키보드 / 화면 스틱 / 게임패드 왼쪽 스틱</span><span>방향 조준</span><span>마우스 이동 / 화면 드래그 · Home 복귀</span>
-<span>방향 조준 / 직접 조종</span>
+<span>보조 조종 / 직접 조종</span>
 <span>
 <kbd>V</kbd> / 설정</span>
 <span>기수 올리기 / 내리기</span>
@@ -1316,11 +1316,11 @@
 <label class="setting-row">
 <span class="setting-copy">
 <b>조작 방식</b>
-<small>방향 조준 또는 직접 조종 · V로 전환</small>
+<small>보조 조종 또는 직접 조종 · V로 전환</small>
 </span>
 <span class="setting-control">
 <select id="control-mode">
-<option value="aim">방향 조준 · 마우스 / 터치</option>
+<option value="aim">보조 조종 · 마우스 / 스틱</option>
 <option value="manual">직접 조종 · 키보드 / 스틱</option>
 </select>
 </span>
@@ -1341,7 +1341,7 @@
 <label class="setting-row"><span class="setting-copy"><b>스틱 중앙 정밀도</b><small>높일수록 중앙은 부드럽게 · 최대 조종량 유지</small></span><span class="setting-control range-field"><input type="range" id="stick-curve" min="10" max="30" value="15"><output id="stick-curve-out">1.5</output></span></label>
 <label class="setting-row"><span class="setting-copy"><b>스틱 응답</b><small>100%는 즉시 반응 · 낮추면 입력과 복귀가 부드러워집니다</small></span><span class="setting-control range-field"><input type="range" id="stick-response" min="10" max="100" value="100"><output id="stick-response-out">100%</output></span></label>
 <label class="setting-row"><span class="setting-copy"><b>수동 입력을 놓았을 때</b><small>입력 중 조준점을 옮기면 새 조준점을 유지합니다</small></span><span class="setting-control"><select id="aim-handoff"><option value="heading">현재 기수 방향에서 이어가기</option><option value="target">기존 조준점으로 돌아가기</option></select></span></label>
-<div class="setting-explanation">PC는 화면 클릭으로 마우스를 고정한 뒤 이동으로 방향을 지정합니다. Esc로 해제·일시정지합니다. 터치는 화면 드래그로 조준합니다. 키보드·터치 스틱·게임패드는 입력한 축만 직접 조종하고 나머지 축에는 조준 보조가 이어집니다. 키보드의 반대 방향 키를 함께 누르면 해당 입력이 상쇄됩니다. FBW를 끄면 수동 조종을 사용합니다.</div>
+<div class="setting-explanation">PC는 화면 클릭으로 마우스를 고정한 뒤 이동으로 방향을 지정합니다. Esc로 해제·일시정지합니다. 터치는 화면 드래그로 조준합니다. 보조 조종의 스틱은 좌우 선회와 기수 조절을 함께 보조합니다. 키보드 조작 중에는 이전 조준점으로 되돌리지 않습니다. 직접 조종 모드는 스틱의 피치·롤 입력을 그대로 사용합니다. 키보드의 반대 방향 키를 함께 누르면 해당 입력이 상쇄됩니다. FBW를 끄면 수동 조종을 사용합니다.</div>
 </section>
 <section id="settings-display" role="tabpanel" data-settings-panel="display" hidden="">
 <h3>화면·단위</h3>
@@ -1503,7 +1503,7 @@
  <div id="toast" role="status" aria-live="polite">
 </div>
  <section id="theatre-tour" hidden aria-label="스탈린그라드 전장 둘러보기"><div><span id="theatre-tour-index">01 / 16</span><h2 id="theatre-tour-name">스탈린그라드</h2><p id="theatre-tour-note">1942년 가을</p></div><div class="theatre-tour-actions"><button id="theatre-tour-prev" aria-label="이전 지점">←</button><button id="theatre-tour-next" aria-label="다음 지점">→</button><button id="theatre-tour-close">출격 준비로 돌아가기</button></div></section>
-<script type="module" src="app.js?v=instructor-response-2-nozzle-damage-1">
+<script type="module" src="app.js?v=maneuver-stick-1">
 </script>
 
 <dialog id="graphics-test-dialog" class="graphics-test-overlay" aria-labelledby="graphics-test-heading"><div class="graphics-test-overlay-card"><p class="section-kicker">PROJECT: APEX / PERFORMANCE TRIAL</p><h2 id="graphics-test-heading">그래픽 성능 측정</h2><p id="graphics-test-stage" role="status" aria-live="polite">시험 편대 준비 중</p><progress id="graphics-test-progress" max="1" value="0" aria-label="그래픽 성능 검사 진행률"></progress><p>실제 렌더링과 비행 물리를 측정하고 있습니다.</p><button id="graphics-test-cancel" class="secondary">검사 취소</button></div></dialog></body>

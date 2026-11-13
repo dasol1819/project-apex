@@ -6,10 +6,12 @@ on:
       - 'web/index.html'
       - 'web/aim-input.js'
       - 'web/pilot-*.js'
+      - 'web/maneuver-stick.js'
       - 'scripts/native/build-mig23.mjs'
       - 'scripts/native/patch-instructor.mjs'
       - 'tests/pilot-instructor*'
       - 'tests/pilot-response.mjs'
+      - 'tests/maneuver-stick.mjs'
       - '.github/workflows/pilot-instructor.yml'
 permissions:
   contents: read
@@ -34,6 +36,7 @@ jobs:
           node --check web/app.js
           node tests/pilot-instructor.mjs
           node tests/pilot-response.mjs > /tmp/pilot-response-results.json
+          node tests/maneuver-stick.mjs > /tmp/maneuver-stick-results.json
           node tests/mig23-native.mjs
           node tests/mig23-autosweep.mjs
       - name: Chromium desktop keyboard and mobile touch controls
@@ -51,4 +54,5 @@ jobs:
           path: |
             /tmp/pilot-instructor-browser
             /tmp/pilot-response-results.json
+            /tmp/maneuver-stick-results.json
           if-no-files-found: ignore
