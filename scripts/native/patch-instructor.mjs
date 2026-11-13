@@ -31,6 +31,29 @@ export function patchInstructor(wat,region){
             local.set 70
           end
           local.get 66`);
+ // A maneuver stick supplies a normal-load command to the existing C++ FBW
+ // loop. Select that loop explicitly instead of the automatic pitch-rate
+ // blend. The same native load/AoA protections, force model and actuators run.
+ const blend='    f64.store offset=1110072';
+ if(body.split(blend).length!==2)throw Error('FBW load/rate blend boundary changed');
+ body=body.replace(blend,blend+`
+    i32.const ${at+8}
+    i32.load
+    i32.const 0
+    i32.load8_u offset=1133345
+    i32.and
+    i32.const 0
+    i32.load offset=1079096
+    i32.and
+    i32.const 0
+    i32.load offset=1110132
+    i32.eqz
+    i32.and
+    if
+      i32.const 0
+      f64.const 0
+      f64.store offset=1110072
+    end`);
  const load='    i32.const 0\n    f64.load offset=1133352\n    local.set 0\n    block';
  if(!body.includes(load))throw Error('Pilot input boundary changed');
  // Isolate the direction solver from the held manual axes. The raw commands
@@ -107,7 +130,7 @@ export function patchInstructor(wat,region){
   if(a<0||b<0)throw Error('Missing lifecycle function '+name);
   let f=wat.slice(a,b),p=f.indexOf('\n')+1;
   if(f.slice(p).startsWith('    (local'))p=f.indexOf('\n',p)+1;
-  f=f.slice(0,p)+`    i32.const ${at}\n    i32.const 0\n    i32.store\n`+(name==='set_pilot_override'?'':`    i32.const ${at+4}\n    i32.const 0\n    i32.store\n`)+f.slice(p);
+  f=f.slice(0,p)+`    i32.const ${at}\n    i32.const 0\n    i32.store\n`+(name==='set_pilot_override'?'':`    i32.const ${at+4}\n    i32.const 0\n    i32.store\n    i32.const ${at+8}\n    i32.const 0\n    i32.store\n`)+f.slice(p);
   wat=wat.slice(0,a)+f+wat.slice(b);
  }
  const extra=`
@@ -181,6 +204,15 @@ export function patchInstructor(wat,region){
     i32.store)
   (func $get_instructor_response (export "get_instructor_response") (result i32)
     i32.const ${at+4}
+    i32.load)
+  (func $set_pilot_g_command (export "set_pilot_g_command") (param i32)
+    i32.const ${at+8}
+    local.get 0
+    i32.const 0
+    i32.ne
+    i32.store)
+  (func $get_pilot_g_command (export "get_pilot_g_command") (result i32)
+    i32.const ${at+8}
     i32.load)
 `;
  return wat.slice(0,wat.lastIndexOf(')'))+extra+'\n)';

@@ -1,27 +1,36 @@
 # Aircraft instructor and mixed-input controls
 
-The existing native flight module already supplies direction tracking,
-angular-rate feedback, an aircraft-dependent flight envelope, actuators and
-damage. Previously, a keyboard/stick input on any axis selected the global
-pilot override and reset the target every sample. All other direction
-assistance disappeared even during a roll-only correction.
+The native flight module supplies the aerodynamic forces, angular-rate
+feedback, aircraft flight envelope, actuator motion and damage. The browser
+supplies pilot commands; it never replaces aircraft pose or velocity.
 
-The new native API `set_pilot_axis_override(mask)` owns only the requested
-axes (pitch 1, roll 2, yaw 4). The direction solver runs independently of
-those raw manual commands. Immediately before native FBW, the owned axes
-receive their exact proportional input; unowned axes retain the direction
-solver's commands. Held-axis controller state is cleared to avoid windup.
-Aircraft attitude, velocity, rates and surface deflections are never replaced
-by JavaScript. Existing physical protection and actuator rates still apply.
-The legacy global override is retained for fully direct input, FBW-off,
-missions and old consumers. The mask defaults to zero and resets on native
-aircraft/respawn/global-override changes. AI callers do not opt into it.
+Mouse/touch drag commands a world direction. In assisted control (`aim`), the
+screen/gamepad stick commands a bank and normal load: horizontal deflection
+holds a bank and coordinates lift/rudder to turn, while vertical deflection
+changes normal load. Neutral vertical input maintains the flight path present
+when the maneuver began. Bank demand accounts for the aircraft load envelope
+and indicated airspeed. On the ground, horizontal deflection also steers the
+nosewheel. The native C++ FBW still determines achievable load and AoA limits.
 
-Mouse/touch drag controls a world-space direction, while stick input controls
-axes. Mouse movement remains available during held-axis corrections. Screen
-axes are taken from the current camera so banked and inverted cockpit input
-does not reverse, and target directions can cross the zenith/nadir instead
-of stopping at a world elevation of 85 degrees.
+The load request uses the opt-in native `set_pilot_g_command(1)` channel. It
+selects the existing load-control loop only with FBW, physical pilot authority
+and no ground contact. It defaults off and clears on reset/type changes. AI
+never requests it. Direct mode, FBW-off, keyboard axes and the Dagger master
+mission retain proportional raw axes. A held sideways stick in direct mode
+therefore remains a roll-rate input for aerobatics.
+
+A separate physical-axis correction bypasses an old mouse destination while
+held. If the player deliberately moves the pointer during the correction, the
+native per-axis API `set_pilot_axis_override(mask)` combines the held axes with
+the new mouse goal. Its bits are pitch 1, roll 2 and yaw 4. Owned axes receive
+exact manual input before FBW; unowned axes retain direction assistance. A
+mixed analog stick retains its bank servo while the new pointer goal controls
+unowned axes. The camera and direction indicator follow the nose during a
+physical maneuver without a simultaneous pointer gesture.
+
+Screen axes are taken from the camera so banked/inverted input does not reverse.
+Target directions can cross the zenith/nadir. The public control mode does not
+latch after release.
 
 Default release behavior seeds the target once from the actual nose when
 the last manual axis is released. A deliberate mouse target update during
@@ -114,3 +123,26 @@ Validation covers 84 static target cases across all 14 jets, 64 assisted/manual
 ownership combinations, and moving-target replays at 20/30/60/120 Hz for six
 aircraft. Those replay rates are not hardware FPS measurements. Desktop/mobile
 UI interaction is checked separately by the Chromium workflow.
+
+## Maneuver stick correction (2026-11-13)
+
+The prior held horizontal stick repeatedly rolled through inverted flight while
+unowned direction assistance kept tracking the earlier mouse destination. It
+required additional pitch and repeated roll correction to obtain a useful turn.
+The assisted stick now maintains a bank and requests the corresponding native
+normal load, with flight-path and sideslip feedback. Keyboard axis corrections
+also cease tracking a stale destination while held; deliberate simultaneous
+mouse input still invokes the mixed-axis controller.
+
+`tests/maneuver-stick.mjs` measures one uninterrupted half-stick gesture for
+10 seconds at 220 m/s TAS, 4,500 m, 85% throttle and 120 Hz physics. All 14 jet
+profiles are checked in both turn directions, with an additional 120/320 m/s
+matrix. For the MiG-23MLD, the right gesture changed course by 0.99 degrees and
+lost 157.34 m before; the assisted gesture changes course by 39.00 degrees and
+loses 3.86 m, maintaining approximately 59 degrees of bank. These are fixed
+simulation conditions, not universal performance or hardware-FPS claims.
+
+Full results: `docs/reviews/controls/20261113-maneuver.json`. The browser test
+now holds a real mobile touch through a sustained turn, checks release, and
+verifies proportional raw axes in explicit direct mode. It also checks raw
+keyboard authority, simultaneous mouse input and the stale-target regression.
