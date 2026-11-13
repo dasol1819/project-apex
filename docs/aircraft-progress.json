@@ -6,9 +6,9 @@
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
   "lease": {
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-fin-damage-20261113",
-    "startedAt": "2026-11-13T08:29:39.000Z",
-    "expiresAt": "2026-11-13T10:19:39.000Z"
+    "branch": "mig23mld-fin-verify-20261114",
+    "startedAt": "2026-11-13T18:06:45.000Z",
+    "expiresAt": "2026-11-13T19:56:45.000Z"
   },
   "aircraft": [
     {
@@ -2256,14 +2256,14 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-fin-damage-20261113",
-    "state": "original-fin-local-validation-complete-pending-final-ci",
+    "branch": "mig23mld-fin-verify-20261114",
+    "state": "merged-fin-production-verification",
     "scope": "Resume MiG-23MLD original fixed-fin source partition/native damage; preserve active PR38 control work.",
-    "nextStep": "PR39 original fin/root972-triangle source/native damage locally validated; cached and true cold arrival1746->972 preserve native bodies. Publish final artifacts/tests, require final CI and production bytes/native renderer verification. Exact fin-tip/rudder/intake overlay residuals remain; keep in_progress. Preserve PR38 and existing fleet review.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/7f3f1e655680afd328aa63682fc4c9df0ceeb8c8",
+    "nextStep": "Resume unfinished post-merge verification from GitHub: PR39 final683f461 CI5success, merge2119c070 Pages43400215098 success. Fresh restore/native build; compare production bytes and actual native fin/cached-arrival renderer, checkpoint/release lease. Preserve active PR38 and existing fleet review. No aircraft reviewed status promotion.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/2119c070a46b42eb1d1004eb44715c2060d65739",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/39",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
-    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43316745640",
+    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43400215098",
     "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md"
   },
   "previousWork": {
