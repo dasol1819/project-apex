@@ -1,0 +1,236 @@
+{
+  "checkedAt": "2026-11-13 Asia/Seoul",
+  "referencePage": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/49.shtm",
+  "referenceCredit": "Photo copyright2000 Jeff Keip; inspected and overlapped privately, no source or derivative pixels redistributed",
+  "photoSha256": "4bb393e67fb8c879d3c6856bc04f0d10c02da63527e9daecc0d9cb7630a97be6",
+  "captureScript": "scripts/capture-mig23-fin-review.py",
+  "camera": {
+    "name": "fin-port-tip",
+    "offset": [
+      -4,
+      2.2,
+      7.7
+    ],
+    "target": [
+      0,
+      2.4,
+      7.7
+    ],
+    "fov": 25,
+    "width": 640,
+    "height": 480,
+    "landmarks": [
+      [
+        0,
+        2.8933056889,
+        7.3555699392
+      ],
+      [
+        0,
+        2.6859924704,
+        8.0923036243
+      ]
+    ],
+    "projectedLandmarks": [
+      [
+        227.4680463383421,
+        107.63760506767684
+      ],
+      [
+        425.66476882551694,
+        163.06564884888667
+      ]
+    ],
+    "renderTriangles": 1424
+  },
+  "privateOverlay": {
+    "opacity": 0.48,
+    "renderAnchors": [
+      [
+        227.4680463383421,
+        107.63760506767684
+      ],
+      [
+        425.66476882551694,
+        163.06564884888667
+      ]
+    ],
+    "photoAnchors": [
+      [
+        164,
+        62
+      ],
+      [
+        522,
+        58
+      ]
+    ],
+    "landmarks": "Approximate leading/aft ends of upper fin edge. Source vertices and manually read photograph pixels; not surveyed dimensions.",
+    "transform": "One similarity (uniform scale/rotation/translation) of entire game frame; no component warp",
+    "scale": 1.739649861211615,
+    "rotationRadians": -0.2838677430034938,
+    "translation": [
+      -268.3217302818331,
+      -6.929710157690138
+    ]
+  },
+  "observations": [
+    "Actual 48% overlap with one global similarity was opened and inspected, not merely placed side by side. Approximate top-edge landmarks align by construction; this does not independently validate fin height/chord.",
+    "The source upper bulb ends in an elongated pointed shape whereas Keip49/50 show a rounded cap. An additional long upper projection and differing rudder seam/gap remain after alignment. Opposite-side photograph50 and source camera were inspected; roll/lens/viewpoint remain unmatched. Do not call these fittings visually reviewed or silently remove antennas without resolving exact installation.",
+    "Original source camouflage chips and fin/rudder seam detail differ from the author photographs. Damage ownership is validated; exterior detail accuracy remains open.",
+    "Lower-fin/root fairing in Keip51 informed inspection of the floating cone found in the first native-loss render. All OBJ0010/11/12 fairings now detach with the fin; source model root geometry itself is unchanged.",
+    "Current intake capture was separately overlaid on Keip28 at48% using recipe31. Splitter stand-off/lower lip/fuselage-edge residuals remain; no intake shape or duct-depth approval.",
+    "Public-domain Navy current-render overlap41 retains global nose/nozzle registration and existing fin/root/stabilator residuals. No individual part was warped to conceal mismatch."
+  ],
+  "gameCapture": "44-fin-reference-cameras.jpg (upper left; raw PNG reproduced by capture script)",
+  "additionalReferences": [
+    {
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/28.shtm",
+      "photoSha256": "c228ce0019c63511702fe2c68aa0ccf66af49a11499f5a22be2395cf66735cc3",
+      "use": "private visual inspection only; linked, not redistributed"
+    },
+    {
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/47.shtm",
+      "photoSha256": "20e81d169b820db7a90b077b8c72f49af969170b6bcddb8e14224499e48c1003",
+      "use": "private visual inspection only; linked, not redistributed"
+    },
+    {
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/48.shtm",
+      "photoSha256": "a85ed5c2e92abb1e4c8506638aaaa0f35e75ee30655b632610ea10a0d6527f35",
+      "use": "private visual inspection only; linked, not redistributed"
+    },
+    {
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/50.shtm",
+      "photoSha256": "d44c0bd68676c6f9d6492cf0dcbab78093bb89a66b61a6837ca79c72ef600679",
+      "use": "private visual inspection only; linked, not redistributed"
+    },
+    {
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/51.shtm",
+      "photoSha256": "aa3dc638950edc51d111369f53d435ad9883631950d0c9f15f61449d105c54d4",
+      "use": "private visual inspection only; linked, not redistributed"
+    }
+  ],
+  "intakeOverlapReplayed": "31-intake-splitter-overlay-recipe.json",
+  "gameCameras": {
+    "cameras": [
+      {
+        "name": "fin-port-tip",
+        "offset": [
+          -4,
+          2.2,
+          7.7
+        ],
+        "target": [
+          0,
+          2.4,
+          7.7
+        ],
+        "fov": 25,
+        "width": 640,
+        "height": 480,
+        "landmarks": [
+          [
+            0,
+            2.8933056889,
+            7.3555699392
+          ],
+          [
+            0,
+            2.6859924704,
+            8.0923036243
+          ]
+        ],
+        "projectedLandmarks": [
+          [
+            227.4680463383421,
+            107.63760506767684
+          ],
+          [
+            425.66476882551694,
+            163.06564884888667
+          ]
+        ],
+        "renderTriangles": 1424
+      },
+      {
+        "name": "fin-starboard-tip",
+        "offset": [
+          4,
+          2.2,
+          7.7
+        ],
+        "target": [
+          0,
+          2.4,
+          7.7
+        ],
+        "fov": 25,
+        "width": 640,
+        "height": 480,
+        "landmarks": [
+          [
+            0,
+            2.8933056889,
+            7.3555699392
+          ],
+          [
+            0,
+            2.6859924704,
+            8.0923036243
+          ]
+        ],
+        "projectedLandmarks": [
+          [
+            412.5319536616579,
+            107.63760506767684
+          ],
+          [
+            214.33523117448303,
+            163.06564884888667
+          ]
+        ],
+        "renderTriangles": 1426
+      },
+      {
+        "name": "intake-splitter",
+        "offset": [
+          1.3,
+          0.2,
+          -5.5
+        ],
+        "target": [
+          1.1,
+          0.4,
+          -3
+        ],
+        "fov": 45,
+        "width": 480,
+        "height": 640,
+        "landmarks": [],
+        "projectedLandmarks": [],
+        "renderTriangles": 24687
+      },
+      {
+        "name": "fin-root",
+        "offset": [
+          5,
+          1.2,
+          10
+        ],
+        "target": [
+          0.65,
+          0.6,
+          6.2
+        ],
+        "fov": 30,
+        "width": 1366,
+        "height": 900,
+        "landmarks": [],
+        "projectedLandmarks": [],
+        "renderTriangles": 1424
+      }
+    ],
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader / actual game renderer; all controls neutral, gear0, sweep72, no afterburner"
+  }
+}
