@@ -1010,7 +1010,8 @@
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/51.shtm",
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/45.shtm",
           "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/27.shtm",
-          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/28.shtm"
+          "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/28.shtm",
+          "https://www.lennundusmuuseum.ee/en/gallery/fighters/mig-23mld/"
         ],
         "assets": [
           "web/mig23mld-glb.js",
@@ -1022,7 +1023,12 @@
           "scripts/native/build-mig23.mjs",
           "web/mig23mld-flight.js",
           "web/mig23mld-game.js",
-          "web/flight.wasm (deterministic CI generated; binary NOT committed)"
+          "web/flight.wasm (deterministic CI generated; binary NOT committed)",
+          "assets/mig23mld/fin-damage-partition.json",
+          "web/mig23mld-fin.js",
+          "web/mig23mld-fin-data.js",
+          "scripts/build-mig23-fin.mjs",
+          "scripts/partition-mig23-fin.cpp"
         ],
         "screenshots": [
           "https://github.com/dasol1819/project-apex/actions/runs/42483065382/artifacts/13617374547",
@@ -1106,7 +1112,8 @@
           "2026-11-12 Seoul nozzle audit: current-main baseline leaves soplo visible after native part22/engine7/aft29/fuselage0 loss and creates zero-triangle debris. Fixed original source mapping removes skin; actual native +0.5 s body shows a UV-mapped 288-triangle piece, preserving dry/half/wet aperture and independent morph weights. Source-fit native part22 pivot [-0.0014816,0.0116311,7.5898268] replaces copied pivot [0,-0.188,5.25925]. C++ endpoint envelope covers current linear visual morph with 2 mm numerical padding; not aircraft measurement/stop claim. Native comparison preserves other body pivot/half vectors across 510 type/damage fixtures. Local broader regression and final CI pending; keep entire aircraft in_progress.",
           "Nozzle final local review: real native gun/fleet rear fixture that crosses actual source petal triangles previously hit aft29 with nozzle health1; source-fit build selects22 and reduces nozzle1→0.8. Native remains conservative box collision (about87mm ahead of the sampled source surface on this ray), not triangle-exact/hollow-ring contact. Full original source +0.5s body screenshots and recorded 48% public-domain photo overlap reviewed; healthy overlap is pixel-identical to earlier24 because intact source geometry is preserved. Nozzle/tail-damage/resources/core-flight/mixed-controls/missile and F/A-18B desktop/mobile browser suites pass. One F/A-18B default-port invocation failed setup; isolated explicit-URL rerun passed. Original GLB/maps unchanged; dry/half/wet source morph and native ancestors/reset pass; hardware FPS and exact internal nozzle/plume fidelity remain unverified. Final exact-head CI pending.",
           "Additional native ordering audit: a 352-triangle unmapped fallback body persisted after cached original arrival. Current effect refreshes that visual once to the original mapped 288-triangle nozzle, with half aperture, native serialized state/identity/position/quaternion unchanged, one actor, stable ten updates and clean reset. Test uses an effects-instance-specific HTTP-only getter; an earlier name-based observation selected another player body and is excluded. No debug API shipped. Eight local Chromium suites now pass, including this cached-arrival case; cold-download/abort and other pre-load control histories remain unverified. Final exact-head revalidation required after this renderer correction.",
-          "2026-11-13 Seoul final publication: final head ba31d2c passed all five CI workflows (43219280004 native/damage, 43219280052 preview, 43219279942 tree, 43219279943 mixed controls, 43219279970 F/A-18B). PR37 merged as f77fcf3; Pages43316745640 success. Fresh GitHub clone/manifest/restore/native rebuild reproduces f5e16f26, 344687 B. Ten deployed HTTP files match validated bytes. Actual production-response Chromium nozzle and cached-source-arrival suites both exit0 with no page errors: 288-triangle mapped native bodies in dry/half/wet states; 352-triangle fallback replaced once, half aperture/native state/pose/identity unchanged, stable reuse/reset. QA proxy arrangement and per-file costs recorded in report38. HTTPS still503; no HTTPS verification or whole-aircraft approval claimed. Own lease released; preserve other aircraft/branches and existing fleet surface review."
+          "2026-11-13 Seoul final publication: final head ba31d2c passed all five CI workflows (43219280004 native/damage, 43219280052 preview, 43219279942 tree, 43219279943 mixed controls, 43219279970 F/A-18B). PR37 merged as f77fcf3; Pages43316745640 success. Fresh GitHub clone/manifest/restore/native rebuild reproduces f5e16f26, 344687 B. Ten deployed HTTP files match validated bytes. Actual production-response Chromium nozzle and cached-source-arrival suites both exit0 with no page errors: 288-triangle mapped native bodies in dry/half/wet states; 352-triangle fallback replaced once, half aperture/native state/pose/identity unchanged, stable reuse/reset. QA proxy arrangement and per-file costs recorded in report38. HTTPS still503; no HTTPS verification or whole-aircraft approval claimed. Own lease released; preserve other aircraft/branches and existing fleet surface review.",
+          "2026-11-13 source fin checkpoint: C++ original topology partition673 skin triangles +299 root/hinge fitting triangles; whole 43089-triangle source positions/normals/UVs conserved; vertices71214 and attribute/index bytes2537382 unchanged. Native type16 part5 source-fit box; baseline comparison510 damage fixtures preserves all other vectors. Real gun shot baseline misses/new part5 health1->0.8; ray intersects original skin. Initial floating lower fairing detected in actual renderer and corrected. Full regression/CI/deployment pending; not reviewed."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1171,7 +1178,8 @@
         "nozzleDamageValidatedHead": "https://github.com/dasol1819/project-apex/commit/ba31d2cd69b025ad87bc27f0f3b510e46e88e16b",
         "nozzleDamagePublishedCommit": "https://github.com/dasol1819/project-apex/commit/f77fcf342695e1d28a8232a59c1d45bee50083c0",
         "nozzleDamagePages": "https://github.com/dasol1819/project-apex/actions/runs/43316745640",
-        "nozzleDamageDeploymentChecks": "docs/aircraft-review/mig23mld/38-nozzle-deployment-verification.json"
+        "nozzleDamageDeploymentChecks": "docs/aircraft-review/mig23mld/38-nozzle-deployment-verification.json",
+        "finDamageReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -2226,13 +2234,14 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-fin-damage-20261113",
-    "state": "original-fin-partition-audit",
+    "state": "original-fin-regression-in-progress",
     "scope": "Resume MiG-23MLD original fixed-fin source partition/native damage; preserve active PR38 control work.",
-    "nextStep": "Audit original GLB topology, identify disjoint fixed-fin geometry without duplicating fuselage/rudder; reproduce damage, preserve UV/healthy render, validate and checkpoint before publication.",
+    "nextStep": "Original fin/root/fittings partition implemented; fix observed floating-root defect included 972 triangles. Topology/native 510-fixture comparison and gun contact pass. Finish wide-camera native debris/regression CI, record photo overlap/resources, then merge and verify production. Preserve PR38 assisted-stick work.",
     "checkpoint": "https://github.com/dasol1819/project-apex/commit/f77fcf342695e1d28a8232a59c1d45bee50083c0",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/37",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
-    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43316745640"
+    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43316745640",
+    "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",

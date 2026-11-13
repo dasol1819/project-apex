@@ -2,6 +2,7 @@ import * as T from './vendor/three.module.js';
 import {createClassicAircraft} from './classic-aircraft.js';
 import {aircraftDefinition,partParentFor} from './aircraft-catalog.js';
 import {PARTS} from './airframe-parts.js';
+import {partitionMig23Fin} from './mig23mld-fin.js';
 import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=3';
 
 const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
@@ -361,6 +362,8 @@ export function createMig23mldAircraft(options={}){
     const node=normalized.root.getObjectByName('MiG-23MLD '+name);
     if(node){node.userData.damageIndex=part;damageParts[part]=node;sourceDamage.push({part,node});}
    }
+   const fin=partitionMig23Fin(normalized.root);
+   fin.userData.damageIndex=5;damageParts[5]=fin;sourceDamage.push({part:5,node:fin});
    const nozzle=normalized.root.getObjectByName('soplo');
    if(nozzle){nozzle.userData.damageIndex=NOZZLE_PART;damageParts[NOZZLE_PART]=nozzle;sourceDamage.push({part:NOZZLE_PART,node:nozzle});}
    setAirbrakes=rigAirbrakes(normalized.root);
