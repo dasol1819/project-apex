@@ -1,7 +1,7 @@
 """Run committed inspection tests on actual deployed HTTP bytes via inherited proxy."""
 import os,urllib.request,urllib.parse,sys
 from pathlib import Path
-from playwright.sync_api import BrowserType
+from playwright.sync_api import BrowserType,Page
 u=urllib.parse.urlsplit(os.environ['HTTP_PROXY']);original=BrowserType.launch
 def launch(self,*args,**kwargs):
  proxy={'server':u.scheme+'://'+u.hostname+(':'+str(u.port) if u.port else '')}
@@ -10,6 +10,14 @@ def launch(self,*args,**kwargs):
  kwargs['proxy']=proxy
  return original(self,*args,**kwargs)
 BrowserType.launch=launch
+# Some managed proxies take several seconds for each module request. A test
+# navigation budget may be extended without changing the connection path,
+# certificate checks, site bytes or the production application itself.
+original_goto=Page.goto
+def navigate(self,*args,**kwargs):
+ kwargs.setdefault('timeout',int(os.environ.get('APEX_TEST_NAVIGATION_TIMEOUT_MS','120000')))
+ return original_goto(self,*args,**kwargs)
+Page.goto=navigate
 class RemoteResponse:
  def __init__(self,url):
   with urllib.request.urlopen(url,timeout=90) as r:
