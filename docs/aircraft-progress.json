@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-fin-damage-20261113",
+    "startedAt": "2026-11-13T08:29:39.000Z",
+    "expiresAt": "2026-11-13T10:19:39.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -2220,10 +2225,10 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-nozzle-damage-20261112",
-    "state": "source-nozzle-published-next-compartments",
-    "scope": "Resume MiG-23MLD original nozzle loss, posed wreckage and native source-fit profile; preserve current flight guidance and F/A-18B work.",
-    "nextStep": "Continue the SAME MiG-23MLD: original wing/control/fuselage/gear damage partitions without duplicated whole-wing child bodies; match uncovered intake/overhead/rear views, verify internal sleeve/petals/fan and active R-35 plume, actuator/taxi clearances, cold-download/abort and other pre-load control histories. Keep in_progress.",
+    "branch": "mig23mld-fin-damage-20261113",
+    "state": "original-fin-partition-audit",
+    "scope": "Resume MiG-23MLD original fixed-fin source partition/native damage; preserve active PR38 control work.",
+    "nextStep": "Audit original GLB topology, identify disjoint fixed-fin geometry without duplicating fuselage/rudder; reproduce damage, preserve UV/healthy render, validate and checkpoint before publication.",
     "checkpoint": "https://github.com/dasol1819/project-apex/commit/f77fcf342695e1d28a8232a59c1d45bee50083c0",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/37",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
