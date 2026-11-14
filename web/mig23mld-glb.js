@@ -135,7 +135,7 @@ export function rigMig23Sweep(scene,nodes){
   {pivot:[-4.531,.55,-1.141],sign:-1,names:['OBJ0263','OBJ0264','OBJ0265','OBJ0266','OBJ0267','OBJ0268','OBJ0269','OBJ0271','OBJ0274','OBJ0275','OBJ0100']}
  ];
  const groups=parts.map(d=>{
-  const pivot=new T.Group();pivot.position.set(...d.pivot);scene.add(pivot);
+  const pivot=new T.Group();pivot.name='MiG-23MLD '+(d.sign===1?'port':'starboard')+' wing sweep';pivot.position.set(...d.pivot);scene.add(pivot);
   for(const n of nodes)if(d.names.includes(n.name)&&n.parent===scene){n.position.sub(pivot.position);pivot.add(n);}
   return {pivot,sign:d.sign};
  });

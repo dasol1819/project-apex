@@ -3,7 +3,7 @@ import {createClassicAircraft} from './classic-aircraft.js';
 import {aircraftDefinition,partParentFor} from './aircraft-catalog.js';
 import {PARTS} from './airframe-parts.js';
 import {partitionMig23Fin} from './mig23mld-fin.js';
-import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=3';
+import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=4';
 
 const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
 const ENGINE_PART=7, NOZZLE_PART=22;
@@ -358,9 +358,18 @@ export function createMig23mldAircraft(options={}){
    // These are disjoint authored surfaces with existing physical hinges.
    // Register the hinge itself: preserve its live pose and source UVs when
    // native damage snapshots it, without reparenting or recutting the skin.
-   for(const [part,name] of [[3,'port stabilator'],[4,'starboard stabilator'],[20,'rudder']]){
+   for(const [part,name] of [[1,'port wing sweep'],[2,'starboard wing sweep'],[3,'port stabilator'],[4,'starboard stabilator'],[20,'rudder']]){
     const node=normalized.root.getObjectByName('MiG-23MLD '+name);
     if(node){node.userData.damageIndex=part;damageParts[part]=node;sourceDamage.push({part,node});}
+   }
+   // The full source wing owns these surfaces until authentic child cuts
+   // exist. Empty roots replace hidden generic fallback parts, so native
+   // child events cannot emit rectangular stand-in skins/caps alongside the
+   // original complete wing. Independent child loss remains unfinished.
+   for(const [part,owner] of [[12,1],[14,1],[16,1],[18,1],[13,2],[15,2],[17,2],[19,2]]){
+    const pending=new T.Group();pending.name='MiG-23MLD pending wing subdivision '+part;
+    pending.userData.pendingSourceSubdivision=true;
+    damageParts[owner].add(pending);damageParts[part]=pending;
    }
    const fin=partitionMig23Fin(normalized.root);
    fin.userData.damageIndex=5;damageParts[5]=fin;sourceDamage.push({part:5,node:fin});

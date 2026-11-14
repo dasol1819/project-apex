@@ -3,6 +3,12 @@ on:
   pull_request:
     paths:
       - 'scripts/native/build-mig23.mjs'
+      - 'scripts/native/patch-mig23-wing-shapes.mjs'
+      - 'scripts/export-mig23-wings.mjs'
+      - 'scripts/fit-mig23-wing-hulls.cpp'
+      - 'assets/mig23mld/wing-support-hulls.json'
+      - 'docs/aircraft-review/mig23mld/wing-source-vertices.csv'
+      - 'tests/mig23-wing-*'
       - 'scripts/native/patch-instructor.mjs'
       - 'web/app.js'
       - 'web/aircraft-inspector.js'
@@ -104,6 +110,13 @@ jobs:
           PYNOZZLE
       - run: python3 scripts/update-web-manifest.py
       - run: python3 .deployment/restore.py
+      - name: Rebuild original wing support hulls
+        run: |
+          node scripts/export-mig23-wings.mjs > /tmp/wing-source.csv
+          cmp /tmp/wing-source.csv docs/aircraft-review/mig23mld/wing-source-vertices.csv
+          c++ -std=c++17 -O2 -Wall -Wextra -Wpedantic -Werror scripts/fit-mig23-wing-hulls.cpp -o /tmp/fit-mig23-wings
+          /tmp/fit-mig23-wings /tmp/wing-source.csv > /tmp/wing-hulls.json
+          cmp /tmp/wing-hulls.json assets/mig23mld/wing-support-hulls.json
       - run: node scripts/build-mig23-fin.mjs --check
       - run: node --check scripts/native/build-mig23.mjs
       - run: node scripts/native/build-mig23.mjs
@@ -111,6 +124,8 @@ jobs:
       - run: node tests/mig23-fin-topology.mjs public
       - run: node tests/mig23-fin-native.mjs public
       - run: node tests/mig23-fin-combat.mjs public
+      - run: node tests/mig23-wing-native.mjs public
+      - run: node tests/mig23-wing-combat.mjs public
       - run: node tests/mig23-native.mjs
       - run: node tests/mig23-autosweep.mjs
       - run: node tests/mig23-tail-combat.mjs public
@@ -146,9 +161,14 @@ jobs:
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-damage-browser.py
           APEX_EXPECT_LEGACY_FACTORY=1 APEX_TEST_OUTPUT=/tmp/aircraft-cache-before /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
           APEX_TEST_OUTPUT=/tmp/aircraft-cache-browser /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
+          APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-wing-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-preservation-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-cold-fin-browser.py
+          APEX_TEST_PART=1 APEX_TEST_OUTPUT=/tmp/mig23-wing-async-1 APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py
+          APEX_TEST_PART=2 APEX_TEST_OUTPUT=/tmp/mig23-wing-async-2 APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py
+          APEX_TEST_PART=1 APEX_TEST_OUTPUT=/tmp/mig23-wing-cold-1 APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-cold-fin-browser.py
+          APEX_TEST_PART=2 APEX_TEST_OUTPUT=/tmp/mig23-wing-cold-2 APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-cold-fin-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-nozzle-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py
           APEX_TEST_PART=5 APEX_TEST_OUTPUT=/tmp/mig23-async-fin-browser APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py

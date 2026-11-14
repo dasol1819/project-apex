@@ -1,0 +1,494 @@
+{
+  "checkedAt": "2026-11-14 Asia/Seoul",
+  "pullRequest": "https://github.com/dasol1819/project-apex/pull/40",
+  "validatedHead": "94cb330d7832e665dd4b40871b93f09d53d08d94",
+  "merge": "84fe6190adf2436fb075c053443f69a0fb92726e",
+  "pages": {
+    "id": 43557346042,
+    "conclusion": "success"
+  },
+  "ciRuns": [
+    43556277067,
+    43556277058,
+    43556277099,
+    43556277102,
+    43556277062
+  ],
+  "publishedBytes": {
+    "checkedAt": "2026-11-14T13:37:00.081473+09:00",
+    "commit": "84fe6190adf2436fb075c053443f69a0fb92726e",
+    "files": [
+      {
+        "file": "index.html",
+        "url": "http://project-apex.kro.kr/?screen=tree",
+        "status": 200,
+        "bytes": 82302,
+        "sha256": "d5507ca8ea9d2e2cdc62e1008e0b37694334e0508fac16b88704a87a20c40e95",
+        "expectedSha256": "d5507ca8ea9d2e2cdc62e1008e0b37694334e0508fac16b88704a87a20c40e95",
+        "matches": true,
+        "seconds": 5.497
+      },
+      {
+        "file": "app.js",
+        "url": "http://project-apex.kro.kr/app.js?v=instructor-response-2-fin-cache-1",
+        "status": 200,
+        "bytes": 121733,
+        "sha256": "70014629b58681b5d964ed8662728f3b70fc01f2e6c4cd772191d0268f418f4d",
+        "expectedSha256": "70014629b58681b5d964ed8662728f3b70fc01f2e6c4cd772191d0268f418f4d",
+        "matches": true,
+        "seconds": 5.501
+      },
+      {
+        "file": "aircraft.js",
+        "url": "http://project-apex.kro.kr/aircraft.js?v=factory-20261114-1",
+        "status": 200,
+        "bytes": 56586,
+        "sha256": "c21157bb508d7340749d016a85203718d36438549d76b39578a5a62b4d3934df",
+        "expectedSha256": "c21157bb508d7340749d016a85203718d36438549d76b39578a5a62b4d3934df",
+        "matches": true,
+        "seconds": 5.498
+      },
+      {
+        "file": "aircraft-inspector.js",
+        "url": "http://project-apex.kro.kr/aircraft-inspector.js?v=factory-20261114-1",
+        "status": 200,
+        "bytes": 20904,
+        "sha256": "d23fb4155958b9f02fd6510f1a4a4cb6aa111c547c53a634d73d4ea76f56a75e",
+        "expectedSha256": "d23fb4155958b9f02fd6510f1a4a4cb6aa111c547c53a634d73d4ea76f56a75e",
+        "matches": true,
+        "seconds": 5.352
+      },
+      {
+        "file": "combat-scene.js",
+        "url": "http://project-apex.kro.kr/combat-scene.js?v=factory-20261114-1",
+        "status": 200,
+        "bytes": 20002,
+        "sha256": "1234de81082857d5e1eb6b736cf928de668d96592226bed33dc11d8e98027d68",
+        "expectedSha256": "1234de81082857d5e1eb6b736cf928de668d96592226bed33dc11d8e98027d68",
+        "matches": true,
+        "seconds": 3.841
+      },
+      {
+        "file": "graphics-workload.js",
+        "url": "http://project-apex.kro.kr/graphics-workload.js?v=factory-20261114-1",
+        "status": 200,
+        "bytes": 3044,
+        "sha256": "78d5d51a45e56dab4161ade2acc8fc7b2ffb351f23fad02da0a7913aaafbd095",
+        "expectedSha256": "78d5d51a45e56dab4161ade2acc8fc7b2ffb351f23fad02da0a7913aaafbd095",
+        "matches": true,
+        "seconds": 3.695
+      },
+      {
+        "file": "mig23mld-game.js",
+        "url": "http://project-apex.kro.kr/mig23mld-game.js?v=14",
+        "status": 200,
+        "bytes": 19462,
+        "sha256": "f8dff2308de67cfe1e01b0d1076892e0206e9e6dfe6db36f173a6e6fe107d6fc",
+        "expectedSha256": "f8dff2308de67cfe1e01b0d1076892e0206e9e6dfe6db36f173a6e6fe107d6fc",
+        "matches": true,
+        "seconds": 3.694
+      },
+      {
+        "file": "mig23mld-fin.js",
+        "url": "http://project-apex.kro.kr/mig23mld-fin.js",
+        "status": 200,
+        "bytes": 3201,
+        "sha256": "62e1e65f760049feec4df7d5a171dae5b7bcf39f0d109da870450f65ff20daab",
+        "expectedSha256": "62e1e65f760049feec4df7d5a171dae5b7bcf39f0d109da870450f65ff20daab",
+        "matches": true,
+        "seconds": 3.686
+      },
+      {
+        "file": "mig23mld-fin-data.js",
+        "url": "http://project-apex.kro.kr/mig23mld-fin-data.js",
+        "status": 200,
+        "bytes": 4120,
+        "sha256": "9e134e7c2a80099bd5df2a86f00c33049f9273f0a72d00b23b13dc3b094331e1",
+        "expectedSha256": "9e134e7c2a80099bd5df2a86f00c33049f9273f0a72d00b23b13dc3b094331e1",
+        "matches": true,
+        "seconds": 4.28
+      },
+      {
+        "file": "mig23mld-glb.js",
+        "url": "http://project-apex.kro.kr/mig23mld-glb.js?v=3",
+        "status": 200,
+        "bytes": 8893,
+        "sha256": "32456164daa4b7e55fc1873c86c9585a31bdd4150984733ccc4915cc4ec9b6df",
+        "expectedSha256": "32456164daa4b7e55fc1873c86c9585a31bdd4150984733ccc4915cc4ec9b6df",
+        "matches": true,
+        "seconds": 4.376
+      },
+      {
+        "file": "damage-effects.js",
+        "url": "http://project-apex.kro.kr/damage-effects.js?v=source-parts-2",
+        "status": 200,
+        "bytes": 17065,
+        "sha256": "2c269d2b6f7a33046bbb81e45fad0bf33dcf3c04ab2f21288663eb18fa87ccf3",
+        "expectedSha256": "2c269d2b6f7a33046bbb81e45fad0bf33dcf3c04ab2f21288663eb18fa87ccf3",
+        "matches": true,
+        "seconds": 4.28
+      },
+      {
+        "file": "wreckage-mesh.js",
+        "url": "http://project-apex.kro.kr/wreckage-mesh.js?v=posed-morph-1",
+        "status": 200,
+        "bytes": 7821,
+        "sha256": "2e9137318f03e0cf0f78e23060b454ade33cbc8fbd5ee59ba6c4eba9224fe22c",
+        "expectedSha256": "2e9137318f03e0cf0f78e23060b454ade33cbc8fbd5ee59ba6c4eba9224fe22c",
+        "matches": true,
+        "seconds": 4.277
+      },
+      {
+        "file": "part-emitter.js",
+        "url": "http://project-apex.kro.kr/part-emitter.js?v=world-scale-1",
+        "status": 200,
+        "bytes": 5434,
+        "sha256": "b9ce46b0a8bd6214899595fb715064cb0fe8218575a25773f5d6986b4dedf670",
+        "expectedSha256": "b9ce46b0a8bd6214899595fb715064cb0fe8218575a25773f5d6986b4dedf670",
+        "matches": true,
+        "seconds": 3.875
+      },
+      {
+        "file": "aircraft-catalog.js",
+        "url": "http://project-apex.kro.kr/aircraft-catalog.js",
+        "status": 200,
+        "bytes": 12584,
+        "sha256": "77bea6f245158d1a47f1bf46f4ea4e6fd0b8370e0d58ede42cb3fde58c865c80",
+        "expectedSha256": "77bea6f245158d1a47f1bf46f4ea4e6fd0b8370e0d58ede42cb3fde58c865c80",
+        "matches": true,
+        "seconds": 3.873
+      },
+      {
+        "file": "flight.wasm",
+        "url": "http://project-apex.kro.kr/flight.wasm?v=instructor-response-2-fin-damage-1-missiles-1",
+        "status": 200,
+        "bytes": 344687,
+        "sha256": "ac0f479cb659f61c309277782834306aa9753c03fc58ce74dbefbeabd1fbe007",
+        "expectedSha256": "ac0f479cb659f61c309277782834306aa9753c03fc58ce74dbefbeabd1fbe007",
+        "matches": true,
+        "seconds": 3.923
+      },
+      {
+        "file": "assets/mig23mld/Mig-23.glb",
+        "url": "http://project-apex.kro.kr/assets/mig23mld/Mig-23.glb?v=3",
+        "status": 200,
+        "bytes": 22593404,
+        "sha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+        "expectedSha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+        "matches": true,
+        "seconds": 4.474
+      }
+    ],
+    "allFilesMatch": true,
+    "https": {
+      "status": 503,
+      "error": "HTTP Error 503: Service Unavailable",
+      "scope": "observed through inherited environment proxy; HTTPS unverified, not a global-outage diagnosis"
+    },
+    "transport": "Normal inherited proxy and CA. Certificate checks enabled; no local asset replacement or alternate network path."
+  },
+  "publishedFin": {
+    "cases": [
+      {
+        "part": 20,
+        "fin": true,
+        "rudder": false,
+        "fitting": true,
+        "fuselage": true
+      },
+      {
+        "part": 29,
+        "fin": false,
+        "rudder": false,
+        "fitting": false,
+        "fuselage": true
+      },
+      {
+        "part": 0,
+        "fin": false,
+        "rudder": false,
+        "fitting": false,
+        "fuselage": true
+      }
+    ],
+    "registration": {
+      "name": "MiG-23MLD fixed fin",
+      "fittingInFin": true,
+      "rudderExcluded": true,
+      "overflow": -0.001999999999781066,
+      "vertices": 989
+    },
+    "loss": {
+      "finHidden": true,
+      "rudderHidden": true,
+      "fittingHidden": true,
+      "rootFairingsHidden": true,
+      "fuselageVisible": true,
+      "nozzleVisible": true,
+      "health": 0,
+      "triangles": 972,
+      "mapped": 5,
+      "maxPoseError": 9.099387909827783e-13,
+      "nativePivot": [
+        -0.00066260614378789,
+        1.7626825426429,
+        5.6085900971257
+      ],
+      "nativeHalf": [
+        0.1244548646077,
+        1.1326231462329,
+        2.698806399898
+      ],
+      "framebufferChanged": true,
+      "submittedTriangles": 972,
+      "nativeBodyFollowError": 0
+    },
+    "reset": true,
+    "pageErrors": [],
+    "environment": "Chromium 141 / SwiftShader / actual native type 16; hardware FPS unmeasured"
+  },
+  "publishedFactoryRequests": {
+    "urls": [
+      "http://project-apex.kro.kr/aircraft.js?v=factory-20261114-1"
+    ],
+    "requests": 1
+  },
+  "priorFinReleaseNozzle": {
+    "states": [
+      {
+        "opening": 0,
+        "visible": true,
+        "box": {
+          "min": [
+            -0.5243306830751432,
+            -0.5085967092299946,
+            7.4248751403258995
+          ],
+          "max": [
+            0.521367482973906,
+            0.5283484230117285,
+            7.7547783929261636
+          ]
+        },
+        "influences": [
+          [
+            1
+          ]
+        ]
+      },
+      {
+        "opening": 0.5,
+        "visible": true,
+        "box": {
+          "min": [
+            -0.5247151904737701,
+            -0.5085967097409091,
+            7.4248751403258995
+          ],
+          "max": [
+            0.5217519903725328,
+            0.5301037044305346,
+            7.7547783929261636
+          ]
+        },
+        "influences": [
+          [
+            0.5
+          ]
+        ]
+      },
+      {
+        "opening": 1,
+        "visible": true,
+        "box": {
+          "min": [
+            -0.525099697872397,
+            -0.5085967102518236,
+            7.4248751403258995
+          ],
+          "max": [
+            0.5221364977711598,
+            0.5318589858493408,
+            7.7547783929261636
+          ]
+        },
+        "influences": [
+          [
+            0
+          ]
+        ]
+      }
+    ],
+    "loss": [
+      {
+        "opening": 0,
+        "health": 0,
+        "sourceVisibleAfterLoss": false,
+        "removedCapture": true,
+        "registered": true,
+        "triangles": 288,
+        "mapped": 1,
+        "maxPoseError": 1.819100425848319e-12,
+        "nativePivot": [
+          -0.0014816000506186,
+          0.011631137798759,
+          7.589826766626
+        ],
+        "nativeHalf": [
+          0.52561809782178,
+          0.52222784805058,
+          0.16695162630013
+        ],
+        "framebufferChanged": true,
+        "submittedTriangles": 288,
+        "frozen": true
+      },
+      {
+        "opening": 0.5,
+        "health": 0,
+        "sourceVisibleAfterLoss": false,
+        "removedCapture": true,
+        "registered": true,
+        "triangles": 288,
+        "mapped": 1,
+        "maxPoseError": 1.819100425848319e-12,
+        "nativePivot": [
+          -0.0014816000506186,
+          0.011631137798759,
+          7.589826766626
+        ],
+        "nativeHalf": [
+          0.52561809782178,
+          0.52222784805058,
+          0.16695162630013
+        ],
+        "framebufferChanged": true,
+        "submittedTriangles": 288,
+        "frozen": true
+      },
+      {
+        "opening": 1,
+        "health": 0,
+        "sourceVisibleAfterLoss": false,
+        "removedCapture": true,
+        "registered": true,
+        "triangles": 288,
+        "mapped": 1,
+        "maxPoseError": 1.8192114481507815e-12,
+        "nativePivot": [
+          -0.0014816000506186,
+          0.011631137798759,
+          7.589826766626
+        ],
+        "nativeHalf": [
+          0.52561809782178,
+          0.52222784805058,
+          0.16695162630013
+        ],
+        "framebufferChanged": true,
+        "submittedTriangles": 288,
+        "frozen": true
+      }
+    ],
+    "maxEnvelopeExcess": -0.0019999999999668616,
+    "hiddenAfterLoss": true,
+    "plumeAfterLoss": false,
+    "parents": [
+      {
+        "part": 7,
+        "hidden": true,
+        "plume": false
+      },
+      {
+        "part": 29,
+        "hidden": true,
+        "plume": false
+      },
+      {
+        "part": 0,
+        "hidden": true,
+        "plume": false
+      }
+    ],
+    "reset": true,
+    "pageErrors": [],
+    "environment": "Chromium 141 / SwiftShader; actual native type 16 gameplay; hardware FPS unmeasured"
+  },
+  "priorFinReleaseHeldFirstSource": {
+    "before": {
+      "loaded": false,
+      "triangles": 1746,
+      "mapped": 0,
+      "position": [
+        -0.0006720727784837065,
+        5001.779585489469,
+        3.695827321122518
+      ],
+      "quaternion": [
+        0.005975581131052199,
+        9.883384124857264e-05,
+        0.0011762324660946435,
+        0.9999814493975395
+      ]
+    },
+    "after": {
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "oldRemoved": true,
+      "stableAfterTenUpdates": true,
+      "nativeUnchanged": true,
+      "sourceHidden": true,
+      "rudderHidden": true,
+      "actorCount": 2,
+      "triangles": 972,
+      "mapped": 5,
+      "position": [
+        -0.0006720727784837065,
+        5001.779585489469,
+        3.695827321122518
+      ],
+      "quaternion": [
+        0.005975581131052199,
+        9.883384124857264e-05,
+        0.0011762324660946435,
+        0.9999814493975395
+      ],
+      "afterReset": 0
+    },
+    "sourceRequests": 1,
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader / actual native type16; real first source GLB response held until native fin loss; hardware FPS unmeasured"
+  },
+  "privateReferenceReinspection": {
+    "date": "2026-11-14",
+    "recipes": [
+      "31-intake-splitter-overlay-recipe.json",
+      "43-fin-private-overlap-recipe.json"
+    ],
+    "actualProductionCameras": "scripts/capture-mig23-fin-review.py",
+    "photos": [
+      28,
+      49,
+      50,
+      45,
+      47
+    ],
+    "actualOverlaps": [
+      28,
+      49
+    ],
+    "opacity": 0.48,
+    "redistribution": "No copyrighted source or derived pixels published; references linked only",
+    "result": "Intake lip/splitter and fin pod/rudder/root residuals remain; not reviewed"
+  },
+  "inspectorRegression": {
+    "result": "PASS",
+    "desktop": true,
+    "mobile": true,
+    "pausedStatePreserved": true,
+    "views": 8,
+    "accountSession": "anonymous test fixture; initial unmocked account request ERR_EMPTY_RESPONSE was isolated, not ignored"
+  },
+  "reviewed": false
+}
