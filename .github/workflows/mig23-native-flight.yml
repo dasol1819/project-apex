@@ -9,6 +9,7 @@ on:
       - 'assets/mig23mld/wing-support-hulls.json'
       - 'docs/aircraft-review/mig23mld/wing-source-vertices.csv'
       - 'tests/mig23-wing-*'
+      - 'tests/fixtures/mig23-wing/**'
       - 'scripts/native/patch-instructor.mjs'
       - 'web/app.js'
       - 'web/aircraft-inspector.js'
@@ -165,6 +166,7 @@ jobs:
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-preservation-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-cold-fin-browser.py
+          APEX_TEST_GAME_SOURCE=tests/fixtures/mig23-wing/before-child-ownership.js APEX_EXPECT_PENDING_CHILD_TRIANGLES=2742 APEX_TEST_PART=1 APEX_TEST_OUTPUT=/tmp/mig23-wing-child-before APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py
           APEX_TEST_PART=1 APEX_TEST_OUTPUT=/tmp/mig23-wing-async-1 APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py
           APEX_TEST_PART=2 APEX_TEST_OUTPUT=/tmp/mig23-wing-async-2 APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py
           APEX_TEST_PART=1 APEX_TEST_OUTPUT=/tmp/mig23-wing-cold-1 APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-cold-fin-browser.py

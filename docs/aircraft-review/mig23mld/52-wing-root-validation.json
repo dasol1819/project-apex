@@ -5,6 +5,7 @@
   "baselineBrowser": {
     "cases": [
       {
+        "pendingChildTriangles": 5484,
         "part": 1,
         "requestedSweep": 16,
         "nativeSweep": 16.000000985248143,
@@ -33,6 +34,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 5484,
         "part": 2,
         "requestedSweep": 16,
         "nativeSweep": 16.000000985248143,
@@ -61,6 +63,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 5484,
         "part": 1,
         "requestedSweep": 44,
         "nativeSweep": 43.99999901475188,
@@ -89,6 +92,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 5484,
         "part": 2,
         "requestedSweep": 44,
         "nativeSweep": 43.99999901475188,
@@ -117,6 +121,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 5484,
         "part": 1,
         "requestedSweep": 72,
         "nativeSweep": 71.99999901475185,
@@ -145,6 +150,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 5484,
         "part": 2,
         "requestedSweep": 72,
         "nativeSweep": 71.99999901475185,
@@ -184,6 +190,7 @@
   "candidateBrowser": {
     "cases": [
       {
+        "pendingChildTriangles": 0,
         "part": 1,
         "requestedSweep": 16,
         "nativeSweep": 16.000000985248143,
@@ -212,6 +219,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 0,
         "part": 2,
         "requestedSweep": 16,
         "nativeSweep": 16.000000985248143,
@@ -240,6 +248,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 0,
         "part": 1,
         "requestedSweep": 44,
         "nativeSweep": 43.99999901475188,
@@ -268,6 +277,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 0,
         "part": 2,
         "requestedSweep": 44,
         "nativeSweep": 43.99999901475188,
@@ -296,6 +306,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 0,
         "part": 1,
         "requestedSweep": 72,
         "nativeSweep": 71.99999901475185,
@@ -324,6 +335,7 @@
         "snapshotFrozen": true
       },
       {
+        "pendingChildTriangles": 0,
         "part": 2,
         "requestedSweep": 72,
         "nativeSweep": 71.99999901475185,
@@ -1198,7 +1210,8 @@
   "reviewed": false,
   "screenshots": [
     "53-original-wing-root-damage.jpg",
-    "54-wing-current-photo-overlay.jpg"
+    "54-wing-current-photo-overlay.jpg",
+    "55-late-wing-child-ownership.jpg"
   ],
   "actualPhotoOverlay": {
     "opacity": 0.48,
@@ -1358,6 +1371,7 @@
   },
   "cachedSourceArrival": {
     "1": {
+      "pendingChildTriangles": 0,
       "loaded": true,
       "sourceRootChanged": true,
       "bodyReplaced": true,
@@ -1405,6 +1419,7 @@
       "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
     },
     "2": {
+      "pendingChildTriangles": 0,
       "loaded": true,
       "sourceRootChanged": true,
       "bodyReplaced": true,
@@ -1472,6 +1487,7 @@
         ]
       },
       "after": {
+        "pendingChildTriangles": 0,
         "loaded": true,
         "sourceRootChanged": true,
         "bodyReplaced": true,
@@ -1520,6 +1536,7 @@
         ]
       },
       "after": {
+        "pendingChildTriangles": 0,
         "loaded": true,
         "sourceRootChanged": true,
         "bodyReplaced": true,
@@ -1605,10 +1622,265 @@
     "PASS F/A-18B source integration and desktop/mobile original model",
     "PASS actual tail controls and photo capture"
   ],
-  "initialChildVisualDefect": {
-    "observed": "At +2 seconds, generic child fallback skins/caps appeared alongside the correct original whole wing",
-    "correction": "Eight empty source-child metadata roots suppress incorrect fallback visuals after original source arrival",
-    "status": "clean actual render and async/cold recheck running",
-    "independentChildPartsImplemented": false
+  "worldRectangleAudit": {
+    "suspected": "rectangular debris",
+    "actualObject": "capture airspace A",
+    "distanceMetres": 4129.937663538866,
+    "method": "actual game ray hit plus isolated world-hidden capture",
+    "correction": "These rectangles are world capture-zone signs, not debris."
+  },
+  "lateChildOwnershipCounterexample": {
+    "fixture": "tests/fixtures/mig23-wing/before-child-ownership.js",
+    "fixtureGitBlob": "0e3e0fbbf7ca1a620d11e1097f90ebe309b0f0df",
+    "deployedHistoricalRelease": false,
+    "before": {
+      "extraSubmittedChildTriangles": 2742,
+      "pendingChildTriangles": 2742,
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "before": {
+        "triangles": 956,
+        "mapped": 0,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "after": {
+        "triangles": 636,
+        "mapped": 20,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "oldBodyRemoved": true,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 5,
+      "expectedNativeActorCount": 5,
+      "afterReset": 0,
+      "expectedPendingChildTriangles": 2742,
+      "part": 1,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    },
+    "currentPendingChildTriangles": 0,
+    "after": {
+      "extraSubmittedChildTriangles": 0,
+      "pendingChildTriangles": 0,
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "before": {
+        "triangles": 956,
+        "mapped": 0,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "after": {
+        "triangles": 636,
+        "mapped": 20,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "oldBodyRemoved": true,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 5,
+      "expectedNativeActorCount": 5,
+      "afterReset": 0,
+      "expectedPendingChildTriangles": 0,
+      "part": 1,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    }
+  },
+  "referenceCameras": "56-wing-reference-cameras.json",
+  "renderInspectionSecondsAfterLoss": 2,
+  "candidateReferenceCameras": {
+    "cameras": [
+      {
+        "name": "overall-photo",
+        "offset": [
+          23,
+          -4,
+          4.4
+        ],
+        "target": [
+          0,
+          0.95,
+          0
+        ],
+        "fov": 30,
+        "width": 1366,
+        "height": 900,
+        "landmarks": [],
+        "projectedLandmarks": [],
+        "renderTriangles": 44499,
+        "backgroundTriangles": 1424
+      },
+      {
+        "name": "fin-port-tip",
+        "offset": [
+          -4,
+          2.2,
+          7.7
+        ],
+        "target": [
+          0,
+          2.4,
+          7.7
+        ],
+        "fov": 25,
+        "width": 640,
+        "height": 480,
+        "landmarks": [
+          [
+            0,
+            2.8933056889,
+            7.3555699392
+          ],
+          [
+            0,
+            2.6859924704,
+            8.0923036243
+          ]
+        ],
+        "projectedLandmarks": [
+          [
+            227.4680463383421,
+            107.63760506767684
+          ],
+          [
+            425.66476882551694,
+            163.06564884888667
+          ]
+        ],
+        "renderTriangles": 8370,
+        "backgroundTriangles": 1424
+      },
+      {
+        "name": "fin-starboard-tip",
+        "offset": [
+          4,
+          2.2,
+          7.7
+        ],
+        "target": [
+          0,
+          2.4,
+          7.7
+        ],
+        "fov": 25,
+        "width": 640,
+        "height": 480,
+        "landmarks": [
+          [
+            0,
+            2.8933056889,
+            7.3555699392
+          ],
+          [
+            0,
+            2.6859924704,
+            8.0923036243
+          ]
+        ],
+        "projectedLandmarks": [
+          [
+            412.5319536616579,
+            107.63760506767684
+          ],
+          [
+            214.33523117448303,
+            163.06564884888667
+          ]
+        ],
+        "renderTriangles": 8358,
+        "backgroundTriangles": 1426
+      },
+      {
+        "name": "intake-splitter",
+        "offset": [
+          1.3,
+          0.2,
+          -5.5
+        ],
+        "target": [
+          1.1,
+          0.4,
+          -3
+        ],
+        "fov": 45,
+        "width": 480,
+        "height": 640,
+        "landmarks": [],
+        "projectedLandmarks": [],
+        "renderTriangles": 64888,
+        "backgroundTriangles": 24687
+      },
+      {
+        "name": "fin-root",
+        "offset": [
+          5,
+          1.2,
+          10
+        ],
+        "target": [
+          0.65,
+          0.6,
+          6.2
+        ],
+        "fov": 30,
+        "width": 1366,
+        "height": 900,
+        "landmarks": [],
+        "projectedLandmarks": [],
+        "renderTriangles": 16880,
+        "backgroundTriangles": 1424
+      }
+    ],
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader / actual game renderer; all controls neutral, gear0, sweep72, no afterburner"
   }
 }

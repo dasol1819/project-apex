@@ -980,7 +980,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Finish clean +2s game/late-source review after suppressing generic child caps, publish focused PR and require CI before merge. Native 62-angle/510 compatibility and six source-metal gun fixtures pass. Cache PR40 HTTP16 and actual fin with one factory request verified; HTTPS503 remains.",
+      "nextStep": "Require final PR41 CI, merge only validated root-damage changes, then verify published actual game/HTTP bytes and record deployment. Clean +2s root renders and cached/cold replacement pass; unpublished pre-child fixture reproduces2742 extra child triangles, current0. Distant rectangles were capture-zone world signs, not debris. Continue exact-variant matched exterior and remaining source subdivisions afterward; preserve PR38 and MiG15bis.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1028,7 +1028,15 @@
           "web/mig23mld-fin.js",
           "web/mig23mld-fin-data.js",
           "scripts/build-mig23-fin.mjs",
-          "scripts/partition-mig23-fin.cpp"
+          "scripts/partition-mig23-fin.cpp",
+          "assets/mig23mld/wing-support-hulls.json",
+          "scripts/export-mig23-wings.mjs",
+          "scripts/fit-mig23-wing-hulls.cpp",
+          "scripts/native/patch-mig23-wing-shapes.mjs",
+          "docs/aircraft-review/mig23mld/wing-source-vertices.csv",
+          "tests/mig23-wing-native.mjs",
+          "tests/mig23-wing-combat.mjs",
+          "tests/mig23-wing-browser.py"
         ],
         "screenshots": [
           "https://github.com/dasol1819/project-apex/actions/runs/42483065382/artifacts/13617374547",
@@ -1060,7 +1068,10 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-nozzle-damage-20261112/docs/aircraft-review/mig23mld/37-async-nozzle-wreckage.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-fin-damage-20261113/docs/aircraft-review/mig23mld/40-original-fin-native-damage.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-fin-damage-20261113/docs/aircraft-review/mig23mld/41-fin-current-photo-overlay.jpg",
-          "https://github.com/dasol1819/project-apex/blob/mig23mld-fin-damage-20261113/docs/aircraft-review/mig23mld/44-fin-reference-cameras.jpg"
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-fin-damage-20261113/docs/aircraft-review/mig23mld/44-fin-reference-cameras.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-wing-damage-20261114/docs/aircraft-review/mig23mld/53-original-wing-root-damage.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-wing-damage-20261114/docs/aircraft-review/mig23mld/54-wing-current-photo-overlay.jpg",
+          "https://github.com/dasol1819/project-apex/blob/mig23mld-wing-damage-20261114/docs/aircraft-review/mig23mld/55-late-wing-child-ownership.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1119,7 +1130,7 @@
           "2026-11-13 source fin checkpoint: C++ original topology partition673 skin triangles +299 root/hinge fitting triangles; whole 43089-triangle source positions/normals/UVs conserved; vertices71214 and attribute/index bytes2537382 unchanged. Native type16 part5 source-fit box; baseline comparison510 damage fixtures preserves all other vectors. Real gun shot baseline misses/new part5 health1->0.8; ray intersects original skin. Initial floating lower fairing detected in actual renderer and corrected. Full regression/CI/deployment pending; not reviewed.",
           "Final local fin validation: original 972 mapped triangles,5 mapped meshes, parent/rudder-only/root fairing loss/reset, native follow0error and poseerror9.1e-13m; cached and cold-source replacement1746->972 keep native serialized bodies/pose/identity,2 actors and clean reset. Eight same-tick cameras:7 pixel-identical,1 close fin/rudder seam pixel changes where ray depths differ3.846micrometres; disclosed in42, no full-frame bit-identity claim. Existing13native/model suites plus11 browser scripts (12 variants) pass. Initial7f3f1e6CI5success; final supplemental CI/deployment pending.",
           "2026-11-14 Seoul: PR #39 final head683f461 passed all five CI workflows; merge2119c070 Pages43400215098 succeeded. Fresh clone, manifest/restore and native rebuild reproduce344,687 bytes, SHA ac0f479c. Fin C++ topology/attributes/native profile/gun contact pass. All13 deployed HTTP files match23,277,261 bytes, including original GLB. HTTPS503. Production renderer NOT verified:120-second module navigation timeout; transport probe observed200 document/module responses; extended attempt execution network approval cancelled before decision, with no completed fin/async/preservation/tail report. QA source retained for normal approved execution; no bypass/reset API. Counts unchanged; own lease released.",
-          "2026-11-14: cache PR40 CI5 PASS, merge84fe619 Pages43557346042 success; 16 HTTP files match, actual native fin PASS and one canonical factory request. HTTPS503. Same-aircraft moving-wing root work: C++ source support31/27 points, 62 native sweep settings /146196 vertices with2mm numerical pad;510 other native damage fixture vectors preserved. Fixed fleet input16/72 being rejected to20, and fixed20-degree collision queries. Six static gun/fleet fixtures now identify roots1/2 health1->0.88 and candidate contact rays cross source metal. Root UI removes original636/665 triangles; independent child source partitions still incomplete. Initial +2s child generic cap defect detected; suppress via empty metadata roots and re-review before merge."
+          "2026-11-14: cache PR40 CI5 PASS, merge84fe619 Pages43557346042 success; 16 HTTP files match, actual native fin PASS and one canonical factory request. HTTPS503. Same-aircraft moving-wing root work: C++ source support31/27 points, 62 native sweep settings /146196 vertices with2mm numerical pad;510 other native damage fixture vectors preserved. Fixed fleet input16/72 being rejected to20, and fixed20-degree collision queries. Six static gun/fleet fixtures now identify roots1/2 health1->0.88 and candidate contact rays cross source metal. Root UI removes original636/665 triangles; independent child source partitions still incomplete. Initial suspected +2s rectangles were identified by ray as capture-zone world signs4130m away. Separate controlled late-source fixture proves2742 duplicate generic child triangles and2742 extra GPU submissions before empty metadata ownership, current0, same native5 actors/state/pose. Both cached and real held-first-source replacement pass. Exact-head CI/deployment pending."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1198,7 +1209,9 @@
         "finDamageVerificationCheckpoint": "https://github.com/dasol1819/project-apex/commit/a7dfb65ccf60b6449b556a7389cca2e9b382557b",
         "wingRootReview": "docs/aircraft-review/mig23mld/51-wing-root-review.md",
         "wingRootValidation": "docs/aircraft-review/mig23mld/52-wing-root-validation.json",
-        "factoryCacheDeployment": "docs/aircraft-review/mig23mld/50-factory-cache-deployment.json"
+        "factoryCacheDeployment": "docs/aircraft-review/mig23mld/50-factory-cache-deployment.json",
+        "wingRootCheckpoint": "https://github.com/dasol1819/project-apex/commit/1e75c4a45c03ce8e11fe0fcd60cef0b74db2c1ac",
+        "wingRootPullRequest": "https://github.com/dasol1819/project-apex/pull/41"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1320,7 +1333,9 @@
           665
         ],
         "wingRootRuntimeSourceAddedBytes": 753,
-        "wingRootAddedEmptyMetadataGroups": 8
+        "wingRootAddedEmptyMetadataGroups": 8,
+        "wingRootExtraChildSubmittedTrianglesBefore": 2742,
+        "wingRootExtraChildSubmittedTrianglesAfter": 0
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
@@ -2276,11 +2291,11 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-wing-damage-20261114",
-    "state": "original-wing-root-local-validation",
+    "state": "wing-root-awaiting-ci-and-deployment",
     "scope": "Continue the same unfinished MiG-23MLD: original moving-wing root ownership and live-sweep source-fit native collision/wreckage boxes. PR40 merged and Pages succeeded; final HTTP/render proof pending completion. Preserve PR38.",
-    "nextStep": "Finish clean +2s game/late-source review after suppressing generic child caps, publish focused PR and require CI before merge. Native 62-angle/510 compatibility and six source-metal gun fixtures pass. Cache PR40 HTTP16 and actual fin with one factory request verified; HTTPS503 remains.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/84fe6190adf2436fb075c053443f69a0fb92726e",
-    "pullRequest": "https://github.com/dasol1819/project-apex/pull/40",
+    "nextStep": "Require final PR41 CI, merge only validated root-damage changes, then verify published actual game/HTTP bytes and record deployment. Clean +2s root renders and cached/cold replacement pass; unpublished pre-child fixture reproduces2742 extra child triangles, current0. Distant rectangles were capture-zone world signs, not debris. Continue exact-variant matched exterior and remaining source subdivisions afterward; preserve PR38 and MiG15bis.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/1e75c4a45c03ce8e11fe0fcd60cef0b74db2c1ac",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/41",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
     "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43557346042",
     "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md",
