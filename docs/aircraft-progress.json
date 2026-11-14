@@ -7,8 +7,8 @@
   "lease": {
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-wing-damage-20261114",
-    "startedAt": "2026-11-14T04:01:00.000Z",
-    "expiresAt": "2026-11-14T05:51:00.000Z"
+    "startedAt": "2026-11-14T14:00:00.000Z",
+    "expiresAt": "2026-11-14T15:50:00.000Z"
   },
   "aircraft": [
     {
@@ -2264,11 +2264,11 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-wing-damage-20261114",
-    "state": "source-wing-root-damage-development",
+    "state": "recovering-validated-wing-checkpoint",
     "scope": "Continue the same unfinished MiG-23MLD: original moving-wing root ownership and live-sweep source-fit native collision/wreckage boxes. PR40 merged and Pages succeeded; final HTTP/render proof pending completion. Preserve PR38.",
-    "nextStep": "Checkpoint C++ source convex-hull support, dynamic native wing boxes and actual root-loss browser regression. All 62 sweep settings enclose 146196 original visible vertices with 2mm numerical pad; 510 other native damage fixtures unchanged. Wing child/control partitions remain incomplete; do not promote reviewed.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/84fe6190adf2436fb075c053443f69a0fb92726e",
-    "pullRequest": "https://github.com/dasol1819/project-apex/pull/40",
+    "nextStep": "Recovered final PR41 exact-head five successful CI workflows from GitHub. Refresh stale own lease and preserve validated runtime while completing actual published byte/render verification; no full-aircraft approval. Preserve PR38.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/80f125c5ba66bb2f3ad2287dcd19051b75967a84",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/41",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
     "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43557346042",
     "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md",
