@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-fin-verify-20261114",
+    "startedAt": "2026-11-14T04:01:00.000Z",
+    "expiresAt": "2026-11-14T05:51:00.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -2259,9 +2264,9 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-fin-verify-20261114",
-    "state": "fin-http-published-production-render-pending-network",
+    "state": "resumed-production-render-verification",
     "scope": "Resume MiG-23MLD original fixed-fin source partition/native damage; preserve active PR38 control work.",
-    "nextStep": "Resume mig23mld-fin-verify-20261114 from GitHub. PR #39 final head683f461 passed five CI workflows; Pages43400215098 succeeded. Fresh native rebuild ac0f479c and13 HTTP files match. Production renderer is NOT verified:120-second navigation timeout, then execution network approval cancelled before a decision during the300-second attempt. Retry fin/cached-arrival/preservation/tail-camera suites with normal approved network execution; record actual renders and photo overlap. Do not bypass limits or mark reviewed. Preserve PR38 and the initial fleet review.",
+    "nextStep": "Recover a7dfb65 QA branch from GitHub; retry normal approved production fin/cached-arrival/preservation/tail renders with recorded300second navigation budget. Respect network limits and preserve PR38; no new variant until unfinished fin verification is resolved.",
     "checkpoint": "https://github.com/dasol1819/project-apex/commit/a7dfb65ccf60b6449b556a7389cca2e9b382557b",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/39",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
