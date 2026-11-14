@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-11-14 Asia/Seoul",
+  "status": "Reference quality audit; no geometry, physics or aircraft-review approval change",
+  "rejectedExactVariantReference": {
+    "walkaround": "https://www.repulomuzeum.hu/Leltar/Leltarfotok/MiG-23.htm",
+    "misleadingHeading": "MiG-23MLD",
+    "museumInventory": "https://www.repulomuzeum.hu/Leltar/Leltar.htm",
+    "inventoryEntry": {
+      "type": "MiG-23MF",
+      "serial": "0390217165",
+      "sideNumber": "06",
+      "year": 1979
+    },
+    "currentMuseumRecord": "https://www.reptar.hu/en/repulogepeink/mig-23mf-jet-fighter-aircraft-.html",
+    "currentMuseumEngine": "R-29-300",
+    "decision": "Do not use the walkaround internal-nozzle/intake/fittings images as exact MiG23MLD/R35 evidence. They may be labelled family-level reference only, with explicit MF/R29 scope. No proprietary game or scale-kit assets copied."
+  },
+  "retainedExactVariantSpecificationSources": [
+    {
+      "url": "https://wingsmuseum.org/exhibits/mikoyan-gurevich-mig-23mld-flogger/",
+      "dryThrustKN": 83.6,
+      "afterburningThrustKN": 127.49,
+      "lengthM": 16.7,
+      "caution": "Bulgarian export aircraft; do not transfer every local fitting to a Soviet upgrade without photographic confirmation."
+    },
+    {
+      "url": "https://pimaair.org/museum-aircraft/mig-23mld/",
+      "serial": "23709",
+      "lengthFeetInches": "56ft9.5in",
+      "lengthMConverted": 17.3101
+    },
+    {
+      "url": "https://www.lennundusmuuseum.ee/en/gallery/fighters/mig-23mld/",
+      "lengthM": 16.7,
+      "spanM": [
+        6.36,
+        13.97
+      ],
+      "caution": "Restoration views have parts removed; not an assembled in-service configuration or operating nozzle/plume reference."
+    }
+  ],
+  "unresolved": [
+    "Length definitions differ across museum records; current16.7m source overall normalization including authored pitot is preserved pending consistent body/pitot definitions and matched views.",
+    "Existing83.6/127.49kN profile is preserved and is supported by Wings museum; no thrust change from inconsistent translated tables.",
+    "Installed uncovered R35 internal petals and exact-MLD active-plume photographic comparison remain open."
+  ]
+}
