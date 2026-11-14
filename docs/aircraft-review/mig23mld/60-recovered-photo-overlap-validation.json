@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-11-14 Asia/Seoul",
+  "candidate": "081f8cb3eef5902b1526829a5fcf61f38168c3e4",
+  "identicalRuntime": "80f125c5ba66bb2f3ad2287dcd19051b75967a84",
+  "realOverlapsOpenedAndInspected": true,
+  "records": [
+    {
+      "reference": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/28.shtm",
+      "photoSha256": "c228ce0019c63511702fe2c68aa0ccf66af49a11499f5a22be2395cf66735cc3",
+      "capture": "intake-splitter",
+      "captureSha256": "5fd447e283f37c2c6a3090303928bb949930ce2f6fe07190bc62f0bbb7af7818",
+      "overlayRecipe": "31-intake-splitter-overlay-recipe.json",
+      "alpha": 0.47843137254901963,
+      "scale": 2.072803914109442,
+      "rotationRadians": 0.07525424301967543,
+      "translation": [
+        -624.3030397668124,
+        -305.3784093275036
+      ],
+      "privateOverlapSha256": "9e8802909e9661252fc42d530a1124f92942d774ca9676c1426cbf6e01d95cf3",
+      "copyright": "Private overlap only; no copyrighted source or derivative pixels committed",
+      "scope": "Source geometry/UV intact; top landmarks align by construction. Remaining viewpoint/fin-fitting/intake lip discrepancies are unresolved, not approved."
+    },
+    {
+      "reference": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/49.shtm",
+      "photoSha256": "4bb393e67fb8c879d3c6856bc04f0d10c02da63527e9daecc0d9cb7630a97be6",
+      "capture": "fin-port-tip",
+      "captureSha256": "8f5f7f634f658cbcdd7632bfb8a8e38959464397091d407f9cf29120827ae5b7",
+      "overlayRecipe": "43-fin-private-overlap-recipe.json",
+      "alpha": 0.47843137254901963,
+      "scale": 1.739649861211615,
+      "rotationRadians": -0.2838677430034938,
+      "translation": [
+        -268.3217302818331,
+        -6.929710157690138
+      ],
+      "privateOverlapSha256": "7eb2f360d2b09a0dd8a33ffaf6689610d07035248a8df4a54061544fc870df52",
+      "copyright": "Private overlap only; no copyrighted source or derivative pixels committed",
+      "scope": "Source geometry/UV intact; top landmarks align by construction. Remaining viewpoint/fin-fitting/intake lip discrepancies are unresolved, not approved."
+    }
+  ],
+  "pending": [
+    "Matched viewpoints and lens/roll remain unresolved. Fin pod cap and projection, rudder seam, intake splitter/lower lip differ.",
+    "Independent source wing/control subdivisions and child wreckage remain incomplete.",
+    "Uncovered installed R35 internal nozzle and active plume reference remain missing."
+  ]
+}

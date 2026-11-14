@@ -17,5 +17,8 @@ for(const a of queue.aircraft){
   }
 }
 const counts=Object.fromEntries(['planned','implemented','in_progress','reviewed','blocked'].map(s=>[s,queue.aircraft.filter(a=>a.status===s).length]));
-const current=queue.aircraft.find(a=>a.status==='in_progress')||queue.aircraft.find(a=>a.status==='blocked')||queue.aircraft.find(a=>a.status==='planned');
-console.log(JSON.stringify({target:queue.targetDate,total:roster.length,actuallyImplemented:roster.filter(a=>a.implemented).length,counts,next:current?{id:current.id,name:current.name,step:current.nextStep}:null,lease:queue.lease},null,2));
+// A selectable provisional airframe is not a completed implementation. Keep
+// quality counts in the queue, and resume its current unfinished work first.
+const currentId=queue.currentWork?.aircraftId;
+const current=queue.aircraft.find(a=>a.id===currentId&&['in_progress','blocked'].includes(a.status))||queue.aircraft.find(a=>a.status==='in_progress')||queue.aircraft.find(a=>a.status==='blocked')||queue.aircraft.find(a=>a.status==='planned');
+console.log(JSON.stringify({target:queue.targetDate,total:roster.length,selectableVariants:roster.filter(a=>a.implemented).length,implementedOrReviewed:counts.implemented+counts.reviewed,counts,next:current?{id:current.id,name:current.name,step:current.nextStep}:null,lease:queue.lease},null,2));
