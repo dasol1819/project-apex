@@ -4,7 +4,12 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": null,
+  "lease": {
+    "aircraftId": "ru-mig23-mld",
+    "branch": "mig23mld-fin-verify-20261114",
+    "startedAt": "2026-11-14T04:01:00.000Z",
+    "expiresAt": "2026-11-14T05:51:00.000Z"
+  },
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -1188,7 +1193,8 @@
         "finDamagePublishedCommit": "https://github.com/dasol1819/project-apex/commit/2119c070a46b42eb1d1004eb44715c2060d65739",
         "finDamagePages": "https://github.com/dasol1819/project-apex/actions/runs/43400215098",
         "finDamageDeployment": "docs/aircraft-review/mig23mld/45-fin-deployment-verification.json",
-        "finDamageVerificationBranch": "mig23mld-fin-verify-20261114"
+        "finDamageVerificationBranch": "mig23mld-fin-verify-20261114",
+        "finDamageVerificationCheckpoint": "https://github.com/dasol1819/project-apex/commit/a7dfb65ccf60b6449b556a7389cca2e9b382557b"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -2258,14 +2264,15 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-fin-verify-20261114",
-    "state": "fin-http-published-production-render-pending-network",
-    "scope": "Resume MiG-23MLD original fixed-fin source partition/native damage; preserve active PR38 control work.",
-    "nextStep": "Resume mig23mld-fin-verify-20261114 from GitHub. PR #39 final head683f461 passed five CI workflows; Pages43400215098 succeeded. Fresh native rebuild ac0f479c and13 HTTP files match. Production renderer is NOT verified:120-second navigation timeout, then execution network approval cancelled before a decision during the300-second attempt. Retry fin/cached-arrival/preservation/tail-camera suites with normal approved network execution; record actual renders and photo overlap. Do not bypass limits or mark reviewed. Preserve PR38 and the initial fleet review.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/2119c070a46b42eb1d1004eb44715c2060d65739",
+    "state": "factory-cache-migration-pending-ci",
+    "scope": "Fix verified stale aircraft factory responses across flight, inspector, combat and graphics workload; original fin is still in progress.",
+    "nextStep": "Validate canonical factory cache migration, all CI, merge and verify actual published renders/bytes. Production original fin and cached source-arrival now pass; tail/photo and preservation checks running. Preserve independent PR38.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/a7dfb65ccf60b6449b556a7389cca2e9b382557b",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/39",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
     "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43400215098",
-    "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md"
+    "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md",
+    "cacheReview": "docs/aircraft-review/mig23mld/46-factory-cache-review.md"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",

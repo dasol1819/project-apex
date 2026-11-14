@@ -16,7 +16,12 @@ assert(!catalog.includes("id:12,key:'fa18f'"),'F/A-18F slot replaced');
 assert(tree.includes("['b','F/A-18B'"),'F/A-18B in naval tree');
 assert(!tree.includes("['fii','F/A-18F'"),'obsolete F/A-18F tree entry removed');
 assert(aircraft.includes("if(Number(type)===12)return createFa18bAircraft(options)"),'slot uses source renderer');
-assert(app.includes("aircraft.js?v=fa18b-1"),'bootstrap cache key updated');
+const factorySpecifier=app.match(/from ['"](\.\/aircraft\.js\?v=[^'"]+)['"]/)[1];
+assert(!['./aircraft.js?v=fa18b-1','./aircraft.js?v=mig23mld-13','./aircraft.js?v=inspector-5'].includes(factorySpecifier),'old cached factory version retired');
+for(const consumer of ['aircraft-inspector.js','combat-scene.js','graphics-workload.js']){
+ const text=fs.readFileSync(path.join(web,consumer),'utf8');
+ assert(text.includes(factorySpecifier),'shared factory module URL: '+consumer);
+}
 for(const token of ['parseMig23Glb','get sourceLoaded()','weaponStore','visualEffect'])
  assert(source.includes(token),'missing authored renderer behavior: '+token);
 const bin=fs.readFileSync(path.join(web,'assets/fa18/F18_Hornet_optimized.glb'));

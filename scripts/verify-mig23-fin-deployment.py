@@ -3,14 +3,32 @@
 Use the same cache versions imported by the game. TLS remains enabled; the
 HTTPS result is recorded separately from successful HTTP byte verification.
 """
-import argparse,concurrent.futures,hashlib,json,time,urllib.request,urllib.error
+import argparse,concurrent.futures,hashlib,json,re,time,urllib.request,urllib.error
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--public',type=Path,default=Path('public'));p.add_argument('--output',type=Path,required=True);p.add_argument('--commit',required=True);p.add_argument('--base',default='http://project-apex.kro.kr')
 a=p.parse_args()
-paths=[('index.html','/?screen=tree'),('app.js','/app.js?v=instructor-response-2-fin-damage-1'),('aircraft.js','/aircraft.js?v=mig23mld-14'),('mig23mld-game.js','/mig23mld-game.js?v=14'),('mig23mld-fin.js','/mig23mld-fin.js'),('mig23mld-fin-data.js','/mig23mld-fin-data.js'),('mig23mld-glb.js','/mig23mld-glb.js?v=3'),('damage-effects.js','/damage-effects.js?v=source-parts-2'),('wreckage-mesh.js','/wreckage-mesh.js?v=posed-morph-1'),('part-emitter.js','/part-emitter.js?v=world-scale-1'),('aircraft-catalog.js','/aircraft-catalog.js'),('flight.wasm','/flight.wasm?v=instructor-response-2-fin-damage-1-missiles-1'),('assets/mig23mld/Mig-23.glb','/assets/mig23mld/Mig-23.glb?v=3')]
+# Derive cache versions from the validated build instead of probing an
+# unrelated query string that a returning player's module graph never uses.
+def specifier(file,target):
+ text=(a.public/file).read_text();matches=re.findall(r"['\"](\./"+re.escape(target)+r"(?:\?[^'\"]*)?)['\"]",text)
+ assert len(set(matches))==1,(file,target,matches)
+ return matches[0][1:]
+index=(a.public/'index.html').read_text()
+appUrls=re.findall(r"src=['\"]([^'\"]*app\.js(?:\?[^'\"]*)?)['\"]",index);assert len(set(appUrls))==1,appUrls
+appUrl='/'+appUrls[0].removeprefix('./').lstrip('/')
+factoryUrls={specifier(file,'aircraft.js') for file in ['app.js','aircraft-inspector.js','combat-scene.js','graphics-workload.js']}
+assert len(factoryUrls)==1,('inconsistent aircraft factory URLs',factoryUrls)
+app=(a.public/'app.js').read_text();wasm=re.findall(r"['\"](\./flight\.wasm(?:\?[^'\"]*)?)['\"]",app);assert len(set(wasm))==1,wasm
+paths=[('index.html','/?screen=tree'),('app.js',appUrl),('aircraft.js',next(iter(factoryUrls))),
+ *[(name,specifier('app.js',name)) for name in ['aircraft-inspector.js','combat-scene.js','graphics-workload.js']],
+ ('mig23mld-game.js',specifier('aircraft.js','mig23mld-game.js')),('mig23mld-fin.js','/mig23mld-fin.js'),('mig23mld-fin-data.js','/mig23mld-fin-data.js'),
+ ('mig23mld-glb.js',specifier('mig23mld-game.js','mig23mld-glb.js')),('damage-effects.js',specifier('app.js','damage-effects.js')),
+ ('wreckage-mesh.js',specifier('damage-effects.js','wreckage-mesh.js')),('part-emitter.js',specifier('damage-effects.js','part-emitter.js')),
+ ('aircraft-catalog.js','/aircraft-catalog.js'),('flight.wasm',wasm[0][1:]),('assets/mig23mld/Mig-23.glb','/assets/mig23mld/Mig-23.glb?v=3')]
+
 def check(pair):
  file,suffix=pair;url=a.base.rstrip('/')+suffix;start=time.monotonic()
  with urllib.request.urlopen(url,timeout=120) as response:data=response.read();status=response.status
