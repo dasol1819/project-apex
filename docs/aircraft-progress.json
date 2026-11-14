@@ -6,7 +6,7 @@
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
   "lease": {
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-fin-verify-20261114",
+    "branch": "mig23mld-wing-damage-20261114",
     "startedAt": "2026-11-14T04:01:00.000Z",
     "expiresAt": "2026-11-14T05:51:00.000Z"
   },
@@ -2263,14 +2263,14 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-fin-verify-20261114",
-    "state": "factory-cache-migration-pending-ci",
-    "scope": "Fix verified stale aircraft factory responses across flight, inspector, combat and graphics workload; original fin is still in progress.",
-    "nextStep": "All local candidate cache migration and existing MiG23/F18B browser regressions pass. Complete exact-head CI and deployment verification. Prior production fin/cached/tail/preservation now pass; actual photo overlay49 retains unresolved exterior residuals. Preserve PR38.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/1ade9640645473095bc41cdebe49f89216177ab4",
+    "branch": "mig23mld-wing-damage-20261114",
+    "state": "source-wing-root-damage-development",
+    "scope": "Continue the same unfinished MiG-23MLD: original moving-wing root ownership and live-sweep source-fit native collision/wreckage boxes. PR40 merged and Pages succeeded; final HTTP/render proof pending completion. Preserve PR38.",
+    "nextStep": "Checkpoint C++ source convex-hull support, dynamic native wing boxes and actual root-loss browser regression. All 62 sweep settings enclose 146196 original visible vertices with 2mm numerical pad; 510 other native damage fixtures unchanged. Wing child/control partitions remain incomplete; do not promote reviewed.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/84fe6190adf2436fb075c053443f69a0fb92726e",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/40",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
-    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43400215098",
+    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43557346042",
     "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md",
     "cacheReview": "docs/aircraft-review/mig23mld/46-factory-cache-review.md"
   },
