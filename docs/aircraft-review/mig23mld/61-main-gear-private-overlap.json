@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-11-14 Asia/Seoul",
+  "reference": "https://www.lennundusmuuseum.ee/en/gallery/fighters/mig-23mld/",
+  "photo": "https://www.lennundusmuuseum.ee/wp-content/uploads/2016/04/ergudayvm7hql192b0hn.jpg",
+  "photoSha256": "45032cf12a15d5f7b531affcbdac92d9f0dd3c59a62d05d344a608343714bde1",
+  "copyright": "Reference and derived pixels inspected privately; not redistributed",
+  "capture": {
+    "cameras": [
+      {
+        "name": "main-gear-museum",
+        "offset": [
+          -14,
+          1.4,
+          -7
+        ],
+        "target": [
+          0,
+          0.1,
+          2.5
+        ],
+        "fov": 35,
+        "width": 1000,
+        "height": 750,
+        "landmarks": [],
+        "wheelProjections": [
+          {
+            "name": "OBJ0109",
+            "pixel": [
+              519.9543077645516,
+              467.88808047752224
+            ]
+          },
+          {
+            "name": "OBJ0131",
+            "pixel": [
+              434.79519142382406,
+              448.9674271095961
+            ]
+          }
+        ],
+        "projectedLandmarks": [],
+        "renderTriangles": 44462,
+        "backgroundTriangles": 1420
+      }
+    ],
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader / actual game renderer; all controls neutral, gear1, sweep72, no afterburner"
+  },
+  "gameRenderSha256": "8c769a7993d7027cc1e9790c5fcc0b404bad7ec20501a51d55f52a113de570e3",
+  "overlap": {
+    "alpha": 0.47843137254901963,
+    "renderAnchors": [
+      [
+        520,
+        473
+      ],
+      [
+        436,
+        453
+      ]
+    ],
+    "photoAnchors": [
+      [
+        289,
+        315
+      ],
+      [
+        149,
+        288
+      ]
+    ],
+    "landmarks": "Approximate manually read main wheel hub centres, not surveyed points",
+    "scale": 1.6512204486249198,
+    "rotationRadians": -0.04322509167525223,
+    "translation": [
+      -602.5820815450644,
+      -428.1947424892704
+    ],
+    "method": "One whole-frame similarity only; no part warping",
+    "privateOverlapSha256": "5aa5eceb9d85992a65880bc019076db93d7f6bf9bffbf59ebda7b9de9338ec66"
+  },
+  "scope": "Static actual game gear1 pose. Existing native up/down control regressions are separate. Restoration photo has wings and panels removed. Viewpoint, lens, museum suspension compression and stores differ; cannot certify dimensions, full doors or intermediate kinematics from two anchors.",
+  "actualOverlapOpenedAndInspected": true,
+  "observations": [
+    "Two approximate hub positions align by construction; this does not validate wheel track or strut positions.",
+    "Near wheel diameter and door/bay edges retain obvious residuals. Model camera/photograph perspective, missing museum wing/panels and unknown suspension state prevent isolating a metric mesh error.",
+    "Do not rescale wheel geometry to conceal this single-view residual. Fit additional independent non-coplanar landmarks and matched perspective first; native clearance/retraction checks remain separate."
+  ]
+}
