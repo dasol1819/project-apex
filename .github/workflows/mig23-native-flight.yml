@@ -5,6 +5,11 @@ on:
       - 'scripts/native/build-mig23.mjs'
       - 'scripts/native/patch-instructor.mjs'
       - 'web/app.js'
+      - 'web/aircraft-inspector.js'
+      - 'web/combat-scene.js'
+      - 'web/graphics-workload.js'
+      - 'tests/aircraft-cache-browser.py'
+      - 'tests/fixtures/aircraft-cache/**'
       - 'web/aim-input.js'
       - '.github/workflows/mig23-native-flight.yml'
       - 'scripts/fit-mig23-airbrakes.cpp'
@@ -139,6 +144,8 @@ jobs:
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-resource-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-damage-browser.py
+          APEX_EXPECT_LEGACY_FACTORY=1 APEX_TEST_OUTPUT=/tmp/aircraft-cache-before /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
+          APEX_TEST_OUTPUT=/tmp/aircraft-cache-browser /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-preservation-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-cold-fin-browser.py
@@ -153,6 +160,7 @@ jobs:
             /tmp/mig23-flight-browser
             /tmp/mig23-resource-browser
             /tmp/mig23-damage-browser
+            /tmp/aircraft-cache-browser
             /tmp/mig23-fin-browser
             /tmp/mig23-fin-preservation-browser
             /tmp/mig23-cold-fin-browser

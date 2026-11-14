@@ -2264,14 +2264,15 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-fin-verify-20261114",
-    "state": "resumed-production-render-verification",
-    "scope": "Resume MiG-23MLD original fixed-fin source partition/native damage; preserve active PR38 control work.",
-    "nextStep": "Recover a7dfb65 QA branch from GitHub; retry normal approved production fin/cached-arrival/preservation/tail renders with recorded300second navigation budget. Respect network limits and preserve PR38; no new variant until unfinished fin verification is resolved.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/a7dfb65ccf60b6449b556a7389cca2e9b382557b",
-    "pullRequest": "https://github.com/dasol1819/project-apex/pull/39",
+    "state": "factory-cache-migration-pending-ci",
+    "scope": "Fix verified stale aircraft factory responses across flight, inspector, combat and graphics workload; original fin is still in progress.",
+    "nextStep": "All local candidate cache migration and existing MiG23/F18B browser regressions pass. Complete exact-head CI and deployment verification. Prior production fin/cached/tail/preservation now pass; actual photo overlay49 retains unresolved exterior residuals. Preserve PR38.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/1ade9640645473095bc41cdebe49f89216177ab4",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/40",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
     "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43400215098",
-    "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md"
+    "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md",
+    "cacheReview": "docs/aircraft-review/mig23mld/46-factory-cache-review.md"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
