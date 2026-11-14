@@ -1,0 +1,466 @@
+{
+  "sourceSha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+  "sweep": 72,
+  "normalization": "Current gameplay source16.7m overall bbox including authored pitot, native wheel contact -1.42m",
+  "scope": "Authored names and measured source bounds only. Control surface identities and installed fittings are unverified; do not remove small parts as duplicates without matched photographs.",
+  "nodes": [
+    {
+      "rootPart": 1,
+      "node": "OBJ0256",
+      "visible": true,
+      "triangles": 20,
+      "meshes": 1,
+      "materials": [
+        "nab"
+      ],
+      "min": [
+        -1.5292239288746565,
+        0.8771628308228685,
+        1.3266208466968596
+      ],
+      "max": [
+        -1.3579110570344466,
+        0.9059993117827874,
+        1.4929205707381403
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0257",
+      "visible": true,
+      "triangles": 423,
+      "meshes": 3,
+      "materials": [
+        "fuzcamo",
+        "00Bnosser.paa",
+        "00Cnosser1.paa"
+      ],
+      "min": [
+        -3.757746575802277,
+        0.3638451824615519,
+        0.930244710901535
+      ],
+      "max": [
+        -0.10775880269478375,
+        0.9582266378100279,
+        6.666623154582979
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0258",
+      "visible": true,
+      "triangles": 25,
+      "meshes": 1,
+      "materials": [
+        "nab"
+      ],
+      "min": [
+        -3.501773397948412,
+        0.3697553513346635,
+        6.391114746332466
+      ],
+      "max": [
+        -3.491301992162237,
+        0.380101823773083,
+        6.400257495304883
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0259",
+      "visible": true,
+      "triangles": 12,
+      "meshes": 2,
+      "materials": [
+        "00Bnosser.paa",
+        "fuzcamo"
+      ],
+      "min": [
+        -3.7471837686410563,
+        0.39762881725139365,
+        2.756409972269947
+      ],
+      "max": [
+        -2.6381017838890557,
+        0.7464409106661489,
+        5.901286943059576
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0260",
+      "visible": true,
+      "triangles": 85,
+      "meshes": 3,
+      "materials": [
+        "fuzcamo",
+        "00Bnosser.paa",
+        "00Cnosser1.paa"
+      ],
+      "min": [
+        -2.4203201628125726,
+        0.4999736934393463,
+        1.8683726830215406
+      ],
+      "max": [
+        -0.08776238526081438,
+        0.8938335711418979,
+        5.3603367548266645
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0261",
+      "visible": true,
+      "triangles": 12,
+      "meshes": 1,
+      "materials": [
+        "fuzcamo"
+      ],
+      "min": [
+        -3.7471837686410563,
+        0.3976363070862932,
+        2.756409926931963
+      ],
+      "max": [
+        -2.638099172421197,
+        0.7464410557476966,
+        5.901286943059576
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0262",
+      "visible": true,
+      "triangles": 16,
+      "meshes": 2,
+      "materials": [
+        "00Bnosser.paa",
+        "fuzcamo"
+      ],
+      "min": [
+        -3.7471837686410563,
+        0.3976363070862932,
+        2.756409926931963
+      ],
+      "max": [
+        -2.638099172421197,
+        0.7464410557476966,
+        5.901286943059576
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0270",
+      "visible": true,
+      "triangles": 27,
+      "meshes": 3,
+      "materials": [
+        "fuzcamo",
+        "00Cnosser1.paa",
+        "00Bnosser.paa"
+      ],
+      "min": [
+        -3.081382493889919,
+        0.39305250999256347,
+        5.1709320689077884
+      ],
+      "max": [
+        -2.075700998666873,
+        0.5542701724997617,
+        6.483640503372664
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0272",
+      "visible": true,
+      "triangles": 8,
+      "meshes": 2,
+      "materials": [
+        "00Bnosser.paa",
+        "fuzcamo"
+      ],
+      "min": [
+        -1.8351623212641581,
+        0.7147560436804046,
+        2.332493486858988
+      ],
+      "max": [
+        -0.9378235184921764,
+        0.8471107478452304,
+        3.648912599528393
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0273",
+      "visible": true,
+      "triangles": 8,
+      "meshes": 2,
+      "materials": [
+        "00Bnosser.paa",
+        "fuzcamo"
+      ],
+      "min": [
+        -2.6053267016131842,
+        0.5629630779983684,
+        3.518495894677629
+      ],
+      "max": [
+        -1.6021372721348341,
+        0.7259764692269237,
+        5.131500209979191
+      ]
+    },
+    {
+      "rootPart": 1,
+      "node": "OBJ0277",
+      "visible": false,
+      "triangles": 16,
+      "meshes": 1,
+      "materials": [
+        "fuzcamo"
+      ],
+      "min": [
+        -2.620949953157882,
+        0.058336902455374984,
+        4.3602778949844
+      ],
+      "max": [
+        -1.4402874893243445,
+        0.10218283120209576,
+        5.007770893987716
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0100",
+      "visible": true,
+      "triangles": 25,
+      "meshes": 1,
+      "materials": [
+        "003fuzcamo1.pa"
+      ],
+      "min": [
+        3.4905779228414664,
+        0.35980426568646834,
+        6.404448609352228
+      ],
+      "max": [
+        3.501049410470068,
+        0.37014291732508176,
+        6.413584965621181
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0263",
+      "visible": true,
+      "triangles": 20,
+      "meshes": 1,
+      "materials": [
+        "nab"
+      ],
+      "min": [
+        1.3579112021159923,
+        0.8771628308228685,
+        1.3266204114522167
+      ],
+      "max": [
+        1.5292237837931066,
+        0.9059993117827874,
+        1.4929205707381403
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0264",
+      "visible": true,
+      "triangles": 434,
+      "meshes": 3,
+      "materials": [
+        "fuzcamo",
+        "00Bnosser.paa",
+        "00Cnosser1.paa"
+      ],
+      "min": [
+        0.10775879362718467,
+        0.36384523686713227,
+        0.930244710901535
+      ],
+      "max": [
+        3.757746575802274,
+        0.9582266378100279,
+        6.66662315458298
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0265",
+      "visible": true,
+      "triangles": 25,
+      "meshes": 1,
+      "materials": [
+        "fuzcamo"
+      ],
+      "min": [
+        3.491301411836042,
+        0.3697553513346635,
+        6.391114166006275
+      ],
+      "max": [
+        3.5017731077853127,
+        0.38010186004346996,
+        6.400257205141788
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0266",
+      "visible": true,
+      "triangles": 5,
+      "meshes": 1,
+      "materials": [
+        "00Bnosser.paa"
+      ],
+      "min": [
+        2.6381020740521484,
+        0.3976288353865871,
+        2.8953370700323218
+      ],
+      "max": [
+        3.726130404929361,
+        0.7464409106661489,
+        5.901286652896482
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0267",
+      "visible": true,
+      "triangles": 85,
+      "meshes": 3,
+      "materials": [
+        "fuzcamo",
+        "00Bnosser.paa",
+        "00Cnosser1.paa"
+      ],
+      "min": [
+        0.08776238526081195,
+        0.4999737297097332,
+        1.8683726830215401
+      ],
+      "max": [
+        2.4203201628125695,
+        0.8938335711418979,
+        5.360336174500475
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0268",
+      "visible": true,
+      "triangles": 12,
+      "meshes": 1,
+      "materials": [
+        "fuzcamo"
+      ],
+      "min": [
+        2.6380994625842895,
+        0.3976363252214867,
+        2.7564099269319633
+      ],
+      "max": [
+        3.7471837686410527,
+        0.7464410557476966,
+        5.901286652896482
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0269",
+      "visible": true,
+      "triangles": 16,
+      "meshes": 1,
+      "materials": [
+        "00Bnosser.paa"
+      ],
+      "min": [
+        2.6380994625842895,
+        0.3976363252214867,
+        2.7564099269319633
+      ],
+      "max": [
+        3.7471837686410527,
+        0.7464410557476966,
+        5.901286652896482
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0271",
+      "visible": true,
+      "triangles": 27,
+      "meshes": 3,
+      "materials": [
+        "fuzcamo",
+        "00Bnosser.paa",
+        "00Cnosser1.paa"
+      ],
+      "min": [
+        2.07570099866687,
+        0.39305250999256347,
+        5.163262623052177
+      ],
+      "max": [
+        3.089341667596266,
+        0.5542701724997617,
+        6.4836402132095685
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0274",
+      "visible": true,
+      "triangles": 8,
+      "meshes": 2,
+      "materials": [
+        "00Bnosser.paa",
+        "fuzcamo"
+      ],
+      "min": [
+        0.9377118057004514,
+        0.7147560436804046,
+        2.332493486858988
+      ],
+      "max": [
+        1.8350506084724332,
+        0.8471107478452304,
+        3.648912599528393
+      ]
+    },
+    {
+      "rootPart": 2,
+      "node": "OBJ0275",
+      "visible": true,
+      "triangles": 8,
+      "meshes": 2,
+      "materials": [
+        "00Bnosser.paa",
+        "fuzcamo"
+      ],
+      "min": [
+        1.6020255593431092,
+        0.5629630779983684,
+        3.518495894677629
+      ],
+      "max": [
+        2.6052149888214586,
+        0.7259764692269237,
+        5.131500209979192
+      ]
+    }
+  ]
+}
