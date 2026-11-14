@@ -85,5 +85,56 @@
     "Two approximate hub positions align by construction; this does not validate wheel track or strut positions.",
     "Near wheel diameter and door/bay edges retain obvious residuals. Model camera/photograph perspective, missing museum wing/panels and unknown suspension state prevent isolating a metric mesh error.",
     "Do not rescale wheel geometry to conceal this single-view residual. Fit additional independent non-coplanar landmarks and matched perspective first; native clearance/retraction checks remain separate."
-  ]
+  ],
+  "production": {
+    "base": "http://project-apex.kro.kr",
+    "commit": "079edaae85480ed797e8e66bf0c22efcb0645e51",
+    "capture": {
+      "cameras": [
+        {
+          "name": "main-gear-museum",
+          "offset": [
+            -14,
+            1.4,
+            -7
+          ],
+          "target": [
+            0,
+            0.1,
+            2.5
+          ],
+          "fov": 35,
+          "width": 1000,
+          "height": 750,
+          "landmarks": [],
+          "wheelProjections": [
+            {
+              "name": "OBJ0109",
+              "pixel": [
+                519.9543077645516,
+                467.88808047752224
+              ]
+            },
+            {
+              "name": "OBJ0131",
+              "pixel": [
+                434.79519142382406,
+                448.9674271095961
+              ]
+            }
+          ],
+          "projectedLandmarks": [],
+          "renderTriangles": 44462,
+          "backgroundTriangles": 1420
+        }
+      ],
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / actual game renderer; all controls neutral, gear1, sweep72, no afterburner"
+    },
+    "gameRenderSha256": "9b0f028426eb6812729bad5ee06ce89eeccc59d87bb2dd21a891c3ad433b4852",
+    "identicalToLocallyReviewedFrame": false,
+    "privateOverlapSha256": "1944c5fbce26f4d9fb585d6d920fb338c5c9a7f6e0da640506d07421cb09cc7c",
+    "source": "Actual operating remote game bytes; anonymous-account stub and inspection hooks only; one canonical factory request",
+    "actualOverlapOpenedAndInspected": true
+  }
 }
