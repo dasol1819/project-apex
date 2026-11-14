@@ -8,6 +8,7 @@ import {execFileSync} from 'node:child_process';
 import wabtFactory from 'wabt';
 import {patchMissiles} from './patch-missiles.mjs';
 import {patchInstructor} from './patch-instructor.mjs';
+import {patchMig23WingShapes} from './patch-mig23-wing-shapes.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const build=path.join(root,'.native-build');
 execFileSync(process.execPath,[path.join(root,'scripts/native/build-mig15.mjs')],{stdio:'inherit'});
@@ -303,6 +304,7 @@ change('step',b=>{
  return b;
 });
 
+wat=patchMig23WingShapes(wat,region,JSON.parse(fs.readFileSync(path.join(root,'assets/mig23mld/wing-support-hulls.json'))));
 wat=patchMissiles(wat,region,17,regions.radars);
 const preInstructorWat=wat;
 wat=patchInstructor(wat,region);

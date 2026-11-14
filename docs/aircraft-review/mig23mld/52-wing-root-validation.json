@@ -1,0 +1,1886 @@
+{
+  "checkedAt": "2026-11-14 Asia/Seoul",
+  "scope": "Original moving-wing root parts1/2; no independent wing/control subdivisions or whole-aircraft approval",
+  "baselineCommit": "84fe6190adf2436fb075c053443f69a0fb92726e",
+  "baselineBrowser": {
+    "cases": [
+      {
+        "pendingChildTriangles": 5484,
+        "part": 1,
+        "requestedSweep": 16,
+        "nativeSweep": 16.000000985248143,
+        "registered": false,
+        "sourceHidden": false,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 0,
+        "mapped": 0,
+        "maxPoseError": null,
+        "sourceOverflow": 2.3991128047201586,
+        "nativePivot": [
+          -3.1039599955081942,
+          0.24346338212490082,
+          1.0909160389006138
+        ],
+        "nativeHalf": [
+          1.2395492970943451,
+          0.1351848989725113,
+          1.8061737225949763
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": false,
+        "submittedTriangles": 0,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 5484,
+        "part": 2,
+        "requestedSweep": 16,
+        "nativeSweep": 16.000000985248143,
+        "registered": false,
+        "sourceHidden": false,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 0,
+        "mapped": 0,
+        "maxPoseError": null,
+        "sourceOverflow": 2.3977465710081267,
+        "nativePivot": [
+          3.1039599955081942,
+          0.24346337839961052,
+          1.0909160389006138
+        ],
+        "nativeHalf": [
+          1.2395492970943451,
+          0.1351849026978016,
+          1.8061737225949763
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": false,
+        "submittedTriangles": 0,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 5484,
+        "part": 1,
+        "requestedSweep": 44,
+        "nativeSweep": 43.99999901475188,
+        "registered": false,
+        "sourceHidden": false,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 0,
+        "mapped": 0,
+        "maxPoseError": null,
+        "sourceOverflow": 2.4300261563139225,
+        "nativePivot": [
+          -3.1039599955081942,
+          0.24346338212490082,
+          1.0909160389006138
+        ],
+        "nativeHalf": [
+          1.2395492970943451,
+          0.1351848989725113,
+          1.8061737225949763
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": false,
+        "submittedTriangles": 0,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 5484,
+        "part": 2,
+        "requestedSweep": 44,
+        "nativeSweep": 43.99999901475188,
+        "registered": false,
+        "sourceHidden": false,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 0,
+        "mapped": 0,
+        "maxPoseError": null,
+        "sourceOverflow": 2.428571389139992,
+        "nativePivot": [
+          3.1039599955081942,
+          0.24346337839961052,
+          1.0909160389006138
+        ],
+        "nativeHalf": [
+          1.2395492970943451,
+          0.1351849026978016,
+          1.8061737225949763
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": false,
+        "submittedTriangles": 0,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 5484,
+        "part": 1,
+        "requestedSweep": 72,
+        "nativeSweep": 71.99999901475185,
+        "registered": false,
+        "sourceHidden": false,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 0,
+        "mapped": 0,
+        "maxPoseError": null,
+        "sourceOverflow": 3.7695333651624,
+        "nativePivot": [
+          -3.1039599955081942,
+          0.24346338212490082,
+          1.0909160389006138
+        ],
+        "nativeHalf": [
+          1.2395492970943451,
+          0.1351848989725113,
+          1.8061737225949763
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": false,
+        "submittedTriangles": 0,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 5484,
+        "part": 2,
+        "requestedSweep": 72,
+        "nativeSweep": 71.99999901475185,
+        "registered": false,
+        "sourceHidden": false,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 0,
+        "mapped": 0,
+        "maxPoseError": null,
+        "sourceOverflow": 3.769533365109118,
+        "nativePivot": [
+          3.1039599955081942,
+          0.24346337839961052,
+          1.0909160389006138
+        ],
+        "nativeHalf": [
+          1.2395492970943451,
+          0.1351849026978016,
+          1.8061737225949763
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": false,
+        "submittedTriangles": 0,
+        "snapshotFrozen": true
+      }
+    ],
+    "parentLoss": [
+      false,
+      false
+    ],
+    "reset": true,
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader / real native type16 and game renderer; root parts1/2 only; hardware FPS unmeasured"
+  },
+  "candidateBrowser": {
+    "cases": [
+      {
+        "pendingChildTriangles": 0,
+        "part": 1,
+        "requestedSweep": 16,
+        "nativeSweep": 16.000000985248143,
+        "registered": true,
+        "sourceHidden": true,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 636,
+        "mapped": 20,
+        "maxPoseError": 3.552713678800501e-15,
+        "sourceOverflow": -0.0019999999992369455,
+        "nativePivot": [
+          -3.7753506261589194,
+          0.6610359101357899,
+          1.8026838225975612
+        ],
+        "nativeHalf": [
+          2.9692714711637787,
+          0.29919072767423804,
+          1.3189486596498277
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": true,
+        "submittedTriangles": 636,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 0,
+        "part": 2,
+        "requestedSweep": 16,
+        "nativeSweep": 16.000000985248143,
+        "registered": true,
+        "sourceHidden": true,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 665,
+        "mapped": 19,
+        "maxPoseError": 9.096057240753908e-13,
+        "sourceOverflow": -0.0019999999992369455,
+        "nativePivot": [
+          3.7739845913182455,
+          0.6590154517482482,
+          1.8001148849790705
+        ],
+        "nativeHalf": [
+          2.9692712722924197,
+          0.30121118606177977,
+          1.3189489211954815
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": true,
+        "submittedTriangles": 665,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 0,
+        "part": 1,
+        "requestedSweep": 44,
+        "nativeSweep": 43.99999901475188,
+        "registered": true,
+        "sourceHidden": true,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 636,
+        "mapped": 20,
+        "maxPoseError": 9.094947017729282e-13,
+        "sourceOverflow": -0.0019999999992369455,
+        "nativePivot": [
+          -3.005261357070723,
+          0.6610359101357899,
+          3.0338090197827716
+        ],
+        "nativeHalf": [
+          2.6682977587791123,
+          0.29919072767423804,
+          2.2953068980267393
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": true,
+        "submittedTriangles": 636,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 0,
+        "part": 2,
+        "requestedSweep": 44,
+        "nativeSweep": 43.99999901475188,
+        "registered": true,
+        "sourceHidden": true,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 665,
+        "mapped": 19,
+        "maxPoseError": 9.097167463778533e-13,
+        "sourceOverflow": -0.0019999999992369455,
+        "nativePivot": [
+          3.0048984725624326,
+          0.6590154517482482,
+          3.0323540223419454
+        ],
+        "nativeHalf": [
+          2.6682975665711526,
+          0.30121118606177977,
+          2.295307128293637
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": true,
+        "submittedTriangles": 665,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 0,
+        "part": 1,
+        "requestedSweep": 72,
+        "nativeSweep": 71.99999901475185,
+        "registered": true,
+        "sourceHidden": true,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 636,
+        "mapped": 20,
+        "maxPoseError": 9.094947017729282e-13,
+        "sourceOverflow": -0.0019999999992371675,
+        "nativePivot": [
+          -1.9227545267324277,
+          0.6610359101357899,
+          3.798433915129113
+        ],
+        "nativeHalf": [
+          1.8369921261600692,
+          0.29919072767423804,
+          2.870189211528877
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": true,
+        "submittedTriangles": 636,
+        "snapshotFrozen": true
+      },
+      {
+        "pendingChildTriangles": 0,
+        "part": 2,
+        "requestedSweep": 72,
+        "nativeSweep": 71.99999901475185,
+        "registered": true,
+        "sourceHidden": true,
+        "otherWingVisible": true,
+        "finVisible": true,
+        "health": 0,
+        "triangles": 665,
+        "mapped": 19,
+        "maxPoseError": 1.8189894035458565e-12,
+        "sourceOverflow": -0.0019999999992371675,
+        "nativePivot": [
+          1.9227545267324224,
+          0.6590154517482482,
+          3.798433915075834
+        ],
+        "nativeHalf": [
+          1.8369921261600666,
+          0.30121118606177977,
+          2.870189211528876
+        ],
+        "nativeBodyFollowError": 0,
+        "framebufferChanged": true,
+        "submittedTriangles": 665,
+        "snapshotFrozen": true
+      }
+    ],
+    "parentLoss": [
+      true,
+      true
+    ],
+    "reset": true,
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader / real native type16 and game renderer; root parts1/2 only; hardware FPS unmeasured"
+  },
+  "nativeAllAngles": {
+    "result": "PASS",
+    "angles": 62,
+    "checkedVertices": 146196,
+    "maxOverflow": -0.0019999999999982254,
+    "otherNativeFixtures": 510,
+    "cases": [
+      {
+        "part": 1,
+        "angle": 16.000000985248143,
+        "pivot": [
+          -3.7753506261589194,
+          0.6610359101357899,
+          1.8026838225975612
+        ],
+        "half": [
+          2.9692714711637787,
+          0.29919072767423804,
+          1.3189486596498277
+        ]
+      },
+      {
+        "part": 2,
+        "angle": 16.000000985248143,
+        "pivot": [
+          3.7739845913182455,
+          0.6590154517482482,
+          1.8001148849790705
+        ],
+        "half": [
+          2.9692712722924197,
+          0.30121118606177977,
+          1.3189489211954815
+        ]
+      },
+      {
+        "part": 1,
+        "angle": 43.99999901475188,
+        "pivot": [
+          -3.005261357070723,
+          0.6610359101357899,
+          3.0338090197827716
+        ],
+        "half": [
+          2.6682977587791123,
+          0.29919072767423804,
+          2.2953068980267393
+        ]
+      },
+      {
+        "part": 2,
+        "angle": 43.99999901475188,
+        "pivot": [
+          3.0048984725624326,
+          0.6590154517482482,
+          3.0323540223419454
+        ],
+        "half": [
+          2.6682975665711526,
+          0.30121118606177977,
+          2.295307128293637
+        ]
+      },
+      {
+        "part": 1,
+        "angle": 71.99999901475185,
+        "pivot": [
+          -1.9227545267324277,
+          0.6610359101357899,
+          3.798433915129113
+        ],
+        "half": [
+          1.8369921261600692,
+          0.29919072767423804,
+          2.870189211528877
+        ]
+      },
+      {
+        "part": 2,
+        "angle": 71.99999901475185,
+        "pivot": [
+          1.9227545267324224,
+          0.6590154517482482,
+          3.798433915075834
+        ],
+        "half": [
+          1.8369921261600666,
+          0.30121118606177977,
+          2.870189211528876
+        ]
+      },
+      {
+        "part": 1,
+        "angle": 43.499999006541444,
+        "pivot": [
+          -3.02192472482331,
+          0.6610359101357899,
+          3.014194367091096
+        ],
+        "half": [
+          2.6786053030437778,
+          0.29919072767423804,
+          2.2818584274864104
+        ]
+      },
+      {
+        "part": 2,
+        "angle": 43.499999006541444,
+        "pivot": [
+          3.0215490416164767,
+          0.6590154517482482,
+          3.0127155533958287
+        ],
+        "half": [
+          2.6786051103010777,
+          0.30121118606177977,
+          2.2818586588269563
+        ]
+      }
+    ],
+    "scope": "Original visible moving-wing AABB at live native sweep, 2 mm numeric pad; conservative box, not measured mass centre or triangle-exact collision"
+  },
+  "baselineGun": {
+    "result": "PASS",
+    "fixtures": [
+      {
+        "sweep": 16.000000985248143,
+        "part": 1,
+        "origin": [
+          -100,
+          5000.285969888989,
+          0.9221801038355784
+        ],
+        "aim": [
+          -3.384808992005342,
+          0.7246698889886727,
+          2.3405801038355785
+        ],
+        "actualPart": 0,
+        "contact": [
+          -1.9913564789295197,
+          5000.723213725087,
+          2.3373479725864263
+        ],
+        "healthBefore": 1,
+        "healthAfter": 1,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            -2.432970359242205,
+            0.7232137250866799,
+            2.3373479725864263
+          ],
+          [
+            -3.403771812830854,
+            0.7232137250866799,
+            2.3373479725864263
+          ],
+          [
+            -3.3581249956701242,
+            0.7232137250866799,
+            2.3373479725864263
+          ],
+          [
+            -3.3165466728822395,
+            0.7232137250866799,
+            2.3373479725864263
+          ],
+          [
+            -3.3581249956701384,
+            0.7232137250866799,
+            2.3373479725864263
+          ],
+          [
+            -3.3159120187096534,
+            0.7232137250866799,
+            2.3373479725864263
+          ]
+        ]
+      },
+      {
+        "sweep": 16.000000985248143,
+        "part": 2,
+        "origin": [
+          100,
+          5000.23993680755,
+          3.1331103710294483
+        ],
+        "aim": [
+          3.0229812133668723,
+          0.678636807549988,
+          1.7147103710294485
+        ],
+        "actualPart": 0,
+        "contact": [
+          1.9913572585582733,
+          5000.677180643893,
+          1.7179425017424865
+        ],
+        "healthBefore": 1,
+        "healthAfter": 1,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            3.0402142712450484,
+            0.6771806438928252,
+            1.7179425017424865
+          ],
+          [
+            4.134303510301223,
+            0.6771806438928252,
+            1.7179425017424865
+          ]
+        ]
+      },
+      {
+        "sweep": 43.99999901475188,
+        "part": 1,
+        "origin": [
+          -100,
+          5000.224970714966,
+          2.0660041225050616
+        ],
+        "aim": [
+          -3.206533474077125,
+          0.663670714965688,
+          3.4844041225050617
+        ],
+        "actualPart": 0,
+        "contact": [
+          -1.9913564789295197,
+          5000.6622145510655,
+          3.481171991260554
+        ],
+        "healthBefore": 1,
+        "healthAfter": 1,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            -2.876497102270747,
+            0.6622145510655173,
+            3.481171991260554
+          ],
+          [
+            -3.239417975703887,
+            0.6622145510655173,
+            3.481171991260554
+          ],
+          [
+            -2.3556769585515696,
+            0.6622145510655173,
+            3.481171991260554
+          ],
+          [
+            -2.9192339657434587,
+            0.6622145510655173,
+            3.481171991260554
+          ],
+          [
+            -3.230216537480473,
+            0.6622145510655173,
+            3.481171991260554
+          ],
+          [
+            -3.3730455669152093,
+            0.6622145510655173,
+            3.481171991260554
+          ]
+        ]
+      },
+      {
+        "sweep": 43.99999901475188,
+        "part": 2,
+        "origin": [
+          100,
+          5000.224970714966,
+          4.90139318029045
+        ],
+        "aim": [
+          3.2060885926666387,
+          0.663670714965688,
+          3.48299318029045
+        ],
+        "actualPart": 0,
+        "contact": [
+          1.9913572585582733,
+          5000.662214551309,
+          3.4862253110023493
+        ],
+        "healthBefore": 1,
+        "healthAfter": 1,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            3.2242408593333636,
+            0.6622145513092619,
+            3.4862253110023493
+          ],
+          [
+            2.88436961401311,
+            0.6622145513092619,
+            3.4862253110023493
+          ],
+          [
+            2.353504587288313,
+            0.6622145513092619,
+            3.4862253110023493
+          ],
+          [
+            2.9307489442750523,
+            0.6622145513092619,
+            3.4862253110023493
+          ],
+          [
+            3.234041266715451,
+            0.6622145513092619,
+            3.4862253110023493
+          ],
+          [
+            3.361886341644478,
+            0.6622145513092619,
+            3.4862253110023493
+          ]
+        ]
+      },
+      {
+        "sweep": 71.99999901475185,
+        "part": 1,
+        "origin": [
+          -100,
+          5000.248880274927,
+          1.2018299300223312
+        ],
+        "aim": [
+          -2.4184544349250374,
+          0.6875802749265223,
+          2.6202299300223313
+        ],
+        "actualPart": 0,
+        "contact": [
+          -1.9913564789295197,
+          5000.6861241110255,
+          2.616997798776003
+        ],
+        "healthBefore": 1,
+        "healthAfter": 1,
+        "ticks": 26,
+        "sourceMetalRayContacts": []
+      },
+      {
+        "sweep": 71.99999901475185,
+        "part": 2,
+        "origin": [
+          100,
+          5000.187338689358,
+          5.914226190363117
+        ],
+        "aim": [
+          2.392858600207549,
+          0.6260386893572352,
+          4.4958261903631165
+        ],
+        "actualPart": 0,
+        "contact": [
+          1.9913572585582733,
+          5000.624582525702,
+          4.499058321072151
+        ],
+        "healthBefore": 1,
+        "healthAfter": 1,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            2.4899321203802884,
+            0.6245825257019533,
+            4.499058321072151
+          ],
+          [
+            2.0393095844573708,
+            0.6245825257019533,
+            4.499058321072151
+          ],
+          [
+            2.3651430213419644,
+            0.6245825257019533,
+            4.499058321072151
+          ],
+          [
+            2.116217992657724,
+            0.6245825257019533,
+            4.499058321072151
+          ],
+          [
+            2.0135845130919705,
+            0.6245825257019533,
+            4.499058321072151
+          ],
+          [
+            1.9722559088462503,
+            0.6245825257019533,
+            4.499058321072151
+          ],
+          [
+            2.131708554517175,
+            0.6245825257019533,
+            4.499058321072151
+          ],
+          [
+            2.3651430259150317,
+            0.6245825257019533,
+            4.499058321072151
+          ]
+        ]
+      }
+    ],
+    "scope": "Static native gun/fleet delivery and source-metal ray; not triangle-exact native collision or manoeuvring AI certification"
+  },
+  "candidateGun": {
+    "result": "PASS",
+    "fixtures": [
+      {
+        "sweep": 16.000000985248143,
+        "part": 1,
+        "origin": [
+          -100,
+          5000.285969888989,
+          0.9221801038355784
+        ],
+        "aim": [
+          -3.384808992005342,
+          0.7246698889886727,
+          2.3405801038355785
+        ],
+        "actualPart": 1,
+        "contact": [
+          -6.744622097322698,
+          5000.724698986759,
+          2.3405949342944434
+        ],
+        "healthBefore": 1,
+        "healthAfter": 0.88,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            -2.4145597140318102,
+            0.7246989867589946,
+            2.3405949342944434
+          ],
+          [
+            -3.3844597430018695,
+            0.7246989867589946,
+            2.3405949342944434
+          ],
+          [
+            -3.3583634285763395,
+            0.7246989867589946,
+            2.3405949342944434
+          ],
+          [
+            -3.2994220918026116,
+            0.7246989867589946,
+            2.3405949342944434
+          ],
+          [
+            -3.3583634285763537,
+            0.7246989867589946,
+            2.3405949342944434
+          ],
+          [
+            -3.298522407476426,
+            0.7246989867589946,
+            2.3405949342944434
+          ]
+        ]
+      },
+      {
+        "sweep": 16.000000985248143,
+        "part": 2,
+        "origin": [
+          100,
+          5000.23993680755,
+          3.1331103710294483
+        ],
+        "aim": [
+          3.0229812133668723,
+          0.678636807549988,
+          1.7147103710294485
+        ],
+        "actualPart": 2,
+        "contact": [
+          6.743255863610665,
+          5000.678665478413,
+          1.7146964738431605
+        ],
+        "healthBefore": 1,
+        "healthAfter": 0.88,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            3.0226384951532737,
+            0.6786654784127677,
+            1.7146964738431605
+          ],
+          [
+            4.118792847195138,
+            0.6786654784127677,
+            1.7146964738431605
+          ]
+        ]
+      },
+      {
+        "sweep": 43.99999901475188,
+        "part": 1,
+        "origin": [
+          -100,
+          5000.224970714966,
+          2.0660041225050616
+        ],
+        "aim": [
+          -3.206533474077125,
+          0.663670714965688,
+          3.4844041225050617
+        ],
+        "actualPart": 1,
+        "contact": [
+          -5.6735591158498355,
+          5000.663365135713,
+          3.4836873085018607
+        ],
+        "healthBefore": 1,
+        "healthAfter": 0.88,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            -3.2211056526573003,
+            0.6633651357133203,
+            3.4836873085018607
+          ],
+          [
+            -2.8781278964804926,
+            0.6633651357133203,
+            3.4836873085018607
+          ],
+          [
+            -2.341074357363837,
+            0.6633651357133203,
+            3.4836873085018607
+          ],
+          [
+            -2.9260718812050044,
+            0.6633651357133203,
+            3.4836873085018607
+          ],
+          [
+            -3.211536392181088,
+            0.6633651357133203,
+            3.4836873085018607
+          ],
+          [
+            -3.3466088475610434,
+            0.6633651357133203,
+            3.4836873085018607
+          ]
+        ]
+      },
+      {
+        "sweep": 43.99999901475188,
+        "part": 2,
+        "origin": [
+          100,
+          5000.224970714966,
+          4.90139318029045
+        ],
+        "aim": [
+          3.2060885926666387,
+          0.663670714965688,
+          3.48299318029045
+        ],
+        "actualPart": 2,
+        "contact": [
+          5.673196039133585,
+          5000.663365022262,
+          3.48371024231177
+        ],
+        "healthBefore": 1,
+        "healthAfter": 0.88,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            3.209866334473972,
+            0.6633650222620417,
+            3.48371024231177
+          ],
+          [
+            2.879458728584652,
+            0.6633650222620417,
+            3.48371024231177
+          ],
+          [
+            2.3403021530951236,
+            0.6633650222620417,
+            3.48371024231177
+          ],
+          [
+            2.9284025620942344,
+            0.6633650222620417,
+            3.48371024231177
+          ],
+          [
+            3.2194186142637875,
+            0.6633650222620417,
+            3.48371024231177
+          ],
+          [
+            3.3437130735819522,
+            0.6633650222620417,
+            3.48371024231177
+          ]
+        ]
+      },
+      {
+        "sweep": 71.99999901475185,
+        "part": 1,
+        "origin": [
+          -100,
+          5000.248880274927,
+          1.2018299300223312
+        ],
+        "aim": [
+          -2.4184544349250374,
+          0.6875802749265223,
+          2.6202299300223313
+        ],
+        "actualPart": 1,
+        "contact": [
+          -3.759746652892497,
+          5000.6866766831645,
+          2.6182057883226517
+        ],
+        "healthBefore": 1,
+        "healthAfter": 0.88,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            -2.3525511835198074,
+            0.6866766831644782,
+            2.6182057883226517
+          ],
+          [
+            -2.365753597173267,
+            0.6866766831644782,
+            2.6182057883226517
+          ]
+        ]
+      },
+      {
+        "sweep": 71.99999901475185,
+        "part": 2,
+        "origin": [
+          100,
+          5000.187338689358,
+          5.914226190363117
+        ],
+        "aim": [
+          2.392858600207549,
+          0.6260386893572352,
+          4.4958261903631165
+        ],
+        "actualPart": 2,
+        "contact": [
+          3.759746652892489,
+          5000.625135097597,
+          4.497850332058149
+        ],
+        "healthBefore": 1,
+        "healthAfter": 0.88,
+        "ticks": 26,
+        "sourceMetalRayContacts": [
+          [
+            2.478594659062253,
+            0.6251350975971945,
+            4.497850332058149
+          ],
+          [
+            2.0382325534547334,
+            0.6251350975971945,
+            4.497850332058149
+          ],
+          [
+            2.364522618427472,
+            0.6251350975971945,
+            4.497850332058149
+          ],
+          [
+            2.1046044503072068,
+            0.6251350975971945,
+            4.497850332058149
+          ],
+          [
+            2.0105370514945946,
+            0.6251350975971945,
+            4.497850332058149
+          ],
+          [
+            1.9793632328046868,
+            0.6251350975971945,
+            4.497850332058149
+          ],
+          [
+            2.1179651164309234,
+            0.6251350975971945,
+            4.497850332058149
+          ],
+          [
+            2.3645226214819814,
+            0.6251350975971945,
+            4.497850332058149
+          ]
+        ]
+      }
+    ],
+    "scope": "Static native gun/fleet delivery and source-metal ray; not triangle-exact native collision or manoeuvring AI certification"
+  },
+  "resourceCosts": {
+    "runtimeSources": [
+      {
+        "file": "web/aircraft.js",
+        "beforeBytes": 56586,
+        "afterBytes": 56586,
+        "addedBytes": 0
+      },
+      {
+        "file": "web/mig23mld-game.js",
+        "beforeBytes": 19462,
+        "afterBytes": 20107,
+        "addedBytes": 645
+      },
+      {
+        "file": "web/mig23mld-glb.js",
+        "beforeBytes": 8893,
+        "afterBytes": 8963,
+        "addedBytes": 70
+      },
+      {
+        "file": "web/app.js",
+        "beforeBytes": 121733,
+        "afterBytes": 121754,
+        "addedBytes": 21
+      },
+      {
+        "file": "web/aircraft-inspector.js",
+        "beforeBytes": 20904,
+        "afterBytes": 20909,
+        "addedBytes": 5
+      },
+      {
+        "file": "web/combat-scene.js",
+        "beforeBytes": 20002,
+        "afterBytes": 20007,
+        "addedBytes": 5
+      },
+      {
+        "file": "web/graphics-workload.js",
+        "beforeBytes": 3044,
+        "afterBytes": 3049,
+        "addedBytes": 5
+      },
+      {
+        "file": "web/index.html",
+        "beforeBytes": 82302,
+        "afterBytes": 82304,
+        "addedBytes": 2
+      }
+    ],
+    "runtimeSourceAddedBytes": 753,
+    "nativeBeforeBytes": 344687,
+    "nativeAfterBytes": 346659,
+    "nativeAddedBytes": 1972,
+    "nativeSha256": "aede21e4337d1fe48b654bd50ff90897c674de313e49ef34bf092f021cd20dbc",
+    "hullPoints": {
+      "1": 31,
+      "2": 27
+    },
+    "addedIntactMeshes": 0,
+    "addedSourceTextureBytes": 0,
+    "originalGLBBytes": 22593404,
+    "hardwareFps": null,
+    "hardwareVRAM": null,
+    "actualRenderer": {
+      "result": "PASS",
+      "expectSharedSource": true,
+      "one": {
+        "calls": 245,
+        "triangles": 44497,
+        "rendererTextures": 34,
+        "textureObjects": 36,
+        "handles": 22,
+        "estimatedRGBA8Bytes": 183074056
+      },
+      "two": {
+        "calls": 468,
+        "triangles": 87572,
+        "rendererTextures": 35,
+        "textureObjects": 36,
+        "handles": 22,
+        "estimatedRGBA8Bytes": 183074056
+      },
+      "remaining": {
+        "calls": 245,
+        "triangles": 44497,
+        "rendererTextures": 34,
+        "textureObjects": 36,
+        "handles": 22,
+        "estimatedRGBA8Bytes": 183074056
+      },
+      "additionalFixtureRequests": 0,
+      "poses": {
+        "distinctPoses": true,
+        "primaryUnchanged": true,
+        "wet": 0,
+        "dry": 1,
+        "fixtureHalf": 0.5,
+        "geometryIndependent": true,
+        "materialsIndependent": true,
+        "sharedTextures": true
+      },
+      "environment": "Chromium 141 / SwiftShader, actual game renderer, 1366x900. Second visual factory instance; not AI combat/flight certification.",
+      "memoryNote": "Texture handles observed; RGBA8 full-mipmap storage estimated. Driver allocation and hardware FPS unmeasured."
+    },
+    "addedEmptyMetadataGroups": 8
+  },
+  "pending": [
+    "final candidate CI",
+    "published bytes and actual game verification"
+  ],
+  "reviewed": false,
+  "screenshots": [
+    "53-original-wing-root-damage.jpg",
+    "54-wing-current-photo-overlay.jpg",
+    "55-late-wing-child-ownership.jpg"
+  ],
+  "actualPhotoOverlay": {
+    "opacity": 0.48,
+    "recipe": "tail-overlay-recipe.json",
+    "globalSimilarityOnly": true,
+    "reference": "Preserved US Navy public-domain photo crop",
+    "result": "Unresolved wing/fin/root/camera residuals; no dimensional or full-aircraft approval"
+  },
+  "candidateTail": {
+    "cases": [
+      {
+        "part": 3,
+        "sourceNode": "stab2",
+        "health": 0,
+        "sourceVisible": false,
+        "registered": true,
+        "nativeVariant": 0,
+        "triangles": 64,
+        "mappedMeshes": 2,
+        "before": [
+          1.9066451886038975,
+          5005.039994471058,
+          -231.20017555565184
+        ],
+        "nativePivot": [
+          -1.6273267112841,
+          0.44293080254579,
+          6.8326665195295
+        ],
+        "nativeHalf": [
+          1.039961855797,
+          0.64363198069157,
+          1.5598203354528
+        ],
+        "sourceBounds": [
+          2.708417949085858,
+          1.5707625842169364,
+          3.269212985777841
+        ],
+        "nativeRenderedBodies": 1,
+        "renderedPiece": {
+          "visiblePixels": true,
+          "submittedTriangles": 64
+        }
+      },
+      {
+        "part": 4,
+        "sourceNode": "stab",
+        "health": 0,
+        "sourceVisible": false,
+        "registered": true,
+        "nativeVariant": 0,
+        "triangles": 64,
+        "mappedMeshes": 2,
+        "before": [
+          1.7631454371891788,
+          5005.01790281853,
+          -231.23391155273487
+        ],
+        "nativePivot": [
+          1.6273266931489,
+          0.44293080254579,
+          6.8326665195295
+        ],
+        "nativeHalf": [
+          1.0399618739322,
+          0.64363200965466,
+          1.5598203481231
+        ],
+        "sourceBounds": [
+          2.457642458366035,
+          2.0298389603131,
+          3.070161447717936
+        ],
+        "nativeRenderedBodies": 1,
+        "renderedPiece": {
+          "visiblePixels": true,
+          "submittedTriangles": 64
+        }
+      },
+      {
+        "part": 20,
+        "sourceNode": "rudder",
+        "health": 0,
+        "sourceVisible": false,
+        "registered": true,
+        "nativeVariant": 0,
+        "triangles": 40,
+        "mappedMeshes": 2,
+        "before": [
+          1.4173005554847888,
+          5005.656071417591,
+          -231.09932623585186
+        ],
+        "nativePivot": [
+          -4.0577495369946e-05,
+          1.7374685167062,
+          7.458287604729
+        ],
+        "nativeHalf": [
+          0.46856460192087,
+          0.63326610820054,
+          0.61609978089211
+        ],
+        "sourceBounds": [
+          0.5279764816635877,
+          1.5974676702662691,
+          1.6116063596607262
+        ],
+        "nativeRenderedBodies": 1,
+        "renderedPiece": {
+          "visiblePixels": true,
+          "submittedTriangles": 40
+        }
+      }
+    ],
+    "profileMaxOverflowMetres": -0.001999999999996005,
+    "parentLoss": [
+      {
+        "part": 3,
+        "visible": false
+      },
+      {
+        "part": 4,
+        "visible": false
+      },
+      {
+        "part": 20,
+        "visible": false
+      }
+    ],
+    "fuselageLoss": [
+      {
+        "part": 3,
+        "visible": false
+      },
+      {
+        "part": 4,
+        "visible": false
+      },
+      {
+        "part": 20,
+        "visible": false
+      }
+    ],
+    "reset": true,
+    "emitterRefresh": {
+      "loaded": true,
+      "replaced": true,
+      "fallbackSample": true,
+      "sourceSample": true,
+      "stableSourceSample": true
+    },
+    "environment": "Chromium 141 / SwiftShader / actual native type-16 gameplay; hardware FPS unmeasured",
+    "pageErrors": [],
+    "expectSourceDamage": true
+  },
+  "cachedSourceArrival": {
+    "1": {
+      "pendingChildTriangles": 0,
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "before": {
+        "triangles": 956,
+        "mapped": 0,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "after": {
+        "triangles": 636,
+        "mapped": 20,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "oldBodyRemoved": true,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 5,
+      "expectedNativeActorCount": 5,
+      "afterReset": 0,
+      "part": 1,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    },
+    "2": {
+      "pendingChildTriangles": 0,
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "before": {
+        "triangles": 956,
+        "mapped": 0,
+        "weights": [],
+        "position": [
+          1.942423925848951,
+          5000.6701082781365,
+          -0.09503492838107164
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "after": {
+        "triangles": 665,
+        "mapped": 19,
+        "weights": [],
+        "position": [
+          1.942423925848951,
+          5000.6701082781365,
+          -0.09503492838107164
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "oldBodyRemoved": true,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 5,
+      "expectedNativeActorCount": 5,
+      "afterReset": 0,
+      "part": 2,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    }
+  },
+  "heldFirstSource": {
+    "1": {
+      "part": 1,
+      "before": {
+        "loaded": false,
+        "triangles": 956,
+        "mapped": 0,
+        "position": [
+          -3.708113480244845,
+          5000.668175887311,
+          0.04543755840893704
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "after": {
+        "pendingChildTriangles": 0,
+        "loaded": true,
+        "sourceRootChanged": true,
+        "bodyReplaced": true,
+        "oldRemoved": true,
+        "stableAfterTenUpdates": true,
+        "nativeUnchanged": true,
+        "sourceHidden": true,
+        "rudderHidden": null,
+        "actorCount": 5,
+        "expectedNativeActorCount": 5,
+        "triangles": 636,
+        "mapped": 20,
+        "position": [
+          -3.708113480244845,
+          5000.668175887311,
+          0.04543755840893704
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ],
+        "afterReset": 0
+      },
+      "sourceRequests": 1,
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / actual native type16; real first source GLB response held until native part loss; hardware FPS unmeasured"
+    },
+    "2": {
+      "part": 2,
+      "before": {
+        "loaded": false,
+        "triangles": 956,
+        "mapped": 0,
+        "position": [
+          3.7119507681865462,
+          5000.666148154249,
+          0.04303012117107197
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "after": {
+        "pendingChildTriangles": 0,
+        "loaded": true,
+        "sourceRootChanged": true,
+        "bodyReplaced": true,
+        "oldRemoved": true,
+        "stableAfterTenUpdates": true,
+        "nativeUnchanged": true,
+        "sourceHidden": true,
+        "rudderHidden": null,
+        "actorCount": 5,
+        "expectedNativeActorCount": 5,
+        "triangles": 665,
+        "mapped": 19,
+        "position": [
+          3.7119507681865462,
+          5000.666148154249,
+          0.04303012117107197
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ],
+        "afterReset": 0
+      },
+      "sourceRequests": 1,
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / actual native type16; real first source GLB response held until native part loss; hardware FPS unmeasured"
+    },
+    "5": {
+      "part": 5,
+      "before": {
+        "loaded": false,
+        "triangles": 1746,
+        "mapped": 0,
+        "position": [
+          -0.0006720727784837065,
+          5001.779585489469,
+          3.695827321122518
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "after": {
+        "loaded": true,
+        "sourceRootChanged": true,
+        "bodyReplaced": true,
+        "oldRemoved": true,
+        "stableAfterTenUpdates": true,
+        "nativeUnchanged": true,
+        "sourceHidden": true,
+        "rudderHidden": true,
+        "actorCount": 2,
+        "expectedNativeActorCount": 2,
+        "triangles": 972,
+        "mapped": 5,
+        "position": [
+          -0.0006720727784837065,
+          5001.779585489469,
+          3.695827321122518
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ],
+        "afterReset": 0
+      },
+      "sourceRequests": 1,
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / actual native type16; real first source GLB response held until native part loss; hardware FPS unmeasured"
+    }
+  },
+  "additionalLocalChecks": [
+    "PASS C++ source/hull exact regeneration",
+    "PASS native fin/tail/nozzle source-fit and static gun regressions",
+    "PASS native core, AUTO sweep, missiles, instructor/response",
+    "PASS F/A-18B source integration and desktop/mobile original model",
+    "PASS actual tail controls and photo capture"
+  ],
+  "worldRectangleAudit": {
+    "suspected": "rectangular debris",
+    "actualObject": "capture airspace A",
+    "distanceMetres": 4129.937663538866,
+    "method": "actual game ray hit plus isolated world-hidden capture",
+    "correction": "These rectangles are world capture-zone signs, not debris."
+  },
+  "lateChildOwnershipCounterexample": {
+    "fixture": "tests/fixtures/mig23-wing/before-child-ownership.js",
+    "fixtureGitBlob": "0e3e0fbbf7ca1a620d11e1097f90ebe309b0f0df",
+    "deployedHistoricalRelease": false,
+    "before": {
+      "extraSubmittedChildTriangles": 2742,
+      "pendingChildTriangles": 2742,
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "before": {
+        "triangles": 956,
+        "mapped": 0,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "after": {
+        "triangles": 636,
+        "mapped": 20,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "oldBodyRemoved": true,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 5,
+      "expectedNativeActorCount": 5,
+      "afterReset": 0,
+      "expectedPendingChildTriangles": 2742,
+      "part": 1,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    },
+    "currentPendingChildTriangles": 0,
+    "after": {
+      "extraSubmittedChildTriangles": 0,
+      "pendingChildTriangles": 0,
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "before": {
+        "triangles": 956,
+        "mapped": 0,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "after": {
+        "triangles": 636,
+        "mapped": 20,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "oldBodyRemoved": true,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 5,
+      "expectedNativeActorCount": 5,
+      "afterReset": 0,
+      "expectedPendingChildTriangles": 0,
+      "part": 1,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    }
+  },
+  "referenceCameras": "56-wing-reference-cameras.json",
+  "renderInspectionSecondsAfterLoss": 2,
+  "candidateReferenceCameras": {
+    "cameras": [
+      {
+        "name": "overall-photo",
+        "offset": [
+          23,
+          -4,
+          4.4
+        ],
+        "target": [
+          0,
+          0.95,
+          0
+        ],
+        "fov": 30,
+        "width": 1366,
+        "height": 900,
+        "landmarks": [],
+        "projectedLandmarks": [],
+        "renderTriangles": 44499,
+        "backgroundTriangles": 1424
+      },
+      {
+        "name": "fin-port-tip",
+        "offset": [
+          -4,
+          2.2,
+          7.7
+        ],
+        "target": [
+          0,
+          2.4,
+          7.7
+        ],
+        "fov": 25,
+        "width": 640,
+        "height": 480,
+        "landmarks": [
+          [
+            0,
+            2.8933056889,
+            7.3555699392
+          ],
+          [
+            0,
+            2.6859924704,
+            8.0923036243
+          ]
+        ],
+        "projectedLandmarks": [
+          [
+            227.4680463383421,
+            107.63760506767684
+          ],
+          [
+            425.66476882551694,
+            163.06564884888667
+          ]
+        ],
+        "renderTriangles": 8370,
+        "backgroundTriangles": 1424
+      },
+      {
+        "name": "fin-starboard-tip",
+        "offset": [
+          4,
+          2.2,
+          7.7
+        ],
+        "target": [
+          0,
+          2.4,
+          7.7
+        ],
+        "fov": 25,
+        "width": 640,
+        "height": 480,
+        "landmarks": [
+          [
+            0,
+            2.8933056889,
+            7.3555699392
+          ],
+          [
+            0,
+            2.6859924704,
+            8.0923036243
+          ]
+        ],
+        "projectedLandmarks": [
+          [
+            412.5319536616579,
+            107.63760506767684
+          ],
+          [
+            214.33523117448303,
+            163.06564884888667
+          ]
+        ],
+        "renderTriangles": 8358,
+        "backgroundTriangles": 1426
+      },
+      {
+        "name": "intake-splitter",
+        "offset": [
+          1.3,
+          0.2,
+          -5.5
+        ],
+        "target": [
+          1.1,
+          0.4,
+          -3
+        ],
+        "fov": 45,
+        "width": 480,
+        "height": 640,
+        "landmarks": [],
+        "projectedLandmarks": [],
+        "renderTriangles": 64888,
+        "backgroundTriangles": 24687
+      },
+      {
+        "name": "fin-root",
+        "offset": [
+          5,
+          1.2,
+          10
+        ],
+        "target": [
+          0.65,
+          0.6,
+          6.2
+        ],
+        "fov": 30,
+        "width": 1366,
+        "height": 900,
+        "landmarks": [],
+        "projectedLandmarks": [],
+        "renderTriangles": 16880,
+        "backgroundTriangles": 1424
+      }
+    ],
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader / actual game renderer; all controls neutral, gear0, sweep72, no afterburner"
+  }
+}

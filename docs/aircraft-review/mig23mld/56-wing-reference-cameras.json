@@ -1,0 +1,146 @@
+{
+  "cameras": [
+    {
+      "name": "overall-photo",
+      "offset": [
+        23,
+        -4,
+        4.4
+      ],
+      "target": [
+        0,
+        0.95,
+        0
+      ],
+      "fov": 30,
+      "width": 1366,
+      "height": 900,
+      "landmarks": [],
+      "projectedLandmarks": [],
+      "renderTriangles": 44499,
+      "backgroundTriangles": 1424
+    },
+    {
+      "name": "fin-port-tip",
+      "offset": [
+        -4,
+        2.2,
+        7.7
+      ],
+      "target": [
+        0,
+        2.4,
+        7.7
+      ],
+      "fov": 25,
+      "width": 640,
+      "height": 480,
+      "landmarks": [
+        [
+          0,
+          2.8933056889,
+          7.3555699392
+        ],
+        [
+          0,
+          2.6859924704,
+          8.0923036243
+        ]
+      ],
+      "projectedLandmarks": [
+        [
+          227.4680463383421,
+          107.63760506767684
+        ],
+        [
+          425.66476882551694,
+          163.06564884888667
+        ]
+      ],
+      "renderTriangles": 8370,
+      "backgroundTriangles": 1424
+    },
+    {
+      "name": "fin-starboard-tip",
+      "offset": [
+        4,
+        2.2,
+        7.7
+      ],
+      "target": [
+        0,
+        2.4,
+        7.7
+      ],
+      "fov": 25,
+      "width": 640,
+      "height": 480,
+      "landmarks": [
+        [
+          0,
+          2.8933056889,
+          7.3555699392
+        ],
+        [
+          0,
+          2.6859924704,
+          8.0923036243
+        ]
+      ],
+      "projectedLandmarks": [
+        [
+          412.5319536616579,
+          107.63760506767684
+        ],
+        [
+          214.33523117448303,
+          163.06564884888667
+        ]
+      ],
+      "renderTriangles": 8358,
+      "backgroundTriangles": 1426
+    },
+    {
+      "name": "intake-splitter",
+      "offset": [
+        1.3,
+        0.2,
+        -5.5
+      ],
+      "target": [
+        1.1,
+        0.4,
+        -3
+      ],
+      "fov": 45,
+      "width": 480,
+      "height": 640,
+      "landmarks": [],
+      "projectedLandmarks": [],
+      "renderTriangles": 64888,
+      "backgroundTriangles": 24687
+    },
+    {
+      "name": "fin-root",
+      "offset": [
+        5,
+        1.2,
+        10
+      ],
+      "target": [
+        0.65,
+        0.6,
+        6.2
+      ],
+      "fov": 30,
+      "width": 1366,
+      "height": 900,
+      "landmarks": [],
+      "projectedLandmarks": [],
+      "renderTriangles": 16880,
+      "backgroundTriangles": 1424
+    }
+  ],
+  "pageErrors": [],
+  "environment": "Chromium141 / SwiftShader / actual game renderer; all controls neutral, gear0, sweep72, no afterburner"
+}
