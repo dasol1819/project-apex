@@ -336,8 +336,544 @@
   ],
   "pending": [
     "final candidate CI",
-    "published cache candidate byte/actual game verification",
-    "remaining production tail/photo-camera and preservation report"
+    "published cache candidate byte/actual game verification"
   ],
-  "reviewed": false
+  "reviewed": false,
+  "previousReleaseProductionTail": {
+    "cases": [
+      {
+        "part": 3,
+        "sourceNode": "stab2",
+        "health": 0,
+        "sourceVisible": false,
+        "registered": true,
+        "nativeVariant": 0,
+        "triangles": 64,
+        "mappedMeshes": 2,
+        "before": [
+          1.9066451886038975,
+          5005.039994471058,
+          -231.20017555565184
+        ],
+        "nativePivot": [
+          -1.6273267112841,
+          0.44293080254579,
+          6.8326665195295
+        ],
+        "nativeHalf": [
+          1.039961855797,
+          0.64363198069157,
+          1.5598203354528
+        ],
+        "sourceBounds": [
+          2.708417949085858,
+          1.5707625842169364,
+          3.269212985777841
+        ],
+        "nativeRenderedBodies": 1,
+        "renderedPiece": {
+          "visiblePixels": true,
+          "submittedTriangles": 64
+        }
+      },
+      {
+        "part": 4,
+        "sourceNode": "stab",
+        "health": 0,
+        "sourceVisible": false,
+        "registered": true,
+        "nativeVariant": 0,
+        "triangles": 64,
+        "mappedMeshes": 2,
+        "before": [
+          1.7631454371891788,
+          5005.01790281853,
+          -231.23391155273487
+        ],
+        "nativePivot": [
+          1.6273266931489,
+          0.44293080254579,
+          6.8326665195295
+        ],
+        "nativeHalf": [
+          1.0399618739322,
+          0.64363200965466,
+          1.5598203481231
+        ],
+        "sourceBounds": [
+          2.457642458366035,
+          2.0298389603131,
+          3.070161447717936
+        ],
+        "nativeRenderedBodies": 1,
+        "renderedPiece": {
+          "visiblePixels": true,
+          "submittedTriangles": 64
+        }
+      },
+      {
+        "part": 20,
+        "sourceNode": "rudder",
+        "health": 0,
+        "sourceVisible": false,
+        "registered": true,
+        "nativeVariant": 0,
+        "triangles": 40,
+        "mappedMeshes": 2,
+        "before": [
+          1.4173005554847888,
+          5005.656071417591,
+          -231.09932623585186
+        ],
+        "nativePivot": [
+          -4.0577495369946e-05,
+          1.7374685167062,
+          7.458287604729
+        ],
+        "nativeHalf": [
+          0.46856460192087,
+          0.63326610820054,
+          0.61609978089211
+        ],
+        "sourceBounds": [
+          0.5279764816635877,
+          1.5974676702662691,
+          1.6116063596607262
+        ],
+        "nativeRenderedBodies": 1,
+        "renderedPiece": {
+          "visiblePixels": true,
+          "submittedTriangles": 40
+        }
+      }
+    ],
+    "profileMaxOverflowMetres": -0.001999999999996005,
+    "parentLoss": [
+      {
+        "part": 3,
+        "visible": false
+      },
+      {
+        "part": 4,
+        "visible": false
+      },
+      {
+        "part": 20,
+        "visible": false
+      }
+    ],
+    "fuselageLoss": [
+      {
+        "part": 3,
+        "visible": false
+      },
+      {
+        "part": 4,
+        "visible": false
+      },
+      {
+        "part": 20,
+        "visible": false
+      }
+    ],
+    "reset": true,
+    "emitterRefresh": {
+      "loaded": true,
+      "replaced": true,
+      "fallbackSample": true,
+      "sourceSample": true,
+      "stableSourceSample": true
+    },
+    "environment": "Chromium 141 / SwiftShader / actual native type-16 gameplay; hardware FPS unmeasured",
+    "pageErrors": [],
+    "expectSourceDamage": true
+  },
+  "previousReleaseProductionPreservation": {
+    "cases": [
+      {
+        "name": "overall",
+        "originalStorage": {
+          "geometries": 222,
+          "vertices": 71214,
+          "triangles": 43089,
+          "attributeIndexMorphBytes": 3115350,
+          "scope": "active source geometry buffers including hidden authored surfaces/morphs; excludes test-retained inactive buffers, textures, temporary JS/driver allocations"
+        },
+        "currentStorage": {
+          "geometries": 223,
+          "vertices": 71214,
+          "triangles": 43089,
+          "attributeIndexMorphBytes": 3115350,
+          "scope": "active source geometry buffers including hidden authored surfaces/morphs; excludes test-retained inactive buffers, textures, temporary JS/driver allocations"
+        },
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changed": [],
+        "camera": {
+          "offset": [
+            23,
+            -4,
+            4.4
+          ],
+          "target": [
+            0,
+            0.95,
+            0
+          ],
+          "fov": 30
+        }
+      },
+      {
+        "name": "rear",
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changed": [],
+        "camera": {
+          "offset": [
+            6,
+            2.5,
+            14
+          ],
+          "target": [
+            0,
+            0.5,
+            6.4
+          ],
+          "fov": 30
+        }
+      },
+      {
+        "name": "fin-port",
+        "changedPixels": 1,
+        "maxChannelDelta": 56,
+        "changed": [
+          {
+            "x": 743,
+            "y": 482,
+            "before": [
+              110,
+              103,
+              88
+            ],
+            "after": [
+              54,
+              57,
+              57
+            ],
+            "hits": [
+              {
+                "name": "",
+                "parent": "rudder",
+                "distance": 3.9857243976239003
+              },
+              {
+                "name": "MiG-23MLD original fixed fin skin",
+                "parent": "MiG-23MLD fixed fin",
+                "distance": 3.9857282436164696
+              },
+              {
+                "name": "MiG-23MLD original fixed fin skin",
+                "parent": "MiG-23MLD fixed fin",
+                "distance": 4.0189461204932435
+              }
+            ]
+          }
+        ],
+        "camera": {
+          "offset": [
+            -4,
+            2.2,
+            7.7
+          ],
+          "target": [
+            0,
+            2.4,
+            7.7
+          ],
+          "fov": 25
+        }
+      },
+      {
+        "name": "fin-starboard",
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changed": [],
+        "camera": {
+          "offset": [
+            4,
+            2.2,
+            7.7
+          ],
+          "target": [
+            0,
+            2.4,
+            7.7
+          ],
+          "fov": 25
+        }
+      },
+      {
+        "name": "intake-port",
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changed": [],
+        "camera": {
+          "offset": [
+            -6,
+            0,
+            -8
+          ],
+          "target": [
+            -1.2,
+            0,
+            -3
+          ],
+          "fov": 30
+        }
+      },
+      {
+        "name": "intake-starboard",
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changed": [],
+        "camera": {
+          "offset": [
+            6,
+            0,
+            -8
+          ],
+          "target": [
+            1.2,
+            0,
+            -3
+          ],
+          "fov": 30
+        }
+      },
+      {
+        "name": "root",
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changed": [],
+        "camera": {
+          "offset": [
+            5,
+            1.2,
+            10
+          ],
+          "target": [
+            0.65,
+            0.6,
+            6.2
+          ],
+          "fov": 30
+        }
+      },
+      {
+        "name": "overhead",
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changed": [],
+        "camera": {
+          "offset": [
+            0,
+            20,
+            0
+          ],
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "fov": 50
+        }
+      }
+    ],
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader /1366x900; same actual game renderer, same tick/camera/materials; only original partition toggled by test-response instrumentation"
+  },
+  "candidateLocalByteVerifier": {
+    "checkedAt": "2026-11-14T13:17:45.852277+09:00",
+    "commit": "cache-candidate",
+    "files": [
+      {
+        "file": "index.html",
+        "url": "http://127.0.0.1:8766/?screen=tree",
+        "status": 200,
+        "bytes": 82302,
+        "sha256": "d5507ca8ea9d2e2cdc62e1008e0b37694334e0508fac16b88704a87a20c40e95",
+        "expectedSha256": "d5507ca8ea9d2e2cdc62e1008e0b37694334e0508fac16b88704a87a20c40e95",
+        "matches": true,
+        "seconds": 0.024
+      },
+      {
+        "file": "app.js",
+        "url": "http://127.0.0.1:8766/app.js?v=instructor-response-2-fin-cache-1",
+        "status": 200,
+        "bytes": 121733,
+        "sha256": "70014629b58681b5d964ed8662728f3b70fc01f2e6c4cd772191d0268f418f4d",
+        "expectedSha256": "70014629b58681b5d964ed8662728f3b70fc01f2e6c4cd772191d0268f418f4d",
+        "matches": true,
+        "seconds": 0.024
+      },
+      {
+        "file": "aircraft.js",
+        "url": "http://127.0.0.1:8766/aircraft.js?v=factory-20261114-1",
+        "status": 200,
+        "bytes": 56586,
+        "sha256": "c21157bb508d7340749d016a85203718d36438549d76b39578a5a62b4d3934df",
+        "expectedSha256": "c21157bb508d7340749d016a85203718d36438549d76b39578a5a62b4d3934df",
+        "matches": true,
+        "seconds": 0.022
+      },
+      {
+        "file": "aircraft-inspector.js",
+        "url": "http://127.0.0.1:8766/aircraft-inspector.js?v=factory-20261114-1",
+        "status": 200,
+        "bytes": 20904,
+        "sha256": "d23fb4155958b9f02fd6510f1a4a4cb6aa111c547c53a634d73d4ea76f56a75e",
+        "expectedSha256": "d23fb4155958b9f02fd6510f1a4a4cb6aa111c547c53a634d73d4ea76f56a75e",
+        "matches": true,
+        "seconds": 0.029
+      },
+      {
+        "file": "combat-scene.js",
+        "url": "http://127.0.0.1:8766/combat-scene.js?v=factory-20261114-1",
+        "status": 200,
+        "bytes": 20002,
+        "sha256": "1234de81082857d5e1eb6b736cf928de668d96592226bed33dc11d8e98027d68",
+        "expectedSha256": "1234de81082857d5e1eb6b736cf928de668d96592226bed33dc11d8e98027d68",
+        "matches": true,
+        "seconds": 0.016
+      },
+      {
+        "file": "graphics-workload.js",
+        "url": "http://127.0.0.1:8766/graphics-workload.js?v=factory-20261114-1",
+        "status": 200,
+        "bytes": 3044,
+        "sha256": "78d5d51a45e56dab4161ade2acc8fc7b2ffb351f23fad02da0a7913aaafbd095",
+        "expectedSha256": "78d5d51a45e56dab4161ade2acc8fc7b2ffb351f23fad02da0a7913aaafbd095",
+        "matches": true,
+        "seconds": 0.019
+      },
+      {
+        "file": "mig23mld-game.js",
+        "url": "http://127.0.0.1:8766/mig23mld-game.js?v=14",
+        "status": 200,
+        "bytes": 19462,
+        "sha256": "f8dff2308de67cfe1e01b0d1076892e0206e9e6dfe6db36f173a6e6fe107d6fc",
+        "expectedSha256": "f8dff2308de67cfe1e01b0d1076892e0206e9e6dfe6db36f173a6e6fe107d6fc",
+        "matches": true,
+        "seconds": 0.022
+      },
+      {
+        "file": "mig23mld-fin.js",
+        "url": "http://127.0.0.1:8766/mig23mld-fin.js",
+        "status": 200,
+        "bytes": 3201,
+        "sha256": "62e1e65f760049feec4df7d5a171dae5b7bcf39f0d109da870450f65ff20daab",
+        "expectedSha256": "62e1e65f760049feec4df7d5a171dae5b7bcf39f0d109da870450f65ff20daab",
+        "matches": true,
+        "seconds": 0.02
+      },
+      {
+        "file": "mig23mld-fin-data.js",
+        "url": "http://127.0.0.1:8766/mig23mld-fin-data.js",
+        "status": 200,
+        "bytes": 4120,
+        "sha256": "9e134e7c2a80099bd5df2a86f00c33049f9273f0a72d00b23b13dc3b094331e1",
+        "expectedSha256": "9e134e7c2a80099bd5df2a86f00c33049f9273f0a72d00b23b13dc3b094331e1",
+        "matches": true,
+        "seconds": 0.015
+      },
+      {
+        "file": "mig23mld-glb.js",
+        "url": "http://127.0.0.1:8766/mig23mld-glb.js?v=3",
+        "status": 200,
+        "bytes": 8893,
+        "sha256": "32456164daa4b7e55fc1873c86c9585a31bdd4150984733ccc4915cc4ec9b6df",
+        "expectedSha256": "32456164daa4b7e55fc1873c86c9585a31bdd4150984733ccc4915cc4ec9b6df",
+        "matches": true,
+        "seconds": 0.016
+      },
+      {
+        "file": "damage-effects.js",
+        "url": "http://127.0.0.1:8766/damage-effects.js?v=source-parts-2",
+        "status": 200,
+        "bytes": 17065,
+        "sha256": "2c269d2b6f7a33046bbb81e45fad0bf33dcf3c04ab2f21288663eb18fa87ccf3",
+        "expectedSha256": "2c269d2b6f7a33046bbb81e45fad0bf33dcf3c04ab2f21288663eb18fa87ccf3",
+        "matches": true,
+        "seconds": 0.023
+      },
+      {
+        "file": "wreckage-mesh.js",
+        "url": "http://127.0.0.1:8766/wreckage-mesh.js?v=posed-morph-1",
+        "status": 200,
+        "bytes": 7821,
+        "sha256": "2e9137318f03e0cf0f78e23060b454ade33cbc8fbd5ee59ba6c4eba9224fe22c",
+        "expectedSha256": "2e9137318f03e0cf0f78e23060b454ade33cbc8fbd5ee59ba6c4eba9224fe22c",
+        "matches": true,
+        "seconds": 0.012
+      },
+      {
+        "file": "part-emitter.js",
+        "url": "http://127.0.0.1:8766/part-emitter.js?v=world-scale-1",
+        "status": 200,
+        "bytes": 5434,
+        "sha256": "b9ce46b0a8bd6214899595fb715064cb0fe8218575a25773f5d6986b4dedf670",
+        "expectedSha256": "b9ce46b0a8bd6214899595fb715064cb0fe8218575a25773f5d6986b4dedf670",
+        "matches": true,
+        "seconds": 0.009
+      },
+      {
+        "file": "aircraft-catalog.js",
+        "url": "http://127.0.0.1:8766/aircraft-catalog.js",
+        "status": 200,
+        "bytes": 12584,
+        "sha256": "77bea6f245158d1a47f1bf46f4ea4e6fd0b8370e0d58ede42cb3fde58c865c80",
+        "expectedSha256": "77bea6f245158d1a47f1bf46f4ea4e6fd0b8370e0d58ede42cb3fde58c865c80",
+        "matches": true,
+        "seconds": 0.018
+      },
+      {
+        "file": "flight.wasm",
+        "url": "http://127.0.0.1:8766/flight.wasm?v=instructor-response-2-fin-damage-1-missiles-1",
+        "status": 200,
+        "bytes": 344687,
+        "sha256": "ac0f479cb659f61c309277782834306aa9753c03fc58ce74dbefbeabd1fbe007",
+        "expectedSha256": "ac0f479cb659f61c309277782834306aa9753c03fc58ce74dbefbeabd1fbe007",
+        "matches": true,
+        "seconds": 0.009
+      },
+      {
+        "file": "assets/mig23mld/Mig-23.glb",
+        "url": "http://127.0.0.1:8766/assets/mig23mld/Mig-23.glb?v=3",
+        "status": 200,
+        "bytes": 22593404,
+        "sha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+        "expectedSha256": "eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8",
+        "matches": true,
+        "seconds": 0.197
+      }
+    ],
+    "allFilesMatch": true,
+    "https": {
+      "status": 503,
+      "error": "HTTP Error 503: Service Unavailable",
+      "scope": "observed through inherited environment proxy; HTTPS unverified, not a global-outage diagnosis"
+    },
+    "transport": "Normal inherited proxy and CA. Certificate checks enabled; no local asset replacement or alternate network path."
+  },
+  "candidateLocalAdditionalChecks": [
+    "PASS actual Chromium resource sharing",
+    "PASS native MiG-23 gear/sweep/airbrake/control/afterburner and mobile selection",
+    "PASS F/A-18B desktop/mobile original source loading"
+  ],
+  "actualPhotoOverlay": {
+    "path": "49-production-photo-overlay.jpg",
+    "opacity": 0.48,
+    "scope": "actual production game; one unchanged whole-frame nose/nozzle similarity, no per-part warp; preserved unblended US Navy photo crop",
+    "result": "opened and inspected: fin top/rudder seam/root/stabilator residuals remain; no whole-aircraft approval"
+  }
 }

@@ -42,6 +42,7 @@ try:
  else:
   assert not failed and report['loss']['triangles']==972 and report['loss']['rootFairingsHidden'],report
  versions=sorted(set(r['url'] for r in requests));summary={'result':'PASS','expectedLegacy':baseline,'factoryUrls':versions,'factoryResponses':requests,'factoryTransferBytes':sum(r['bytes'] for r in requests),'sourceFinName':report['registration']['name'],'nativeFinTriangles':report['loss']['triangles'],'mappedMeshes':report['loss']['mapped'],'scope':'Actual native gameplay under old versioned-response fixture; not browser disk-cache eviction certification'}
+ if baseline:assert len(versions)==3 and len(requests)==3 and all(r['legacy'] for r in requests),summary
  if not baseline:assert len(versions)==1 and len(requests)==1 and not any(r['legacy'] for r in requests),summary
  (out/'cache.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary),flush=True)
 finally:server.server_close()

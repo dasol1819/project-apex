@@ -144,6 +144,7 @@ jobs:
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-resource-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-damage-browser.py
+          APEX_EXPECT_LEGACY_FACTORY=1 APEX_TEST_OUTPUT=/tmp/aircraft-cache-before /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
           APEX_TEST_OUTPUT=/tmp/aircraft-cache-browser /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-preservation-browser.py
