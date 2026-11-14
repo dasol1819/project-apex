@@ -7,8 +7,8 @@
   "lease": {
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-wing-damage-20261114",
-    "startedAt": "2026-11-14T04:01:00.000Z",
-    "expiresAt": "2026-11-14T05:51:00.000Z"
+    "startedAt": "2026-11-14T14:00:00.000Z",
+    "expiresAt": "2026-11-14T15:50:00.000Z"
   },
   "aircraft": [
     {
@@ -2291,10 +2291,10 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-wing-damage-20261114",
-    "state": "wing-root-awaiting-ci-and-deployment",
+    "state": "recovered-validated-runtime-awaiting-publication",
     "scope": "Continue the same unfinished MiG-23MLD: original moving-wing root ownership and live-sweep source-fit native collision/wreckage boxes. PR40 merged and Pages succeeded; final HTTP/render proof pending completion. Preserve PR38.",
-    "nextStep": "Require final PR41 CI, merge only validated root-damage changes, then verify published actual game/HTTP bytes and record deployment. Clean +2s root renders and cached/cold replacement pass; unpublished pre-child fixture reproduces2742 extra child triangles, current0. Distant rectangles were capture-zone world signs, not debris. Continue exact-variant matched exterior and remaining source subdivisions afterward; preserve PR38 and MiG15bis.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/1e75c4a45c03ce8e11fe0fcd60cef0b74db2c1ac",
+    "nextStep": "The80f125c runtime passed all five required workflows. Metadata-only renewal of expired own lease changes no runtime/source asset/test. Complete refreshed-head CI, merge and verify deployed bytes plus actual wing-root/cached/cold renders. Preserve PR38; keep aircraft in_progress.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/80f125c5ba66bb2f3ad2287dcd19051b75967a84",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/41",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
     "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43557346042",
