@@ -980,7 +980,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "PR41 wing roots are published and actual operating root/cached/cold renders pass in62. Continue exact-MLD matched exterior review and source flap/spoiler/outer-wing child partitions using57-59. Keep8 empty child metadata roots provisional; inspect fin cap/rudder gap, intake lower lip and gear camera residuals. Obtain installed R35/active plume references; exclude Szolnok MF/R29 per63. Preserve PR38 and MiG15bis.",
+      "nextStep": "Original trailing flaps16/17 now follow existing native actuator output and own textured debris; six independent child slots12/13/14/15/18/19 remain provisional. Complete calibrated exact-MLD flap/wing geometry review, source spoiler/leading/outer ownership, fin cap/rudder gap, intake lower lip, gear and installed R35/plume comparisons. Do not certify25deg game controller as a real aircraft limit. Preserve PR38, MiG15bis and initial15 review.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1227,7 +1227,15 @@
         "wingComponentCameras": "docs/aircraft-review/mig23mld/58-wing-source-component-cameras.json",
         "currentPhotoOverlap": "docs/aircraft-review/mig23mld/60-recovered-photo-overlap-validation.json",
         "gearPhotoOverlap": "docs/aircraft-review/mig23mld/61-main-gear-private-overlap.json",
-        "variantReferenceAudit": "docs/aircraft-review/mig23mld/63-variant-reference-audit.json"
+        "variantReferenceAudit": "docs/aircraft-review/mig23mld/63-variant-reference-audit.json",
+        "flapSourceReview": "docs/aircraft-review/mig23mld/65-flap-source-work.md",
+        "flapSourceBranch": "mig23mld-flap-source-20261115",
+        "flapSourcePullRequest": "https://github.com/dasol1819/project-apex/pull/43",
+        "flapSourceCheckpoint": "https://github.com/dasol1819/project-apex/commit/0c149231c662ea3c3d60fb0a6f4f00d3b2306ba6",
+        "flapSourceValidation": "docs/aircraft-review/mig23mld/66-flap-source-validation.json",
+        "flapSourceComparison": "docs/aircraft-review/mig23mld/67-original-flap-control-damage.jpg",
+        "flapPrivateOverlap": "docs/aircraft-review/mig23mld/68-flap-private-overlap.json",
+        "flapReferenceCameras": "docs/aircraft-review/mig23mld/69-flap-reference-cameras.json"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -2307,11 +2315,11 @@
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
     "branch": "mig23mld-flap-source-20261115",
-    "state": "source-wing-control-partition-research",
+    "state": "source-flap-ci-and-publication",
     "scope": "Continue unfinished MiG23MLD source wing controls/damage. Identify authored surfaces against exact-MLD photos before fitting native-driven articulation/part ownership. Preserve PR38 and existing15 review.",
-    "nextStep": "Recover main57-63 source inventory and review; verify authored flap/slat identities, native channels and source hinge boundaries. Implement only photo-supported existing source surfaces; keep unverified child metadata provisional and aircraft in_progress.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/079edaae85480ed797e8e66bf0c22efcb0645e51",
-    "pullRequest": "https://github.com/dasol1819/project-apex/pull/42",
+    "nextStep": "Source flap/native envelopes, real neutral/transit/25deg damage and late frozen hinge replay pass locally; original wing combined ownership and510 other native fixtures preserved. Private exact-MLD overlays opened; camera/crop mismatch precludes visual approval. Wait for exact-head five CI workflows, then merge only validated functional work and verify Pages/operating bytes/render. Keep aircraft in_progress and preserve other work.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/0c149231c662ea3c3d60fb0a6f4f00d3b2306ba6",
+    "pullRequest": "https://github.com/dasol1819/project-apex/pull/43",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
     "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43603965619",
     "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md",

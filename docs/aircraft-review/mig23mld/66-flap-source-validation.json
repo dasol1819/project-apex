@@ -1,0 +1,1960 @@
+{
+  "dateAsiaSeoul": "2026-11-15",
+  "aircraft": "ru-mig23-mld",
+  "status": "in_progress",
+  "scope": "Authored original trailing flap control/damage integration; no whole aircraft approval",
+  "codeHead": "0c149231c662ea3c3d60fb0a6f4f00d3b2306ba6",
+  "pr": "https://github.com/dasol1819/project-apex/pull/43",
+  "checks": {
+    "native": {
+      "result": "PASS",
+      "sweeps": 62,
+      "flapAnglesPerSweep": 101,
+      "observations": 3350170,
+      "maxOverflow": -0.001979851596249471,
+      "unchangedFixtures": 510,
+      "deployedNativeRadians": [
+        0.4363323129985819,
+        0.4363323129985819
+      ],
+      "disabledNativeRadians": [
+        0.4363323129985819,
+        9.74027642307975e-22
+      ],
+      "poses": [
+        {
+          "part": 16,
+          "sweep": 16.000000985248143,
+          "pivot": [
+            -3.7683447555946366,
+            0.5923533554050344,
+            2.720397939367988
+          ],
+          "half": [
+            2.659324077044279,
+            0.3034802157368635,
+            0.40137075999089333
+          ]
+        },
+        {
+          "part": 17,
+          "sweep": 16.000000985248143,
+          "pivot": [
+            3.7664445979761156,
+            0.5923533412511195,
+            2.717829253552775
+          ],
+          "half": [
+            2.658789749274227,
+            0.3034802298907784,
+            0.4013707684084513
+          ]
+        },
+        {
+          "part": 16,
+          "sweep": 43.99999901475188,
+          "pivot": [
+            -2.846429314598485,
+            0.5923533554050344,
+            3.7182798790580813
+          ],
+          "half": [
+            2.3473145558855504,
+            0.3034802157368635,
+            1.53477164736929
+          ]
+        },
+        {
+          "part": 17,
+          "sweep": 43.99999901475188,
+          "pivot": [
+            2.8477800353754983,
+            0.5923533412511195,
+            3.716825188739315
+          ],
+          "half": [
+            2.349028165279015,
+            0.3034802298907784,
+            1.5347715701931455
+          ]
+        },
+        {
+          "part": 16,
+          "sweep": 71.99999901475185,
+          "pivot": [
+            -1.5841144652366026,
+            0.5923533554050344,
+            4.176006588290538
+          ],
+          "half": [
+            1.4992681129680892,
+            0.3034802157368635,
+            2.3096338916865005
+          ]
+        },
+        {
+          "part": 17,
+          "sweep": 71.99999901475185,
+          "pivot": [
+            1.588094052041582,
+            0.5923533412511195,
+            4.176006443155712
+          ],
+          "half": [
+            1.5032476997375765,
+            0.3034802298907784,
+            2.3096337466049546
+          ]
+        }
+      ],
+      "scope": "Conservative authored flap0..25deg game-actuator envelope at actual wing sweep; not surveyed MLD limits, mass centre, triangle collision or hardware FPS"
+    },
+    "baselineNative": {
+      "result": "PASS",
+      "sweeps": 62,
+      "flapAnglesPerSweep": 101,
+      "observations": 3350170,
+      "maxOverflow": 3.078870061070827,
+      "unchangedFixtures": 0,
+      "deployedNativeRadians": [
+        0.4363323129985819,
+        0.4363323129985819
+      ],
+      "disabledNativeRadians": [
+        0.4363323129985819,
+        9.74027642307975e-22
+      ],
+      "poses": [
+        {
+          "part": 16,
+          "sweep": 16.000000985248143,
+          "pivot": [
+            -3.0007108555436135,
+            0.20149527937173844,
+            2.844143646672694
+          ],
+          "half": [
+            1.0181761488318444,
+            0.0839167907834053,
+            0.5606267722335179
+          ]
+        },
+        {
+          "part": 17,
+          "sweep": 16.000000985248143,
+          "pivot": [
+            3.0007108555436135,
+            0.20149527937173844,
+            2.844143646672694
+          ],
+          "half": [
+            1.0181761488318444,
+            0.0839167907834053,
+            0.5606267722335179
+          ]
+        },
+        {
+          "part": 16,
+          "sweep": 43.99999901475188,
+          "pivot": [
+            -3.0007108555436135,
+            0.20149527937173844,
+            2.844143646672694
+          ],
+          "half": [
+            1.0181761488318444,
+            0.0839167907834053,
+            0.5606267722335179
+          ]
+        },
+        {
+          "part": 17,
+          "sweep": 43.99999901475188,
+          "pivot": [
+            3.0007108555436135,
+            0.20149527937173844,
+            2.844143646672694
+          ],
+          "half": [
+            1.0181761488318444,
+            0.0839167907834053,
+            0.5606267722335179
+          ]
+        },
+        {
+          "part": 16,
+          "sweep": 71.99999901475185,
+          "pivot": [
+            -3.0007108555436135,
+            0.20149527937173844,
+            2.844143646672694
+          ],
+          "half": [
+            1.0181761488318444,
+            0.0839167907834053,
+            0.5606267722335179
+          ]
+        },
+        {
+          "part": 17,
+          "sweep": 71.99999901475185,
+          "pivot": [
+            3.0007108555436135,
+            0.20149527937173844,
+            2.844143646672694
+          ],
+          "half": [
+            1.0181761488318444,
+            0.0839167907834053,
+            0.5606267722335179
+          ]
+        }
+      ],
+      "scope": "Conservative authored flap0..25deg game-actuator envelope at actual wing sweep; not surveyed MLD limits, mass centre, triangle collision or hardware FPS"
+    },
+    "combat": {
+      "result": "PASS",
+      "fixtures": [
+        {
+          "part": 16,
+          "travelTicks": 0,
+          "nativeFlapRadians": 0,
+          "nativeSweep": 16.000000008244616,
+          "origin": [
+            -4.61367304490862,
+            4900,
+            2.0704187849501317
+          ],
+          "aim": [
+            -3.19527304490862,
+            0.6953208542649666,
+            2.5091187849501315
+          ],
+          "actualPart": 16,
+          "contact": [
+            -3.2000999935691876,
+            5000.288873139668,
+            2.5612713113235612
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              -3.2000999935691876,
+              0.7239391168108114,
+              2.5612713113235612
+            ],
+            [
+              -3.2000999935691876,
+              0.6592793297499497,
+              2.5612713113235612
+            ]
+          ]
+        },
+        {
+          "part": 17,
+          "travelTicks": 0,
+          "nativeFlapRadians": 0,
+          "nativeSweep": 16.000000008244616,
+          "origin": [
+            1.7772354478410164,
+            4900,
+            2.0575495836896525
+          ],
+          "aim": [
+            3.1956354478410165,
+            0.7127137887661716,
+            2.4962495836896523
+          ],
+          "actualPart": 17,
+          "contact": [
+            3.190808499199806,
+            5000.288873111361,
+            2.5484021100453496
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              3.190808499199806,
+              0.7232962739763451,
+              2.5484021100453496
+            ],
+            [
+              3.190808499199806,
+              0.6596900871648899,
+              2.5484021100453496
+            ]
+          ]
+        },
+        {
+          "part": 16,
+          "travelTicks": 120,
+          "nativeFlapRadians": 0.12895844680734098,
+          "nativeSweep": 16.000000001115797,
+          "origin": [
+            -4.613567564578048,
+            4900,
+            2.0752904918759567
+          ],
+          "aim": [
+            -3.1951675645780484,
+            0.6993297454938088,
+            2.5139904918759566
+          ],
+          "actualPart": 16,
+          "contact": [
+            -3.1999945132386154,
+            5000.288873139668,
+            2.5661430182493863
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              -3.1999945132386154,
+              0.720991970561002,
+              2.5661430182493863
+            ],
+            [
+              -3.1999945132386154,
+              0.6564297719916397,
+              2.5661430182493863
+            ]
+          ]
+        },
+        {
+          "part": 17,
+          "travelTicks": 120,
+          "nativeFlapRadians": 0.12895844680734098,
+          "nativeSweep": 16.000000001115797,
+          "origin": [
+            1.7825415112506393,
+            4900,
+            2.4234621681392365
+          ],
+          "aim": [
+            3.2009415112506394,
+            0.6501672506795613,
+            2.8621621681392364
+          ],
+          "actualPart": 17,
+          "contact": [
+            3.196114562609429,
+            5000.288873111361,
+            2.9143146944949336
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              3.196114562609429,
+              0.6178756225915549,
+              2.9143146944949336
+            ],
+            [
+              3.196114562609429,
+              0.6373628832001259,
+              2.9143146944949336
+            ]
+          ]
+        },
+        {
+          "part": 16,
+          "travelTicks": 1200,
+          "nativeFlapRadians": 0.4363323129985819,
+          "nativeSweep": 16.000000000000107,
+          "origin": [
+            -4.612934325794097,
+            4900,
+            2.0886321243866326
+          ],
+          "aim": [
+            -3.194534325794096,
+            0.70613670467092,
+            2.5273321243866325
+          ],
+          "actualPart": 16,
+          "contact": [
+            -3.199361274454664,
+            5000.288873139668,
+            2.579484650760062
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              -3.199361274454664,
+              0.7123993770968582,
+              2.579484650760062
+            ],
+            [
+              -3.199361274454664,
+              0.6430059520577771,
+              2.579484650760062
+            ]
+          ]
+        },
+        {
+          "part": 17,
+          "travelTicks": 1200,
+          "nativeFlapRadians": 0.4363323129985819,
+          "nativeSweep": 16.000000000000107,
+          "origin": [
+            1.776168911248866,
+            4900,
+            2.4059531113099233
+          ],
+          "aim": [
+            3.194568911248866,
+            0.5539677962439065,
+            2.844653111309923
+          ],
+          "actualPart": 17,
+          "contact": [
+            3.1897419626076555,
+            5000.288873111361,
+            2.8968056376656204
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              3.1897419626076555,
+              0.5019653183086064,
+              2.8968056376656204
+            ],
+            [
+              3.1897419626076555,
+              0.5219976020761692,
+              2.8968056376656204
+            ]
+          ]
+        }
+      ],
+      "scope": "Static upward native M61/fleet delivery at existing game flap0/transit/25 outputs. Conservative envelope, not triangle-exact impact, surveyed aircraft dimensions or AI engagement certification"
+    },
+    "baselineCombat": {
+      "result": "PASS",
+      "fixtures": [
+        {
+          "part": 16,
+          "travelTicks": 0,
+          "nativeFlapRadians": 0,
+          "nativeSweep": 16.000000008244616,
+          "origin": [
+            -4.61367304490862,
+            4900,
+            2.0704187849501317
+          ],
+          "aim": [
+            -3.19527304490862,
+            0.6953208542649666,
+            2.5091187849501315
+          ],
+          "actualPart": 16,
+          "contact": [
+            -3.19998286288523,
+            5000.117578488588,
+            2.5611640100222313
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              -3.19998286288523,
+              0.7239359245887442,
+              2.5611640100222313
+            ],
+            [
+              -3.19998286288523,
+              0.6592870236915047,
+              2.5611640100222313
+            ]
+          ]
+        },
+        {
+          "part": 17,
+          "travelTicks": 0,
+          "nativeFlapRadians": 0,
+          "nativeSweep": 16.000000008244616,
+          "origin": [
+            1.7772354478410164,
+            4900,
+            2.0575495836896525
+          ],
+          "aim": [
+            3.1956354478410165,
+            0.7127137887661716,
+            2.4962495836896523
+          ],
+          "actualPart": 17,
+          "contact": [
+            3.190925629864407,
+            5000.117578488588,
+            2.548294808761752
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              3.190925629864407,
+              0.7232693307561533,
+              2.548294808761752
+            ],
+            [
+              3.190925629864407,
+              0.6596786854824614,
+              2.548294808761752
+            ]
+          ]
+        },
+        {
+          "part": 16,
+          "travelTicks": 120,
+          "nativeFlapRadians": 0.12895844680734098,
+          "nativeSweep": 16.000000001115797,
+          "origin": [
+            -4.613567564578048,
+            4900,
+            2.0752904918759567
+          ],
+          "aim": [
+            -3.1951675645780484,
+            0.6993297454938088,
+            2.5139904918759566
+          ],
+          "actualPart": 16,
+          "contact": [
+            -3.1998773825546576,
+            5000.117578488588,
+            2.5660357169480563
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              -3.1998773825546576,
+              0.7210013565264433,
+              2.5660357169480563
+            ],
+            [
+              -3.1998773825546576,
+              0.6564499766716239,
+              2.5660357169480563
+            ]
+          ]
+        },
+        {
+          "part": 17,
+          "travelTicks": 120,
+          "nativeFlapRadians": 0.12895844680734098,
+          "nativeSweep": 16.000000001115797,
+          "origin": [
+            1.7825415112506393,
+            4900,
+            2.4234621681392365
+          ],
+          "aim": [
+            3.2009415112506394,
+            0.6501672506795613,
+            2.8621621681392364
+          ],
+          "actualPart": 17,
+          "contact": [
+            3.19623169327403,
+            5000.117578488588,
+            2.914207393211336
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              3.19623169327403,
+              0.617879034364563,
+              2.914207393211336
+            ],
+            [
+              3.19623169327403,
+              0.637382230818119,
+              2.914207393211336
+            ]
+          ]
+        },
+        {
+          "part": 16,
+          "travelTicks": 1200,
+          "nativeFlapRadians": 0.4363323129985819,
+          "nativeSweep": 16.000000000000107,
+          "origin": [
+            -4.612934325794097,
+            4900,
+            2.0886321243866326
+          ],
+          "aim": [
+            -3.194534325794096,
+            0.70613670467092,
+            2.5273321243866325
+          ],
+          "actualPart": 16,
+          "contact": [
+            -3.199244143770706,
+            5000.117578488588,
+            2.579377349458732
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              -3.199244143770706,
+              0.7124393566311511,
+              2.579377349458732
+            ],
+            [
+              -3.199244143770706,
+              0.6430582182686067,
+              2.579377349458732
+            ]
+          ]
+        },
+        {
+          "part": 17,
+          "travelTicks": 1200,
+          "nativeFlapRadians": 0.4363323129985819,
+          "nativeSweep": 16.000000000000107,
+          "origin": [
+            1.776168911248866,
+            4900,
+            2.4059531113099233
+          ],
+          "aim": [
+            3.194568911248866,
+            0.5539677962439065,
+            2.844653111309923
+          ],
+          "actualPart": 17,
+          "contact": [
+            3.1898590932722564,
+            5000.117578488588,
+            2.896698336382023
+          ],
+          "healthBefore": 1,
+          "healthAfter": 0.8,
+          "ticks": 27,
+          "sourceMetalRayContacts": [
+            [
+              3.1898590932722564,
+              0.502007783066631,
+              2.896698336382023
+            ],
+            [
+              3.1898590932722564,
+              0.5220598057680377,
+              2.896698336382023
+            ]
+          ]
+        }
+      ],
+      "scope": "Static upward native M61/fleet delivery at existing game flap0/transit/25 outputs. Conservative envelope, not triangle-exact impact, surveyed aircraft dimensions or AI engagement certification"
+    },
+    "renderer": {
+      "poses": [
+        {
+          "gear": 0,
+          "sweep": 16.000000008244616,
+          "items": [
+            {
+              "part": 16,
+              "nativeRadians": 0,
+              "sourceVertices": 270,
+              "maxError": 7.629469427183828e-13,
+              "maxDown": 0,
+              "registered": true
+            },
+            {
+              "part": 17,
+              "nativeRadians": 0,
+              "sourceVertices": 265,
+              "maxError": 1.4666584027899782e-13,
+              "maxDown": 0,
+              "registered": true
+            }
+          ]
+        },
+        {
+          "gear": 0.3500000000000008,
+          "sweep": 16.000000001115797,
+          "items": [
+            {
+              "part": 16,
+              "nativeRadians": 0.12895844680734098,
+              "sourceVertices": 270,
+              "maxError": 8.663075952410688e-13,
+              "maxDown": 0.08285630485960749,
+              "registered": true
+            },
+            {
+              "part": 17,
+              "nativeRadians": 0.12895844680734098,
+              "sourceVertices": 265,
+              "maxError": 5.00490115680295e-13,
+              "maxDown": 0.08285633120700853,
+              "registered": true
+            }
+          ]
+        },
+        {
+          "gear": 1,
+          "sweep": 16.000000000000107,
+          "items": [
+            {
+              "part": 16,
+              "nativeRadians": 0.4363323129985819,
+              "sourceVertices": 270,
+              "maxError": 7.719385799829677e-13,
+              "maxDown": 0.2727974437899401,
+              "registered": true
+            },
+            {
+              "part": 17,
+              "nativeRadians": 0.4363323129985819,
+              "sourceVertices": 265,
+              "maxError": 1.7309601787798777e-14,
+              "maxDown": 0.2727975302011272,
+              "registered": true
+            }
+          ]
+        }
+      ],
+      "damage": [
+        {
+          "part": 16,
+          "nativeAngle": 0.4363323129985819,
+          "sourceHidden": true,
+          "oppositeVisible": true,
+          "fixedWingVisible": true,
+          "actorCount": 1,
+          "triangles": 112,
+          "mapped": 6,
+          "maxPoseError": 9.094947017729282e-13,
+          "maxOverflow": -0.0019999999999997797,
+          "disabledSourceFrozen": true,
+          "detachedSnapshotFrozen": true
+        },
+        {
+          "part": 17,
+          "nativeAngle": 0.4363323129985819,
+          "sourceHidden": true,
+          "oppositeVisible": true,
+          "fixedWingVisible": true,
+          "actorCount": 1,
+          "triangles": 112,
+          "mapped": 6,
+          "maxPoseError": 9.094947017729282e-13,
+          "maxOverflow": -0.0019999999999832374,
+          "disabledSourceFrozen": true,
+          "detachedSnapshotFrozen": true
+        }
+      ],
+      "reset": true,
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / actual native type16 and game renderer; hardware FPS unmeasured"
+    },
+    "baselineRenderer": {
+      "poses": [
+        {
+          "gear": 0,
+          "sweep": 16.000000008244616,
+          "items": [
+            {
+              "part": 16,
+              "nativeRadians": 0,
+              "sourceVertices": 270,
+              "maxError": 7.629469427183828e-13,
+              "maxDown": 0,
+              "registered": false
+            },
+            {
+              "part": 17,
+              "nativeRadians": 0,
+              "sourceVertices": 265,
+              "maxError": 7.629462964895994e-13,
+              "maxDown": 0,
+              "registered": false
+            }
+          ]
+        },
+        {
+          "gear": 0.3500000000000008,
+          "sweep": 16.000000001115797,
+          "items": [
+            {
+              "part": 16,
+              "nativeRadians": 0.12895844680734098,
+              "sourceVertices": 270,
+              "maxError": 0.08325085869166969,
+              "maxDown": 0.08285630485960749,
+              "registered": false
+            },
+            {
+              "part": 17,
+              "nativeRadians": 0.12895844680734098,
+              "sourceVertices": 265,
+              "maxError": 0.08325088520554579,
+              "maxDown": 0.08285633120700853,
+              "registered": false
+            }
+          ]
+        },
+        {
+          "gear": 1,
+          "sweep": 16.000000000000107,
+          "items": [
+            {
+              "part": 16,
+              "nativeRadians": 0.4363323129985819,
+              "sourceVertices": 270,
+              "maxError": 0.27964473746244206,
+              "maxDown": 0.2727974437899401,
+              "registered": false
+            },
+            {
+              "part": 17,
+              "nativeRadians": 0.4363323129985819,
+              "sourceVertices": 265,
+              "maxError": 0.279644826524177,
+              "maxDown": 0.2727975302011272,
+              "registered": false
+            }
+          ]
+        }
+      ],
+      "damage": [
+        {
+          "part": 16,
+          "nativeAngle": 0.4363323129985819,
+          "sourceHidden": false,
+          "oppositeVisible": true,
+          "fixedWingVisible": true,
+          "actorCount": 1,
+          "triangles": 0,
+          "mapped": 0,
+          "maxPoseError": null,
+          "maxOverflow": 2.406057726727858,
+          "disabledSourceFrozen": true,
+          "detachedSnapshotFrozen": true
+        },
+        {
+          "part": 17,
+          "nativeAngle": 0.4363323129985819,
+          "sourceHidden": false,
+          "oppositeVisible": true,
+          "fixedWingVisible": true,
+          "actorCount": 1,
+          "triangles": 0,
+          "mapped": 0,
+          "maxPoseError": null,
+          "maxOverflow": 2.4043450593337568,
+          "disabledSourceFrozen": true,
+          "detachedSnapshotFrozen": true
+        }
+      ],
+      "reset": true,
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / actual native type16 and game renderer; hardware FPS unmeasured"
+    },
+    "wholeWingRenderer": {
+      "cases": [
+        {
+          "pendingChildTriangles": 0,
+          "part": 1,
+          "requestedSweep": 16,
+          "nativeSweep": 16.000000985248143,
+          "registered": true,
+          "sourceHidden": true,
+          "otherWingVisible": true,
+          "finVisible": true,
+          "health": 0,
+          "triangles": 524,
+          "mapped": 14,
+          "maxPoseError": 3.552713678800501e-15,
+          "sourceOverflow": -0.0019999999992369455,
+          "nativePivot": [
+            -3.7753506261589194,
+            0.6610359101357899,
+            1.8026838225975612
+          ],
+          "nativeHalf": [
+            2.9692714711637787,
+            0.29919072767423804,
+            1.3189486596498277
+          ],
+          "nativeBodyFollowError": 0,
+          "framebufferChanged": true,
+          "submittedTriangles": 524,
+          "snapshotFrozen": true
+        },
+        {
+          "pendingChildTriangles": 0,
+          "part": 2,
+          "requestedSweep": 16,
+          "nativeSweep": 16.000000985248143,
+          "registered": true,
+          "sourceHidden": true,
+          "otherWingVisible": true,
+          "finVisible": true,
+          "health": 0,
+          "triangles": 553,
+          "mapped": 13,
+          "maxPoseError": 9.094947017729282e-13,
+          "sourceOverflow": -0.0019999999992369455,
+          "nativePivot": [
+            3.7739845913182455,
+            0.6590154517482482,
+            1.8001148849790705
+          ],
+          "nativeHalf": [
+            2.9692712722924197,
+            0.30121118606177977,
+            1.3189489211954815
+          ],
+          "nativeBodyFollowError": 0,
+          "framebufferChanged": true,
+          "submittedTriangles": 553,
+          "snapshotFrozen": true
+        },
+        {
+          "pendingChildTriangles": 0,
+          "part": 1,
+          "requestedSweep": 44,
+          "nativeSweep": 43.99999901475188,
+          "registered": true,
+          "sourceHidden": true,
+          "otherWingVisible": true,
+          "finVisible": true,
+          "health": 0,
+          "triangles": 524,
+          "mapped": 14,
+          "maxPoseError": 9.094947017729282e-13,
+          "sourceOverflow": -0.0019999999992369455,
+          "nativePivot": [
+            -3.005261357070723,
+            0.6610359101357899,
+            3.0338090197827716
+          ],
+          "nativeHalf": [
+            2.6682977587791123,
+            0.29919072767423804,
+            2.2953068980267393
+          ],
+          "nativeBodyFollowError": 0,
+          "framebufferChanged": true,
+          "submittedTriangles": 524,
+          "snapshotFrozen": true
+        },
+        {
+          "pendingChildTriangles": 0,
+          "part": 2,
+          "requestedSweep": 44,
+          "nativeSweep": 43.99999901475188,
+          "registered": true,
+          "sourceHidden": true,
+          "otherWingVisible": true,
+          "finVisible": true,
+          "health": 0,
+          "triangles": 553,
+          "mapped": 13,
+          "maxPoseError": 9.097167463778533e-13,
+          "sourceOverflow": -0.0019999999992369455,
+          "nativePivot": [
+            3.0048984725624326,
+            0.6590154517482482,
+            3.0323540223419454
+          ],
+          "nativeHalf": [
+            2.6682975665711526,
+            0.30121118606177977,
+            2.295307128293637
+          ],
+          "nativeBodyFollowError": 0,
+          "framebufferChanged": true,
+          "submittedTriangles": 553,
+          "snapshotFrozen": true
+        },
+        {
+          "pendingChildTriangles": 0,
+          "part": 1,
+          "requestedSweep": 72,
+          "nativeSweep": 71.99999901475185,
+          "registered": true,
+          "sourceHidden": true,
+          "otherWingVisible": true,
+          "finVisible": true,
+          "health": 0,
+          "triangles": 524,
+          "mapped": 14,
+          "maxPoseError": 9.094947017729282e-13,
+          "sourceOverflow": -0.0019999999992371675,
+          "nativePivot": [
+            -1.9227545267324277,
+            0.6610359101357899,
+            3.798433915129113
+          ],
+          "nativeHalf": [
+            1.8369921261600692,
+            0.29919072767423804,
+            2.870189211528877
+          ],
+          "nativeBodyFollowError": 0,
+          "framebufferChanged": true,
+          "submittedTriangles": 524,
+          "snapshotFrozen": true
+        },
+        {
+          "pendingChildTriangles": 0,
+          "part": 2,
+          "requestedSweep": 72,
+          "nativeSweep": 71.99999901475185,
+          "registered": true,
+          "sourceHidden": true,
+          "otherWingVisible": true,
+          "finVisible": true,
+          "health": 0,
+          "triangles": 553,
+          "mapped": 13,
+          "maxPoseError": 1.8189894035458565e-12,
+          "sourceOverflow": -0.0019999999992371675,
+          "nativePivot": [
+            1.9227545267324224,
+            0.6590154517482482,
+            3.798433915075834
+          ],
+          "nativeHalf": [
+            1.8369921261600666,
+            0.30121118606177977,
+            2.870189211528876
+          ],
+          "nativeBodyFollowError": 0,
+          "framebufferChanged": true,
+          "submittedTriangles": 553,
+          "snapshotFrozen": true
+        }
+      ],
+      "parentLoss": [
+        true,
+        true
+      ],
+      "reset": true,
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / real native type16 and game renderer; root parts1/2 only; hardware FPS unmeasured"
+    },
+    "cachedRoot": {
+      "sourceFlapChildTriangles": 112,
+      "extraSubmittedChildTriangles": 112,
+      "pendingChildTriangles": 0,
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "before": {
+        "triangles": 956,
+        "mapped": 0,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "after": {
+        "triangles": 524,
+        "mapped": 14,
+        "weights": [],
+        "position": [
+          -1.94242414027829,
+          5000.672128870749,
+          -0.0950559093309793
+        ],
+        "quaternion": [
+          0.006003938063977282,
+          9.881715194902235e-05,
+          0.001176233767845412,
+          0.9999812795432811
+        ]
+      },
+      "oldBodyRemoved": true,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 5,
+      "expectedNativeActorCount": 5,
+      "afterReset": 0,
+      "expectedPendingChildTriangles": 0,
+      "part": 1,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    },
+    "coldRoot": {
+      "part": 2,
+      "before": {
+        "loaded": false,
+        "triangles": 956,
+        "mapped": 0,
+        "position": [
+          3.7119507681865462,
+          5000.666148154249,
+          0.04303012117107197
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "after": {
+        "sourceFlapChildTriangles": 112,
+        "pendingChildTriangles": 0,
+        "loaded": true,
+        "sourceRootChanged": true,
+        "bodyReplaced": true,
+        "oldRemoved": true,
+        "stableAfterTenUpdates": true,
+        "nativeUnchanged": true,
+        "sourceHidden": true,
+        "rudderHidden": null,
+        "actorCount": 5,
+        "expectedNativeActorCount": 5,
+        "triangles": 553,
+        "mapped": 13,
+        "position": [
+          3.7119507681865462,
+          5000.666148154249,
+          0.04303012117107197
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ],
+        "afterReset": 0
+      },
+      "sourceRequests": 1,
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / actual native type16; real first source GLB response held until native part loss; hardware FPS unmeasured"
+    },
+    "cachedFlap": {
+      "nativeFlapRadians": 0.4363323129985819,
+      "sourceHingeRadians": 0.4363323129985814,
+      "sourceFlapChildTriangles": 0,
+      "extraSubmittedChildTriangles": 0,
+      "pendingChildTriangles": 0,
+      "loaded": true,
+      "sourceRootChanged": true,
+      "bodyReplaced": true,
+      "before": {
+        "triangles": 356,
+        "mapped": 0,
+        "weights": [],
+        "position": [
+          -3.791648164259013,
+          5000.598423055742,
+          1.230215738826542
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "after": {
+        "triangles": 112,
+        "mapped": 6,
+        "weights": [],
+        "position": [
+          -3.791648164259013,
+          5000.598423055742,
+          1.230215738826542
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "oldBodyRemoved": true,
+      "stableAfterTenUpdates": true,
+      "snapshotFrozen": true,
+      "nativeUnchanged": true,
+      "actorCount": 1,
+      "expectedNativeActorCount": 1,
+      "afterReset": 0,
+      "expectedPendingChildTriangles": 0,
+      "part": 16,
+      "pageErrors": [],
+      "environment": "Chromium 141 / SwiftShader, actual native type16, cached source arrival; hardware FPS unmeasured"
+    },
+    "coldFlap": {
+      "part": 17,
+      "before": {
+        "loaded": false,
+        "triangles": 356,
+        "mapped": 0,
+        "position": [
+          3.7897471546666823,
+          5000.598426602472,
+          1.2276441128271847
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ]
+      },
+      "after": {
+        "nativeFlapRadians": 0.4363323129985819,
+        "sourceHingeRadians": 0.4363323129985814,
+        "sourceFlapChildTriangles": 0,
+        "pendingChildTriangles": 0,
+        "loaded": true,
+        "sourceRootChanged": true,
+        "bodyReplaced": true,
+        "oldRemoved": true,
+        "stableAfterTenUpdates": true,
+        "nativeUnchanged": true,
+        "sourceHidden": true,
+        "rudderHidden": null,
+        "actorCount": 1,
+        "expectedNativeActorCount": 1,
+        "triangles": 112,
+        "mapped": 6,
+        "position": [
+          3.7897471546666823,
+          5000.598426602472,
+          1.2276441128271847
+        ],
+        "quaternion": [
+          0.005975581131052199,
+          9.883384124857264e-05,
+          0.0011762324660946435,
+          0.9999814493975395
+        ],
+        "afterReset": 0
+      },
+      "sourceRequests": 1,
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / actual native type16; real first source GLB response held until native part loss; hardware FPS unmeasured"
+    },
+    "resources": {
+      "result": "PASS",
+      "expectSharedSource": true,
+      "one": {
+        "calls": 245,
+        "triangles": 44497,
+        "rendererTextures": 34,
+        "textureObjects": 36,
+        "handles": 22,
+        "estimatedRGBA8Bytes": 183074056
+      },
+      "two": {
+        "calls": 468,
+        "triangles": 87572,
+        "rendererTextures": 35,
+        "textureObjects": 36,
+        "handles": 22,
+        "estimatedRGBA8Bytes": 183074056
+      },
+      "remaining": {
+        "calls": 245,
+        "triangles": 44497,
+        "rendererTextures": 34,
+        "textureObjects": 36,
+        "handles": 22,
+        "estimatedRGBA8Bytes": 183074056
+      },
+      "additionalFixtureRequests": 0,
+      "poses": {
+        "distinctPoses": true,
+        "primaryUnchanged": true,
+        "wet": 0,
+        "dry": 1,
+        "fixtureHalf": 0.5,
+        "geometryIndependent": true,
+        "materialsIndependent": true,
+        "sharedTextures": true
+      },
+      "environment": "Chromium 141 / SwiftShader, actual game renderer, 1366x900. Second visual factory instance; not AI combat/flight certification.",
+      "memoryNote": "Texture handles observed; RGBA8 full-mipmap storage estimated. Driver allocation and hardware FPS unmeasured."
+    },
+    "finPreservation": {
+      "cases": [
+        {
+          "name": "overall",
+          "originalStorage": {
+            "geometries": 222,
+            "vertices": 71214,
+            "triangles": 43089,
+            "attributeIndexMorphBytes": 3115350,
+            "scope": "active source geometry buffers including hidden authored surfaces/morphs; excludes test-retained inactive buffers, textures, temporary JS/driver allocations"
+          },
+          "currentStorage": {
+            "geometries": 223,
+            "vertices": 71214,
+            "triangles": 43089,
+            "attributeIndexMorphBytes": 3115350,
+            "scope": "active source geometry buffers including hidden authored surfaces/morphs; excludes test-retained inactive buffers, textures, temporary JS/driver allocations"
+          },
+          "changedPixels": 0,
+          "maxChannelDelta": 0,
+          "changed": [],
+          "camera": {
+            "offset": [
+              23,
+              -4,
+              4.4
+            ],
+            "target": [
+              0,
+              0.95,
+              0
+            ],
+            "fov": 30
+          }
+        },
+        {
+          "name": "rear",
+          "changedPixels": 0,
+          "maxChannelDelta": 0,
+          "changed": [],
+          "camera": {
+            "offset": [
+              6,
+              2.5,
+              14
+            ],
+            "target": [
+              0,
+              0.5,
+              6.4
+            ],
+            "fov": 30
+          }
+        },
+        {
+          "name": "fin-port",
+          "changedPixels": 1,
+          "maxChannelDelta": 56,
+          "changed": [
+            {
+              "x": 743,
+              "y": 482,
+              "before": [
+                110,
+                103,
+                88
+              ],
+              "after": [
+                54,
+                57,
+                57
+              ],
+              "hits": [
+                {
+                  "name": "",
+                  "parent": "rudder",
+                  "distance": 3.9857243976239003
+                },
+                {
+                  "name": "MiG-23MLD original fixed fin skin",
+                  "parent": "MiG-23MLD fixed fin",
+                  "distance": 3.9857282436164696
+                },
+                {
+                  "name": "MiG-23MLD original fixed fin skin",
+                  "parent": "MiG-23MLD fixed fin",
+                  "distance": 4.0189461204932435
+                }
+              ]
+            }
+          ],
+          "camera": {
+            "offset": [
+              -4,
+              2.2,
+              7.7
+            ],
+            "target": [
+              0,
+              2.4,
+              7.7
+            ],
+            "fov": 25
+          }
+        },
+        {
+          "name": "fin-starboard",
+          "changedPixels": 0,
+          "maxChannelDelta": 0,
+          "changed": [],
+          "camera": {
+            "offset": [
+              4,
+              2.2,
+              7.7
+            ],
+            "target": [
+              0,
+              2.4,
+              7.7
+            ],
+            "fov": 25
+          }
+        },
+        {
+          "name": "intake-port",
+          "changedPixels": 0,
+          "maxChannelDelta": 0,
+          "changed": [],
+          "camera": {
+            "offset": [
+              -6,
+              0,
+              -8
+            ],
+            "target": [
+              -1.2,
+              0,
+              -3
+            ],
+            "fov": 30
+          }
+        },
+        {
+          "name": "intake-starboard",
+          "changedPixels": 0,
+          "maxChannelDelta": 0,
+          "changed": [],
+          "camera": {
+            "offset": [
+              6,
+              0,
+              -8
+            ],
+            "target": [
+              1.2,
+              0,
+              -3
+            ],
+            "fov": 30
+          }
+        },
+        {
+          "name": "root",
+          "changedPixels": 0,
+          "maxChannelDelta": 0,
+          "changed": [],
+          "camera": {
+            "offset": [
+              5,
+              1.2,
+              10
+            ],
+            "target": [
+              0.65,
+              0.6,
+              6.2
+            ],
+            "fov": 30
+          }
+        },
+        {
+          "name": "overhead",
+          "changedPixels": 0,
+          "maxChannelDelta": 0,
+          "changed": [],
+          "camera": {
+            "offset": [
+              0,
+              20,
+              0
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "fov": 50
+          }
+        }
+      ],
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader /1366x900; same actual game renderer, same tick/camera/materials; only original partition toggled by test-response instrumentation"
+    },
+    "nativeRegressions": [
+      {
+        "command": [
+          "node",
+          "tests/mig23-fin-combat.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"expectSourceBounds\":true,\"wasmSha256\":\"92075852ce1c1b41658d5a4acf62c1009f8c4bd814324585191a6b5c1c44287e\",\"fixtures\":[{\"expectedPart\":5,\"shotOrigin\":[100,5002.55,8.7],\"actualPart\":5,\"contact\":[0.12379225846391217,5002.799716971985,7.208915333393145],\"healthBefore\":1,\"healthAfter\":0.8,\"ticks\":28}]}\n{\"sourceMetalRayContacts\":[[0.001157135640895035,2.799716971984708,7.208915333393145],[-0.0033673967537595217,2.799716971984708,7.208915333393145]],\"scope\":\"static native gun/fleet delivery fixture; conservative box, not triangle-exact collision\"}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/mig23-native.mjs"
+        ],
+        "exit": 0,
+        "output": "MiG23 specs [1,1,18794.027643135796,28660.89215578209,83.59999999999998,127.49,37.35,13.965,9595,4672,7.5,-3,0,2,16,16.7,260,25,2,0,0,16600,25,203.40001727144224,18030,0,0,1]\nMiG23 gear [0,-1.42,-3.18,-1.82,-1.42,1.2,1.82,-1.42,1.2]\nMiG23 straight takeoff {\"fbw\":0,\"throttle\":1,\"seconds\":24.883333333333333,\"maxYaw\":0.0007272867231584762,\"maxDrift\":0.6028739457697156}\nMiG23 straight takeoff {\"fbw\":0,\"throttle\":1.2,\"seconds\":17.5,\"maxYaw\":0.0007273920213818738,\"maxDrift\":0.43855820511180355}\nMiG23 straight takeoff {\"fbw\":1,\"throttle\":1,\"seconds\":26.008333333333333,\"maxYaw\":0.0007148440808404353,\"maxDrift\":0.7253308709732664}\nMiG23 straight takeoff {\"fbw\":1,\"throttle\":1.2,\"seconds\":18.533333333333335,\"maxYaw\":0.0007139228913243315,\"maxDrift\":0.5429402316340202}\nMiG23 sweep {\"pre\":[1,20,1,20,13.965,4,1,0],\"low\":[1,20,0,16,13.965,4,1,0],\"high\":[1,20,0,72,13.965,4,1,0]}\nMiG23 swept hydraulic servo {\"initial\":20,\"deflected\":[1,71.99999993908007,0,72,9.810033429930957,4,1,0]}\n{\"result\":\"PASS\",\"nativeType\":16,\"engine\":\"R-35-300\",\"sweepStops\":[16,72],\"afterburner\":true,\"fuel\":3260.4970536355136}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/mig23-autosweep.mjs"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"auto\":true,\"manual\":true,\"hysteresis\":true,\"transitions\":19,\"sweepStops\":[16,33,45,72]}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/mig23-tail-combat.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"expectSourceBounds\":true,\"wasmSha256\":\"92075852ce1c1b41658d5a4acf62c1009f8c4bd814324585191a6b5c1c44287e\",\"fixtures\":[{\"expectedPart\":3,\"shotOrigin\":[-100,5000.2,5.34],\"actualPart\":3,\"contact\":[-2.6672885670810995,5000.637455045847,6.755629598814881],\"healthBefore\":1,\"healthAfter\":0.8,\"ticks\":26},{\"expectedPart\":4,\"shotOrigin\":[100,5000.2,8.32],\"actualPart\":4,\"contact\":[2.6672885670811004,5000.637455045847,6.904370401185075],\"healthBefore\":1,\"healthAfter\":0.8,\"ticks\":26},{\"expectedPart\":20,\"shotOrigin\":[100,5001.2,9],\"actualPart\":20,\"contact\":[0.4685240244255,5001.636716126129,7.585872380080141],\"healthBefore\":1,\"healthAfter\":0.8,\"ticks\":27}]}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/mig23-nozzle-combat.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"expectSourceBounds\":true,\"wasmSha256\":\"92075852ce1c1b41658d5a4acf62c1009f8c4bd814324585191a6b5c1c44287e\",\"fixtures\":[{\"expectedPart\":22,\"shotOrigin\":[-0.94,4999.58,100],\"actualPart\":22,\"contact\":[0.4791062357451572,5000.019045368137,7.7567783929261305],\"healthBefore\":1,\"healthAfter\":0.8,\"ticks\":26}],\"sourceMetalRayContacts\":[[0.4791062357451572,0.019045368137,7.6699040209096125],[0.4791062357451572,0.019045368137,7.536140608019124]]}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/mig15-native.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"takeoffSeconds\":23.4,\"reload\":true,\"nativeAircraft\":15,\"legacyAircraft\":15,\"legacyTicks\":18000,\"flightEnvelopeScenarios\":12,\"projectiles\":200,\"nr23\":160,\"n37d\":40,\"radar\":false,\"afterburner\":false,\"nativeGunHits\":true,\"aiFlight\":true}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/mig29-native.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"nativeAircraftId\":14,\"legacyAircraft\":14,\"legacyTicks\":16800,\"loadouts\":3,\"flightEnvelopeScenarios\":12}\n{\"result\":\"PASS\",\"conventionalControls\":true,\"gunDamageLink\":true}\n{\"result\":\"PASS\",\"nativeForces\":{\"drySpeed\":257.2340661410796,\"wetSpeed\":263.69040068259494,\"brakedSpeed\":235.9926277557272}}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/su35-combat-native.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"legacyAircraft\":13,\"legacyTicks\":15600,\"flightEnvelopeScenarios\":12,\"nativeAircraftId\":13,\"loadouts\":4}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/mig23mld-preview.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"binaryBytes\":22593404,\"sha\":\"eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8\",\"meshes\":136,\"images\":22}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/mig23mld-pbr.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"sourceBytes\":22593404,\"meshes\":136,\"primitives\":222,\"materials\":44,\"textures\":36,\"sha256\":\"eb1d5b3ea7a370e157b89061ade52eaa4e7536ce927852124e40bde94679d4b8\"}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/part-emitter-scale.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"equivalentTransforms\":4,\"surfaceSamples\":24}\n"
+      },
+      {
+        "command": [
+          "node",
+          "tests/wreckage-morph.mjs",
+          "public"
+        ],
+        "exit": 0,
+        "output": "{\"result\":\"PASS\",\"relativeAndAbsoluteMorphs\":true,\"snapshotIndependent\":true,\"clippedImpactPose\":true,\"sharedSourcePreserved\":true}\n"
+      }
+    ]
+  },
+  "pending": [
+    "Exact-head five CI workflows",
+    "Merge/Pages and operating-byte/browser verification",
+    "Calibrated real-photo flap outline/depth/hinge review",
+    "Six independent source child slots12/13/14/15/18/19",
+    "Fin/intake/gear/nozzle/plume full exterior review"
+  ],
+  "photoOverlapRecipe": "68-flap-private-overlap.json",
+  "comparison": "67-original-flap-control-damage.jpg",
+  "cost": {
+    "native": {
+      "beforeBytes": 346659,
+      "afterBytes": 349422,
+      "deltaBytes": 2763,
+      "sha256": "92075852ce1c1b41658d5a4acf62c1009f8c4bd814324585191a6b5c1c44287e",
+      "exports": 175,
+      "initialMemoryPages": 224
+    },
+    "flapRuntimeJavaScript": [
+      {
+        "path": "web/mig23mld-game.js",
+        "beforeBytes": 20107,
+        "afterBytes": 20462,
+        "deltaBytes": 355
+      },
+      {
+        "path": "web/mig23mld-flaps.js",
+        "beforeBytes": 0,
+        "afterBytes": 1670,
+        "deltaBytes": 1670
+      },
+      {
+        "path": "web/mig23mld-flap-data.js",
+        "beforeBytes": 0,
+        "afterBytes": 547,
+        "deltaBytes": 547
+      }
+    ],
+    "textureAndGeometry": "No original mesh/triangle/UV/texture added. Two real hinge groups replace two empty metadata groups. Original GLB22593404B unchanged. Hardware FPS/driver VRAM unmeasured. Resource renderer data above is measured; RGBA8 mip storage is estimated."
+  },
+  "freshCheckpointRebuild": {
+    "head": "0c149231c662ea3c3d60fb0a6f4f00d3b2306ba6",
+    "commands": [
+      {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "npm",
+          "ci"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/update-web-manifest.py"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "python",
+          ".deployment/restore.py"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "node",
+          "scripts/export-mig23-flaps.mjs"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "c++",
+          "-std=c++17",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Werror",
+          "scripts/fit-mig23-flaps.cpp",
+          "-o",
+          "/tmp/apex-flap-fresh-fit"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "/tmp/apex-flap-fresh-fit",
+          "docs/aircraft-review/mig23mld/flap-source-vertices.csv"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "node",
+          "scripts/build-mig23-flaps.mjs",
+          "--check"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "node",
+          "scripts/native/build-mig23.mjs"
+        ],
+        "exit": 0
+      }
+    ],
+    "wasmBytes": 349422,
+    "sha256": "92075852ce1c1b41658d5a4acf62c1009f8c4bd814324585191a6b5c1c44287e"
+  },
+  "posePreservation": {
+    "poses": [
+      {
+        "wingSweep": 16,
+        "gear": 0,
+        "airbrake": 0,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0,
+        "airbrake": 0.5,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0,
+        "airbrake": 1,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0.5,
+        "airbrake": 0,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0.5,
+        "airbrake": 0.5,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0.5,
+        "airbrake": 1,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 1,
+        "airbrake": 0,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 1,
+        "airbrake": 0.5,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 1,
+        "airbrake": 1,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0,
+        "airbrake": 0,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0,
+        "airbrake": 0.5,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0,
+        "airbrake": 1,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0.5,
+        "airbrake": 0,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0.5,
+        "airbrake": 0.5,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0.5,
+        "airbrake": 1,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 1,
+        "airbrake": 0,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 1,
+        "airbrake": 0.5,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 1,
+        "airbrake": 1,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0,
+        "airbrake": 0,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0,
+        "airbrake": 0.5,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0,
+        "airbrake": 1,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0.5,
+        "airbrake": 0,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0.5,
+        "airbrake": 0.5,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0.5,
+        "airbrake": 1,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 1,
+        "airbrake": 0,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 1,
+        "airbrake": 0.5,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 1,
+        "airbrake": 1,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      }
+    ],
+    "observations": 210465,
+    "maxError": 9.094955691342526e-13,
+    "sourceNodes": [
+      "OBJ0037",
+      "OBJ0057",
+      "OBJ0040",
+      "OBJ0060",
+      "stab",
+      "stab2",
+      "rudder",
+      "OBJ0024",
+      "stoykanos",
+      "nos",
+      "OBJ0109",
+      "OBJ0131",
+      "soplo",
+      "OBJ0260",
+      "OBJ0270",
+      "OBJ0267",
+      "OBJ0271"
+    ],
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader / actual game factory source;27 explicit pose combinations. Neutral new flaps preserve prior source, all existing rig controls unchanged. Not an aircraft-limit certification."
+  },
+  "correction": "Local full-flight regression caught changed airbrake articulation after moving ground-contact alignment before existing rig setup. Restored all original rig order and register only new flaps after final alignment. New27-pose source compatibility test compares17 authored nodes against published pre-flap source, max error below1e-12m. Initial corrected-flap renderer snapshots are unchanged at airbrake0; final full-flight rerun and CI still required.",
+  "nativeFixtureAccounting": "510 existing type0..16 damage event fixtures were compared after excluding changed type16 flap16/17 bodies.508 fixtures have nonempty compared native outputs; two isolated changed-leaf events have empty filtered outputs. Extra type17 probe also has30 empty damage outputs and does not establish type17 damage support."
+}
