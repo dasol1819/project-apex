@@ -34,7 +34,7 @@ window.__asyncDebris={get loaded(){return aircraft?.sourceLoaded},async run(){
  // Changing the live instance after arrival must not change the detached pose.
  a.update({afterburner:1,health:new Float32Array(30).fill(1),enabled:new Float32Array(30).fill(1)});
  let pendingChildTriangles=0,sourceFlapChildTriangles=0;if(part===1||part===2)for(const actor of fx.__qaActors.values())if(actor.part!==part)actor.mesh.traverse(m=>{if(m.isMesh){const n=(m.geometry.index?.count??m.geometry.attributes.position.count)/3;if(m.material.map&&[16,17].includes(actor.part))sourceFlapChildTriangles+=n;else pendingChildTriangles+=n;}});
- const result={sourceFlapChildTriangles,extraSubmittedChildTriangles,pendingChildTriangles,loaded:a.sourceLoaded,sourceRootChanged:oldRoot!==a.damageParts[part],bodyReplaced:before!==after,before:beforeReport,after:afterReport,oldBodyRemoved:before!==after&&!before.parent,stableAfterTenUpdates:stable,snapshotFrozen:JSON.stringify(describe(after).weights)===JSON.stringify(afterReport.weights),nativeUnchanged:JSON.stringify(nativeBefore)===JSON.stringify(Array.from(read('get_wreckage',2+64*40))),actorCount:fx.stats.parts,expectedNativeActorCount:nativeBefore[0],captures:{before:beforeCapture,after:afterCapture,'after-all':afterAllCapture}};
+ const result={...(part===16||part===17?{nativeFlapRadians:read('get_state',104)[part===16?51:52],sourceHingeRadians:a.damageParts[part].quaternion.angleTo(new T.Quaternion())}:{}),sourceFlapChildTriangles,extraSubmittedChildTriangles,pendingChildTriangles,loaded:a.sourceLoaded,sourceRootChanged:oldRoot!==a.damageParts[part],bodyReplaced:before!==after,before:beforeReport,after:afterReport,oldBodyRemoved:before!==after&&!before.parent,stableAfterTenUpdates:stable,snapshotFrozen:JSON.stringify(describe(after).weights)===JSON.stringify(afterReport.weights),nativeUnchanged:JSON.stringify(nativeBefore)===JSON.stringify(Array.from(read('get_wreckage',2+64*40))),actorCount:fx.stats.parts,expectedNativeActorCount:nativeBefore[0],captures:{before:beforeCapture,after:afterCapture,'after-all':afterAllCapture}};
  fx.reset();result.afterReset=fx.stats.parts;a.dispose();for(const n of [...scene.children])if(!beforeNodes.has(n)){disposeObject(n);scene.remove(n);}
  return result;
 }};
@@ -66,7 +66,9 @@ with sync_playwright() as p:
    if pending_expected:assert r['extraSubmittedChildTriangles']>0 and r['sourceFlapChildTriangles']==0 and r['after']['triangles']==(636 if part==1 else 665) and r['after']['mapped']==(20 if part==1 else 19),r
    else:assert r['extraSubmittedChildTriangles']==r['sourceFlapChildTriangles']==112 and r['after']['triangles']==(524 if part==1 else 553) and r['after']['mapped']==(14 if part==1 else 13) and r['after']['triangles']+r['sourceFlapChildTriangles']==(636 if part==1 else 665),r
    assert r['pendingChildTriangles']==pending_expected and r['after']['weights']==[],r
-  elif part in [16,17]:assert r['after']['triangles']==112 and r['after']['mapped']==6 and r['actorCount']==1,r
+  elif part in [16,17]:
+   assert r['nativeFlapRadians']>.43 and abs(r['sourceHingeRadians']-r['nativeFlapRadians'])<1e-9,r
+   assert r['after']['triangles']==112 and r['after']['mapped']==6 and r['actorCount']==1,r
   else:assert r['after']['triangles']==972 and r['after']['mapped']==5 and r['after']['weights']==[],r
   assert r['before']['position']==r['after']['position'] and r['before']['quaternion']==r['after']['quaternion'],r
   assert r['actorCount']==r['expectedNativeActorCount'] and r['afterReset']==0,r
