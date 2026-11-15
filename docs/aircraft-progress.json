@@ -4,12 +4,7 @@
   "initialized": "2026-11-02",
   "targetDate": "2026-12-02",
   "qualityTarget": "War Thunder-comparable exterior care; completion requires recorded visual review",
-  "lease": {
-    "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-flap-source-20261115",
-    "startedAt": "2026-11-15T00:05:00.000Z",
-    "expiresAt": "2026-11-15T01:55:00.000Z"
-  },
+  "lease": null,
   "aircraft": [
     {
       "id": "ru-i16-10",
@@ -980,7 +975,7 @@
       "br": 13.5,
       "simId": 16,
       "status": "in_progress",
-      "nextStep": "Original trailing flaps16/17 now follow existing native actuator output and own textured debris; six independent child slots12/13/14/15/18/19 remain provisional. Complete calibrated exact-MLD flap/wing geometry review, source spoiler/leading/outer ownership, fin cap/rudder gap, intake lower lip, gear and installed R35/plume comparisons. Do not certify25deg game controller as a real aircraft limit. Preserve PR38, MiG15bis and initial15 review.",
+      "nextStep": "PR43 source flaps16/17 are deployed and actual operating neutral/transit/25deg, independent/whole-wing loss and cached/cold source arrival pass in70. Continue six authentic child partitions12/13/14/15/18/19 and calibrated flap outline/deployment review before another aircraft. Resolve fin cap/rudder gap, intake lower lip, gear residual and installed R35/operating plume references in74. Native25deg remains an existing game setting, not certified aircraft limits. Preserve initial15 review, MiG15bis and PR38.",
       "evidence": {
         "references": [
           "https://sketchfab.com/3d-models/mig-23-mld-7a13c91f07e042a685b4d265644fdc06",
@@ -1076,7 +1071,12 @@
           "https://github.com/dasol1819/project-apex/blob/mig23mld-wing-damage-20261114/docs/aircraft-review/mig23mld/54-wing-current-photo-overlay.jpg",
           "https://github.com/dasol1819/project-apex/blob/mig23mld-wing-damage-20261114/docs/aircraft-review/mig23mld/55-late-wing-child-ownership.jpg",
           "docs/aircraft-review/mig23mld/59-wing-source-component-map.jpg",
-          "docs/aircraft-review/mig23mld/64-production-wing-root-renders.jpg"
+          "docs/aircraft-review/mig23mld/64-production-wing-root-renders.jpg",
+          "docs/aircraft-review/mig23mld/67-original-flap-control-damage.jpg",
+          "docs/aircraft-review/mig23mld/71-operating-flap-wing-validation.jpg",
+          "docs/aircraft-review/mig23mld/72-flap-top-reference-camera.jpg",
+          "docs/aircraft-review/mig23mld/73-flap-under-reference-camera.jpg",
+          "docs/aircraft-review/mig23mld/75-nozzle-reference-camera.jpg"
         ],
         "checks": [
           "Local imported Blender GLB inspection: 136 mesh objects, 222 surface primitives, 44 materials, 22 images; original 22,593,404 bytes",
@@ -1136,7 +1136,8 @@
           "Final local fin validation: original 972 mapped triangles,5 mapped meshes, parent/rudder-only/root fairing loss/reset, native follow0error and poseerror9.1e-13m; cached and cold-source replacement1746->972 keep native serialized bodies/pose/identity,2 actors and clean reset. Eight same-tick cameras:7 pixel-identical,1 close fin/rudder seam pixel changes where ray depths differ3.846micrometres; disclosed in42, no full-frame bit-identity claim. Existing13native/model suites plus11 browser scripts (12 variants) pass. Initial7f3f1e6CI5success; final supplemental CI/deployment pending.",
           "2026-11-14 Seoul: PR #39 final head683f461 passed all five CI workflows; merge2119c070 Pages43400215098 succeeded. Fresh clone, manifest/restore and native rebuild reproduce344,687 bytes, SHA ac0f479c. Fin C++ topology/attributes/native profile/gun contact pass. All13 deployed HTTP files match23,277,261 bytes, including original GLB. HTTPS503. Production renderer NOT verified:120-second module navigation timeout; transport probe observed200 document/module responses; extended attempt execution network approval cancelled before decision, with no completed fin/async/preservation/tail report. QA source retained for normal approved execution; no bypass/reset API. Counts unchanged; own lease released.",
           "2026-11-14: cache PR40 CI5 PASS, merge84fe619 Pages43557346042 success; 16 HTTP files match, actual native fin PASS and one canonical factory request. HTTPS503. Same-aircraft moving-wing root work: C++ source support31/27 points, 62 native sweep settings /146196 vertices with2mm numerical pad;510 other native damage fixture vectors preserved. Fixed fleet input16/72 being rejected to20, and fixed20-degree collision queries. Six static gun/fleet fixtures now identify roots1/2 health1->0.88 and candidate contact rays cross source metal. Root UI removes original636/665 triangles; independent child source partitions still incomplete. Initial suspected +2s rectangles were identified by ray as capture-zone world signs4130m away. Separate controlled late-source fixture proves2742 duplicate generic child triangles and2742 extra GPU submissions before empty metadata ownership, current0, same native5 actors/state/pose. Both cached and real held-first-source replacement pass. Exact-head CI/deployment pending.",
-          "2026-11-14 Seoul: recovered PR41 head081f8cb (runtime identical80f125c) CI5 PASS; merge079edaae Pages43603965619 success. Fresh manifest/restore, C++ hull regeneration,346659-byte aede21e4 native build,62 angles/146196 source vertices,510 other native body fixtures and six gun/fleet cases PASS. All16 actual operating HTTP files match23323967 bytes. Production native root loss at16/44/72 both sides, parent/reset and original636/665 mapped debris PASS. Cached root1 and held real first-source root2 PASS with native bodies/pose/identity unchanged,5 actors, zero extra generic child triangles; actual remote GLB22593404 bytes hash eb1d5b3e. One canonical factory request in each production suite. Actual production gear camera and private48% photo overlap re-opened. Native175 exports/224pages unchanged. JPEG64 stores operating root captures;57-61 preserve source component map and private photo recipes. No complete-aircraft approval. HTTPS503 here. Report62 supersedes earlier pending wing deployment; own lease released."
+          "2026-11-14 Seoul: recovered PR41 head081f8cb (runtime identical80f125c) CI5 PASS; merge079edaae Pages43603965619 success. Fresh manifest/restore, C++ hull regeneration,346659-byte aede21e4 native build,62 angles/146196 source vertices,510 other native body fixtures and six gun/fleet cases PASS. All16 actual operating HTTP files match23323967 bytes. Production native root loss at16/44/72 both sides, parent/reset and original636/665 mapped debris PASS. Cached root1 and held real first-source root2 PASS with native bodies/pose/identity unchanged,5 actors, zero extra generic child triangles; actual remote GLB22593404 bytes hash eb1d5b3e. One canonical factory request in each production suite. Actual production gear camera and private48% photo overlap re-opened. Native175 exports/224pages unchanged. JPEG64 stores operating root captures;57-61 preserve source component map and private photo recipes. No complete-aircraft approval. HTTPS503 here. Report62 supersedes earlier pending wing deployment; own lease released.",
+          "2026-11-15 Seoul: PR43 runtime88af25c CI5 PASS (43661148208/48176/48201/48236/48234), merged94cd061; Pages43663757009 success. Fresh source/manifest/restore/native rebuild349422B SHA92075852,175exports/224pages. Source flaps112tri/6maps each, native0/transit/25, independent/whole-wing loss, frozen cached/cold arrival, reset all pass locally and in actual operating Chromium. 27-pose/17-node source compatibility catches and fixes the candidate airbrake order regression.3350170 envelope observations;510 event fixtures excluding changed leaf bodies (508 nonempty comparisons).18 actual operating HTTP files match23329542B; one canonical factory request per browser suite and held real22593404B GLB hash eb1d5b3e. Initial production pose attempt timed out at readiness; single same-path retry passes. Private48% photo20/21/47 overlays visually opened; camera/crop/nozzle-state mismatch precludes full aircraft approval. HTTPS503 in inherited environment proxy, not globally diagnosed. Reports70/74 and operating JPEG71 retain proof/limits. Own lease released; no variant status promotion or other-work changes."
         ],
         "commit": "https://github.com/dasol1819/project-apex/commit/f297ec496c931cfdd681dfca12b8218a0bd5e003",
         "license": "CC BY 4.0, original creator Tim Samedov (citizensnip); attribution in web viewer",
@@ -1235,7 +1236,14 @@
         "flapSourceValidation": "docs/aircraft-review/mig23mld/66-flap-source-validation.json",
         "flapSourceComparison": "docs/aircraft-review/mig23mld/67-original-flap-control-damage.jpg",
         "flapPrivateOverlap": "docs/aircraft-review/mig23mld/68-flap-private-overlap.json",
-        "flapReferenceCameras": "docs/aircraft-review/mig23mld/69-flap-reference-cameras.json"
+        "flapReferenceCameras": "docs/aircraft-review/mig23mld/69-flap-reference-cameras.json",
+        "flapSourceValidatedHead": "88af25cb227a25bc9a0d49713160fee1999e2a20",
+        "flapSourcePublishedCommit": "94cd061c2789676b376f45320e0a0eab9a82e41d",
+        "flapSourcePages": "https://github.com/dasol1819/project-apex/actions/runs/43663757009",
+        "flapSourceFinalDeployment": "docs/aircraft-review/mig23mld/70-flap-final-deployment.json",
+        "flapSourceOperatingComparison": "docs/aircraft-review/mig23mld/71-operating-flap-wing-validation.jpg",
+        "flapSourceProofPullRequest": "https://github.com/dasol1819/project-apex/pull/44",
+        "engineReferenceFollowup": "docs/aircraft-review/mig23mld/74-engine-reference-followup.json"
       },
       "resourceCost": {
         "originalBytes": 22593404,
@@ -1246,8 +1254,8 @@
         "materials": 44,
         "images": 22,
         "renderedFps": null,
-        "nativeWasmBytes": 344687,
-        "nativeBuild": "PR37 source-fit nozzle and posed/async native visuals. Final ba31d2c CI5 pass; Pages43316745640 success; ten production HTTP files match. Deterministic 344687-byte f5e16f264e8bccb77d76ba8bb578fc08046b30cd4f6fe60fd17bfdd3bee0646c module; original tracked base/encoded payload preserved.",
+        "nativeWasmBytes": 349422,
+        "nativeBuild": "PR43 validated88af25c, merged94cd061, Pages43663757009 success. Deterministic349422B SHA92075852ce1c1b41658d5a4acf62c1009f8c4bd814324585191a6b5c1c44287e.18 operating files and4 production browser suites pass. Original tracked base/encoded payload preserved; HTTPS503 remains environment-scoped.",
         "fps": null,
         "exhaustAudit": "Chromium 141 SwiftShader isolated gameplay model camera",
         "dryDrawCalls": 223,
@@ -1359,7 +1367,19 @@
         "wingRootRuntimeSourceAddedBytes": 753,
         "wingRootAddedEmptyMetadataGroups": 8,
         "wingRootExtraChildSubmittedTrianglesBefore": 2742,
-        "wingRootExtraChildSubmittedTrianglesAfter": 0
+        "wingRootExtraChildSubmittedTrianglesAfter": 0,
+        "flapSourceAudit": {
+          "nativeByteDelta": 2763,
+          "flapJavaScriptByteDelta": 2722,
+          "sourceTriangleDelta": 0,
+          "sourceTextureDelta": 0,
+          "sharedSourceTextureHandles": 22,
+          "estimatedRGBA8MipBytes": 183074056,
+          "singleInstanceDrawCalls": 245,
+          "singleInstanceSubmittedTriangles": 44497,
+          "hardwareFPS": null,
+          "report": "docs/aircraft-review/mig23mld/70-flap-final-deployment.json"
+        }
       },
       "limitations": [
         "Original GLB now in combat renderer; moving wing pivot remains approximate and gear/control/damage bone partitioning incomplete; photo silhouette alignment review pending.",
@@ -2314,17 +2334,20 @@
   "currentWork": {
     "kind": "aircraft-review",
     "aircraftId": "ru-mig23-mld",
-    "branch": "mig23mld-flap-source-20261115",
-    "state": "source-flap-ci-and-publication",
+    "branch": "mig23mld-flap-proof-20261115",
+    "state": "published-source-flaps-exterior-review-pending",
     "scope": "Continue unfinished MiG23MLD source wing controls/damage. Identify authored surfaces against exact-MLD photos before fitting native-driven articulation/part ownership. Preserve PR38 and existing15 review.",
-    "nextStep": "Source flap/native envelopes, real neutral/transit/25deg damage and late frozen hinge replay pass locally; original wing combined ownership and510 other native fixtures preserved. Private exact-MLD overlays opened; camera/crop mismatch precludes visual approval. Wait for exact-head five CI workflows, then merge only validated functional work and verify Pages/operating bytes/render. Keep aircraft in_progress and preserve other work.",
-    "checkpoint": "https://github.com/dasol1819/project-apex/commit/0c149231c662ea3c3d60fb0a6f4f00d3b2306ba6",
+    "nextStep": "PR43 source flaps16/17 are deployed and actual operating neutral/transit/25deg, independent/whole-wing loss and cached/cold source arrival pass in70. Continue six authentic child partitions12/13/14/15/18/19 and calibrated flap outline/deployment review before another aircraft. Resolve fin cap/rudder gap, intake lower lip, gear residual and installed R35/operating plume references in74. Native25deg remains an existing game setting, not certified aircraft limits. Preserve initial15 review, MiG15bis and PR38.",
+    "checkpoint": "https://github.com/dasol1819/project-apex/commit/94cd061c2789676b376f45320e0a0eab9a82e41d",
     "pullRequest": "https://github.com/dasol1819/project-apex/pull/43",
     "evidence": "https://github.com/dasol1819/project-apex/tree/main/docs/aircraft-review/mig23mld",
-    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43603965619",
+    "deployment": "https://github.com/dasol1819/project-apex/actions/runs/43663757009",
     "finReview": "docs/aircraft-review/mig23mld/39-fin-damage-review.md",
     "cacheReview": "docs/aircraft-review/mig23mld/46-factory-cache-review.md",
-    "wingRootDeployment": "docs/aircraft-review/mig23mld/62-wing-root-deployment.json"
+    "wingRootDeployment": "docs/aircraft-review/mig23mld/62-wing-root-deployment.json",
+    "proofPullRequest": "https://github.com/dasol1819/project-apex/pull/44",
+    "flapSourceDeployment": "docs/aircraft-review/mig23mld/70-flap-final-deployment.json",
+    "engineReferenceFollowup": "docs/aircraft-review/mig23mld/74-engine-reference-followup.json"
   },
   "previousWork": {
     "kind": "existing-aircraft-surface-review",
