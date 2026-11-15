@@ -1,0 +1,76 @@
+{
+  "references": "Jeff Keip copyright2000, exact-MLD ARC walkaround20/21. Source photographs and overlap pixels kept private; no redistribution license.",
+  "overlaps": [
+    {
+      "photo": 21,
+      "referenceSha256": "b3c1c3cd9c9de618d9cb2ddb0c7e270fa7330d763bcf1aa357e79af407d843d3",
+      "camera": "flap-top",
+      "gameImageSha256": "3a3750dee30197ef06fa4cb268af31f35b74eae242f25900903ad04ea05b2ac3",
+      "gameImageLine": [
+        [
+          397.1489499718624,
+          352.39488008454435
+        ],
+        [
+          875.1943522189272,
+          548.2700716331344
+        ]
+      ],
+      "referenceImageLine": [
+        [
+          106,
+          260
+        ],
+        [
+          640,
+          278
+        ]
+      ],
+      "scale": 1.0342321502243825,
+      "rotationRadians": -0.3551810751993881,
+      "translation": [
+        -405.8510165136057,
+        61.13053966459131
+      ],
+      "alpha": 0.47843137254901963,
+      "method": "One global similarity from approximate visible seam-line alignment. Photo endpoints are crop-line locations, NOT identified physical hinge endpoints. No independent component deformation.",
+      "limitation": "Close-up photographic crop and unmatched perspective preclude aircraft dimension or hinge-position certification. Two image-line anchors have zero residual by construction and do not constitute validation."
+    },
+    {
+      "photo": 20,
+      "referenceSha256": "31a38723c77eaecc911c36d4e366ec510263299d367f89aca6dd7685bb9d8771",
+      "camera": "flap-under",
+      "gameImageSha256": "f626f743593e921ba78d42f583738c97be17c02f7bcdf3cc6d1c073580b34a97",
+      "gameImageLine": [
+        [
+          443.22862019508403,
+          553.7963334512344
+        ],
+        [
+          946.4815754538457,
+          281.2588566644353
+        ]
+      ],
+      "referenceImageLine": [
+        [
+          79,
+          292
+        ],
+        [
+          640,
+          176
+        ]
+      ],
+      "scale": 1.0009716021770816,
+      "rotationRadians": 0.29243374672236805,
+      "translation": [
+        -186.01829254933796,
+        -366.69983755348005
+      ],
+      "alpha": 0.47843137254901963,
+      "method": "One global similarity from approximate visible seam-line alignment. Photo endpoints are crop-line locations, NOT identified physical hinge endpoints. No independent component deformation.",
+      "limitation": "Close-up photographic crop and unmatched perspective preclude aircraft dimension or hinge-position certification. Two image-line anchors have zero residual by construction and do not constitute validation."
+    }
+  ],
+  "observed": "Composites generated and visually opened2026-11-15. Segmented trailing panels and seam/slot identity examined. Strong top-view perspective/fuselage mismatch and underside crop/depth mismatch remain; no dimension/real hinge-position approval. Original source retained pending calibrated reference."
+}
