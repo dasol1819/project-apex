@@ -3,6 +3,7 @@ import {createClassicAircraft} from './classic-aircraft.js';
 import {aircraftDefinition,partParentFor} from './aircraft-catalog.js';
 import {PARTS} from './airframe-parts.js';
 import {partitionMig23Fin} from './mig23mld-fin.js';
+import {rigMig23Flaps} from './mig23mld-flaps.js?v=1';
 import {parseMig23Glb,normalizeMig23,rigMig23Sweep} from './mig23mld-glb.js?v=4';
 
 const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
@@ -336,9 +337,9 @@ export function createMig23mldAircraft(options={}){
     if((health?.[p]??1)<.08){node.visible=false;break;}
   }
  }
- let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},setMainGear=()=>{},setTailControls=()=>{},setAirbrakes=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1,lastAirbrake=0;
+ let sweep=()=>{},setVentralFin=()=>{},setNoseGear=()=>{},setMainGear=()=>{},setTailControls=()=>{},setFlaps=()=>{},setAirbrakes=()=>{},exhaust=null,loaded=false,failed=false,lastAngle=16,lastGear=1,lastAirbrake=0;
  let lastOpening=0;
- const lastControls={leftTail:0,rightTail:0,leftRudder:0};
+ const lastControls={leftTail:0,rightTail:0,leftRudder:0,leftFlap:0,rightFlap:0};
  const plume=createPlume();
  base.group.add(plume);
  const controller=new AbortController();
@@ -355,6 +356,9 @@ export function createMig23mldAircraft(options={}){
    setNoseGear=rigNoseGear(normalized.root);
    setMainGear=rigMainGear(normalized.root);
    setTailControls=rigTailControls(normalized.root);
+   alignGroundContact(normalized.root);
+   const flaps=rigMig23Flaps(normalized.root);setFlaps=flaps.update;
+   for(const item of flaps.parts){damageParts[item.part]=item.node;sourceDamage.push(item);}
    // These are disjoint authored surfaces with existing physical hinges.
    // Register the hinge itself: preserve its live pose and source UVs when
    // native damage snapshots it, without reparenting or recutting the skin.
@@ -366,7 +370,7 @@ export function createMig23mldAircraft(options={}){
    // exist. Empty roots replace hidden generic fallback parts, so native
    // child events cannot emit rectangular stand-in skins/caps alongside the
    // original complete wing. Independent child loss remains unfinished.
-   for(const [part,owner] of [[12,1],[14,1],[16,1],[18,1],[13,2],[15,2],[17,2],[19,2]]){
+   for(const [part,owner] of [[12,1],[14,1],[18,1],[13,2],[15,2],[19,2]]){
     const pending=new T.Group();pending.name='MiG-23MLD pending wing subdivision '+part;
     pending.userData.pendingSourceSubdivision=true;
     damageParts[owner].add(pending);damageParts[part]=pending;
@@ -376,7 +380,6 @@ export function createMig23mldAircraft(options={}){
    const nozzle=normalized.root.getObjectByName('soplo');
    if(nozzle){nozzle.userData.damageIndex=NOZZLE_PART;damageParts[NOZZLE_PART]=nozzle;sourceDamage.push({part:NOZZLE_PART,node:nozzle});}
    setAirbrakes=rigAirbrakes(normalized.root);
-   alignGroundContact(normalized.root);
    exhaust=rigExhaust(normalized.root,plume);
    sweep=rig;
    base.group.add(normalized.root);
@@ -385,6 +388,7 @@ export function createMig23mldAircraft(options={}){
    setNoseGear(lastGear);
    setMainGear(lastGear);
    setTailControls(lastControls);
+   setFlaps(lastControls);
    setAirbrakes(lastAirbrake);
    exhaust?.(0,0);
    updateSourceDamage(lastHealth);
@@ -400,15 +404,17 @@ export function createMig23mldAircraft(options={}){
   lastAngle=angle;
   if(Number.isFinite(state.gear))lastGear=clamp(state.gear,0,1);
   if(Number.isFinite(state.airbrake))lastAirbrake=clamp(state.airbrake,0,1);
-  for(const field of ['leftTail','rightTail','leftRudder'])
+  for(const field of ['leftTail','rightTail','leftRudder','leftFlap','rightFlap'])
    if(Number.isFinite(state[field]))lastControls[field]=state[field];
   lastControls.enabled=state.enabled;
+  lastControls.health=state.health;
   if(loaded){
    sweep(angle);
    setVentralFin(lastGear);
    setNoseGear(lastGear);
    setMainGear(lastGear);
    setTailControls(lastControls);
+   setFlaps(lastControls);
    setAirbrakes(lastAirbrake);
    updateSourceDamage(lastHealth);
    for(const node of standIns)node.visible=false;

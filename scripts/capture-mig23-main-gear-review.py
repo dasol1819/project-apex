@@ -11,7 +11,7 @@ out=Path(os.environ.get('APEX_TEST_OUTPUT','/tmp/mig23-main-gear-reference'));ou
 hook='''
 window.__mainGearReference={get loaded(){return aircraft?.sourceLoaded},get started(){return started},capture(spec){
  setPaused(true);sim.set_aircraft_type(16);sim.reset_spawn(1);
- const a=aircraft;a.group.position.set(0,5000,0);a.group.quaternion.identity();a.update({gear:1,wingSweep:72,leftTail:0,rightTail:0,leftRudder:0,airbrake:0,afterburner:0,health:PARTS.map(()=>1)});a.group.updateWorldMatrix(true,true);
+ const a=aircraft;a.group.position.set(0,5000,0);a.group.quaternion.identity();a.update({gear:1,wingSweep:72,leftTail:0,rightTail:0,leftRudder:0,leftFlap:0,rightFlap:0,airbrake:0,afterburner:0,health:PARTS.map(()=>1)});a.group.updateWorldMatrix(true,true);
  const cam=camera.clone();cam.position.copy(a.group.localToWorld(new T.Vector3(...spec.offset)));cam.up.set(0,1,0);cam.lookAt(a.group.localToWorld(new T.Vector3(...spec.target)));cam.fov=spec.fov;cam.aspect=spec.width/spec.height;cam.updateProjectionMatrix();cam.updateMatrixWorld();renderer.setSize(spec.width,spec.height,false);renderer.render(scene,cam);
  const project=p=>{const v=a.group.localToWorld(new T.Vector3(...p)).project(cam);return [(v.x+1)*spec.width/2,(1-v.y)*spec.height/2];};
  const wheelProjections=['OBJ0109','OBJ0131'].map(name=>{const c=new T.Box3().setFromObject(a.group.getObjectByName(name),true).getCenter(new T.Vector3()).project(cam);return {name,pixel:[(c.x+1)*spec.width/2,(1-c.y)*spec.height/2]};});const png=renderer.domElement.toDataURL().split(',')[1];const points=spec.landmarks.map(project),submittedTriangles=renderer.info.render.triangles;a.group.visible=false;renderer.render(scene,cam);const background=renderer.domElement.toDataURL().split(',')[1];a.group.visible=true;

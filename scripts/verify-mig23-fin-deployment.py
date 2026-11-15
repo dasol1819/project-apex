@@ -29,6 +29,11 @@ paths=[('index.html','/?screen=tree'),('app.js',appUrl),('aircraft.js',next(iter
  ('wreckage-mesh.js',specifier('damage-effects.js','wreckage-mesh.js')),('part-emitter.js',specifier('damage-effects.js','part-emitter.js')),
  ('aircraft-catalog.js','/aircraft-catalog.js'),('flight.wasm',wasm[0][1:]),('assets/mig23mld/Mig-23.glb','/assets/mig23mld/Mig-23.glb?v=3')]
 
+# New authored controls are separate readable modules; verify their exact
+# cache-qualified operating URLs as well as the factory/game/native graph.
+if 'mig23mld-flaps.js' in (a.public/'mig23mld-game.js').read_text():
+ paths.extend([('mig23mld-flaps.js',specifier('mig23mld-game.js','mig23mld-flaps.js')),('mig23mld-flap-data.js',specifier('mig23mld-flaps.js','mig23mld-flap-data.js'))])
+
 def check(pair):
  file,suffix=pair;url=a.base.rstrip('/')+suffix;start=time.monotonic()
  with urllib.request.urlopen(url,timeout=120) as response:data=response.read();status=response.status
