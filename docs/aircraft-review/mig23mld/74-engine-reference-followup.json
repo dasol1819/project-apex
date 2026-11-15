@@ -1,0 +1,151 @@
+{
+  "checkedAt": "2026-11-15 Asia/Seoul",
+  "status": "Partial reference audit, no model/physics approval",
+  "primarySpecifications": [
+    {
+      "url": "https://pimaair.org/museum-aircraft/mig-23mld/",
+      "claim": "Museum designates its aircraft MLD, serial23709, one R-35-300. Nozzle state or operating plume dimensions are not specified."
+    },
+    {
+      "url": "https://wingsmuseum.org/exhibits/mikoyan-gurevich-mig-23mld-flogger/",
+      "claim": "Existing83.6/127.49kN preserved; Bulgarian new-build identity is not automatically a Soviet-upgrade fitting reference."
+    },
+    {
+      "url": "https://www.lennundusmuuseum.ee/en/gallery/fighters/mig-23mld/",
+      "claim": "English dry thrust86.4kN differs from Estonian83.6kN. Preserve profile; do not average or silently replace."
+    },
+    {
+      "url": "https://www.lennundusmuuseum.ee/pildigalerii/havitajad/mig-23mld/",
+      "claim": "Estonian page states83.6kN/127kN; language disagreement remains explicit."
+    }
+  ],
+  "additionalLead": {
+    "url": "https://www.geocities.ws/iek_17/walkarnd/mig23wa.htm",
+    "claim": "Photographer page labels MLD/UB and says author photographed at Machulischi1995, with rear/engine-inside thumbnails. Normal inherited-proxy fetch403; image pixels and aircraft serial not inspected, no geometry inference."
+  },
+  "privatePhotographs": [
+    {
+      "page": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/46.shtm",
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/46.jpg",
+      "bytes": 52942,
+      "sha256": "390898ef29e1f949202b2ae4456e6f3414e9d682290ea82b2ede65ef78ed2020",
+      "credit": "Photo copyright2000 Jeff Keip; private inspection only"
+    },
+    {
+      "page": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/47.shtm",
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/47.jpg",
+      "bytes": 49244,
+      "sha256": "20e81d169b820db7a90b077b8c72f49af969170b6bcddb8e14224499e48c1003",
+      "credit": "Photo copyright2000 Jeff Keip; private inspection only"
+    },
+    {
+      "page": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/48.shtm",
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/48.jpg",
+      "bytes": 48045,
+      "sha256": "a85ed5c2e92abb1e4c8506638aaaa0f35e75ee30655b632610ea10a0d6527f35",
+      "credit": "Photo copyright2000 Jeff Keip; private inspection only"
+    },
+    {
+      "page": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/49.shtm",
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/49.jpg",
+      "bytes": 32223,
+      "sha256": "4bb393e67fb8c879d3c6856bc04f0d10c02da63527e9daecc0d9cb7630a97be6",
+      "credit": "Photo copyright2000 Jeff Keip; private inspection only"
+    },
+    {
+      "page": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/50.shtm",
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/50.jpg",
+      "bytes": 40646,
+      "sha256": "d44c0bd68676c6f9d6492cf0dcbab78093bb89a66b61a6837ca79c72ef600679",
+      "credit": "Photo copyright2000 Jeff Keip; private inspection only"
+    },
+    {
+      "page": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/51.shtm",
+      "url": "https://www.arcair.com/awa01/101-200/awa189-MiG-23-Keip/51.jpg",
+      "bytes": 41836,
+      "sha256": "aa3dc638950edc51d111369f53d435ad9883631950d0c9f15f61449d105c54d4",
+      "credit": "Photo copyright2000 Jeff Keip; private inspection only"
+    }
+  ],
+  "nozzleOverlap": {
+    "photo": 47,
+    "camera": {
+      "cameras": [
+        {
+          "name": "nozzle-photo47-dry",
+          "offset": [
+            3.2,
+            1.4,
+            10.9
+          ],
+          "target": [
+            0,
+            0.35,
+            7
+          ],
+          "fov": 36,
+          "width": 640,
+          "height": 480,
+          "landmarks": [],
+          "projectedLandmarks": [],
+          "renderTriangles": 17120,
+          "backgroundTriangles": 1422
+        }
+      ],
+      "pageErrors": [],
+      "environment": "Chromium141 / SwiftShader / actual game renderer; all controls neutral, gear0, sweep72, no afterburner"
+    },
+    "gameImageLine": [
+      [
+        251,
+        225
+      ],
+      [
+        341,
+        200
+      ]
+    ],
+    "referenceImageLine": [
+      [
+        148,
+        160
+      ],
+      [
+        286,
+        151
+      ]
+    ],
+    "scale": 1.480532700538525,
+    "rotationRadians": 0.20582168700403466,
+    "translation": [
+      -147.6899713467049,
+      -242.03610315186245
+    ],
+    "alpha": 0.47843137254901963,
+    "gameSha256": "50dd158817cdf41ec30e67eadbad1f885b1e993610cbb29657b81fae8998b93e",
+    "method": "One global similarity using approximate visible outer-shroud upper fore/aft image features; no part-specific warp. Inspect upper band, petal edge, stabilator overlap and fuselage shoulder. No calibrated camera/state or dimensional conclusion.",
+    "limitations": "Photo47 crops the left nozzle edge and shows an unpowered aircraft with unknown actuator state. Current renderer uses existing dry game aperture; matching nozzle-command state is unproved. Off-axis perspective, stabilator chord and shoulder projection differ. External petal identity alone does not verify internal installed R35 structure or operating plume. Photos46-51 and composites remain private due copyright.",
+    "observed": "Composite generated and visually opened. Outer shroud line overlaps only approximately; opening ellipse, stabilator and fuselage shoulder disagree visibly. Do not infer a dimensional defect from this unmatched camera/state."
+  },
+  "currentRenderObservations": {
+    "intakes": "Both actual side cameras opened. Source openings are recessed and splitters present; lower-lip geometry/camera disagreement remains unresolved.",
+    "wings": "Original segmented full-span trailing skin now animates and detaches; six other independent child slots remain provisional. Flap photo20/21 overlap limits in68 remain.",
+    "nozzle": "Actual dry/half/wet loss captures reopened. One nozzle and mapped original petals retained; idle/military/wet certified schedule and internal hardware remain unapproved.",
+    "plume": "Actual airborne and close wet render reopened: bright pale bands/taper and close-view overexposure require exact-MLD operational references before shape/color approval; no plume shader change in this flap PR.",
+    "gear": "Full native/visible test rerun: mainwheel\u22121.42m aligns shared probes, nose visible\u2248\u22121.364905m remains\u224855.1mm above shared native contact. Existing fit retained pending calibrated assembly review.",
+    "fin": "Current cap and rudder seam opened in rear cameras; previous fin gap/cap comparison remains unresolved."
+  },
+  "nextStep": "Recover a normal accessible primary exact-MLD installed-engine interior and in-service plume photograph with serial and known state, then calibrated render overlap. Do not substitute Szolnok MF/R29 or trainer UB. Keep aircraft in_progress.",
+  "directPrimaryPageCheck": [
+    {
+      "url": "https://www.lennundusmuuseum.ee/en/gallery/fighters/mig-23mld/",
+      "sha256": "37550dc825f071cfc9a315b3847e29d0686c6c0b8d1997121756f0f17cf6f06d",
+      "engineExcerpt": "t since 1970 Crew: 1 Powerplant: 1 x Khatchaturov R-35-300 turbojet engine with thrust 86.4 kN, afterburning 127 kN Performance: max speed Mach 2.32 (2 445 km/h) range 1,150 km ferry range 2,820 km service ceiling 18,500 m rate of climb 240 m/s thrus"
+    },
+    {
+      "url": "https://www.lennundusmuuseum.ee/pildigalerii/havitajad/mig-23mld/",
+      "sha256": "2f7e7b43d0a049790d332a01062a2f8e3530b8f2ce7347f49461be59823855ed",
+      "engineExcerpt": ".aastast Meeskond: 1 liige Mootor: 1 x Hat\u0161aturov R-35-300 turboreaktiivmootor t\u00f5ukega 83,6 kN, j\u00e4relp\u00f5lemisega 127 kN V\u00f5imekus: max kiirus Mach 2,32 (2 445 km/h) tegevusraadius 1 150 km; \u00fclelennukaugus 2 820 km lennulagi 18 500 m; k\u00f5rguse kogumise k"
+    }
+  ]
+}
