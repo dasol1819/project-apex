@@ -3,6 +3,14 @@ on:
   pull_request:
     paths:
       - 'scripts/native/build-mig23.mjs'
+      - 'scripts/native/patch-mig23-flap-shapes.mjs'
+      - 'scripts/export-mig23-flaps.mjs'
+      - 'scripts/fit-mig23-flaps.cpp'
+      - 'scripts/build-mig23-flaps.mjs'
+      - 'web/mig23mld-flap*.js'
+      - 'tests/mig23-flap-*'
+      - 'tests/fixtures/mig23-flaps/**'
+      - 'docs/aircraft-review/mig23mld/flap-source-vertices.csv'
       - 'scripts/native/patch-mig23-wing-shapes.mjs'
       - 'scripts/export-mig23-wings.mjs'
       - 'scripts/fit-mig23-wing-hulls.cpp'
@@ -118,6 +126,14 @@ jobs:
           c++ -std=c++17 -O2 -Wall -Wextra -Wpedantic -Werror scripts/fit-mig23-wing-hulls.cpp -o /tmp/fit-mig23-wings
           /tmp/fit-mig23-wings /tmp/wing-source.csv > /tmp/wing-hulls.json
           cmp /tmp/wing-hulls.json assets/mig23mld/wing-support-hulls.json
+      - name: Rebuild authored trailing flap pins and native envelopes
+        run: |
+          node scripts/export-mig23-flaps.mjs > /tmp/flap-source.csv
+          cmp /tmp/flap-source.csv docs/aircraft-review/mig23mld/flap-source-vertices.csv
+          c++ -std=c++17 -O2 -Wall -Wextra -Wpedantic -Werror scripts/fit-mig23-flaps.cpp -o /tmp/fit-mig23-flaps
+          /tmp/fit-mig23-flaps /tmp/flap-source.csv > /tmp/flap-shapes.json
+          cmp /tmp/flap-shapes.json assets/mig23mld/flap-source-shapes.json
+          node scripts/build-mig23-flaps.mjs --check
       - run: node scripts/build-mig23-fin.mjs --check
       - run: node --check scripts/native/build-mig23.mjs
       - run: node scripts/native/build-mig23.mjs
@@ -127,6 +143,8 @@ jobs:
       - run: node tests/mig23-fin-combat.mjs public
       - run: node tests/mig23-wing-native.mjs public
       - run: node tests/mig23-wing-combat.mjs public
+      - run: node tests/mig23-flap-native.mjs public
+      - run: node tests/mig23-flap-combat.mjs public
       - run: node tests/mig23-native.mjs
       - run: node tests/mig23-autosweep.mjs
       - run: node tests/mig23-tail-combat.mjs public
@@ -163,6 +181,10 @@ jobs:
           APEX_EXPECT_LEGACY_FACTORY=1 APEX_TEST_OUTPUT=/tmp/aircraft-cache-before /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
           APEX_TEST_OUTPUT=/tmp/aircraft-cache-browser /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-wing-browser.py
+          APEX_TEST_OUTPUT=/tmp/mig23-flap-browser APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-flap-browser.py
+          APEX_TEST_GAME_SOURCE=tests/fixtures/mig23-flaps/before-source-flaps.js APEX_EXPECT_FLAP_SOURCE=0 APEX_TEST_OUTPUT=/tmp/mig23-flap-before APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-flap-browser.py
+          APEX_TEST_PART=16 APEX_TEST_OUTPUT=/tmp/mig23-flap-cached APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py
+          APEX_TEST_PART=17 APEX_TEST_OUTPUT=/tmp/mig23-flap-cold APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-cold-fin-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-fin-preservation-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-cold-fin-browser.py
@@ -179,6 +201,15 @@ jobs:
         with:
           name: mig23-webgl-captures
           path: |
+            /tmp/mig23-flap-browser
+            /tmp/mig23-flap-before
+            /tmp/mig23-flap-cached
+            /tmp/mig23-flap-cold
+            /tmp/mig23-wing-browser
+            /tmp/mig23-wing-async-1
+            /tmp/mig23-wing-async-2
+            /tmp/mig23-wing-cold-1
+            /tmp/mig23-wing-cold-2
             /tmp/mig23-flight-browser
             /tmp/mig23-resource-browser
             /tmp/mig23-damage-browser
