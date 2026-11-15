@@ -1738,5 +1738,223 @@
     ],
     "wasmBytes": 349422,
     "sha256": "92075852ce1c1b41658d5a4acf62c1009f8c4bd814324585191a6b5c1c44287e"
-  }
+  },
+  "posePreservation": {
+    "poses": [
+      {
+        "wingSweep": 16,
+        "gear": 0,
+        "airbrake": 0,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0,
+        "airbrake": 0.5,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0,
+        "airbrake": 1,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0.5,
+        "airbrake": 0,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0.5,
+        "airbrake": 0.5,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 0.5,
+        "airbrake": 1,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 1,
+        "airbrake": 0,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 1,
+        "airbrake": 0.5,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 16,
+        "gear": 1,
+        "airbrake": 1,
+        "maxError": 9.094951354536938e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0,
+        "airbrake": 0,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0,
+        "airbrake": 0.5,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0,
+        "airbrake": 1,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0.5,
+        "airbrake": 0,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0.5,
+        "airbrake": 0.5,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 0.5,
+        "airbrake": 1,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 1,
+        "airbrake": 0,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 1,
+        "airbrake": 0.5,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 44,
+        "gear": 1,
+        "airbrake": 1,
+        "maxError": 9.094955691342526e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0,
+        "airbrake": 0,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0,
+        "airbrake": 0.5,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0,
+        "airbrake": 1,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0.5,
+        "airbrake": 0,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0.5,
+        "airbrake": 0.5,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 0.5,
+        "airbrake": 1,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 1,
+        "airbrake": 0,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 1,
+        "airbrake": 0.5,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      },
+      {
+        "wingSweep": 72,
+        "gear": 1,
+        "airbrake": 1,
+        "maxError": 9.094951625587348e-13,
+        "worst": "OBJ0267"
+      }
+    ],
+    "observations": 210465,
+    "maxError": 9.094955691342526e-13,
+    "sourceNodes": [
+      "OBJ0037",
+      "OBJ0057",
+      "OBJ0040",
+      "OBJ0060",
+      "stab",
+      "stab2",
+      "rudder",
+      "OBJ0024",
+      "stoykanos",
+      "nos",
+      "OBJ0109",
+      "OBJ0131",
+      "soplo",
+      "OBJ0260",
+      "OBJ0270",
+      "OBJ0267",
+      "OBJ0271"
+    ],
+    "pageErrors": [],
+    "environment": "Chromium141 / SwiftShader / actual game factory source;27 explicit pose combinations. Neutral new flaps preserve prior source, all existing rig controls unchanged. Not an aircraft-limit certification."
+  },
+  "correction": "Local full-flight regression caught changed airbrake articulation after moving ground-contact alignment before existing rig setup. Restored all original rig order and register only new flaps after final alignment. New27-pose source compatibility test compares17 authored nodes against published pre-flap source, max error below1e-12m. Initial corrected-flap renderer snapshots are unchanged at airbrake0; final full-flight rerun and CI still required.",
+  "nativeFixtureAccounting": "510 existing type0..16 damage event fixtures were compared after excluding changed type16 flap16/17 bodies.508 fixtures have nonempty compared native outputs; two isolated changed-leaf events have empty filtered outputs. Extra type17 probe also has30 empty damage outputs and does not establish type17 damage support."
 }

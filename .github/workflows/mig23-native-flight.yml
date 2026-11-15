@@ -181,6 +181,7 @@ jobs:
           APEX_EXPECT_LEGACY_FACTORY=1 APEX_TEST_OUTPUT=/tmp/aircraft-cache-before /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
           APEX_TEST_OUTPUT=/tmp/aircraft-cache-browser /tmp/apex-playwright/bin/python tests/aircraft-cache-browser.py
           APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-wing-browser.py
+          APEX_TEST_OUTPUT=/tmp/mig23-flap-preservation APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-flap-preservation-browser.py
           APEX_TEST_OUTPUT=/tmp/mig23-flap-browser APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-flap-browser.py
           APEX_TEST_GAME_SOURCE=tests/fixtures/mig23-flaps/before-source-flaps.js APEX_EXPECT_FLAP_SOURCE=0 APEX_TEST_OUTPUT=/tmp/mig23-flap-before APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-flap-browser.py
           APEX_TEST_PART=16 APEX_TEST_OUTPUT=/tmp/mig23-flap-cached APEX_TEST_URL=http://127.0.0.1:8765 /tmp/apex-playwright/bin/python tests/mig23-async-wreckage-browser.py
@@ -201,6 +202,7 @@ jobs:
         with:
           name: mig23-webgl-captures
           path: |
+            /tmp/mig23-flap-preservation
             /tmp/mig23-flap-browser
             /tmp/mig23-flap-before
             /tmp/mig23-flap-cached

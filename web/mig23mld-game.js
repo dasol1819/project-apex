@@ -356,9 +356,6 @@ export function createMig23mldAircraft(options={}){
    setNoseGear=rigNoseGear(normalized.root);
    setMainGear=rigMainGear(normalized.root);
    setTailControls=rigTailControls(normalized.root);
-   alignGroundContact(normalized.root);
-   const flaps=rigMig23Flaps(normalized.root);setFlaps=flaps.update;
-   for(const item of flaps.parts){damageParts[item.part]=item.node;sourceDamage.push(item);}
    // These are disjoint authored surfaces with existing physical hinges.
    // Register the hinge itself: preserve its live pose and source UVs when
    // native damage snapshots it, without reparenting or recutting the skin.
@@ -380,6 +377,11 @@ export function createMig23mldAircraft(options={}){
    const nozzle=normalized.root.getObjectByName('soplo');
    if(nozzle){nozzle.userData.damageIndex=NOZZLE_PART;damageParts[NOZZLE_PART]=nozzle;sourceDamage.push({part:NOZZLE_PART,node:nozzle});}
    setAirbrakes=rigAirbrakes(normalized.root);
+   // Preserve original rig setup before ground translation; flap pins use
+   // the final contact-aligned source frame recorded by the C++ exporter.
+   alignGroundContact(normalized.root);
+   const flaps=rigMig23Flaps(normalized.root);setFlaps=flaps.update;
+   for(const item of flaps.parts){damageParts[item.part]=item.node;sourceDamage.push(item);}
    exhaust=rigExhaust(normalized.root,plume);
    sweep=rig;
    base.group.add(normalized.root);
